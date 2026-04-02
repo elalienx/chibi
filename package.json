@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "astro build && firebase deploy",
+    "build": "astro build",
     "dev": "astro dev",
     "format": "oxfmt",
     "lint": "oxlint --fix",
