@@ -1,4 +1,4 @@
-name: Aphrodite Chibi Continuous Deploy
+name: Continuous Deploy
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Vite build
+      - name: Astro build
         run: pnpm build
 
       - name: Deploy to Firebase
