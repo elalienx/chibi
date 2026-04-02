@@ -8,17 +8,17 @@ import extractInput from "../../helpers/extractInput";
 import "./input-field.css";
 
 interface Props {
-  /** An instance of a Formisch form. */
-  form: FormStore;
+  /**  Content to display inside the input field. */
+  children?: ReactNode;
 
   /** Unique identifier of the parent input group to make sure only one radio option is active. */
   id: string;
 
-  /**  Content to display inside the input field. */
-  children?: ReactNode;
+  /** An instance of a Formisch form. */
+  form: FormStore;
 }
 
-export default function InputField({ form, id, children }: Props) {
+export default function InputField({ children, id, form }: Props) {
   // Safeguard
   if (!children) return <p>Please add a Label and a InputField to get started</p>;
 

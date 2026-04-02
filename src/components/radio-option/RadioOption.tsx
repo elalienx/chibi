@@ -6,23 +6,23 @@ import type { FieldStore } from "@formisch/react";
 import "./radio-option.css";
 
 interface Props {
-  /** An instance of a Formisch form. */
-  field?: FieldStore;
+  /** Text to display inside the radio option. */
+  children: ReactNode;
 
   /** Unique identifier of the parent radio group to make sure only one radio option is active. */
   id?: string;
 
-  /** Text to display inside the radio option. */
-  children: ReactNode;
+  /** An instance of a Formisch form. */
+  field?: FieldStore;
 
   /** The value sent to the database. */
   value: string | number;
 }
 
-export default function RadioOption({ field, id, children, value }: Props) {
+export default function RadioOption({ children, id, field, value }: Props) {
   // Safeguard
+  if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
-  if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Properties
   const labelId = `${id}_${value}`;

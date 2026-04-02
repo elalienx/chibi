@@ -10,20 +10,20 @@ import extractRadioOptions from "../../helpers/extractRadioOptions";
 import "./radio-group.css";
 
 interface Props {
-  /** An instance of a Formisch form. */
-  form: FormStore;
+  /**  Content to display inside the input field. */
+  children?: ReactNode;
 
   /** Unique identifier of the parent input group to make sure only one radio option is active. */
   id: string;
 
-  /**  Content to display inside the input field. */
-  children?: ReactNode;
+  /** An instance of a Formisch form. */
+  form: FormStore;
 }
 
-export default function RadioGroup({ form, id, children }: Props) {
+export default function RadioGroup({ children, id, form }: Props) {
   // Safeguard
-  if (!form) return <p>Please add a Formisch form to get started</p>;
   if (!children) return <p>Please add a Label and at least two RadioOption to get started</p>;
+  if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // State
   // @ts-ignore
@@ -34,7 +34,7 @@ export default function RadioGroup({ form, id, children }: Props) {
 
   // Components
   const label = extractLabel(children, id);
-  const radioOptions = extractRadioOptions(field, id, children);
+  const radioOptions = extractRadioOptions(children, id, field);
 
   return (
     <div className="radio-group">

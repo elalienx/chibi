@@ -13,11 +13,11 @@ import "./input-wrapper-layout.css";
 import "./input-wrapper-state.css";
 
 interface Props {
-  /** An instance of a Formisch form. */
-  form?: FormStore;
-
   /** Unique identifier of a form field. */
   id?: string;
+
+  /** An instance of a Formisch form. */
+  form?: FormStore;
 
   /** An example value to show when the field is empty. */
   placeholder?: string;
@@ -29,7 +29,7 @@ interface Props {
   suffix?: string;
 }
 
-export default function Input({ form, id, placeholder, type, suffix }: Props) {
+export default function Input({ id, form, placeholder, type, suffix }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
