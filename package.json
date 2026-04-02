@@ -5,6 +5,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
+    "deploy": "firebase deploy",
     "dev": "astro dev",
     "format": "oxfmt",
     "lint": "oxlint --fix",
