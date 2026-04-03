@@ -1,7 +1,7 @@
 // Node modules
 import * as v from "valibot";
 
-export const schema = v.object({
+const schema = v.object({
   size: v.pipe(
     v.string("Ange bostadens månadsavgift för att gå vidare."),
     v.nonEmpty("Ange bostadens månadsavgift för att gå vidare."),
