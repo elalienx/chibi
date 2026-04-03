@@ -10,18 +10,27 @@ import Label from "components/label/Label";
 
 import schema from "./schema";
 import "./step-3.css";
+import useFormStore from "../useFormStore";
 
 interface Props {
   onContinue: () => void;
 }
 
 export default function Step3({ onContinue }: Props) {
-  // Properties
-  const form = useForm({ schema: schema, validate: "blur" });
+  // Global state
+  const { formStore } = useFormStore();
+
+  // Local state
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm() {
-    if (form.isValid) onContinue();
+    console.log("submitForm()");
+    if (form.isValid) {
+      onContinue();
+    } else {
+      alert("Fill missing values");
+    }
   }
 
   return (
@@ -32,6 +41,7 @@ export default function Step3({ onContinue }: Props) {
             <Icon name="arrow-left" /> Tillbaka
           </a>
           <h4>2. Om bostaden</h4>
+          <small>{formStore.property_type}</small>
         </header>
 
         <InputField form={form} id="size">
@@ -44,10 +54,19 @@ export default function Step3({ onContinue }: Props) {
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
-        <InputField form={form} id="monthly_fee">
-          <Label>Månadsavgift</Label>
-          <Input type="number" placeholder="0" suffix="kr/mån" />
-        </InputField>
+        {formStore.property_type === "appartment" && (
+          <InputField form={form} id="monthly_fee">
+            <Label>Månadsavgift</Label>
+            <Input type="number" placeholder="0" suffix="kr/mån" />
+          </InputField>
+        )}
+
+        {formStore.property_type !== "appartment" && (
+          <InputField form={form} id="operating_cost">
+            <Label>Driftskostnad</Label>
+            <Input type="number" placeholder="0" suffix="kr/mån" />
+          </InputField>
+        )}
       </section>
 
       <hr />

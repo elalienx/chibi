@@ -1,5 +1,6 @@
 // Node modules
 import { Form, useForm } from "@formisch/react";
+import type { InferOutput } from "valibot";
 
 // Project files
 import Button from "components/button/Button";
@@ -8,6 +9,7 @@ import schema from "./schema";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import useFormStore from "../useFormStore";
 
 interface Props {
   onContinue: () => void;
@@ -18,8 +20,11 @@ export default function Step2({ onContinue }: Props) {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
-  function submitForm() {
-    if (form.isValid) onContinue();
+  function submitForm(values: InferOutput<typeof schema>) {
+    if (form.isValid) {
+      updateFormStore(values);
+      onContinue();
+    }
   }
 
   return (
