@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm, type Schema } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
@@ -9,7 +9,7 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 
-import { monthly_fee, operating_cost, rooms, schema, size } from "./schema";
+import { monthly_fee, operating_cost, rooms, size } from "./schema";
 import "./step-3.css";
 import useFormStore from "../useFormStore";
 
@@ -24,7 +24,6 @@ export default function Step3({ onContinue }: Props) {
 
   // Methods
   function submitForm() {
-    console.log("submitForm()");
     if (form.isValid) {
       onContinue();
     } else {

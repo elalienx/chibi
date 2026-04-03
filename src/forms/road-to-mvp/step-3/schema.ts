@@ -35,10 +35,3 @@ export const operating_cost = v.pipe(
   v.minValue(1, "Ange bostadens driftskostnad för att gå vidare."),
   v.maxValue(10_000, "Driftskostnaden är för hög. Max 10 000 kr/mån."),
 );
-
-export const schema = v.object({
-  size,
-  rooms,
-  monthly_fee,
-  operating_cost,
-});
