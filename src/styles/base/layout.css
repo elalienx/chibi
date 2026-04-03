@@ -12,3 +12,9 @@ hr {
   margin: 0;
   border: solid 0.5px var(--divider-border);
 }
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}
