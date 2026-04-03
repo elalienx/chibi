@@ -17,7 +17,7 @@ interface Props {
 
 export default function Step2({ onContinue }: Props) {
   // Properties
-  const form = useForm({ schema: schema, validate: "blur" });
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm() {
