@@ -4,7 +4,7 @@ import { useField } from "@formisch/react";
 import type { FormStore } from "@formisch/react";
 
 // Project files
-import FieldValidationMessage from "../../components/field-validation-message/FieldValidationMessage";
+import ValidationMessage from "../validation-message/ValidationMessage";
 import extractLabel from "../../helpers/extractLabel";
 import extractRadioOptions from "../../helpers/extractRadioOptions";
 import "./radio-group.css";
@@ -40,7 +40,7 @@ export default function RadioGroup({ children, id, form }: Props) {
     <div className="radio-group">
       {label}
       <div className="radio-options">{radioOptions}</div>
-      {field.errors && <FieldValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</FieldValidationMessage>}
+      {field.errors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>}
     </div>
   );
 }
