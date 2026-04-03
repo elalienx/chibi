@@ -20,7 +20,7 @@ export default function Success({ onContinue }: Props) {
       <hr />
 
       <section className="bottom">
-        <Button onClick={onContinue}>STARTA OM ANSÖKAN</Button>
+        <Button onClick={onContinue}>START AGAIN</Button>
       </section>
     </div>
   );
