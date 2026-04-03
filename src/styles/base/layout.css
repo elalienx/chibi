@@ -13,7 +13,8 @@ hr {
   border: solid 0.5px var(--divider-border);
 }
 
-ul {
+/* First UL, so list inside list keep working as usual. */
+ul:not(li ul) {
   margin: 0;
   padding-left: 0;
   list-style-position: inside;
