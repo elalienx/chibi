@@ -36,7 +36,7 @@ export default function Step1({ onContinue }: Props) {
 
       <section className="bottom">
         <Button onClick={onContinue}>
-          Nästa <Icon name="arrow-right" />
+          Next <Icon name="arrow-right" />
         </Button>
       </section>
     </div>
