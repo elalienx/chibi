@@ -26,6 +26,7 @@ export default function Step1({ onContinue }: Props) {
               <li>Add persistence.</li>
             </ul>
           </li>
+          <li>Arrow back goes to previous step.</li>
           <li>Format input currency using spaces.</li>
           <li>Add tooltips.</li>
           <li>Add tracking.</li>
