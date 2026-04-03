@@ -1,5 +1,6 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, useForm, type Schema } from "@formisch/react";
+import * as v from "valibot";
 
 // Project files
 import Button from "components/button/Button";
@@ -8,7 +9,7 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 
-import schema from "./schema";
+import { monthly_fee, operating_cost, rooms, schema, size } from "./schema";
 import "./step-3.css";
 import useFormStore from "../useFormStore";
 
@@ -19,9 +20,7 @@ interface Props {
 export default function Step3({ onContinue }: Props) {
   // Global state
   const { formStore } = useFormStore();
-
-  // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const form = useForm({ schema: buildSchema(), validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm() {
@@ -30,6 +29,14 @@ export default function Step3({ onContinue }: Props) {
       onContinue();
     } else {
       alert("Fill missing values");
+    }
+  }
+
+  function buildSchema() {
+    if (formStore.property_type === "apartment") {
+      return v.object({ size, rooms, monthly_fee });
+    } else {
+      return v.object({ size, rooms, operating_cost });
     }
   }
 
@@ -54,14 +61,14 @@ export default function Step3({ onContinue }: Props) {
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
-        {formStore.property_type === "appartment" && (
+        {formStore.property_type == "apartment" && (
           <InputField form={form} id="monthly_fee">
             <Label>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
-        {formStore.property_type !== "appartment" && (
+        {formStore.property_type != "apartment" && (
           <InputField form={form} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
