@@ -14,7 +14,7 @@ test("Should be abble to apply for a house", async ({ mount }) => {
 
   await test.step("Step 1: About the loan", async () => {
     await component.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await component.locator("#property_type_house").click();
+    await component.locator("#property_type").getByText("Villa").click();
     await component.getByRole("button", { name: "Nästa" }).click();
   });
 
@@ -44,7 +44,7 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
 
   await test.step("Step 1: About the loan", async () => {
     await component.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await component.locator("#property_type_apartment").click();
+    await component.locator("#property_type").getByText("Lägenhet").click();
     await component.getByRole("button", { name: "Nästa" }).click();
   });
 
