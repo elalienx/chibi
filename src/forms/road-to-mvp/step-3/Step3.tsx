@@ -12,6 +12,7 @@ import Label from "components/label/Label";
 import { monthly_fee, operating_cost, rooms, size } from "./schema";
 import "./step-3.css";
 import useFormStore from "../useFormStore";
+import type { InferOutput } from "valibot";
 
 interface Props {
   onContinue: () => void;
@@ -19,16 +20,19 @@ interface Props {
 
 export default function Step3({ onContinue }: Props) {
   // Global state
-  const { formStore } = useFormStore();
-  const form = useForm({ schema: buildSchema(), validate: "blur", revalidate: "blur" });
+  const { formStore, updateFormStore } = useFormStore();
+  const schema = buildSchema();
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
-  function submitForm() {
-    if (form.isValid) onContinue();
+  function submitForm(values: InferOutput<typeof schema>) {
+    if (form.isValid) {
+      updateFormStore(values);
+      onContinue();
+    }
   }
 
   function buildSchema() {
-    // Special case
     if (formStore.property_type === "apartment") {
       return v.object({ size, rooms, monthly_fee });
     } else {
