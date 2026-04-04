@@ -13,10 +13,6 @@ a {
   }
 }
 
-.link-go-back {
-  text-decoration: none;
-}
-
 @media (min-width: 768px) {
   /* no overrides needed */
 }

@@ -12,9 +12,6 @@ export default function Step1({ setStep }: Props) {
     <div id="step-1" className="soft-background">
       <section className="top">
         <header>
-          <a className="link-go-back" href="/">
-            <Icon name="arrow-left" /> Tillbaka
-          </a>
           <h4>Road to MPV</h4>
         </header>
 
