@@ -1,6 +1,6 @@
 // Project files
 import Button from "../../../components/button/Button";
-import useFormStore from "../useFormStore";
+import useFormStore from "../helpers/useFormStore";
 
 interface Props {
   onContinue: () => void;
