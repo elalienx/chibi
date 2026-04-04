@@ -24,11 +24,8 @@ export default function RadioOption({ children, id, field, value }: Props) {
   if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
-  // Properties
-  const labelId = `${id}_${value}`;
-
   return (
-    <label className="radio-option" id={labelId}>
+    <label className="radio-option">
       <input {...field.props} checked={field.input === value} name={id} type="radio" value={value} />
       {children}
     </label>
