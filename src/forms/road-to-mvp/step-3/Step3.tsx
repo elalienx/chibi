@@ -22,21 +22,19 @@ export default function Step3({ onContinue }: Props) {
   const { formStore } = useFormStore();
   const form = useForm({ schema: buildSchema(), validate: "blur", revalidate: "blur" });
 
+  // Properties
+  const hasApartment = formStore.property_type === "apartment";
+
   // Methods
   function submitForm() {
-    if (form.isValid) {
-      onContinue();
-    } else {
-      alert("Fill missing values");
-    }
+    if (form.isValid) onContinue();
   }
 
   function buildSchema() {
-    if (formStore.property_type === "apartment") {
-      return v.object({ size, rooms, monthly_fee });
-    } else {
-      return v.object({ size, rooms, operating_cost });
-    }
+    // Special case
+    if (hasApartment) return v.object({ size, rooms, monthly_fee });
+
+    return v.object({ size, rooms, operating_cost });
   }
 
   return (
@@ -47,7 +45,6 @@ export default function Step3({ onContinue }: Props) {
             <Icon name="arrow-left" /> Tillbaka
           </a>
           <h4>2. Om bostaden</h4>
-          <small>{formStore.property_type}</small>
         </header>
 
         <InputField form={form} id="size">
@@ -60,14 +57,14 @@ export default function Step3({ onContinue }: Props) {
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
-        {formStore.property_type == "apartment" && (
+        {hasApartment && (
           <InputField form={form} id="monthly_fee">
             <Label>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
-        {formStore.property_type != "apartment" && (
+        {!hasApartment && (
           <InputField form={form} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
