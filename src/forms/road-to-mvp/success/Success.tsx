@@ -1,12 +1,13 @@
 // Project files
 import Button from "../../../components/button/Button";
-import useFormStore from "../useFormStore";
+import type { Step } from "../helpers/Step";
+import useFormStore from "../helpers/useFormStore";
 
 interface Props {
-  onContinue: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function Success({ onContinue }: Props) {
+export default function Success({ setStep }: Props) {
   // Global state
   const { formStore } = useFormStore();
 
@@ -35,7 +36,7 @@ export default function Success({ onContinue }: Props) {
       <hr />
 
       <section className="bottom">
-        <Button onClick={onContinue}>START AGAIN</Button>
+        <Button onClick={() => setStep("step1")}>START AGAIN</Button>
       </section>
     </div>
   );

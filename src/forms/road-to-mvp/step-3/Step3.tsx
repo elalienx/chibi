@@ -1,6 +1,7 @@
 // Node modules
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
+import type { InferOutput } from "valibot";
 
 // Project files
 import Button from "../../../components/button/Button";
@@ -8,16 +9,16 @@ import Icon from "../../../components/icon/Icon";
 import Input from "../../../components/input/Input";
 import InputField from "../../../components/input-field/InputField";
 import Label from "../../../components/label/Label";
+import useFormStore from "../helpers/useFormStore";
 import { monthly_fee, operating_cost, rooms, size } from "./schema";
 import "./step-3.css";
-import useFormStore from "../useFormStore";
-import type { InferOutput } from "valibot";
+import type { Step } from "../helpers/Step";
 
 interface Props {
-  onContinue: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function Step3({ onContinue }: Props) {
+export default function Step3({ setStep }: Props) {
   // Global state
   const { formStore, updateFormStore } = useFormStore();
   const schema = buildSchema();
@@ -27,7 +28,7 @@ export default function Step3({ onContinue }: Props) {
   function submitForm(values: InferOutput<typeof schema>) {
     if (form.isValid) {
       updateFormStore(values);
-      onContinue();
+      setStep("success");
     }
   }
 
@@ -43,9 +44,9 @@ export default function Step3({ onContinue }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-3" className="soft-background">
       <section className="top">
         <header>
-          <a className="link-go-back" href="/">
+          <button className="link-go-back" onClick={() => setStep("step2")}>
             <Icon name="arrow-left" /> Tillbaka
-          </a>
+          </button>
           <h4>2. Om bostaden</h4>
         </header>
 

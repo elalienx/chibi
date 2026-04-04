@@ -5,17 +5,18 @@ import type { InferOutput } from "valibot";
 // Project files
 import Button from "../../../components/button/Button";
 import Icon from "../../../components/icon/Icon";
-import schema from "./schema";
 import Label from "../../../components/label/Label";
 import RadioGroup from "../../../components/radio-group/RadioGroup";
 import RadioOption from "../../../components/radio-option/RadioOption";
-import useFormStore from "../useFormStore";
+import schema from "./schema";
+import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../helpers/Step";
 
 interface Props {
-  onContinue: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function Step2({ onContinue }: Props) {
+export default function Step2({ setStep }: Props) {
   // Global state
   const { updateFormStore } = useFormStore();
 
@@ -26,7 +27,7 @@ export default function Step2({ onContinue }: Props) {
   function submitForm(values: InferOutput<typeof schema>) {
     if (form.isValid) {
       updateFormStore(values);
-      onContinue();
+      setStep("step3");
     }
   }
 
@@ -34,9 +35,9 @@ export default function Step2({ onContinue }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-2" className="soft-background">
       <section className="top">
         <header>
-          <a className="link-go-back" href="/">
+          <button className="link-go-back" onClick={() => setStep("step1")}>
             <Icon name="arrow-left" /> Tillbaka
-          </a>
+          </button>
           <h4>1. Om lånet</h4>
         </header>
 
