@@ -14,17 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup Node + pnpm
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: "pnpm"
-
-      - name: Enable pnpm
-        run: corepack prepare pnpm@latest --activate
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Install Chromium
+        run: pnpm exec playwright install chromium --with-deps
 
       - name: Run Playwright component tests
         run: pnpm playwright
