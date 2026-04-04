@@ -1,7 +1,4 @@
 a {
-  display: flex;
-  align-items: center;
-  gap: var(--space-base);
   font-size: var(--font-size);
   line-height: 1.5rem;
   letter-spacing: 0.01rem;

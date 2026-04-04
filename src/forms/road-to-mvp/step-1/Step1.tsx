@@ -16,10 +16,9 @@ export default function Step1({ setStep }: Props) {
         </header>
 
         <ul>
-          <li>Arrow back goes to previous step.</li>
           <li>Format input currency using spaces.</li>
-          <li>Save/load form selection</li>
           <li>Add tooltips.</li>
+          <li>Save/load form selection</li>
           <li>Add tracking.</li>
         </ul>
       </section>

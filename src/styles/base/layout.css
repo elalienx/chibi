@@ -33,6 +33,7 @@ ul:not(li ul) {
   text-decoration: none;
 
   /* For buttons */
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
