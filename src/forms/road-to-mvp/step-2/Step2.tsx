@@ -16,6 +16,9 @@ interface Props {
 }
 
 export default function Step2({ onContinue }: Props) {
+  // Global state
+  const {updateFormStore} = useFormStore();
+  
   // Properties
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
