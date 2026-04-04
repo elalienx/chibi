@@ -12,12 +12,13 @@ import Label from "../../../components/label/Label";
 import useFormStore from "../helpers/useFormStore";
 import { monthly_fee, operating_cost, rooms, size } from "./schema";
 import "./step-3.css";
+import type { Step } from "../helpers/Step";
 
 interface Props {
-  onContinue: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function Step3({ onContinue }: Props) {
+export default function Step3({ setStep }: Props) {
   // Global state
   const { formStore, updateFormStore } = useFormStore();
   const schema = buildSchema();
@@ -27,7 +28,7 @@ export default function Step3({ onContinue }: Props) {
   function submitForm(values: InferOutput<typeof schema>) {
     if (form.isValid) {
       updateFormStore(values);
-      onContinue();
+      setStep("success");
     }
   }
 

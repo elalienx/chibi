@@ -10,12 +10,13 @@ import RadioGroup from "../../../components/radio-group/RadioGroup";
 import RadioOption from "../../../components/radio-option/RadioOption";
 import schema from "./schema";
 import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../helpers/Step";
 
 interface Props {
-  onContinue: () => void;
+  setStep: (step: Step) => void;
 }
 
-export default function Step2({ onContinue }: Props) {
+export default function Step2({ setStep }: Props) {
   // Global state
   const { updateFormStore } = useFormStore();
 
@@ -26,7 +27,7 @@ export default function Step2({ onContinue }: Props) {
   function submitForm(values: InferOutput<typeof schema>) {
     if (form.isValid) {
       updateFormStore(values);
-      onContinue();
+      setStep("step3");
     }
   }
 
