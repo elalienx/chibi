@@ -1,3 +1,4 @@
+// Node modules
 import * as v from "valibot";
 
 export const size = v.pipe(
@@ -6,7 +7,7 @@ export const size = v.pipe(
   v.transform((value) => Number(value)),
   v.number("Must be a valid number."),
   v.minValue(1, "Boytan är för liten."),
-  v.maxValue(2000, "Boytan är för stor. Max 2000 kvm."),
+  v.maxValue(2_000, "Boytan är för stor. Max 2000 kvm."),
 );
 
 export const rooms = v.pipe(
