@@ -39,7 +39,7 @@ export default function RadioGroup({ children, id, form }: Props) {
   return (
     <div className="radio-group">
       {label}
-      <div className="radio-options" id={id}>
+      <div id={id} className="radio-options">
         {radioOptions}
       </div>
       {field.errors && !field.isDirty && (
