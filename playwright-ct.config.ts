@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
 import { resolve } from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // Properties
 const findFilesInsideSourceFolder = { "@": resolve(process.cwd(), "src") };
@@ -17,7 +18,9 @@ export default defineConfig({
   use: {
     trace: "on-first-retry",
     ctPort: 3100,
-    ctViteConfig: astroConfig,
+    ctViteConfig: {
+      plugins: [tsconfigPaths()],
+    },
   },
   projects: [
     {
