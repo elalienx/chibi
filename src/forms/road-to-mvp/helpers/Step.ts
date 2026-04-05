@@ -1,1 +1,1 @@
-export type Step = "step1" | "step2" | "step3" | "success";
+export type Step = "intro-step" | "step-1" | "step-2" | "success";
