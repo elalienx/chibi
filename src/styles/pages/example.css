@@ -2,7 +2,6 @@ body {
   display: grid;
   min-height: 100dvh;
   place-items: center;
-  margin-inline: 5%;
 }
 
 body main {
@@ -10,10 +9,19 @@ body main {
   flex-direction: column;
   gap: var(--space-medium);
   width: 100%;
-  max-width: 530px;
 
   header,
   footer {
     text-align: center;
+  }
+}
+
+@media (min-width: 550px) {
+  body {
+    margin-inline: 5%;
+  }
+
+  body main {
+    max-width: 530px;
   }
 }
