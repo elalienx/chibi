@@ -7,34 +7,3 @@ body {
   background-color: var(--page-background);
 }
 
-hr {
-  width: 100%;
-  margin: 0;
-  border: solid 0.5px var(--divider-border);
-}
-
-/* First UL, so list inside list keep working as usual. */
-ul:not(li ul) {
-  margin: 0;
-  padding-left: 0;
-  list-style-position: inside;
-}
-
-/* Move to component */
-.link-go-back {
-  display: flex;
-  align-items: center;
-  gap: var(--space-base);
-  font-size: var(--font-size);
-  line-height: 1.5rem;
-  letter-spacing: 0.01rem;
-  font-weight: var(--font-weight-book);
-  color: var(--typography-link);
-  text-decoration: none;
-
-  /* For buttons */
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-}

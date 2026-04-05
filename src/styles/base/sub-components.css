@@ -1,0 +1,29 @@
+hr {
+  width: 100%;
+  margin: 0;
+  border: solid 0.5px var(--divider-border);
+}
+
+/* First UL, so list inside list keep working as usual. */
+ul:not(li ul) {
+  margin: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+.go-back {
+  display: flex;
+  align-items: center;
+  gap: var(--space-base);
+  width: fit-content; /** to avoid taking the whole width **/
+  background: none;
+  padding: 0;
+  border: none;
+  color: var(--typography-link);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-book);
+  line-height: 1.5rem;
+  letter-spacing: 0.01rem;
+  text-decoration: none;
+  cursor: pointer;
+}
