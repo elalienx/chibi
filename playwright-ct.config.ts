@@ -1,8 +1,11 @@
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
 // Properties
-const findFilesInsideSourceFolder = { "@": resolve(process.cwd(), "src") };
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const findFilesInsideSourceFolder = { "@": resolve(__dirname, "src") };
 const astroConfig = { resolve: { alias: findFilesInsideSourceFolder } };
 
 export default defineConfig({
