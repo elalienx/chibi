@@ -29,3 +29,8 @@
     font-weight: var(--font-weight-bold);
   }
 }
+
+/* Edge cases */
+.input-wrapper .input.type-number {
+  text-align: center; /* Lendo always center the numbers */
+}

@@ -7,7 +7,6 @@ import type { FormStore } from "@formisch/react";
 import calculateInputState from "./calculateInputState";
 import getCorrectMobileKeyboard from "./getCorrectMobileKeyboard";
 import type { InputState } from "./InputState";
-import "./input-type-number.css";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
 import "./input-wrapper-state.css";
@@ -45,13 +44,17 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
   const cssSuffix = suffix ? "has-suffix" : "";
+  const cssTypeNumber = type === "number" ? "type-number" : "";
 
   // Methods
-  useEffect(() => {
-    const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
+  useEffect(
+    function onCalculateInputState() {
+      const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
 
-    setInputstate(nextState);
-  }, [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState]);
+      setInputstate(nextState);
+    },
+    [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState],
+  );
 
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
@@ -60,12 +63,16 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
     // Safeguard
-    if (type != "number") return;
+    if (type !== "number") {
+      field.props.onChange(event);
+      return;
+    }
 
-    const digitsOnly = event.target.value.replace(/\D/g, "");
-    console.log("onChange digitsOnly", digitsOnly);
+    const nonDigits: RegExp = /\D/g;
+    const parsedDigits = event.target.value.replace(nonDigits, "");
 
-    field.onChange(digitsOnly);
+    event.target.value = parsedDigits;
+    field.props.onChange(event);
   }
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
@@ -80,7 +87,7 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
         id={id}
         aria-errormessage={ariaErrorId}
         aria-invalid={!!field.errors}
-        className="input"
+        className={`input ${cssTypeNumber}`}
         inputMode={mobileKeyboard}
         onBlur={onBlur}
         onChange={onChange}
