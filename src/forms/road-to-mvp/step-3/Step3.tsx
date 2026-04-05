@@ -44,7 +44,7 @@ export default function Step3({ setStep }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-3" className="soft-background">
       <section className="top">
         <header>
-          <button className="link-go-back" onClick={() => setStep("step2")}>
+          <button className="go-back" onClick={() => setStep("step2")}>
             <Icon name="arrow-left" /> Tillbaka
           </button>
           <h4>2. Om bostaden</h4>
