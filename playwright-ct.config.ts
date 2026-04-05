@@ -1,4 +1,9 @@
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
+import { resolve } from "path";
+
+// Properties
+const findFilesInsideSourceFolder = { "@": resolve(process.cwd(), "src") };
+const astroConfig = { resolve: { alias: findFilesInsideSourceFolder } };
 
 export default defineConfig({
   testDir: "./",
@@ -12,6 +17,7 @@ export default defineConfig({
   use: {
     trace: "on-first-retry",
     ctPort: 3100,
+    ctViteConfig: astroConfig,
   },
   projects: [
     {
