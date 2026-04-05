@@ -4,14 +4,13 @@ Making Lendo more Kawaii <3
 
 ## 🚀 Project Structure
 
-Inside of the Aphrodite Chibi project, you'll see the following folders and files:
+Inside the Aphrodite Chibi project, you'll see the following folders and files:
 
 ```text
 / root/
 ├── public/
 ├── src/
 │   └── components/
-│   └── doc-components/
 │   └── forms/
 │   └── helpers/
 │   └── layout/
@@ -24,14 +23,13 @@ Inside of the Aphrodite Chibi project, you'll see the following folders and file
 ### Main folders
 
 1. **📦 Components:** The UI components of Aphrodite Chibi. Each folder contains a React TypeScript file and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component stlyes are divided into layout, state, design, and any unique case scenarios.
-1. **📖 Docs Components:** The UI components of the documentation page. These are not neccesary to builld Lendo's website, only for reading the Aphrodite Chibi instruction manual. Contains a mix of React and Astro files.
 1. **📋 Forms:** Special React components which simulate a specic Lendo application form. Use to test Aphrodite Chibi integrations with schema validation, form handlers, numeric formatting, state managmeent, and tracking.
-1. **📐 Layouts:** Special Astro components use to build other pages. Case in point a Document template for each page explaining an Aphrodite Chibi component.
-1. **📑 Pages:** Astro pages for accesing the documenation and examples of the form in action. As mentioned, `index.astro` is the entry point. 🏁
+1. **📐 Layouts:** Special Astro components use to build other pages.
+1. **📑 Pages:** Astro pages for accesing examples of forms in action. As mentioned, `index.astro` is the entry point. 🏁
 
-## 🧞 Commands
+## 🧞 Terminal commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                | Action                                              |
 | :--------------------- | :-------------------------------------------------- |
