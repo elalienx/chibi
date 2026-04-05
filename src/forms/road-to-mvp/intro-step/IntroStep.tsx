@@ -16,7 +16,7 @@ export default function IntroStep({ setStep }: Props) {
         </header>
 
         <ul>
-          <li>Format input currency using spaces.</li>
+          <li>Format numbers using spaces.</li>
           <li>Add tooltips.</li>
           <li>Save/load form selection</li>
           <li>Add tracking.</li>
