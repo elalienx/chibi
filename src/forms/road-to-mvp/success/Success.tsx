@@ -36,7 +36,7 @@ export default function Success({ setStep }: Props) {
       <hr />
 
       <section className="bottom">
-        <Button onClick={() => setStep("step1")}>START AGAIN</Button>
+        <Button onClick={() => setStep("intro-step")}>START AGAIN</Button>
       </section>
     </div>
   );
