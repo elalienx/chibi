@@ -14,10 +14,13 @@ const schema = v.object({
     v.nonEmpty("Name must not be empty."),
     v.minLength(3, "Name is too short."),
   ),
-  email: v.pipe(
-    v.string("Please enter your email."),
-    v.nonEmpty("Email must not be empty."),
-    v.email("The email address is badly formatted."),
+  age: v.pipe(
+    v.string("Please enter your age."),
+    v.nonEmpty("Age must not be empty."),
+    v.transform((value) => Number(value)),
+    v.number("Age be a valid number."),
+    v.minValue(18, "You must be at least 18 year old to register."),
+    v.maxValue(100, "You are not longer allowed to register."),
   ),
 });
 
@@ -40,9 +43,9 @@ export default function FormPage() {
           <Input type="text" placeholder="Leif Lend" />
         </InputField>
 
-        <InputField form={form} id="email">
-          <Label>E-mail</Label>
-          <Input type="text" placeholder="leif@lendo.se" />
+        <InputField form={form} id="age">
+          <Label>Age</Label>
+          <Input type="number" placeholder="18" />
         </InputField>
       </section>
 
