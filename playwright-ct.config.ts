@@ -3,10 +3,10 @@ import { defineConfig, devices } from "@playwright/experimental-ct-react";
 export default defineConfig({
   testDir: "./",
   snapshotDir: "./__snapshots__",
-  timeout: process.env.CI ? 10_000 : 1_000,
+  timeout: 1_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: 0,
   workers: process.env.CI ? 8 : undefined,
   reporter: "list",
   use: {
