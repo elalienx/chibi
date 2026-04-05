@@ -4,15 +4,15 @@ import * as v from "valibot";
 import type { InferOutput } from "valibot";
 
 // Project files
-import Button from "../../../components/button/Button";
-import Icon from "../../../components/icon/Icon";
-import Input from "../../../components/input/Input";
-import InputField from "../../../components/input-field/InputField";
-import Label from "../../../components/label/Label";
+import Button from "components/button/Button";
+import Icon from "components/icon/Icon";
+import Input from "components/input/Input";
+import InputField from "components/input-field/InputField";
+import Label from "components/label/Label";
 import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../helpers/Step";
 import { monthly_fee, operating_cost, rooms, size } from "./schema";
 import "./step-3.css";
-import type { Step } from "../helpers/Step";
 
 interface Props {
   setStep: (step: Step) => void;

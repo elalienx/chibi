@@ -1,5 +1,5 @@
 // Project files
-import Button from "../../../components/button/Button";
+import Button from "components/button/Button";
 import type { Step } from "../helpers/Step";
 import useFormStore from "../helpers/useFormStore";
 

@@ -3,10 +3,10 @@ import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
-import Button from "../../components/button/Button";
-import Label from "../../components/label/Label";
-import RadioGroup from "../../components/radio-group/RadioGroup";
-import RadioOption from "../../components/radio-option/RadioOption";
+import Button from "components/button/Button";
+import Label from "components/label/Label";
+import RadioGroup from "components/radio-group/RadioGroup";
+import RadioOption from "components/radio-option/RadioOption";
 
 const schema = v.object({
   likes_beer: v.pipe(v.string("Say either yes or no.")),

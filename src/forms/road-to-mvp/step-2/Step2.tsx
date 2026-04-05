@@ -3,14 +3,14 @@ import { Form, useForm } from "@formisch/react";
 import type { InferOutput } from "valibot";
 
 // Project files
-import Button from "../../../components/button/Button";
-import Icon from "../../../components/icon/Icon";
-import Label from "../../../components/label/Label";
-import RadioGroup from "../../../components/radio-group/RadioGroup";
-import RadioOption from "../../../components/radio-option/RadioOption";
-import schema from "./schema";
+import Button from "components/button/Button";
+import Icon from "components/icon/Icon";
+import Label from "components/label/Label";
+import RadioGroup from "components/radio-group/RadioGroup";
+import RadioOption from "components/radio-option/RadioOption";
 import useFormStore from "../helpers/useFormStore";
 import type { Step } from "../helpers/Step";
+import schema from "./schema";
 
 interface Props {
   setStep: (step: Step) => void;
