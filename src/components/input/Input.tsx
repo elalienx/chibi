@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState, type FocusEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 import type { FormStore } from "@formisch/react";
 
@@ -43,6 +43,7 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const mobileKeyboard = getCorrectMobileKeyboard(type);
+  const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
   const cssSuffix = suffix ? "has-suffix" : "";
 
   // Methods
@@ -52,14 +53,24 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
     setInputstate(nextState);
   }, [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState]);
 
-  function onFocus(event: FocusEvent<HTMLInputElement>) {
-    field.props.onFocus(event);
-    setFieldIsFocused(true);
-  }
-
-  function onBlur(event: FocusEvent<HTMLInputElement>) {
+  function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
     setFieldIsFocused(false);
+  }
+
+  function onChange(event: ChangeEvent<HTMLInputElement>): void {
+    // Safeguard
+    if (type != "number") return;
+
+    const digitsOnly = event.target.value.replace(/\D/g, "");
+    console.log("onChange digitsOnly", digitsOnly);
+
+    field.onChange(digitsOnly);
+  }
+
+  function onFocus(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onFocus(event);
+    setFieldIsFocused(true);
   }
 
   return (
@@ -72,9 +83,10 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
         className="input"
         inputMode={mobileKeyboard}
         onBlur={onBlur}
+        onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
-        type={type}
+        type={curatedType}
       />
       {suffix && <span className="suffix">{suffix}</span>}
       {inputState === "error" && (
