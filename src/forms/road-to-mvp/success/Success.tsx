@@ -1,7 +1,7 @@
 // Project files
 import Button from "components/button/Button";
-import type { Step } from "../helpers/Step";
-import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../_helpers/Step";
+import useFormStore from "../_helpers/useFormStore";
 
 interface Props {
   setStep: (step: Step) => void;
@@ -17,7 +17,7 @@ export default function Success({ setStep }: Props) {
   const costPrice = isApartment ? formStore.monthly_fee : formStore.operating_cost;
 
   return (
-    <div className="soft-background">
+    <div id="success" className="soft-background">
       <section className="top">
         <header>
           <h3>Form submitted</h3>

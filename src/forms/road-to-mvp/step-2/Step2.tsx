@@ -5,12 +5,13 @@ import type { InferOutput } from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
+import Input from "components/input/Input";
+import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
-import useFormStore from "../helpers/useFormStore";
-import type { Step } from "../helpers/Step";
-import schema from "./schema";
+import useFormStore from "../_helpers/useFormStore";
+import type { Step } from "../_helpers/Step";
+import buildSchema from "./schema";
+import "./step-2.css";
 
 interface Props {
   setStep: (step: Step) => void;
@@ -18,16 +19,15 @@ interface Props {
 
 export default function Step2({ setStep }: Props) {
   // Global state
-  const { updateFormStore } = useFormStore();
-
-  // Properties
+  const { formStore, updateFormStore } = useFormStore();
+  const schema = buildSchema(formStore.property_type);
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm(values: InferOutput<typeof schema>) {
     if (form.isValid) {
       updateFormStore(values);
-      setStep("step3");
+      setStep("success");
     }
   }
 
@@ -35,19 +35,35 @@ export default function Step2({ setStep }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-2" className="soft-background">
       <section className="top">
         <header>
-          <button className="go-back" onClick={() => setStep("step1")}>
+          <button className="go-back" onClick={() => setStep("step-1")}>
             <Icon name="arrow-left" /> Tillbaka
           </button>
-          <h4>1. Om lånet</h4>
+          <h4>2. Om bostaden</h4>
         </header>
 
-        <RadioGroup form={form} id="property_type">
-          <Label>För vilken typ av bostad söker du lån</Label>
-          <RadioOption value="house">Villa</RadioOption>
-          <RadioOption value="apartment">Lägenhet</RadioOption>
-          <RadioOption value="terraced_house">Radhus</RadioOption>
-          <RadioOption value="holiday_home">Fritidshus</RadioOption>
-        </RadioGroup>
+        <InputField form={form} id="size">
+          <Label>Kvadratmeter</Label>
+          <Input type="number" placeholder="0" suffix="kvm" />
+        </InputField>
+
+        <InputField form={form} id="rooms">
+          <Label>Antal rum</Label>
+          <Input type="number" placeholder="0" suffix="st" />
+        </InputField>
+
+        {formStore.property_type === "apartment" && (
+          <InputField form={form} id="monthly_fee">
+            <Label>Månadsavgift</Label>
+            <Input type="number" placeholder="0" suffix="kr/mån" />
+          </InputField>
+        )}
+
+        {formStore.property_type !== "apartment" && (
+          <InputField form={form} id="operating_cost">
+            <Label>Driftskostnad</Label>
+            <Input type="number" placeholder="0" suffix="kr/mån" />
+          </InputField>
+        )}
       </section>
 
       <hr />
