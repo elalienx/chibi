@@ -9,7 +9,7 @@ const astroConfig = { resolve: { alias: findFilesInsideSourceFolder } };
 export default defineConfig({
   testDir: "./",
   snapshotDir: "./__snapshots__",
-  timeout: 1_000,
+  timeout: process.env.CI ? 10_000 : 1_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
