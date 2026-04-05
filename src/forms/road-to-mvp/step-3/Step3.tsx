@@ -1,6 +1,5 @@
 // Node modules
 import { Form, useForm } from "@formisch/react";
-import * as v from "valibot";
 import type { InferOutput } from "valibot";
 
 // Project files
@@ -11,7 +10,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import useFormStore from "../helpers/useFormStore";
 import type { Step } from "../helpers/Step";
-import { monthly_fee, operating_cost, rooms, size } from "./schema";
+import buildSchema from "./schema";
 import "./step-3.css";
 
 interface Props {
@@ -21,7 +20,7 @@ interface Props {
 export default function Step3({ setStep }: Props) {
   // Global state
   const { formStore, updateFormStore } = useFormStore();
-  const schema = buildSchema();
+  const schema = buildSchema(formStore.property_type);
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
@@ -29,14 +28,6 @@ export default function Step3({ setStep }: Props) {
     if (form.isValid) {
       updateFormStore(values);
       setStep("success");
-    }
-  }
-
-  function buildSchema() {
-    if (formStore.property_type === "apartment") {
-      return v.object({ size, rooms, monthly_fee });
-    } else {
-      return v.object({ size, rooms, operating_cost });
     }
   }
 
