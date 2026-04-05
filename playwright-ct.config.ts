@@ -9,7 +9,7 @@ const findFilesInsideSourceFolder = { "@": resolve(__dirname, "src") };
 const astroConfig = { resolve: { alias: findFilesInsideSourceFolder } };
 
 export default defineConfig({
-  testDir: "./",
+  testDir: "./playwright",
   snapshotDir: "./__snapshots__",
   timeout: 1_000,
   fullyParallel: true,
