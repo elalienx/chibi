@@ -20,7 +20,7 @@ test.beforeEach(async ({ mount }) => {
 
   cleanUpText = component.getByText("Text to clean Playwright selector");
   input1 = component.getByRole("textbox", { name: "Full name" });
-  input2 = component.getByRole("textbox", { name: "E-mail" });
+  input2 = component.getByRole("spinbutton", { name: "Age" });
   wrapper1 = input1.locator("..");
   wrapper2 = input2.locator("..");
   submitButton = component.getByRole("button", { name: "Submit" });
@@ -183,7 +183,7 @@ test("11. Second field should not validate while active after first field has be
 
   await test.step("second input: fill invalid data", async () => {
     // Act
-    await input2.fill("e"); // just one character is enough to see if it will fail
+    await input2.fill("1"); // just one character is enough to see if it will fail
 
     // Assert
     await expect(wrapper1).toHaveClass(/success/);
