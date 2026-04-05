@@ -23,7 +23,7 @@ test.beforeEach(async ({ mount }) => {
   input2 = component.getByRole("textbox", { name: "E-mail" });
   wrapper1 = input1.locator("..");
   wrapper2 = input2.locator("..");
-  submitButton = component.getByRole("button", { name: "Next" });
+  submitButton = component.getByRole("button", { name: "Submit" });
 });
 
 test.afterEach(async () => {
