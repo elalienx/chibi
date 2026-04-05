@@ -1,9 +1,12 @@
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+// Properties
 
 export default defineConfig({
   testDir: "./",
   snapshotDir: "./__snapshots__",
-  timeout: 1_000,
+  timeout: process.env.CI ? 10_000 : 1_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
@@ -12,6 +15,7 @@ export default defineConfig({
   use: {
     trace: "on-first-retry",
     ctPort: 3100,
+    ctViteConfig: { plugins: [tsconfigPaths()] },
   },
   projects: [
     {

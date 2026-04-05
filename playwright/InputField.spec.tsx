@@ -4,7 +4,7 @@ import type { Locator } from "@playwright/test";
 import { test, expect } from "@playwright/experimental-ct-react";
 
 // Project files
-import FormPage from "../src/forms/example-1/FormPage";
+import FormPage from "forms/example-1/FormPage";
 
 const validName = "Eduardo";
 const invalidName = "Ed"; // Below minimum length
