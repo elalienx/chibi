@@ -20,9 +20,9 @@ test("Should be abble to apply for a house", async ({ mount }) => {
 
   await test.step("Step 2: About the property", async () => {
     await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await component.getByRole("spinbutton", { name: "Kvadratmeter" }).fill("100");
-    await component.getByRole("spinbutton", { name: "Antal rum" }).fill("4");
-    await component.getByRole("spinbutton", { name: "Driftskostnad" }).fill("10000");
+    await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
+    await component.getByRole("textbox", { name: "Antal rum" }).fill("4");
+    await component.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
     await component.getByRole("button", { name: "Nästa" }).click();
   });
 
@@ -50,9 +50,9 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
 
   await test.step("Step 2: About the property", async () => {
     await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await component.getByRole("spinbutton", { name: "Kvadratmeter" }).fill("36");
-    await component.getByRole("spinbutton", { name: "Antal rum" }).fill("1");
-    await component.getByRole("spinbutton", { name: "Månadsavgift" }).fill("3125");
+    await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("36");
+    await component.getByRole("textbox", { name: "Antal rum" }).fill("1");
+    await component.getByRole("textbox", { name: "Månadsavgift" }).fill("3125");
     await component.getByRole("button", { name: "Nästa" }).click();
   });
 

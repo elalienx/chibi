@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState, type FocusEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 import type { FormStore } from "@formisch/react";
 
@@ -7,7 +7,6 @@ import type { FormStore } from "@formisch/react";
 import calculateInputState from "./calculateInputState";
 import getCorrectMobileKeyboard from "./getCorrectMobileKeyboard";
 import type { InputState } from "./InputState";
-import "./input-type-number.css";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
 import "./input-wrapper-state.css";
@@ -43,23 +42,42 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const mobileKeyboard = getCorrectMobileKeyboard(type);
+  const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
   const cssSuffix = suffix ? "has-suffix" : "";
+  const cssTypeNumber = type === "number" ? "type-number" : "";
 
   // Methods
-  useEffect(() => {
-    const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
+  useEffect(
+    function onCalculateInputState() {
+      const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
 
-    setInputstate(nextState);
-  }, [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState]);
+      setInputstate(nextState);
+    },
+    [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState],
+  );
 
-  function onFocus(event: FocusEvent<HTMLInputElement>) {
-    field.props.onFocus(event);
-    setFieldIsFocused(true);
-  }
-
-  function onBlur(event: FocusEvent<HTMLInputElement>) {
+  function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
     setFieldIsFocused(false);
+  }
+
+  function onChange(event: ChangeEvent<HTMLInputElement>): void {
+    // Safeguard
+    if (type !== "number") {
+      field.props.onChange(event);
+      return;
+    }
+
+    const nonDigits: RegExp = /\D/g;
+    const parsedDigits = event.target.value.replace(nonDigits, "");
+
+    event.target.value = parsedDigits;
+    field.props.onChange(event);
+  }
+
+  function onFocus(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onFocus(event);
+    setFieldIsFocused(true);
   }
 
   return (
@@ -69,12 +87,13 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
         id={id}
         aria-errormessage={ariaErrorId}
         aria-invalid={!!field.errors}
-        className="input"
+        className={`input ${cssTypeNumber}`}
         inputMode={mobileKeyboard}
         onBlur={onBlur}
+        onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
-        type={type}
+        type={curatedType}
       />
       {suffix && <span className="suffix">{suffix}</span>}
       {inputState === "error" && (
