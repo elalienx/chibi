@@ -21,7 +21,7 @@ test.beforeEach(async ({ mount }) => {
   radio1_error = component.locator("#aria-error-likes_beer");
   radio2_error = component.locator("#aria-error-likes_guiness");
   cleanUpText = component.getByText("Text to clean Playwright selector");
-  submitButton = component.getByRole("button", { name: "Next" });
+  submitButton = component.getByRole("button", { name: "Submit" });
 });
 
 test.afterEach(async () => {

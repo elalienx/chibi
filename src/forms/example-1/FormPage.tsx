@@ -49,7 +49,7 @@ export default function FormPage() {
       <hr />
 
       <section className="bottom" style={{ textAlign: "center" }}>
-        <Button type="submit">Next</Button>
+        <Button type="submit">Submit</Button>
         <br />
         <small>(Text to clean Playwright selector)</small>
       </section>
