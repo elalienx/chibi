@@ -20,7 +20,7 @@ const schema = v.object({
     v.transform((value) => Number(value)),
     v.number("Age be a valid number."),
     v.minValue(18, "You must be at least 18 year old to register."),
-    v.maxValue(100, "You are not longer allowed to register."),
+    v.maxValue(99, "The maximum age allowed to register is 99"),
   ),
 });
 

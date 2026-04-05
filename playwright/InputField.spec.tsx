@@ -20,7 +20,7 @@ test.beforeEach(async ({ mount }) => {
 
   cleanUpText = component.getByText("Text to clean Playwright selector");
   input1 = component.getByRole("textbox", { name: "Full name" });
-  input2 = component.getByRole("spinbutton", { name: "Age" });
+  input2 = component.getByRole("textbox", { name: "Age" });
   wrapper1 = input1.locator("..");
   wrapper2 = input2.locator("..");
   submitButton = component.getByRole("button", { name: "Submit" });
