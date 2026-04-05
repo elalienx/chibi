@@ -8,8 +8,8 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import useFormStore from "../_helpers/useFormStore";
-import type { Step } from "../_helpers/Step";
+import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../helpers/Step";
 import schema from "./schema";
 
 interface Props {
@@ -35,7 +35,7 @@ export default function Step2({ setStep }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-1" className="soft-background">
       <section className="top">
         <header>
-          <button className="go-back" onClick={() => setStep("entry-step")}>
+          <button className="go-back" onClick={() => setStep("intro-step")}>
             <Icon name="arrow-left" /> Tillbaka
           </button>
           <h4>1. Om lånet</h4>

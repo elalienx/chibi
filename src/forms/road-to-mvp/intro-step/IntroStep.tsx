@@ -1,15 +1,15 @@
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import type { Step } from "../_helpers/Step";
+import type { Step } from "../helpers/Step";
 
 interface Props {
   setStep: (step: Step) => void;
 }
 
-export default function EntryStep({ setStep }: Props) {
+export default function IntroStep({ setStep }: Props) {
   return (
-    <div id="entry-step" className="soft-background">
+    <div id="intro-step" className="soft-background">
       <section className="top">
         <header>
           <h4>Road to MPV</h4>

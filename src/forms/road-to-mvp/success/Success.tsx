@@ -1,7 +1,7 @@
 // Project files
 import Button from "components/button/Button";
-import type { Step } from "../_helpers/Step";
-import useFormStore from "../_helpers/useFormStore";
+import type { Step } from "../helpers/Step";
+import useFormStore from "../helpers/useFormStore";
 
 interface Props {
   setStep: (step: Step) => void;

@@ -8,8 +8,8 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import useFormStore from "../_helpers/useFormStore";
-import type { Step } from "../_helpers/Step";
+import useFormStore from "../helpers/useFormStore";
+import type { Step } from "../helpers/Step";
 import buildSchema from "./schema";
 import "./step-2.css";
 
