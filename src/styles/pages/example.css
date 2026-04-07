@@ -16,6 +16,7 @@ body main {
   }
 }
 
+/* Tablet */
 @media (min-width: 550px) {
   body {
     margin-inline: 5%;

@@ -10,9 +10,8 @@
 
   .top,
   .bottom {
-    margin-inline: var(--space-2xl);
-    margin-top: var(--space-2xl);
-    margin-bottom: var(--space-2xl);
+    margin-block: var(--space-medium);
+    margin-inline: var(--space-medium);
   }
 
   .top {
@@ -31,5 +30,16 @@
   .bottom {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .soft-background {
+    .top,
+    .bottom {
+      margin-block: var(--space-2xl);
+      margin-inline: var(--space-2xl);
+    }
   }
 }
