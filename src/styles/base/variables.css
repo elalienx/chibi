@@ -123,7 +123,7 @@
   --typography-link: var(--color-blue-40);
 
   /* Formulary spacing */
-  --gap-between-label-and-field: var(--space-xs);
+  --gap-between-label-and-field: var(--space-base);
   --height-of-field: 48px; /** REFACTOR: rename to input-height. */
 
   /* Others */
