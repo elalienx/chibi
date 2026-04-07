@@ -2,8 +2,6 @@ body {
   display: grid;
   min-height: 100dvh;
   place-items: center;
-
-  background-color: pink;
 }
 
 body main {
@@ -22,20 +20,9 @@ body main {
 @media (min-width: 550px) {
   body {
     margin-inline: 5%;
-
-    background-color: palegreen;
   }
 
   body main {
     max-width: 530px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 768px) {
-  body {
-    margin-inline: 5%;
-
-    background-color: aliceblue;
   }
 }
