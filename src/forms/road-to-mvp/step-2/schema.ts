@@ -37,10 +37,9 @@ const operating_cost = v.pipe(
   v.maxValue(10_000, "Driftskostnaden är för hög. Max 10 000 kr/mån."),
 );
 
-export default function buildSchema(propertyType: string) {
-  if (propertyType === "apartment") {
-    return v.object({ size, rooms, monthly_fee });
-  } else {
-    return v.object({ size, rooms, operating_cost });
-  }
+const apartmentSchema = v.object({ size, rooms, monthly_fee });
+const normalSchema = v.object({ size, rooms, operating_cost });
+
+export default function buildSchema(isApartment: boolean) {
+  return isApartment ? apartmentSchema : normalSchema;
 }

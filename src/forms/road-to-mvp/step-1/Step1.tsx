@@ -20,7 +20,7 @@ export default function Step2({ setStep }: Props) {
   // Global state
   const { updateFormStore } = useFormStore();
 
-  // Properties
+  // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
