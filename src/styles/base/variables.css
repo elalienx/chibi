@@ -123,7 +123,7 @@
   --typography-link: var(--color-blue-40);
 
   /* Formulary spacing */
-  --gap-between-label-and-field: var(--space-xs);
+  --gap-between-label-and-field: 5px; /* Figma uses 4px, but browsers need 5px to account for font rendering quirks. */
   --height-of-field: 48px; /** REFACTOR: rename to input-height. */
 
   /* Others */
