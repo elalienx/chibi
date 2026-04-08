@@ -1,6 +1,6 @@
 // Project files
 import Button from "components/button/Button";
-import type { Step } from "../helpers/Step";
+import type { Step } from "../types/Step";
 import useFormStore from "../helpers/useFormStore";
 
 interface Props {

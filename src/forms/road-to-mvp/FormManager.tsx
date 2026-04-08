@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Project files
-import type { Step } from "./helpers/Step";
+import type { Step } from "./types/Step";
 import IntroStep from "./intro-step/IntroStep";
 import Step1 from "./step-1/Step1";
 import Step2 from "./step-2/Step2";
