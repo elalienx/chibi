@@ -15,12 +15,18 @@ import "./step-2.css";
 
 interface Props {
   setStep: (step: Step) => void;
+
+  /** Check if in the previous steps, the user choose an apartment as a property,
+   * to setup different questions in this step. */
+  isApartment: boolean;
 }
 
-export default function Step2({ setStep }: Props) {
+export default function Step2({ setStep, isApartment }: Props) {
   // Global state
-  const { formStore, updateFormStore } = useFormStore();
-  const schema = buildSchema(formStore.property_type);
+  const { updateFormStore } = useFormStore();
+
+  // Local state
+  const schema = buildSchema(isApartment);
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
@@ -51,14 +57,14 @@ export default function Step2({ setStep }: Props) {
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
-        {formStore.property_type === "apartment" && (
+        {isApartment && (
           <InputField form={form} id="monthly_fee">
             <Label>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
-        {formStore.property_type !== "apartment" && (
+        {!isApartment && (
           <InputField form={form} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
