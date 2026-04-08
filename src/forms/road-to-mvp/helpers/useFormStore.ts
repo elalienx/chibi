@@ -2,7 +2,8 @@
 import { create } from "zustand";
 
 // Project files
-import { initialFormStore, type FormStore } from "./FormStore";
+import { initialFormStore } from "./constants";
+import type FormStore from "../types/FormStore";
 
 interface FormStoreState {
   /** The entire form information. */

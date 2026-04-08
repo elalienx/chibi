@@ -40,6 +40,6 @@ const operating_cost = v.pipe(
 const apartmentSchema = v.object({ size, rooms, monthly_fee });
 const normalSchema = v.object({ size, rooms, operating_cost });
 
-export default function buildSchema(isApartment: boolean) {
+export default function getSchema(isApartment: boolean) {
   return isApartment ? apartmentSchema : normalSchema;
 }

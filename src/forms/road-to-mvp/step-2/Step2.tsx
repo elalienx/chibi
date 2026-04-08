@@ -1,6 +1,5 @@
 // Node modules
 import { Form, useForm } from "@formisch/react";
-import type { InferOutput } from "valibot";
 
 // Project files
 import Button from "components/button/Button";
@@ -9,8 +8,8 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import useFormStore from "../helpers/useFormStore";
-import type { Step } from "../helpers/Step";
-import buildSchema from "./schema";
+import type { Step } from "../types/Step";
+import getSchema from "./schema";
 import "./step-2.css";
 
 interface Props {
@@ -26,11 +25,10 @@ export default function Step2({ setStep, isApartment }: Props) {
   const { updateFormStore } = useFormStore();
 
   // Local state
-  const schema = buildSchema(isApartment);
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const form = useForm({ schema: getSchema(isApartment), validate: "blur", revalidate: "blur" });
 
   // Methods
-  function submitForm(values: InferOutput<typeof schema>) {
+  function submitForm(values: object) {
     if (form.isValid) {
       updateFormStore(values);
       setStep("success");
