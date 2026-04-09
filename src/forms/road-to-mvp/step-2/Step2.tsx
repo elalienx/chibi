@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import useFormStore from "../helpers/useFormStore";
+import useLoanApplication from "../helpers/useLoanApplication";
 import type { Step } from "../types/Step";
 import getSchema from "./schema";
 import "./step-2.css";
@@ -21,7 +21,7 @@ interface Props {
 
 export default function Step2({ setStep, isApartment }: Props) {
   // Global state
-  const { updateFormStore } = useFormStore();
+  const { updateLoanApplication } = useLoanApplication();
 
   // Local state
   const form = useForm({ schema: getSchema(isApartment), validate: "blur", revalidate: "blur" });
@@ -29,7 +29,7 @@ export default function Step2({ setStep, isApartment }: Props) {
   // Methods
   function submitForm(values: object) {
     if (form.isValid) {
-      updateFormStore(values);
+      updateLoanApplication(values);
       setStep("success");
     }
   }

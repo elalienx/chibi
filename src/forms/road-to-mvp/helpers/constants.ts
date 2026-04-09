@@ -1,10 +1,10 @@
 // Project files
-import type FormStore from "../types/FormStore";
+import type LoanApplication from "../types/LoanApplication";
 
-export const initialFormStore: FormStore = {
+export const initialLoanApplication: LoanApplication = {
   monthly_fee: 0,
   operating_cost: 0,
-  property_type: "",
+  property_type: undefined,
   rooms: 0,
   size: 0,
 };
