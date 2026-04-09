@@ -12,5 +12,5 @@ export const initialLoanApplication: LoanApplication = {
 // Property types
 export const apartment = "apartment";
 export const holidayHome = "holiday_home";
+export const house = "house";
 export const terracedHouse = "terraced_house";
-export const villa = "villa";

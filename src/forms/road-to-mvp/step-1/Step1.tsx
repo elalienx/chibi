@@ -10,7 +10,7 @@ import RadioOption from "components/radio-option/RadioOption";
 import useLoanApplication from "../helpers/useLoanApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
-import { apartment, holidayHome, terracedHouse, villa } from "../helpers/constants";
+import { apartment, holidayHome, terracedHouse, house } from "../helpers/constants";
 
 interface Props {
   setStep: (step: Step) => void;
@@ -43,7 +43,7 @@ export default function Step2({ setStep }: Props) {
 
         <RadioGroup form={form} id="property_type">
           <Label>För vilken typ av bostad söker du lån</Label>
-          <RadioOption value={villa}>Villa</RadioOption>
+          <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>
           <RadioOption value={terracedHouse}>Radhus</RadioOption>
           <RadioOption value={holidayHome}>Fritidshus</RadioOption>
