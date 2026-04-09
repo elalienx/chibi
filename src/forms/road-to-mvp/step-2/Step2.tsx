@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import useLoanApplication from "../helpers/useFormStore";
+import useLoanApplication from "../helpers/useLoanApplication";
 import type { Step } from "../types/Step";
 import getSchema from "./schema";
 import "./step-2.css";

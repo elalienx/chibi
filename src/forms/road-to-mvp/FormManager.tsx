@@ -7,7 +7,7 @@ import IntroStep from "./intro-step/IntroStep";
 import Step1 from "./step-1/Step1";
 import Step2 from "./step-2/Step2";
 import Success from "./success/Success";
-import useLoanApplication from "./helpers/useFormStore";
+import useLoanApplication from "./helpers/useLoanApplication";
 
 export default function FormManager() {
   // Global state

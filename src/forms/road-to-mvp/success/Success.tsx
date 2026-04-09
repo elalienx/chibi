@@ -1,7 +1,7 @@
 // Project files
 import Button from "components/button/Button";
 import type { Step } from "../types/Step";
-import useLoanApplication from "../helpers/useFormStore";
+import useLoanApplication from "../helpers/useLoanApplication";
 
 interface Props {
   setStep: (step: Step) => void;

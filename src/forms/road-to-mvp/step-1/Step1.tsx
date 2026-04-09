@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import useLoanApplication from "../helpers/useFormStore";
+import useLoanApplication from "../helpers/useLoanApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
 
