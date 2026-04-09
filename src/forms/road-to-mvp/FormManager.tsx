@@ -7,17 +7,17 @@ import IntroStep from "./intro-step/IntroStep";
 import Step1 from "./step-1/Step1";
 import Step2 from "./step-2/Step2";
 import Success from "./success/Success";
-import useFormStore from "./helpers/useFormStore";
+import useLoanApplication from "./helpers/useFormStore";
 
 export default function FormManager() {
   // Global state
-  const { formStore } = useFormStore();
+  const { loanApplication } = useLoanApplication();
 
   // Local state
   const [step, setStep] = useState<Step>("intro-step");
 
   // Properties
-  const isApartment = formStore.property_type === "apartment";
+  const isApartment = loanApplication.property_type == "apartment";
 
   return (
     <div>

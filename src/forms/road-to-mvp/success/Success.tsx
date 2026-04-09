@@ -1,7 +1,7 @@
 // Project files
 import Button from "components/button/Button";
 import type { Step } from "../types/Step";
-import useFormStore from "../helpers/useFormStore";
+import useLoanApplication from "../helpers/useFormStore";
 
 interface Props {
   setStep: (step: Step) => void;
@@ -9,7 +9,7 @@ interface Props {
 
 export default function Success({ setStep }: Props) {
   // Global state
-  const { formStore } = useFormStore();
+  const { loanApplication: formStore } = useLoanApplication();
 
   // Properties
   const isApartment = formStore.property_type == "apartment";
