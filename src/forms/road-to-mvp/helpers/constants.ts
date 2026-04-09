@@ -1,10 +1,10 @@
 // Project files
 import type LoanApplication from "../types/LoanApplication";
 
-export const loandApplication: LoanApplication = {
+export const initialLoanApplication: LoanApplication = {
   monthly_fee: 0,
   operating_cost: 0,
-  property_type: "",
+  property_type: undefined,
   rooms: 0,
   size: 0,
 };

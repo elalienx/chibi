@@ -2,23 +2,23 @@
 import { create } from "zustand";
 
 // Project files
-import { loandApplication } from "./constants";
-import type LoanApplicationStore from "../types/LoanApplication";
+import { initialLoanApplication } from "./constants";
+import type LoanApplication from "../types/LoanApplication";
 
 interface Store {
   /** The entire form information. */
-  loanApplication: LoanApplicationStore;
+  loanApplication: LoanApplication;
 
   /** Method to reset form. */
   clearLoanApplication: () => void;
 
   /** Method to update form values. */
-  updateLoanApplication: (updates: Partial<LoanApplicationStore>) => void;
+  updateLoanApplication: (updates: Partial<LoanApplication>) => void;
 }
 
 const useLoanApplication = create<Store>((set) => ({
-  loanApplication: loandApplication,
-  clearLoanApplication: () => set({ loanApplication: loandApplication }),
+  loanApplication: initialLoanApplication,
+  clearLoanApplication: () => set({ loanApplication: initialLoanApplication }),
   updateLoanApplication: (updates) => set((state) => ({ loanApplication: { ...state.loanApplication, ...updates } })),
 }));
 
