@@ -15,8 +15,7 @@ import "./step-2.css";
 interface Props {
   setStep: (step: Step) => void;
 
-  /** Check if in the previous steps, the user choose an apartment as a property,
-   * to setup different questions in this step. */
+  /** Check whether the user selected an apartment to tailor the questions in this step. */
   isApartment: boolean;
 }
 
