@@ -60,6 +60,6 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
     await component.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(component.getByText("You choose a 36m apartment with 1 rooms")).toBeVisible();
-    await expect(component.getByText("Therefore your montly fee is 3125 SEK")).toBeVisible();
+    await expect(component.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
   });
 });
