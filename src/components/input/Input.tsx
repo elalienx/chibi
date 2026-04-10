@@ -36,7 +36,7 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
   // State
   // @ts-ignore
   const field = useField(form, { path: [id] });
-  const [inputState, setInputstate] = useState<InputState>("default");
+  const [inputState, setInputState] = useState<InputState>("default");
   const [fieldIsFocused, setFieldIsFocused] = useState(false);
 
   // Properties
@@ -51,9 +51,9 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
     function onCalculateInputState() {
       const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
 
-      setInputstate(nextState);
+      setInputState(nextState);
     },
-    [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid, inputState],
+    [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid],
   );
 
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
