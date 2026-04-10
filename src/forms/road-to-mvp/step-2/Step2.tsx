@@ -13,6 +13,7 @@ import getSchema from "./schema";
 import "./step-2.css";
 
 interface Props {
+  /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
 
   /** Check whether the user selected an apartment to tailor this step questions. */

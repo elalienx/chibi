@@ -4,6 +4,7 @@ import type { Step } from "../types/Step";
 import useLoanApplication from "../helpers/useLoanApplication";
 
 interface Props {
+  /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
 }
 

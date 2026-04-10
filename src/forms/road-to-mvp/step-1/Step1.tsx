@@ -13,6 +13,7 @@ import schema from "./schema";
 import { apartment, holidayHome, terracedHouse, house } from "../helpers/constants";
 
 interface Props {
+  /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
 }
 
