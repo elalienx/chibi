@@ -8,6 +8,7 @@ Inside the Aphrodite Chibi project, you'll see the following folders and files:
 
 ```text
 / root/
+├── playwright/
 ├── public/
 ├── src/
 │   └── components/
