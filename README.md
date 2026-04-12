@@ -37,7 +37,7 @@ All commands are run from the root of the project:
 | `pnpm install`         | Installs dependencies                               |
 | `pnpm dev`             | Starts local dev server at `localhost:4321`         |
 | `pnpm preview`         | Preview your build locally, before deploying        |
-| `pnpm build`           | Build the site to `./dist/` and deploys to Firebase |
+| `pnpm build`           | Build the site to `./dist/`                         |
 | `pnpm format`          | Format all files using Void Zero Oxfmt formatter    |
 | `pnpm lint`            | Lint all files using Void Zero Oxlint linter        |
 | `pnpm playwright --ui` | Open Playwright UI viewer to run tests              |
