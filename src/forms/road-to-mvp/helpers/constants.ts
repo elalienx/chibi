@@ -1,7 +1,7 @@
 // Project files
-import type LoanApplication from "../types/LoanApplication";
+import type Application from "../types/Application";
 
-export const initialLoanApplication: LoanApplication = {
+export const initialApplication: Application = {
   monthly_fee: 0,
   operating_cost: 0,
   property_type: undefined,

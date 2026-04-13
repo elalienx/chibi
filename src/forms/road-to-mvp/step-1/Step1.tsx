@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import useLoanApplication from "../helpers/useLoanApplication";
+import useApplication from "../helpers/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
 import { apartment, holidayHome, terracedHouse, house } from "../helpers/constants";
@@ -19,7 +19,7 @@ interface Props {
 
 export default function Step2({ setStep }: Props) {
   // Global state
-  const { updateLoanApplication } = useLoanApplication();
+  const { updateApplication } = useApplication();
 
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
@@ -27,7 +27,7 @@ export default function Step2({ setStep }: Props) {
   // Methods
   function submitForm(values: object) {
     if (form.isValid) {
-      updateLoanApplication(values);
+      updateApplication(values);
       setStep("step-2");
     }
   }
