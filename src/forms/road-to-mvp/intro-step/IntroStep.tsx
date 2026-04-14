@@ -17,6 +17,7 @@ export default function IntroStep({ setStep }: Props) {
         </header>
 
         <ul>
+          <li>Hanlde tenancy agreement (Radhus)</li>
           <li>Format numbers using spaces.</li>
           <li>Add tooltips.</li>
           <li>Save/load form selection</li>
