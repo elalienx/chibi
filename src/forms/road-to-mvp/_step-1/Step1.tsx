@@ -7,10 +7,10 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import useApplication from "../helpers/useApplication";
+import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
-import { apartment, holidayHome, terracedHouse, house } from "../helpers/constants";
+import { apartment, holidayHome, terracedHouse, house } from "../data/constants";
 
 interface Props {
   /** Allows a button to change what step to display. */

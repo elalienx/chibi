@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 // Project files
-import { initialApplication } from "./constants";
+import { initialApplication } from "../data/constants";
 import type Application from "../types/Application";
 
 interface Store {
