@@ -41,7 +41,6 @@ test("2. Should submit form without errors", async () => {
   // Act
   await radio1_optionA.click();
   await radio2_optionA.click();
-  await radio2_optionA.click(); // again until we fix the re-render bug
   await submitButton.click();
 
   // Assert

@@ -22,7 +22,7 @@ export default function Step2({ setStep }: Props) {
   const { updateApplication } = useApplication();
 
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const form = useForm({ schema: schema, validate: "blur" });
 
   // Methods
   function submitForm(values: object) {
