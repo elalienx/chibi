@@ -10,7 +10,10 @@ import RadioOption from "components/radio-option/RadioOption";
 
 const schema = v.object({
   likes_beer: v.pipe(v.string("Say either yes or no.")),
-  likes_guiness: v.pipe(v.string("Say either yes or no.")),
+  likes_guiness: v.pipe(
+    v.string("Say either yes or no."),
+    v.transform((value) => value === "true"), // converts to boolean
+  ),
 });
 
 export default function FormPage() {
@@ -29,14 +32,14 @@ export default function FormPage() {
 
         <RadioGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
-          <RadioOption value="true">Yes</RadioOption>
-          <RadioOption value="false">No</RadioOption>
+          <RadioOption value="yes">Yes</RadioOption>
+          <RadioOption value="no">No</RadioOption>
         </RadioGroup>
 
         <RadioGroup form={form} id="likes_guiness">
           <Label> Do you like Guiness?</Label>
-          <RadioOption value="true">Yes</RadioOption>
-          <RadioOption value="false">No</RadioOption>
+          <RadioOption value={true}>Yes</RadioOption>
+          <RadioOption value={false}>No</RadioOption>
         </RadioGroup>
       </section>
 

@@ -16,7 +16,7 @@ interface Props {
   field?: FieldStore;
 
   /** The value sent to the database. */
-  value: string | number;
+  value: string | number | boolean;
 }
 
 export default function RadioOption({ children, id, field, value }: Props) {
@@ -24,9 +24,12 @@ export default function RadioOption({ children, id, field, value }: Props) {
   if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
+  // Properties
+  const stringValue = String(value);
+
   return (
     <label className="radio-option">
-      <input {...field.props} checked={field.input === value} name={id} type="radio" value={value} />
+      <input {...field.props} checked={field.input === stringValue} name={id} type="radio" value={stringValue} />
       {children}
     </label>
   );
