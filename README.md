@@ -51,3 +51,4 @@ Due to working alone, I do not have the time to make sure the TypeScript compile
 | FormManager.spec.tsx | `import type { Locator } from "@playwright/test"` | May be removed by pasing `{mount}` to each test            |
 | Input.tsx            | `const field = useField(form, { path: [id] })`    | May be removed by using `<Field/>` instead of `useField()` |
 | RadioGroup.tsx       | `const field = useField(form, { path: [id] })`    | May be removed by using `<Field/>` instead of `useField()` |
+| RadioOption.tsx      | `field?.props.onBlur?.(event)`                    | May be removed by recasting the event                      |

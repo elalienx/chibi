@@ -25,7 +25,7 @@ export default function Step2({ setStep, isApartment }: Props) {
   const { updateApplication } = useApplication();
 
   // Local state
-  const form = useForm({ schema: getSchema(isApartment), validate: "blur" });
+  const form = useForm({ schema: getSchema(isApartment), validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm(values: object) {

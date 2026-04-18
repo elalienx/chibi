@@ -1,5 +1,5 @@
 // Node modules
-import type { ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
@@ -27,9 +27,23 @@ export default function RadioOption({ children, id, field, value }: Props) {
   // Properties
   const stringValue = String(value);
 
+  // Methods
+  function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
+    field?.props.onChange?.(event); // First, the default change event.
+    // @ts-ignore
+    field?.props.onBlur?.(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
+  }
+
   return (
     <label className="radio-option">
-      <input {...field.props} checked={field.input === stringValue} name={id} type="radio" value={stringValue} />
+      <input
+        {...field.props}
+        checked={field.input === stringValue}
+        name={id}
+        onChange={onChangeAndForceBlur}
+        type="radio"
+        value={stringValue}
+      />
       {children}
     </label>
   );
