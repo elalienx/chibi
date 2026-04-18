@@ -6,8 +6,12 @@ import type { FormStore } from "@formisch/react";
 import Input from "components/input/Input";
 
 export default function extractInput(children: ReactNode, id: string, form: FormStore) {
+  // Properties
   const reactComponents = Children.toArray(children);
   const input = reactComponents.find((child) => isValidElement(child) && child.type === Input);
 
-  return input && isValidElement(input) ? cloneElement(input, { id, form } as any) : null;
+  // Safeguard
+  if (!input) return null;
+
+  return cloneElement(input as any, { id, form } as any);
 }

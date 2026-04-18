@@ -6,9 +6,7 @@ import type { FieldStore } from "@formisch/react";
 import RadioOption from "components/radio-option/RadioOption";
 
 export default function extractRadioOptions(children: ReactNode, id: string, field: FieldStore) {
-  return Children.map(children, (child) => {
-    if (isValidElement(child) && child.type === RadioOption) {
-      return cloneElement(child, { id, field } as any);
-    }
-  });
+  return Children.toArray(children)
+    .filter((child) => isValidElement(child) && child.type === RadioOption)
+    .map((child) => cloneElement(child as any, { id, field } as any));
 }
