@@ -10,7 +10,8 @@ interface Props {
 export default function ArrowGoBack({ onClick }: Props) {
   return (
     <button className="arrow-go-back" onClick={onClick} type="button">
-      <Icon name="arrow-left" /> Tillbaka
+      <Icon name="arrow-left" />
+      Tillbaka
     </button>
   );
 }
