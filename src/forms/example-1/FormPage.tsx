@@ -26,7 +26,7 @@ const schema = v.object({
 
 export default function FormPage() {
   // Properties
-  const form = useForm({ schema: schema, validate: "blur" });
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
   function submitForm() {
