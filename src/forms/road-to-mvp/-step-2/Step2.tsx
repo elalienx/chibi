@@ -2,6 +2,7 @@
 import { Form, useForm } from "@formisch/react";
 
 // Project files
+import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
@@ -39,9 +40,7 @@ export default function Step2({ setStep, isApartment }: Props) {
     <Form of={form} onSubmit={submitForm} id="step-2" className="soft-background">
       <section className="top">
         <header>
-          <button className="go-back" onClick={() => setStep("step-1")} type="button">
-            <Icon name="arrow-left" /> Tillbaka
-          </button>
+          <ArrowGoBack onClick={() => setStep("step-1")} />
           <h4>2. Om bostaden</h4>
         </header>
 
