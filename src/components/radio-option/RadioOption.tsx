@@ -24,12 +24,28 @@ export default function RadioOption({ children, id, field, value }: Props) {
   if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
+  // Desctructure
+  const { onChange, onBlur, ...restFieldProps } = field.props;
+
   // Properties
   const stringValue = String(value);
 
   return (
     <label className="radio-option">
-      <input {...field.props} checked={field.input === stringValue} name={id} type="radio" value={stringValue} />
+      <input
+        {...restFieldProps}
+        onChange={(e) => {
+          // 2. Let Formisch update the active input state first
+          onChange?.(e);
+
+          // 3. Immediately trigger the blur event to force your "blur" validation rule!
+          onBlur?.(e);
+        }}
+        checked={field.input === stringValue}
+        name={id}
+        type="radio"
+        value={stringValue}
+      />
       {children}
     </label>
   );
