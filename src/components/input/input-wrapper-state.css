@@ -2,28 +2,21 @@
   --border-base: 1px;
   --border-hover: 2px;
   --outline-hover: 1px;
-  --state-color: var(--input-border-up);
 
   border-style: solid;
   border-width: var(--border-base);
-  border-color: var(--state-color);
+  border-color: var(--input-border-up);
 
-  &.has-suffix .input {
-    /** Invisible divider pre-allocated so no layout shift occurs on state change. */
-    border-right: solid var(--border-base) white;
+  .input {
+    border-right: solid var(--border-base) white; /** The color is set to not be visible on purpose to color it on state changes. */
   }
 
   .suffix {
-    border-left: solid var(--border-base) var(--state-color);
+    border-left: solid var(--border-base) var(--input-border-up);
   }
 
   .input-validation-message {
-    border-top: solid var(--border-hover) var(--state-color);
-  }
-
-  &.has-suffix .input,
-  .suffix {
-    border-color: var(--state-color);
+    border-top: solid var(--border-hover) var(--input-border-up);
   }
 }
 
@@ -34,35 +27,59 @@
 .input-wrapper.success {
   outline-style: solid;
   outline-width: var(--outline-hover);
-  outline-color: var(--state-color);
 }
 
 /* On hover */
 .input-wrapper:hover {
-  --state-color: var(--input-border-hover);
+  outline-color: var(--input-border-hover);
 
   &.has-suffix .input {
-    background-color: var(--input-background-hover); /* Suffix does not get this background color */
+    background-color: var(--input-background-hover); /* Suffix do not get this background color */
+  }
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-hover);
   }
 }
 
 /* On focus */
 .input-wrapper.focus {
-  --state-color: var(--input-border-focus);
+  border-color: var(--input-border-focus);
+  outline-color: var(--input-border-focus);
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-focus);
+  }
 }
 
 /* On showing error message */
 .input-wrapper.error {
-  --state-color: var(--input-border-error);
+  border-color: var(--input-border-error);
+  outline-color: var(--input-border-error);
 
   &.has-suffix .input,
   .suffix {
     background-color: white;
     /* Validation message has its pink background color */
   }
+
+  &.has-suffix .input,
+  .suffix,
+  .input-validation-message {
+    border-color: var(--input-border-error);
+  }
 }
 
-/* On being valid */
+/** On being valid */
 .input-wrapper.success {
-  --state-color: var(--input-border-success);
+  border-color: var(--input-border-success);
+  outline-color: var(--input-border-success);
+
+  &.has-suffix .input,
+  .suffix,
+  .input-validation-message {
+    border-color: var(--input-border-success);
+  }
 }
