@@ -11,8 +11,9 @@
     font-weight: var(--font-weight-normal);
     outline: none;
 
-    border: none;
-    border-right: none; /* placeholder for has-suffix divider, see input-wrapper-state.css */
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
   }
 
   .suffix {
