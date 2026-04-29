@@ -6,6 +6,7 @@ import type { FormStore } from "@formisch/react";
 // Project files
 import calculateInputState from "./calculateInputState";
 import getCorrectMobileKeyboard from "./getCorrectMobileKeyboard";
+import parseDigits from "./parseDigits";
 import type { InputState } from "./InputState";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
@@ -68,10 +69,7 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
       return;
     }
 
-    const nonDigits: RegExp = /\D/g;
-    const parsedDigits = event.target.value.replace(nonDigits, "");
-
-    event.target.value = parsedDigits;
+    event.target.value = parseDigits(event.target.value);
     field.props.onChange(event);
   }
 
