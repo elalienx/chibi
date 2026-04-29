@@ -4,10 +4,10 @@ import { useField } from "@formisch/react";
 import type { FormStore } from "@formisch/react";
 
 // Project files
-import calculateInputState from "./calculateInputState";
-import getCorrectMobileKeyboard from "./getCorrectMobileKeyboard";
-import parseDigits from "./parseDigits";
-import type { InputState } from "./InputState";
+import calculateInputState from "./helpers/calculateInputState";
+import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
+import parseDigits from "./helpers/parseDigits";
+import type { InputState } from "./helpers/InputState";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
 import "./input-wrapper-state.css";
