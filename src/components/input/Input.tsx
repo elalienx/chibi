@@ -49,10 +49,10 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
 
   // Methods
   useEffect(
-    function onCalculateInputState() {
-      const nextState = calculateInputState(form, field, inputState, fieldIsFocused);
+    function onFormOrFieldChanged() {
+      const nextInputState = calculateInputState(form, field, inputState, fieldIsFocused);
 
-      setInputState(nextState);
+      setInputState(nextInputState);
     },
     [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid],
   );
