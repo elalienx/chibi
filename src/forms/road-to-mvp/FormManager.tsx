@@ -17,13 +17,13 @@ export default function FormManager() {
   const [step, setStep] = useState<Step>("intro-step");
 
   // Properties
-  const isApartment = application.property_type == "apartment";
+  const propertyType = application.property_type;
 
   return (
     <div>
       {step === "intro-step" && <IntroStep setStep={setStep} />}
       {step === "step-1" && <Step1 setStep={setStep} />}
-      {step === "step-2" && <Step2 setStep={setStep} isApartment={isApartment} />}
+      {step === "step-2" && <Step2 setStep={setStep} propertyType={propertyType} />}
       {step === "success" && <Success setStep={setStep} />}
     </div>
   );

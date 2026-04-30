@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -11,22 +11,31 @@ import Label from "components/label/Label";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import getSchema from "./schema";
+import type { PropertyType } from "../types/PropertyType";
 import "./step-2.css";
+import RadioGroup from "components/radio-group/RadioGroup";
+import RadioOption from "components/radio-option/RadioOption";
 
 interface Props {
   /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
 
-  /** Check whether the user selected an apartment to tailor this step questions. */
-  isApartment: boolean;
+  /** The kind of home property the user selected to tailor this step questions. */
+  propertyType: PropertyType;
 }
 
-export default function Step2({ setStep, isApartment }: Props) {
+export default function Step2({ setStep, propertyType }: Props) {
   // Global state
   const { updateApplication } = useApplication();
 
   // Local state
-  const form = useForm({ schema: getSchema(isApartment), validate: "blur", revalidate: "blur" });
+  const form = useForm({ schema: getSchema(propertyType), validate: "blur", revalidate: "blur" });
+
+  // Properties
+  const isTenancy = propertyType === "terraced_house";
+  const tenancyType = isTenancy ? getInput(form, { path: ["tenancy_type"] }) : undefined;
+  const hasMonthlyFee = propertyType === "apartment" || tenancyType === "agreement";
+  const hasOperatingCost = propertyType === "house" || propertyType === "holiday_home" || tenancyType === "ownership";
 
   // Methods
   function submitForm(values: object) {
@@ -44,6 +53,14 @@ export default function Step2({ setStep, isApartment }: Props) {
           <h4>2. Om bostaden</h4>
         </header>
 
+        {isTenancy && (
+          <RadioGroup form={form} id="tenancy_type">
+            <Label>Vad har radhuset för upplåtelseform?</Label>
+            <RadioOption value="agreement">Bostadsrätt</RadioOption>
+            <RadioOption value="ownership">Äganderätt</RadioOption>
+          </RadioGroup>
+        )}
+
         <InputField form={form} id="size">
           <Label>Kvadratmeter</Label>
           <Input type="number" placeholder="0" suffix="kvm" />
@@ -54,14 +71,14 @@ export default function Step2({ setStep, isApartment }: Props) {
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
-        {isApartment && (
+        {hasMonthlyFee && (
           <InputField form={form} id="monthly_fee">
             <Label>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
-        {!isApartment && (
+        {!hasOperatingCost && (
           <InputField form={form} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
