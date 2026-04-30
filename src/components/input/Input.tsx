@@ -42,10 +42,10 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
-  const mobileKeyboard = getCorrectMobileKeyboard(type);
-  const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
   const cssSuffix = suffix ? "has-suffix" : "";
   const cssTypeNumber = type === "number" ? "type-number" : "";
+  const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
+  const mobileKeyboard = getCorrectMobileKeyboard(type);
 
   // Methods
   useEffect(
