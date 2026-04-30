@@ -63,13 +63,10 @@ export default function Input({ id, form, placeholder, type, suffix }: Props) {
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
-    // Safeguard
-    if (type !== "number") {
-      field.props.onChange(event);
-      return;
+    if (type === "number") {
+      event.target.value = parseDigits(event.target.value);
     }
 
-    event.target.value = parseDigits(event.target.value);
     field.props.onChange(event);
   }
 
