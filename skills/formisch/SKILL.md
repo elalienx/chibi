@@ -488,16 +488,7 @@ const TodoSchema = v.object({
 ### React Example
 
 ```tsx
-import {
-  Field,
-  FieldArray,
-  Form,
-  useForm,
-  insert,
-  remove,
-  move,
-  swap,
-} from "@formisch/react";
+import { Field, FieldArray, Form, useForm, insert, remove, move, swap } from "@formisch/react";
 
 export default function TodoPage() {
   const todoForm = useForm({
@@ -520,21 +511,12 @@ export default function TodoPage() {
             {fieldArray.items.map((item, index) => (
               <div key={item}>
                 <Field of={todoForm} path={["todos", index, "label"]}>
-                  {(field) => (
-                    <input {...field.props} value={field.input} type="text" />
-                  )}
+                  {(field) => <input {...field.props} value={field.input} type="text" />}
                 </Field>
                 <Field of={todoForm} path={["todos", index, "deadline"]}>
-                  {(field) => (
-                    <input {...field.props} value={field.input} type="date" />
-                  )}
+                  {(field) => <input {...field.props} value={field.input} type="date" />}
                 </Field>
-                <button
-                  type="button"
-                  onClick={() =>
-                    remove(todoForm, { path: ["todos"], at: index })
-                  }
-                >
+                <button type="button" onClick={() => remove(todoForm, { path: ["todos"], at: index })}>
                   Delete
                 </button>
               </div>
@@ -745,11 +727,7 @@ Controls when validation runs **after** the first validation:
   {(field) => (
     <select {...field.props} multiple>
       {options.map(({ label, value }) => (
-        <option
-          key={value}
-          value={value}
-          selected={field.input?.includes(value)}
-        >
+        <option key={value} value={value} selected={field.input?.includes(value)}>
           {label}
         </option>
       ))}
@@ -820,12 +798,7 @@ When using component libraries that don't expose their underlying native HTML el
 import { DatePicker } from "some-component-library";
 
 <Field of={form} path={["date"]}>
-  {(field) => (
-    <DatePicker
-      value={field.input}
-      onChange={(newDate) => field.onChange(newDate)}
-    />
-  )}
+  {(field) => <DatePicker value={field.input} onChange={(newDate) => field.onChange(newDate)} />}
 </Field>;
 ```
 
