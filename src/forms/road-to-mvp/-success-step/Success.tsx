@@ -14,8 +14,11 @@ export default function Success({ setStep }: Props) {
 
   // Properties
   const isApartment = application.property_type == "apartment";
-  const feeType = isApartment ? "monthly fee" : "operating cost";
-  const feePrice = isApartment ? application.monthly_fee : application.operating_cost;
+  const isHouse = application.property_type == "house";
+  const isHolidayHome = application.property_type == "holiday_home";
+  const tenancyType = application.tenancy_agreement;
+  const hasMonthlyFee = isApartment || tenancyType == "agreement";
+  const hasOperatingCost = isHouse || isHolidayHome || tenancyType == "ownership";
 
   return (
     <div id="success" className="soft-background">
