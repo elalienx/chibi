@@ -32,13 +32,15 @@ export default function Step2({ setStep, propertyType }: Props) {
   const form = useForm({ schema: getSchema(propertyType), validate: "blur", revalidate: "blur" });
 
   // Properties
-  const isTerracedHouse = propertyType === "terraced_house";
+  // -- Home properties
   const isApartment = propertyType === "apartment";
-  const isHouse = propertyType === "house";
   const isHolidayHome = propertyType === "holiday_home";
+  const isHouse = propertyType === "house";
+  const isTerracedHouse = propertyType === "terraced_house";
+  // -- Toggles
   const tenancyType = isTerracedHouse && getInput(form, { path: ["tenancy_type"] });
   const hasMonthlyFee = isApartment || tenancyType === "agreement";
-  const hasOperatingCost = isHouse || isHolidayHome || tenancyType === "ownership";
+  const hasOperatingCost = isHolidayHome || isHouse || tenancyType === "ownership";
 
   // Methods
   function submitForm(values: object) {
