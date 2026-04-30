@@ -5,6 +5,11 @@ import type { FormStore } from "@formisch/react";
 // Project files
 import Input from "components/input/Input";
 
+/**
+ * React lacks a "slot" feature like Vue does to pass props to children without prop drilling or using Context API.
+ *
+ * This method replicates it so `<InputField/>` can pass props to the `<Input/>`.
+ */
 export default function extractInput(children: ReactNode, id: string, form: FormStore) {
   // Properties
   const reactComponents = Children.toArray(children);
