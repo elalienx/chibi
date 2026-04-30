@@ -10,12 +10,18 @@ interface Props {
 
 export default function Success({ setStep }: Props) {
   // Global state
-  const { application } = useApplication();
+  const { application, clearApplication } = useApplication();
 
   // Properties
-  const hasMonthlyFee = application.monthly_fee !== 0;
+  const hasMonthlyFee = application.monthly_fee > 0;
   const feeType = hasMonthlyFee ? "monthly fee" : "operating cost";
   const feePrice = hasMonthlyFee ? application.monthly_fee : application.operating_cost;
+
+  // Methods
+  function startAgain() {
+    clearApplication();
+    setStep("intro-step");
+  }
 
   return (
     <div id="success" className="soft-background">
@@ -37,7 +43,7 @@ export default function Success({ setStep }: Props) {
       <hr />
 
       <section className="bottom">
-        <Button onClick={() => setStep("intro-step")}>START AGAIN</Button>
+        <Button onClick={startAgain}>START AGAIN</Button>
       </section>
     </div>
   );
