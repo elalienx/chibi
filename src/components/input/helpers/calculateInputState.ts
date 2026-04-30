@@ -4,6 +4,13 @@ import type { FieldStore, FormStore } from "@formisch/react";
 // Project files
 import type { InputState } from "./InputState";
 
+/**
+ * About
+ * Lendo input field UX has unique guidelines about when to update the state of the form fields.
+ * While UX practices commonly remove errors messages as soon as the user corrects them,
+ * Lendo keeps the error message visible until the user both corrects it and decides to exit the input.
+ * This method extract's Lendo UX guidelines so the Input.tsx stays clean.
+ */
 export default function calculateInputState(
   form: FormStore,
   field: FieldStore,
