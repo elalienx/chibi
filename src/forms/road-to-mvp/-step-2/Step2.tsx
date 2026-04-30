@@ -8,13 +8,13 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
-import getSchema from "./schema";
-import type { PropertyType } from "../types/PropertyType";
-import "./step-2.css";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import useApplication from "../state/useApplication";
+import type { Step } from "../types/Step";
+import type { PropertyType } from "../types/PropertyType";
+import getSchema from "./schema";
+import "./step-2.css";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -32,10 +32,13 @@ export default function Step2({ setStep, propertyType }: Props) {
   const form = useForm({ schema: getSchema(propertyType), validate: "blur", revalidate: "blur" });
 
   // Properties
-  const isTenancy = propertyType === "terraced_house";
-  const tenancyType = isTenancy ? getInput(form, { path: ["tenancy_type"] }) : undefined;
-  const hasMonthlyFee = propertyType === "apartment" || tenancyType === "agreement";
-  const hasOperatingCost = propertyType === "house" || propertyType === "holiday_home" || tenancyType === "ownership";
+  const isTerracedHouse = propertyType == "terraced_house";
+  const isApartment = propertyType == "apartment";
+  const isHouse = propertyType == "house";
+  const isHolidayHome = propertyType == "holiday_home";
+  const tenancyType = isTerracedHouse && getInput(form, { path: ["tenancy_type"] });
+  const hasMonthlyFee = isApartment || tenancyType == "agreement";
+  const hasOperatingCost = isHouse || isHolidayHome || tenancyType == "ownership";
 
   // Methods
   function submitForm(values: object) {
@@ -53,7 +56,7 @@ export default function Step2({ setStep, propertyType }: Props) {
           <h4>2. Om bostaden</h4>
         </header>
 
-        {isTenancy && (
+        {isTerracedHouse && (
           <RadioGroup form={form} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
             <RadioOption value="agreement">Bostadsrätt</RadioOption>
@@ -78,7 +81,7 @@ export default function Step2({ setStep, propertyType }: Props) {
           </InputField>
         )}
 
-        {!hasOperatingCost && (
+        {hasOperatingCost && (
           <InputField form={form} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
