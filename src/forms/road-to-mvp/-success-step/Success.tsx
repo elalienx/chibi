@@ -13,9 +13,9 @@ export default function Success({ setStep }: Props) {
   const { application } = useApplication();
 
   // Properties
-  const isApartment = application.property_type == "apartment";
-  const feeType = isApartment ? "monthly fee" : "operating cost";
-  const feePrice = isApartment ? application.monthly_fee : application.operating_cost;
+  const hasMonthlyFee = application.monthly_fee !== 0;
+  const feeType = hasMonthlyFee ? "monthly fee" : "operating cost";
+  const feePrice = hasMonthlyFee ? application.monthly_fee : application.operating_cost;
 
   return (
     <div id="success" className="soft-background">

@@ -63,3 +63,95 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
     await expect(component.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
   });
 });
+
+test("Should be abble to apply for a terraced house (as rental)", async ({ mount }) => {
+  // Properties
+  const component = await mount(<FormManager />);
+  await test.step("Introduction", async () => {
+    await component.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await component.getByRole("button", { name: "Next" }).click();
+  });
+
+  await test.step("Step 1: About the loan", async () => {
+    await component.getByRole("heading", { name: "Om lånet" }).waitFor();
+    await component.locator("#property_type").getByText("Radhus").click();
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Step 2: About the property", async () => {
+    await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
+    await component.locator("#tenancy_type").getByText("Bostadsrätt").click();
+    await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("36");
+    await component.getByRole("textbox", { name: "Antal rum" }).fill("1");
+    await component.getByRole("textbox", { name: "Månadsavgift" }).fill("3125");
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Acceptance", async () => {
+    await component.getByRole("heading", { name: "Form submitted" }).waitFor();
+
+    await expect(component.getByText("You choose a 36m terraced_house with 1 rooms")).toBeVisible();
+    await expect(component.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
+  });
+});
+
+test("Should be abble to apply for a terraced house (as ownership)", async ({ mount }) => {
+  // Properties
+  const component = await mount(<FormManager />);
+  await test.step("Introduction", async () => {
+    await component.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await component.getByRole("button", { name: "Next" }).click();
+  });
+
+  await test.step("Step 1: About the loan", async () => {
+    await component.getByRole("heading", { name: "Om lånet" }).waitFor();
+    await component.locator("#property_type").getByText("Radhus").click();
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Step 2: About the property", async () => {
+    await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
+    await component.locator("#tenancy_type").getByText("Äganderätt").click();
+    await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
+    await component.getByRole("textbox", { name: "Antal rum" }).fill("4");
+    await component.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Acceptance", async () => {
+    await component.getByRole("heading", { name: "Form submitted" }).waitFor();
+
+    await expect(component.getByText("You choose a 100m terraced_house with 4 rooms")).toBeVisible();
+    await expect(component.getByText("Therefore your operating cost is 10000 SEK")).toBeVisible();
+  });
+});
+
+test("Should be abble to apply for a holiday home (same options as house)", async ({ mount }) => {
+  // Properties
+  const component = await mount(<FormManager />);
+  await test.step("Introduction", async () => {
+    await component.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await component.getByRole("button", { name: "Next" }).click();
+  });
+
+  await test.step("Step 1: About the loan", async () => {
+    await component.getByRole("heading", { name: "Om lånet" }).waitFor();
+    await component.locator("#property_type").getByText("Fritidshus").click();
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Step 2: About the property", async () => {
+    await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
+    await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
+    await component.getByRole("textbox", { name: "Antal rum" }).fill("4");
+    await component.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
+    await component.getByRole("button", { name: "Nästa" }).click();
+  });
+
+  await test.step("Acceptance", async () => {
+    await component.getByRole("heading", { name: "Form submitted" }).waitFor();
+
+    await expect(component.getByText("You choose a 100m holiday_home with 4 rooms")).toBeVisible();
+    await expect(component.getByText("Therefore your operating cost is 10000 SEK")).toBeVisible();
+  });
+});
