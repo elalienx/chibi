@@ -10,5 +10,6 @@ export default function checkTenacyType(isTerracedHouse: boolean, form: FormStor
     return undefined;
   }
 
+  // @ts-ignore
   return getInput(form, { path: ["tenancy_type"] }) as TenancyType;
 }
