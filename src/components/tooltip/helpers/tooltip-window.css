@@ -1,0 +1,6 @@
+.tooltip-window {
+  background-color: white;
+  padding: var(--space-medium);
+  border-radius: var(--border-radius);
+  outline: none;
+}

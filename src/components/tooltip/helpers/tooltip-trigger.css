@@ -1,3 +1,12 @@
 .tooltip-trigger {
-  background-color: pink;
+  width: fit-content; /** to avoid taking the whole width **/
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  .icon {
+    color: var(--typography-link);
+  }
 }
