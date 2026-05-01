@@ -3,15 +3,6 @@ import * as v from "valibot";
 import type { PropertyType } from "../types/PropertyType";
 
 // Fields
-const operating_cost = v.pipe(
-  v.string("Ange bostadens driftskostnad för att gå vidare."),
-  v.nonEmpty("Ange bostadens driftskostnad för att gå vidare."),
-  v.transform((value) => Number(value)),
-  v.number("Must be a valid number"),
-  v.minValue(1, "Ange bostadens driftskostnad för att gå vidare."),
-  v.maxValue(10_000, "Driftskostnaden är för hög. Max 10 000 kr/mån."),
-);
-
 const monthly_fee = v.pipe(
   v.string("Ange bostadens månadsavgift för att gå vidare."),
   v.nonEmpty("Ange bostadens månadsavgift för att gå vidare."),
@@ -19,6 +10,15 @@ const monthly_fee = v.pipe(
   v.number("Must be a valid number"),
   v.minValue(1, "Ange bostadens månadsavgift för att gå vidare."),
   v.maxValue(10_000, "Månadsavgiften är för hög. Max 10 000 kr/mån."),
+);
+
+const operating_cost = v.pipe(
+  v.string("Ange bostadens driftskostnad för att gå vidare."),
+  v.nonEmpty("Ange bostadens driftskostnad för att gå vidare."),
+  v.transform((value) => Number(value)),
+  v.number("Must be a valid number"),
+  v.minValue(1, "Ange bostadens driftskostnad för att gå vidare."),
+  v.maxValue(10_000, "Driftskostnaden är för hög. Max 10 000 kr/mån."),
 );
 
 const rooms = v.pipe(
