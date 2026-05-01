@@ -13,6 +13,8 @@ import RadioOption from "components/radio-option/RadioOption";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import type { PropertyType } from "../types/PropertyType";
+import requiresMonthlyFee from "./requiresMonthlyFee";
+import requiresOperatingCost from "./requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
 
@@ -32,15 +34,10 @@ export default function Step2({ setStep, propertyType }: Props) {
   const form = useForm({ schema: getSchema(propertyType), validate: "blur", revalidate: "blur" });
 
   // Properties
-  // -- Home properties
-  const isApartment = propertyType === "apartment";
-  const isHolidayHome = propertyType === "holiday_home";
-  const isHouse = propertyType === "house";
   const isTerracedHouse = propertyType === "terraced_house";
-  // -- Toggles
-  const tenancyType = isTerracedHouse && getInput(form, { path: ["tenancy_type"] });
-  const hasMonthlyFee = isApartment || tenancyType === "agreement";
-  const hasOperatingCost = isHolidayHome || isHouse || tenancyType === "ownership";
+  const tenancyType = isTerracedHouse ? getInput(form, { path: ["tenancy_type"] }) : undefined;
+  const hasMonthlyFee = requiresMonthlyFee(propertyType, tenancyType);
+  const hasOperatingCost = requiresOperatingCost(propertyType, tenancyType);
 
   // Methods
   function submitForm(values: object) {
