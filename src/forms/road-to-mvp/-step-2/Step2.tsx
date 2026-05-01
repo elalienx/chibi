@@ -1,5 +1,5 @@
 // Node modules
-import { Form, getInput, useForm } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -13,8 +13,9 @@ import RadioOption from "components/radio-option/RadioOption";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import type { PropertyType } from "../types/PropertyType";
-import requiresMonthlyFee from "./requiresMonthlyFee";
-import requiresOperatingCost from "./requiresOperatingCost";
+import checkTenacyType from "./helpers/checkTenancyType";
+import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
+import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
 
@@ -35,7 +36,7 @@ export default function Step2({ setStep, propertyType }: Props) {
 
   // Properties
   const isTerracedHouse = propertyType === "terraced_house";
-  const tenancyType = isTerracedHouse ? getInput(form, { path: ["tenancy_type"] }) : undefined;
+  const tenancyType = checkTenacyType(isTerracedHouse, form);
   const hasMonthlyFee = requiresMonthlyFee(propertyType, tenancyType);
   const hasOperatingCost = requiresOperatingCost(propertyType, tenancyType);
 

@@ -1,6 +1,6 @@
 // Project files
-import type { PropertyType } from "../types/PropertyType";
-import type { TenancyType } from "../types/TenancyType";
+import type { PropertyType } from "../../types/PropertyType";
+import type { TenancyType } from "../../types/TenancyType";
 
 export default function requiresMonthlyFee(propertyType: PropertyType, tenancyType: TenancyType): boolean {
   const isApartment = propertyType === "apartment";
