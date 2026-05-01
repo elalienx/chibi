@@ -1,0 +1,22 @@
+.selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-between-label-and-field);
+
+  .radio-options {
+    display: grid;
+    gap: var(--space-small);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .selector-group {
+    width: auto;
+    min-width: 320px;
+
+    .selector-options {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

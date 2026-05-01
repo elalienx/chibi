@@ -1,0 +1,40 @@
+.selector-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  height: var(--height-of-field);
+  padding-inline: var(--space-medium);
+  background-color: white; /* In case it is used on a non-white background. */
+  border: solid 1px var(--input-border-up);
+  border-radius: var(--border-radius);
+
+  /* Animation */
+  transition:
+    background-color 0.15s ease-in,
+    border-color 0.15s ease-in,
+    outline-color 0.15s ease-in;
+}
+
+/**
+ * The <input type="radio"/> is placed inside a <label>.
+ * We use the CSS :has() selector to style the label
+ * based on the input’s state (hover or checked).
+ */
+.selector-option:has(input[type="radio"]:hover) {
+  border-color: var(--input-border-hover);
+  outline: solid 1px var(--input-border-hover);
+}
+
+.selector-option:has(input[type="radio"]:checked) {
+  --color-background: var(--color-green-40);
+  --color-accent: white;
+
+  background-color: var(--color-background);
+  color: var(--color-accent);
+  border-color: var(--color-background);
+  outline: solid 1px var(--color-background);
+
+  input[type="radio"]:checked {
+    accent-color: var(--color-accent);
+  }
+}
