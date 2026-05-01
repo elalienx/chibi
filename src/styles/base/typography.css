@@ -7,11 +7,15 @@ body {
   font-size: var(--font-size-normal);
   font-family: var(--font-family);
   font-weight: var(--font-weight-normal);
-  -webkit-font-smoothing: antialiased; /* To make text look great on Apple devices */
+  -webkit-font-smoothing: antialiased; /* To make text look great on Apple devices. */
 }
 
 p {
-  margin: 0;
+  margin-top: 0;
+
+  &:last-of-type {
+    margin-bottom: 0; /** To avoid adding space at the bottom of the last paragraph. */
+  }
 }
 
 code {
