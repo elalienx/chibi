@@ -17,7 +17,6 @@ export default function IntroStep({ setStep }: Props) {
         </header>
 
         <ul>
-          <li>Add tooltips.</li>
           <li>Add tracking.</li>
           <li>Format numbers using spaces.</li>
           <li>Save/load form selection</li>
