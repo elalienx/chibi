@@ -60,10 +60,7 @@ export default function getSchema(propertyType: PropertyType) {
   }
 
   if (propertyType === "terraced_house") {
-    return v.intersect([
-      v.object(defaultFields),
-      v.variant("tenancy_type", [agreement, ownership], "Specify the type of lease."),
-    ]);
+    return v.intersect([v.object(defaultFields), v.variant("tenancy_type", [agreement, ownership])]);
   }
 
   return defaultSchema;
