@@ -16,7 +16,6 @@ import {
 } from "@floating-ui/react";
 
 // Project files
-import "./helpers/tooltip-trigger.css";
 import "./helpers/tooltip-window.css";
 import TooltipTrigger from "./helpers/TooltipTrigger";
 

@@ -3,6 +3,7 @@ import type { RefCallback } from "react";
 
 // Project files
 import Icon from "components/icon/Icon";
+import "./tooltip-trigger.css";
 
 interface Props {
   /** The reference to know the position of the trigger relatively to the window. */
