@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 
 // Project files
+import Tooltip from "components/tooltip/Tooltip";
 import "./label.css";
 
 interface Props {
@@ -10,15 +11,19 @@ interface Props {
 
   /** Unique identifier of the parent radio group to make sure only one radio option is active. */
   id?: string;
+
+  /** The text or content to display when opening the information tooltip. */
+  tooltip?: ReactNode;
 }
 
-export default function Label({ children, id }: Props) {
+export default function Label({ children, id, tooltip }: Props) {
   // Safeguard
   if (!id) return <p>Please pass an id to connect this label to a formulary field</p>;
 
   return (
     <label className="label" htmlFor={id}>
       {children}
+      {tooltip && <Tooltip>{tooltip}</Tooltip>}
     </label>
   );
 }

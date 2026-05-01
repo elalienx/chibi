@@ -18,6 +18,7 @@ import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
+import { tooltips } from "./tooltips";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -63,7 +64,7 @@ export default function Step2({ setStep, propertyType }: Props) {
 
         {isTerracedHouse && (
           <SelectorGroup form={form} id="tenancy_type">
-            <Label>Vad har radhuset för upplåtelseform?</Label>
+            <Label tooltip={tooltips["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
             <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
             <SelectorOption value="ownership">Äganderätt</SelectorOption>
           </SelectorGroup>
