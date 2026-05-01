@@ -44,25 +44,27 @@ const agreement = v.object({
   tenancy_type: v.literal("agreement"),
   monthly_fee,
 });
+
 const ownership = v.object({
   tenancy_type: v.literal("ownership"),
   operating_cost,
 });
 
 export default function getSchema(propertyType: PropertyType) {
-  const staticFields = { size, rooms };
+  const defaultFields = { size, rooms };
+  const defaultSchema = v.object({ ...defaultFields, operating_cost });
 
   // Special cases
   if (propertyType === "apartment") {
-    return v.object({ ...staticFields, monthly_fee });
+    return v.object({ ...defaultFields, monthly_fee });
   }
 
   if (propertyType === "terraced_house") {
     return v.intersect([
-      v.object(staticFields),
+      v.object(defaultFields),
       v.variant("tenancy_type", [agreement, ownership], "Specify the type of lease."),
     ]);
   }
 
-  return v.object({ ...staticFields, operating_cost });
+  return defaultSchema;
 }
