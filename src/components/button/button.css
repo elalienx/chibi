@@ -4,7 +4,7 @@
   justify-content: center;
   gap: var(--space-base);
   min-width: 200px;
-  height: 60px;
+  height: var(--height-of-button);
   padding: 0 var(--space-medium);
   background-color: var(--color-blue-40);
   color: white;
