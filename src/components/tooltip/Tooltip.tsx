@@ -51,7 +51,7 @@ export default function Tooltip({ children }: Props) {
     <>
       {/* Trigger */}
       <button className="tooltip-trigger" ref={refs.setReference} {...getReferenceProps()}>
-        <Icon name="info" />
+        <Icon name="circle-info" />
       </button>
 
       {/* Window */}

@@ -9,4 +9,5 @@
 /* The pointy arrow */
 .tooltip-window > svg {
   fill: white;
+  /* padding-inline: var(--border-radius);  */
 }
