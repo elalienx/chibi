@@ -12,6 +12,7 @@ import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
 import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
+import Tooltips from "./Tooltips";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -42,7 +43,7 @@ export default function Step2({ setStep }: Props) {
         </header>
 
         <RadioGroup form={form} id="property_type">
-          <Label>För vilken typ av bostad söker du lån</Label>
+          <Label tooltip={Tooltips["property_type"]}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>
           <RadioOption value={terracedHouse}>Radhus</RadioOption>

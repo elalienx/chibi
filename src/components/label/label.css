@@ -1,4 +1,10 @@
 .label {
+  display: flex; /* To align the label text with the tooltip button. */
+  gap: var(--space-tiny);
   font-weight: var(--font-weight-bold);
   color: var(--typography-dark);
+
+  .tooltip-trigger {
+    margin-top: -1px; /* To optically align with the label. */
+  }
 }
