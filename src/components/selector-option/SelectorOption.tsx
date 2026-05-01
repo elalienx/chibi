@@ -6,10 +6,10 @@ import type { FieldStore } from "@formisch/react";
 import "./selector-option.css";
 
 interface Props {
-  /** Text to display inside the radio option. */
+  /** Text to display inside the selector option. */
   children: ReactNode;
 
-  /** Unique identifier of the parent radio group to make sure only one radio option is active. */
+  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
   id?: string;
 
   /** An instance of a Formisch form. */
@@ -21,7 +21,7 @@ interface Props {
 
 export default function SelectorOption({ children, id, field, value }: Props) {
   // Safeguard
-  if (!id) return <p>Pass an id to know which field this radio belongs</p>;
+  if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
   // Properties
@@ -35,7 +35,7 @@ export default function SelectorOption({ children, id, field, value }: Props) {
   }
 
   return (
-    <label className="radio-option">
+    <label className="selector-option">
       <input
         {...field.props}
         checked={field.input === stringValue}
