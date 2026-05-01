@@ -1,23 +1,56 @@
 // Node modules
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import {
+  autoUpdate,
+  flip,
+  FloatingFocusManager,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useRole,
+} from "@floating-ui/react";
 
 // Project files
 import Icon from "components/icon/Icon";
 import "./tooltip-trigger.css";
 
-interface Props {
-  /**  Text and/or icon to display inside the button. */
-  children: ReactNode;
-}
+export default function TooltipTrigger() {
+  // Local state
+  const [isOpen, setIsOpen] = useState(false);
 
-export default function TooltipTrigger({ children }: Props) {
-  function onClick() {
-    alert(`clickend on tooltip to render ${children}`);
-  }
+  // Global state
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [offset(10), flip(), shift()],
+    whileElementsMounted: autoUpdate,
+  });
+
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
+  const role = useRole(context);
+
+  // Merge all the interactions into prop getters
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
 
   return (
-    <button className="tooltip-trigger" onClick={onClick}>
-      <Icon name="info" />
-    </button>
+    <>
+      {/* Trigger */}
+      <button className="tooltip-trigger" ref={refs.setReference} {...getReferenceProps()}>
+        <Icon name="info" />
+      </button>
+
+      {/* Window */}
+      {isOpen && (
+        <FloatingFocusManager context={context} modal={false}>
+          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="Popover">
+            Popover element
+          </div>
+        </FloatingFocusManager>
+      )}
+    </>
   );
 }

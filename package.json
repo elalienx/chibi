@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
+    "@floating-ui/react": "^0.27.19",
     "@formisch/react": "^0.4.5",
     "astro": "^6.1.10",
     "react": "^19.2.5",
