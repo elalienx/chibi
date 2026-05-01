@@ -15,7 +15,7 @@ interface Props {
 
 export default function TooltipTrigger({ setReference, getReferenceProps }: Props) {
   return (
-    <button className="tooltip-trigger" ref={setReference} {...getReferenceProps()}>
+    <button type="button" className="tooltip-trigger" ref={setReference} {...getReferenceProps()}>
       <Icon name="circle-info" />
     </button>
   );

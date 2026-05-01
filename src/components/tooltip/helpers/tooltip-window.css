@@ -1,5 +1,5 @@
 .tooltip-window {
-  max-width: 540px;
+  max-width: 90%;
   padding: var(--space-medium);
   background-color: white;
   border-radius: var(--border-radius);
@@ -12,5 +12,18 @@
 /* The pointy arrow */
 .tooltip-window > svg {
   fill: white;
-  /* padding-inline: var(--border-radius);  */
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .tooltip-window {
+    max-width: 400px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .tooltip-window {
+    max-width: 540px;
+  }
 }
