@@ -4,8 +4,6 @@ import {
   arrow,
   autoUpdate,
   flip,
-  FloatingArrow,
-  FloatingFocusManager,
   offset,
   shift,
   useClick,
@@ -16,11 +14,11 @@ import {
 } from "@floating-ui/react";
 
 // Project files
-import "./helpers/tooltip-window.css";
 import TooltipTrigger from "./helpers/TooltipTrigger";
+import TooltipWindow from "./helpers/TooltipWindow";
 
 interface Props {
-  /**  Text and/or icon to display inside the button. */
+  /**  Text or HTML content to display inside the tooltip. */
   children: ReactNode;
 }
 
@@ -53,12 +51,15 @@ export default function Tooltip({ children }: Props) {
 
       {/* Window */}
       {isOpen && (
-        <FloatingFocusManager context={context} modal={false}>
-          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window">
-            <FloatingArrow ref={arrowRef} context={context} stroke="rgba(0,0,0,0.08)" strokeWidth={1} />
-            {children}
-          </div>
-        </FloatingFocusManager>
+        <TooltipWindow
+          setFloating={refs.setFloating}
+          floatingStyles={floatingStyles}
+          getFloatingProps={getFloatingProps}
+          context={context}
+          arrowRef={arrowRef}
+        >
+          {children}
+        </TooltipWindow>
       )}
     </>
   );
