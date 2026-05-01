@@ -1,0 +1,44 @@
+.selector-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  height: var(--height-of-field);
+  padding-inline: var(--space-medium);
+  background-color: white; /* In case it is used on a non-white background. */
+  border: solid 1px var(--input-border-up);
+  border-radius: var(--border-radius);
+  color: var(--color-green-40);
+  font-weight: var(--font-weight-bold);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
+
+  /* Removes the radio bullet/dot */
+  & input[type="radio"] {
+    appearance: none;
+    margin: 0;
+    width: 0;
+  }
+
+  /* Animation */
+  transition:
+    background-color 0.15s ease-in,
+    border-color 0.15s ease-in;
+}
+
+/**
+ * The <input type="radio"/> is placed inside a <label>.
+ * We use the CSS :has() selector to style the label
+ * based on the input’s state (hover or checked).
+ */
+.selector-option:has(input[type="radio"]:hover) {
+  background-color: var(--input-background-hover);
+}
+
+.selector-option:has(input[type="radio"]:checked) {
+  --color-background: var(--color-green-40);
+
+  background-color: var(--color-background);
+  color: white;
+  border-color: var(--color-background);
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0px inset;
+}

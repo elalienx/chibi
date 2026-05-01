@@ -8,8 +8,8 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
+import SelectorGroup from "components/selector-group/SelectorGroup";
+import SelectorOption from "components/selector-option/SelectorOption";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import type { PropertyType } from "../types/PropertyType";
@@ -57,11 +57,11 @@ export default function Step2({ setStep, propertyType }: Props) {
         </header>
 
         {isTerracedHouse && (
-          <RadioGroup form={form} id="tenancy_type">
+          <SelectorGroup form={form} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
-            <RadioOption value="agreement">Bostadsrätt</RadioOption>
-            <RadioOption value="ownership">Äganderätt</RadioOption>
-          </RadioGroup>
+            <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
+            <SelectorOption value="ownership">Äganderätt</SelectorOption>
+          </SelectorGroup>
         )}
 
         <InputField form={form} id="size">
