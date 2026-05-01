@@ -1,8 +1,10 @@
 // Node modules
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import {
+  arrow,
   autoUpdate,
   flip,
+  FloatingArrow,
   FloatingFocusManager,
   offset,
   shift,
@@ -23,17 +25,19 @@ interface Props {
   children: ReactNode;
 }
 
-const SPACE_TINY = 2; // Refactor put all sizes in a const file
+const SPACE_SMALL = 12; // Refactor put all sizes in a const file
 
 export default function Tooltip({ children }: Props) {
   // Local state
   const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
 
   // Global state
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    middleware: [offset(SPACE_TINY), flip(), shift()],
+    placement: "top",
+    middleware: [offset(SPACE_SMALL), flip(), shift(), arrow({ element: arrowRef })],
     whileElementsMounted: autoUpdate,
   });
 
@@ -53,7 +57,8 @@ export default function Tooltip({ children }: Props) {
       {/* Window */}
       {isOpen && (
         <FloatingFocusManager context={context} modal={false}>
-          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="Popover tooltip-window">
+          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window">
+            <FloatingArrow ref={arrowRef} context={context} stroke="rgba(0,0,0,0.08)" strokeWidth={1} />
             {children}
           </div>
         </FloatingFocusManager>
