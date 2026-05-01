@@ -18,7 +18,7 @@ import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
-import { tooltips } from "./tooltips";
+import Tooltips from "./Tooltips2";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -64,7 +64,7 @@ export default function Step2({ setStep, propertyType }: Props) {
 
         {isTerracedHouse && (
           <SelectorGroup form={form} id="tenancy_type">
-            <Label tooltip={tooltips["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
+            <Label tooltip={Tooltips["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
             <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
             <SelectorOption value="ownership">Äganderätt</SelectorOption>
           </SelectorGroup>
@@ -76,20 +76,20 @@ export default function Step2({ setStep, propertyType }: Props) {
         </InputField>
 
         <InputField form={form} id="rooms">
-          <Label>Antal rum</Label>
+          <Label tooltip={Tooltips["rooms"]}>Antal rum</Label>
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
         {hasMonthlyFee && (
           <InputField form={form} id="monthly_fee">
-            <Label>Månadsavgift</Label>
+            <Label tooltip={Tooltips["monthly_fee"]}>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
         {hasOperatingCost && (
           <InputField form={form} id="operating_cost">
-            <Label>Driftskostnad</Label>
+            <Label tooltip={Tooltips["operating_cost"]}>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
