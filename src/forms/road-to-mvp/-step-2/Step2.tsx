@@ -13,8 +13,8 @@ import RadioOption from "components/radio-option/RadioOption";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import type { PropertyType } from "../types/PropertyType";
-import requiresMonthlyFee from "./requiresMonthlyFee";
-import requiresOperatingCost from "./requiresOperatingCost";
+import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
+import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
 
