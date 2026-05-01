@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // Properties
 
 export default defineConfig({
-  testDir: "./",
+  testDir: "./playwright",
   snapshotDir: "./__snapshots__",
   timeout: process.env.CI ? 10_000 : 1_000,
   fullyParallel: true,
