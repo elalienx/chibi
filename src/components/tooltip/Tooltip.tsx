@@ -1,5 +1,5 @@
 // Node modules
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import {
   autoUpdate,
   flip,
@@ -15,9 +15,9 @@ import {
 
 // Project files
 import Icon from "components/icon/Icon";
-import "./tooltip-trigger.css";
 
-export default function TooltipTrigger() {
+
+export default function Tooltip() {
   // Local state
   const [isOpen, setIsOpen] = useState(false);
 
