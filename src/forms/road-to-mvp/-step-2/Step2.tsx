@@ -18,7 +18,7 @@ import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import getSchema from "./schema";
 import "./step-2.css";
-import Tooltips from "./Tooltips2";
+import Tooltips from "./Tooltips";
 
 interface Props {
   /** Allows a button to change what step to display. */
