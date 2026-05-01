@@ -7,7 +7,7 @@ body {
   font-size: var(--font-size-normal);
   font-family: var(--font-family);
   font-weight: var(--font-weight-normal);
-  -webkit-font-smoothing: antialiased; /* To make text look great on Apple devices. */
+  -webkit-font-smoothing: antialiased; /* To make text look great on Apple devices */
 }
 
 p {
