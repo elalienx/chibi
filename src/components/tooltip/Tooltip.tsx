@@ -16,9 +16,9 @@ import {
 } from "@floating-ui/react";
 
 // Project files
-import Icon from "components/icon/Icon";
 import "./helpers/tooltip-trigger.css";
 import "./helpers/tooltip-window.css";
+import TooltipTrigger from "./helpers/TooltipTrigger";
 
 interface Props {
   /**  Text and/or icon to display inside the button. */
@@ -50,9 +50,7 @@ export default function Tooltip({ children }: Props) {
   return (
     <>
       {/* Trigger */}
-      <button className="tooltip-trigger" ref={refs.setReference} {...getReferenceProps()}>
-        <Icon name="circle-info" />
-      </button>
+      <TooltipTrigger setReference={refs.setReference} getReferenceProps={getReferenceProps} />
 
       {/* Window */}
       {isOpen && (
