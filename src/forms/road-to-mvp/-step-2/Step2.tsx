@@ -32,7 +32,12 @@ export default function Step2({ setStep, propertyType }: Props) {
   const { updateApplication } = useApplication();
 
   // Local state
-  const form = useForm({ schema: getSchema(propertyType), validate: "blur", revalidate: "blur" });
+  const form = useForm({
+    schema: getSchema(propertyType),
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: { tenancy_type: "ownership" },
+  });
 
   // Properties
   const isTerracedHouse = propertyType === "terraced_house";
