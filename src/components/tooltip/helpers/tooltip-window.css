@@ -1,5 +1,11 @@
+/* Outer wrapper for the content and pointy arrow */
 .tooltip-window {
   max-width: 90%;
+}
+
+/* The content area */
+.tooltip-window .content {
+  margin-inline: var(--space-medium);
   padding: var(--space-medium);
   background-color: white;
   border-radius: var(--border-radius);

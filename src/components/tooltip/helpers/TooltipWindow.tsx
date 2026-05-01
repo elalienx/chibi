@@ -37,7 +37,7 @@ export default function TooltipWindow({
     <FloatingFocusManager context={context} modal={false}>
       <div ref={setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window">
         <FloatingArrow ref={arrowRef} context={context} stroke="rgba(0,0,0,0.08)" strokeWidth={1} />
-        {children}
+        <div className="content">{children}</div>
       </div>
     </FloatingFocusManager>
   );
