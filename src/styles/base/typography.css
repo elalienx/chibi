@@ -17,7 +17,6 @@ p {
     margin-bottom: 0; /** To avoid adding space at the bottom of the last paragraph. */
   }
 }
-
 code {
   color: var(--color-blue-20);
 }
