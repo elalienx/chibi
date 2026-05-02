@@ -9,13 +9,14 @@ import Label from "components/label/Label";
  *
  * This method replicates it so any wrapper form field can pass props to the `<Label/>`.
  */
-export default function extractLabel(id: string, children: ReactNode) {
+export default function extractLabel(id: string, children: ReactNode, hint?: string | ReactNode) {
   // Properties
   const reactComponents = Children.toArray(children);
   const label = reactComponents.find((child) => isValidElement(child) && child.type === Label);
+  const hintFromParent = hint !== undefined ? { hint } : {}; // used if the parent send us the hint, to avoid overwritting the one send directly to the <Label>
 
   // Safeguard
   if (!label) return null;
 
-  return cloneElement(label as any, { id } as any);
+  return cloneElement(label as any, { id, ...hintFromParent } as any);
 }

@@ -18,9 +18,12 @@ interface Props {
 
   /** An instance of a Formisch form. */
   form: FormStore;
+
+  /** All the possible tooltips hints available in this form. */
+  hints?: Record<string, ReactNode>;
 }
 
-export default function SelectorGroup({ children, id, form }: Props) {
+export default function SelectorGroup({ children, id, form, hints }: Props) {
   // Safeguard
   if (!children) return <p>Please add a Label and at least two SelectorOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
@@ -33,7 +36,8 @@ export default function SelectorGroup({ children, id, form }: Props) {
   const ariaErrorId = `aria-error-${id}`;
 
   // Components
-  const label = extractLabel(id, children);
+  const hint = hints?.[id];
+  const label = extractLabel(id, children, hint);
   const selectorOptions = extractSelectorOptions(id, children, field);
 
   return (

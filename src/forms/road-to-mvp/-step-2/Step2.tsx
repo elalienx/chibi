@@ -16,8 +16,8 @@ import type { PropertyType } from "../types/PropertyType";
 import checkTenacyType from "./helpers/checkTenancyType";
 import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
+import Hints from "./Hints";
 import getSchema from "./schema";
-import Tooltips from "./Tooltips";
 import "./step-2.css";
 
 interface Props {
@@ -63,8 +63,8 @@ export default function Step2({ setStep, propertyType }: Props) {
         </header>
 
         {isTerracedHouse && (
-          <SelectorGroup form={form} id="tenancy_type">
-            <Label tooltip={Tooltips["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
+          <SelectorGroup form={form} hints={Hints} id="tenancy_type">
+            <Label tooltip={Hints["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
             <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
             <SelectorOption value="ownership">Äganderätt</SelectorOption>
           </SelectorGroup>
@@ -75,21 +75,21 @@ export default function Step2({ setStep, propertyType }: Props) {
           <Input type="number" placeholder="0" suffix="kvm" />
         </InputField>
 
-        <InputField form={form} id="rooms">
-          <Label tooltip={Tooltips["rooms"]}>Antal rum</Label>
+        <InputField form={form} hints={Hints} id="rooms">
+          <Label tooltip={Hints["rooms"]}>Antal rum</Label>
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
         {hasMonthlyFee && (
-          <InputField form={form} id="monthly_fee">
-            <Label tooltip={Tooltips["monthly_fee"]}>Månadsavgift</Label>
+          <InputField form={form} hints={Hints} id="monthly_fee">
+            <Label tooltip={Hints["monthly_fee"]}>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
         {hasOperatingCost && (
-          <InputField form={form} id="operating_cost">
-            <Label tooltip={Tooltips["operating_cost"]}>Driftskostnad</Label>
+          <InputField form={form} hints={Hints} id="operating_cost">
+            <Label tooltip={Hints["operating_cost"]}>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
