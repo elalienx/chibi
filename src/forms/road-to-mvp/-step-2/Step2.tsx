@@ -64,7 +64,7 @@ export default function Step2({ setStep, propertyType }: Props) {
 
         {isTerracedHouse && (
           <SelectorGroup form={form} hints={Hints} id="tenancy_type">
-            <Label tooltip={Hints["tenancy_type"]}>Vad har radhuset för upplåtelseform?</Label>
+            <Label>Vad har radhuset för upplåtelseform?</Label>
             <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
             <SelectorOption value="ownership">Äganderätt</SelectorOption>
           </SelectorGroup>
@@ -76,20 +76,20 @@ export default function Step2({ setStep, propertyType }: Props) {
         </InputField>
 
         <InputField form={form} hints={Hints} id="rooms">
-          <Label tooltip={Hints["rooms"]}>Antal rum</Label>
+          <Label>Antal rum</Label>
           <Input type="number" placeholder="0" suffix="st" />
         </InputField>
 
         {hasMonthlyFee && (
           <InputField form={form} hints={Hints} id="monthly_fee">
-            <Label tooltip={Hints["monthly_fee"]}>Månadsavgift</Label>
+            <Label>Månadsavgift</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
 
         {hasOperatingCost && (
           <InputField form={form} hints={Hints} id="operating_cost">
-            <Label tooltip={Hints["operating_cost"]}>Driftskostnad</Label>
+            <Label>Driftskostnad</Label>
             <Input type="number" placeholder="0" suffix="kr/mån" />
           </InputField>
         )}
