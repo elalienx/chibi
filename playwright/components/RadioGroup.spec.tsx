@@ -1,11 +1,12 @@
 // Node modules
 // @ts-ignore
 import type { Locator } from "@playwright/test";
-import { test, expect } from "@playwright/experimental-ct-react";
+import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
 import FormPage from "forms/example-2/FormPage";
 
+let component: MountResult;
 let cleanUpText: Locator;
 let radio1_error: Locator;
 let radio1_optionA: Locator;
@@ -14,8 +15,7 @@ let radio2_optionA: Locator;
 let submitButton: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  const component = await mount(<FormPage />);
-
+  component = await mount(<FormPage />);
   radio1_optionA = component.locator("#likes_beer").getByText("Yes");
   radio2_optionA = component.locator("#likes_guiness").getByText("Yes");
   radio1_error = component.locator("#aria-error-likes_beer");
@@ -26,6 +26,9 @@ test.beforeEach(async ({ mount }) => {
 
 test.afterEach(async () => {
   await expect(cleanUpText).toBeVisible();
+
+  // Only run visual regression locally
+  if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
 test("1. Should show error state when submitting empty form", async () => {

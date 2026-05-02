@@ -1,13 +1,14 @@
 // Node modules
 // @ts-ignore
 import type { Locator } from "@playwright/test";
-import { test, expect } from "@playwright/experimental-ct-react";
+import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
 import FormPage from "forms/example-1/FormPage";
 
 const validName = "Eduardo";
 const invalidName = "Ed"; // Below minimum length
+let component: MountResult;
 let cleanUpText: Locator;
 let input1: Locator;
 let input2: Locator;
@@ -16,8 +17,7 @@ let wrapper1: Locator;
 let wrapper2: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  const component = await mount(<FormPage />);
-
+  component = await mount(<FormPage />);
   cleanUpText = component.getByText("Text to clean Playwright selector");
   input1 = component.getByRole("textbox", { name: "Full name" });
   input2 = component.getByRole("textbox", { name: "Age" });
@@ -28,6 +28,9 @@ test.beforeEach(async ({ mount }) => {
 
 test.afterEach(async () => {
   await expect(cleanUpText).toBeVisible();
+
+  // Only run visual regression locally
+  if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
 test("1. Should show error state when submitting empty form", async () => {
