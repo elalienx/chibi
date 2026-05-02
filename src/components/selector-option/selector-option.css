@@ -8,7 +8,7 @@
   background-color: white; /* In case it is used on a non-white background. */
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
-  color: var(--color-green-40);
+  color: var(--color-green-30);
   font-weight: var(--font-weight-bold);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
 
@@ -22,7 +22,7 @@
   /* Animation */
   transition:
     background-color 0.15s ease-in,
-    border-color 0.15s ease-in;
+    color 0.15s ease-in;
 }
 
 /**
@@ -31,7 +31,7 @@
  * based on the input’s state (hover or checked).
  */
 .selector-option:has(input[type="radio"]:hover) {
-  background-color: var(--input-background-hover);
+  background-color: var(--color-green-95);
 }
 
 .selector-option:has(input[type="radio"]:checked) {
