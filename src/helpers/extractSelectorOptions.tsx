@@ -10,7 +10,7 @@ import SelectorOption from "components/selector-option/SelectorOption";
  *
  * This method replicates it so `<SelectorGroup/>` can pass props to any `<SelectorOption/>`.
  */
-export default function extractRadioOptions(children: ReactNode, id: string, field: FieldStore) {
+export default function extractRadioOptions(id: string, children: ReactNode, field: FieldStore) {
   return Children.toArray(children)
     .filter((child) => isValidElement(child) && child.type === SelectorOption)
     .map((child) => cloneElement(child as any, { id, field } as any));

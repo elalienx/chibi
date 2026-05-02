@@ -10,7 +10,7 @@ import Input from "components/input/Input";
  *
  * This method replicates it so `<InputField/>` can pass props to the `<Input/>`.
  */
-export default function extractInput(children: ReactNode, id: string, form: FormStore) {
+export default function extractInput(id: string, children: ReactNode, form: FormStore) {
   // Properties
   const reactComponents = Children.toArray(children);
   const input = reactComponents.find((child) => isValidElement(child) && child.type === Input);

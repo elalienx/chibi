@@ -5,14 +5,14 @@ import type { ReactNode } from "react";
 import "./validation-message.css";
 
 interface Props {
-  /**  Content to display inside the input field. */
-  children: ReactNode;
-
   /** A unique identifier for accessibility errors. */
   ariaErrorId: string;
+
+  /**  Content to display inside the input field. */
+  children: ReactNode;
 }
 
-export default function ValidationMessage({ children, ariaErrorId }: Props) {
+export default function ValidationMessage({ ariaErrorId, children }: Props) {
   return (
     <div id={ariaErrorId} className="validation-message">
       <div className="pointy-arrow">{/* Stylized using CSS */}</div>
