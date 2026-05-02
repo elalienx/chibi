@@ -12,13 +12,13 @@ import RadioOption from "components/radio-option/RadioOption";
 import Tooltip from "components/tooltip/Tooltip";
 
 const schema = v.object({
-  name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Name must not be empty.")),
+  name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Please enter your full name.")),
   likes_beer: v.string("Say either yes or no."),
 });
 
 const hints = {
   name: "Write both your first and last name.",
-  likes_beer: "You can see yes if you like cide as well.",
+  likes_beer: "You can see yes if you like Cider as well.",
 };
 
 export default function FormPage() {
@@ -36,12 +36,10 @@ export default function FormPage() {
         <header>
           <h4>Tooltip tests</h4>
           <p>
-            The <code>InputField</code> and <code>RadioGroup</code> are added here to make sure clickign on the tooltip
-            does not trigger a form submission.
+            The <code>InputField</code> and <code>RadioGroup</code> are added to make sure clicking the tooltip don't
+            trigger a form submission. <Tooltip>Click me for more info</Tooltip>
           </p>
         </header>
-
-        <Tooltip>Click me for more info</Tooltip>
 
         <InputField form={form} hints={hints} id="name">
           <Label>Full name</Label>
