@@ -9,7 +9,7 @@ import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 
 const schema = v.object({
-  likes_beer: v.pipe(v.string("Say either yes or no.")),
+  likes_beer: v.string("Say either yes or no."),
   likes_guiness: v.pipe(
     v.string("Say either yes or no."),
     v.transform((value) => value === "true"), // converts to boolean

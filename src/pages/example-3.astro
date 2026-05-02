@@ -1,0 +1,15 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import FormPage from "forms/example-3/FormPage"
+
+import "styles/pages/example.css";
+---
+
+<BaseLayout title="Tooltip tests" description="Example of a form with Aphrodite Chibi">
+  <main>
+    <FormPage client:visible />
+    <footer>
+      <a href="/">Go back to home</a>
+    </footer>
+  </main>
+</BaseLayout>
