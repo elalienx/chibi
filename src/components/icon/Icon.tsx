@@ -9,7 +9,6 @@ interface Props {
 
 export default function Icon({ name }: Props) {
   // Properties
-  // @ts-ignore
   const icon = icons[name] || icons._default;
   const boundingBox = `0 0 ${icon.width} 640`;
 
