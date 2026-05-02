@@ -10,11 +10,11 @@ import extractRadioOptions from "helpers/extractRadioOptions";
 import "./radio-group.css";
 
 interface Props {
-  /**  Content to display inside the input field. */
-  children?: ReactNode;
-
   /** Unique identifier of the parent input group to make sure only one radio option is active. */
   id: string;
+
+  /**  Content to display inside the input field. */
+  children?: ReactNode;
 
   /** An instance of a Formisch form. */
   form: FormStore;
@@ -33,8 +33,8 @@ export default function RadioGroup({ children, id, form }: Props) {
   const ariaErrorId = `aria-error-${id}`;
 
   // Components
-  const label = extractLabel(children, id);
-  const radioOptions = extractRadioOptions(children, id, field);
+  const label = extractLabel(id, children);
+  const radioOptions = extractRadioOptions(id, children, field);
 
   return (
     <div className="radio-group">
