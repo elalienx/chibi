@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
+  gap: var(--space-base);
   height: var(--height-of-field);
   padding-inline: var(--space-medium);
   background-color: white; /* In case it is used on a non-white background. */

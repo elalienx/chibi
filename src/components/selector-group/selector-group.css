@@ -9,7 +9,7 @@
 
   .selector-options {
     display: flex;
-    gap: var(--space-small);
+    gap: var(--space-xs);
     justify-content: center;
   }
 }
