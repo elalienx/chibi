@@ -11,6 +11,7 @@ const radioValidationError = "Say either yes or no.";
 const tooltipText1 = "Click me for more info";
 const tooltipText2 = "Write both your first and last name.";
 const tooltipText3 = "You can see yes if you like Cider as well.";
+const tooltipText4 = "Guiness is the best option.";
 
 let cleanUpText: Locator;
 let component: MountResult;
@@ -18,6 +19,7 @@ let radio_option: Locator;
 let tooltip1: Locator;
 let tooltip2: Locator;
 let tooltip3: Locator;
+let tooltip4: Locator;
 
 test.beforeEach(async ({ mount }) => {
   component = await mount(<FormPage />);
@@ -25,6 +27,7 @@ test.beforeEach(async ({ mount }) => {
   tooltip1 = component.locator("header").getByRole("button");
   tooltip2 = component.locator("label").filter({ hasText: "Full name" }).getByRole("button");
   tooltip3 = component.locator("label").filter({ hasText: "Do you like beer?" }).getByRole("button");
+  tooltip4 = component.locator("label").filter({ hasText: "Which brand do you like the most?" }).getByRole("button");
   cleanUpText = component.getByText("Text to clean Playwright selector");
 });
 
@@ -89,4 +92,12 @@ test("3. Clicking on another tooltip closes the previous one", async () => {
     await expect(component.getByText(tooltipText2)).not.toBeVisible();
     await expect(component.getByText(tooltipText3)).toBeVisible();
   });
+});
+
+test("4. Can render a tooltip if the parent hints fail but the child label has a backup hint", async () => {
+  // Act
+  await tooltip4.click();
+
+  // Assert
+  await expect(component.getByText(tooltipText4)).toBeVisible();
 });

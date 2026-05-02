@@ -10,10 +10,13 @@ import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 import Tooltip from "components/tooltip/Tooltip";
+import SelectorGroup from "components/selector-group/SelectorGroup";
+import SelectorOption from "components/selector-option/SelectorOption";
 
 const schema = v.object({
   name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Please enter your full name.")),
   likes_beer: v.string("Say either yes or no."),
+  favorite_brand: v.string("Choose a brand."),
 });
 
 const hints = {
@@ -51,6 +54,12 @@ export default function FormPage() {
           <RadioOption value="yes">Yes</RadioOption>
           <RadioOption value="no">No</RadioOption>
         </RadioGroup>
+
+        <SelectorGroup form={form} hints={hints} id="favorite_brand">
+          <Label hint="Guiness is the best option.">Which brand do you like the most?</Label>
+          <SelectorOption value="guiness">Guiness</SelectorOption>
+          <SelectorOption value="heineken">Heineken</SelectorOption>
+        </SelectorGroup>
       </section>
 
       <hr />
