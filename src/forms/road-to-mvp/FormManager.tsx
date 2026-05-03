@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 // Project files
-import type { Step } from "./types/Step";
 import IntroStep from "./-intro-step/IntroStep";
 import Step1 from "./-step-1/Step1";
 import Step2 from "./-step-2/Step2";
 import Success from "./-success-step/Success";
 import useApplication from "./state/useApplication";
+import type { Step } from "./types/Step";
 
 export default function FormManager() {
   // Global state
