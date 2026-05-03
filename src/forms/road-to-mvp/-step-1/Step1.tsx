@@ -26,7 +26,7 @@ export default function Step2({ setStep }: Props) {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Properties
-  const hintProperty = "Här anger du vilken typ av bostad lånet avser.";
+  const propertyTypeHint = "Här anger du vilken typ av bostad lånet avser.";
 
   // Methods
   function submitForm(values: object) {
@@ -45,7 +45,7 @@ export default function Step2({ setStep }: Props) {
         </header>
 
         <RadioGroup form={form} id="property_type">
-          <Label hint={hintProperty}>För vilken typ av bostad söker du lån</Label>
+          <Label hint={propertyTypeHint}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>
           <RadioOption value={terracedHouse}>Radhus</RadioOption>
