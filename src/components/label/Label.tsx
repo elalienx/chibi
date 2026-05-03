@@ -20,8 +20,6 @@ export default function Label({ id, children, hint }: Props) {
   // Safeguard
   if (!id) return <p>Please pass an id to connect this label to a formulary field</p>;
 
-  console.log(hint);
-
   return (
     <label className="label" htmlFor={id}>
       {children}
