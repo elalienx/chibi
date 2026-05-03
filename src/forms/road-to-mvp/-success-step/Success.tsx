@@ -27,7 +27,7 @@ export default function Success({ setStep }: Props) {
     <div id="success" className="soft-background">
       <section className="top">
         <header>
-          <h3>Form submitted</h3>
+          <h4>Form submitted</h4>
         </header>
 
         <div className="content">
