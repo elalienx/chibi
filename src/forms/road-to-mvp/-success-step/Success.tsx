@@ -30,14 +30,16 @@ export default function Success({ setStep }: Props) {
           <h3>Form submitted</h3>
         </header>
 
-        <p>
-          You choose a {application.size}m {application.property_type} with {application.rooms} rooms.
-        </p>
-        <p>
-          Therefore your {feeType} is {feePrice} SEK.
-        </p>
-        <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
-        <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
+        <div className="content">
+          <p>
+            You choose a {application.size}m {application.property_type} with {application.rooms} rooms.
+          </p>
+          <p>
+            Therefore your {feeType} is {feePrice} SEK.
+          </p>
+          <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
+          <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
+        </div>
       </section>
 
       <hr />
