@@ -39,7 +39,7 @@ export default function FormPage() {
         <header>
           <h4>Tooltip tests</h4>
           <p>
-            The <code>InputField</code> and <code>RadioGroup</code> are added to make sure clicking the tooltip don't
+            The <code>InputField</code> and <code>RadioGroup</code> was added to make sure clicking the tooltip don't
             trigger a form submission. <Tooltip>Click me for more info</Tooltip>
           </p>
         </header>
