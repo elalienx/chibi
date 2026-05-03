@@ -6,7 +6,7 @@ import type { FormStore } from "@formisch/react";
 // Project files
 import calculateInputState from "./helpers/calculateInputState";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
-import parseDigits from "./helpers/parseDigits";
+import parseNumbers from "./helpers/parseDigits";
 import type { InputState } from "./helpers/InputState";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
@@ -41,11 +41,13 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   const [fieldIsFocused, setFieldIsFocused] = useState(false);
 
   // Properties
+  const isNumber = type === "number";
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const cssTypeNumber = type === "number" ? "type-number" : "";
-  const curatedType = type === "number" ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
+  const cssTypeNumber = isNumber ? "type-number" : "";
+  const curatedType = isNumber ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
   const mobileKeyboard = getCorrectMobileKeyboard(type);
+  const customPlaceholder = placeholder ?? (isNumber ? "0" : undefined);
 
   // Methods
   useEffect(
@@ -63,8 +65,8 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
-    if (type === "number") {
-      event.target.value = parseDigits(event.target.value);
+    if (isNumber) {
+      event.target.value = parseNumbers(event.target.value);
     }
 
     field.props.onChange(event);
@@ -88,7 +90,7 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
-        placeholder={placeholder}
+        placeholder={customPlaceholder}
         type={curatedType}
       />
       {suffix && <span className="suffix">{suffix}</span>}

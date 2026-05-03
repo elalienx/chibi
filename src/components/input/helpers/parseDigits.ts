@@ -3,7 +3,7 @@
  *
  * This method cleans the user input to only allow the digits `0` to `9`.
  */
-export default function parseDigits(value: string): string {
+export default function parseNumbers(value: string): string {
   const nonDigits: RegExp = /\D/g;
   const parsedDigits = value.replace(nonDigits, "");
 

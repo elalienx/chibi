@@ -72,25 +72,25 @@ export default function Step2({ setStep, propertyType }: Props) {
 
         <InputField form={form} id="size">
           <Label>Kvadratmeter</Label>
-          <Input type="number" placeholder="0" suffix="kvm" />
+          <Input type="number" suffix="kvm" />
         </InputField>
 
         <InputField form={form} hints={Hints} id="rooms">
           <Label>Antal rum</Label>
-          <Input type="number" placeholder="0" suffix="st" />
+          <Input type="number" suffix="st" />
         </InputField>
 
         {hasMonthlyFee && (
           <InputField form={form} hints={Hints} id="monthly_fee">
             <Label>Månadsavgift</Label>
-            <Input type="number" placeholder="0" suffix="kr/mån" />
+            <Input type="number" suffix="kr/mån" />
           </InputField>
         )}
 
         {hasOperatingCost && (
           <InputField form={form} hints={Hints} id="operating_cost">
             <Label>Driftskostnad</Label>
-            <Input type="number" placeholder="0" suffix="kr/mån" />
+            <Input type="number" suffix="kr/mån" />
           </InputField>
         )}
       </section>
