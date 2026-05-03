@@ -8,17 +8,17 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
-import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
 
 interface Props {
   /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
 }
 
-export default function Step2({ setStep }: Props) {
+export default function Step1({ setStep }: Props) {
   // Global state
   const { updateApplication } = useApplication();
 
