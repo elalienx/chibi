@@ -17,14 +17,14 @@ const schema = v.object({
   age: v.pipe(
     v.string("Please enter your age."),
     v.nonEmpty("Age must not be empty."),
-    v.toNumber("Age be a valid number."),
-    v.minValue(18, "You must be at least 18 year old to register."),
+    v.toNumber("Age must be a valid number."),
+    v.minValue(18, "You must be at least 18 years old to register."),
     v.maxValue(99, "The maximum age allowed to register is 99"),
   ),
 });
 
 export default function FormPage() {
-  // Properties
+  // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Methods
