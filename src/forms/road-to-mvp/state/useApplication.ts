@@ -23,10 +23,10 @@ const store: StateCreator<Store> = (set) => ({
   updateApplication: (updates) => set((state) => ({ application: { ...state.application, ...updates } })),
 });
 
-const persistOptions: PersistOptions<Store> = {
+const localStorage: PersistOptions<Store> = {
   name: "mortgage-application",
 };
 
-const useApplication = create<Store>()(persist(store, persistOptions));
+const useApplication = create<Store>()(persist(store, localStorage));
 
 export default useApplication;
