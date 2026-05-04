@@ -37,6 +37,7 @@ export default function Step2({ setStep, propertyType }: Props) {
     schema: getSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
+    initialInput: { tenancy_type: "ownership" },
   });
 
   // Properties
