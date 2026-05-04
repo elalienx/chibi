@@ -1,5 +1,6 @@
 // Node modules
-import { create } from "zustand";
+import { create, type StateCreator } from "zustand";
+import { persist, type PersistOptions } from "zustand/middleware";
 
 // Project files
 import initialApplication from "../data/initialApplication";
@@ -16,11 +17,16 @@ interface Store {
   updateApplication: (updates: Partial<Application>) => void;
 }
 
-/** A Zustand store for the mortgage loan application and its available methods. */
-const useApplication = create<Store>((set) => ({
+const store: StateCreator<Store> = (set) => ({
   application: initialApplication,
   clearApplication: () => set({ application: initialApplication }),
   updateApplication: (updates) => set((state) => ({ application: { ...state.application, ...updates } })),
-}));
+});
+
+const localStorage: PersistOptions<Store> = {
+  name: "mortgage-application",
+};
+
+const useApplication = create<Store>()(persist(store, localStorage));
 
 export default useApplication;
