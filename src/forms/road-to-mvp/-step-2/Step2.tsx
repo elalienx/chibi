@@ -30,7 +30,7 @@ interface Props {
 
 export default function Step2({ setStep, propertyType }: Props) {
   // Global state
-  const { updateApplication } = useApplication();
+  const { application, updateApplication } = useApplication();
 
   // Local state
   const form = useForm({
