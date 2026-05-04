@@ -30,14 +30,13 @@ interface Props {
 
 export default function Step2({ setStep, propertyType }: Props) {
   // Global state
-  const { application, updateApplication } = useApplication();
+  const { updateApplication } = useApplication();
 
   // Local state
   const form = useForm({
     schema: getSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
-    initialInput: application,
   });
 
   // Properties
