@@ -20,10 +20,10 @@ interface Props {
 
 export default function Step1({ setStep }: Props) {
   // Global state
-  const { application, updateApplication } = useApplication();
+  const { updateApplication } = useApplication();
 
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: application });
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Properties
   const propertyTypeHint = "Här anger du vilken typ av bostad lånet avser.";
