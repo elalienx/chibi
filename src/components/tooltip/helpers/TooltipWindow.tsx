@@ -3,6 +3,7 @@ import { type CSSProperties, type ReactNode, type RefObject } from "react";
 import { FloatingArrow, FloatingFocusManager, type FloatingContext } from "@floating-ui/react";
 
 // Project files
+import Icon from "components/icon/Icon";
 import "./tooltip-window.css";
 
 interface Props {
@@ -38,6 +39,9 @@ export default function TooltipWindow({
       <div ref={setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window">
         <FloatingArrow ref={arrowRef} context={context} stroke="rgba(0,0,0,0.08)" strokeWidth={1} />
         <div className="content">{children}</div>
+        <button type="button" className="close-button" onClick={() => context.onOpenChange(false)}>
+          <Icon name="x-mark" />
+        </button>
       </div>
     </FloatingFocusManager>
   );
