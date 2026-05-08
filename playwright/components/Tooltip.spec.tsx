@@ -11,7 +11,7 @@ const radioValidationError = "Say either yes or no.";
 const tooltipText1 = "Click me for more info";
 const tooltipText2 = "Write both your first and last name.";
 const tooltipText3 = "You can see yes if you like Cider as well.";
-const tooltipText4 = "Guiness is the best option.";
+const tooltipText4 = "About Guiness!";
 
 let cleanUpText: Locator;
 let component: MountResult;
