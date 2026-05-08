@@ -6,7 +6,7 @@ export const richContentTooltip = (
       <a href="floating-ui.com" target="_blank">
         Floating UI
       </a>{" "}
-      = to handle the tooltips.
+      to handle the tooltips.
     </p>
     <p>However, we are closely looking for a native implementation for:</p>
     <ul>
