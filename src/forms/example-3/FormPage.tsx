@@ -12,7 +12,7 @@ import RadioOption from "components/radio-option/RadioOption";
 import Tooltip from "components/tooltip/Tooltip";
 import SelectorGroup from "components/selector-group/SelectorGroup";
 import SelectorOption from "components/selector-option/SelectorOption";
-import richContentTooltip from "./RichContentTooltip2";
+import richContentTooltip, { GuinessTooltip } from "./GuinessTooltip";
 
 const schema = v.object({
   name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Please enter your full name.")),
@@ -41,7 +41,7 @@ export default function FormPage() {
           <h4>Tooltip tests</h4>
           <p>
             The <code>InputField</code> and <code>RadioGroup</code> was added to make sure clicking the tooltip don't
-            trigger a form submission. <Tooltip>{richContentTooltip}</Tooltip>
+            trigger a form submission. <Tooltip>Click me for more info</Tooltip>
           </p>
         </header>
 
@@ -57,7 +57,7 @@ export default function FormPage() {
         </RadioGroup>
 
         <SelectorGroup form={form} hints={hints} id="favorite_brand">
-          <Label hint="Guiness is the best option.">Which brand do you like the most?</Label>
+          <Label hint={GuinessTooltip}>Which brand do you like the most?</Label>
           <SelectorOption value="guiness">Guiness</SelectorOption>
           <SelectorOption value="heineken">Heineken</SelectorOption>
         </SelectorGroup>
