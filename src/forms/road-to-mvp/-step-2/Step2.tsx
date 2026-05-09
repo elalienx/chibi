@@ -38,7 +38,7 @@ export default function Step2({ setStep, propertyType }: Props) {
     schema: getSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput(application),
+    initialInput: cleanInitialInput(application, true),
   });
 
   // Properties

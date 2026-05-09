@@ -5,11 +5,14 @@
  * This method converts initial numeric values to strings to avoid errors.
  * Values are converted back to numbers during form validation.
  */
-export default function cleanInitialInput(values: object): object {
+export default function cleanInitialInput(values: object, treatZeroAsEmpty = false): object {
   const entries = Object.entries(values);
   const cleanedEntries = entries.map(([key, value]) => {
     const isNumber = typeof value === "number";
     const safeValue = isNumber ? String(value) : value;
+
+    // Special case
+    if (safeValue === "0" && treatZeroAsEmpty) return [key, ""];
 
     return [key, safeValue];
   });
