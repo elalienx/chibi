@@ -15,9 +15,9 @@ const schema = v.object({
     v.minLength(3, "Name is too short."),
   ),
   age: v.pipe(
-    v.string("Please enter your age."),
-    v.nonEmpty("Age must not be empty."),
-    v.toNumber("Age must be a valid number."),
+    v.union([v.string(), v.number(), v.undefined()]),
+    v.check((string) => string !== "", "Please enter your age."),
+    v.toNumber("Please enter your age."),
     v.minValue(18, "You must be at least 18 years old to register."),
     v.maxValue(99, "The maximum age allowed to register is 99"),
   ),

@@ -46,8 +46,9 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   const cssSuffix = suffix ? "has-suffix" : "";
   const cssTypeNumber = isNumber ? "type-number" : "";
   const curatedType = isNumber ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
-  const mobileKeyboard = getCorrectMobileKeyboard(type);
   const customPlaceholder = placeholder ?? (isNumber ? "0" : undefined);
+  const customValue = field.input as string | number;
+  const mobileKeyboard = getCorrectMobileKeyboard(type);
 
   // Methods
   useEffect(
@@ -92,6 +93,7 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
         onFocus={onFocus}
         placeholder={customPlaceholder}
         type={curatedType}
+        value={customValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
       {inputState === "error" && (
