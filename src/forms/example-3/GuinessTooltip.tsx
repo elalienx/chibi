@@ -4,9 +4,9 @@ export const GuinessTooltip = (
     <p>Guinness is a world-renowned Irish dry stout, founded by Arthur Guinness in 1759 at St. James's Gate, Dublin.</p>
     <p>It is distinguished by:</p>
     <ul>
-      <li>Its dark ruby-red color. (appearing black)</li>
+      <li>Its dark ruby-red color.</li>
       <li>Thick creamy head.</li>
-      <li>Roasted flavor profile achieved by using roasted unmalted barley.</li>
+      <li>Flavor achieved by roasting unmalted barley.</li>
     </ul>
     <p>
       Learn more about Guiness at{" "}
