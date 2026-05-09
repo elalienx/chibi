@@ -4,10 +4,10 @@ import type { TenancyType } from "./TenancyType";
 
 /** All the information gathered during the Mortgage application form. */
 export default interface Application {
-  monthly_fee: number /** Dynamic field depending on property_type and tenancy_agreement. */;
-  operating_cost: number /** Dynamic field depending on property_type and tenancy_agreement. */;
+  monthly_fee: number | undefined /** Dynamic field depending on property_type and tenancy_agreement. */;
+  operating_cost: number | undefined /** Dynamic field depending on property_type and tenancy_agreement. */;
   property_type: PropertyType;
   tenancy_type: TenancyType;
-  rooms: number;
-  size: number;
+  rooms: number | undefined;
+  size: number | undefined;
 }
