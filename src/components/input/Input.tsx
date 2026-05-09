@@ -79,7 +79,6 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   }
 
   return (
-    // We need the wrapper to set the global border and border radious surrounding the input, suffix, and error message
     <div className={`input-wrapper ${inputState} ${cssSuffix}`}>
       <input
         {...field.props}
