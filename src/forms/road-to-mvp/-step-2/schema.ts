@@ -4,32 +4,32 @@ import type { PropertyType } from "../types/PropertyType";
 
 // Fields
 const monthly_fee = v.pipe(
-  v.string("Ange bostadens månadsavgift för att gå vidare."),
-  v.nonEmpty("Ange bostadens månadsavgift för att gå vidare."),
+  v.union([v.string(), v.number(), v.undefined()]),
+  v.check((string) => string !== "", "Ange bostadens månadsavgift för att gå vidare."),
   v.toNumber("Du kan bara använda dig utav siffror."),
   v.minValue(1, "Ange bostadens månadsavgift för att gå vidare."),
   v.maxValue(100_000, "Månadsavgiften är för hög. Du kan som högst ange en avgift på 100 000 kr/mån."),
 );
 
 const operating_cost = v.pipe(
-  v.string("Ange bostadens driftskostnad för att gå vidare."),
-  v.nonEmpty("Ange bostadens driftskostnad för att gå vidare."),
+  v.union([v.string(), v.number(), v.undefined()]),
+  v.check((string) => string !== "", "Ange bostadens driftskostnad för att gå vidare."),
   v.toNumber("'Du kan bara använda dig utav siffror."),
   v.minValue(1, "Ange bostadens driftskostnad för att gå vidare."),
   v.maxValue(100_000, "Månadsavgiften är för hög. Du kan som högst ange en avgift på 100 000 kr/mån."),
 );
 
 const rooms = v.pipe(
-  v.string("Ange hur många rum bostaden har för att gå vidare."),
-  v.nonEmpty("Ange hur många rum bostaden har för att gå vidare."),
+  v.union([v.string(), v.number(), v.undefined()]),
+  v.check((string) => string !== "", "Ange hur många rum bostaden har för att gå vidare."),
   v.toNumber("Du kan bara använda dig utav siffror."),
   v.minValue(1, "Du har angivit för få rum. Du kan som lägst ange 1 rum."),
   v.maxValue(10, "Du har angivit för många rum. Du kan som högst ange 10 rum."),
 );
 
 const size = v.pipe(
-  v.string("Ange bostadens boyta för att gå vidare."),
-  v.nonEmpty("Ange bostadens boyta för att gå vidare."),
+  v.union([v.string(), v.number(), v.undefined()]),
+  v.check((string) => string !== "", "Ange bostadens boyta för att gå vidare."),
   v.toNumber("Du kan bara använda dig utav siffror."),
   v.minValue(1, "Ange bostadens boyta för att gå vidare."),
   v.maxValue(2_000, "Boytan är för stor. Du kan som störst ange en boyta på 2 000 kvm."),

@@ -2,12 +2,12 @@
 import type Application from "../types/Application";
 
 const initialApplication: Application = {
-  monthly_fee: 0,
-  operating_cost: 0,
+  monthly_fee: undefined,
+  operating_cost: undefined,
   property_type: undefined,
-  tenancy_type: undefined,
-  rooms: 0,
-  size: 0,
+  tenancy_type: "ownership",
+  rooms: undefined,
+  size: undefined,
 };
 
 export default initialApplication;
