@@ -17,9 +17,8 @@ export default function IntroStep({ setStep }: Props) {
         </header>
 
         <ul>
-          <li>Add tracking.</li>
-          <li>Save/load form selection</li>
           <li>Format numbers using spaces.</li>
+          <li>Add tracking.</li>
         </ul>
       </section>
 
