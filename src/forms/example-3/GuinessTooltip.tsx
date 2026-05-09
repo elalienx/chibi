@@ -1,6 +1,6 @@
 export const GuinessTooltip = (
   <>
-    <h4>About Guiness!</h4>
+    <h4 style={{ marginBottom: "16px" }}>About Guiness!</h4>
     <p>Guinness is a world-renowned Irish dry stout, founded by Arthur Guinness in 1759 at St. James's Gate, Dublin.</p>
     <p>It is distinguished by:</p>
     <ul>
