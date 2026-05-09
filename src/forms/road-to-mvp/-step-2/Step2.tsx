@@ -19,6 +19,7 @@ import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import Hints from "./Hints";
 import getSchema from "./schema";
 import "./step-2.css";
+import cleanInitialInput from "helpers/cleanInitialInput";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -37,7 +38,7 @@ export default function Step2({ setStep, propertyType }: Props) {
     schema: getSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
-    initialInput: application,
+    initialInput: cleanInitialInput(application),
   });
 
   // Properties
