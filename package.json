@@ -10,7 +10,8 @@
     "format": "oxfmt",
     "lint": "oxlint --fix",
     "playwright": "playwright test -c playwright-ct.config.ts",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
@@ -29,7 +30,8 @@
     "@types/react-dom": "^19.2.3",
     "oxfmt": "^0.37.0",
     "oxlint": "^1.62.0",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.5"
   },
   "packageManager": "pnpm@10.24.0"
 }
