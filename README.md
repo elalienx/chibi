@@ -41,6 +41,7 @@ All commands are run from the root of the project:
 | `pnpm format`          | Format all files using Void Zero Oxfmt formatter |
 | `pnpm lint`            | Lint all files using Void Zero Oxlint linter     |
 | `pnpm playwright --ui` | Open Playwright UI viewer to run tests           |
+| `pnpm test`            | Run unit tests using Vitest                      |
 
 ## Files without TS check
 
