@@ -12,7 +12,7 @@ import RadioOption from "components/radio-option/RadioOption";
 import Tooltip from "components/tooltip/Tooltip";
 import SelectorGroup from "components/selector-group/SelectorGroup";
 import SelectorOption from "components/selector-option/SelectorOption";
-import richContentTooltip, { GuinessTooltip } from "./GuinessTooltip";
+import GuinessTooltip from "./GuinessTooltip";
 
 const schema = v.object({
   name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Please enter your full name.")),
