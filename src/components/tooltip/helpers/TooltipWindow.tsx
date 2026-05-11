@@ -38,7 +38,7 @@ export default function TooltipWindow({
     <FloatingFocusManager context={context} modal={false}>
       <div ref={setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window">
         {/* Pointy arrow (styled by Floating UI libraty) */}
-        <FloatingArrow context={context} ref={arrowRef} stroke="rgba(0,0,0,0.08)" strokeWidth={1} />
+        <FloatingArrow context={context} ref={arrowRef} stroke="#4C4C4B" strokeWidth={1} />
 
         {/* Container */}
         <div className="container">
