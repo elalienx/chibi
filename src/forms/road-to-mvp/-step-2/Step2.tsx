@@ -22,14 +22,14 @@ import "./step-2.css";
 import cleanInitialInput from "helpers/cleanInitialInput";
 
 interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-
   /** The kind of home property the user selected to tailor this step questions. */
   propertyType: PropertyType;
+
+  /** Allows a button to change what step to display. */
+  setStep: (step: Step) => void;
 }
 
-export default function Step2({ setStep, propertyType }: Props) {
+export default function Step2({ propertyType, setStep }: Props) {
   // Global state
   const { application, updateApplication } = useApplication();
 

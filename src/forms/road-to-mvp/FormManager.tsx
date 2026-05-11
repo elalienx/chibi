@@ -23,7 +23,7 @@ export default function FormManager() {
     <div>
       {step === "intro-step" && <IntroStep setStep={setStep} />}
       {step === "step-1" && <Step1 setStep={setStep} />}
-      {step === "step-2" && <Step2 setStep={setStep} propertyType={propertyType} />}
+      {step === "step-2" && <Step2 propertyType={propertyType} setStep={setStep} />}
       {step === "success" && <Success setStep={setStep} />}
     </div>
   );
