@@ -10,3 +10,13 @@
     color: var(--typography-link);
   }
 }
+
+/* Edge cases */
+.label .tooltip-trigger {
+  margin-top: -1px; /* To optically align with the label. */
+}
+
+p .tooltip-trigger {
+  display: inline-block; /* To enable vertical-algin. */
+  vertical-align: text-top; /* To optically align with the paragraph flow. */
+}
