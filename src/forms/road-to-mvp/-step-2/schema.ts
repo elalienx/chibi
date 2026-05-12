@@ -46,7 +46,7 @@ const ownership = v.object({
   operating_cost,
 });
 
-export default function getSchema(propertyType: PropertyType) {
+export default function buildSchema(propertyType: PropertyType) {
   const defaultFields = { size, rooms };
   const defaultSchema = v.object({ ...defaultFields, operating_cost });
 

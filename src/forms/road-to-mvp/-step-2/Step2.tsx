@@ -17,7 +17,7 @@ import checkTenacyType from "./helpers/checkTenancyType";
 import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import Hints from "./Hints";
-import getSchema from "./schema";
+import buildSchema from "./schema";
 import "./step-2.css";
 import cleanInitialInput from "helpers/cleanInitialInput";
 
@@ -35,7 +35,7 @@ export default function Step2({ propertyType, setStep }: Props) {
 
   // Local state
   const form = useForm({
-    schema: getSchema(propertyType),
+    schema: buildSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
     initialInput: cleanInitialInput(application, true),
