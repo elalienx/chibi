@@ -40,13 +40,12 @@
 
 /** Arrow at top */
 .tooltip-window[data-placement^="bottom"] > svg {
-  margin-top: -2px;
-  fill: red;
+  margin-bottom: -2px;
 }
 
 /* Arrow at bottom */
 .tooltip-window[data-placement^="top"] > svg {
-  margin-bottom: -1px;
+  margin-top: -2px;
 }
 
 /* Tablet */
