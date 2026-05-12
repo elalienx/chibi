@@ -35,8 +35,17 @@
 
 /* The pointy arrow */
 .tooltip-window > svg {
-  margin-top: -2px;
   fill: white;
+}
+
+/** Arrow at top */
+.tooltip-window[data-placement^="bottom"] > svg {
+  margin-bottom: -2px;
+}
+
+/* Arrow at bottom */
+.tooltip-window[data-placement^="top"] > svg {
+  margin-top: -2px;
 }
 
 /* Tablet */
