@@ -10,8 +10,7 @@ body main {
   gap: var(--space-medium);
   width: 100%;
 
-  header,
-  footer {
+  > footer {
     text-align: center;
   }
 }

@@ -1,6 +1,4 @@
 .mortgage-form {
-  display: flex;
-  flex-direction: column;
   background-color: white;
   border-radius: var(--space-medium); /* unique size of forms */
   box-shadow:
@@ -8,38 +6,42 @@
     rgba(0, 0, 0, 0.04) 0px 1px 4px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
 
-  header,
-  footer {
-    margin-block: var(--space-medium);
-    margin-inline: var(--space-medium);
-  }
-
-  header {
+  > header {
     display: flex;
     flex-direction: column;
-    text-align: start;
     gap: var(--space-medium);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-medium);
+    padding-inline: var(--space-xl);
   }
 
-  section {
+  > section {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
+    padding-inline: var(--space-medium);
+    padding-bottom: var(--space-2xl);
   }
 
-  footer {
+  > footer {
     display: flex;
     flex-direction: column;
+    padding-block: var(--space-medium);
+    padding-inline: var(--space-medium);
   }
 }
 
 /* Tablet */
 @media (min-width: 550px) {
   .mortgage-form {
-    header,
-    footer {
-      margin-block: var(--space-2xl);
-      margin-inline: var(--space-2xl);
+    > header,
+    > section,
+    > footer {
+      padding-inline: var(--space-2xl);
+    }
+
+    > footer {
+      padding-block: var(--space-2xl);
     }
   }
 }
