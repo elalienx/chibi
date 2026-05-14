@@ -36,15 +36,15 @@ export default function FormPage() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="default-form">
-      <section className="top">
-        <header>
-          <h4>Tooltip tests</h4>
-          <p>
-            The <code>InputField</code> and <code>RadioGroup</code> was added to make sure clicking the tooltip don't
-            trigger a form submission. <Tooltip>Click me for more info</Tooltip>
-          </p>
-        </header>
+      <header>
+        <h4>Tooltip tests</h4>
+        <p>
+          The <code>InputField</code> and <code>RadioGroup</code> was added to make sure clicking the tooltip don't
+          trigger a form submission. <Tooltip>Click me for more info</Tooltip>
+        </p>
+      </header>
 
+      <section>
         <InputField form={form} hints={hints} id="name">
           <Label>Full name</Label>
           <Input type="text" placeholder="Leif Lend" />
@@ -65,11 +65,10 @@ export default function FormPage() {
 
       <hr />
 
-      <section className="bottom" style={{ textAlign: "center" }}>
+      <footer>
         <Button type="submit">Submit</Button>
-        <br />
         <small>(Text to clean Playwright selector)</small>
-      </section>
+      </footer>
     </Form>
   );
 }
