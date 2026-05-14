@@ -1,0 +1,49 @@
+.mortgage-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: var(--space-medium); /* unique size of forms */
+  box-shadow:
+    rgba(0, 0, 0, 0.08) 0px 2px 8px 0px,
+    rgba(0, 0, 0, 0.04) 0px 1px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
+
+  > header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-medium);
+    margin-inline: var(--space-xl);
+  }
+
+  > section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-inline: var(--space-medium);
+    margin-bottom: var(--space-2xl);
+  }
+
+  > footer {
+    display: flex;
+    flex-direction: column;
+    margin-block: var(--space-medium);
+    margin-inline: var(--space-medium);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .mortgage-form {
+    > header,
+    > section,
+    > footer {
+      margin-inline: var(--space-2xl);
+    }
+
+    > footer {
+      margin-block: var(--space-2xl);
+    }
+  }
+}

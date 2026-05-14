@@ -37,13 +37,13 @@ export default function Step1({ setStep }: Props) {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} id="step-1" className="soft-background">
-      <section className="top">
-        <header>
-          <ArrowGoBack onClick={() => setStep("intro-step")} />
-          <h4>1. Om lånet</h4>
-        </header>
+    <Form of={form} onSubmit={submitForm} id="step-1" className="mortgage-form">
+      <header>
+        <ArrowGoBack onClick={() => setStep("intro-step")} />
+        <h4>1. Om lånet</h4>
+      </header>
 
+      <section>
         <RadioGroup form={form} id="property_type">
           <Label hint={propertyTypeHint}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
@@ -55,11 +55,11 @@ export default function Step1({ setStep }: Props) {
 
       <hr />
 
-      <section className="bottom">
+      <footer>
         <Button type="submit">
           Nästa <Icon name="arrow-right" />
         </Button>
-      </section>
+      </footer>
     </Form>
   );
 }

@@ -33,7 +33,7 @@ export default function FormPage() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="soft-background">
+    <Form of={form} onSubmit={submitForm} className="default-form">
       <section className="top">
         <h4>Input field tests</h4>
 
