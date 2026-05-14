@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-radius: var(--space-medium); /* unique size of forms */
+  border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
 
   > header {
