@@ -3,4 +3,5 @@
 @import url("./base/sub-components.css");
 @import url("./base/typography.css");
 @import url("./base/variables.css");
+@import url("./base/forms/default-form.css");
 @import url("./base/forms/mortgage-form.css");
