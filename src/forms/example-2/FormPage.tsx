@@ -27,9 +27,11 @@ export default function FormPage() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="default-form">
-      <section className="top">
+      <header>
         <h4>Radio group tests</h4>
+      </header>
 
+      <section>
         <RadioGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
           <RadioOption value="yes">Yes</RadioOption>
@@ -45,11 +47,10 @@ export default function FormPage() {
 
       <hr />
 
-      <section className="bottom" style={{ textAlign: "center" }}>
+      <footer>
         <Button type="submit">Submit</Button>
-        <br />
         <small>(Text to clean Playwright selector)</small>
-      </section>
+      </footer>
     </Form>
   );
 }

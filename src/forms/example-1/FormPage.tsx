@@ -34,9 +34,11 @@ export default function FormPage() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="default-form">
-      <section className="top">
+      <header>
         <h4>Input field tests</h4>
+      </header>
 
+      <section>
         <InputField form={form} id="name">
           <Label>Full name</Label>
           <Input type="text" placeholder="Leif Lend" />
@@ -50,11 +52,10 @@ export default function FormPage() {
 
       <hr />
 
-      <section className="bottom" style={{ textAlign: "center" }}>
+      <footer>
         <Button type="submit">Submit</Button>
-        <br />
         <small>(Text to clean Playwright selector)</small>
-      </section>
+      </footer>
     </Form>
   );
 }
