@@ -11,11 +11,11 @@ interface Props {
 export default function IntroStep({ setStep }: Props) {
   return (
     <div id="intro-step" className="mortgage-form">
-      <section className="top">
-        <header>
-          <h4>Road to MPV</h4>
-        </header>
+      <header>
+        <h4>Road to MPV</h4>
+      </header>
 
+      <section>
         <ul>
           <li>Format numbers using spaces.</li>
           <li>Add tracking.</li>
@@ -24,11 +24,11 @@ export default function IntroStep({ setStep }: Props) {
 
       <hr />
 
-      <section className="bottom">
+      <footer>
         <Button onClick={() => setStep("step-1")}>
           Next <Icon name="arrow-right" />
         </Button>
-      </section>
+      </footer>
     </div>
   );
 }

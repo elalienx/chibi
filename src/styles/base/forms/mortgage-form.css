@@ -8,26 +8,26 @@
     rgba(0, 0, 0, 0.04) 0px 1px 4px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
 
-  .top,
-  .bottom {
+  header,
+  footer {
     margin-block: var(--space-medium);
     margin-inline: var(--space-medium);
   }
 
-  .top {
+  header {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: var(--space-medium);
+  }
+
+  section {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
-
-    & > header {
-      display: flex;
-      flex-direction: column;
-      text-align: start;
-      gap: var(--space-medium);
-    }
   }
 
-  .bottom {
+  footer {
     display: flex;
     flex-direction: column;
   }
@@ -36,8 +36,8 @@
 /* Tablet */
 @media (min-width: 550px) {
   .mortgage-form {
-    .top,
-    .bottom {
+    header,
+    footer {
       margin-block: var(--space-2xl);
       margin-inline: var(--space-2xl);
     }
