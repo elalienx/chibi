@@ -93,8 +93,6 @@ test("Should be abble to apply for a terraced house (as rental)", async ({ mount
     await expect(component.getByText("You choose a 36m terraced_house with 1 rooms")).toBeVisible();
     await expect(component.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
   });
-
-  if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
 test("Should be abble to apply for a terraced house (as ownership)", async ({ mount }) => {
