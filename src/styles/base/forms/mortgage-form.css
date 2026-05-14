@@ -20,7 +20,7 @@
   > section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-medium);
+    gap: var(--space-xl);
     margin-inline: var(--space-medium);
     margin-bottom: var(--space-2xl);
   }
