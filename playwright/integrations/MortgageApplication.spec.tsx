@@ -111,7 +111,6 @@ test("Should be abble to apply for a terraced house (as ownership)", async ({ mo
 
   await test.step("Step 2: About the property", async () => {
     await component.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await component.locator("#tenancy_type").getByText("Äganderätt").click();
     await component.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
     await component.getByRole("textbox", { name: "Antal rum" }).fill("4");
     await component.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
