@@ -12,24 +12,22 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-medium);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-medium);
     margin-bottom: var(--space-medium);
-    margin-inline: var(--space-xl);
+    margin: var(--space-medium);
   }
 
   > section {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
-    margin-inline: var(--space-medium);
-    margin-bottom: var(--space-2xl);
+    margin: var(--space-medium);
   }
 
   > footer {
     display: flex;
     flex-direction: column;
-    margin-block: var(--space-medium);
-    margin-inline: var(--space-medium);
+    margin: var(--space-medium);
   }
 }
 
@@ -40,6 +38,15 @@
     > section,
     > footer {
       margin-inline: var(--space-2xl);
+    }
+
+    > header {
+      margin-top: var(--space-2xl);
+      margin-bottom: var(--space-medium);
+    }
+
+    > section {
+      margin-bottom: var(--space-2xl);
     }
 
     > footer {
