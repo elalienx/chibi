@@ -35,7 +35,7 @@ export default function FormPage() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="soft-background">
+    <Form of={form} onSubmit={submitForm} className="mortgage-form">
       <section className="top">
         <header>
           <h4>Tooltip tests</h4>

@@ -56,7 +56,7 @@ export default function Step2({ propertyType, setStep }: Props) {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} id="step-2" className="soft-background">
+    <Form of={form} onSubmit={submitForm} id="step-2" className="mortgage-form">
       <section className="top">
         <header>
           <ArrowGoBack onClick={() => setStep("step-1")} />

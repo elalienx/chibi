@@ -26,7 +26,7 @@ export default function FormPage() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="soft-background">
+    <Form of={form} onSubmit={submitForm} className="mortgage-form">
       <section className="top">
         <h4>Radio group tests</h4>
 

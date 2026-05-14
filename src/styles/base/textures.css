@@ -1,4 +1,4 @@
-.soft-background {
+.mortgage-form {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -35,7 +35,7 @@
 
 /* Tablet */
 @media (min-width: 550px) {
-  .soft-background {
+  .mortgage-form {
     .top,
     .bottom {
       margin-block: var(--space-2xl);

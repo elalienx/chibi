@@ -10,7 +10,7 @@ interface Props {
 
 export default function IntroStep({ setStep }: Props) {
   return (
-    <div id="intro-step" className="soft-background">
+    <div id="intro-step" className="mortgage-form">
       <section className="top">
         <header>
           <h4>Road to MPV</h4>
