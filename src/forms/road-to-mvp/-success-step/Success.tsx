@@ -25,11 +25,11 @@ export default function Success({ setStep }: Props) {
 
   return (
     <div id="success" className="mortgage-form">
-      <section className="top">
-        <header>
-          <h4>Form submitted</h4>
-        </header>
+      <header>
+        <h4>Form submitted</h4>
+      </header>
 
+      <section>
         <div className="content">
           <p>
             You choose a {application.size}m {application.property_type} with {application.rooms} rooms.
@@ -44,9 +44,9 @@ export default function Success({ setStep }: Props) {
 
       <hr />
 
-      <section className="bottom">
+      <footer>
         <Button onClick={startAgain}>START AGAIN</Button>
-      </section>
+      </footer>
     </div>
   );
 }

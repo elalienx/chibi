@@ -57,12 +57,12 @@ export default function Step2({ propertyType, setStep }: Props) {
 
   return (
     <Form of={form} onSubmit={submitForm} id="step-2" className="mortgage-form">
-      <section className="top">
-        <header>
-          <ArrowGoBack onClick={() => setStep("step-1")} />
-          <h4>2. Om bostaden</h4>
-        </header>
+      <header>
+        <ArrowGoBack onClick={() => setStep("step-1")} />
+        <h4>2. Om bostaden</h4>
+      </header>
 
+      <section>
         {isTerracedHouse && (
           <SelectorGroup form={form} hints={Hints} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
@@ -98,11 +98,11 @@ export default function Step2({ propertyType, setStep }: Props) {
 
       <hr />
 
-      <section className="bottom">
+      <footer>
         <Button type="submit">
           Nästa <Icon name="arrow-right" />
         </Button>
-      </section>
+      </footer>
     </Form>
   );
 }
