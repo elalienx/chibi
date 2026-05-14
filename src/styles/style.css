@@ -1,7 +1,10 @@
+/* Global styles */
 @import url("./base/fonts.css");
 @import url("./base/layout.css");
 @import url("./base/sub-components.css");
 @import url("./base/typography.css");
 @import url("./base/variables.css");
+
+/* Styles per page */
 @import url("./base/forms/default-form.css");
 @import url("./base/forms/mortgage-form.css");
