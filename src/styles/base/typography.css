@@ -10,30 +10,21 @@ body {
   -webkit-font-smoothing: antialiased; /* To make text look great on Apple devices */
 }
 
-p {
+p,
+ul,
+ol {
   margin-top: 0;
 
   &:last-of-type {
     margin-bottom: 0; /** To avoid adding space at the bottom of the last paragraph. */
   }
 }
+
+ul.first-level {
+  padding-left: 0; /** To align first level <ul> to paragraphs. */
+  list-style-position: inside;
+}
+
 code {
   color: var(--color-blue-20);
-}
-
-/** Legacy */
-h1,
-h2 {
-  margin: 0;
-  color: var(--typography-dark);
-}
-
-h1 {
-  font-size: 48px;
-  font-weight: var(--font-weight-bold);
-}
-
-h2 {
-  font-size: 36px;
-  font-weight: var(--font-weight-medium);
 }
