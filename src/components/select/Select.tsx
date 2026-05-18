@@ -36,7 +36,7 @@ export default function Select({ children, id, form, hints }: Props) {
   const selectTriggerId = `--select-trigger-${id}`;
   const selectlistId = `select-list-${id}`;
   const defaultQuestion = "Please choose an option";
-  const selectedOption = String(field.input);
+  const selectedOption = field.input;
   const textToDisplay = selectedOption ? selectedOption : defaultQuestion;
 
   // Components
