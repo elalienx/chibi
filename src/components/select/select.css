@@ -1,11 +1,2 @@
-@import url("../../styles//base/variables.css");
 @import url("./select-list.css");
-@import url("./select-option.css");
 @import url("./select-trigger.css");
-
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: #f0eeeb;
-}

@@ -8,9 +8,11 @@ import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 import Select from "components/select/Select";
+import SelectOption from "components/select-option/SelectOption";
 
 const schema = v.object({
-  likes_beer: v.string("Say either yes or no."),
+  console: v.string("Choose one gaming console."),
+  publisher: v.string("Choose one game developer company."),
 });
 
 export default function FormPage() {
@@ -29,16 +31,19 @@ export default function FormPage() {
       </header>
 
       <section>
-        {/* Replace RadioGroup with Select */}
-        <RadioGroup form={form} id="likes_beer">
+        <RadioGroup form={form} id="console">
           <Label>What is your favorite gaming console?</Label>
-          {/* Replace RadioOption with SelectOption, then with just Option */}
-          <RadioOption value="sony">Playstation 5</RadioOption>
-          <RadioOption value="nintendo">Switch 2</RadioOption>
-          <RadioOption value="microsoft">Xbox Series X</RadioOption>
+          <RadioOption value="playstation_5">Playstation 5</RadioOption>
+          <RadioOption value="switch_2">Switch 2</RadioOption>
+          <RadioOption value="xbox_series_x">Xbox Series X</RadioOption>
         </RadioGroup>
 
-        <Select />
+        <Select form={form} id="publisher">
+          <Label>What is your favorite game developer company?</Label>
+          <SelectOption value="capcom">Capcom</SelectOption>
+          <SelectOption value="electronic_arts">Electronic Arts</SelectOption>
+          <SelectOption value="konami">Konami</SelectOption>
+        </Select>
       </section>
 
       <hr />
