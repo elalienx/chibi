@@ -1,20 +1,16 @@
 #select-list {
-  background-color: pink;
+  box-sizing: border-box;
+  min-width: 240px;
+  border: solid 1px var(--input-border-up);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  /* Positioning */
   position: fixed;
   inset: unset;
-  top: calc(anchor(bottom) + 2px);
+  top: calc(anchor(bottom) + var(--space-base));
   left: anchor(center);
   translate: -50% 0;
-  margin: 0;
-  border: none;
-  background: transparent;
-  overflow: visible;
-
-  /* .menu */
-  min-width: 240px;
-  background: palegreen;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 #select-list::backdrop {
@@ -24,7 +20,7 @@
 /* Entry animation */
 #select-list {
   opacity: 0;
-  transform: scale(0.95) translateY(4px);
+  transform: scale(0.95) translateY(var(--space-base));
   transition:
     opacity 0.15s,
     transform 0.15s,
@@ -39,6 +35,6 @@
 @starting-style {
   #select-list:popover-open {
     opacity: 0;
-    transform: scale(0.95) translateY(4px);
+    transform: scale(0.95) translateY(var(--space-base));
   }
 }
