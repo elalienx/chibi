@@ -33,6 +33,11 @@ export default function Select({ children, id, form, hints }: Props) {
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
+  const triggerId = `--select-trigger-${id}`;
+  const listId = `select-list-${id}`;
+  const defaultQuestion = "Please choose an option";
+  const selectedOption = field.input;
+  const textToDisplay = selectedOption ? selectedOption : defaultQuestion;
 
   // Components
   const hint = hints?.[id];
@@ -45,23 +50,12 @@ export default function Select({ children, id, form, hints }: Props) {
 
       {/* Select trigger */}
       {/* ⚠️ Check anchor --select-trigger is unique, otherwise, make a property usung id */}
-      <button
-        type="button"
-        className="select-trigger"
-        popoverTarget="select-list"
-        style={{ anchorName: "--select-trigger" }}
-      >
-        Please choose an option
+      <button type="button" className="select-trigger" popoverTarget={listId} style={{ anchorName: triggerId }}>
+        {textToDisplay}
       </button>
 
-      <div id="select-list" popover="auto" style={{ positionAnchor: "--select-trigger" }}>
+      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: triggerId }}>
         {selectOptions}
-        {/*
-        <button className="select-option">House</button>
-        <button className="select-option">Apartment</button>
-        <button className="select-option">Terraced house</button>
-        <button className="select-option">Holiday home</button> 
-        */}
       </div>
 
       {field.errors && form.isSubmitted && (

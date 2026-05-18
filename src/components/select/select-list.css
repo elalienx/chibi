@@ -1,4 +1,7 @@
-#select-list {
+.select-list {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-base);
   box-sizing: border-box;
   min-width: 240px;
   border: solid 1px var(--input-border-up);
@@ -11,14 +14,8 @@
   top: calc(anchor(bottom) + var(--space-base));
   left: anchor(center);
   translate: -50% 0;
-}
 
-#select-list::backdrop {
-  background: transparent;
-}
-
-/* Entry animation */
-#select-list {
+  /* Entry animation */
   opacity: 0;
   transform: scale(0.95) translateY(var(--space-base));
   transition:
@@ -27,13 +24,14 @@
     display 0.15s allow-discrete;
 }
 
-#select-list:popover-open {
+.select-list:popover-open {
+  display: flex;
   opacity: 1;
   transform: scale(1) translateY(0);
 }
 
 @starting-style {
-  #select-list:popover-open {
+  .select-list:popover-open {
     opacity: 0;
     transform: scale(0.95) translateY(var(--space-base));
   }

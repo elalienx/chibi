@@ -13,6 +13,7 @@ import SelectOption from "components/select-option/SelectOption";
 const schema = v.object({
   console: v.string("Choose one gaming console."),
   publisher: v.string("Choose one game developer company."),
+  accessory: v.string("Choose the best accessory in history"),
 });
 
 export default function FormPage() {
@@ -43,6 +44,13 @@ export default function FormPage() {
           <SelectOption value="capcom">Capcom</SelectOption>
           <SelectOption value="electronic_arts">Electronic Arts</SelectOption>
           <SelectOption value="konami">Konami</SelectOption>
+        </Select>
+
+        <Select form={form} id="accessory">
+          <Label>What was the best accessory in history?</Label>
+          <SelectOption value="arcade_stick">Arcade stick</SelectOption>
+          <SelectOption value="kinnect">Kinnect</SelectOption>
+          <SelectOption value="wireless_controller">Wavebird controller</SelectOption>
         </Select>
       </section>
 
