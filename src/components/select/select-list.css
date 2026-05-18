@@ -1,0 +1,48 @@
+[popover] {
+  position: fixed;
+  inset: unset;
+  top: calc(anchor(bottom) + 2px);
+  left: anchor(center);
+  translate: -50% 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.menu {
+  width: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  min-width: 240px;
+}
+
+[popover]::backdrop {
+  background: transparent;
+}
+
+/* Entry animation */
+[popover] {
+  opacity: 0;
+  transform: scale(0.95) translateY(4px);
+  transition:
+    opacity 0.15s,
+    transform 0.15s,
+    display 0.15s allow-discrete;
+}
+
+[popover]:popover-open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    transform: scale(0.95) translateY(4px);
+  }
+}
