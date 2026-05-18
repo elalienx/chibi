@@ -17,9 +17,12 @@ interface Props {
 
   /** The value sent to the database. */
   value: string | number | boolean;
+
+  /** The name of the <Select> list parent. Used to close the list when an option is selected. */
+  selectListId: string;
 }
 
-export default function SelectOption({ id, children, field, value }: Props) {
+export default function SelectOption({ id, children, field, value, selectListId }: Props) {
   // Safeguard
   if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
@@ -44,7 +47,7 @@ export default function SelectOption({ id, children, field, value }: Props) {
         type="radio"
         value={stringValue}
       />
-      {children}
+      {children} ({selectListId})
     </label>
   );
 }

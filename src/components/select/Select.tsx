@@ -33,8 +33,8 @@ export default function Select({ children, id, form, hints }: Props) {
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
-  const triggerId = `--select-trigger-${id}`;
-  const listId = `select-list-${id}`;
+  const selectTriggerId = `--select-trigger-${id}`;
+  const selectlistId = `select-list-${id}`;
   const defaultQuestion = "Please choose an option";
   const selectedOption = field.input;
   const textToDisplay = selectedOption ? selectedOption : defaultQuestion;
@@ -42,7 +42,7 @@ export default function Select({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractLabel(id, children, hint);
-  const selectOptions = extractSelectOptions(id, children, field);
+  const selectOptions = extractSelectOptions(id, children, field, selectlistId);
 
   return (
     <div className="select">
@@ -50,11 +50,16 @@ export default function Select({ children, id, form, hints }: Props) {
 
       {/* Select trigger */}
       {/* ⚠️ Check anchor --select-trigger is unique, otherwise, make a property usung id */}
-      <button type="button" className="select-trigger" popoverTarget={listId} style={{ anchorName: triggerId }}>
+      <button
+        type="button"
+        className="select-trigger"
+        popoverTarget={selectlistId}
+        style={{ anchorName: selectTriggerId }}
+      >
         {textToDisplay}
       </button>
 
-      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: triggerId }}>
+      <div id={selectlistId} className="select-list" popover="auto" style={{ positionAnchor: selectTriggerId }}>
         {selectOptions}
       </div>
 
