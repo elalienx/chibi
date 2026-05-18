@@ -54,7 +54,6 @@ export default function Select({ children, id, form, hints }: Props) {
         popoverTarget={selectlistId}
         style={{ anchorName: selectTriggerId }}
       >
-        {/* @ts-ignore */}
         {textToDisplay}
       </button>
 

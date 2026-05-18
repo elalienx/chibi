@@ -1,4 +1,6 @@
 .select-list {
+  --close-delay: 0.25s;
+
   display: none;
   flex-direction: column;
   gap: var(--space-base);
@@ -15,19 +17,33 @@
   left: anchor(center);
   translate: -50% 0;
 
-  /* Entry animation */
+  /* Closed visual state */
   opacity: 0;
   transform: scale(0.95) translateY(var(--space-base));
+
+  /* CLOSING BEHAVIOR: 0s duration, 0.15s delay */
+  /* Holds the open state for 325ms, then snaps instantly to closed */
   transition:
-    opacity 0.15s,
-    transform 0.15s,
-    display 0.15s allow-discrete;
+    opacity 0s var(--close-delay),
+    transform 0s var(--close-delay),
+    overlay 0s var(--close-delay) allow-discrete,
+    display 0s var(--close-delay) allow-discrete;
 }
 
 .select-list:popover-open {
+  --open-delay: 0.15s;
+
   display: flex;
   opacity: 1;
   transform: scale(1) translateY(0);
+
+  /* OPENING BEHAVIOR: 0.15s duration, 0s delay */
+  /* Animates in smoothly over 150ms */
+  transition:
+    opacity var(--open-delay),
+    transform var(--open-delay),
+    overlay var(--open-delay) allow-discrete,
+    display var(--open-delay) allow-discrete;
 }
 
 @starting-style {
