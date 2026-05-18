@@ -6,6 +6,7 @@
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
   overflow: hidden;
+  width: anchor-size(width);
 
   /* Positioning */
   position: fixed;
