@@ -7,6 +7,7 @@ import Button from "components/button/Button";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import Select from "components/select/Select";
 
 const schema = v.object({
   likes_beer: v.string("Say either yes or no."),
@@ -30,12 +31,14 @@ export default function FormPage() {
       <section>
         {/* Replace RadioGroup with Select */}
         <RadioGroup form={form} id="likes_beer">
-          <Label>Do you like beer?</Label>
+          <Label>What is your favorite gaming console?</Label>
           {/* Replace RadioOption with SelectOption, then with just Option */}
           <RadioOption value="sony">Playstation 5</RadioOption>
           <RadioOption value="nintendo">Switch 2</RadioOption>
           <RadioOption value="microsoft">Xbox Series X</RadioOption>
         </RadioGroup>
+
+        <Select />
       </section>
 
       <hr />

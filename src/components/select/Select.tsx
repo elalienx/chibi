@@ -4,7 +4,12 @@ import "./select.css";
 export default function Select() {
   return (
     <>
-      <button className="select-trigger" popoverTarget="select-list" style={{ anchorName: "--select-trigger" }}>
+      <button
+        type="button"
+        className="select-trigger"
+        popoverTarget="select-list"
+        style={{ anchorName: "--select-trigger" }}
+      >
         Please choose an option
       </button>
 
