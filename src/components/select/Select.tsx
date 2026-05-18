@@ -48,8 +48,6 @@ export default function Select({ children, id, form, hints }: Props) {
     <div className="select">
       {label}
 
-      {/* Select trigger */}
-      {/* ⚠️ Check anchor --select-trigger is unique, otherwise, make a property usung id */}
       <button
         type="button"
         className="select-trigger"
@@ -59,7 +57,6 @@ export default function Select({ children, id, form, hints }: Props) {
         {textToDisplay}
       </button>
 
-      {/* Warning: This is a popover meaning the size is independent of the parent .select  */}
       <div id={selectlistId} className="select-list" popover="auto" style={{ positionAnchor: selectTriggerId }}>
         {selectOptions}
       </div>
