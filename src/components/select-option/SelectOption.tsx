@@ -19,7 +19,7 @@ interface Props {
   value: string | number | boolean;
 
   /** The name of the <Select> list parent. Used to close the list when an option is selected. */
-  selectListId: string;
+  selectListId?: string;
 }
 
 export default function SelectOption({ id, children, field, value, selectListId }: Props) {
