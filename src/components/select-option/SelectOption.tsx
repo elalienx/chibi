@@ -38,9 +38,9 @@ export default function SelectOption({ id, children, field, value, selectListId 
       popoverElement.hidePopover();
     }
 
-    field?.props.onChange?.(event);
+    field?.props.onChange(event);
     // @ts-ignore
-    field?.props.onBlur?.(event);
+    field?.props.onBlur(event);
   }
 
   return (
