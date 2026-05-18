@@ -1,5 +1,5 @@
-[popover] {
-  background-color: aliceblue;
+#select-list {
+  background-color: pink;
   position: fixed;
   inset: unset;
   top: calc(anchor(bottom) + 2px);
@@ -9,25 +9,20 @@
   border: none;
   background: transparent;
   overflow: visible;
-}
 
-.select-list {
-  background-color: pink;
-}
-
-.menu {
+  /* .menu */
   min-width: 240px;
   background: palegreen;
   border-radius: 12px;
   overflow: hidden;
 }
 
-[popover]::backdrop {
+#select-list::backdrop {
   background: transparent;
 }
 
 /* Entry animation */
-[popover] {
+#select-list {
   opacity: 0;
   transform: scale(0.95) translateY(4px);
   transition:
@@ -36,13 +31,13 @@
     display 0.15s allow-discrete;
 }
 
-[popover]:popover-open {
+#select-list:popover-open {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
 
 @starting-style {
-  [popover]:popover-open {
+  #select-list:popover-open {
     opacity: 0;
     transform: scale(0.95) translateY(4px);
   }
