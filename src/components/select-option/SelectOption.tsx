@@ -29,12 +29,21 @@ export default function SelectOption({ id, children, field, value, selectListId 
 
   // Properties
   const stringValue = String(value);
+  const closeDelayInMiliseconds = 325; // So users can see what option they clicked
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
+    const popoverElement = document.getElementById(selectListId);
+
     field?.props.onChange?.(event); // First, the default change event.
     // @ts-ignore
     field?.props.onBlur?.(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
+
+    if (popoverElement && popoverElement.hidePopover) {
+      setTimeout(() => {
+        if (popoverElement.isConnected) popoverElement.hidePopover();
+      }, closeDelayInMiliseconds);
+    }
   }
 
   return (
@@ -47,7 +56,7 @@ export default function SelectOption({ id, children, field, value, selectListId 
         type="radio"
         value={stringValue}
       />
-      {children} ({selectListId})
+      {children}
     </label>
   );
 }
