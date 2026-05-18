@@ -1,3 +1,4 @@
+@import url("../../styles//base/variables.css");
 @import url("./select-list.css");
 @import url("./select-option.css");
 @import url("./select-trigger.css");

@@ -1,11 +1,20 @@
 .select-trigger {
   width: 240px;
-  padding: 12px 24px;
-  background: #1a1a1a;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 80px;
+  height: var(--height-of-field);
+  padding-inline: var(--space-medium);
+  background-color: white;
+  color: var(--typography-default);
+  text-align: start;
+  font-family: var(--font-family);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  border: solid 1px var(--input-border-up);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.select-trigger:hover {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--input-border-hover);
 }
