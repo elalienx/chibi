@@ -1,39 +1,33 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="./style.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chibi Select</title>
-    </head>
-    <body>
-        <button
-            class="select-box"
-            popovertarget="context-menu"
-            style="anchor-name: --trigger"
-        >
-            Choose an option
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chibi Select</title>
+  </head>
+  <body>
+    <button class="select-box" popovertarget="context-menu" style="anchor-name: --trigger">Choose an option</button>
 
-        <div id="context-menu" popover style="position-anchor: --trigger">
-            <div class="menu">
-                <button class="menu-item">
-                    <span class="icon">🏠</span>
-                    House
-                </button>
-                <button class="menu-item">
-                    <span class="icon">🏢</span>
-                    Apartment
-                </button>
-                <button class="menu-item">
-                    <span class="icon">🛖</span>
-                    Terraced house
-                </button>
-                <button class="menu-item">
-                    <span class="icon">🌴</span>
-                    Holiday home
-                </button>
-            </div>
-        </div>
-    </body>
+    <div id="context-menu" popover style="position-anchor: --trigger">
+      <div class="menu">
+        <button class="option">
+          <span class="icon">🏠</span>
+          House
+        </button>
+        <button class="option">
+          <span class="icon">🏢</span>
+          Apartment
+        </button>
+        <button class="option">
+          <span class="icon">🛖</span>
+          Terraced house
+        </button>
+        <button class="option">
+          <span class="icon">🌴</span>
+          Holiday home
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
