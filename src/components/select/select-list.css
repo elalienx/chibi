@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: var(--space-base);
   box-sizing: border-box;
-  min-width: 240px;
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
   overflow: hidden;

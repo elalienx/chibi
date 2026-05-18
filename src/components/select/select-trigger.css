@@ -1,5 +1,4 @@
 .select-trigger {
-  width: 240px;
   height: var(--height-of-field);
   padding-inline: var(--space-medium);
   background-color: white;
