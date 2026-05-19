@@ -16,18 +16,6 @@
   top: calc(anchor(bottom) + var(--space-base));
   left: anchor(center);
   translate: -50% 0;
-
-  /* Closed visual state */
-  opacity: 0;
-  transform: scale(0.95) translateY(var(--space-base));
-
-  /* CLOSING BEHAVIOR: 0s duration, 0.15s delay */
-  /* Holds the open state for 325ms, then snaps instantly to closed */
-  transition:
-    opacity 0s var(--close-delay),
-    transform 0s var(--close-delay),
-    overlay 0s var(--close-delay) allow-discrete,
-    display 0s var(--close-delay) allow-discrete;
 }
 
 .select-list:popover-open {
@@ -37,8 +25,7 @@
   opacity: 1;
   transform: scale(1) translateY(0);
 
-  /* OPENING BEHAVIOR: 0.15s duration, 0s delay */
-  /* Animates in smoothly over 150ms */
+  /* Animation */
   transition:
     opacity var(--open-delay),
     transform var(--open-delay),
