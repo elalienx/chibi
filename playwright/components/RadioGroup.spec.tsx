@@ -8,20 +8,24 @@ import FormPage from "forms/example-2/FormPage";
 
 let component: MountResult;
 let cleanUpText: Locator;
-let radio1_error: Locator;
-let radio1_optionA: Locator;
-let radio2_error: Locator;
-let radio2_optionA: Locator;
+let error1: Locator;
+let error2: Locator;
+let option1A: Locator;
+let option2A: Locator;
 let submitButton: Locator;
 
 test.beforeEach(async ({ mount }) => {
   component = await mount(<FormPage />);
-  radio1_optionA = component.locator("#likes_beer").getByText("Yes");
-  radio2_optionA = component.locator("#likes_guiness").getByText("Yes");
-  radio1_error = component.locator("#aria-error-likes_beer");
-  radio2_error = component.locator("#aria-error-likes_guiness");
   cleanUpText = component.getByText("Text to clean Playwright selector");
   submitButton = component.getByRole("button", { name: "Submit" });
+
+  // Radio 1
+  option1A = component.locator("#likes_beer").getByText("Yes");
+  error1 = component.locator("#aria-error-likes_beer");
+
+  // Radio 2
+  option2A = component.locator("#likes_guiness").getByText("Yes");
+  error2 = component.locator("#aria-error-likes_guiness");
 });
 
 test.afterEach(async () => {
@@ -36,38 +40,38 @@ test("1. Should show error state when submitting empty form", async () => {
   await submitButton.click();
 
   // Assert
-  await expect(radio1_error).toBeVisible();
-  await expect(radio2_error).toBeVisible();
+  await expect(error1).toBeVisible();
+  await expect(error2).toBeVisible();
 });
 
 test("2. Should submit form without errors", async () => {
   // Act
-  await radio1_optionA.click();
-  await radio2_optionA.click();
+  await option1A.click();
+  await option2A.click();
   await submitButton.click();
 
   // Assert
-  await expect(radio1_error).not.toBeVisible();
-  await expect(radio2_error).not.toBeVisible();
+  await expect(error1).not.toBeVisible();
+  await expect(error2).not.toBeVisible();
 });
 
 test("3. Clicking on a radio button with error should immediately remove the error", async () => {
   await test.step("Trigger error", async () => {
     // Act
-    await radio1_optionA.click();
+    await option1A.click();
     await submitButton.click();
 
     // Assert
-    await expect(radio1_error).not.toBeVisible();
-    await expect(radio2_error).toBeVisible();
+    await expect(error1).not.toBeVisible();
+    await expect(error2).toBeVisible();
   });
 
   await test.step("Clear error", async () => {
     // Act
-    await radio2_optionA.click();
+    await option2A.click();
 
     // Assert
-    await expect(radio1_error).not.toBeVisible();
-    await expect(radio2_error).not.toBeVisible();
+    await expect(error1).not.toBeVisible();
+    await expect(error2).not.toBeVisible();
   });
 });
