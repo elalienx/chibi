@@ -41,7 +41,7 @@ export default function FormPage() {
         </Select>
 
         <Select form={form} id="accessory">
-          <Label>What was the best accessory in history?</Label>
+          <Label hint="Used to make gaming more fun!">What was the best accessory in history?</Label>
           <SelectOption value="arcade_stick">Arcade stick</SelectOption>
           <SelectOption value="kinnect">Kinnect</SelectOption>
           <SelectOption value="wireless_controller">Wavebird controller</SelectOption>
