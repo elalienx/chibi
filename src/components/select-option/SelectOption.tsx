@@ -1,5 +1,5 @@
 // Node modules
-import type { ChangeEvent, ReactNode } from "react";
+import type { ChangeEvent, FocusEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
@@ -45,10 +45,9 @@ export default function SelectOption({ id, children, field, listId, setSelectedT
     const childrenAsText = typeof children === "string" ? children : "";
 
     selectPopover?.hidePopover();
-    field?.props.onChange(event); // First, the default change event.
-    // @ts-ignore
-    field?.props.onBlur(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
     setSelectedText(childrenAsText);
+    field?.props.onChange(event); // First, the default change event.
+    field?.props.onBlur(event as FocusEvent<HTMLInputElement>); // Then, blur to trigger Formisch re-validation.
   }
 
   return (
