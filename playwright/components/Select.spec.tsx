@@ -6,16 +6,16 @@ import { test, expect, type MountResult } from "@playwright/experimental-ct-reac
 // Project files
 import FormPage from "forms/example-4/FormPage";
 
-let cleanUpText: Locator;
 let component: MountResult;
-let select1: Locator;
-let output1: Locator;
+let cleanUpText: Locator;
 let error1: Locator;
-let option1A: Locator;
-let select2: Locator;
-let output2: Locator;
 let error2: Locator;
+let option1A: Locator;
 let option2A: Locator;
+let output1: Locator;
+let output2: Locator;
+let select1: Locator;
+let select2: Locator;
 let submitButton: Locator;
 
 test.beforeEach(async ({ mount }) => {
