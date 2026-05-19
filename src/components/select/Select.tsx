@@ -7,6 +7,7 @@ import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractLabel from "helpers/extractLabel";
 import extractSelectOptions from "helpers/extractSelectOptions";
 import "./select.css";
+import Icon from "components/icon/Icon";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */
@@ -59,6 +60,7 @@ export default function Select({ children, id, form, hints }: Props) {
         style={{ anchorName: anchorId }}
       >
         {textToDisplay}
+        <Icon name={"chevron-down"} />
       </button>
 
       <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>

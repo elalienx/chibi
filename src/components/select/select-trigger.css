@@ -1,4 +1,8 @@
 .select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes the selected option to the left and the chevron icon to the right. */
+  gap: var(--space-medium);
   height: var(--height-of-field);
   padding-inline: var(--space-medium);
   background-color: white;
