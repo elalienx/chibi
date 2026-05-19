@@ -24,13 +24,13 @@ test.beforeEach(async ({ mount }) => {
   cleanUpText = component.getByText("Text to clean Playwright selector");
 
   // Select 1
-  select1 = component.locator("#--select-trigger-publisher");
+  select1 = component.locator("#trigger-publisher");
   option1A = component.getByText("Capcom");
   error1 = component.locator("#aria-error-publisher");
   output1 = component.getByText("Select 1: capcom");
 
   // Select 2
-  select2 = component.locator("#--select-trigger-accessory");
+  select2 = component.locator("#trigger-accessory");
   option2A = component.getByText("Arcade stick");
   error2 = component.locator("#aria-error-accessory");
   output2 = component.getByText("Select 2: arcade_stick");
@@ -61,6 +61,7 @@ test("2. Should not submit when choosing only 1 option", async () => {
 
   // Assert
   await expect(output1).toBeVisible();
+  await expect(error2).not.toBeVisible();
 });
 
 test("3. Should be able to submit", async () => {

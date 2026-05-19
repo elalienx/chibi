@@ -33,8 +33,9 @@ export default function Select({ children, id, form, hints }: Props) {
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
-  const triggerId = `--select-trigger-${id}`;
-  const listId = `select-list-${id}`;
+  const anchorId = `--anchor-${id}`; // Requires this "--" to work properly.
+  const triggerId = `trigger-${id}`;
+  const listId = `list-${id}`;
   const defaultQuestion = "Please choose an option";
   const selectedOption = String(field.input);
   const textToDisplay = selectedOption !== "undefined" ? selectedOption : defaultQuestion;
@@ -53,12 +54,12 @@ export default function Select({ children, id, form, hints }: Props) {
         type="button"
         className="select-trigger"
         popoverTarget={listId}
-        style={{ anchorName: triggerId }}
+        style={{ anchorName: anchorId }}
       >
         {textToDisplay}
       </button>
 
-      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: triggerId }}>
+      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
       </div>
 
