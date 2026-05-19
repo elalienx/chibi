@@ -17,21 +17,21 @@
     "@astrojs/react": "^5.0.4",
     "@floating-ui/react": "^0.27.19",
     "@formisch/react": "^0.4.5",
-    "astro": "^6.2.1",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "astro": "^6.3.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "valibot": "^1.4.0",
-    "zustand": "^5.0.12"
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
-    "@playwright/experimental-ct-react": "^1.59.1",
-    "@types/node": "^25.6.0",
+    "@playwright/experimental-ct-react": "^1.60.0",
+    "@types/node": "^25.7.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "oxfmt": "^0.37.0",
-    "oxlint": "^1.62.0",
+    "oxlint": "^1.64.0",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.6"
   },
   "packageManager": "pnpm@11.1.1"
 }
