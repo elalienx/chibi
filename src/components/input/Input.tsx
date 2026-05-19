@@ -1,7 +1,6 @@
 // Node modules
 import { useEffect, useState, type ChangeEvent, type FocusEvent } from "react";
-import { useField } from "@formisch/react";
-import type { FormStore } from "@formisch/react";
+import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import calculateInputState from "./helpers/calculateInputState";

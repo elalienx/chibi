@@ -36,7 +36,13 @@ export default function TooltipWindow({
 }: Props) {
   return (
     <FloatingFocusManager context={context} modal={false}>
-      <div ref={setFloating} style={floatingStyles} {...getFloatingProps()} className="tooltip-window" data-placement={context.placement}>
+      <div
+        ref={setFloating}
+        style={floatingStyles}
+        {...getFloatingProps()}
+        className="tooltip-window"
+        data-placement={context.placement}
+      >
         {/* Pointy arrow (styled by Floating UI libraty) */}
         <FloatingArrow context={context} ref={arrowRef} stroke="#4C4C4B" strokeWidth={1} />
 
