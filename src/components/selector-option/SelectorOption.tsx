@@ -29,9 +29,9 @@ export default function SelectorOption({ id, children, field, value }: Props) {
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
-    field?.props.onChange?.(event); // First, the default change event.
+    field?.props.onChange(event); // First, the default change event.
     // @ts-ignore
-    field?.props.onBlur?.(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
+    field?.props.onBlur(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
   }
 
   return (

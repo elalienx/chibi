@@ -34,13 +34,13 @@ export default function SelectOption({ id, children, field, selectListId = "", v
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
     const popoverElement = document.getElementById(selectListId);
 
-    if (popoverElement && popoverElement.hidePopover) {
+    if (popoverElement) {
       popoverElement.hidePopover();
     }
 
-    field?.props.onChange(event);
+    field?.props.onChange(event); // First, the default change event.
     // @ts-ignore
-    field?.props.onBlur(event);
+    field?.props.onBlur(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
   }
 
   return (
