@@ -13,7 +13,7 @@
   text-align: start;
   cursor: pointer;
   border: none;
-  border-radius: 4px; /* Unique size for this select-option. */
+  border-radius: var(--border-radius);
   transition: background 0.1s;
 
   /* Removes the radio bullet/dot */

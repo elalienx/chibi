@@ -1,13 +1,13 @@
 // Node modules
-import { useField, type FormStore } from "@formisch/react";
 import { useState, type ReactNode } from "react";
+import { useField, type FormStore } from "@formisch/react";
 
 // Project files
+import Icon from "components/icon/Icon";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractLabel from "helpers/extractLabel";
 import extractSelectOptions from "helpers/extractSelectOptions";
 import "./select.css";
-import Icon from "components/icon/Icon";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */

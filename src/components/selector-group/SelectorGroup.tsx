@@ -1,7 +1,6 @@
 // Node modules
 import type { ReactNode } from "react";
-import { useField } from "@formisch/react";
-import type { FormStore } from "@formisch/react";
+import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import ValidationMessage from "components/validation-message/ValidationMessage";
