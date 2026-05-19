@@ -39,7 +39,7 @@ export default function Select({ children, id, form, hints }: Props) {
   const triggerId = `trigger-${id}`;
   const listId = `list-${id}`;
   // -- option to display
-  const defaultText = "Välj ett alternativ";
+  const defaultText = "Please choose an option";
   const textToDisplay = selectedText !== "undefined" ? selectedText : defaultText;
 
   // Components

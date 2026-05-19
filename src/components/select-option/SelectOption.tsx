@@ -19,7 +19,7 @@ interface Props {
   listId?: string;
 
   /** Returns the human-readable option name to the parent as Formisch only tracks the backend value. */
-  setSelectedText: (text: string) => void;
+  setSelectedText?: (text: string) => void;
 
   /** The value sent to the database. */
   value: string | number | boolean;
@@ -30,6 +30,7 @@ export default function SelectOption({ id, children, field, listId, setSelectedT
   if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
   if (!listId) return <p>Pass the parent select list id so we can properly close it.</p>;
+  if (!setSelectedText) return <p>Pass the setSelectedText method so we can properly update the parent Select.</p>;
 
   // Properties
   const stringValue = String(value);
@@ -38,6 +39,7 @@ export default function SelectOption({ id, children, field, listId, setSelectedT
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
     // Safeguard
     if (!listId) return;
+    if (!setSelectedText) return;
 
     const selectPopover = document.getElementById(listId);
     const childrenAsText = typeof children === "string" ? children : "";
