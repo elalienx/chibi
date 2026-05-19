@@ -49,8 +49,8 @@ export default function FormPage() {
 
         <p>Text to verify Playwright assertions:</p>
         <ul>
-          <li>Select 1: {select1Value}</li>
-          <li>Select 2: {select2Value}</li>
+          <li>Select 1 internal value: {select1Value}</li>
+          <li>Select 2 internal value: {select2Value}</li>
         </ul>
       </section>
 

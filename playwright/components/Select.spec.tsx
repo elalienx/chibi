@@ -27,13 +27,13 @@ test.beforeEach(async ({ mount }) => {
   select1 = component.locator("#trigger-publisher");
   option1A = component.getByText("Capcom");
   error1 = component.locator("#aria-error-publisher");
-  output1 = component.getByText("Select 1: capcom");
+  output1 = component.getByText("Select 1 internal value: capcom");
 
   // Select 2
   select2 = component.locator("#trigger-accessory");
   option2A = component.getByText("Arcade stick");
   error2 = component.locator("#aria-error-accessory");
-  output2 = component.getByText("Select 2: arcade_stick");
+  output2 = component.getByText("Select 2 internal value: arcade_stick");
 });
 
 test.afterEach(async () => {

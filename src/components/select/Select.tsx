@@ -1,6 +1,6 @@
 // Node modules
 import { useField, type FormStore } from "@formisch/react";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 // Project files
 import ValidationMessage from "components/validation-message/ValidationMessage";
@@ -30,20 +30,22 @@ export default function Select({ children, id, form, hints }: Props) {
   // State
   // @ts-ignore
   const field = useField(form, { path: [id] });
+  const [selectedText, setSelectedText] = useState(String(field.input));
 
   // Properties
+  // -- ids
   const ariaErrorId = `aria-error-${id}`;
   const anchorId = `--anchor-${id}`; // Requires this "--" to work properly.
   const triggerId = `trigger-${id}`;
   const listId = `list-${id}`;
-  const defaultQuestion = "Please choose an option";
-  const selectedOption = String(field.input);
-  const textToDisplay = selectedOption !== "undefined" ? selectedOption : defaultQuestion;
+  // -- option to display
+  const defaultText = "Please choose an option";
+  const textToDisplay = selectedText !== "undefined" ? selectedText : defaultText;
 
   // Components
   const hint = hints?.[id];
   const label = extractLabel(id, children, hint);
-  const selectOptions = extractSelectOptions(id, children, field, listId);
+  const selectOptions = extractSelectOptions(id, children, field, listId, setSelectedText);
 
   return (
     <div className="select">

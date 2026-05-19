@@ -16,17 +16,21 @@ interface Props {
   field?: FieldStore;
 
   /** The name of the <Select> list parent. Used to close the list when an option is selected. */
-  selectListId?: string;
+  listId?: string;
+
+  /** Returns the human-readable option name to the parent as Formisch only tracks the backend value. */
+  setSelectedText?: (text: string) => void;
 
   /** The value sent to the database. */
   value: string | number | boolean;
 }
 
-export default function SelectOption({ id, children, field, selectListId, value }: Props) {
+export default function SelectOption({ id, children, field, listId, setSelectedText, value }: Props) {
   // Safeguard
   if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
-  if (!selectListId) return <p>Pass the parent select list id so we can properly close it.</p>;
+  if (!listId) return <p>Pass the parent select list id so we can properly close it.</p>;
+  if (!setSelectedText) return <p>Pass the setSelectedText method so we can properly update the parent Select.</p>;
 
   // Properties
   const stringValue = String(value);
@@ -34,14 +38,17 @@ export default function SelectOption({ id, children, field, selectListId, value 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
     // Safeguard
-    if (!selectListId) return;
+    if (!listId) return;
+    if (!setSelectedText) return;
 
-    const selectPopover = document.getElementById(selectListId);
+    const selectPopover = document.getElementById(listId);
+    const childrenAsText = typeof children === "string" ? children : "";
 
     selectPopover?.hidePopover();
     field?.props.onChange(event); // First, the default change event.
     // @ts-ignore
     field?.props.onBlur(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
+    setSelectedText(childrenAsText);
   }
 
   return (
