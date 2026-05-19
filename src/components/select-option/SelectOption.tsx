@@ -22,22 +22,23 @@ interface Props {
   value: string | number | boolean;
 }
 
-export default function SelectOption({ id, children, field, selectListId = "", value }: Props) {
+export default function SelectOption({ id, children, field, selectListId, value }: Props) {
   // Safeguard
   if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
+  if (!selectListId) return <p>Pass the parent select list id so we can properly close it.</p>;
 
   // Properties
   const stringValue = String(value);
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
-    const popoverElement = document.getElementById(selectListId);
+    // Safeguard
+    if (!selectListId) return;
 
-    if (popoverElement) {
-      popoverElement.hidePopover();
-    }
+    const selectPopover = document.getElementById(selectListId);
 
+    selectPopover?.hidePopover();
     field?.props.onChange(event); // First, the default change event.
     // @ts-ignore
     field?.props.onBlur(event); // Then, the blur event to trigger Formisch re-validate: "blur" rule.
