@@ -7,8 +7,14 @@ import Icon from "components/icon/Icon";
 import "./tooltip-window.css";
 
 interface Props {
-  /** The reference to position the window relatively to the trigger. */
-  setFloating: (node: HTMLElement | null) => void;
+  /** The reference to the arrow element. */
+  arrowRef: RefObject<SVGSVGElement | null>;
+
+  /** Text and/or elements to display inside the window. */
+  children: ReactNode;
+
+  /** The floating context for managing the floating element. */
+  context: FloatingContext;
 
   /** The CSS styles to apply for positioning. */
   floatingStyles: CSSProperties;
@@ -16,23 +22,17 @@ interface Props {
   /** The commands to handle floating interactions. */
   getFloatingProps: Function;
 
-  /** The floating context for managing the floating element. */
-  context: FloatingContext;
-
-  /** The reference to the arrow element. */
-  arrowRef: RefObject<SVGSVGElement | null>;
-
-  /** Text and/or elements to display inside the window. */
-  children: ReactNode;
+  /** The reference to position the window relatively to the trigger. */
+  setFloating: (node: HTMLElement | null) => void;
 }
 
 export default function TooltipWindow({
-  setFloating,
-  floatingStyles,
-  getFloatingProps,
-  context,
   arrowRef,
   children,
+  context,
+  floatingStyles,
+  getFloatingProps,
+  setFloating,
 }: Props) {
   return (
     <FloatingFocusManager context={context} modal={false}>

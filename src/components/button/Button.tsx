@@ -11,6 +11,7 @@ interface Props {
   /** The function to execute when clicked. */
   onClick?: () => void;
 
+  /** The behavior of the button when clicked. */
   type?: "button" | "submit" | "reset" | undefined;
 }
 
