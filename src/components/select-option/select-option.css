@@ -1,0 +1,39 @@
+.select-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-tiny); /* For optional icons. */
+
+  width: 100%; /* To force full width on display: flex. */
+  height: var(--height-of-field);
+  padding: var(--space-small) var(--space-medium);
+  background-color: transparent;
+  color: var(--typography-dark);
+  font-family: var(--font-family);
+  font-size: var(--font-size-normal);
+  text-align: start;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px; /* Unique size for this select-option. */
+  transition: background 0.1s;
+
+  /* Removes the radio bullet/dot */
+  & input[type="radio"] {
+    appearance: none;
+    margin: 0;
+    width: 0;
+  }
+}
+
+.select-option:hover {
+  background: var(--color-blue-99);
+}
+
+/**
+ * The <input type="radio"/> is placed inside a <label>.
+ * We use the CSS :has() selector to style the label
+ * based on the input’s state (hover or checked).
+ */
+.select-option:has(input[type="radio"]:checked) {
+  background-color: var(--color-blue-40);
+  color: white;
+}

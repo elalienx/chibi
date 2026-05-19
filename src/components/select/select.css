@@ -1,0 +1,9 @@
+@import url("./select-list.css");
+@import url("./select-trigger.css");
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-between-label-and-field);
+}

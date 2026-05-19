@@ -10,10 +10,10 @@ import extractSelectorOptions from "helpers/extractSelectorOptions";
 import "./selector-group.css";
 
 interface Props {
-  /** Unique identifier of the parent input group to make sure only one selector option is active. */
+  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
   id: string;
 
-  /**  Content to display inside the input field. */
+  /**  Content to display inside the selector. */
   children?: ReactNode;
 
   /** An instance of a Formisch form. */
@@ -43,9 +43,11 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
   return (
     <div className="selector-group">
       {label}
+
       <div id={id} className="selector-options">
         {selectorOptions}
       </div>
+
       {field.errors && form.isSubmitted && (
         <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>
       )}
