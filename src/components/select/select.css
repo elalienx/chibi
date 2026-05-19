@@ -7,3 +7,12 @@
   flex-direction: column;
   gap: var(--gap-between-label-and-field);
 }
+
+/** Chevron animation */
+.select:has(.select-list:popover-open) .select-trigger .icon {
+  transform: rotate(180deg);
+}
+
+.select-trigger .icon {
+  transition: transform 0.3s ease;
+}
