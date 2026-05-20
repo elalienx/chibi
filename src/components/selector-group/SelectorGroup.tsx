@@ -33,6 +33,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
+  const hasErrors = form.isSubmitted && field.errors;
 
   // Components
   const hint = hints?.[id];
@@ -47,9 +48,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
         {selectorOptions}
       </div>
 
-      {field.errors && form.isSubmitted && (
-        <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>
-      )}
+      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>}
     </div>
   );
 }
