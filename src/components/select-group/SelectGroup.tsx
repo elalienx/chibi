@@ -33,7 +33,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const field = useField(form, { path: [id] });
 
   // Properties
-  const anchorCSS = `--anchor-${id}`; // Requires "--" to work properly.
+  const anchorId = `--anchor-${id}`; // Requires "--" to work properly.
   const ariaErrorId = `aria-error-${id}`;
   const listId = `list-${id}`;
   const triggerId = `trigger-${id}`;
@@ -56,13 +56,13 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
         type="button"
         className="select-trigger"
         popoverTarget={listId}
-        style={{ anchorName: anchorCSS }}
+        style={{ anchorName: anchorId }}
       >
         {textToDisplay}
         <Icon name={"chevron-down"} />
       </button>
 
-      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorCSS }}>
+      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
       </div>
 
