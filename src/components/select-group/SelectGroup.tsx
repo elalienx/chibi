@@ -45,7 +45,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const selectOptions = extractSelectOptions(id, children, field, listId);
 
   // Derived state
-  const activeOption = selectOptions.find((option: any) => String(option.props.value) === field.input);
+  const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const textToDisplay = activeOption ? activeOption.props.children : "Please choose an option";
 
   return (
