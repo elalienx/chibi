@@ -33,7 +33,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const field = useField(form, { path: [id] });
 
   // Properties
-  const anchorCSS = `--anchor-${id}`; // Requires this "--" to work properly.
+  const anchorCSS = `--anchor-${id}`; // Requires "--" to work properly.
   const ariaErrorId = `aria-error-${id}`;
   const listId = `list-${id}`;
   const triggerId = `trigger-${id}`;
