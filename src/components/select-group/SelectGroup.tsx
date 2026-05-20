@@ -1,5 +1,5 @@
 // Node modules
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 // Project files
@@ -23,7 +23,7 @@ interface Props {
   hints?: Record<string, ReactNode>;
 }
 
-export default function SelectGroup({ children, id, form, hints }: Props) {
+export default function SelectGroup({ id, children, form, hints }: Props) {
   // Safeguard
   if (!children) return <p>Please add a Label and at least two SelectorOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
@@ -31,22 +31,21 @@ export default function SelectGroup({ children, id, form, hints }: Props) {
   // State
   // @ts-ignore
   const field = useField(form, { path: [id] });
-  const [selectedText, setSelectedText] = useState(String(field.input));
 
   // Properties
-  // -- ids
+  const anchorCSS = `--anchor-${id}`; // Requires "--" to work properly.
   const ariaErrorId = `aria-error-${id}`;
-  const anchorId = `--anchor-${id}`; // Requires this "--" to work properly.
-  const triggerId = `trigger-${id}`;
   const listId = `list-${id}`;
-  // -- option to display
-  const defaultText = "Please choose an option";
-  const textToDisplay = selectedText !== "undefined" ? selectedText : defaultText;
+  const triggerId = `trigger-${id}`;
 
   // Components
   const hint = hints?.[id];
   const label = extractLabel(id, children, hint);
-  const selectOptions = extractSelectOptions(id, children, field, listId, setSelectedText);
+  const selectOptions = extractSelectOptions(id, children, field, listId);
+
+  // Derived state
+  const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
+  const textToDisplay = activeOption ? activeOption.props.children : "Please choose an option";
 
   return (
     <div className="select-group">
@@ -57,13 +56,13 @@ export default function SelectGroup({ children, id, form, hints }: Props) {
         type="button"
         className="select-trigger"
         popoverTarget={listId}
-        style={{ anchorName: anchorId }}
+        style={{ anchorName: anchorCSS }}
       >
         {textToDisplay}
         <Icon name={"chevron-down"} />
       </button>
 
-      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
+      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorCSS }}>
         {selectOptions}
       </div>
 

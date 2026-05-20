@@ -10,14 +10,8 @@ import SelectOption from "components/select-option/SelectOption";
  *
  * This method replicates it so `<Select/>` can pass props to any `<SelectOption/>`.
  */
-export default function extractSelectOptions(
-  id: string,
-  children: ReactNode,
-  field: FieldStore,
-  listId: string,
-  setSelectedText: Function,
-) {
+export default function extractSelectOptions(id: string, children: ReactNode, field: FieldStore, listId: string) {
   return Children.toArray(children)
     .filter((child) => isValidElement(child) && child.type === SelectOption)
-    .map((child) => cloneElement(child as any, { id, field, listId, setSelectedText } as any));
+    .map((child) => cloneElement(child as any, { id, field, listId } as any));
 }
