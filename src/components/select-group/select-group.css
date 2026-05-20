@@ -1,7 +1,7 @@
 @import url("./select-list.css");
 @import url("./select-trigger.css");
 
-.select {
+.select-group {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 }
 
 /** Chevron animation */
-.select:has(.select-list:popover-open) .select-trigger .icon {
+.select-group:has(.select-list:popover-open) .select-trigger .icon {
   transform: rotate(180deg);
 }
 

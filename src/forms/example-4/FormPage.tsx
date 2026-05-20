@@ -5,7 +5,7 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Label from "components/label/Label";
-import Select from "components/select/Select";
+import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
 
 const schema = v.object({
@@ -33,19 +33,19 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Select form={form} id="publisher">
+        <SelectGroup form={form} id="publisher">
           <Label>What is your favorite game developer company?</Label>
           <SelectOption value="capcom">Capcom</SelectOption>
           <SelectOption value="electronic_arts">Electronic Arts</SelectOption>
           <SelectOption value="konami">Konami</SelectOption>
-        </Select>
+        </SelectGroup>
 
-        <Select form={form} id="accessory">
+        <SelectGroup form={form} id="accessory">
           <Label hint="Used to make gaming more fun!">What was the best accessory in history?</Label>
           <SelectOption value="arcade_stick">Arcade stick</SelectOption>
           <SelectOption value="kinnect">Kinnect</SelectOption>
           <SelectOption value="wireless_controller">Wavebird controller</SelectOption>
-        </Select>
+        </SelectGroup>
 
         <p>Text to verify Playwright assertions:</p>
         <ul>
