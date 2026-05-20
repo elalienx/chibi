@@ -11,6 +11,10 @@ import SelectOption from "components/select-option/SelectOption";
 const schema = v.object({
   accessory: v.string("Choose the best accessory in history"),
   publisher: v.string("Choose one game developer company."),
+  pc_engine_games: v.pipe(
+    v.string("Choose a number of PC-Engine games."),
+    v.toNumber("Choose a number of PC-Engine games."),
+  ),
 });
 
 export default function FormPage() {
@@ -18,8 +22,10 @@ export default function FormPage() {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Properties
-  const select1Value = getInput(form, { path: ["publisher"] }) || "no result";
-  const select2Value = getInput(form, { path: ["accessory"] }) || "no result";
+  const noResult = "no result";
+  const select1Value = getInput(form, { path: ["publisher"] }) || noResult;
+  const select2Value = getInput(form, { path: ["accessory"] }) || noResult;
+  const select3Value = getInput(form, { path: ["pc_engine_games"] }) || noResult;
 
   // Methods
   function submitForm() {
@@ -41,16 +47,25 @@ export default function FormPage() {
         </SelectGroup>
 
         <SelectGroup form={form} id="accessory">
-          <Label hint="Used to make gaming more fun!">What was the best accessory in history?</Label>
+          <Label>What was the best accessory in history?</Label>
           <SelectOption value="arcade_stick">Arcade stick</SelectOption>
           <SelectOption value="kinnect">Kinnect</SelectOption>
           <SelectOption value="wireless_controller">Wavebird controller</SelectOption>
+        </SelectGroup>
+
+        <SelectGroup form={form} id="pc_engine_games">
+          <Label hint="PC-Engine is a japanese console from 1987">How many PC-Engine games you have?</Label>
+          <SelectOption value={0}>None (never hear of PC-Engine)</SelectOption>
+          <SelectOption value={1}>One game</SelectOption>
+          <SelectOption value={2}>Two games</SelectOption>
+          <SelectOption value={3}>Three or more games</SelectOption>
         </SelectGroup>
 
         <p>Text to verify Playwright assertions:</p>
         <ul>
           <li>Select 1 internal value: {select1Value}</li>
           <li>Select 2 internal value: {select2Value}</li>
+          <li>Select 3 internal value: {select3Value}</li>
         </ul>
       </section>
 
