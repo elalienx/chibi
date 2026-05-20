@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractLabel from "helpers/extractLabel";
 import extractSelectOptions from "helpers/extractSelectOptions";
-import "./select.css";
+import "./select-group.css";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */
@@ -23,7 +23,7 @@ interface Props {
   hints?: Record<string, ReactNode>;
 }
 
-export default function Select({ children, id, form, hints }: Props) {
+export default function SelectGroup({ children, id, form, hints }: Props) {
   // Safeguard
   if (!children) return <p>Please add a Label and at least two SelectorOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
@@ -49,7 +49,7 @@ export default function Select({ children, id, form, hints }: Props) {
   const selectOptions = extractSelectOptions(id, children, field, listId, setSelectedText);
 
   return (
-    <div className="select">
+    <div className="select-group">
       {label}
 
       <button
