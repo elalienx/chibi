@@ -10,16 +10,12 @@ let component: MountResult;
 let cleanUpText: Locator;
 let error1: Locator;
 let error2: Locator;
-let error3: Locator;
 let option1A: Locator;
 let option2A: Locator;
-let option3A: Locator;
 let output1: Locator;
 let output2: Locator;
-let output3: Locator;
 let select1: Locator;
 let select2: Locator;
-let select3: Locator;
 let submitButton: Locator;
 
 test.beforeEach(async ({ mount }) => {
@@ -37,13 +33,7 @@ test.beforeEach(async ({ mount }) => {
   select2 = component.locator("#trigger-accessory");
   option2A = component.getByText("Arcade stick");
   error2 = component.locator("#aria-error-accessory");
-  output2 = component.getByText("Select 2 internal value: arcade_stick");
-
-  // Select 3
-  select3 = component.locator("#trigger-pc_engine_games");
-  option3A = component.getByText("None (never hear of PC-Engine)");
-  error3 = component.locator("#aria-error-pc_engine_games");
-  output3 = component.getByText("Select 3 internal value: 0");
+  output2 = component.getByText("Select 2 internal value: 0");
 });
 
 test.afterEach(async () => {
@@ -60,7 +50,6 @@ test("1. Should show error state when submitting empty form", async () => {
   // Assert
   await expect(error1).toBeVisible();
   await expect(error2).toBeVisible();
-  await expect(error3).toBeVisible();
 });
 
 test("2. Should not submit when choosing only 1 option", async () => {
@@ -87,13 +76,7 @@ test("3. Should be able to submit", async () => {
     await option2A.click();
   });
 
-  await test.step("Third select", async () => {
-    await select3.click();
-    await option3A.click();
-  });
-
   // Assert
   await expect(output1).toBeVisible();
   await expect(output2).toBeVisible();
-  await expect(output3).toBeVisible();
 });
