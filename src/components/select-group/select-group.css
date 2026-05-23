@@ -1,5 +1,4 @@
 @import url("./select-list.css");
-@import url("./select-trigger.css");
 
 .select-group {
   position: relative;
@@ -9,10 +8,14 @@
 }
 
 /** Chevron animation */
-.select-group:has(.select-list:popover-open) .select-trigger .icon {
-  transform: rotate(180deg);
+.select-group:has(.select-list:popover-open) {
+  .select .icon {
+    transform: rotate(180deg);
+  }
 }
 
-.select-trigger .icon {
-  transition: transform 0.3s ease;
+.select-group {
+  .select .icon {
+    transition: transform 0.3s ease;
+  }
 }
