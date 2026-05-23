@@ -52,8 +52,10 @@ test("2. Should show active state when input is focused and untouched", async ()
 });
 
 test("3. Should return to default state when input is focused and then blurred without typing", async () => {
-  // Act
+  // Arrange
   await input1.focus();
+
+  // Act
   await input1.blur();
 
   // Assert
@@ -71,8 +73,10 @@ test("4. Should remain active while typing invalid value without blurring", asyn
 });
 
 test("5. Should show error state when invalid value is entered and input is blurred", async () => {
-  // Act
+  // Arrange
   await input1.fill(invalidName);
+
+  // Act
   await input1.blur();
 
   // Assert
@@ -90,8 +94,10 @@ test("6. Should remain active while typing valid value without blurring", async 
 });
 
 test("7. Should show success state when valid value is entered and input is blurred", async () => {
-  // Act
+  // Arrange
   await input1.fill(validName);
+
+  // Act
   await input1.blur();
 
   // Assert
@@ -101,8 +107,10 @@ test("7. Should show success state when valid value is entered and input is blur
 
 test("8. Should keep error state when focusing a field that already has an error", async () => {
   await test.step("fill invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(invalidName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -122,8 +130,10 @@ test("8. Should keep error state when focusing a field that already has an error
 
 test("9. Should keep error state while correcting invalid field without blurring", async () => {
   await test.step("fill invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(invalidName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -143,8 +153,10 @@ test("9. Should keep error state while correcting invalid field without blurring
 
 test("10. Should transition from error to success when valid value is entered and input is blurred", async () => {
   await test.step("fill invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(invalidName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -153,8 +165,10 @@ test("10. Should transition from error to success when valid value is entered an
   });
 
   await test.step("fill valid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(validName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -165,8 +179,10 @@ test("10. Should transition from error to success when valid value is entered an
 
 test("11. Second field should not validate while active after first field has been interacted with", async () => {
   await test.step("first input: fill invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(invalidName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -175,8 +191,10 @@ test("11. Second field should not validate while active after first field has be
   });
 
   await test.step("first input: fill valid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(validName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -196,8 +214,10 @@ test("11. Second field should not validate while active after first field has be
 
 test("12. Should keep error if user clears the input after a validation error", async () => {
   await test.step("fill invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill(invalidName);
+
+    // Act
     await input1.blur();
 
     // Assert
@@ -206,12 +226,13 @@ test("12. Should keep error if user clears the input after a validation error", 
   });
 
   await test.step("clear invalid data", async () => {
-    // Act
+    // Arrange
     await input1.fill("");
+
+    // Act
     await input1.blur();
 
     // Assert
-    await expect(cleanUpText).toBeVisible(); // weird trick to force a validation re-render
     await expect(wrapper1).toHaveClass(/error/);
     await expect(wrapper2).toHaveClass(/default/);
   });
