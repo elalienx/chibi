@@ -45,9 +45,11 @@ test("1. Should show error state when submitting empty form", async () => {
 });
 
 test("2. Should submit form without errors", async () => {
-  // Act
+  // Arrange
   await option1A.click();
   await option2A.click();
+
+  // Act
   await submitButton.click();
 
   // Assert
@@ -57,8 +59,10 @@ test("2. Should submit form without errors", async () => {
 
 test("3. Clicking on a radio button with error should immediately remove the error", async () => {
   await test.step("Trigger error", async () => {
-    // Act
+    // Arrange
     await option1A.click();
+
+    // Act
     await submitButton.click();
 
     // Assert

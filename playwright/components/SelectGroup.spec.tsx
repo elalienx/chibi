@@ -63,6 +63,7 @@ test("2. Should not submit when choosing only 1 option", async () => {
     await option1A.click();
   });
 
+  // Act
   await submitButton.click();
 
   // Assert
@@ -77,7 +78,6 @@ test("3. Should be able to submit", async () => {
     await select1.click();
     await option1A.click();
   });
-
   await test.step("Second select", async () => {
     await select2.click();
     await option2A.click();
@@ -99,7 +99,6 @@ test("4. Should be able to submit a long list", async () => {
     await select1.click();
     await option1A.click();
   });
-
   await test.step("Second select", async () => {
     await select2.click();
     await option2B.click();
