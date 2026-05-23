@@ -1,11 +1,11 @@
 .select-list {
-  --close-delay: 0.25s;
   --visible-items: 4;
   --total-items-height: calc(var(--height-of-field) * var(--visible-items));
   --total-gaps-height: calc(var(--space-base) * (var(--visible-items) - 1));
   --container-max-height: calc(var(--total-items-height) + var(--total-gaps-height));
 
   display: none; /* It is switched to display: flex when the popover is open. */
+  padding: var(--space-base);
   flex-direction: column;
   gap: var(--space-base);
   max-height: var(--container-max-height);
@@ -23,42 +23,25 @@
 }
 
 .select-list:popover-open {
-  --open-delay: 0.15s;
-
   display: flex;
-  opacity: 1;
   transform: scale(1) translateY(0);
-
-  /* Animation */
-  transition:
-    opacity var(--open-delay),
-    transform var(--open-delay),
-    overlay var(--open-delay) allow-discrete,
-    display var(--open-delay) allow-discrete;
 }
 
 /** Visual hint (to infor the user it can scroll to see more items) */
 .select-list:has(> :nth-child(5))::after {
+  --height: 64px;
+  --gradient-start: rgba(255, 255, 255, 0);
+  --gradient-end: rgba(255, 255, 255, 0.99);
+
   content: "";
   position: sticky;
-  bottom: 0;
+  bottom: calc(var(--space-base) * -1);
   left: 0;
   width: 100%;
-  min-height: 64px;
+  height: var(--height);
   flex-shrink: 0;
-
-  /* Pull it up so it overlays the items instead of pushing the scroll down */
-  margin-top: calc((64px + var(--space-base)) * -1);
-
-  /* The Visuals (Fade from transparent to white) */
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.99));
+  margin-top: calc((var(--height) - var(--space-base)) * -1);
+  background: linear-gradient(var(--gradient-start), var(--gradient-end));
   pointer-events: none; /* Important: allow clicks to pass through to items */
   z-index: 2;
-}
-
-@starting-style {
-  .select-list:popover-open {
-    opacity: 0;
-    transform: scale(0.95) translateY(var(--space-base));
-  }
 }
