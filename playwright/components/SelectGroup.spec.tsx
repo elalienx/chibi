@@ -57,20 +57,22 @@ test("1. Should show error state when submitting empty form", async () => {
 });
 
 test("2. Should not submit when choosing only 1 option", async () => {
-  // Act
+  // Arrange
   await test.step("First select", async () => {
     await select1.click();
     await option1A.click();
   });
 
+  await submitButton.click();
+
   // Assert
   await expect(output1).toBeVisible();
   await expect(error1).not.toBeVisible();
-  await expect(error2).not.toBeVisible();
+  await expect(error2).toBeVisible();
 });
 
 test("3. Should be able to submit", async () => {
-  // Act
+  // Arrange
   await test.step("First select", async () => {
     await select1.click();
     await option1A.click();
@@ -81,13 +83,18 @@ test("3. Should be able to submit", async () => {
     await option2A.click();
   });
 
+  // Act
+  await submitButton.click();
+
   // Assert
   await expect(output1).toBeVisible();
   await expect(output2A).toBeVisible();
+  await expect(error1).not.toBeVisible();
+  await expect(error2).not.toBeVisible();
 });
 
 test("4. Should be able to submit a long list", async () => {
-  // Act
+  // Arrange
   await test.step("First select", async () => {
     await select1.click();
     await option1A.click();
@@ -98,7 +105,12 @@ test("4. Should be able to submit a long list", async () => {
     await option2B.click();
   });
 
+  // Act
+  await submitButton.click();
+
   // Assert
   await expect(output1).toBeVisible();
   await expect(output2B).toBeVisible();
+  await expect(error1).not.toBeVisible();
+  await expect(error2).not.toBeVisible();
 });
