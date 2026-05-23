@@ -237,3 +237,17 @@ test("12. Should keep error if user clears the input after a validation error", 
     await expect(wrapper2).toHaveClass(/default/);
   });
 });
+
+test("13. Should be able to submit the form", async () => {
+  // Arrange
+  await input1.fill(validName);
+  await input2.fill("18");
+  await input2.blur();
+
+  // Act
+  await submitButton.click();
+
+  // Assert
+  await expect(wrapper1).toHaveClass(/success/);
+  await expect(wrapper2).toHaveClass(/success/);
+});
