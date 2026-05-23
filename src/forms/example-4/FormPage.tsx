@@ -48,7 +48,10 @@ export default function FormPage() {
           <Select>Choose an accessory</Select>
           <SelectOption value={0}>Arcade stick</SelectOption>
           <SelectOption value={1}>Kinnect</SelectOption>
-          <SelectOption value={2}>Wavebird controller</SelectOption>
+          <SelectOption value={2}>Multi-tap</SelectOption>
+          <SelectOption value={3}>Link cable</SelectOption>
+          <SelectOption value={4}>Wavebird controller</SelectOption>
+          <SelectOption value={5}>Zapper</SelectOption>
         </SelectGroup>
 
         <p>Text to verify Playwright assertions:</p>
