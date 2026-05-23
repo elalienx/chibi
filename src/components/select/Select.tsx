@@ -14,6 +14,7 @@ interface Props {
 }
 
 export default function Select({ id, anchorId, children, listId, activeOptionText }: Props) {
+  // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Properties

@@ -24,6 +24,7 @@ interface Props {
 export default function InputField({ id, children, form, hints }: Props) {
   // Safeguard
   if (!children) return <p>Please add a Label and a InputField to get started</p>;
+  if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Components
   const hint = hints?.[id];
