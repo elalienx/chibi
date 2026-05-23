@@ -10,7 +10,7 @@ import SelectOption from "components/select-option/SelectOption";
 import Select from "components/select/Select";
 
 const schema = v.object({
-  accessory: v.string("Choose the best accessory in history."),
+  accessory: v.string("Choose one accessory."),
   publisher: v.pipe(v.string("Choose one game developer company."), v.toNumber("Choose one game developer company.")),
 });
 

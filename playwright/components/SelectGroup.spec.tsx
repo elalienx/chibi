@@ -24,15 +24,15 @@ test.beforeEach(async ({ mount }) => {
   cleanUpText = component.getByText("Text to clean Playwright selector");
 
   // Select 1
-  select1 = component.locator("#trigger-publisher");
+  select1 = component.getByRole("button", { name: "Choose a developer" });
   option1A = component.getByText("Capcom");
-  error1 = component.locator("#aria-error-publisher");
+  error1 = component.getByText("Choose one game developer company.");
   output1 = component.getByText("Select 1 internal value: capcom");
 
   // Select 2
-  select2 = component.locator("#trigger-accessory");
+  select2 = component.getByRole("button", { name: "Choose an accessory" });
   option2A = component.getByText("Arcade stick");
-  error2 = component.locator("#aria-error-accessory");
+  error2 = component.getByText("Choose one accessory.");
   output2 = component.getByText("Select 2 internal value: 0");
 });
 
