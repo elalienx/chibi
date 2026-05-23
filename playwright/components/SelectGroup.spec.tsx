@@ -44,7 +44,7 @@ test.afterEach(async () => {
   await expect(cleanUpText).toBeVisible();
 
   // Only run visual regression locally
-  // if (!process.env.CI) await expect(component).toHaveScreenshot();
+  if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
 test("1. Should show error state when submitting empty form", async () => {
