@@ -52,7 +52,6 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   return (
     <div className="select-group">
       {label}
-
       {select}
 
       <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>

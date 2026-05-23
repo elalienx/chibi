@@ -66,6 +66,7 @@ test("2. Should not submit when choosing only 1 option", async () => {
   // Assert
   await expect(output1).toBeVisible();
   await expect(error1).not.toBeVisible();
+  await expect(error2).not.toBeVisible();
 });
 
 test("3. Should be able to submit", async () => {

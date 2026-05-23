@@ -14,6 +14,8 @@ interface Props {
 }
 
 export default function Select({ id, anchorId, children, listId, activeOptionText }: Props) {
+  if (!id) return <p>Pass an id to know which field this input belongs</p>;
+
   // Properties
   const selectId = `trigger-${id}`;
   const textToDisplay = activeOptionText ? activeOptionText : children;
