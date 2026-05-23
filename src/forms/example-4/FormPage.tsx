@@ -10,8 +10,8 @@ import SelectOption from "components/select-option/SelectOption";
 import Select from "components/select/Select";
 
 const schema = v.object({
-  accessory: v.string("Choose one accessory."),
-  publisher: v.pipe(v.string("Choose one game developer company."), v.toNumber("Choose one game developer company.")),
+  publisher: v.string("Choose one game developer company."),
+  accessory: v.pipe(v.string("Choose one accessory."), v.toNumber("Choose one accessory.")),
 });
 
 export default function FormPage() {
