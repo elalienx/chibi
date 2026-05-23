@@ -1,4 +1,4 @@
-.select-trigger {
+.select {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Pushes the selected option to the left and the chevron icon to the right. */
@@ -16,7 +16,7 @@
   outline: none;
 }
 
-.select-trigger:hover {
+.select:hover {
   outline-style: solid;
   outline-width: 1px;
   outline-color: var(--input-border-hover);

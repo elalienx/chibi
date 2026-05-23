@@ -7,9 +7,10 @@ import Button from "components/button/Button";
 import Label from "components/label/Label";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
+import Select from "components/select/Select";
 
 const schema = v.object({
-  accessory: v.string("Choose the best accessory in history."),
+  accessory: v.string("Choose one accessory."),
   publisher: v.pipe(v.string("Choose one game developer company."), v.toNumber("Choose one game developer company.")),
 });
 
@@ -36,6 +37,7 @@ export default function FormPage() {
       <section>
         <SelectGroup form={form} id="publisher">
           <Label>What is your favorite game developer company?</Label>
+          <Select>Choose a developer</Select>
           <SelectOption value="capcom">Capcom</SelectOption>
           <SelectOption value="electronic_arts">Electronic Arts</SelectOption>
           <SelectOption value="konami">Konami</SelectOption>
@@ -43,9 +45,13 @@ export default function FormPage() {
 
         <SelectGroup form={form} id="accessory">
           <Label hint="This test validates numeric values">What was the best accessory in history?</Label>
+          <Select>Choose an accessory</Select>
           <SelectOption value={0}>Arcade stick</SelectOption>
           <SelectOption value={1}>Kinnect</SelectOption>
-          <SelectOption value={2}>Wavebird controller</SelectOption>
+          <SelectOption value={2}>Multi-tap</SelectOption>
+          <SelectOption value={3}>Link cable</SelectOption>
+          <SelectOption value={4}>Wavebird controller</SelectOption>
+          <SelectOption value={5}>Zapper</SelectOption>
         </SelectGroup>
 
         <p>Text to verify Playwright assertions:</p>

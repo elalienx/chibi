@@ -8,6 +8,7 @@ import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractLabel from "helpers/extractLabel";
 import extractSelectOptions from "helpers/extractSelectOptions";
 import "./select-group.css";
+import extractSelect from "helpers/extractSelect";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */
@@ -36,32 +37,23 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const anchorId = `--anchor-${id}`; // Requires "--" to work properly.
   const ariaErrorId = `aria-error-${id}`;
   const listId = `list-${id}`;
-  const triggerId = `trigger-${id}`;
   const hasErrors = form.isSubmitted && field.errors;
 
   // Components
   const hint = hints?.[id];
   const label = extractLabel(id, children, hint);
   const selectOptions = extractSelectOptions(id, children, field, listId);
+  const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
+  const activeOptionText = activeOption && activeOption.props.children;
+  const select = extractSelect(id, anchorId, children, listId, activeOptionText);
 
   // Derived state
-  const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
-  const textToDisplay = activeOption ? activeOption.props.children : "Please choose an option";
 
   return (
     <div className="select-group">
       {label}
 
-      <button
-        id={triggerId}
-        type="button"
-        className="select-trigger"
-        popoverTarget={listId}
-        style={{ anchorName: anchorId }}
-      >
-        {textToDisplay}
-        <Icon name={"chevron-down"} />
-      </button>
+      {select}
 
       <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
