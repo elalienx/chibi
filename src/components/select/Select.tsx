@@ -6,10 +6,19 @@ import Icon from "components/icon/Icon";
 import "./select.css";
 
 interface Props {
+  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
   id?: string;
+
+  /** The position where the popover will attach to the <Select>. */
   anchorId?: string;
+
+  /** Text to display inside the selector option. */
   children: ReactNode;
+
+  /** The name of the <Select> list parent. Used to close the list when an option is selected. */
   listId?: string;
+
+  /** The text inside the user selected option. */
   activeOptionText?: ReactNode;
 }
 
