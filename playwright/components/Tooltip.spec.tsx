@@ -12,6 +12,7 @@ const tooltipText1 = "Click me for more info";
 const tooltipText2 = "Write both your first and last name.";
 const tooltipText3 = "You can see yes if you like Cider as well.";
 const tooltipText4 = "About Guiness!";
+const tooltipVisualThreshold = 0.1;
 
 let cleanUpText: Locator;
 let component: MountResult;
@@ -35,7 +36,7 @@ test.afterEach(async () => {
   await expect(cleanUpText).toBeVisible();
 
   // Only run visual regression locally
-  if (!process.env.CI) await expect(component).toHaveScreenshot();
+  if (!process.env.CI) await expect(component).toHaveScreenshot({ threshold: tooltipVisualThreshold });
 });
 
 test("1. Clicking on a tooltip does not trigger a form submission", async () => {

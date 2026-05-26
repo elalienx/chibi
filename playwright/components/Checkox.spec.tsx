@@ -28,7 +28,7 @@ test.afterEach(async () => {
   await expect(cleanUpText).toBeVisible();
 
   // Only run visual regression locally
-  //   if (!process.env.CI) await expect(component).toHaveScreenshot();
+  if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
 test("1. Should submit as soon as you press the submit button", async () => {
