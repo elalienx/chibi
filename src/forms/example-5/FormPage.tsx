@@ -8,23 +8,29 @@ import Checkbox from "components/checkbox/Checkbox";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.optional(v.boolean(), true), // By default we say we are not a political exposed person
+  politicalExposedPerson: v.literal(true), // If it's false or missing, validation fails.
 });
 
 export default function FormPage() {
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const form = useForm({
+    schema: schema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: { politicalExposedPerson: true },
+  });
 
   // Properties
   const termsURL = "https://en.wikipedia.org/wiki/Terms_of_service";
 
   // Methods
   function submitForm() {
-    const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
-
     if (form.isValid) {
+      const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
+      console.log("politicalExposedPerson", politicalExposedPerson);
+
       // Safeguard
-      if (politicalExposedPerson) {
+      if (!politicalExposedPerson) {
         alert("You cannot proceed if PEP 🚫");
         return;
       }
@@ -48,7 +54,7 @@ export default function FormPage() {
         </Checkbox>
 
         <Checkbox form={form} id="politicalExposedPerson">
-          I am not a Politicial Exposed Person (PEP)
+          I certify that I am NOT a politically exposed person (PEP).
         </Checkbox>
 
         {form.isSubmitted && form.isValid && <p>Form was submitted successfully.</p>}

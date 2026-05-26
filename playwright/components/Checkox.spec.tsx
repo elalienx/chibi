@@ -17,7 +17,7 @@ test.beforeEach(async ({ mount }) => {
   component = await mount(<FormPage />);
   cleanUpText = component.getByText("Text to clean Playwright selector");
   checkbox1 = component.getByRole("checkbox", { name: "Do you accept our terms and conditions?" });
-  checkbox2 = component.getByRole("checkbox", { name: "I am not a Politicial Exposed Person (PEP)" });
+  checkbox2 = component.getByRole("checkbox", { name: "I certify that I am NOT a politically exposed person (PEP)" });
   confirmationText = component.getByText("Form was submitted successfully");
   submitButton = component.getByRole("button", { name: "Submit" });
 });

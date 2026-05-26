@@ -22,8 +22,6 @@ export default function Checkbox({ id, children, form }: Props) {
   // @ts-ignore
   const field = useField(form, { path: [id] });
 
-  console.log(`checkbox ${id} initial value: ${field.input}`);
-
   return (
     <label className="checkbox">
       <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
