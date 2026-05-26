@@ -10,7 +10,8 @@ let component: MountResult;
 let checkbox1: Locator;
 let checkbox2: Locator;
 let cleanUpText: Locator;
-let confirmationText: Locator;
+let onValid: Locator;
+let onError: Locator;
 let submitButton: Locator;
 
 test.beforeEach(async ({ mount }) => {
@@ -18,7 +19,8 @@ test.beforeEach(async ({ mount }) => {
   cleanUpText = component.getByText("Text to clean Playwright selector");
   checkbox1 = component.getByRole("checkbox", { name: "Do you accept our terms and conditions?" });
   checkbox2 = component.getByRole("checkbox", { name: "I certify that I am NOT a politically exposed person (PEP)" });
-  confirmationText = component.getByText("Form was submitted successfully");
+  onValid = component.getByText("The form passed the validation");
+  onError = component.getByText("The form failed the validation");
   submitButton = component.getByRole("button", { name: "Submit" });
 });
 
@@ -29,9 +31,6 @@ test.afterEach(async () => {
   //   if (!process.env.CI) await expect(component).toHaveScreenshot();
 });
 
-//
-//
-
 test("1. Should submit as soon as you press the submit button", async () => {
   // Act
   await submitButton.click();
@@ -39,7 +38,7 @@ test("1. Should submit as soon as you press the submit button", async () => {
   // Assert
   await expect(checkbox1).not.toBeChecked();
   await expect(checkbox2).toBeChecked();
-  await expect(confirmationText).toBeVisible();
+  await expect(onValid).toBeVisible();
 });
 
 test("2. Should submit if you check the first checkbox", async () => {
@@ -52,7 +51,7 @@ test("2. Should submit if you check the first checkbox", async () => {
   // Assert
   await expect(checkbox1).toBeChecked();
   await expect(checkbox2).toBeChecked();
-  await expect(confirmationText).toBeVisible();
+  await expect(onValid).toBeVisible();
 });
 
 test("3. Should fail if you uncheck the second checkbos due to the Political warning", async () => {
@@ -65,5 +64,5 @@ test("3. Should fail if you uncheck the second checkbos due to the Political war
   // Assert
   await expect(checkbox1).not.toBeChecked();
   await expect(checkbox2).not.toBeChecked();
-  await expect(confirmationText).not.toBeVisible();
+  await expect(onError).toBeVisible();
 });

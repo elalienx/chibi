@@ -22,6 +22,9 @@ export default function FormPage() {
 
   // Properties
   const termsURL = "https://en.wikipedia.org/wiki/Terms_of_service";
+  const onReady = !form.isSubmitted;
+  const onValid = form.isSubmitted && form.isValid;
+  const onError = form.isSubmitted && !form.isValid;
 
   // Methods
   function submitForm() {
@@ -57,7 +60,9 @@ export default function FormPage() {
           I certify that I am NOT a politically exposed person (PEP).
         </Checkbox>
 
-        {form.isSubmitted && form.isValid && <p>Form was submitted successfully.</p>}
+        {onReady && <p>⏳ The form has not been submitted.</p>}
+        {onValid && <p>✅ The form passed the validation.</p>}
+        {onError && <p>❌ The form failed the validation.</p>}
       </section>
 
       <hr />
