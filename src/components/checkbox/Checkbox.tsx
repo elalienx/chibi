@@ -1,5 +1,5 @@
 // Node modules
-import type { ChangeEvent, FocusEvent, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 interface Props {
@@ -11,41 +11,22 @@ interface Props {
 
   /** An instance of a Formisch form. */
   form?: FormStore;
-
-  /** The value sent to the database. */
-  value?: boolean;
 }
 
-export default function Checkbox({ id, children, form, value = false }: Props) {
+export default function Checkbox({ id, children, form }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // State
-  //   @ts-ignore
+  // @ts-ignore
   const field = useField(form, { path: [id] });
 
-  // Properties
-  const stringValue = String(value);
-
-  // Methods
-  function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
-    console.log("on click", id);
-
-    field?.props.onChange(event); // First, the default change event.
-    field?.props.onBlur(event as FocusEvent<HTMLInputElement>); // Then, blur to trigger Formisch re-validation.
-  }
+  console.log(`checkbox ${id} initial value: ${field.input}`);
 
   return (
     <label className="checkbox">
-      <input
-        {...field.props}
-        id={id}
-        checked={field.input === stringValue}
-        onChange={onChangeAndForceBlur}
-        type="checkbox"
-        value={stringValue}
-      />
+      <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
       {children}
     </label>
   );

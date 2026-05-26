@@ -9,16 +9,11 @@ import Checkbox from "components/checkbox/Checkbox";
 /**
  *  Input checkbox send us a string even if we send a boolean,
  *  thus, we do v.string() and v.transform() to convert it back to boolean.
+ *  v.optional() handles the initial unchecked state where the value is undefined.
  */
 const schema = v.object({
-  acceptTerms: v.pipe(
-    v.string("Say either yes or no."),
-    v.transform((value) => value === "true"),
-  ),
-  politicalExposedPerson: v.pipe(
-    v.string("Say either yes or no."),
-    v.transform((value) => value === "true"),
-  ),
+  acceptTerms: v.pipe(v.optional(v.boolean(), false)),
+  politicalExposedPerson: v.optional(v.boolean(), true),
 });
 
 export default function FormPage() {
@@ -30,13 +25,16 @@ export default function FormPage() {
 
   // Methods
   function submitForm() {
-    if (form.isValid) {
-      const checkbox1 = getInput(form, { path: ["acceptTerms"] });
-      const checkbox2 = getInput(form, { path: ["acceptTerms"] });
+    const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
 
-      console.log("Success");
-      console.log("checkbox 1", checkbox1);
-      console.log("checkbox 2", checkbox2);
+    if (form.isValid) {
+      // Safeguard
+      if (!politicalExposedPerson) {
+        alert("You cannot proceed if PEP 🚫");
+        return;
+      }
+
+      alert("Success! 🎉");
     }
   }
 
@@ -47,7 +45,7 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Checkbox form={form} id="acceptTerms" value={true}>
+        <Checkbox form={form} id="acceptTerms">
           Do you accept our terms and conditions?{" "}
           <a href={termsURL} target="_blank">
             View terms
@@ -56,7 +54,7 @@ export default function FormPage() {
 
         {/* This must trigger a modal or warnign when off */}
         <Checkbox form={form} id="politicalExposedPerson">
-          Are you a Political Exposed Person? (PEP)
+          I am not a Politicial Exposed Person (PEP)
         </Checkbox>
       </section>
 
