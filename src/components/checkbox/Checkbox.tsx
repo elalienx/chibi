@@ -6,14 +6,17 @@ interface Props {
   /** Unique identifier of a form field. */
   id?: string;
 
+  /** The text to display next to the checkbox. */
+  children: ReactNode;
+
   /** An instance of a Formisch form. */
   form?: FormStore;
 
-  /** The text to display next to the checkbox. */
-  children: ReactNode;
+  /** The value sent to the database. */
+  value?: boolean;
 }
 
-export default function Checkbox({ id, children, form }: Props) {
+export default function Checkbox({ id, children, form, value = false }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -23,10 +26,12 @@ export default function Checkbox({ id, children, form }: Props) {
   const field = useField(form, { path: [id] });
 
   // Properties
-  const stringValue = String(field.input);
+  const stringValue = String(value);
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
+    console.log("on click", id);
+
     field?.props.onChange(event); // First, the default change event.
     field?.props.onBlur(event as FocusEvent<HTMLInputElement>); // Then, blur to trigger Formisch re-validation.
   }
@@ -34,11 +39,11 @@ export default function Checkbox({ id, children, form }: Props) {
   return (
     <label className="checkbox">
       <input
-        id={id}
         {...field.props}
-        type="checkbox"
+        id={id}
+        checked={field.input === stringValue}
         onChange={onChangeAndForceBlur}
-        checked={stringValue === "true"}
+        type="checkbox"
         value={stringValue}
       />
       {children}

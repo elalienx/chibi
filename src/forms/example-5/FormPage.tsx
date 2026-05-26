@@ -47,7 +47,7 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Checkbox form={form} id="acceptTerms">
+        <Checkbox form={form} id="acceptTerms" value={true}>
           Do you accept our terms and conditions?{" "}
           <a href={termsURL} target="_blank">
             View terms
@@ -55,7 +55,7 @@ export default function FormPage() {
         </Checkbox>
 
         {/* This must trigger a modal or warnign when off */}
-        <Checkbox form={form} id="acceptTerms">
+        <Checkbox form={form} id="politicalExposedPerson">
           Are you a Political Exposed Person? (PEP)
         </Checkbox>
       </section>
