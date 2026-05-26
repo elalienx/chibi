@@ -9,21 +9,15 @@ import { useState } from "react";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.pipe(v.optional(v.boolean(), true)),
+  politicalExposedPerson: v.pipe(v.optional(v.boolean(), true)), // Set to true as this form will fail if this is uncheck
 });
 
 export default function FormPage() {
   // Local state
-  const form = useForm({
-    schema: schema,
-    validate: "blur",
-    revalidate: "blur",
-    initialInput: { politicalExposedPerson: true },
-  });
-  const [formResult, setFormResult] = useState("On standby 🕒");
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const [formResult, setFormResult] = useState("On standby");
 
   // Properties
-  const termsURL = "https://en.wikipedia.org/wiki/Terms_of_service";
   const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
 
   // Methods
@@ -31,12 +25,12 @@ export default function FormPage() {
     // Safeguard
     if (!politicalExposedPerson) {
       alert("You cannot proceed if PEP 🚫");
-      setFormResult("The form failed the validation ❌");
+      setFormResult("The form failed the validation");
       return;
     }
 
     alert("Success! 🎉");
-    setFormResult("The form passed the validation ✅");
+    setFormResult("The form passed the validation");
   }
 
   return (
@@ -48,7 +42,7 @@ export default function FormPage() {
       <section>
         <Checkbox form={form} id="acceptTerms">
           Do you accept our terms and conditions?{" "}
-          <a href={termsURL} target="_blank">
+          <a href="https://wikipedia.org/wiki/Terms_of_service" target="_blank">
             View terms
           </a>
         </Checkbox>
@@ -57,7 +51,7 @@ export default function FormPage() {
           I certify that I am NOT a politically exposed person (PEP).
         </Checkbox>
 
-        <span>{formResult}</span>
+        <span>Form status: {formResult}</span>
       </section>
 
       <hr />
