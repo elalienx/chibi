@@ -5,10 +5,11 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Checkbox from "components/checkbox/Checkbox";
+import { useState } from "react";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.literal(true), // If it's false or missing, validation fails.
+  politicalExposedPerson: v.pipe(v.optional(v.boolean(), true)),
 });
 
 export default function FormPage() {
@@ -19,24 +20,23 @@ export default function FormPage() {
     revalidate: "blur",
     initialInput: { politicalExposedPerson: true },
   });
+  const [formResult, setFormResult] = useState("On standby 🕒");
 
   // Properties
   const termsURL = "https://en.wikipedia.org/wiki/Terms_of_service";
   const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
-  const onStandby = !form.isSubmitted;
-  const onValid = form.isSubmitted && form.isValid;
-  const onError = form.isSubmitted && !form.isValid;
 
   // Methods
   function submitForm() {
-    if (form.isValid) {
-      if (!politicalExposedPerson) {
-        alert("You cannot proceed if PEP 🚫");
-        return;
-      }
-
-      alert("Success! 🎉");
+    // Safeguard
+    if (!politicalExposedPerson) {
+      alert("You cannot proceed if PEP 🚫");
+      setFormResult("The form failed the validation ❌");
+      return;
     }
+
+    alert("Success! 🎉");
+    setFormResult("The form passed the validation ✅");
   }
 
   return (
@@ -57,9 +57,7 @@ export default function FormPage() {
           I certify that I am NOT a politically exposed person (PEP).
         </Checkbox>
 
-        {onStandby && <p>The form has not been submitted.</p>}
-        {onValid && <p>✅ The form passed the validation.</p>}
-        {onError && <p>❌ The form failed the validation.</p>}
+        <span>{formResult}</span>
       </section>
 
       <hr />
