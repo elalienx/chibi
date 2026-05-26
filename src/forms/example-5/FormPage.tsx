@@ -48,7 +48,7 @@ export default function FormPage() {
         </Checkbox>
 
         <Checkbox form={form} id="politicalExposedPerson">
-          I certify that I am NOT a politically exposed person (PEP).
+          I certify that I am NOT a politically exposed person (PEP) in the European Union.
         </Checkbox>
 
         <span>Form status: {formResult}</span>

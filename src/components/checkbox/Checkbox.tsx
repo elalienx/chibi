@@ -2,6 +2,9 @@
 import type { ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
+// Project files
+import "./checkbox.css";
+
 interface Props {
   /** Unique identifier of a form field. */
   id?: string;
