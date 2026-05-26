@@ -8,7 +8,7 @@ import Checkbox from "components/checkbox/Checkbox";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.optional(v.boolean(), false),
+  politicalExposedPerson: v.optional(v.boolean(), true), // By default we say we are not a political exposed person
 });
 
 export default function FormPage() {
@@ -24,7 +24,7 @@ export default function FormPage() {
 
     if (form.isValid) {
       // Safeguard
-      if (!politicalExposedPerson) {
+      if (politicalExposedPerson) {
         alert("You cannot proceed if PEP 🚫");
         return;
       }
@@ -50,6 +50,8 @@ export default function FormPage() {
         <Checkbox form={form} id="politicalExposedPerson">
           I am not a Politicial Exposed Person (PEP)
         </Checkbox>
+
+        {form.isSubmitted && form.isValid && <p>Form was submitted successfully.</p>}
       </section>
 
       <hr />
