@@ -1,0 +1,38 @@
+.checkbox {
+  --color-accent: var(--color-green-50);
+
+  accent-color: var(--color-accent);
+  display: flex;
+  gap: var(--space-small);
+  align-items: center;
+  background-color: white;
+  padding-block: var(--space-small);
+  padding-inline: var(--space-medium);
+  border: solid 2px var(--color-gray-90);
+  border-radius: var(--border-radius);
+
+  input[type="checkbox"] {
+    margin: 0;
+    transform: scale(1.25); /** Make it look bigger until we add custom SVG's */
+  }
+}
+
+.checkbox:hover {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-80);
+}
+
+/**
+ * The <input type="checkbox"/> is placed inside a <label>.
+ * We use the CSS :has() selector to style the label
+ * based on the input’s state (hover or checked).
+ */
+.checkbox:has(input[type="checkbox"]:checked) {
+  background-color: var(--color-green-99);
+  border-color: var(--color-accent);
+}
+
+.checkbox:hover:has(input[type="checkbox"]:checked) {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-80);
+}
