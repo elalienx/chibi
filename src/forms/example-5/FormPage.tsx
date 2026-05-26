@@ -22,17 +22,14 @@ export default function FormPage() {
 
   // Properties
   const termsURL = "https://en.wikipedia.org/wiki/Terms_of_service";
-  const onReady = !form.isSubmitted;
+  const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
+  const onStandby = !form.isSubmitted;
   const onValid = form.isSubmitted && form.isValid;
   const onError = form.isSubmitted && !form.isValid;
 
   // Methods
   function submitForm() {
     if (form.isValid) {
-      const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
-      console.log("politicalExposedPerson", politicalExposedPerson);
-
-      // Safeguard
       if (!politicalExposedPerson) {
         alert("You cannot proceed if PEP 🚫");
         return;
@@ -60,7 +57,7 @@ export default function FormPage() {
           I certify that I am NOT a politically exposed person (PEP).
         </Checkbox>
 
-        {onReady && <p>⏳ The form has not been submitted.</p>}
+        {onStandby && <p>The form has not been submitted.</p>}
         {onValid && <p>✅ The form passed the validation.</p>}
         {onError && <p>❌ The form failed the validation.</p>}
       </section>
