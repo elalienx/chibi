@@ -28,7 +28,9 @@ export default function Checkbox({ id, children, form }: Props) {
   return (
     <label className="checkbox">
       <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
-      {children}
+
+      {/* Wrap content inside a div so links or icons don't get affected by the parent flexbox */}
+      <div>{children}</div>
     </label>
   );
 }
