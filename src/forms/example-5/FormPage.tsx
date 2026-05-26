@@ -8,7 +8,7 @@ import Checkbox from "components/checkbox/Checkbox";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.optional(v.boolean(), true),
+  politicalExposedPerson: v.optional(v.boolean(), false),
 });
 
 export default function FormPage() {
