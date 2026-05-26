@@ -52,7 +52,6 @@ export default function FormPage() {
           </a>
         </Checkbox>
 
-        {/* This must trigger a modal or warnign when off */}
         <Checkbox form={form} id="politicalExposedPerson">
           I am not a Politicial Exposed Person (PEP)
         </Checkbox>
