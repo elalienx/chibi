@@ -6,13 +6,8 @@ import * as v from "valibot";
 import Button from "components/button/Button";
 import Checkbox from "components/checkbox/Checkbox";
 
-/**
- *  Input checkbox send us a string even if we send a boolean,
- *  thus, we do v.string() and v.transform() to convert it back to boolean.
- *  v.optional() handles the initial unchecked state where the value is undefined.
- */
 const schema = v.object({
-  acceptTerms: v.pipe(v.optional(v.boolean(), false)),
+  acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
   politicalExposedPerson: v.optional(v.boolean(), true),
 });
 
