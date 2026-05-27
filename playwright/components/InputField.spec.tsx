@@ -1,6 +1,4 @@
 // Node modules
-// @ts-ignore
-import type { Locator } from "@playwright/test";
 import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
@@ -8,246 +6,242 @@ import FormPage from "forms/example-input-field/FormPage";
 
 const validName = "Eduardo";
 const invalidName = "Ed"; // Below minimum length
-let component: MountResult;
-let cleanUpText: Locator;
-let input1: Locator;
-let input2: Locator;
-let submitButton: Locator;
-let wrapper1: Locator;
-let wrapper2: Locator;
+const submit = "Submit";
+const textCleanup = "Text to clean Playwright selector";
+const item1 = "Full name";
+const item2 = "Age";
+const errorNameTooShort = "Name is too short";
+const parent = ".."; // The parent of the input is the one having the CSS styles
+let form: MountResult;
 
 test.beforeEach(async ({ mount }) => {
-  component = await mount(<FormPage />);
-  cleanUpText = component.getByText("Text to clean Playwright selector");
-  input1 = component.getByRole("textbox", { name: "Full name" });
-  input2 = component.getByRole("textbox", { name: "Age" });
-  wrapper1 = input1.locator("..");
-  wrapper2 = input2.locator("..");
-  submitButton = component.getByRole("button", { name: "Submit" });
+  // Arrange
+  form = await mount(<FormPage />);
 });
 
 test.afterEach(async () => {
-  await expect(cleanUpText).toBeVisible();
+  // Assert
+  await expect(form.getByText(textCleanup)).toBeVisible();
 
   // Only run visual regression locally
-  if (!process.env.CI) await expect(component).toHaveScreenshot();
+  if (!process.env.CI) await expect(form).toHaveScreenshot();
 });
 
 test("1. Should show error state when submitting empty form", async () => {
   // Act
-  await submitButton.click();
+  await form.getByRole("button", { name: submit }).click();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/error/);
-  await expect(wrapper2).toHaveClass(/error/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/error/);
 });
 
 test("2. Should show active state when input is focused and untouched", async () => {
   // Act
-  await input1.focus();
+  await form.getByRole("textbox", { name: item1 }).focus();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/focus/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/focus/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("3. Should return to default state when input is focused and then blurred without typing", async () => {
   // Arrange
-  await input1.focus();
+  await form.getByRole("textbox", { name: item1 }).focus();
 
   // Act
-  await input1.blur();
+  await form.getByRole("textbox", { name: item1 }).blur();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/default/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("4. Should remain active while typing invalid value without blurring", async () => {
   // Act
-  await input1.fill(invalidName);
+  await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
   // Assert
-  await expect(wrapper1).toHaveClass(/focus/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/focus/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("5. Should show error state when invalid value is entered and input is blurred", async () => {
   // Arrange
-  await input1.fill(invalidName);
+  await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
   // Act
-  await input1.blur();
+  await form.getByRole("textbox", { name: item1 }).blur();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/error/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("6. Should remain active while typing valid value without blurring", async () => {
   // Act
-  await input1.fill(validName);
+  await form.getByRole("textbox", { name: item1 }).fill(validName);
 
   // Assert
-  await expect(wrapper1).toHaveClass(/focus/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/focus/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("7. Should show success state when valid value is entered and input is blurred", async () => {
   // Arrange
-  await input1.fill(validName);
+  await form.getByRole("textbox", { name: item1 }).fill(validName);
 
   // Act
-  await input1.blur();
+  await form.getByRole("textbox", { name: item1 }).blur();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/success/);
-  await expect(wrapper2).toHaveClass(/default/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/success/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
 });
 
 test("8. Should keep error state when focusing a field that already has an error", async () => {
   await test.step("fill invalid data", async () => {
     // Arrange
-    await input1.fill(invalidName);
+    await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1.getByText("Name is too short")).toBeVisible();
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByText(errorNameTooShort)).toBeVisible();
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("fill valid data", async () => {
     // Act
-    await input1.focus();
+    await form.getByRole("textbox", { name: item1 }).focus();
 
     // Assert
-    await expect(wrapper1).toHaveClass(/error/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 });
 
 test("9. Should keep error state while correcting invalid field without blurring", async () => {
   await test.step("fill invalid data", async () => {
     // Arrange
-    await input1.fill(invalidName);
+    await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1.getByText("Name is too short")).toBeVisible();
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByText(errorNameTooShort)).toBeVisible();
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("fill valid data", async () => {
     // Act
-    await input1.fill(validName);
+    await form.getByRole("textbox", { name: item1 }).fill(validName);
 
     // Assert
-    await expect(wrapper1).toHaveClass(/error/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 });
 
 test("10. Should transition from error to success when valid value is entered and input is blurred", async () => {
   await test.step("fill invalid data", async () => {
     // Arrange
-    await input1.fill(invalidName);
+    await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1.getByText("Name is too short")).toBeVisible();
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByText(errorNameTooShort)).toBeVisible();
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("fill valid data", async () => {
     // Arrange
-    await input1.fill(validName);
+    await form.getByRole("textbox", { name: item1 }).fill(validName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1).toHaveClass(/success/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/success/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 });
 
 test("11. Second field should not validate while active after first field has been interacted with", async () => {
   await test.step("first input: fill invalid data", async () => {
     // Arrange
-    await input1.fill(invalidName);
+    await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1.getByText("Name is too short")).toBeVisible();
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByText(errorNameTooShort)).toBeVisible();
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("first input: fill valid data", async () => {
     // Arrange
-    await input1.fill(validName);
+    await form.getByRole("textbox", { name: item1 }).fill(validName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1).toHaveClass(/success/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/success/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("second input: fill invalid data", async () => {
     // Act
-    await input2.fill("1"); // just one character is enough to see if it will fail
+    await form.getByRole("textbox", { name: item2 }).fill("1"); // just one character is enough to see if it will fail
 
     // Assert
-    await expect(wrapper1).toHaveClass(/success/);
-    await expect(wrapper2).toHaveClass(/focus/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/success/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/focus/);
   });
 });
 
 test("12. Should keep error if user clears the input after a validation error", async () => {
   await test.step("fill invalid data", async () => {
     // Arrange
-    await input1.fill(invalidName);
+    await form.getByRole("textbox", { name: item1 }).fill(invalidName);
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1).toHaveClass(/error/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 
   await test.step("clear invalid data", async () => {
     // Arrange
-    await input1.fill("");
+    await form.getByRole("textbox", { name: item1 }).fill("");
 
     // Act
-    await input1.blur();
+    await form.getByRole("textbox", { name: item1 }).blur();
 
     // Assert
-    await expect(wrapper1).toHaveClass(/error/);
-    await expect(wrapper2).toHaveClass(/default/);
+    await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/error/);
+    await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/default/);
   });
 });
 
 test("13. Should be able to submit the form", async () => {
   // Arrange
-  await input1.fill(validName);
-  await input2.fill("18");
-  await input2.blur();
+  await form.getByRole("textbox", { name: item1 }).fill(validName);
+  await form.getByRole("textbox", { name: item2 }).fill("18");
+  await form.getByRole("textbox", { name: item2 }).blur();
 
   // Act
-  await submitButton.click();
+  await form.getByRole("button", { name: submit }).click();
 
   // Assert
-  await expect(wrapper1).toHaveClass(/success/);
-  await expect(wrapper2).toHaveClass(/success/);
+  await expect(form.getByRole("textbox", { name: item1 }).locator(parent)).toHaveClass(/success/);
+  await expect(form.getByRole("textbox", { name: item2 }).locator(parent)).toHaveClass(/success/);
 });
