@@ -1,5 +1,6 @@
-.modal {
-  background-color: pink;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
+/* 
+ * About:
+ * There is no CSS for the modal. 
+ * Aphrodite Chibi modals are headless meaning you provide the design.
+ * However, you can use our utility CSS class "chibi-modal" to have a default look.
+ */

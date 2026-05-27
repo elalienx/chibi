@@ -1,10 +1,22 @@
+// Node modules
+import { useEffect, useRef } from "react";
+
+// Project files
+import useModal from "../../state/useModal";
+import "./modal.css";
+
 export default function Modal() {
-  return (
-    <div className="modal">
-      <button type="button" onClick={() => alert("Close modal")}>
-        ❎
-      </button>
-      <div className="content">Hello world</div>
-    </div>
-  );
+  const { modal } = useModal();
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (!dialogRef.current) return;
+    if (modal) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [modal]);
+
+  return <dialog id="modal" ref={dialogRef}>{modal}</dialog>;
 }
