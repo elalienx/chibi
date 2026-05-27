@@ -8,9 +8,9 @@ Inside the Aphrodite Chibi project, you'll see the following folders and files:
 
 ```text
 / root/
-├── .snapshots/
 ├── playwright/
 ├── public/
+├── snapshots/
 ├── src/
 │   └── components/
 │   └── forms/
