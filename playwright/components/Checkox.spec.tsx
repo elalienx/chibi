@@ -12,6 +12,11 @@ const textFailure = "The form failed the validation";
 const textCleanup = "Text to clean Playwright selector";
 let form: MountResult;
 
+test.beforeEach(async ({ mount }) => {
+  // Arrange
+  form = await mount(<FormPage />);
+});
+
 test.afterEach(async () => {
   // Assert
   await expect(form.getByText(textCleanup)).toBeVisible();
@@ -21,9 +26,6 @@ test.afterEach(async () => {
 });
 
 test("1. Should submit as soon as you press the submit button", async ({ mount }) => {
-  // Arrange
-  form = await mount(<FormPage />);
-
   // Act
   await form.getByRole("button", { name: submit }).click();
 
@@ -34,9 +36,6 @@ test("1. Should submit as soon as you press the submit button", async ({ mount }
 });
 
 test("2. Should submit if you check the first checkbox", async ({ mount }) => {
-  // Arrange
-  form = await mount(<FormPage />);
-
   // Act
   await form.getByRole("checkbox", { name: item1 }).check();
   await form.getByRole("button", { name: submit }).click();
@@ -49,10 +48,9 @@ test("2. Should submit if you check the first checkbox", async ({ mount }) => {
 
 test("3. Should fail if you uncheck the second checkbos due to the Political warning", async ({ mount }) => {
   // Arrange
-  form = await mount(<FormPage />);
+  await form.getByRole("checkbox", { name: item2 }).uncheck();
 
   // Act
-  await form.getByRole("checkbox", { name: item2 }).uncheck();
   await form.getByRole("button", { name: submit }).click();
 
   // Assert
