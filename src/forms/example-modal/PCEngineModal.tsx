@@ -14,7 +14,7 @@ export default function PCEngineModal({ onClose }: Props) {
   return (
     <div className="modal pc-engine-modal">
       <span>🎮</span>
-      <h2>I'm a the PC-Engine modal!</h2>
+      <h2>I am a the PC-Engine modal!</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure hic laudantium eum harum beatae magni
         necessitatibus deleniti sint nesciunt! Voluptatem accusantium officia dolor necessitatibus incidunt aliquam
