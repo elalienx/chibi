@@ -4,7 +4,7 @@ import type { Locator } from "@playwright/test";
 import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
-import FormPage from "forms/example-4/FormPage";
+import FormPage from "forms/example-select-group/FormPage";
 
 let component: MountResult;
 let cleanUpText: Locator;
