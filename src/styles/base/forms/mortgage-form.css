@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: white;
   border-radius: var(--card-border-radius);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--box-shadow);
 
   > header {
     display: flex;
