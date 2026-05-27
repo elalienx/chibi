@@ -13,7 +13,8 @@ const textCleanup = "Text to clean Playwright selector";
 let form: MountResult;
 
 test.afterEach(async () => {
-  // Assert 
+  // Assert
+  await expect(form.getByText(textCleanup)).toBeVisible();
 
   // Only run visual regression locally
   if (!process.env.CI) await expect(form).toHaveScreenshot();
