@@ -6,7 +6,7 @@ import useModal from "state/useModal";
 
 export default function Modal() {
   // Global state
-  const { modal } = useModal();
+  const { modal, closeModal } = useModal();
   const nativeDialogRef = useRef<HTMLDialogElement>(null);
 
   // Methodds
@@ -18,8 +18,12 @@ export default function Modal() {
     if (!modal) nativeDialogRef.current.close();
   }, [modal]);
 
+  function closeOnBackgroundClick(event: React.MouseEvent<HTMLDialogElement>) {
+    if (event.target === nativeDialogRef.current) closeModal();
+  }
+
   return (
-    <dialog id="modal" ref={nativeDialogRef}>
+    <dialog id="modal" ref={nativeDialogRef} onClick={closeOnBackgroundClick}>
       {modal}
     </dialog>
   );
