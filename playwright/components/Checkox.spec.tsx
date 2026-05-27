@@ -4,7 +4,7 @@ import type { Locator } from "@playwright/test";
 import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
-import FormPage from "forms/example-5/FormPage";
+import FormPage from "forms/example-checkbox/FormPage";
 
 let component: MountResult;
 let checkbox1: Locator;

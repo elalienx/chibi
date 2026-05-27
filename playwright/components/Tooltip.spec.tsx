@@ -4,7 +4,7 @@ import type { Locator } from "@playwright/test";
 import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
-import FormPage from "forms/example-3/FormPage";
+import FormPage from "forms/example-tooltip/FormPage";
 
 const inputValidationError = "Please enter your full name.";
 const radioValidationError = "Say either yes or no.";
