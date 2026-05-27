@@ -7,8 +7,7 @@ body {
   background-color: var(--page-background);
 }
 
-/* A modal but smol! */
-.chibi-modal {
+.modal {
   background-color: pink;
   border-radius: var(--card-radius);
   box-shadow: var(--box-shadow);

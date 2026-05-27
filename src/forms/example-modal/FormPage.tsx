@@ -1,16 +1,16 @@
-// Node modules
-import { type ReactElement, useState } from "react";
-
 // Project files
 import Button from "components/button/Button";
 import GuinessModal from "./GuinsessModal";
+import useModal from "state/useModal";
+import Modal from "components/modal/Modal";
 
 export default function FormPage() {
-  // Local state
-  const [modal, setModal] = useState<ReactElement>(<></>);
+  // Global state
+  const { setModal } = useModal();
 
   // Methods
   function onDemoButtonClick() {
+    console.log("button click");
     setModal(<GuinessModal />);
   }
 
@@ -29,6 +29,9 @@ export default function FormPage() {
       <footer>
         <small>(Text to clean Playwright selector)</small>
       </footer>
+
+      {/* This item should be at the root of each app */}
+      <Modal />
     </div>
   );
 }
