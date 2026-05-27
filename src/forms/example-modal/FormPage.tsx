@@ -3,16 +3,15 @@ import Button from "components/button/Button";
 import GuinessModal from "./GuinsessModal";
 import useModal from "state/useModal";
 import Modal from "components/modal/Modal";
+import PCEngineModal from "./PCEngineModal";
 
 export default function FormPage() {
   // Global state
-  const { setModal } = useModal();
+  const { setModal, closeModal } = useModal();
 
-  // Methods
-  function onDemoButtonClick() {
-    console.log("button click");
-    setModal(<GuinessModal />);
-  }
+  // Components
+  const Modal1 = <GuinessModal />;
+  const Modal2 = <PCEngineModal onClose={closeModal} />;
 
   return (
     <div className="default-form">
@@ -21,7 +20,8 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Button onClick={onDemoButtonClick}>Open modal</Button>
+        <Button onClick={() => setModal(Modal1)}>Open Guiness modal</Button>
+        <Button onClick={() => setModal(Modal2)}>Open PC-Engine modal</Button>
       </section>
 
       <hr />
