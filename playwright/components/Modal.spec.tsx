@@ -13,6 +13,11 @@ const title1 = "About Guiness!";
 const title2 = "I am a the PC-Engine modal!";
 let form: MountResult;
 
+test.beforeEach(async ({ mount }) => {
+  // Arrange
+  form = await mount(<FormPage />);
+});
+
 test.afterEach(async () => {
   // Assert
   await expect(form.getByText(textCleanup)).toBeVisible();
@@ -21,10 +26,7 @@ test.afterEach(async () => {
   if (!process.env.CI) await expect(form).toHaveScreenshot();
 });
 
-test("1. Should be able to open and close the first modal", async ({ mount }) => {
-  // Arrange
-  form = await mount(<FormPage />);
-
+test("1. Should be able to open and close the first modal", async () => {
   await test.step("Open modal", async () => {
     // Act
     await form.getByRole("button", { name: button1 }).click();
@@ -44,10 +46,7 @@ test("1. Should be able to open and close the first modal", async ({ mount }) =>
   });
 });
 
-test("2. Should be able to open and close the second modal", async ({ mount }) => {
-  // Arrange
-  form = await mount(<FormPage />);
-
+test("2. Should be able to open and close the second modal", async () => {
   await test.step("Open modal", async () => {
     // Act
     await form.getByRole("button", { name: button2 }).click();
@@ -67,10 +66,7 @@ test("2. Should be able to open and close the second modal", async ({ mount }) =
   });
 });
 
-test("3. Should close modal by clicking the background", async ({ mount }) => {
-  // Arrange
-  form = await mount(<FormPage />);
-
+test("3. Should close modal by clicking the background", async () => {
   await test.step("Open modal", async () => {
     // Act
     await form.getByRole("button", { name: button1 }).click();
