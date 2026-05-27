@@ -1,103 +1,96 @@
 // Node modules
-// @ts-ignore
-import type { Locator } from "@playwright/test";
 import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
 
 // Project files
 import FormPage from "forms/example-tooltip/FormPage";
 
-const inputValidationError = "Please enter your full name.";
-const radioValidationError = "Say either yes or no.";
+const idLikesBeer = "#likes_beer";
+const inputError = "Please enter your full name.";
+const labelDoYouLikeBeer = "Do you like beer?";
+const labelFullName = "Full name";
+const labelWhichBrand = "Which brand do you like the most?";
+const radioError = "Say either yes or no.";
+const textCleanup = "Text to clean Playwright selector";
+const textYes = "Yes";
 const tooltipText1 = "Click me for more info";
 const tooltipText2 = "Write both your first and last name.";
 const tooltipText3 = "You can see yes if you like Cider as well.";
 const tooltipText4 = "About Guiness!";
-
-let cleanUpText: Locator;
-let component: MountResult;
-let radio_option: Locator;
-let tooltip1: Locator;
-let tooltip2: Locator;
-let tooltip3: Locator;
-let tooltip4: Locator;
+let form: MountResult;
 
 test.beforeEach(async ({ mount }) => {
-  component = await mount(<FormPage />);
-  radio_option = component.locator("#likes_beer").getByText("Yes");
-  tooltip1 = component.locator("header").getByRole("button");
-  tooltip2 = component.locator("label").filter({ hasText: "Full name" }).getByRole("button");
-  tooltip3 = component.locator("label").filter({ hasText: "Do you like beer?" }).getByRole("button");
-  tooltip4 = component.locator("label").filter({ hasText: "Which brand do you like the most?" }).getByRole("button");
-  cleanUpText = component.getByText("Text to clean Playwright selector");
+  // Arrange
+  form = await mount(<FormPage />);
 });
 
 test.afterEach(async () => {
-  await expect(cleanUpText).toBeVisible();
+  // Assert
+  await expect(form.getByText(textCleanup)).toBeVisible();
 
   // Only run visual regression locally
-  if (!process.env.CI) await expect(component).toHaveScreenshot();
+  if (!process.env.CI) await expect(form).toHaveScreenshot();
 });
 
 test("1. Clicking on a tooltip does not trigger a form submission", async () => {
   // Act
-  await tooltip1.click();
+  await form.locator("header").getByRole("button").click();
 
   // Assert
-  await expect(component.getByText(tooltipText1)).toBeVisible();
-  await expect(component.getByText(inputValidationError)).not.toBeVisible();
-  await expect(component.getByText(radioValidationError)).not.toBeVisible();
+  await expect(form.getByText(tooltipText1)).toBeVisible();
+  await expect(form.getByText(inputError)).not.toBeVisible();
+  await expect(form.getByText(radioError)).not.toBeVisible();
 });
 
 test("2. Clicking outside the tooltip dismiss it", async () => {
   await test.step("Open tooltip", async () => {
     // Act
-    await tooltip1.click();
+    await form.locator("header").getByRole("button").click();
 
     // Assert
-    await expect(component.getByText(tooltipText1)).toBeVisible();
+    await expect(form.getByText(tooltipText1)).toBeVisible();
   });
 
   await test.step("Click outside", async () => {
     // Act
-    await radio_option.click();
+    await form.locator(idLikesBeer).getByText(textYes).click();
 
     // Assert
-    await expect(component.getByText(tooltipText1)).not.toBeVisible();
+    await expect(form.getByText(tooltipText1)).not.toBeVisible();
   });
 });
 
 test("3. Clicking on another tooltip closes the previous one", async () => {
   await test.step("First tooltip", async () => {
     // Act
-    await tooltip1.click();
+    await form.locator("header").getByRole("button").click();
 
     // Assert
-    await expect(component.getByText(tooltipText1)).toBeVisible();
+    await expect(form.getByText(tooltipText1)).toBeVisible();
   });
 
   await test.step("Second tooltip", async () => {
     // Act
-    await tooltip2.click();
+    await form.locator("label").filter({ hasText: labelFullName }).getByRole("button").click();
 
     // Assert
-    await expect(component.getByText(tooltipText1)).not.toBeVisible();
-    await expect(component.getByText(tooltipText2)).toBeVisible();
+    await expect(form.getByText(tooltipText1)).not.toBeVisible();
+    await expect(form.getByText(tooltipText2)).toBeVisible();
   });
 
   await test.step("Third tooltip", async () => {
     // Act
-    await tooltip3.click();
+    await form.locator("label").filter({ hasText: labelDoYouLikeBeer }).getByRole("button").click();
 
     // Assert
-    await expect(component.getByText(tooltipText2)).not.toBeVisible();
-    await expect(component.getByText(tooltipText3)).toBeVisible();
+    await expect(form.getByText(tooltipText2)).not.toBeVisible();
+    await expect(form.getByText(tooltipText3)).toBeVisible();
   });
 });
 
 test("4. Can render a tooltip if the parent hints fail but the child label has a backup hint", async () => {
   // Act
-  await tooltip4.click();
+  await form.locator("label").filter({ hasText: labelWhichBrand }).getByRole("button").click();
 
   // Assert
-  await expect(component.getByText(tooltipText4)).toBeVisible();
+  await expect(form.getByText(tooltipText4)).toBeVisible();
 });
