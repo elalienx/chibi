@@ -9,9 +9,12 @@ const item1 = "Do you accept our terms and conditions?";
 const item2 = "I certify that I am NOT a politically exposed person (PEP)";
 const textSuccess = "The form passed the validation";
 const textFailure = "The form failed the validation";
+const textCleanup = "Text to clean Playwright selector";
 let form: MountResult;
 
 test.afterEach(async () => {
+  // Assert 
+
   // Only run visual regression locally
   if (!process.env.CI) await expect(form).toHaveScreenshot();
 });
