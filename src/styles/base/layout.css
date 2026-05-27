@@ -7,8 +7,14 @@ body {
   background-color: var(--page-background);
 }
 
+#modal {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
 .modal {
-  background-color: pink;
-  border-radius: var(--card-radius);
+  background-color: white;
+  border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 }

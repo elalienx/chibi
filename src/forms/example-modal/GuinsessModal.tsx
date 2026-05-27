@@ -1,5 +1,7 @@
+// Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
+import "./guiness-modal.css";
 
 export default function GuinessModal() {
   return (
