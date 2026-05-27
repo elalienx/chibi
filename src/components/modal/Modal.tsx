@@ -7,19 +7,19 @@ import useModal from "state/useModal";
 export default function Modal() {
   // Global state
   const { modal } = useModal();
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const nativeDialogRef = useRef<HTMLDialogElement>(null);
 
   // Methodds
   useEffect(() => {
     // Safeguard
-    if (!dialogRef.current) return;
+    if (!nativeDialogRef.current) return;
 
-    if (modal) dialogRef.current.showModal();
-    if (!modal) dialogRef.current.close();
+    if (modal) nativeDialogRef.current.showModal();
+    if (!modal) nativeDialogRef.current.close();
   }, [modal]);
 
   return (
-    <dialog id="modal" ref={dialogRef}>
+    <dialog id="modal" ref={nativeDialogRef}>
       {modal}
     </dialog>
   );
