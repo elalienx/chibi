@@ -1,4 +1,4 @@
 allowBuilds:
   esbuild: true
   sharp: false
-minimumReleaseAge: 10080 # Seven days written in minutes
+minimumReleaseAge: 4320 # Three days written in minutes
