@@ -2,8 +2,12 @@
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import "./guiness-modal.css";
+import useModal from "state/useModal";
 
 export default function GuinessModal() {
+  // Global state
+  const { closeModal } = useModal();
+
   return (
     <div className="modal guiness-modal">
       <span>🍺</span>
@@ -13,7 +17,7 @@ export default function GuinessModal() {
         necessitatibus deleniti sint nesciunt! Voluptatem accusantium officia dolor necessitatibus incidunt aliquam
         facilis, nisi cupiditate fuga!
       </p>
-      <Button type="button">
+      <Button type="button" onClick={closeModal}>
         Close
         <Icon name="x-mark" />
       </Button>
