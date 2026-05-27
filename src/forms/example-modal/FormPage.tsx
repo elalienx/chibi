@@ -20,6 +20,7 @@ export default function FormPage() {
       </header>
 
       <section>
+        <p>Each button triggers a different modal but re-using the same architecture!</p>
         <Button onClick={() => setModal(Modal1)}>Open Guiness modal</Button>
         <Button onClick={() => setModal(Modal2)}>Open PC-Engine modal</Button>
       </section>
