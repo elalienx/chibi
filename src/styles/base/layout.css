@@ -6,15 +6,3 @@ body {
   margin: 0;
   background-color: var(--page-background);
 }
-
-#modal {
-  background-color: transparent;
-  padding: 0;
-  border: none;
-}
-
-.modal {
-  background-color: white;
-  border-radius: var(--card-border-radius);
-  box-shadow: var(--box-shadow);
-}

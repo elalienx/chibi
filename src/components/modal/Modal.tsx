@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 
 // Project files
 import useModal from "state/useModal";
+import "./modal.css";
 
 export default function Modal() {
   // Global state

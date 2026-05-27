@@ -1,6 +1,16 @@
-/* 
- * About:
- * There is no CSS for the modal. 
- * Aphrodite Chibi modals are headless meaning you provide the design.
- * However, you can use our utility CSS class "chibi-modal" to have a default look.
- */
+#modal {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+
+  /** The color of the black screen behind the modal */
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.modal {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
+}
