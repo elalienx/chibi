@@ -22,7 +22,6 @@ export default function FormPage() {
 
   // Methods
   function submitForm() {
-    // Safeguard
     if (!politicalExposedPerson) {
       alert("You cannot proceed if PEP 🚫");
       setFormResult("The form failed the validation");

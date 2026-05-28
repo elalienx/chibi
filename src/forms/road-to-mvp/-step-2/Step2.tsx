@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -10,16 +10,15 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import SelectorGroup from "components/selector-group/SelectorGroup";
 import SelectorOption from "components/selector-option/SelectorOption";
+import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import type { PropertyType } from "../types/PropertyType";
-import checkTenacyType from "./helpers/checkTenancyType";
 import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
 import Hints from "./Hints";
 import buildSchema from "./schema";
 import "./step-2.css";
-import cleanInitialInput from "helpers/cleanInitialInput";
 
 interface Props {
   /** The kind of home property the user selected to tailor this step questions. */
@@ -43,16 +42,14 @@ export default function Step2({ propertyType, setStep }: Props) {
 
   // Properties
   const isTerracedHouse = propertyType === "terraced_house";
-  const tenancyType = checkTenacyType(isTerracedHouse, form);
+  const tenancyType = isTerracedHouse ? getInput(form, { path: ["tenancy_type"] }) : undefined;
   const hasMonthlyFee = requiresMonthlyFee(propertyType, tenancyType);
   const hasOperatingCost = requiresOperatingCost(propertyType, tenancyType);
 
   // Methods
   function submitForm(values: object) {
-    if (form.isValid) {
-      updateApplication(values);
-      setStep("success");
-    }
+    updateApplication(values);
+    setStep("success");
   }
 
   return (
