@@ -15,12 +15,10 @@ const parent = ".."; // The parent of the input is the one having the CSS styles
 let form: MountResult;
 
 test.beforeEach(async ({ mount }) => {
-  // Arrange
   form = await mount(<FormPage />);
 });
 
 test.afterEach(async () => {
-  // Assert
   await expect(form.getByText(textCleanup)).toBeVisible();
 
   // Only run visual regression locally
