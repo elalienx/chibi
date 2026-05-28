@@ -30,10 +30,8 @@ export default function Step1({ setStep }: Props) {
 
   // Methods
   function submitForm(values: object) {
-    if (form.isValid) {
-      updateApplication(values);
-      setStep("step-2");
-    }
+    updateApplication(values);
+    setStep("step-2");
   }
 
   return (

@@ -25,7 +25,7 @@ export default function FormPage() {
 
   // Methods
   function submitForm() {
-    if (form.isValid) alert("Success");
+    alert("Success");
   }
 
   return (
