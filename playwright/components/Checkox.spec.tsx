@@ -23,7 +23,7 @@ test.afterEach(async () => {
   if (!process.env.CI) await expect(form).toHaveScreenshot();
 });
 
-test("1. Should submit as soon as you press the submit button", async ({ mount }) => {
+test("1. Should submit as soon as you press the submit button", async () => {
   // Act
   await form.getByRole("button", { name: submit }).click();
 
@@ -33,7 +33,7 @@ test("1. Should submit as soon as you press the submit button", async ({ mount }
   await expect(form.getByText(textSuccess)).toBeVisible();
 });
 
-test("2. Should submit if you check the first checkbox", async ({ mount }) => {
+test("2. Should submit if you check the first checkbox", async () => {
   // Act
   await form.getByRole("checkbox", { name: item1 }).check();
   await form.getByRole("button", { name: submit }).click();
@@ -44,7 +44,7 @@ test("2. Should submit if you check the first checkbox", async ({ mount }) => {
   await expect(form.getByText(textSuccess)).toBeVisible();
 });
 
-test("3. Should fail if you uncheck the second checkbos due to the Political warning", async ({ mount }) => {
+test("3. Should fail if you uncheck the second checkbos due to the Political warning", async () => {
   // Arrange
   await form.getByRole("checkbox", { name: item2 }).uncheck();
 
