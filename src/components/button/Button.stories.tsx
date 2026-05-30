@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // Project files
 import Button from "./Button";
-import Icon from "../icon/Icon";
+import Icon from "components/icon/Icon";
 
 type Story = StoryObj<typeof Button>;
 
