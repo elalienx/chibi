@@ -12,8 +12,7 @@
     "playwright": "playwright test -c playwright-ct.config.ts",
     "preview": "astro preview",
     "test": "vitest",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
@@ -27,20 +26,17 @@
   },
   "devDependencies": {
     "@playwright/experimental-ct-react": "^1.60.0",
+    "@storybook/react-vite": "^10.4.1",
     "@types/node": "^25.7.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vitest/browser-playwright": "4.1.6",
     "oxfmt": "^0.37.0",
     "oxlint": "^1.64.0",
-    "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.6",
-    "storybook": "^10.4.1",
-    "@storybook/react-vite": "^10.4.1",
-    "@storybook/addon-vitest": "^10.4.1",
-    "@storybook/addon-mcp": "^0.6.0",
     "playwright": "^1.60.0",
-    "@vitest/browser-playwright": "4.1.6",
-    "@vitest/coverage-v8": "4.1.6"
+    "storybook": "^10.4.1",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.6"
   },
   "packageManager": "pnpm@11.1.1"
 }
