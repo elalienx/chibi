@@ -21,7 +21,6 @@ pnpm-debug.log*
 .DS_Store
 
 # IDE setting folder
-.vscode/
 .idea/
 
 # Firebase cache
