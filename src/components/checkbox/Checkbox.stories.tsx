@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Checkbox>;
 
 // Metadata
 const meta: Meta<typeof Checkbox> = {
-  title: "Form fields/Checkbox 2",
+  title: "Form fields/Checkbox",
   component: Checkbox,
 };
 
@@ -21,7 +21,12 @@ const schema = v.object({ terms: v.optional(v.boolean()) });
 export const Unchecked: Story = {
   render: () => {
     // Local state
-    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: { terms: false } });
+    const form = useForm({
+      schema: schema,
+      validate: "blur",
+      revalidate: "blur",
+      initialInput: { terms: false },
+    });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
@@ -36,7 +41,12 @@ export const Unchecked: Story = {
 export const Checked: Story = {
   render: () => {
     // Local state
-    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: { terms: true } });
+    const form = useForm({
+      schema: schema,
+      validate: "blur",
+      revalidate: "blur",
+      initialInput: { terms: true },
+    });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
