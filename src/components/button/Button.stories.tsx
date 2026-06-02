@@ -17,22 +17,15 @@ function onClick() {
 // Stories
 export const Primary = meta.story({
   name: "Primary",
-  args: {
-    children: <>Click me</>,
-    type: "button",
-    onClick: onClick,
-  },
+  render: () => <Button onClick={onClick}>Hello</Button>,
 });
 
 export const PrimaryWithIcon = meta.story({
   name: "Primary with icon",
-  args: {
-    children: (
-      <>
-        Click me <Icon name="arrow-right" />
-      </>
-    ),
-    type: "button",
-    onClick: onClick,
-  },
+  render: () => (
+    <Button onClick={onClick}>
+      Hello
+      <Icon name="arrow-right" />
+    </Button>
+  ),
 });
