@@ -1,35 +1,38 @@
-// Node modules
-import type { Meta, StoryObj } from "@storybook/react-vite";
-
 // Project files
+import preview from "../../../.storybook/preview";
 import Button from "./Button";
 import Icon from "components/icon/Icon";
 
-type Story = StoryObj<typeof Button>;
-
-const meta: Meta<typeof Button> = {
+// Metadata
+const meta = preview.meta({
   title: "Components/Button",
   component: Button,
-
-};
+});
 
 // Methods
 function onClick() {
-  alert("Miku Miku oo ee oo");
+  alert("Miku Miku oe oe!");
 }
 
-// Storties
-export const Primary: Story = {
-  render: () => <Button onClick={onClick}>Hello</Button>,
-};
+// Stories
+export const Primary = meta.story({
+  name: "Primary",
+  args: {
+    children: <>Click me</>,
+    type: "button",
+    onClick: onClick,
+  },
+});
 
-export const PrimaryWithIcon: Story = {
+export const PrimaryWithIcon = meta.story({
   name: "Primary with icon",
-  render: () => (
-    <Button onClick={onClick}>
-      Hello <Icon name="arrow-right" />
-    </Button>
-  ),
-};
-
-export default meta;
+  args: {
+    children: (
+      <>
+        Click me <Icon name="arrow-right" />
+      </>
+    ),
+    type: "button",
+    onClick: onClick,
+  },
+});
