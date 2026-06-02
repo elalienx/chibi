@@ -3,8 +3,8 @@ import { create } from "storybook/theming/create";
 export default create({
   base: "light",
   // Typography
-  fontBase: '"Open Sans", sans-serif',
-  fontCode: "monospace",
+  fontBase: '"Helvetica Neue", "Open Sans", sans-serif',
+  fontCode: '"Menlo", "monospace"',
   brandTitle: "Aphrodite Chibi",
   brandUrl: "https://lendo.se",
   brandImage: "https://aphrodite-chibi.web.app/images/miku.png",
