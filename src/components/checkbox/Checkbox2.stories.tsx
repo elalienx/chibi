@@ -9,35 +9,44 @@ import Checkbox from "./Checkbox";
 type Story = StoryObj<typeof Checkbox>;
 
 // Properties
-// Fixed Valibot schema (removed v.pipe) and set default to false for the Unchecked state
 const schema = v.object({
-  is_pep: v.optional(v.boolean(), false),
+  terms: v.optional(v.boolean()),
 });
 
 const meta: Meta<typeof Checkbox> = {
   title: "Form fields/Checkbox 2",
   component: Checkbox,
-  decorators: [
-    (Story) => {
-      // Local state
-      const form = useForm({ schema, validate: "blur", revalidate: "blur" });
-
-      return (
-        <Form of={form} onSubmit={() => alert("Success")}>
-          <Story />
-        </Form>
-      );
-    },
-  ],
 };
 
 // Stories
 export const Unchecked: Story = {
-  render: ({ form }) => (
-    <Checkbox id="is_pep" form={form}>
-      I accept the terms and conditions
-    </Checkbox>
-  ),
+  render: () => {
+    // Local state
+    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: { terms: false } });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <Checkbox form={form} id="terms">
+          I accept the terms and conditions
+        </Checkbox>
+      </Form>
+    );
+  },
+};
+
+export const Checked: Story = {
+  render: () => {
+    // Local state
+    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: { terms: true } });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <Checkbox form={form} id="terms">
+          I accept the terms and conditions
+        </Checkbox>
+      </Form>
+    );
+  },
 };
 
 export default meta;

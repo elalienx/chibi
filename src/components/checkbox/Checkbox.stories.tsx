@@ -9,17 +9,10 @@ import Checkbox from "./Checkbox";
 type Story = StoryObj<typeof Checkbox>;
 
 // Reusable Decorator Component
-const FormWrapper = (schema: any, id: string) => (StoryComponent: any, context: any) => {
-  // 1. Create a normal React component inside the decorator
-  const ComponentWithForm = () => {
-    const form = useForm({ schema, validate: "blur", revalidate: "blur" });
+const FormPage = (schema: any, id: string) => (_StoryComponent: any, context: any) => {
+  const form = useForm({ schema, validate: "blur", revalidate: "blur" });
 
-    // 2. Directly pass form and id as standard React props to the component.
-    // This bypasses Storybook's 'args' object tracking so it doesn't crash trying to read the form state.
-    return <Checkbox {...context.args} form={form} id={id} />;
-  };
-
-  return <ComponentWithForm />;
+  return <Checkbox {...context.args} form={form} id={id} />;
 };
 
 // Settings
@@ -28,9 +21,6 @@ const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   args: {
     children: "Accept terms and conditions",
-  },
-  argTypes: {
-    form: { table: { disable: true } },
   },
 };
 export default meta;
@@ -41,9 +31,9 @@ const schema_terms = v.object({ accept_terms: v.pipe(v.optional(v.boolean(), fal
 
 // Stories
 export const Default: Story = {
-  decorators: [FormWrapper(schema_pep, "is_pep")],
+  decorators: [FormPage(schema_pep, "is_pep")],
 };
 
 export const Checked: Story = {
-  decorators: [FormWrapper(schema_terms, "accept_terms")],
+  decorators: [FormPage(schema_terms, "accept_terms")],
 };
