@@ -8,15 +8,14 @@ import Checkbox from "./Checkbox";
 
 type Story = StoryObj<typeof Checkbox>;
 
-// Properties
-const schema = v.object({
-  terms: v.optional(v.boolean()),
-});
-
+// Metadata
 const meta: Meta<typeof Checkbox> = {
   title: "Form fields/Checkbox 2",
   component: Checkbox,
 };
+
+// Proeprties
+const schema = v.object({ terms: v.optional(v.boolean()) });
 
 // Stories
 export const Unchecked: Story = {
