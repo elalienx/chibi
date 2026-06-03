@@ -18,7 +18,8 @@ const meta: Meta<typeof Checkbox> = {
 const schema = v.object({ terms: v.optional(v.boolean()) });
 
 // Stories
-export const Unchecked: Story = {
+export const Story1: Story = {
+  name: "Unchecked",
   render: () => {
     // Local state
     const form = useForm({
@@ -38,7 +39,8 @@ export const Unchecked: Story = {
   },
 };
 
-export const Checked: Story = {
+export const Story2: Story = {
+  name: "Checked",
   render: () => {
     // Local state
     const form = useForm({
@@ -56,6 +58,30 @@ export const Checked: Story = {
       </Form>
     );
   },
+};
+
+export const Story3: Story = {
+  name: "Checkbox with no id error",
+  render: () => {
+    // Local state
+    const form = useForm({
+      schema: schema,
+      validate: "blur",
+      revalidate: "blur",
+      initialInput: { terms: true },
+    });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <Checkbox form={form}>I accept the terms and conditions</Checkbox>
+      </Form>
+    );
+  },
+};
+
+export const Story4: Story = {
+  name: "Checbox with no form error",
+  render: () => <Checkbox>I accept the terms and conditions</Checkbox>,
 };
 
 export default meta;
