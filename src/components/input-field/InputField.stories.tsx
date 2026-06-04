@@ -21,15 +21,11 @@ const username = v.pipe(v.string("Must be a valid string"), v.nonEmpty("Enter yo
 const schema = v.object({ username });
 
 // Stories
-export const InputFieldText: Story = {
-  name: "Input Field (text)",
+export const Default: Story = {
+  name: "Input Field",
   render: () => {
     // Local state
-    const form = useForm({
-      schema: schema,
-      validate: "blur",
-      revalidate: "blur",
-    });
+    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>

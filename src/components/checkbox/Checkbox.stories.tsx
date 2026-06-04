@@ -61,7 +61,7 @@ export const Checked: Story = {
 };
 
 export const CheckboxWithNoIdError: Story = {
-  name: "Checkbox with no id error",
+  name: "Checkbox (id error)",
   render: () => {
     // Local state
     const form = useForm({
@@ -80,7 +80,7 @@ export const CheckboxWithNoIdError: Story = {
 };
 
 export const CheckboxWithNoFormError: Story = {
-  name: "Checbox with no form error",
+  name: "Checbox (form error)",
   render: () => <Checkbox>I accept the terms and conditions</Checkbox>,
 };
 
