@@ -11,6 +11,8 @@
     display: flex;
     gap: var(--space-xs);
     justify-content: center;
+    flex-wrap: wrap;
+    flex-wrap: wrap balance; /** Balance groups items in a better visual way but is not available to all browswers. */
   }
 }
 
