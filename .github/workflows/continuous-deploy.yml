@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    name: Build & Deploy to Firebase
+  deploy:
+    name: Firebase hosting
     runs-on: ubuntu-latest
 
     steps:
@@ -25,39 +25,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Astro build
-        run: pnpm build
+      - name: Build Astro and Storybook
+        run: |
+          pnpm build
+          pnpm storybook-build
 
       - name: Deploy Astro to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting:main-site
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-      - name: Build Storybook
-        run: pnpm storybook build
-
-      - name: Upload Storybook Artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy Storybook to Firebase
+        uses: w9jds/firebase-action@master
         with:
-          path: ./storybook-static
-
-  deploy-pages:
-    name: Deploy Storybook to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-
-    # Required permissions for native GitHub Pages deployment
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          args: deploy --only hosting:storybook
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

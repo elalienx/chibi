@@ -12,7 +12,8 @@
     "playwright": "playwright test -c playwright-ct.config.ts",
     "preview": "astro preview",
     "test": "vitest",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "storybook-build": "build-storybook"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
