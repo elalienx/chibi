@@ -12,24 +12,23 @@ type Story = StoryObj<typeof InputField>;
 
 // Metadata
 const meta: Meta<typeof InputField> = {
-  title: "Form fields/InputField",
+  title: "Form fields/Input Field",
   component: InputField,
 };
 
-// Proeprties
+// Properties
 const username = v.pipe(v.string("Must be a valid string"), v.nonEmpty("Enter your name"));
 const schema = v.object({ username });
 
 // Stories
 export const InputFieldText: Story = {
-  name: "Input field (text)",
+  name: "Input Field (text)",
   render: () => {
     // Local state
     const form = useForm({
       schema: schema,
       validate: "blur",
       revalidate: "blur",
-      initialInput: { username: "" },
     });
 
     return (

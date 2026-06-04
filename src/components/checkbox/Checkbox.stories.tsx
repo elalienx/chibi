@@ -14,7 +14,7 @@ const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
 };
 
-// Proeprties
+// Properties
 const terms = { terms: v.optional(v.boolean()) };
 const schema = v.object(terms);
 
@@ -27,7 +27,6 @@ export const Unchecked: Story = {
       schema: schema,
       validate: "blur",
       revalidate: "blur",
-      initialInput: { terms: false },
     });
 
     return (
