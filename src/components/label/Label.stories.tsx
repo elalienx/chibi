@@ -4,7 +4,7 @@ import Label from "components/label/Label";
 
 // Metadata
 const meta = preview.meta({
-  title: "Form fields/Label",
+  title: "Components/Label",
   component: Label,
 });
 
