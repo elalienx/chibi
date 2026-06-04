@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
+    "build-storybook": "storybook build",
     "build": "astro build",
     "deploy": "firebase deploy",
     "dev": "astro dev",
@@ -11,9 +12,8 @@
     "lint": "oxlint --fix",
     "playwright": "playwright test -c playwright-ct.config.ts",
     "preview": "astro preview",
-    "test": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",

@@ -25,21 +25,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Astro and Storybook
-        run: |
-          pnpm build
-          pnpm build-storybook
+      - name: Build Astro
+        run: pnpm build
 
       - name: Deploy Astro to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:main-site
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-      - name: Deploy Storybook to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:storybook
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
