@@ -4,7 +4,7 @@ import ArrowGoBack from "./ArrowGoBack";
 
 // Metadata
 const meta = preview.meta({
-  title: "Components/ArrowGoBack",
+  title: "Components/Arrow Go Back",
   component: ArrowGoBack,
 });
 
@@ -15,7 +15,6 @@ function onClick() {
 
 // Stories
 export const Default = meta.story({
-  name: "Default",
+  name: "Arrow Go Back",
   render: () => <ArrowGoBack onClick={onClick} />,
 });
-
