@@ -4,6 +4,7 @@
   accent-color: var(--color-accent);
   display: flex;
   gap: var(--space-small);
+  min-width: var(--field-min-width-mobile);
   align-items: center;
   background-color: white;
   padding-block: var(--space-small);
