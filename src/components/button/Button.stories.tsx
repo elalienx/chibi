@@ -29,3 +29,13 @@ export const PrimaryWithIcon = meta.story({
     </Button>
   ),
 });
+
+export const PrimaryWithIconLeft = meta.story({
+  name: "Primary with icon (left)",
+  render: () => (
+    <Button onClick={onClick}>
+      <Icon name="arrow-left" />
+      Hello
+    </Button>
+  ),
+});
