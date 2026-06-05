@@ -24,6 +24,6 @@ export const Story2 = meta.story({
 });
 
 export const Story3 = meta.story({
-  name: "Label with error",
+  name: "Label (id error)",
   render: () => <Label>Write your email</Label>,
 });

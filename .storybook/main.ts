@@ -1,10 +1,10 @@
 // Node modules
-import type { StorybookConfig } from "@storybook/react-vite";
+import { defineMain } from "@storybook/react-vite/node";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+export default defineMain({
   framework: "@storybook/react-vite",
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   async viteFinal(config) {
     config.plugins = config.plugins || [];
@@ -12,6 +12,4 @@ const config: StorybookConfig = {
 
     return config;
   },
-};
-
-export default config;
+});
