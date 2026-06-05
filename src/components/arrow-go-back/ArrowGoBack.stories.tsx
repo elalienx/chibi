@@ -15,6 +15,11 @@ function onClick() {
 
 // Stories
 export const Default = meta.story({
-  name: "Arrow Go Back",
+  name: "Default",
   render: () => <ArrowGoBack onClick={onClick} />,
+});
+
+export const ArrowGoBacNoTitle = meta.story({
+  name: "Without label",
+  render: () => <ArrowGoBack onClick={onClick} hideLabel />,
 });
