@@ -10,7 +10,6 @@ export default definePreview({
   parameters: {
     docs: {
       codePanel: true,
-      layout: "centered",
     },
   },
 });
