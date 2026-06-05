@@ -7,7 +7,7 @@ import initialApplication from "../data/initialApplication";
 import type Application from "../types/Application";
 
 interface Store {
-  /** The information of the entire mortgage loan application. */
+  /** The information of the entire mortgage application. */
   application: Application;
 
   /** Method to reset the loan application. */
