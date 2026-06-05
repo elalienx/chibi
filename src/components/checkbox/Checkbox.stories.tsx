@@ -1,25 +1,23 @@
 // Node modules
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
+import preview from "../../../.storybook/preview";
 import Checkbox from "./Checkbox";
 
-type Story = StoryObj<typeof Checkbox>;
-
 // Metadata
-const meta: Meta<typeof Checkbox> = {
+const meta = preview.meta({
   title: "Form fields/Checkbox",
   component: Checkbox,
-};
+});
 
 // Properties
 const terms = { terms: v.optional(v.boolean()) };
 const schema = v.object(terms);
 
 // Stories
-export const Unchecked: Story = {
+export const Unchecked = meta.story({
   name: "Unchecked",
   render: () => {
     // Local state
@@ -37,9 +35,9 @@ export const Unchecked: Story = {
       </Form>
     );
   },
-};
+});
 
-export const Checked: Story = {
+export const Checked = meta.story({
   name: "Checked",
   render: () => {
     // Local state
@@ -58,9 +56,9 @@ export const Checked: Story = {
       </Form>
     );
   },
-};
+});
 
-export const CheckboxWithNoIdError: Story = {
+export const CheckboxWithNoIdError = meta.story({
   name: "Checkbox (id error)",
   render: () => {
     // Local state
@@ -77,11 +75,11 @@ export const CheckboxWithNoIdError: Story = {
       </Form>
     );
   },
-};
+});
 
-export const CheckboxWithNoFormError: Story = {
+export const CheckboxWithNoFormError = meta.story({
   name: "Checbox (form error)",
   render: () => <Checkbox>I accept the terms and conditions</Checkbox>,
-};
+});
 
 export default meta;

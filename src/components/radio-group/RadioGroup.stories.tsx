@@ -1,27 +1,25 @@
 // Node modules
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
+import preview from "../../../.storybook/preview";
 import RadioGroup from "./RadioGroup";
 import Label from "components/label/Label";
 import RadioOption from "components/radio-option/RadioOption";
 
-type Story = StoryObj<typeof RadioGroup>;
-
 // Metadata
-const meta: Meta<typeof RadioGroup> = {
+const meta = preview.meta({
   title: "Form fields/Radio Group",
   component: RadioGroup,
-};
+});
 
 // Properties
 const source_of_income = v.string("Choose a source of income.");
 const schema = v.object({ source_of_income });
 
 // Stories
-export const Default: Story = {
+export const Default = meta.story({
   name: "Radio Group",
   render: () => {
     // Local state
@@ -40,6 +38,6 @@ export const Default: Story = {
       </Form>
     );
   },
-};
+});
 
 export default meta;

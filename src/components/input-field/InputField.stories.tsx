@@ -1,27 +1,25 @@
 // Node modules
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
+import preview from "../../../.storybook/preview";
 import InputField from "./InputField";
 import Label from "components/label/Label";
 import Input from "components/input/Input";
 
-type Story = StoryObj<typeof InputField>;
-
 // Metadata
-const meta: Meta<typeof InputField> = {
+const meta = preview.meta({
   title: "Form fields/Input Field",
   component: InputField,
-};
+});
 
 // Properties
 const username = v.pipe(v.string("Must be a valid string"), v.nonEmpty("Enter your name"));
 const schema = v.object({ username });
 
 // Stories
-export const Default: Story = {
+export const Default = meta.story({
   name: "Input Field",
   render: () => {
     // Local state
@@ -36,6 +34,6 @@ export const Default: Story = {
       </Form>
     );
   },
-};
+});
 
 export default meta;
