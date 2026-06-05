@@ -7,5 +7,10 @@ import "./center-components.css";
 
 export default definePreview({
   addons: [],
-  parameters: {},
+  parameters: {
+    docs: {
+      codePanel: true,
+      layout: "centered",
+    },
+  },
 });
