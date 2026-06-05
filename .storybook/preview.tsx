@@ -7,9 +7,5 @@ import "./center-components.css";
 
 export default definePreview({
   addons: [],
-  parameters: {
-    docs: {
-      codePanel: true,
-    },
-  },
+  parameters: {},
 });
