@@ -17,13 +17,13 @@ export default function FormManager() {
 
   return (
     <>
-      {step === "intro-step" && <IntroStep />}
-      {step === "step-1" && <Step1 />}
-      {step === "step-2" && <Step2 />}
-      {step === "step-3" && <Step3 />}
-      {step === "step-4" && <Step4 />}
-      {step === "step-5" && <Step5 />}
-      {step === "success" && <Success />}
+      {step === "intro-step" && <IntroStep setStep={setStep} />}
+      {step === "step-1" && <Step1 setStep={setStep} />}
+      {step === "step-2" && <Step2 setStep={setStep} />}
+      {step === "step-3" && <Step3 setStep={setStep} />}
+      {step === "step-4" && <Step4 setStep={setStep} />}
+      {step === "step-5" && <Step5 setStep={setStep} />}
+      {step === "success" && <Success setStep={setStep} />}
     </>
   );
 }
