@@ -1,0 +1,32 @@
+// Node modules
+import { create, type StateCreator } from "zustand";
+import { persist, type PersistOptions } from "zustand/middleware";
+
+// Project files
+import initialApplication from "../data/initialApplication";
+import type Application from "../types/Application";
+
+interface Store {
+  /** The information of the entire business loan application. */
+  application: Application;
+
+  /** Method to reset the loan application. */
+  clearApplication: () => void;
+
+  /** Method to update loan application values. */
+  updateApplication: (updates: Partial<Application>) => void;
+}
+
+const store: StateCreator<Store> = (set) => ({
+  application: initialApplication,
+  clearApplication: () => set({ application: initialApplication }),
+  updateApplication: (updates) => set((state) => ({ application: { ...state.application, ...updates } })),
+});
+
+const localStorage: PersistOptions<Store> = {
+  name: "business-loan-application",
+};
+
+const useApplication = create<Store>()(persist(store, localStorage));
+
+export default useApplication;
