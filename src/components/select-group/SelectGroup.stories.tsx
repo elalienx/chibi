@@ -1,28 +1,26 @@
 // Node modules
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
+import preview from "../../../.storybook/preview";
 import SelectGroup from "./SelectGroup";
 import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectOption from "components/select-option/SelectOption";
 
-type Story = StoryObj<typeof SelectGroup>;
-
 // Metadata
-const meta: Meta<typeof SelectGroup> = {
+const meta = preview.meta({
   title: "Form fields/Select Group",
   component: SelectGroup,
-};
+});
 
 // Properties
 const source_of_income = v.string("Choose a source of income.");
 const schema = v.object({ source_of_income });
 
 // Stories
-export const Default: Story = {
+export const Default = meta.story({
   name: "SelectGroup",
   render: () => {
     // Local state
@@ -42,6 +40,6 @@ export const Default: Story = {
       </Form>
     );
   },
-};
+});
 
 export default meta;
