@@ -10,6 +10,7 @@ const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = Bus
 // Fields
 const turnover = v.pipe(
   v.string("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
+  v.nonEmpty("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
   v.toNumber("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
   v.minValue(MIN_TURNOVER, `Måste vara minst ${MIN_TURNOVER.toLocaleString("sv-SE")} kr.`),
   v.maxValue(MAX_TURNOVER, `Måste vara maximalt ${MAX_TURNOVER.toLocaleString("sv-SE")} kr.`),
@@ -17,6 +18,7 @@ const turnover = v.pipe(
 
 const loan_debt = v.pipe(
   v.string("Vänligen ange bolagets skulder, lägsta värde är 0."),
+  v.nonEmpty("Vänligen ange bolagets skulder, lägsta värde är 0."),
   v.toNumber("Vänligen ange bolagets skulder, lägsta värde är 0."),
   v.minValue(MIN_EXISTING_LOAN, `Must be higher than  ${MIN_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
   v.maxValue(MAX_EXISTING_LOAN, `Must be lower than  ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
