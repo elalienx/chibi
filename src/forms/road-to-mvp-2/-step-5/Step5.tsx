@@ -13,7 +13,11 @@ export default function Step5() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Borgensman</h4>
+        <small>Nästa: Form submission</small>
+        <Icon name="hashtag" />
       </header>
+
+      <hr />
 
       <section>(pending...)</section>
 

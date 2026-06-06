@@ -19,7 +19,7 @@ export default function Success() {
   }
 
   return (
-    <div className="business-form">
+    <div className="default-form">
       <header>
         <h4>Form submitted</h4>
       </header>

@@ -8,13 +8,16 @@ const meta = preview.meta({
   component: Icon,
 });
 
+// Properties
+const icons = ["arrow-left", "arrow-right", "chevron-down", "circle-info", "hashtag", "x-mark", ,];
+
 // Stories
 export const Default = meta.story({
   name: "Icon",
   argTypes: {
     name: {
       control: { type: "radio" },
-      options: ["arrow-left", "arrow-right", "chevron-down", "circle-info", "x-mark", "an invalid icon name..."],
+      options: [...icons, "an invalid icon name..."],
     },
   },
   args: { name: "circle-info" },

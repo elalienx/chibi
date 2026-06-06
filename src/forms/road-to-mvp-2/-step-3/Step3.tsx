@@ -13,7 +13,11 @@ export default function Step3() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Val av bolag</h4>
+        <small>Nästa: Lånesyfte & Omsättning</small>
+        <Icon name="hashtag" />
       </header>
+
+      <hr />
 
       <section>(pending...)</section>
 

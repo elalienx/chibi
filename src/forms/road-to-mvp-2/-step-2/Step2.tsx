@@ -33,7 +33,11 @@ export default function Step2() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
+        <small>Nästa: Val av bolag</small>
+        <Icon name="hashtag" />
       </header>
+
+      <hr />
 
       <section>
         <InputField form={form} id="email">

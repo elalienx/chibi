@@ -6,18 +6,49 @@
   box-shadow: var(--box-shadow);
 
   > header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-medium);
-    margin-block: var(--space-medium);
+    display: grid;
+    gap: var(--space-tiny) var(--space-medium);
+    grid-template-areas:
+      "left title right"
+      "left subtitle right";
+    grid-template-columns: 64px 1fr 64px; /* To make the title and subtitle take the whole width. */
+    place-items: center;
+    margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
+
+    > .arrow-go-back {
+      width: 100%;
+      height: 64px;
+      border-radius: var(--border-radius);
+      grid-area: left;
+
+      & .icon {
+        margin: 0 auto;
+      }
+
+      &:hover {
+        background-color: aliceblue;
+      }
+    }
+
+    > h4 {
+      grid-area: title;
+    }
+
+    > small {
+      grid-area: subtitle;
+    }
+
+    > .icon {
+      grid-area: right;
+    }
   }
 
   > section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
-    margin-block: 0 var(--space-medium);
+    gap: var(--space-large);
+    margin-block: var(--space-medium);
     margin-inline: var(--space-medium);
   }
 
@@ -35,16 +66,10 @@
 @media (min-width: 550px) {
   .business-form {
     > header {
-      margin-block: var(--space-2xl) var(--space-medium);
-      margin-inline: var(--space-2xl);
+      gap: var(--space-base) var(--space-medium);
     }
 
     > section {
-      margin-block: 0 var(--space-2xl);
-      margin-inline: var(--space-2xl);
-    }
-
-    > footer {
       margin-block: var(--space-2xl);
       margin-inline: var(--space-2xl);
     }
