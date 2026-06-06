@@ -12,7 +12,7 @@ import type { Step } from "./types/Step";
 
 export default function FormManager() {
   // Local state
-  const [step, setStep] = useState<Step>("intro-step");
+  const [step, setStep] = useState<Step>("step-1");
 
   return (
     <>

@@ -8,7 +8,7 @@ interface Props {
   setStep: (step: Step) => void;
 }
 
-export default function IntroStep({ setStep }: Props) {
+export default function Step1({ setStep }: Props) {
   return (
     <div id="intro-step" className="business-form">
       <header>
@@ -24,7 +24,7 @@ export default function IntroStep({ setStep }: Props) {
       <hr />
 
       <footer>
-        <Button onClick={() => setStep("step-1")}>
+        <Button onClick={() => setStep("step-2")}>
           Next <Icon name="arrow-right" />
         </Button>
       </footer>

@@ -29,13 +29,13 @@ export default function Step2({ setStep }: Props) {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("step-2");
+    setStep("step-3");
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form" id="step-1">
+    <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("intro-step")} />
+        <ArrowGoBack hideLabel onClick={() => setStep("step-1")} />
         <h4>Personuppgifter</h4>
       </header>
 

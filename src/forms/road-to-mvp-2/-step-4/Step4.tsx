@@ -34,7 +34,7 @@ export default function Step4({ setStep }: Props) {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput(application),
+    initialInput: cleanInitialInput(application, true),
   });
 
   // Methods
@@ -44,9 +44,9 @@ export default function Step4({ setStep }: Props) {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form" id="step-1">
+    <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("intro-step")} />
+        <ArrowGoBack hideLabel onClick={() => setStep("step-3")} />
         <h4>Personuppgifter</h4>
       </header>
 

@@ -13,7 +13,7 @@ export default function Step3({ setStep }: Props) {
   return (
     <div className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("intro-step")} />
+        <ArrowGoBack hideLabel onClick={() => setStep("step-2")} />
         <h4>Val av bolag</h4>
       </header>
 
