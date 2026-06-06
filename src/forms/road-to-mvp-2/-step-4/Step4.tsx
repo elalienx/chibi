@@ -3,22 +3,22 @@ import { Form, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
-import InputField from "components/input-field/InputField";
-import Input from "components/input/Input";
-import Label from "components/label/Label";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
-import schema from "./schema";
-import cleanInitialInput from "helpers/cleanInitialInput";
-import SelectGroup from "components/select-group/SelectGroup";
-import loanPurposes from "../data/loanPurposes";
-import SelectOption from "components/select-option/SelectOption";
-import Select from "components/select/Select";
+import Input from "components/input/Input";
+import InputField from "components/input-field/InputField";
+import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import Select from "components/select/Select";
+import SelectGroup from "components/select-group/SelectGroup";
+import SelectOption from "components/select-option/SelectOption";
+import cleanInitialInput from "helpers/cleanInitialInput";
+import loanPurposes from "../data/loanPurposes";
+import useApplication from "../state/useApplication";
+import type { Step } from "../types/Step";
 import Hints from "./Hints";
+import schema from "./schema";
 
 interface Props {
   /** Allows a button to change what step to display. */
