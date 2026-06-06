@@ -1,11 +1,40 @@
 // Project files
-import type { Step } from "../types/Step";
+import Button from "components/button/Button";
+import useApplication from "../state/useApplication";
+import useFormNavigation from "../state/useFormNavigation";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
+export default function Success() {
+  // Global state
+  const { application, clearApplication } = useApplication();
+  const { setStep } = useFormNavigation();
 
-export default function Success({ setStep }) {
-  return <div className="business-form">hello</div>;
+  // Methods
+  function startAgain() {
+    clearApplication();
+    setStep("step-1");
+  }
+
+  return (
+    <div className="business-form">
+      <header>
+        <h4>Form submitted</h4>
+      </header>
+
+      <section>
+        <div className="content">
+          <p>
+            You turnover is {application.turnover} and your existing debt is {application.loan_debt}.
+          </p>
+          <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
+          <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
+        </div>
+      </section>
+
+      <hr />
+
+      <footer>
+        <Button onClick={startAgain}>START AGAIN</Button>
+      </footer>
+    </div>
+  );
 }

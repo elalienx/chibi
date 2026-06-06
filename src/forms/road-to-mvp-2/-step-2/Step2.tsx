@@ -8,20 +8,16 @@ import Input from "components/input/Input";
 import Label from "components/label/Label";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
-import schema from "./schema";
 import Tooltip from "components/tooltip/Tooltip";
+import useApplication from "../state/useApplication";
+import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./BankIDTooltip";
+import schema from "./schema";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
-
-export default function Step2({ setStep }: Props) {
+export default function Step2() {
   // Global state
   const { application, updateApplication } = useApplication();
+  const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: application });
@@ -35,7 +31,7 @@ export default function Step2({ setStep }: Props) {
   return (
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("step-1")} />
+        <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
       </header>
 
