@@ -52,6 +52,7 @@ export default function Step4() {
 
       <section>
         <SelectGroup form={form} id={"purpose"}>
+          <Label>Ditt lånesyfte</Label>
           <Select>Välj</Select>
           {purposes.map((item) => (
             <SelectOption value={item.value}>{item.label}</SelectOption>

@@ -8,6 +8,10 @@ export default function Success() {
   const { application, clearApplication } = useApplication();
   const { setStep } = useFormNavigation();
 
+  // Properties
+  const formattedTurnover = application.turnover.toLocaleString("sv-SE");
+  const formattedLoanDebt = application.loan_debt.toLocaleString("sv-SE");
+
   // Methods
   function startAgain() {
     clearApplication();
@@ -23,7 +27,7 @@ export default function Success() {
       <section>
         <div className="content">
           <p>
-            You turnover is {application.turnover} and your existing debt is {application.loan_debt}.
+            You turnover is {formattedTurnover} kr and your existing debt is {formattedLoanDebt} kr.
           </p>
           <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
           <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
