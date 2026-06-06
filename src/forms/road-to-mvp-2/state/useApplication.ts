@@ -27,6 +27,9 @@ const localStorage: PersistOptions<Store> = {
   name: "business-loan-application",
 };
 
+/**
+ * Use to read and save all the values to be submitted on a multi-step form.
+ */
 const useApplication = create<Store>()(persist(store, localStorage));
 
 export default useApplication;

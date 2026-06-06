@@ -16,18 +16,14 @@ import SelectOption from "components/select-option/SelectOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import purposes from "../data/purposes";
 import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
+import useFormNavigation from "../state/useFormNavigation";
 import Hints from "./Hints";
 import schema from "./schema";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
-
-export default function Step4({ setStep }: Props) {
+export default function Step4() {
   // Global state
   const { application, updateApplication } = useApplication();
+  const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
   const form = useForm({
@@ -46,7 +42,7 @@ export default function Step4({ setStep }: Props) {
   return (
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("step-3")} />
+        <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte & Omsättning</h4>
       </header>
 

@@ -24,7 +24,7 @@ export default function Success({ setStep }: Props) {
   }
 
   return (
-    <div id="success" className="mortgage-form">
+    <div className="mortgage-form">
       <header>
         <h4>Form submitted</h4>
       </header>

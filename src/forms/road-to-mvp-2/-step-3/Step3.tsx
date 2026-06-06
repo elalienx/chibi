@@ -2,22 +2,21 @@
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import type { Step } from "../types/Step";
+import useFormNavigation from "../state/useFormNavigation";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
+export default function Step3() {
+  // Global state
+  const { setStep, goPreviousStep } = useFormNavigation();
 
-export default function Step3({ setStep }: Props) {
   return (
     <div className="business-form">
       <header>
-        <ArrowGoBack hideLabel onClick={() => setStep("step-2")} />
+        <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Val av bolag</h4>
       </header>
 
       <section>(pending...)</section>
+
       <hr />
 
       <footer>
