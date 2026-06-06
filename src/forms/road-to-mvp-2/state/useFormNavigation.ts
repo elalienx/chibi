@@ -3,6 +3,8 @@ import { create, type StateCreator } from "zustand";
 
 // Project files
 import { type Step } from "../types/Step";
+import goPreviousStep from "./helpers/goPreviousStep";
+import setStep from "./helpers/setStep";
 
 interface Store {
   /** The step in the form we are currently in. */
@@ -21,26 +23,8 @@ interface Store {
 const store: StateCreator<Store> = (set) => ({
   step: "step-1",
   previousSteps: [],
-  setStep: (newStep) =>
-    set((state) => ({
-      previousSteps: [...state.previousSteps, state.step],
-      step: newStep,
-    })),
-  goPreviousStep: () =>
-    set((state) => {
-      // Safeguard
-      if (state.previousSteps.length === 0) {
-        console.info("You cannot navigate backward anymore.");
-
-        return state;
-      }
-
-      const stepIndex = state.previousSteps.length - 1;
-      const previousStep = state.previousSteps[stepIndex];
-      const newPreviousSteps = state.previousSteps.slice(0, -1);
-
-      return { step: previousStep, previousSteps: newPreviousSteps };
-    }),
+  setStep: (newStep) => set((state) => setStep(state.step, state.previousSteps, newStep)),
+  goPreviousStep: () => set((state) => goPreviousStep(state.step, state.previousSteps)),
 });
 
 /**
