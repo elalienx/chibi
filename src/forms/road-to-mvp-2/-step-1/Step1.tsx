@@ -11,6 +11,8 @@ import Icon from "components/icon/Icon";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
+import Tooltip from "components/tooltip/Tooltip";
+import BankIDTooltip from "./BankIDTooltip";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -55,6 +57,9 @@ export default function Step1({ setStep }: Props) {
         <Button type="submit">
           Fortsätt <Icon name="arrow-right" />
         </Button>
+        <p>
+          Varför ber vi om identifiering via BankID? <Tooltip children={<BankIDTooltip />} />
+        </p>
       </footer>
     </Form>
   );

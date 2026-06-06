@@ -11,7 +11,7 @@ const email = v.pipe(
 const phone = v.pipe(
   v.string("Must be a valid string"),
   v.nonEmpty("Must be a valid string"),
-  v.email("Must be a valid phone"),
+  v.minLength(8, "Must be a valid phone"),
 );
 
 const schema = v.object({ email, phone });
