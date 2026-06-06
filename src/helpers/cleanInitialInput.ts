@@ -13,7 +13,11 @@ export default function cleanInitialInput(values: object, treatZeroAsEmpty = fal
   const entries = Object.entries(values);
   const cleanedEntries = entries.map(([key, value]) => {
     const isNumber = typeof value === "number";
-    const safeValue = isNumber ? String(value) : value;
+    const isBoolean = typeof value === "boolean";
+    let safeValue = value;
+
+    // Conversion
+    if (isNumber || isBoolean) safeValue = String(value);
 
     // Special case
     if (safeValue === "0" && treatZeroAsEmpty) return [key, ""];
