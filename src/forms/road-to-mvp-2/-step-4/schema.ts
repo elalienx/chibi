@@ -8,11 +8,6 @@ import BusinessFormConfig from "../data/BusinessFormConfig";
 const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = BusinessFormConfig;
 
 // Fields
-const has_existing_loans = v.pipe(
-  v.string("Gör ett val för att fortsätta."),
-  v.transform((value) => value === "true"),
-);
-
 const turnover = v.pipe(
   v.string("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
   v.toNumber("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
@@ -29,7 +24,20 @@ const loan_debt = v.pipe(
 
 const purpose = v.string("Vänligen ange lånesyfte");
 
+// Variants (for has existing loan)
+const withLoans = v.object({
+  has_existing_loans: v.literal("true", "Gör ett val för att fortsätta."),
+  loan_debt,
+});
+
+const withoutLoans = v.object({
+  has_existing_loans: v.literal("false", "Gör ett val för att fortsätta."),
+});
+
 // Schema
-const schema = v.object({ has_existing_loans, turnover, loan_debt, purpose });
+const schema = v.pipe(
+  v.intersect([v.object({ turnover, purpose }), v.variant("has_existing_loans", [withLoans, withoutLoans])]),
+  v.transform((input) => ({ ...input, has_existing_loans: input.has_existing_loans === "true" })), // make the choice a boolean
+);
 
 export default schema;

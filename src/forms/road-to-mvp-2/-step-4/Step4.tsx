@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -33,6 +33,10 @@ export default function Step4() {
     initialInput: cleanInitialInput(application, true),
   });
 
+  // Properties
+  const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
+  const hasExistingLoans: boolean = Boolean(fieldExistingLoans === "true");
+
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
@@ -43,7 +47,9 @@ export default function Step4() {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Lånesyfte & Omsättning</h4>
+        <h4>
+          Lånesyfte & Omsättning @{fieldExistingLoans} @{hasExistingLoans ? "TRUE" : "FALSE"}
+        </h4>
       </header>
 
       <section>
@@ -65,10 +71,12 @@ export default function Step4() {
           <RadioOption value={false}>Nej</RadioOption>
         </RadioGroup>
 
-        <InputField form={form} hints={Hints} id="loan_debt">
-          <Label>Uppskattad total skuld på befintliga lån</Label>
-          <Input type="number" suffix="kr" />
-        </InputField>
+        {hasExistingLoans && (
+          <InputField form={form} hints={Hints} id="loan_debt">
+            <Label>Uppskattad total skuld på befintliga lån</Label>
+            <Input type="number" suffix="kr" />
+          </InputField>
+        )}
       </section>
 
       <hr />
