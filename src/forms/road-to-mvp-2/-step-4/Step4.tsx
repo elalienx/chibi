@@ -35,7 +35,7 @@ export default function Step4() {
 
   // Properties
   const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
-  const hasExistingLoans: boolean = Boolean(fieldExistingLoans === "true");
+  const hasExistingLoans = Boolean(fieldExistingLoans === "true");
 
   // Methods
   function submitForm(values: object) {
@@ -47,9 +47,7 @@ export default function Step4() {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>
-          Lånesyfte & Omsättning @{fieldExistingLoans} @{hasExistingLoans ? "TRUE" : "FALSE"}
-        </h4>
+        <h4>Lånesyfte & Omsättning</h4>
       </header>
 
       <section>
