@@ -1,6 +1,6 @@
 export default function BankIDTooltip() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-base)" }}>
+    <div className="tooltip-with-title ">
       <h5>Identifiering med BankID</h5>
       <p>
         För din och bankens säkerhet ber vi dig logga in med ditt BankID. Detta förhindrar att någon obehörig använder
