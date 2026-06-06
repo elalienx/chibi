@@ -47,7 +47,7 @@ export default function Step4({ setStep }: Props) {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={() => setStep("step-3")} />
-        <h4>Personuppgifter</h4>
+        <h4>Lånesyfte & Omsättning</h4>
       </header>
 
       <section>
