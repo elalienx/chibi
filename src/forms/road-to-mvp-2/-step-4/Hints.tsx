@@ -1,4 +1,4 @@
-const LastYearTurnOver = (
+const Turnover = (
   <>
     <h5>Omsättning de senaste 12 månaderna</h5>
     <p>
@@ -11,9 +11,9 @@ const LastYearTurnOver = (
 /** All the possible tooltips hints available in this step. */
 const Hints = {
   has_existing_loans: "",
-  last_year_turnover: LastYearTurnOver,
+  turnover: Turnover,
   loan_debt: "Räkna samman bolagets totala låneskuld",
-  loan_purpose: "",
+  purpose: "",
 };
 
 export default Hints;

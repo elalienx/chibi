@@ -1,5 +1,5 @@
 // Project files
-import type { LoanPurpose } from "./LoanPurpose";
+import type { Purpose } from "./Purpose";
 
 /** All the information gathered during the Business application form. */
 export default interface Application {
@@ -7,10 +7,10 @@ export default interface Application {
   email: string;
   has_existing_loans: boolean;
   is_guarantor: boolean;
-  last_year_turnover: number;
   loan_amount: number;
   loan_debt: number;
   loan_period: number;
-  loan_purpose: LoanPurpose | undefined;
   phone: string;
+  purpose: Purpose | undefined;
+  turnover: number;
 }

@@ -14,7 +14,7 @@ import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import loanPurposes from "../data/loanPurposes";
+import purposes from "../data/purposes";
 import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import Hints from "./Hints";
@@ -51,14 +51,14 @@ export default function Step4({ setStep }: Props) {
       </header>
 
       <section>
-        <SelectGroup form={form} id={"loan_purpose"}>
+        <SelectGroup form={form} id={"purpose"}>
           <Select>Välj</Select>
-          {loanPurposes.map((item) => (
+          {purposes.map((item) => (
             <SelectOption value={item.value}>{item.label}</SelectOption>
           ))}
         </SelectGroup>
 
-        <InputField form={form} hints={Hints} id="last_year_turnover">
+        <InputField form={form} hints={Hints} id="turnover">
           <Label>Bolagets omsättning från juni 2025 till idag</Label>
           <Input type="number" suffix="kr" />
         </InputField>

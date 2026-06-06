@@ -1,4 +1,5 @@
-const loanPurposes = [
+/** A list of reasons to apply for a loan. */
+const purposes = [
   { value: "cashFlow", label: "Generell likviditet/kassaflöde" },
   { value: "investmentSeason", label: "Investering säsong" },
   { value: "purchaseInventory", label: "Inköp av lager" },
@@ -15,4 +16,4 @@ const loanPurposes = [
   { value: "other", label: "Övrigt" },
 ] as const;
 
-export default loanPurposes;
+export default purposes;
