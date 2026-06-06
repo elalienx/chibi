@@ -27,11 +27,10 @@ export default function Select({ id, anchorId, children, listId, activeOptionTex
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Properties
-  const selectId = `trigger-${id}`;
   const textToDisplay = activeOptionText ? activeOptionText : children;
 
   return (
-    <button id={selectId} type="button" className="select" popoverTarget={listId} style={{ anchorName: anchorId }}>
+    <button id={id} type="button" className="select" popoverTarget={listId} style={{ anchorName: anchorId }}>
       {textToDisplay}
       <Icon name={"chevron-down"} />
     </button>

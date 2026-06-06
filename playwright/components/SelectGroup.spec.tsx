@@ -6,9 +6,9 @@ import FormPage from "forms/example-select-group/FormPage";
 
 const error1 = "Choose one game developer company.";
 const error2 = "Choose one accessory.";
-const item1 = "Choose a developer";
+const item1 = "What is your favorite game developer company?";
 const item1Option1 = "Capcom";
-const item2 = "Choose an accessory";
+const item2 = "What was the best accessory in history?";
 const item2Option1 = "Arcade stick";
 const item2Option2 = "Zapper";
 const output1 = "Select 1 internal value: capcom";

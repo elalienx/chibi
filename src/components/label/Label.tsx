@@ -6,7 +6,7 @@ import Tooltip from "components/tooltip/Tooltip";
 import "./label.css";
 
 interface Props {
-  /** Unique identifier of the parent radio group to make sure only one radio option is active. */
+  /** Unique identifier to connect the label to its corresponding form field. */
   id?: string;
 
   /** Text to display inside the label. */
