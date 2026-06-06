@@ -18,7 +18,7 @@
 
     > .arrow-go-back {
       width: 100%;
-      height: 64px;
+      height: 48px;
       border-radius: var(--border-radius);
       grid-area: left;
 
@@ -67,6 +67,10 @@
   .business-form {
     > header {
       gap: var(--space-base) var(--space-medium);
+
+      > .arrow-go-back {
+        height: 64px;
+      }
     }
 
     > section {

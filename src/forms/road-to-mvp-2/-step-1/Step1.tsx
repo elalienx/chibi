@@ -10,7 +10,7 @@ export default function Step1() {
   return (
     <div id="intro-step" className="default-form">
       <header>
-        <h4>Road to MPV 2</h4>
+        <h5>Road to MPV 2</h5>
       </header>
 
       <section>
