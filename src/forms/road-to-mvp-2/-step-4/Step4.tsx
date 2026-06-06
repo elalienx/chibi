@@ -18,6 +18,7 @@ import SelectOption from "components/select-option/SelectOption";
 import Select from "components/select/Select";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import Hints from "./Hints";
 
 interface Props {
   /** Allows a button to change what step to display. */
@@ -57,7 +58,7 @@ export default function Step4({ setStep }: Props) {
           ))}
         </SelectGroup>
 
-        <InputField form={form} id="last_year_turnover">
+        <InputField form={form} hints={Hints} id="last_year_turnover">
           <Label>Bolagets omsättning från juni 2025 till idag</Label>
           <Input type="number" suffix="kr" />
         </InputField>
@@ -68,7 +69,7 @@ export default function Step4({ setStep }: Props) {
           <RadioOption value={false}>Nej</RadioOption>
         </RadioGroup>
 
-        <InputField form={form} id="loan_debt">
+        <InputField form={form} hints={Hints} id="loan_debt">
           <Label>Uppskattad total skuld på befintliga lån</Label>
           <Input type="number" suffix="kr" />
         </InputField>
