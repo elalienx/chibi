@@ -12,7 +12,7 @@ export default function Step5() {
     <div className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Borgensman</h4>
+        <h5>Borgensman</h5>
         <small>Nästa: Form submission</small>
         <Icon name="hashtag" />
       </header>

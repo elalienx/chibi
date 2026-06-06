@@ -32,7 +32,7 @@ export default function Step2() {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Personuppgifter</h4>
+        <h5>Personuppgifter</h5>
         <small>Nästa: Val av bolag</small>
         <Icon name="hashtag" />
       </header>

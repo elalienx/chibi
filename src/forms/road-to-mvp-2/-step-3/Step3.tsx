@@ -12,7 +12,7 @@ export default function Step3() {
     <div className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Val av bolag</h4>
+        <h5>Val av bolag</h5>
         <small>Nästa: Lånesyfte & Omsättning</small>
         <Icon name="hashtag" />
       </header>

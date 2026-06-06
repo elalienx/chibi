@@ -47,7 +47,7 @@ export default function Step4() {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Lånesyfte & Omsättning</h4>
+        <h5>Lånesyfte & Omsättning</h5>
         <small>Nästa: Borgensman</small>
         <Icon name="hashtag" />
       </header>
