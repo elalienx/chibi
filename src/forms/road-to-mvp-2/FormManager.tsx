@@ -9,6 +9,7 @@ import Step4 from "./-step-4/Step4";
 import Step5 from "./-step-5/Step5";
 import Success from "./-success-step/Success";
 import type { Step } from "./types/Step";
+import "./utils.css";
 
 export default function FormManager() {
   // Local state

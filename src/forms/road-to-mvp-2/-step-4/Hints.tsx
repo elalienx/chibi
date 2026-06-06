@@ -1,5 +1,5 @@
 const Turnover = (
-  <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-base)" }}>
+  <div className="tooltip-with-title ">
     <h5>Omsättning de senaste 12 månaderna</h5>
     <p>
       Uppskatta bolagets omsättning under de senaste 12 månaderna. Detta hjälper långivarna att ge er ett mer konkret
