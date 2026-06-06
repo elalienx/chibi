@@ -48,9 +48,11 @@ export default function Step4() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte & Omsättning</h4>
-        <small className="next-step">Nästa: Borgensman</small>
+        <small>Nästa: Borgensman</small>
         <Icon name="hashtag" />
       </header>
+
+      <hr />
 
       <section>
         <SelectGroup form={form} id={"purpose"}>

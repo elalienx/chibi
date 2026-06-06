@@ -8,7 +8,7 @@ export default function Step1() {
   const { setStep } = useFormNavigation();
 
   return (
-    <div id="intro-step" className="business-form">
+    <div id="intro-step" className="default-form">
       <header>
         <h4>Road to MPV 2</h4>
       </header>
