@@ -1,7 +1,7 @@
 .business-form {
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
+  background-color: white;
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 

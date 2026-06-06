@@ -35,7 +35,7 @@ export default function Step1({ setStep }: Props) {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} id="step-1" className="mortgage-form">
+    <Form of={form} onSubmit={submitForm} className="mortgage-form" id="step-1">
       <header>
         <ArrowGoBack onClick={() => setStep("intro-step")} />
         <h4>1. Om lånet</h4>

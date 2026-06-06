@@ -6,5 +6,6 @@
 @import url("./base/variables.css");
 
 /* Styles per page */
+@import url("./base/forms/business-form.css");
 @import url("./base/forms/default-form.css");
 @import url("./base/forms/mortgage-form.css");

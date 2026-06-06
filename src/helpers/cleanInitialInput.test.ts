@@ -28,14 +28,14 @@ test("Keep zero numbers if flag treatZeroAsEmpty is off", () => {
     item: "Eggs",
     quantity: 0,
   };
-  const keeepZeroes = false;
+  const keepZeroes = false;
   const result = {
     item: "Eggs",
     quantity: "0",
   };
 
   // Act
-  const test = cleanInitialInput(initialInput, keeepZeroes);
+  const test = cleanInitialInput(initialInput, keepZeroes);
 
   // Assert
   expect(test).toStrictEqual(result);
@@ -55,6 +55,24 @@ test("Remove zero numbers if flag treatZeroAsEmpty is on", () => {
 
   // Act
   const test = cleanInitialInput(initialInput, removeZeroes);
+
+  // Assert
+  expect(test).toStrictEqual(result);
+});
+
+test("Converts boolean values to strings", () => {
+  // Arrange
+  const initialInput = {
+    has_hear_about_miku: true,
+    is_chibi: false,
+  };
+  const result = {
+    has_hear_about_miku: "true",
+    is_chibi: "false",
+  };
+
+  // Act
+  const test = cleanInitialInput(initialInput);
 
   // Assert
   expect(test).toStrictEqual(result);

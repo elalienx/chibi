@@ -1,4 +1,4 @@
-const TenancyTypeHint = (
+const TenancyType = (
   <>
     <p>
       För en bostadsrätt äger du rätten att bo i bostaden, men bostadsrättsföreningen äger huset och marken där
@@ -12,7 +12,7 @@ const TenancyTypeHint = (
 const Hints = {
   monthly_fee: `Ange månadsavgiften till bostadsrättsföreningen.`,
   operating_cost: `Ange de sammanlagda kostnaderna förknippade med boendet exempelvis hemförsäkring, värme, vatten, el, mm. En uppskattning återfinns ofta i bostadens objektbeskrivning.`,
-  tenancy_type: TenancyTypeHint,
+  tenancy_type: TenancyType,
   rooms: `Ange antal rum i lägenheten exklusive kök och badrum.`,
   size: "",
 };
