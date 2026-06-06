@@ -4,17 +4,17 @@ import "./icon.css";
 
 interface Props {
   /** The icon name */
-  name: "arrow-left" | "arrow-right" | "chevron-down" | "circle-info" | "x-mark";
+  name: "arrow-left" | "arrow-right" | "chevron-down" | "circle-info" | "hashtag" | "x-mark";
 }
 
 export default function Icon({ name }: Props) {
   // Properties
   const icon = icons[name] || icons._default;
-  const boundingBox = `0 0 ${icon.width} 640`;
+  const boundingBox = `0 0 640 640`;
 
   return (
     <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox={boundingBox}>
-      <path d={icon.path} />
+      <path d={icon} />
     </svg>
   );
 }

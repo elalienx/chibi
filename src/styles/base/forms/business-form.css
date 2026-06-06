@@ -6,11 +6,36 @@
   box-shadow: var(--box-shadow);
 
   > header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-medium);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--space-tiny) var(--space-medium);
+    grid-template-areas:
+      "left title right"
+      "left subtitle right";
     margin-block: var(--space-medium);
     margin-inline: var(--space-medium);
+    background-color: gray;
+
+    > .arrow-go-back {
+      grid-area: left;
+      background-color: pink;
+    }
+
+    > h4 {
+      grid-area: title;
+      background-color: palegreen;
+    }
+
+    > small {
+      grid-area: subtitle;
+      background-color: aliceblue;
+    }
+
+    > .icon {
+      grid-area: right;
+      background-color: wheat;
+    }
   }
 
   > section {
