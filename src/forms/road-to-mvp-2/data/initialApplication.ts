@@ -2,16 +2,16 @@
 import type Application from "../types/Application";
 
 const initialApplication: Application = {
-  loan_amount: 0,
-  loan_period: 0,
-  email: "",
-  phone: "",
   company_org_number: "",
-  loan_purpose: undefined,
-  last_year_turnover: 0,
+  email: "",
   has_existing_loans: false,
-  loan_debt: 0,
   is_guarantor: false,
+  last_year_turnover: 0,
+  loan_amount: 0,
+  loan_debt: 0,
+  loan_period: 0,
+  loan_purpose: undefined,
+  phone: "",
 };
 
 export default initialApplication;

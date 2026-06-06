@@ -1,4 +1,4 @@
-const loanPurposeOptions = [
+const loanPurposes = [
   { value: "cashFlow", label: "Generell likviditet/kassaflöde" },
   { value: "investmentSeason", label: "Investering säsong" },
   { value: "purchaseInventory", label: "Inköp av lager" },
@@ -15,4 +15,4 @@ const loanPurposeOptions = [
   { value: "other", label: "Övrigt" },
 ] as const;
 
-export default loanPurposeOptions;
+export default loanPurposes;
