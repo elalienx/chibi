@@ -15,7 +15,7 @@ export default function Step1() {
 
       <section>
         <p>
-          To see what is pending to reach MVP status, check the first MPV here: <a href="./road-to-mvp-1">link</a>.
+          To see what is pending to reach MVP status, check the first MPV here: <a href="road-to-mvp-1">link</a>.
         </p>
       </section>
 
