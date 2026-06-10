@@ -9,7 +9,7 @@ const meta = preview.meta({
 });
 
 // Properties
-const icons = ["arrow-left", "arrow-right", "chevron-down", "circle-info", "hashtag", "x-mark", ,];
+const icons = ["arrow-left", "arrow-right", "chevron-down", "circle-info", "hashtag", "x-mark"];
 
 // Stories
 export const Default = meta.story({
