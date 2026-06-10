@@ -2,7 +2,7 @@
 import { expect, test } from "@playwright/experimental-ct-react";
 
 // Project files
-import FormManager from "forms/road-to-mvp-2/FormManager";
+import FormManager from "forms/mvp-business/FormManager";
 
 test("Should be able to submit with no debt", async ({ mount }) => {
   // Properties
