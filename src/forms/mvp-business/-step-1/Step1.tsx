@@ -20,7 +20,8 @@ export default function Step1() {
       <hr />
 
       <footer>
-        <Button onClick={() => setStep("step-2")}>
+        {/* Note: We are moving directly to step 4 as we haven't mocked the other steps */}
+        <Button onClick={() => setStep("step-4")}>
           Next <Icon name="arrow-right" />
         </Button>
       </footer>

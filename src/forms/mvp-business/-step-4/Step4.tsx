@@ -40,7 +40,7 @@ export default function Step4() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("step-5");
+    setStep("success");
   }
 
   return (

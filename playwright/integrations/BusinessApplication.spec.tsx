@@ -13,29 +13,12 @@ test("Should be able to submit with no debt", async ({ mount }) => {
     await form.getByRole("button", { name: "Next" }).click();
   });
 
-  await test.step("Step 2: Applicant info", async () => {
-    await form.getByRole("heading", { name: "Personuppgifter" }).waitFor();
-    await form.getByRole("textbox", { name: "E-postadress" }).fill("eduardo@lendo.se");
-    await form.getByRole("textbox", { name: "Telefonnummer" }).fill("729478013");
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
-  await test.step("Step 3: Choose company (pending)", async () => {
-    await form.getByRole("heading", { name: "Val av bolag" }).waitFor();
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
   await test.step("Step 4: About the company", async () => {
     await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
     await form.getByRole("button", { name: "Ditt lånesyfte" }).click();
     await form.getByText("Renovering av lokal").click();
     await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(1_000_000));
     await form.locator("#has_existing_loans").getByText("Nej").click();
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
-  await test.step("Step 5: Guarantor (pending)", async () => {
-    await form.getByRole("heading", { name: "Borgensman" }).waitFor();
     await form.getByRole("button", { name: "Fortsätt" }).click();
   });
 
@@ -55,18 +38,6 @@ test("Should be able to submit with debt", async ({ mount }) => {
     await form.getByRole("button", { name: "Next" }).click();
   });
 
-  await test.step("Step 2: Applicant info", async () => {
-    await form.getByRole("heading", { name: "Personuppgifter" }).waitFor();
-    await form.getByRole("textbox", { name: "E-postadress" }).fill("eduardo@lendo.se");
-    await form.getByRole("textbox", { name: "Telefonnummer" }).fill("729478013");
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
-  await test.step("Step 3: Choose company (pending)", async () => {
-    await form.getByRole("heading", { name: "Val av bolag" }).waitFor();
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
   await test.step("Step 4: About the company", async () => {
     await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
     await form.getByRole("button", { name: "Ditt lånesyfte" }).click();
@@ -74,11 +45,6 @@ test("Should be able to submit with debt", async ({ mount }) => {
     await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(500_000));
     await form.locator("#has_existing_loans").getByText("Ja").click();
     await form.getByRole("textbox", { name: "Uppskattad total skuld på" }).fill(String(250_000));
-    await form.getByRole("button", { name: "Fortsätt" }).click();
-  });
-
-  await test.step("Step 5: Guarantor (pending)", async () => {
-    await form.getByRole("heading", { name: "Borgensman" }).waitFor();
     await form.getByRole("button", { name: "Fortsätt" }).click();
   });
 
