@@ -15,7 +15,7 @@ export default function Success() {
   // Methods
   function startAgain() {
     clearApplication();
-    setStep("step-1");
+    setStep("intro-step");
   }
 
   return (
