@@ -1,5 +1,5 @@
 // Project files
-import Step1 from "./-step-1/Step1";
+import Step1 from "./-intro-step/IntroStep";
 import Step4 from "./-step-4/Step4";
 import Success from "./-success-step/Success";
 import useFormNavigation from "./state/useFormNavigation";
