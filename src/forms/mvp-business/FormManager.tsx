@@ -11,9 +11,9 @@ export default function FormManager() {
 
   return (
     <>
-      {step === "step-1" && <Step1 />}
+      {step === "intro-step" && <Step1 />}
       {step === "step-4" && <Step4 />}
-      {step === "success" && <Success />}
+      {step === "success-step" && <Success />}
     </>
   );
 }

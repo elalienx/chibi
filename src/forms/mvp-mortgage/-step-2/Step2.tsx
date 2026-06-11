@@ -49,7 +49,7 @@ export default function Step2({ propertyType, setStep }: Props) {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("success");
+    setStep("success-step");
   }
 
   return (
