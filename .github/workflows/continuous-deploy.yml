@@ -28,6 +28,9 @@ jobs:
       - name: Astro build
         run: pnpm build
 
+      - name: Storybook build
+        run: pnpm build-storybook
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
