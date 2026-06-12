@@ -21,6 +21,7 @@ export default function FormManager() {
 
   return (
     <>
+      foo
       {step === "intro-step" && <IntroStep setStep={setStep} />}
       {step === "step-1" && <Step1 setStep={setStep} />}
       {step === "step-2" && <Step2 propertyType={propertyType} setStep={setStep} />}
