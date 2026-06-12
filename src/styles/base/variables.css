@@ -102,7 +102,7 @@
   --input-background-hover: var(--color-blue-99);
   --input-background-focus: var(--color-blue-99); /** same as hover **/
   --input-background-error: var(--color-red-95);
-  --input-background-succes: var(--color-gray-95); /** same as up **/
+  --input-background-success: var(--color-gray-95); /** same as up **/
 
   /* Input borders */
   --input-border-up: var(--color-gray-50);

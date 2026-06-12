@@ -1,5 +1,5 @@
 // Project files
-import type { Step } from "forms/road-to-mvp-2/types/Step";
+import type { Step } from "forms/mvp-business/types/Step";
 
 export default function goPreviousStep(step: Step, previousSteps: Step[]) {
   // Safeguard
