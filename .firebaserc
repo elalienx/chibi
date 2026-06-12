@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "aphrodite-chibi"
+  },
+  "targets": {
+    "aphrodite-chibi": {
+      "hosting": {
+        "app": ["aphrodite-chibi"],
+        "storybook": ["aphrodite-chibi-storybook"]
+      }
+    }
   }
 }
