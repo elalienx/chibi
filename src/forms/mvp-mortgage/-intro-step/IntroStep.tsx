@@ -12,7 +12,7 @@ export default function IntroStep({ setStep }: Props) {
   return (
     <div id="intro-step" className="mortgage-form">
       <header>
-        <h4>Road to MPV</h4>
+        <h4>Mortgage MVP</h4>
       </header>
 
       <section>

@@ -1,5 +1,5 @@
 // Project files
-import Step1 from "./-intro-step/IntroStep";
+import IntroStep from "./-intro-step/IntroStep";
 import Step4 from "./-step-4/Step4";
 import Success from "./-success-step/Success";
 import useFormNavigation from "./state/useFormNavigation";
@@ -11,7 +11,7 @@ export default function FormManager() {
 
   return (
     <>
-      {step === "intro-step" && <Step1 />}
+      {step === "intro-step" && <IntroStep />}
       {step === "step-4" && <Step4 />}
       {step === "success-step" && <Success />}
     </>

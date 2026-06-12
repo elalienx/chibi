@@ -9,7 +9,7 @@ test("Should be able to submit with no debt", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Step 1", async () => {
-    await form.getByRole("heading", { name: "Road to MPV 2" }).waitFor();
+    await form.getByRole("heading", { name: "Business MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
@@ -34,7 +34,7 @@ test("Should be able to submit with debt", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Step 1", async () => {
-    await form.getByRole("heading", { name: "Road to MPV 2" }).waitFor();
+    await form.getByRole("heading", { name: "Business MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
