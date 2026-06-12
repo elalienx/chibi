@@ -4,7 +4,7 @@ import Label from "components/label/Label";
 
 // Metadata
 const meta = preview.meta({
-  title: "Components/Label",
+  title: "Form atoms/Label",
   component: Label,
 });
 
