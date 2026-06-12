@@ -15,11 +15,11 @@ export default definePreview({
       options: {
         mobile: {
           name: "Mobile",
-          styles: { width: "320px", height: "100%" },
+          styles: { width: "360px", height: "780px" },
         },
         tablet: {
           name: "Tablet",
-          styles: { width: "550px", height: "100%" },
+          styles: { width: "550px", height: "732px" },
         },
         desktop: {
           name: "Desktop",
