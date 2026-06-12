@@ -11,5 +11,21 @@ export default definePreview({
     docs: {
       codePanel: true,
     },
+    viewport: {
+      options: {
+        mobile: {
+          name: "Mobile",
+          styles: { width: "360px", height: "780px" },
+        },
+        tablet: {
+          name: "Tablet",
+          styles: { width: "550px", height: "732px" },
+        },
+        desktop: {
+          name: "Desktop",
+          styles: { width: "768px", height: "100%" },
+        },
+      },
+    },
   },
 });
