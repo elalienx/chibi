@@ -9,7 +9,7 @@ test("Should be abble to apply for a house", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
@@ -40,7 +40,7 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
@@ -71,7 +71,7 @@ test("Should be abble to apply for a terraced house (as rental)", async ({ mount
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
@@ -103,7 +103,7 @@ test("Should be abble to apply for a terraced house (as ownership)", async ({ mo
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 
@@ -134,7 +134,7 @@ test("Should be abble to apply for a holiday home (same options as house)", asyn
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Road to MPV" }).waitFor();
+    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
     await form.getByRole("button", { name: "Next" }).click();
   });
 

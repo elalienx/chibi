@@ -3,14 +3,14 @@ import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import useFormNavigation from "../state/useFormNavigation";
 
-export default function Step1() {
+export default function IntroStep() {
   // Global state
   const { setStep } = useFormNavigation();
 
   return (
     <div id="intro-step" className="default-form">
       <header>
-        <h5>Road to MPV 2</h5>
+        <h5>Business MVP</h5>
       </header>
 
       <section>

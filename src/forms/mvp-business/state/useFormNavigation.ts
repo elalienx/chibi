@@ -21,7 +21,7 @@ interface Store {
 }
 
 const store: StateCreator<Store> = (set) => ({
-  step: "step-1",
+  step: "intro-step",
   previousSteps: [],
   setStep: (newStep) => set((state) => setStep(state.step, state.previousSteps, newStep)),
   goPreviousStep: () => set((state) => goPreviousStep(state.step, state.previousSteps)),
