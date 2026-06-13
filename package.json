@@ -37,10 +37,5 @@
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.8"
   },
-  "packageManager": "pnpm@11.1.1",
-  "pnpm": {
-    "overrides": {
-      "esbuild": "^0.28.1"
-    }
-  }
+  "packageManager": "pnpm@11.1.1"
 }
