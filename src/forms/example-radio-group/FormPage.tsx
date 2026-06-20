@@ -12,7 +12,7 @@ const schema = v.object({
   likes_beer: v.string("Say either yes or no."),
   likes_guiness: v.pipe(
     v.string("Say either yes or no."), // input radio send us a string even if we send a boolean
-    v.transform((value) => value === "true"), // thus, this converts it back to boolean
+    v.transform((value) => value === String(true)), // thus, this converts it back to boolean
   ),
 });
 
