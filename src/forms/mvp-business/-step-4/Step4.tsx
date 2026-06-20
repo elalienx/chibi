@@ -30,7 +30,7 @@ export default function Step4() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput(application, true),
+    initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
   // Properties
