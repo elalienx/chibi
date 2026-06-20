@@ -1,4 +1,4 @@
-export const formatWithSpaces = (value: string | number | undefined | null): string => {
+export default function formatWithSpaces(value: string | number | undefined | null): string {
   // Safeguard
   if (value === undefined || value === null) return "";
 
@@ -7,8 +7,4 @@ export const formatWithSpaces = (value: string | number | undefined | null): str
 
   // Inject spaces every 3 digits
   return clean.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-};
-
-export const stripSpaces = (value: string): string => {
-  return value.replace(/\s/g, "");
-};
+}
