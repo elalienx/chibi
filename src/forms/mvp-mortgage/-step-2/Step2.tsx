@@ -37,7 +37,7 @@ export default function Step2({ propertyType, setStep }: Props) {
     schema: buildSchema(propertyType),
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput(application, true),
+    initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
   // Properties
