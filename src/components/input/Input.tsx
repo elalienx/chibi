@@ -6,6 +6,7 @@ import { useField, type FormStore } from "@formisch/react";
 import calculateInputState from "./helpers/calculateInputState";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
 import parseNumbers from "./helpers/parseDigits";
+import { formatWithSpaces, stripSpaces } from "./helpers/numberFormatters";
 import type { InputState } from "./helpers/InputState";
 import "./input-wrapper-design.css";
 import "./input-wrapper-layout.css";
@@ -21,7 +22,7 @@ interface Props {
   /** An example value to show when the field is empty. */
   placeholder?: string;
 
-  /** Decoration text on the right side of the input. Used to indicate a currency or measurment unit. */
+  /** Decoration text on the right side of the input. Used to indicate a currency or measurement unit. */
   suffix?: string;
 
   /** Decides what kind of keyboard to show on mobile. This does not affect validation. Handle that separately. */
@@ -48,6 +49,7 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   const customPlaceholder = placeholder ?? (isNumber ? "0" : undefined);
   const customValue = field.input as string | number;
   const mobileKeyboard = getCorrectMobileKeyboard(type);
+  const displayValue = isNumber ? formatWithSpaces(customValue) : customValue;
 
   // Methods
   useEffect(
@@ -66,7 +68,9 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
     if (isNumber) {
-      event.target.value = parseNumbers(event.target.value);
+      const rawString = stripSpaces(event.target.value);
+
+      event.target.value = parseNumbers(rawString);
     }
 
     field.props.onChange(event);
@@ -91,7 +95,7 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
         onFocus={onFocus}
         placeholder={customPlaceholder}
         type={curatedType}
-        value={customValue}
+        value={displayValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
       {inputState === "error" && (
