@@ -4,7 +4,7 @@ import InputText from "./InputText";
 import type InputProps from "./helpers/InputProps";
 
 export default function Input(props: InputProps) {
-  // Special cases
+  // Special case
   if (props.type === "number") return <InputNumber {...props} />;
 
   return <InputText {...props} />;
