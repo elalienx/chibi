@@ -14,7 +14,7 @@ import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputNumber({ id, form, placeholder, suffix, type }: InputProps) {
+export default function InputNumber({ id, form, placeholder = "0", suffix, type }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -28,7 +28,6 @@ export default function InputNumber({ id, form, placeholder, suffix, type }: Inp
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const customPlaceholder = placeholder ?? "0";
   const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
@@ -73,7 +72,7 @@ export default function InputNumber({ id, form, placeholder, suffix, type }: Inp
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
-        placeholder={customPlaceholder}
+        placeholder={placeholder}
         type={customType}
         value={displayValue}
       />

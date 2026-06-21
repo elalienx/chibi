@@ -25,7 +25,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const customValue = String(field.input);
+  const customValue = field.input as string | number;
   const mobileKeyboard = getCorrectMobileKeyboard(type);
 
   // Methods
