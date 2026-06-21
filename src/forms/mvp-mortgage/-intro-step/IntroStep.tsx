@@ -17,7 +17,6 @@ export default function IntroStep({ setStep }: Props) {
 
       <section>
         <ul className="first-level">
-          <li>Format numbers using spaces.</li>
           <li>Add tracking.</li>
         </ul>
       </section>
