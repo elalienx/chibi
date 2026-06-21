@@ -5,8 +5,6 @@ import * as v from "valibot";
 // Project files
 import preview from "../../../.storybook/preview";
 import Input from "./Input";
-import InputField from "components/input-field/InputField";
-import Label from "components/label/Label";
 
 // Metadata
 const meta = preview.meta({
@@ -36,10 +34,7 @@ export const Text = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <InputField form={form} id="username">
-          <Label>Username</Label>
-          <Input type="text" placeholder="Hatsume Miku" />
-        </InputField>
+        <Input type="text" placeholder="Hatsume Miku" form={form} id="username" />
       </Form>
     );
   },
@@ -52,10 +47,7 @@ export const Email = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <InputField form={form} id="email">
-          <Label>Email</Label>
-          <Input type="email" placeholder="hatsume@miku.com" />
-        </InputField>
+        <Input type="email" placeholder="hatsume@miku.com" form={form} id="email" />
       </Form>
     );
   },
@@ -68,10 +60,7 @@ export const Password = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <InputField form={form} id="password">
-          <Label>Password</Label>
-          <Input type="password" placeholder="••••••••" />
-        </InputField>
+        <Input type="password" placeholder="Password" form={form} id="password" />
       </Form>
     );
   },
@@ -84,10 +73,7 @@ export const NumberInput = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <InputField form={form} id="loan_amount">
-          <Label>Loan amount</Label>
-          <Input type="number" placeholder="250 000" />
-        </InputField>
+        <Input type="number" placeholder="250 000" form={form} id="loan_amount" />
       </Form>
     );
   },
