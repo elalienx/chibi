@@ -1,6 +1,6 @@
 // Node modules
 import { useEffect, useState, type ChangeEvent, type FocusEvent } from "react";
-import { useField, type FormStore } from "@formisch/react";
+import { useField } from "@formisch/react";
 
 // Project files
 import calculateInputState from "./helpers/calculateInputState";
@@ -9,28 +9,12 @@ import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
 import parseNumbers from "./helpers/parseDigits";
 import stripSpaces from "./helpers/stripSpaces";
 import type { InputState } from "./helpers/InputState";
-import "./input-wrapper-design.css";
-import "./input-wrapper-layout.css";
-import "./input-wrapper-state.css";
+import type Input from "./Input";
+import "./styles/input-wrapper-design.css";
+import "./styles/input-wrapper-layout.css";
+import "./styles/input-wrapper-state.css";
 
-interface Props {
-  /** Unique identifier of a form field. */
-  id?: string;
-
-  /** An instance of a Formisch form. */
-  form?: FormStore;
-
-  /** An example value to show when the field is empty. */
-  placeholder?: string;
-
-  /** Decoration text on the right side of the input. Used to indicate a currency or measurement unit. */
-  suffix?: string;
-
-  /** Decides what kind of keyboard to show on mobile. This does not affect validation. Handle that separately. */
-  type: "email" | "number" | "password" | "tel" | "text";
-}
-
-export default function Input({ id, form, placeholder, suffix, type }: Props) {
+export default function Input({ id, form, placeholder, suffix, type }: Input) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -42,15 +26,13 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   const [fieldIsFocused, setFieldIsFocused] = useState(false);
 
   // Properties
-  const isNumber = type === "number";
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const cssTypeNumber = isNumber ? "type-number" : "";
-  const curatedType = isNumber ? "text" : type; // to allow us to control the type number manually as it has too many quirks.
-  const customPlaceholder = placeholder ?? (isNumber ? "0" : undefined);
-  const customValue = field.input as string | number;
+  const customPlaceholder = placeholder ?? "0";
+  const customType = "text"; // To manually control the type as it has too many quirks.
+  const customValue = String(field.input);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
-  const displayValue = isNumber ? formatWithSpaces(customValue) : customValue;
+  const displayValue = formatWithSpaces(customValue);
 
   // Methods
   useEffect(
@@ -68,12 +50,9 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
-    if (isNumber) {
-      const rawString = stripSpaces(event.target.value);
+    const rawString = stripSpaces(event.target.value);
 
-      event.target.value = parseNumbers(rawString);
-    }
-
+    event.target.value = parseNumbers(rawString);
     field.props.onChange(event);
   }
 
@@ -89,13 +68,13 @@ export default function Input({ id, form, placeholder, suffix, type }: Props) {
         id={id}
         aria-errormessage={ariaErrorId}
         aria-invalid={!!field.errors}
-        className={`input ${cssTypeNumber}`}
+        className="input type-number"
         inputMode={mobileKeyboard}
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
         placeholder={customPlaceholder}
-        type={curatedType}
+        type={customType}
         value={displayValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
