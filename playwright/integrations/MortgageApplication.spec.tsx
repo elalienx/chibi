@@ -31,7 +31,7 @@ test("Should be abble to apply for a house", async ({ mount }) => {
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(form.getByText("You choose a 100m house with 4 rooms")).toBeVisible();
-    await expect(form.getByText("Therefore your operating cost is 10000 SEK")).toBeVisible();
+    await expect(form.getByText("Therefore your operating cost is 10 000 SEK")).toBeVisible();
   });
 });
 
@@ -62,7 +62,7 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(form.getByText("You choose a 36m apartment with 1 rooms")).toBeVisible();
-    await expect(form.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
+    await expect(form.getByText("Therefore your monthly fee is 3 125 SEK")).toBeVisible();
   });
 });
 
@@ -94,7 +94,7 @@ test("Should be abble to apply for a terraced house (as rental)", async ({ mount
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(form.getByText("You choose a 36m terraced_house with 1 rooms")).toBeVisible();
-    await expect(form.getByText("Therefore your monthly fee is 3125 SEK")).toBeVisible();
+    await expect(form.getByText("Therefore your monthly fee is 3 125 SEK")).toBeVisible();
   });
 });
 
@@ -125,7 +125,7 @@ test("Should be abble to apply for a terraced house (as ownership)", async ({ mo
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(form.getByText("You choose a 100m terraced_house with 4 rooms")).toBeVisible();
-    await expect(form.getByText("Therefore your operating cost is 10000 SEK")).toBeVisible();
+    await expect(form.getByText("Therefore your operating cost is 10 000 SEK")).toBeVisible();
   });
 });
 
@@ -156,6 +156,6 @@ test("Should be abble to apply for a holiday home (same options as house)", asyn
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
     await expect(form.getByText("You choose a 100m holiday_home with 4 rooms")).toBeVisible();
-    await expect(form.getByText("Therefore your operating cost is 10000 SEK")).toBeVisible();
+    await expect(form.getByText("Therefore your operating cost is 10 000 SEK")).toBeVisible();
   });
 });
