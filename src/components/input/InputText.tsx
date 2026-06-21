@@ -6,12 +6,12 @@ import { useField } from "@formisch/react";
 import calculateInputState from "./helpers/calculateInputState";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
 import type { InputState } from "./helpers/InputState";
-import type Input from "./Input";
+import type InputProps from "./helpers/InputProps";
 import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function Input({ id, form, placeholder, suffix, type }: Input) {
+export default function InputText({ id, form, placeholder = "", suffix, type }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
