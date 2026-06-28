@@ -2,6 +2,8 @@
 
 Making Lendo more Kawaii <3
 
+Demo: [aphrodite-chibi.web.app](https://aphrodite-chibi.web.app)
+
 ## Project Structure
 
 Inside the Aphrodite Chibi project, you'll see the following folders and files:
