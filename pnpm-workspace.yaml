@@ -2,5 +2,3 @@ allowBuilds:
   esbuild: true
   sharp: false
 minimumReleaseAge: 1500 # One day and one hour written in minutes
-overrides:
-  esbuild: 0.28.1
