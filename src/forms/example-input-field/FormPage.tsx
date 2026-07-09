@@ -10,13 +10,13 @@ import Label from "components/label/Label";
 
 const schema = v.object({
   name: v.pipe(
-    v.string("Please enter your full name."),
+    v.string(),
     v.nonEmpty("Please enter your full name."),
     v.minLength(3, "Name is too short."),
     v.maxLength(50, "Name is too long."),
   ),
   age: v.pipe(
-    v.string("Please enter your age."),
+    v.string(),
     v.nonEmpty("Please enter your age."),
     v.toNumber("Age must be a valid number."),
     v.minValue(18, "You must be at least 18 years old to register."),
