@@ -9,9 +9,10 @@ import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 
 const schema = v.object({
-  likes_beer: v.string("Say either yes or no."),
+  likes_beer: v.pipe(v.string(), v.nonEmpty("Say either yes or no.")),
   likes_guiness: v.pipe(
-    v.string("Say either yes or no."), // input radio send us a string even if we send a boolean
+    v.string(),
+    v.nonEmpty("Say either yes or no."), // input radio send us a string even if we send a boolean
     v.transform((value) => value === String(true)), // thus, this converts it back to boolean
   ),
 });
