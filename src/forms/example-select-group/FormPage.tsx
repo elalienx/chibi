@@ -19,8 +19,9 @@ export default function FormPage() {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Properties
-  const select1Value = getInput(form, { path: ["publisher"] });
-  const select2Value = getInput(form, { path: ["accessory"] });
+  const noResult = "no result";
+  const select1Value = getInput(form, { path: ["publisher"] }) || noResult;
+  const select2Value = getInput(form, { path: ["accessory"] }) || noResult;
 
   // Methods
   function submitForm() {
@@ -55,8 +56,8 @@ export default function FormPage() {
 
         <p>Text to verify Playwright assertions:</p>
         <ul>
-          <li>Select 1 internal value: {select1Value || "no result"}</li>
-          <li>Select 2 internal value: {select2Value || "no result"}</li>
+          <li>Select 1 internal value: {select1Value}</li>
+          <li>Select 2 internal value: {select2Value}</li>
         </ul>
       </section>
 
