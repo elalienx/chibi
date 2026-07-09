@@ -10,8 +10,8 @@ import SelectOption from "components/select-option/SelectOption";
 import Select from "components/select/Select";
 
 const schema = v.object({
-  publisher: v.string("Choose one game developer company."),
-  accessory: v.pipe(v.string("Choose one accessory."), v.toNumber("Choose one accessory.")),
+  publisher: v.pipe(v.string(), v.nonEmpty("Choose one game developer company.")),
+  accessory: v.pipe(v.string(), v.nonEmpty("Choose one accessory."), v.toNumber("Choose one accessory.")),
 });
 
 export default function FormPage() {
@@ -19,13 +19,12 @@ export default function FormPage() {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Properties
-  const noResult = "no result";
-  const select1Value = getInput(form, { path: ["publisher"] }) || noResult;
-  const select2Value = getInput(form, { path: ["accessory"] }) || noResult;
+  const select1Value = getInput(form, { path: ["publisher"] });
+  const select2Value = getInput(form, { path: ["accessory"] });
 
   // Methods
   function submitForm() {
-    alert("Success");
+    if (form.isValid) alert("Success");
   }
 
   return (
@@ -56,8 +55,8 @@ export default function FormPage() {
 
         <p>Text to verify Playwright assertions:</p>
         <ul>
-          <li>Select 1 internal value: {select1Value}</li>
-          <li>Select 2 internal value: {select2Value}</li>
+          <li>Select 1 internal value: {select1Value || "no result"}</li>
+          <li>Select 2 internal value: {select2Value || "no result"}</li>
         </ul>
       </section>
 
