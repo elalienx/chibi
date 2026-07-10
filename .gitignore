@@ -36,5 +36,6 @@ firebase-debug.log
 /playwright-report
 firebase-debug.log
 
+# Storybook
 *storybook.log
 storybook-static
