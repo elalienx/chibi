@@ -15,9 +15,9 @@ import SelectorOption from "components/selector-option/SelectorOption";
 import GuinessTooltip from "./GuinessTooltip";
 
 const schema = v.object({
-  name: v.pipe(v.string("Please enter your full name."), v.nonEmpty("Please enter your full name.")),
-  likes_beer: v.string("Say either yes or no."),
-  favorite_brand: v.string("Choose a brand."),
+  name: v.pipe(v.string(), v.nonEmpty("Please enter your full name.")),
+  likes_beer: v.pipe(v.string(), v.nonEmpty("Say either yes or no.")),
+  favorite_brand: v.pipe(v.string(), v.nonEmpty("Choose a brand.")),
 });
 
 const hints = {
