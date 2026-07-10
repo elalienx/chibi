@@ -15,7 +15,7 @@ const meta = preview.meta({
 });
 
 // Properties
-const source_of_income = v.string("Choose a source of income.");
+const source_of_income = v.pipe(v.string(), v.nonEmpty("Choose a source of income."));
 const schema = v.object({ source_of_income });
 
 // Stories
