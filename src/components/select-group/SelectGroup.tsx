@@ -41,10 +41,10 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractLabel(id, children, hint);
-  const selectOptions = extractSelectOptions(id, children, field, listId);
+  const selectOptions = extractSelectOptions(id, children, field);
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeOptionText = activeOption && activeOption.props.children;
-  const select = extractSelect(id, anchorId, children, listId, activeOptionText);
+  const select = extractSelect(id, anchorId, children, activeOptionText);
 
   return (
     <div className="select-group">

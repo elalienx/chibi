@@ -9,13 +9,7 @@ import Select from "components/select/Select";
  *
  * This method replicates it so `<SelectGroup/>` can pass props to the `<Select/>`.
  */
-export default function extractInput(
-  id: string,
-  anchorId: string,
-  children: ReactNode,
-  listId: string,
-  activeOptionText: ReactNode,
-) {
+export default function extractInput(id: string, anchorId: string, children: ReactNode, activeOptionText: ReactNode) {
   // Properties
   const reactComponents = Children.toArray(children);
   const input = reactComponents.find((child) => isValidElement(child) && child.type === Select);
@@ -23,5 +17,5 @@ export default function extractInput(
   // Safeguard
   if (!input) return null;
 
-  return cloneElement(input as any, { id, anchorId, listId, activeOptionText } as any);
+  return cloneElement(input as any, { id, anchorId, activeOptionText } as any);
 }
