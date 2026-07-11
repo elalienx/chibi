@@ -13,5 +13,5 @@ import SelectOption from "components/select-option/SelectOption";
 export default function extractSelectOptions(id: string, children: ReactNode, field: FieldStore, listId: string) {
   return Children.toArray(children)
     .filter((child) => isValidElement(child) && child.type === SelectOption)
-    .map((child) => cloneElement(child as any, { id, field, listId }));
+    .map((child) => cloneElement(child as any, { id, field, listId }) as any);
 }
