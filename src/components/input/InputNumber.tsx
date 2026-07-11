@@ -32,6 +32,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const customValue = String(field.input);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const displayValue = formatWithSpaces(customValue);
+  const hasErrors = inputState === "error" && field.errors;
 
   // Methods
   useEffect(
@@ -77,7 +78,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
         value={displayValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
-      {inputState === "error" && (
+      {hasErrors && (
         <p id={ariaErrorId} className="input-validation-message">
           {field.errors?.[0]}
         </p>

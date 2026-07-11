@@ -27,6 +27,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = field.input as string | number;
   const mobileKeyboard = getCorrectMobileKeyboard(type);
+  const hasErrors = inputState === "error" && field.errors;
 
   // Methods
   useEffect(
@@ -64,7 +65,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
         value={customValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
-      {inputState === "error" && (
+      {hasErrors && (
         <p id={ariaErrorId} className="input-validation-message">
           {field.errors?.[0]}
         </p>
