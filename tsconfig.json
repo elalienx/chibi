@@ -7,6 +7,6 @@
     "baseUrl": "src",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "incremental": true,
-  },
+    "incremental": true
+  }
 }
