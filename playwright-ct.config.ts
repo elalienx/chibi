@@ -1,8 +1,6 @@
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// Properties
-
 export default defineConfig({
   testDir: "./playwright",
   snapshotDir: "./snapshots",
