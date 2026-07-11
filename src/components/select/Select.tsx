@@ -15,18 +15,16 @@ interface Props {
   /** Text to display inside the selector option. */
   children: ReactNode;
 
-  /** The name of the <Select> list parent. Used to close the list when an option is selected. */
-  listId?: string;
-
   /** The text inside the user selected option. */
   activeOptionText?: ReactNode;
 }
 
-export default function Select({ id, anchorId, children, listId, activeOptionText }: Props) {
+export default function Select({ id, anchorId, children, activeOptionText }: Props) {
   // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Properties
+  const listId = `list-${id}`;
   const textToDisplay = activeOptionText ? activeOptionText : children;
 
   return (

@@ -15,27 +15,21 @@ interface Props {
   /** An instance of a Formisch form. */
   field?: FieldStore;
 
-  /** The name of the <Select> list parent. Used to close the list when an option is selected. */
-  listId?: string;
-
   /** The value sent to the database. */
   value: string | number | boolean;
 }
 
-export default function SelectOption({ id, children, field, listId, value }: Props) {
+export default function SelectOption({ id, children, field, value }: Props) {
   // Safeguard
   if (!id) return <p>Pass an id to know which field this selector belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
-  if (!listId) return <p>Pass the parent select list id so we can properly close it.</p>;
 
   // Properties
   const stringValue = String(value);
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
-    // Safeguard
-    if (!listId) return;
-
+    const listId = `list-${id}`;
     const selectPopover = document.getElementById(listId);
 
     selectPopover?.hidePopover();
