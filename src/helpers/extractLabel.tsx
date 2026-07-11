@@ -18,5 +18,5 @@ export default function extractLabel(id: string, children: ReactNode, hint?: str
   // Safeguard
   if (!label) return null;
 
-  return cloneElement(label as any, { id, ...hintFromParent } as any);
+  return cloneElement(label as any, { id, ...hintFromParent });
 }

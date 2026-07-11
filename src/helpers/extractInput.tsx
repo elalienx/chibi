@@ -18,5 +18,5 @@ export default function extractInput(id: string, children: ReactNode, form: Form
   // Safeguard
   if (!input) return null;
 
-  return cloneElement(input as any, { id, form } as any);
+  return cloneElement(input as any, { id, form });
 }

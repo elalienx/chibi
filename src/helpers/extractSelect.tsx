@@ -23,5 +23,5 @@ export default function extractInput(
   // Safeguard
   if (!input) return null;
 
-  return cloneElement(input as any, { id, anchorId, listId, activeOptionText } as any);
+  return cloneElement(input as any, { id, anchorId, listId, activeOptionText });
 }
