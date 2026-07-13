@@ -7,7 +7,7 @@ interface Props {
 }
 
 /**
- * Formisch use strings by default just as native HTML `<input>`.
+ * Formisch uses strings by default just as native HTML `<input>`.
  * This creates a conflict because Valibot schemas expect numbers.
  *
  * This method converts initial numeric values to strings to avoid errors.
