@@ -2,7 +2,7 @@
 import type { FieldStore, FormStore } from "@formisch/react";
 
 // Project files
-import type { InputState } from "./InputState";
+import type { InputState } from "../types/InputState";
 
 /**
  * Lendo input field UX has unique guidelines about when to update the state of the form fields.

@@ -1,7 +1,7 @@
 // Project files
 import InputNumber from "./InputNumber";
 import InputText from "./InputText";
-import type InputProps from "./helpers/InputProps";
+import type InputProps from "./types/InputProps";
 
 export default function Input(props: InputProps) {
   // Special case

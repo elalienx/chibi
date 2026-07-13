@@ -14,8 +14,8 @@ import {
 } from "@floating-ui/react";
 
 // Project files
-import TooltipTrigger from "./helpers/TooltipTrigger";
-import TooltipWindow from "./helpers/TooltipWindow";
+import TooltipTrigger from "./sub-components/TooltipTrigger";
+import TooltipWindow from "./sub-components/TooltipWindow";
 
 interface Props {
   /**  Text or HTML content to display inside the tooltip. */
