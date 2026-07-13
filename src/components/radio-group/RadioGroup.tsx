@@ -4,9 +4,10 @@ import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Label from "components/label/Label";
+import RadioOption from "components/radio-option/RadioOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractRadioOptions from "helpers/extractRadioOptions";
+import extractComponentGroup from "helpers/extractComponentGroup";
 import "./radio-group.css";
 
 interface Props {
@@ -39,7 +40,7 @@ export default function RadioGroup({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const radioOptions = extractRadioOptions(id, children, field);
+  const radioOptions = extractComponentGroup(RadioOption, children, { id, field });
 
   return (
     <div className="radio-group">

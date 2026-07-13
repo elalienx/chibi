@@ -5,9 +5,10 @@ import { useField, type FormStore } from "@formisch/react";
 // Project files
 import Label from "components/label/Label";
 import Select from "components/select/Select";
+import SelectOption from "components/select-option/SelectOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractSelectOptions from "helpers/extractSelectOptions";
+import extractComponentGroup from "helpers/extractComponentGroup";
 import "./select-group.css";
 
 interface Props {
@@ -42,7 +43,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const selectOptions = extractSelectOptions(id, children, field);
+  const selectOptions = extractComponentGroup(SelectOption, children, { id, field });
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeOptionText = activeOption && activeOption.props.children;
   const select = extractComponent(Select, children, { id, anchorId, activeOptionText });
