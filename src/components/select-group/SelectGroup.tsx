@@ -3,10 +3,11 @@ import { type ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 // Project files
+import Label from "components/label/Label";
+import Select from "components/select/Select";
 import ValidationMessage from "components/validation-message/ValidationMessage";
-import extractLabel from "helpers/extractLabel";
+import extractComponent from "helpers/extractComponent";
 import extractSelectOptions from "helpers/extractSelectOptions";
-import extractSelect from "helpers/extractSelect";
 import "./select-group.css";
 
 interface Props {
@@ -40,11 +41,11 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
 
   // Components
   const hint = hints?.[id];
-  const label = extractLabel(id, children, hint);
+  const label = extractComponent(Label, children, { id, hint });
   const selectOptions = extractSelectOptions(id, children, field);
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeOptionText = activeOption && activeOption.props.children;
-  const select = extractSelect(id, anchorId, children, activeOptionText);
+  const select = extractComponent(Select, children, { id, anchorId, activeOptionText });
 
   return (
     <div className="select-group">

@@ -3,8 +3,9 @@ import type { ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 // Project files
+import Label from "components/label/Label";
 import ValidationMessage from "components/validation-message/ValidationMessage";
-import extractLabel from "helpers/extractLabel";
+import extractComponent from "helpers/extractComponent";
 import extractRadioOptions from "helpers/extractRadioOptions";
 import "./radio-group.css";
 
@@ -37,7 +38,7 @@ export default function RadioGroup({ children, id, form, hints }: Props) {
 
   // Components
   const hint = hints?.[id];
-  const label = extractLabel(id, children, hint);
+  const label = extractComponent(Label, children, { id, hint });
   const radioOptions = extractRadioOptions(id, children, field);
 
   return (
