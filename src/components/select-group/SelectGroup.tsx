@@ -4,9 +4,9 @@ import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Label from "components/label/Label";
+import Select from "components/select/Select";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractSelect from "helpers/extractSelect";
 import extractSelectOptions from "helpers/extractSelectOptions";
 import "./select-group.css";
 
@@ -45,7 +45,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const selectOptions = extractSelectOptions(id, children, field);
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeOptionText = activeOption && activeOption.props.children;
-  const select = extractSelect(id, anchorId, children, activeOptionText);
+  const select = extractComponent(Select, children, { id, anchorId, activeOptionText });
 
   return (
     <div className="select-group">
