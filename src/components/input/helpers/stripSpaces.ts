@@ -1,4 +1,4 @@
-import stripWhitespace from "../regex/stripWhitespace";
+import whitespace from "../regex/whitespace";
 
 /**
  * `formatWithSpaces` inserts spaces into numbers for display, but those spaces must be removed before validation or storage.
