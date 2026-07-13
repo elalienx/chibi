@@ -7,7 +7,7 @@ import type { InputState } from "./InputState";
 /**
  * Lendo input field UX has unique guidelines about when to update the state of the form fields.
  *
- * While UX practices commonly remove errors messages as soon as the user corrects them,
+ * While UX practices commonly remove error messages as soon as the user corrects them,
  * Lendo keeps the error message visible until the user both corrects it and decides to exit the input.
  *
  * This method extracts Lendo's UX guidelines so Input.tsx stays clean.
