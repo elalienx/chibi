@@ -4,9 +4,10 @@ import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Label from "components/label/Label";
+import SelectorOption from "components/selector-option/SelectorOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractSelectorOptions from "helpers/extractSelectorOptions";
+import extractComponentGroup from "helpers/extractComponentGroup";
 import "./selector-group.css";
 
 interface Props {
@@ -39,7 +40,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const selectorOptions = extractSelectorOptions(id, children, field);
+  const selectorOptions = extractComponentGroup(SelectorOption, children, { id, field });
 
   return (
     <div className="selector-group">

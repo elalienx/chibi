@@ -9,6 +9,8 @@ import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
 import extractSelectOptions from "helpers/extractSelectOptions";
 import "./select-group.css";
+import extractComponentGroup from "helpers/extractComponentGroup";
+import SelectOption from "components/select-option/SelectOption";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */
@@ -42,7 +44,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const selectOptions = extractSelectOptions(id, children, field);
+  const selectOptions = extractComponentGroup(SelectOption, children, { id, field });
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeOptionText = activeOption && activeOption.props.children;
   const select = extractComponent(Select, children, { id, anchorId, activeOptionText });
