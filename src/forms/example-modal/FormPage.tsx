@@ -1,6 +1,6 @@
 // Project files
 import Button from "components/button/Button";
-import GuinessModal from "./GuinsessModal";
+import GuinessModal from "./GuinessModal";
 import useModal from "state/useModal";
 import Modal from "components/modal/Modal";
 import PCEngineModal from "./PCEngineModal";

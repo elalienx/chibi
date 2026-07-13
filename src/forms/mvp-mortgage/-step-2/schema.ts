@@ -14,9 +14,9 @@ const monthly_fee = v.pipe(
 const operating_cost = v.pipe(
   v.string("Ange bostadens driftskostnad för att gå vidare."),
   v.nonEmpty("Ange bostadens driftskostnad för att gå vidare."),
-  v.toNumber("'Du kan bara använda dig utav siffror."),
+  v.toNumber("Du kan bara använda dig utav siffror."),
   v.minValue(1, "Ange bostadens driftskostnad för att gå vidare."),
-  v.maxValue(100_000, "Månadsavgiften är för hög. Du kan som högst ange en avgift på 100 000 kr/mån."),
+  v.maxValue(100_000, "Driftskostnaden är för hög. Du kan som högst ange en driftskostnad på 100 000 kr/mån."),
 );
 
 const rooms = v.pipe(
