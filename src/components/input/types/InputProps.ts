@@ -5,7 +5,7 @@ import type { FormStore } from "@formisch/react";
  * About:
  * We split the Input component into InputText and InputNumber as we have too many customizations just for number which clutters the other component.
  */
-export default interface Input {
+export default interface InputProps {
   /** Unique identifier of a form field. */
   id?: string;
 

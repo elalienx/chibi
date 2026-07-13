@@ -5,8 +5,8 @@ import { useField } from "@formisch/react";
 // Project files
 import calculateInputState from "./helpers/calculateInputState";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
-import type { InputState } from "./helpers/InputState";
-import type InputProps from "./helpers/InputProps";
+import type { InputState } from "./types/InputState";
+import type InputProps from "./types/InputProps";
 import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
