@@ -5,12 +5,11 @@ import { useField, type FormStore } from "@formisch/react";
 // Project files
 import Label from "components/label/Label";
 import Select from "components/select/Select";
+import SelectOption from "components/select-option/SelectOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractSelectOptions from "helpers/extractSelectOptions";
-import "./select-group.css";
 import extractComponentGroup from "helpers/extractComponentGroup";
-import SelectOption from "components/select-option/SelectOption";
+import "./select-group.css";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one select option is active. */
