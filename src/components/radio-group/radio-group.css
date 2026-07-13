@@ -4,9 +4,14 @@
   gap: var(--gap-between-label-and-field);
   min-width: var(--field-min-width);
 
-  .radio-options {
+  .options {
     display: grid;
     gap: var(--space-small);
+
+    /** remove style from the semantic tag <fieldset>. */
+    margin: 0;
+    padding: 0;
+    border: none;
   }
 }
 
@@ -16,7 +21,7 @@
     width: auto;
     min-width: 320px;
 
-    .radio-options {
+    .options {
       grid-template-columns: repeat(2, 1fr);
     }
   }
