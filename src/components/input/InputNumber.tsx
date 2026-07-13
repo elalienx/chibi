@@ -6,8 +6,7 @@ import { useField } from "@formisch/react";
 import calculateInputState from "./helpers/calculateInputState";
 import formatWithSpaces from "./helpers/formatWithSpaces";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
-import parseNumbers from "./helpers/parseDigits";
-import stripSpaces from "./helpers/stripSpaces";
+import sanitizeNumber from "./helpers/sanitizeNumber";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
 import "./styles/input-wrapper-design.css";
@@ -50,9 +49,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
-    const rawString = stripSpaces(event.target.value);
-
-    event.target.value = parseNumbers(rawString);
+    event.target.value = sanitizeNumber(event.target.value);
     field.props.onChange(event);
   }
 
