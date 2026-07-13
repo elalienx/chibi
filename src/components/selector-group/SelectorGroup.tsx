@@ -44,9 +44,9 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
     <div className="selector-group">
       {label}
 
-      <div id={id} className="selector-options">
+      <fieldset id={id} className="options">
         {selectorOptions}
-      </div>
+      </fieldset>
 
       {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>}
     </div>
