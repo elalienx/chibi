@@ -14,7 +14,7 @@ interface Props {
 
 export default function ValidationMessage({ ariaErrorId, children }: Props) {
   return (
-    <div id={ariaErrorId} className="validation-message">
+    <div id={ariaErrorId} aria-live="polite" className="validation-message">
       <div className="pointy-arrow">{/* Stylized using CSS */}</div>
       <p className="content">{children}</p>
     </div>
