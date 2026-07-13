@@ -1,10 +1,10 @@
-// Project files
-import nonDigits from "../regex/nonDigits";
-import whitespace from "../regex/whitespace";
+// Properties
+const NON_DIGITS: RegExp = /\D/g;
+const WHITE_SPACE: RegExp = /\s/g;
 
 export default function sanitizeNumber(value: string): string {
-  const removeSpaces = value.replace(whitespace, "");
-  const removeNonDigits = removeSpaces.replace(nonDigits, "");
+  const onlyCharacters = value.replace(WHITE_SPACE, "");
+  const onlyDigits = onlyCharacters.replace(NON_DIGITS, "");
 
-  return removeNonDigits;
+  return onlyDigits;
 }

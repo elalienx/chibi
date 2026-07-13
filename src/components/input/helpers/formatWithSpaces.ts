@@ -1,6 +1,6 @@
-// Project files
-import nonDigits from "../regex/nonDigits";
-import spaceGroupingPattern from "../regex/spaceGroupingPattern";
+// Properties
+const NON_DIGITS: RegExp = /\D/g;
+const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
  * Large numbers without visual separators are difficult to read (e.g. 1000000 vs 1 000 000).
@@ -11,8 +11,8 @@ export default function formatWithSpaces(value: string | number | undefined | nu
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const cleanedValue = String(value).replace(nonDigits, "");
-  const formattedValue = cleanedValue.replace(spaceGroupingPattern, " ");
+  const onlyDigits = String(value).replace(NON_DIGITS, "");
+  const formattedValue = onlyDigits.replace(SPACE_GROUPING_PATTERN, " ");
 
   return formattedValue;
 }
