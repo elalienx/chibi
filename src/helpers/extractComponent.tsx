@@ -3,8 +3,9 @@ import { Children, isValidElement, cloneElement } from "react";
 import type { ReactNode, ElementType, ReactElement } from "react";
 
 /**
- * Replicates a "slot" feature by extracting a specific component type from children
- * and cloning it with injected props.
+ * React lacks a "slot" feature like Vue does to pass props to children without prop drilling or using Context API.
+ *
+ * This method replicates the slots so form fields can pass props to their inner components.
  */
 function extractComponent<Props extends {}>(componentType: ElementType, children: ReactNode, props: Props) {
   const components = Children.toArray(children);

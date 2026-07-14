@@ -7,7 +7,7 @@ import Label from "components/label/Label";
 import RadioOption from "components/radio-option/RadioOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractComponentGroup from "helpers/extractComponentGroup";
+import extractOptions from "helpers/extractOptions";
 import "./radio-group.css";
 
 interface Props {
@@ -40,7 +40,7 @@ export default function RadioGroup({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const radioOptions = extractComponentGroup(RadioOption, children, { id, field });
+  const radioOptions = extractOptions(RadioOption, children, { id, field });
 
   return (
     <div className="radio-group">
