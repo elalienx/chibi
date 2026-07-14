@@ -7,7 +7,7 @@ import Label from "components/label/Label";
 import SelectorOption from "components/selector-option/SelectorOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
-import extractComponentGroup from "helpers/extractComponentGroup";
+import extractOptions from "helpers/extractOptions";
 import "./selector-group.css";
 
 interface Props {
@@ -40,7 +40,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent(Label, children, { id, hint });
-  const selectorOptions = extractComponentGroup(SelectorOption, children, { id, field });
+  const selectorOptions = extractOptions(SelectorOption, children, { id, field });
 
   return (
     <div className="selector-group">
