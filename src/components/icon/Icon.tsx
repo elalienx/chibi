@@ -10,10 +10,9 @@ interface Props {
 export default function Icon({ name }: Props) {
   // Properties
   const icon = icons[name] || icons._default;
-  const boundingBox = `0 0 640 640`;
 
   return (
-    <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox={boundingBox}>
+    <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
       <path d={icon} />
     </svg>
   );
