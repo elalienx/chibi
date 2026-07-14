@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 
 // Project files
 import useModal from "state/useModal";
@@ -19,7 +19,7 @@ export default function Modal() {
     if (!modal) nativeDialogRef.current.close();
   }, [modal]);
 
-  function closeOnBackgroundClick(event: React.MouseEvent<HTMLDialogElement>) {
+  function closeOnBackgroundClick(event: MouseEvent<HTMLDialogElement>) {
     if (event.target === nativeDialogRef.current) closeModal();
   }
 
