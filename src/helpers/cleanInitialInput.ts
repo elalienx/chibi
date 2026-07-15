@@ -2,16 +2,17 @@ interface Props {
   /** The initial form values object to be processed from local storage or an API endpoint. */
   input: object;
 
-  /** If true, treats the number 0 or string "0" as an empty string. */
+  /** If true, treats the number 0 or the string "0" as an empty string. */
   treatZeroAsEmpty?: boolean;
 }
 
 /**
- * Formisch uses strings by default just as native HTML `<input>`.
- * This creates a conflict because Valibot schemas expect numbers.
+ * Formisch uses strings by default, just like native HTML `<input>`.
+ * This creates a conflict when Valibot schemas find other data types
+ * coming from local storage or endpoints trying to pre-fill the fields.
  *
- * This method converts initial numeric values to strings to avoid errors.
- * Values are converted back to numbers during form validation.
+ * This method converts initial non-string values to avoid errors.
+ * Values are converted back to the correct type during form validation.
  */
 export default function cleanInitialInput({ input, treatZeroAsEmpty = false }: Props): object {
   const entries = Object.entries(input);
