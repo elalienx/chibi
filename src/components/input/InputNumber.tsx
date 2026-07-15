@@ -22,7 +22,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   // @ts-ignore
   const field = useField(form, { path: [id] });
   const [inputState, setInputState] = useState<InputState>("default");
-  const [fieldIsFocused, setFieldIsFocused] = useState(false);
+  const [inputIsFocused, setInputIsFocused] = useState(false);
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
@@ -36,16 +36,16 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   // Methods
   useEffect(
     function onFormOrFieldChanged() {
-      const nextInputState = calculateInputState(form, field, inputState, fieldIsFocused);
+      const nextInputState = calculateInputState(form, field, inputState, inputIsFocused);
 
       setInputState(nextInputState);
     },
-    [fieldIsFocused, form.isSubmitted, field.isDirty, field.isValid],
+    [inputIsFocused, form.isSubmitted, field.isDirty, field.isValid],
   );
 
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
-    setFieldIsFocused(false);
+    setInputIsFocused(false);
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
@@ -55,7 +55,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
-    setFieldIsFocused(true);
+    setInputIsFocused(true);
   }
 
   return (
