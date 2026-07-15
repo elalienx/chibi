@@ -1,9 +1,8 @@
 // Node modules
-import { expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 
 // Project files
 import cleanInitialInput from "./cleanInitialInput";
-import { describe } from "node:test";
 
 describe("Number logic", () => {
   test("Converts numeric values to strings", () => {

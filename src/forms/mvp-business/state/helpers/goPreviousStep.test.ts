@@ -1,5 +1,5 @@
 // Node modules
-import { it, expect, vi, afterEach } from "vitest";
+import { afterEach, expect, test, vi } from "vitest";
 
 // Project files
 import goPreviousStep from "./goPreviousStep";
@@ -9,7 +9,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-it("should go to the previous step and remove it from history", () => {
+test("should go to the previous step and remove it from history", () => {
   // Arrange
   const currentStep = "success-step";
   const previousSteps: Step[] = ["intro-step", "step-4"];
@@ -21,7 +21,7 @@ it("should go to the previous step and remove it from history", () => {
   expect(test).toEqual({ step: "step-4", previousSteps: ["intro-step"] });
 });
 
-it("should trigger the safeguard and return the exact same state if history is empty", () => {
+test("should trigger the safeguard and return the exact same state if history is empty", () => {
   // Arrange
   const consoleSpy = vi.spyOn(console, "info").mockImplementation(() => {});
   const currentStep: Step = "step-4" as Step;
