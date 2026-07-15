@@ -5,7 +5,7 @@ import type { ReactNode, ElementType, ReactElement } from "react";
 /**
  * React lacks a "slot" feature like Vue does to pass props to children without prop drilling or using Context API.
  *
- * This method builds on top of `extractComponents()` so form field groups can pass props to their inner option components.
+ * This method builds on top of `extractComponents()` so form field groups can pass props to their option components.
  */
 function extractOptions<Props extends {}>(componentType: ElementType, children: ReactNode, props: Props) {
   const componentGroup = Children.toArray(children);
