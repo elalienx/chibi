@@ -4,10 +4,12 @@
   "exclude": ["node_modules", "dist", "public", ".astro"],
   "compilerOptions": {
     "strict": true,
-    "baseUrl": "src",
+    "paths": {
+      "*": ["./src/*"],
+    },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "incremental": true,
-    "types": ["astro/client"]
-  }
+    "types": ["astro/client"],
+  },
 }
