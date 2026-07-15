@@ -19,6 +19,9 @@ const store: StateCreator<Store> = (set) => ({
   setModal: (component) => set({ modal: component }),
 });
 
+/**
+ * Use to set and clear the currently active modal.
+ */
 const useModal = create<Store>()(store);
 
 export default useModal;

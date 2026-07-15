@@ -27,6 +27,9 @@ const localStorage: PersistOptions<Store> = {
   name: "mortgage-application",
 };
 
+/**
+ * Use to read and save all the values to be submitted on the Mortgage multi-step form.
+ */
 const useApplication = create<Store>()(persist(store, localStorage));
 
 export default useApplication;
