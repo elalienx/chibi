@@ -28,7 +28,7 @@ const localStorage: PersistOptions<Store> = {
 };
 
 /**
- * Use to read and save all the values to be submitted on a multi-step form.
+ * Use to read and save all the values to be submitted on the Business multi-step form.
  */
 const useApplication = create<Store>()(persist(store, localStorage));
 
