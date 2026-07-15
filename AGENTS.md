@@ -9,7 +9,7 @@ This repository contains Agent Skills for Formisch and Valibot which are the cor
 
 ## How to Use
 
-When working on any task, start by reading the section "Project Structure" in the README.md located at the project root. It will give context about the key folder locations.
+When working on any task, start by reading the "Project Structure" section inside the README.md located at the project root. It will give context about the key folder locations.
 
 When working on tasks involving form handling consult the relevant form library skills in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
 
