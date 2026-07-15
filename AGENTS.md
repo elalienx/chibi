@@ -1,15 +1,17 @@
-# Open Circle Agent Skills
+# Aphrodite Chibi skills
 
-This repository contains Agent Skills for Open Circle projects. Skills help AI agents work effectively with Valibot, Formisch, and other tools in the Open Circle ecosystem.
+This repository contains Agent Skills for Formisch and Valibot which are the core of Aphrdoite Chibi formulary system.
 
 ## Available Skills
 
-- **valibot** — Schema validation with Valibot
 - **formisch** — Form handling with Formisch
+- **valibot** — Schema validation with Valibot
 
 ## How to Use
 
-When working on tasks involving Open Circle projects, consult the relevant skill in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
+When working on any task, start by reading the section "Project Structure" in the README.md located at the project root. It will give context about the key folder locations.
+
+When working on tasks involving form handling consult the relevant form library skills in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
 
 ## Skill Format
 
