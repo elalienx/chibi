@@ -1,12 +1,14 @@
 # Aphrodite Chibi
 
-Aphrodite Chibi is a UI component library for building complex multi-step forms. Our motto is: Making Lendo more Kawaii <3
+Aphrodite Chibi is a UI component library for building complex multi-step forms.
 
-Demo: [aphrodite-chibi.web.app](https://aphrodite-chibi.web.app)
+Our motto is... making Lendo more Kawaii <3
+
+[Demo website](https://aphrodite-chibi.web.app)
 
 ## Project Structure
 
-Inside the Aphrodite Chibi project, you'll see the following folders and files:
+Inside the project, you'll see the following folders and files:
 
 ```text
 / root/
@@ -28,7 +30,7 @@ Inside the Aphrodite Chibi project, you'll see the following folders and files:
 Here is an explanation of the main folders:
 
 1. **📦 Components:** The UI components of Aphrodite Chibi. Each folder contains a React TypeScript file and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component styles are divided into layout, state, design, and any unique case scenarios.
-1. **📋 Forms:** Split into `example` folders showing component behavior, and `mvp` folders simulating Lendo product forms tailored to each team's conventions.
+1. **📋 Forms:** Split into `example` folders showing component behavior and `mvp` folders simulating Lendo product forms tailored to each team's conventions.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Aphrodite Chibi UI with Formisch and Valibot.
 1. **📐 Layouts:** Astro components use to build other pages.
 1. **📑 Pages:** Astro pages for accessing examples of forms in action. As mentioned, `index.astro` is the entry point. 🏁
@@ -37,12 +39,12 @@ Here is an explanation of the main folders:
 
 All commands are run from the root of the project:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build the site to `./dist/`                      |
-| `pnpm format`          | Format all files using Void Zero Oxfmt formatter |
-| `pnpm lint`            | Lint all files using Void Zero Oxlint linter     |
-| `pnpm playwright --ui` | Open Playwright UI viewer to run tests           |
-| `pnpm test`            | Run unit tests using Vitest                      |
+| Command                | Action                                      |
+| :--------------------- | :------------------------------------------ |
+| `pnpm install`         | Installs dependencies                       |
+| `pnpm dev`             | Starts local dev server at `localhost:4321` |
+| `pnpm build`           | Build the site to `./dist/`                 |
+| `pnpm format`          | Format all files using Oxfmt formatter      |
+| `pnpm lint`            | Lint all files using Oxlint linter          |
+| `pnpm playwright --ui` | Open Playwright UI viewer to run tests      |
+| `pnpm test`            | Run unit tests using Vitest                 |
