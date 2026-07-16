@@ -17,7 +17,6 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  // @ts-ignore
   const field = useField(form, { path: [id] });
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [inputIsFocused, setInputIsFocused] = useState(false);
