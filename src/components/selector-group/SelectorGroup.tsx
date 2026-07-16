@@ -30,7 +30,6 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  // @ts-ignore
   const field = useField(form, { path: [id] });
 
   // Properties
