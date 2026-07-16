@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState, type FocusEvent } from "react";
+import { useState, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
@@ -19,10 +19,11 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   // State
   // @ts-ignore
   const field = useField(form, { path: [id] });
-  const [inputState, setInputState] = useState<InputState>("default");
+  const [committedState, setCommittedState] = useState<InputState>("default");
   const [inputIsFocused, setInputIsFocused] = useState(false);
 
   // Properties
+  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = field.input as string | number;
@@ -30,23 +31,16 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
-  useEffect(
-    function onFormOrFieldChanged() {
-      const nextInputState = calculateInputState(form, field, inputState, inputIsFocused);
-
-      setInputState(nextInputState);
-    },
-    [inputIsFocused, form.isSubmitted, field.isDirty, field.isValid],
-  );
-
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
     setInputIsFocused(false);
+    setCommittedState(inputState);
   }
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
     setInputIsFocused(true);
+    setCommittedState(inputState);
   }
 
   return (
