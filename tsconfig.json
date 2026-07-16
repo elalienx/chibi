@@ -5,11 +5,11 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "*": ["./src/*"],
+      "*": ["./src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "incremental": true,
-    "types": ["astro/client"],
-  },
+    "types": ["astro/client"]
+  }
 }
