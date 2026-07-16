@@ -6,12 +6,15 @@ This repository contains Agent Skills for Formisch and Valibot which are the cor
 
 - **formisch** — Form handling with Formisch
 - **valibot** — Schema validation with Valibot
+- **react-useeffect** - Helps removing unnecesary useEffect hooks.
 
 ## How to Use
 
 When working on any task, start by reading the "Project Structure" section inside the README.md located at the project root. It will give context about the key folder locations.
 
 When working on tasks involving form handling consult the relevant form library skills in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
+
+When creating React components, consult the skill react-useeffect to prevent the creation of unncesary side effects.
 
 ## Skill Format
 
