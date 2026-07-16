@@ -16,7 +16,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
-  // State
+  // Local state
   // @ts-ignore
   const field = useField(form, { path: [id] });
   const [committedState, setCommittedState] = useState<InputState>("default");

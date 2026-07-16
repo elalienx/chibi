@@ -1,4 +1,4 @@
-// Project file
+// Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import "./pc-engine-modal.css";

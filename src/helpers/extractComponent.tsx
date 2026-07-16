@@ -13,7 +13,7 @@ function extractComponent<Props extends {}>(componentType: ElementType, children
   const rawProps = Object.entries(props).filter(([_, value]) => value !== undefined);
   const cleanProps = Object.fromEntries(rawProps);
 
-  // Safeguard
+  // Safeguards
   if (!child) return null;
 
   return cloneElement(child as ReactElement, cleanProps as Partial<unknown>);
