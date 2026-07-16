@@ -29,8 +29,8 @@ export default function InputField({ id, children, form, hints }: Props) {
 
   // Components
   const hint = hints?.[id];
-  const label = extractComponent(Label, children, { id, hint });
-  const input = extractComponent(Input, children, { id, form });
+  const label = extractComponent({ component: Label, extractFrom: children, props: { id, hint } });
+  const input = extractComponent({ component: Input, extractFrom: children, props: { id, form } });
 
   return (
     <div className="input-field">

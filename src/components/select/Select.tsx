@@ -16,16 +16,16 @@ interface Props {
   children: ReactNode;
 
   /** The text inside the user selected option. */
-  activeOptionText?: ReactNode;
+  activeText?: ReactNode;
 }
 
-export default function Select({ id, anchorId, children, activeOptionText }: Props) {
+export default function Select({ id, anchorId, children, activeText }: Props) {
   // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Properties
   const listId = `list-${id}`;
-  const textToDisplay = activeOptionText ? activeOptionText : children;
+  const textToDisplay = activeText ? activeText : children;
 
   return (
     <button id={id} type="button" className="select" popoverTarget={listId} style={{ anchorName: anchorId }}>
