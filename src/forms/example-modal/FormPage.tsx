@@ -7,7 +7,7 @@ import PCEngineModal from "./PCEngineModal";
 
 export default function FormPage() {
   // Global state
-  const { setModal, closeModal } = useModal();
+  const { setModal, closeModal } = useModal.getState(); // Instead of useModal() to reduce re-renders
 
   // Components
   const Modal1 = <GuinessModal />;

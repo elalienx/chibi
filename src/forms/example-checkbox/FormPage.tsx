@@ -8,8 +8,8 @@ import Button from "components/button/Button";
 import Checkbox from "components/checkbox/Checkbox";
 
 const schema = v.object({
-  acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
-  politicalExposedPerson: v.pipe(v.optional(v.boolean(), true)), // Set to true as this form will fail if this is uncheck
+  terms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact
+  isPEP: v.pipe(v.optional(v.boolean(), true)), // Set to true as this form will fail if this is uncheck
 });
 
 export default function FormPage() {
@@ -17,12 +17,11 @@ export default function FormPage() {
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
   const [formResult, setFormResult] = useState("On standby");
 
-  // Properties
-  const politicalExposedPerson = getInput(form, { path: ["politicalExposedPerson"] });
-
   // Methods
   function submitForm() {
-    if (!politicalExposedPerson) {
+    const isPEP = getInput(form, { path: ["isPEP"] });
+
+    if (!isPEP) {
       alert("You cannot proceed if PEP 🚫");
       setFormResult("The form failed the validation");
       return;
@@ -39,14 +38,14 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Checkbox form={form} id="acceptTerms">
+        <Checkbox form={form} id="terms">
           Do you accept our terms and conditions?{" "}
           <a href="https://wikipedia.org/wiki/Terms_of_service" target="_blank">
             View terms
           </a>
         </Checkbox>
 
-        <Checkbox form={form} id="politicalExposedPerson">
+        <Checkbox form={form} id="isPEP">
           I certify that I am NOT a politically exposed person (PEP) in the European Union.
         </Checkbox>
 
