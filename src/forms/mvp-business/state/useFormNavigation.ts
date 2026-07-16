@@ -13,7 +13,7 @@ interface Store {
   /** A list of previously navigated steps. Used to automatically go back when pressing the back button. */
   previousSteps: Step[];
 
-  /** Method to manually set what is the next step to show on the formulary. */
+  /** Method to manually set what is the next step to show on the form. */
   setStep: (newStep: Step) => void;
 
   /** Method to automatically return to the previous step without needing to specify it. */

@@ -1,6 +1,6 @@
 # Aphrodite Chibi
 
-Making Lendo more Kawaii <3
+Aphrodite Chibi is a UI component library for building complex multi-step forms. Our motto is: Making Lendo more Kawaii <3
 
 Demo: [aphrodite-chibi.web.app](https://aphrodite-chibi.web.app)
 

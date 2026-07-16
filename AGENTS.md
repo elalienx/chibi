@@ -1,20 +1,20 @@
 # Aphrodite Chibi skills
 
-This repository contains Agent Skills for Formisch and Valibot which are the core of Aphrdoite Chibi formulary system.
+This file is a directory of Agent Skills for creating UI components and complex multi-step forms using the UI library Aphrodite Chibi.
 
 ## Available Skills
 
 - **formisch** — Form handling with Formisch
+- **react-useeffect** — Helps removing unnecessary useEffect hooks.
 - **valibot** — Schema validation with Valibot
-- **react-useeffect** - Helps removing unnecesary useEffect hooks.
 
 ## How to Use
 
-When working on any task, start by reading the "Project Structure" section inside the README.md located at the project root. It will give context about the key folder locations.
+When working on any task, start by reading the _Project Structure_ section inside the `README.md` file located at the project root. It will give context about the key folder locations.
 
 When working on tasks involving form handling consult the relevant form library skills in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
 
-When creating React components, consult the skill react-useeffect to prevent the creation of unncesary side effects.
+When creating UI components, consult the skill react-useeffect to prevent the creation of unnecessary side effects.
 
 ## Skill Format
 

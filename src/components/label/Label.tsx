@@ -18,7 +18,7 @@ interface Props {
 
 export default function Label({ id, children, hint }: Props) {
   // Safeguards
-  if (!id) return <p>Please pass an id to connect this label to a formulary field</p>;
+  if (!id) return <p>Please pass an id to connect this label to a form field</p>;
 
   return (
     <label className="label" htmlFor={id}>
