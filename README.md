@@ -20,8 +20,9 @@ Inside the project, you'll see the following folders and files:
 │   └── components/
 │   └── forms/
 │   └── helpers/
-│   └── layout/
+│   └── layouts/
 │   └── pages/index.astro 🏁 Entry point
+│   └── state/
 │   └── styles/
 └── package.json
 

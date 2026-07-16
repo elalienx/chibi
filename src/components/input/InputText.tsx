@@ -22,10 +22,10 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   const [inputIsFocused, setInputIsFocused] = useState(false);
 
   // Properties
-  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = field.input as string | number;
+  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 
