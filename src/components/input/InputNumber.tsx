@@ -28,8 +28,8 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const cssSuffix = suffix ? "has-suffix" : "";
   const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input);
-  const mobileKeyboard = getCorrectMobileKeyboard(type);
   const displayValue = formatWithSpaces(customValue);
+  const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
