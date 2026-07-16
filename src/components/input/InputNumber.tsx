@@ -18,7 +18,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
-  // State
+  // Local state
   // @ts-ignore
   const field = useField(form, { path: [id] });
   const [inputState, setInputState] = useState<InputState>("default");

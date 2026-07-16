@@ -21,7 +21,7 @@ export default function Checkbox({ id, children, form }: Props) {
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
-  // State
+  // Local state
   // @ts-ignore
   const field = useField(form, { path: [id] });
 

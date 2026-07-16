@@ -20,7 +20,7 @@ interface Props {
 }
 
 export default function RadioOption({ id, children, field, value }: Props) {
-  // Safeguard
+  // Safeguards
   if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 

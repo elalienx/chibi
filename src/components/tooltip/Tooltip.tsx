@@ -28,8 +28,6 @@ export default function Tooltip({ children }: Props) {
   // Local state
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef(null);
-
-  // Global state
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -37,8 +35,6 @@ export default function Tooltip({ children }: Props) {
     middleware: [offset(SPACE_SMALL), flip(), shift(), arrow({ element: arrowRef })],
     whileElementsMounted: autoUpdate,
   });
-
-  // Properties
   const click = useClick(context);
   const dismiss = useDismiss(context);
   const role = useRole(context);

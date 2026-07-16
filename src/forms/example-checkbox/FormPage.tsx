@@ -1,11 +1,11 @@
 // Node modules
+import { useState } from "react";
 import { Form, getInput, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
 import Button from "components/button/Button";
 import Checkbox from "components/checkbox/Checkbox";
-import { useState } from "react";
 
 const schema = v.object({
   acceptTerms: v.pipe(v.optional(v.boolean(), false)), // We use optional() because we want to allow the form to pass even if you dont interact

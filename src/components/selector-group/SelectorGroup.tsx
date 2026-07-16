@@ -25,11 +25,11 @@ interface Props {
 }
 
 export default function SelectorGroup({ children, id, form, hints }: Props) {
-  // Safeguard
+  // Safeguards
   if (!children) return <p>Please add a Label and at least two SelectorOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
-  // State
+  // Local state
   // @ts-ignore
   const field = useField(form, { path: [id] });
 
