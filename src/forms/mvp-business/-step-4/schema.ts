@@ -20,8 +20,8 @@ const loan_debt = v.pipe(
   v.string("Vänligen ange bolagets skulder, lägsta värde är 0."),
   v.nonEmpty("Vänligen ange bolagets skulder, lägsta värde är 0."),
   v.toNumber("Vänligen ange bolagets skulder, lägsta värde är 0."),
-  v.minValue(MIN_EXISTING_LOAN, `Must be higher than  ${MIN_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
-  v.maxValue(MAX_EXISTING_LOAN, `Must be lower than  ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
+  v.minValue(MIN_EXISTING_LOAN, `Måste vara minst ${MIN_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
+  v.maxValue(MAX_EXISTING_LOAN, `Måste vara maximalt ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
 );
 
 const purpose = v.string("Vänligen ange lånesyfte");

@@ -1,2 +1,2 @@
-/** A list of available steps in this formulary flow. Note: For the purposes of the demo only Step 4 is coded. */
+/** A list of available steps in this form flow. Note: For the purposes of the demo only Step 4 is coded. */
 export type Step = "intro-step" | "step-4" | "success-step";
