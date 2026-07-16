@@ -39,7 +39,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
   // Components
   const hint = hints?.[id];
   const label = extractComponent({ component: Label, extractFrom: children, props: { id, hint } });
-  const selectorOptions = extractOptions(SelectorOption, children, { id, field });
+  const selectorOptions = extractOptions({ component: SelectorOption, extractFrom: children, props: { id, field } });
 
   return (
     <div className="selector-group">
