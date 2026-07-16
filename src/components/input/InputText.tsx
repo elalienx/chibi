@@ -33,14 +33,14 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   // Methods
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
-    setCommittedState(inputState);
     setInputIsFocused(false);
+    setCommittedState(inputState);
   }
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
-    setCommittedState(inputState);
     setInputIsFocused(true);
+    setCommittedState(inputState);
   }
 
   return (
