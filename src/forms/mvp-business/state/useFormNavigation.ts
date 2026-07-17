@@ -18,13 +18,21 @@ interface Store {
 
   /** Method to automatically return to the previous step without needing to specify it. */
   goPreviousStep: () => void;
+
+  /** Method to return to the first step and clear the navigation history. */
+  resetNavigation: () => void;
 }
 
+const initialState = {
+  step: "intro-step" as Step,
+  previousSteps: [] as Step[],
+};
+
 const store: StateCreator<Store> = (set) => ({
-  step: "intro-step",
-  previousSteps: [],
+  ...initialState,
   setStep: (newStep) => set((state) => setStep(state.step, state.previousSteps, newStep)),
   goPreviousStep: () => set((state) => goPreviousStep(state.step, state.previousSteps)),
+  resetNavigation: () => set(initialState),
 });
 
 /**

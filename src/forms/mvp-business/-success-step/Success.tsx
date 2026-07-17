@@ -6,7 +6,7 @@ import useFormNavigation from "../state/useFormNavigation";
 export default function Success() {
   // Global state
   const { application, clearApplication } = useApplication();
-  const { setStep } = useFormNavigation();
+  const { resetNavigation } = useFormNavigation();
 
   // Properties
   const formattedTurnover = application.turnover.toLocaleString("sv-SE");
@@ -15,7 +15,7 @@ export default function Success() {
   // Methods
   function startAgain() {
     clearApplication();
-    setStep("intro-step");
+    resetNavigation();
   }
 
   return (
