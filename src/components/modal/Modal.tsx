@@ -13,7 +13,7 @@ export default function Modal() {
   const nativeDialogRef = useRef<HTMLDialogElement>(null);
 
   // Methods
-  useEffect(() => {
+  useEffect(function syncNativeDialogVisibility() {
     // Safeguards
     if (!nativeDialogRef.current) return;
 
