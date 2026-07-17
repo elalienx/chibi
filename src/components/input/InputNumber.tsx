@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState, type ChangeEvent, type FocusEvent } from "react";
+import { useState, type ChangeEvent, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
@@ -20,7 +20,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
 
   // Local state
   const field = useField(form, { path: [id] });
-  const [inputState, setInputState] = useState<InputState>("default");
+  const [committedState, setCommittedState] = useState<InputState>("default");
   const [inputIsFocused, setInputIsFocused] = useState(false);
 
   // Properties
@@ -29,22 +29,15 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input);
   const displayValue = formatWithSpaces(customValue);
+  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
-  useEffect(
-    function onFormOrFieldChanged() {
-      const nextInputState = calculateInputState(form, field, inputState, inputIsFocused);
-
-      setInputState(nextInputState);
-    },
-    [inputIsFocused, form.isSubmitted, field.isDirty, field.isValid],
-  );
-
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
     setInputIsFocused(false);
+    setCommittedState(inputState);
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
@@ -55,6 +48,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
     setInputIsFocused(true);
+    setCommittedState(inputState);
   }
 
   return (
