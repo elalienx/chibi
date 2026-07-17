@@ -31,7 +31,7 @@ export default function FormPage() {
         <small>(Text to clean Playwright selector)</small>
       </footer>
 
-      {/* This item should be at the root of each app */}
+      {/* This component should be at the root of each app */}
       <Modal />
     </div>
   );
