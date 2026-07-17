@@ -81,3 +81,29 @@ test("3. Should close modal by clicking the background", async () => {
     await expect(form.getByRole("heading", { name: title1 })).not.toBeVisible();
   });
 });
+
+test("4. Should reopen the same modal after closing it with the Escape key", async ({ page }) => {
+  await test.step("Open modal", async () => {
+    // Act
+    await form.getByRole("button", { name: button1 }).click();
+
+    // Assert
+    await expect(form.getByRole("heading", { name: title1 })).toBeVisible();
+  });
+
+  await test.step("Close modal with the Escape key", async () => {
+    // Act
+    await page.keyboard.press("Escape");
+
+    // Assert
+    await expect(form.getByRole("heading", { name: title1 })).not.toBeVisible();
+  });
+
+  await test.step("Reopen the same modal", async () => {
+    // Act
+    await form.getByRole("button", { name: button1 }).click();
+
+    // Assert
+    await expect(form.getByRole("heading", { name: title1 })).toBeVisible();
+  });
+});

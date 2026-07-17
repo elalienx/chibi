@@ -26,7 +26,7 @@ export default function Modal() {
   }
 
   return (
-    <dialog id="modal" ref={nativeDialogRef} onClick={closeOnBackgroundClick}>
+    <dialog id="modal" ref={nativeDialogRef} onClick={closeOnBackgroundClick} onClose={closeModal}>
       {modal}
     </dialog>
   );
