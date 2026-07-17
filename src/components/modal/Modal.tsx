@@ -13,13 +13,16 @@ export default function Modal() {
   const nativeDialogRef = useRef<HTMLDialogElement>(null);
 
   // Methods
-  useEffect(() => {
-    // Safeguards
-    if (!nativeDialogRef.current) return;
+  useEffect(
+    function syncNativeDialogVisibility() {
+      // Safeguards
+      if (!nativeDialogRef.current) return;
 
-    if (modal) nativeDialogRef.current.showModal();
-    if (!modal) nativeDialogRef.current.close();
-  }, [modal]);
+      if (modal) nativeDialogRef.current.showModal();
+      if (!modal) nativeDialogRef.current.close();
+    },
+    [modal],
+  );
 
   function closeOnBackgroundClick(event: MouseEvent<HTMLDialogElement>) {
     if (event.target === nativeDialogRef.current) closeModal();
