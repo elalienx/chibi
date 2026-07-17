@@ -19,26 +19,26 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   // Local state
   const field = useField(form, { path: [id] });
   const [committedState, setCommittedState] = useState<InputState>("default");
-  const [inputIsFocused, setInputIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = field.input as string | number;
-  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
+  const inputState = calculateInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
-    setInputIsFocused(false);
+    setIsFocused(false);
     setCommittedState(inputState);
   }
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
-    setInputIsFocused(true);
+    setIsFocused(true);
     setCommittedState(inputState);
   }
 

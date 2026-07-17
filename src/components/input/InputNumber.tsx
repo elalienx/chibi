@@ -21,7 +21,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   // Local state
   const field = useField(form, { path: [id] });
   const [committedState, setCommittedState] = useState<InputState>("default");
-  const [inputIsFocused, setInputIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
@@ -29,14 +29,14 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input);
   const displayValue = formatWithSpaces(customValue);
-  const inputState = calculateInputState(form, field, committedState, inputIsFocused);
+  const inputState = calculateInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
   function onBlur(event: FocusEvent<HTMLInputElement>): void {
     field.props.onBlur(event);
-    setInputIsFocused(false);
+    setIsFocused(false);
     setCommittedState(inputState);
   }
 
@@ -47,7 +47,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
 
   function onFocus(event: FocusEvent<HTMLInputElement>): void {
     field.props.onFocus(event);
-    setInputIsFocused(true);
+    setIsFocused(true);
     setCommittedState(inputState);
   }
 
