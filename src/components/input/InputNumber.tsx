@@ -3,9 +3,9 @@ import { useState, type ChangeEvent, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
-import calculateInputState from "./helpers/calculateInputState";
 import formatWithSpaces from "./helpers/formatWithSpaces";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
+import getInputState from "./helpers/getInputState";
 import sanitizeNumber from "./helpers/sanitizeNumber";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
@@ -29,7 +29,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input);
   const displayValue = formatWithSpaces(customValue);
-  const inputState = calculateInputState(form, field, committedState, isFocused);
+  const inputState = getInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 

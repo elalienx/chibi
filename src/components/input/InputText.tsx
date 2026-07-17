@@ -3,8 +3,8 @@ import { useState, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
-import calculateInputState from "./helpers/calculateInputState";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
+import getInputState from "./helpers/getInputState";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
 import "./styles/input-wrapper-design.css";
@@ -25,7 +25,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = field.input as string | number;
-  const inputState = calculateInputState(form, field, committedState, isFocused);
+  const inputState = getInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
 

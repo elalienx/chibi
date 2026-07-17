@@ -12,12 +12,7 @@ import type { InputState } from "../types/InputState";
  *
  * This method extracts Lendo's UX guidelines so Input.tsx stays clean.
  */
-export default function calculateInputState(
-  form: FormStore,
-  field: FieldStore,
-  inputState: InputState,
-  isFocused: boolean,
-): InputState {
+function getInputState(form: FormStore, field: FieldStore, inputState: InputState, isFocused: boolean): InputState {
   // Show error after form submission
   if (form.isSubmitted && !field.isValid) return "error";
 
@@ -45,3 +40,5 @@ export default function calculateInputState(
   // Default case
   return "default";
 }
+
+export default getInputState;
