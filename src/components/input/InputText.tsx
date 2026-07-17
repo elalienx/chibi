@@ -24,7 +24,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const customValue = field.input as string | number;
+  const customValue = String(field.input ?? "");
   const inputState = getInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
