@@ -34,11 +34,8 @@ function getInputState(form: FormStore, field: FieldStore, inputState: InputStat
   // Validate success
   if (field.isValid) return "success";
 
-  // Validate failure
-  if (!field.isValid) return "error";
-
-  // Default case
-  return "default";
+  // If nothing else matches...
+  return "error";
 }
 
 export default getInputState;
