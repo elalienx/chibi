@@ -26,7 +26,6 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   // Properties
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const customType = "text"; // To manually control the type as it has too many quirks.
   const customValue = String(field.input ?? "");
   const displayValue = formatWithSpaces(customValue);
   const inputState = getInputState(form, field, committedState, isFocused);
@@ -64,7 +63,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
         onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
-        type={customType}
+        type="text" // To manually handle it as "number" has quirks.
         value={displayValue}
       />
       {suffix && <span className="suffix">{suffix}</span>}
