@@ -39,6 +39,9 @@ export default function Step4() {
 
   // Methods
   function submitForm(values: object) {
+    console.log("submitted form");
+    console.log(values);
+
     updateApplication(values);
     setStep("success-step");
   }

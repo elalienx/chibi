@@ -36,7 +36,10 @@ const withoutLoans = v.object({
   has_existing_loans: v.literal("false", "Gör ett val för att fortsätta."),
 });
 
-const HAS_EXISTING_LOANS = v.variant("has_existing_loans", [withLoans, withoutLoans], "Gör ett val för att fortsätta.");
+const HAS_EXISTING_LOANS = v.pipe(
+  v.variant("has_existing_loans", [withLoans, withoutLoans], "Gör ett val för att fortsätta."),
+  v.transform((input) => ({ ...input, has_existing_loans: input.has_existing_loans === "true" })), // remember always to cast to boolean
+);
 
 // Schema
 const schema = v.pipe(v.intersect([v.object({ turnover, purpose }), HAS_EXISTING_LOANS]));
