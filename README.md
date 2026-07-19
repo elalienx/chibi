@@ -33,7 +33,6 @@ Here is an explanation of the main folders:
 1. **📦 Components:** The UI components of Aphrodite Chibi. Each folder contains a React TypeScript file and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component styles are divided into layout, state, design, and any unique case scenarios.
 1. **📋 Forms:** Split into `example` folders showing component behavior and `mvp` folders simulating Lendo product forms tailored to each team's conventions.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Aphrodite Chibi UI with Formisch and Valibot.
-1. **📐 Layouts:** Astro components use to build other pages.
 1. **📑 Pages:** Astro pages for accessing examples of forms in action. As mentioned, `index.astro` is the entry point. 🏁
 
 ## Terminal commands
