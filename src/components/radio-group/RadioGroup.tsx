@@ -32,7 +32,7 @@ export default function RadioGroup({ children, id, form, hints }: Props) {
   // Local state
   const field = useField(form, { path: [id] });
 
-  // Properties
+  // Derived state
   const ariaErrorId = `aria-error-${id}`;
   const hasErrors = form.isSubmitted && field.errors;
 

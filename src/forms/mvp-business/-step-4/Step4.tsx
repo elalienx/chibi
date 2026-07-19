@@ -33,7 +33,7 @@ export default function Step4() {
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
-  // Properties
+  // Derived state
   const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
   const hasExistingLoans = Boolean(fieldExistingLoans === "true");
 

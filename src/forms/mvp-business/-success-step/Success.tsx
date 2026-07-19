@@ -8,7 +8,7 @@ export default function Success() {
   const { application, clearApplication } = useApplication();
   const { resetNavigation } = useFormNavigation();
 
-  // Properties
+  // Derived state
   const formattedTurnover = application.turnover.toLocaleString("sv-SE");
   const formattedLoanDebt = application.loan_debt.toLocaleString("sv-SE");
 

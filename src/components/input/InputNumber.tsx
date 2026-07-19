@@ -23,7 +23,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [isFocused, setIsFocused] = useState(false);
 
-  // Properties
+  // Derived state
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = String(field.input ?? "");

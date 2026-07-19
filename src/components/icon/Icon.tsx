@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Icon({ name }: Props) {
-  // Properties
+  // Derived state
   const icon = icons[name] || icons._default;
 
   return (

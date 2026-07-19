@@ -16,7 +16,7 @@ export default function FormManager() {
   // Local state
   const [step, setStep] = useState<Step>("intro-step");
 
-  // Properties
+  // Derived state
   const propertyType = application.property_type;
 
   return (

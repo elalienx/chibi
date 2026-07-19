@@ -18,10 +18,9 @@ export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
-  // Properties
-  const noResult = "no result";
-  const select1Value = getInput(form, { path: ["publisher"] }) || noResult;
-  const select2Value = getInput(form, { path: ["accessory"] }) || noResult;
+  // Derived state
+  const select1Value = getInput(form, { path: ["publisher"] }) || "no result";
+  const select2Value = getInput(form, { path: ["accessory"] }) || "no result";
 
   // Methods
   function submitForm() {
