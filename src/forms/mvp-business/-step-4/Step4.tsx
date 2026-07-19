@@ -39,7 +39,9 @@ export default function Step4() {
 
   // Methods
   function submitForm(values: object) {
-    updateApplication(values);
+    // loan_debt only applies when the company has existing loans — reset it so a
+    // stale value isn't sent to the backend when the user answered "Nej".
+    updateApplication({ loan_debt: 0, ...values });
     setStep("success-step");
   }
 
