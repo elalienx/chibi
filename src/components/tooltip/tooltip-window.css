@@ -1,7 +1,7 @@
 /* Outer wrapper for the content and pointy arrow */
 .tooltip-window {
   max-width: 90%;
-  outline: none; /* To remove the focusable blue line. */
+  outline: transparent; /* To remove the focusable blue line. */
   padding-inline: var(--space-medium); /*  To avoid touching the screen. */
 }
 
@@ -25,7 +25,7 @@
     margin: 0;
     background-color: transparent;
     border: none;
-    outline: none;
+    outline: transparent;
     cursor: pointer;
 
     .icon {

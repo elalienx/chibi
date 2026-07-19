@@ -13,7 +13,7 @@
   font-weight: var(--font-weight-normal);
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
-  outline: none;
+  outline: transparent;
 }
 
 .select:hover {
