@@ -13,6 +13,7 @@ import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
 
+// Properties
 const PROPERTY_HINT = "Här anger du vilken typ av bostad lånet avser.";
 
 interface Props {

@@ -5,7 +5,6 @@ import { expect, test } from "@playwright/experimental-ct-react";
 import FormManager from "forms/mvp-business/FormManager";
 
 test("Should be able to submit with no debt", async ({ mount }) => {
-  // Properties
   const form = await mount(<FormManager />);
 
   await test.step("Step 1", async () => {
@@ -30,7 +29,6 @@ test("Should be able to submit with no debt", async ({ mount }) => {
 });
 
 test("Should be able to submit with debt", async ({ mount }) => {
-  // Properties
   const form = await mount(<FormManager />);
 
   await test.step("Step 1", async () => {
