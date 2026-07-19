@@ -40,7 +40,7 @@ export default function Step2({ propertyType, setStep }: Props) {
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
-  // Properties
+  // Derived state
   const isTerracedHouse = propertyType === "terraced_house";
   const tenancyType = isTerracedHouse ? getInput(form, { path: ["tenancy_type"] }) : undefined;
   const hasMonthlyFee = requiresMonthlyFee(propertyType, tenancyType);

@@ -24,7 +24,7 @@ export default function RadioOption({ id, children, field, value }: Props) {
   if (!id) return <p>Pass an id to know which field this radio belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
-  // Properties
+  // Derived state
   const stringValue = String(value);
 
   // Methods

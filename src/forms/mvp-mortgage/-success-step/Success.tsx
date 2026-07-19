@@ -12,7 +12,7 @@ export default function Success({ setStep }: Props) {
   // Global state
   const { application, clearApplication } = useApplication();
 
-  // Properties
+  // Derived state
   const hasMonthlyFee = application.monthly_fee > 0;
   const feeType = hasMonthlyFee ? "monthly fee" : "operating cost";
   const feePrice = hasMonthlyFee ? application.monthly_fee : application.operating_cost;

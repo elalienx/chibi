@@ -23,7 +23,7 @@ export default function Select({ id, anchorId, children, activeText }: Props) {
   // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
-  // Properties
+  // Derived state
   const listId = `list-${id}`;
   const textToDisplay = activeText ? activeText : children;
 

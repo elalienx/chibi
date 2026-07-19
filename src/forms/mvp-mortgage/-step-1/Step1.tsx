@@ -13,6 +13,8 @@ import useApplication from "../state/useApplication";
 import type { Step } from "../types/Step";
 import schema from "./schema";
 
+const PROPERTY_HINT = "Här anger du vilken typ av bostad lånet avser.";
+
 interface Props {
   /** Allows a button to change what step to display. */
   setStep: (step: Step) => void;
@@ -24,9 +26,6 @@ export default function Step1({ setStep }: Props) {
 
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: application });
-
-  // Properties
-  const propertyTypeHint = "Här anger du vilken typ av bostad lånet avser.";
 
   // Methods
   function submitForm(values: object) {
@@ -43,7 +42,7 @@ export default function Step1({ setStep }: Props) {
 
       <section>
         <RadioGroup form={form} id="property_type">
-          <Label hint={propertyTypeHint}>För vilken typ av bostad söker du lån</Label>
+          <Label hint={PROPERTY_HINT}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>
           <RadioOption value={terracedHouse}>Radhus</RadioOption>
