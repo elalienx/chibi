@@ -8,8 +8,6 @@ Our motto is... making Lendo more Kawaii <3
 
 ## Project Structure
 
-Inside the project, you'll see the following folders and files:
-
 ```text
 / root/
 ├── playwright/
