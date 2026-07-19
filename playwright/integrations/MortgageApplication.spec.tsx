@@ -4,8 +4,7 @@ import { expect, test } from "@playwright/experimental-ct-react";
 // Project files
 import FormManager from "forms/mvp-mortgage/FormManager";
 
-test("Should be abble to apply for a house", async ({ mount }) => {
-  // Properties
+test("Should be able to apply for a house", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
@@ -35,8 +34,7 @@ test("Should be abble to apply for a house", async ({ mount }) => {
   });
 });
 
-test("Should be abble to apply for an apartment", async ({ mount }) => {
-  // Properties
+test("Should be able to apply for an apartment", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
@@ -66,8 +64,7 @@ test("Should be abble to apply for an apartment", async ({ mount }) => {
   });
 });
 
-test("Should be abble to apply for a terraced house (as rental)", async ({ mount }) => {
-  // Properties
+test("Should be able to apply for a terraced house (as rental)", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
@@ -98,8 +95,7 @@ test("Should be abble to apply for a terraced house (as rental)", async ({ mount
   });
 });
 
-test("Should be abble to apply for a terraced house (as ownership)", async ({ mount }) => {
-  // Properties
+test("Should be able to apply for a terraced house (as ownership)", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
@@ -129,8 +125,7 @@ test("Should be abble to apply for a terraced house (as ownership)", async ({ mo
   });
 });
 
-test("Should be abble to apply for a holiday home (same options as house)", async ({ mount }) => {
-  // Properties
+test("Should be able to apply for a holiday home (same options as house)", async ({ mount }) => {
   const form = await mount(<FormManager />);
 
   await test.step("Introduction", async () => {
