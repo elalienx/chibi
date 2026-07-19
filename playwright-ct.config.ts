@@ -1,3 +1,4 @@
+// Node modules
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
