@@ -60,7 +60,7 @@ export default function InputText({ id, form, placeholder = "", suffix, type }: 
       {suffix && <span className="suffix">{suffix}</span>}
       {hasErrors && (
         <p id={ariaErrorId} aria-live="polite" className="input-validation-message">
-          {field.errors?.[0]}
+          {field.errors[0]}
         </p>
       )}
     </div>

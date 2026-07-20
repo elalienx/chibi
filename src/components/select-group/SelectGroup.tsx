@@ -51,7 +51,7 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
     <div className="select-group">
       {label}
       {select}
-      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>}
+      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors[0]}</ValidationMessage>}
       <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
       </div>

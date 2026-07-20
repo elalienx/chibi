@@ -49,7 +49,7 @@ export default function SelectorGroup({ children, id, form, hints }: Props) {
         {selectorOptions}
       </fieldset>
 
-      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors?.[0]}</ValidationMessage>}
+      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors[0]}</ValidationMessage>}
     </div>
   );
 }
