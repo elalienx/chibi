@@ -100,9 +100,9 @@
   /* Input backgrounds */
   --input-background-up: var(--color-gray-95);
   --input-background-hover: var(--color-blue-99);
-  --input-background-focus: var(--color-blue-99); /** same as hover **/
+  --input-background-focus: var(--color-blue-99); /** Same as hover. **/
   --input-background-error: var(--color-red-95);
-  --input-background-success: var(--color-gray-95); /** same as up **/
+  --input-background-success: var(--color-gray-95); /** Same as up. **/
 
   /* Input borders */
   --input-border-up: var(--color-gray-50);
@@ -124,8 +124,8 @@
 
   /* Form spacing */
   --field-min-width: 280px;
-  --gap-between-label-and-field: 5px; /* Figma uses 4px, but browsers need 5px to account for font rendering quirks. */
-  --height-of-field: 48px; /** REFACTOR: rename to input-height. */
+  --gap-between-label-and-field: 5px; /* Figma uses 4px but browsers need 5px to account for font rendering quirks. */
+  --height-of-field: 48px;
   --height-of-button: 60px;
 
   /* Others */
