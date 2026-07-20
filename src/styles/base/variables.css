@@ -125,7 +125,7 @@
   /* Form spacing */
   --field-min-width: 280px;
   --gap-between-label-and-field: 5px; /* Figma uses 4px, but browsers need 5px to account for font rendering quirks. */
-  --height-of-field: 48px; /** REFACTOR: rename to input-height. */
+  --height-of-field: 48px;
   --height-of-button: 60px;
 
   /* Others */
