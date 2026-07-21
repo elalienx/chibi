@@ -3,7 +3,7 @@ import { defineMain } from "@storybook/react-vite/node";
 
 export default defineMain({
   framework: "@storybook/react-vite",
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../src/**/*.stories.tsx"],
 
   async viteFinal(config) {
     config.resolve = config.resolve || {};
