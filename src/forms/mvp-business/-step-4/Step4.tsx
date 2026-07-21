@@ -61,7 +61,9 @@ export default function Step4() {
           <Label>Ditt lånesyfte</Label>
           <Select>Välj</Select>
           {purposes.map((item) => (
-            <SelectOption value={item.value}>{item.label}</SelectOption>
+            <SelectOption key={item.value} value={item.value}>
+              {item.label}
+            </SelectOption>
           ))}
         </SelectGroup>
 
