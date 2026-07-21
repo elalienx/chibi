@@ -9,12 +9,12 @@ const meta = preview.meta({
 });
 
 // Stories
-export const Story1 = meta.story({
+export const Default = meta.story({
   name: "Label",
   render: () => <Label id="email">Write your email</Label>,
 });
 
-export const Story2 = meta.story({
+export const WithTooltip = meta.story({
   name: "Label with tooltip",
   render: () => (
     <Label id="email" hint="We ask for your email so you can login again in the future.">
@@ -23,7 +23,7 @@ export const Story2 = meta.story({
   ),
 });
 
-export const Story3 = meta.story({
+export const WithError = meta.story({
   name: "Label (id error)",
   render: () => <Label>Write your email</Label>,
 });
