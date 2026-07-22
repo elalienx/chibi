@@ -18,6 +18,9 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>Aphrodite Chibi | {title}</title>
+    <!-- React Scan -->
+    <!-- This script allows us to visualize re-renders. Used to improve performance. Dissable it when not in use. -->
+    <script is:inline crossorigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js" />
   </head>
   <body>
     <slot />
