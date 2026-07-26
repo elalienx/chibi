@@ -8,18 +8,18 @@ form for the test to assert on). Plain data props travel through `mount(storyId,
 
 ## Concept mapping
 
-| `@playwright/experimental-ct-*` | Gallery pattern |
-|---|---|
-| `mount(<Button title="…" onClick={spy} />)` | Stateful story: the story provides `onClick`, records the effect into a hidden form input; the test asserts `toHaveValue()` |
-| Plain data props from the test | Unchanged in spirit: `mount(id, props)` |
-| JSX children / slots from the test | Cannot cross — bake each composition into its own story export (Vue: `.story.vue` for slot-heavy scenarios) |
-| `component.update(<Button count={2} />)` | `component.update({ count: 2 })` — state-preserving, needs the gallery to reuse its root (`gallery-spec.md`) |
-| `component.unmount()` | `component.unmount()` — backed by the gallery's `window.unmount()` |
-| `beforeMount`/`afterMount` in `playwright/index.ts` | The body of the gallery's `window.mount` (global), or story decorators (per-story) |
-| `hooksConfig` per-test variation | Props: `mount('App/Routing', { route: '/dashboard' })` — the story/decorator interprets them |
-| `router` fixture / MSW handlers in Node | `page.route()` in the test, or MSW `setupWorker` inside a story/decorator |
-| `playwright/index.html` (styles, fonts, theme) | The gallery's `index.html` / entry module imports |
-| `ctViteConfig`, `ctPort`, `ctTemplateDir`, `ctCacheDir` | Gone — the gallery runs through the app's own dev server; port lives in `webServer` + `baseURL`; location is `playwright/gallery/` |
+| `@playwright/experimental-ct-*`                         | Gallery pattern                                                                                                                              |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mount(<Button title="…" onClick={spy} />)`             | Stateful story: the story provides `onClick`, records the effect into a hidden form input; the test asserts `toHaveValue()`                  |
+| Plain data props from the test                          | Unchanged in spirit: `mount(id, props)`                                                                                                      |
+| JSX children / slots from the test                      | Cannot cross — bake each composition into its own story export (Vue: `.story.vue` for slot-heavy scenarios)                                  |
+| `component.update(<Button count={2} />)`                | `component.update({ count: 2 })` — state-preserving, needs the gallery to reuse its root (`gallery-spec.md`)                                 |
+| `component.unmount()`                                   | `component.unmount()` — backed by the gallery's `window.unmount()`                                                                           |
+| `beforeMount`/`afterMount` in `playwright/index.ts`     | The body of the gallery's `window.mount` (global), or story decorators (per-story)                                                           |
+| `hooksConfig` per-test variation                        | Props: `mount('App/Routing', { route: '/dashboard' })` — the story/decorator interprets them                                                 |
+| `router` fixture / MSW handlers in Node                 | `page.route()` in the test, or MSW `setupWorker` inside a story/decorator                                                                    |
+| `playwright/index.html` (styles, fonts, theme)          | The gallery's `index.html` / entry module imports                                                                                            |
+| `ctViteConfig`, `ctPort`, `ctTemplateDir`, `ctCacheDir` | Gone — the gallery runs through the app's own dev server; port lives in `webServer` + `baseURL`; location is `playwright/gallery/`           |
 | `defineConfig` from `@playwright/experimental-ct-react` | Plain `defineConfig` from `@playwright/test`, with `baseURL` = gallery URL, `serviceWorkers: 'block'`, `reuseContext: true` (see `SKILL.md`) |
 
 ## Steps
@@ -53,33 +53,32 @@ form for the test to assert on). Plain data props travel through `mount(storyId,
 
 ```tsx
 // Before (CT)
-import { test, expect } from '@playwright/experimental-ct-react';
-import Button from '../src/components/Button';
+import { test, expect } from "@playwright/experimental-ct-react";
+import Button from "../src/components/Button";
 
-test('click', async ({ mount }) => {
+test("click", async ({ mount }) => {
   const messages: string[] = [];
-  const component = await mount(<Button title="Submit" onClick={data => messages.push(data)} />);
+  const component = await mount(<Button title="Submit" onClick={(data) => messages.push(data)} />);
   await component.click();
-  expect(messages).toEqual(['hello']);
+  expect(messages).toEqual(["hello"]);
 });
 ```
 
 ```tsx
 // After: src/components/Button.story.tsx
-import Button from './Button';
+import Button from "./Button";
 
-export const Default = (props: { onClick?: (data: string) => void }) =>
-  <Button title="Submit" {...props} />;
+export const Default = (props: { onClick?: (data: string) => void }) => <Button title="Submit" {...props} />;
 ```
 
 ```ts
 // After: src/components/Button.spec.ts
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('click', async ({ mount }) => {
+test("click", async ({ mount }) => {
   const messages: string[] = [];
-  const component = await mount('components/Button/Default', { onClick: (data: string) => messages.push(data) });
+  const component = await mount("components/Button/Default", { onClick: (data: string) => messages.push(data) });
   await component.click();
-  expect(messages).toEqual(['hello']);
+  expect(messages).toEqual(["hello"]);
 });
 ```

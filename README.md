@@ -10,6 +10,7 @@ Our motto is... making Lendo more Kawaii <3
 
 ```text
 / root/
+├── playwright/
 ├── public/
 ├── skills/
 ├── snapshots/
@@ -36,11 +37,12 @@ Here is an explanation of the main folders:
 
 All commands are run from the root of the project:
 
-| Command          | Action                                      |
-| :--------------- | :------------------------------------------ |
-| `pnpm install`   | Installs dependencies                       |
-| `pnpm dev`       | Starts local dev server at `localhost:4321` |
-| `pnpm format`    | Format all files using Oxfmt formatter      |
-| `pnpm lint`      | Lint all files using Oxlint linter          |
-| `pnpm storybook` | Open Storybook to visualize components      |
-| `pnpm test`      | Run unit tests using Vitest                 |
+| Command                | Action                                      |
+| :--------------------- | :------------------------------------------ |
+| `pnpm install`         | Installs dependencies                       |
+| `pnpm dev`             | Starts local dev server at `localhost:4321` |
+| `pnpm format`          | Format all files using Oxfmt formatter      |
+| `pnpm lint`            | Lint all files using Oxlint linter          |
+| `pnpm playwright --ui` | Open Playwright UI viewer to run tests      |
+| `pnpm storybook`       | Open Storybook to visualize components      |
+| `pnpm test`            | Run unit tests using Vitest                 |

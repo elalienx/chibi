@@ -13,7 +13,7 @@ Test components with regular Playwright e2e tests against a small **story galler
 - The **gallery** is a single page you implement to `references/gallery-spec.md`: it exposes `window.mount(params)` / `window.unmount()` that render a story — resolved from your story files (e.g. with `import.meta.glob`) — into `#root`. It is framework-specific and yours to own — there is no template to copy for it.
 - Tests are plain Playwright tests. The built-in **`mount(storyId, props?)` fixture** (from `@playwright/test`) drives the gallery's `window.mount` and returns a `Locator` for the gallery root (`#root`). Scope the queries from there — `component.getByRole('button').click()`, not `component.click()`. Nothing to scaffold for it.
 
-Everything the component needs must be set up *inside the story* (it runs in the browser); everything the test asserts must be observable *through the page* (DOM, URL, network). Where the component takes callbacks, the story creates the state, provides the callbacks and records the state into a hidden form for the test to assert on. `mount(id, props)` passes plain serializable `props` to the story.
+Everything the component needs must be set up _inside the story_ (it runs in the browser); everything the test asserts must be observable _through the page_ (DOM, URL, network). Where the component takes callbacks, the story creates the state, provides the callbacks and records the state into a hidden form for the test to assert on. `mount(id, props)` passes plain serializable `props` to the story.
 
 ## Setup workflow
 
@@ -39,6 +39,7 @@ Everything the component needs must be set up *inside the story* (it runs in the
    ```
 
    Match the port to the dev server. `mount` navigates to `baseURL`, so set `baseURL` to the gallery's URL. `serviceWorkers: 'block'` keeps the app's own service worker from serving cached responses that would shadow your `page.route()` mocks. `reuseContext: true` reuses the browser context across tests in a worker (as the old component-testing runtime did) — a large speedup for component suites. If the config already has projects/webServer, merge instead of replacing.
+
 4. **Write a first story** next to an existing component, modeled on `templates/<react|vue>/Button.story.*`.
 5. **Write a first spec**, modeled on `templates/react/button.spec.ts`, importing `test`/`expect` from `@playwright/test`.
 6. **Run**: `npx playwright test --project=components`. Open `http://localhost:5173/playwright/gallery/index.html` in a browser to eyeball all stories.
@@ -59,18 +60,24 @@ Examples are React; the Vue equivalents differ only in story syntax.
 ```tsx
 export const Stateful = () => {
   const [expanded, setExpanded] = useState(false);
-  return <>
-    <Expandable expanded={expanded} setExpanded={setExpanded} title="Title">Details</Expandable>
-    <form hidden><input data-testid="expanded" readOnly value={String(expanded)} /></form>
-  </>;
+  return (
+    <>
+      <Expandable expanded={expanded} setExpanded={setExpanded} title="Title">
+        Details
+      </Expandable>
+      <form hidden>
+        <input data-testid="expanded" readOnly value={String(expanded)} />
+      </form>
+    </>
+  );
 };
 ```
 
 ```ts
-test('click should expand', async ({ mount }) => {
-  const component = await mount('components/Expandable/Stateful');
-  await component.locator('.codicon-chevron-right').click();
-  await expect(component.getByTestId('expanded')).toHaveValue('true');
+test("click should expand", async ({ mount }) => {
+  const component = await mount("components/Expandable/Stateful");
+  await component.locator(".codicon-chevron-right").click();
+  await expect(component.getByTestId("expanded")).toHaveValue("true");
 });
 ```
 
@@ -81,20 +88,19 @@ This keeps the whole scenario in the browser: no callback marshalling, the story
 When a scenario is genuinely parametric (e.g. a boundary-value sweep), pass props as the second argument to `mount`; the gallery hands them to the story as its props. Keep props to plain serializable data — callbacks belong inside the story.
 
 ```tsx
-export const WithTitle = ({ title = 'Default' }: { title?: string }) =>
-  <Button title={title} />;
+export const WithTitle = ({ title = "Default" }: { title?: string }) => <Button title={title} />;
 ```
 
 ```ts
-const component = await mount('components/Button/WithTitle', { title: 'Hello' });
+const component = await mount("components/Button/WithTitle", { title: "Hello" });
 ```
 
 `mount` is generic over the story: pass the story type as a template argument to type-check the props (and `update()`):
 
 ```ts
-import type { WithTitle } from './Button.story';
+import type { WithTitle } from "./Button.story";
 
-const component = await mount<typeof WithTitle>('components/Button/WithTitle', { title: 'Hello' });
+const component = await mount<typeof WithTitle>("components/Button/WithTitle", { title: "Hello" });
 ```
 
 This works for React and Vue stories alike; Vue stories must additionally declare the props at runtime — see the `Typed props` sections in `references/react.md` / `references/vue.md`.
@@ -104,10 +110,10 @@ This works for React and Vue stories alike; Vue stories must additionally declar
 To test how a component reacts to a prop change **without remounting** (state preserved), call `component.update(newProps)` — it re-renders the same story with new props on the existing root:
 
 ```ts
-const component = await mount('components/Counter/Default', { value: 1 });
-await expect(component.getByTestId('value')).toHaveText('1');
+const component = await mount("components/Counter/Default", { value: 1 });
+await expect(component.getByTestId("value")).toHaveText("1");
 await component.update({ value: 2 });
-await expect(component.getByTestId('value')).toHaveText('2');
+await expect(component.getByTestId("value")).toHaveText("2");
 ```
 
 This requires the gallery to reuse its root/instance (`references/gallery-spec.md`); state survives as long as the story stays the same.
@@ -117,8 +123,8 @@ This requires the gallery to reuse its root/instance (`references/gallery-spec.m
 Each `mount()` navigates fresh, so tests are fully isolated and mounting several stories in one test is cheap:
 
 ```ts
-await expect(await mount('Button/Primary')).toHaveScreenshot('primary.png');
-await expect(await mount('Button/Disabled')).toHaveScreenshot('disabled.png');
+await expect(await mount("Button/Primary")).toHaveScreenshot("primary.png");
+await expect(await mount("Button/Disabled")).toHaveScreenshot("disabled.png");
 ```
 
 For visual comparison, screenshot the returned root locator (as above), not the page, to avoid asserting on browser chrome.
@@ -135,6 +141,7 @@ Open your gallery URL (`baseURL`) in a browser and call `await window.mount({ st
 
 - **Monorepos / non-`src` layouts**: change the glob and the id derivation in your gallery (`references/gallery-spec.md`) to match.
 - **Global providers** (theme, i18n, store, router): create a shared `decorator` helper next to the gallery and wrap components in stories; see `references/react.md` / `references/vue.md`.
+
 ## References
 
 - `references/gallery-spec.md` — the gallery endpoint contract to implement (**start here**).

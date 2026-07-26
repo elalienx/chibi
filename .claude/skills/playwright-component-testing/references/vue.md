@@ -15,8 +15,8 @@ Follow the setup workflow in `SKILL.md`. Implement the gallery per `references/g
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue';
-import Button from './Button.vue';
+import { ref } from "vue";
+import Button from "./Button.vue";
 const clicks = ref(0);
 </script>
 
@@ -34,8 +34,8 @@ Apps that rely on plugins (Pinia, vue-router, i18n) should wrap components with 
 
 ```ts
 // src/stories/decorators.ts
-import { defineComponent, h, type Component } from 'vue';
-import { createPinia } from 'pinia';
+import { defineComponent, h, type Component } from "vue";
+import { createPinia } from "pinia";
 
 export function withStore(story: Component) {
   return defineComponent(() => {
@@ -54,8 +54,8 @@ A story that takes per-test props declares them twice: in the setup signature (f
 ```ts
 // src/components/Button.story.ts
 export const WithTitle = defineComponent(
-  (props: { title?: string }) => () => h(Button, { title: props.title ?? 'Default' }),
-  { props: ['title'] },
+  (props: { title?: string }) => () => h(Button, { title: props.title ?? "Default" }),
+  { props: ["title"] },
 );
 ```
 
@@ -63,9 +63,9 @@ export const WithTitle = defineComponent(
 
 ```ts
 // src/components/button.spec.ts
-import type { WithTitle } from './Button.story';
+import type { WithTitle } from "./Button.story";
 
-const component = await mount<typeof WithTitle>('components/Button/WithTitle', { title: 'Hello' });
+const component = await mount<typeof WithTitle>("components/Button/WithTitle", { title: "Hello" });
 ```
 
 Options-API stories (`defineComponent({ props: { ... } })`) infer props the same way. For `.story.vue` SFC stories, prop types are only inferable when the setup generates SFC types (Volar/vue-tsc); otherwise pass the props type directly: `mount<{ title?: string }>('components/Button.primary', { title: 'Hello' })`.

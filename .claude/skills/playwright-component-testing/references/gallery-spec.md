@@ -32,7 +32,7 @@ remounting on its own only when the story (component type) changes.
 
 **`window.mount` is your setup/teardown hook.** It is the browser-side equivalent of CT's
 `beforeMount` / `afterMount`: install providers or plugins, seed a store, start an in-browser mock
-server *before* you render, and run post-render work *after* — all inside this one function,
+server _before_ you render, and run post-render work _after_ — all inside this one function,
 branched on the `story` / `props` the test passed. There is no separate hook registry; the function
 you own is the hook.
 
@@ -67,28 +67,27 @@ cannot be moved into shared/shipped code. That is exactly why the gallery is you
 
 ```tsx
 // playwright/gallery/main.tsx
-import { flushSync } from 'react-dom';
-import { createRoot, type Root } from 'react-dom/client';
+import { flushSync } from "react-dom";
+import { createRoot, type Root } from "react-dom/client";
 
-const stories = import.meta.glob('../../src/**/*.story.{tsx,jsx}');
-const id = (f: string) => f.replace(/^(\.\.\/)+src\//, '').replace(/\.story\.\w+$/, '');
+const stories = import.meta.glob("../../src/**/*.story.{tsx,jsx}");
+const id = (f: string) => f.replace(/^(\.\.\/)+src\//, "").replace(/\.story\.\w+$/, "");
 
 async function resolve(storyId: string) {
-  const sep = storyId.lastIndexOf('/');
+  const sep = storyId.lastIndexOf("/");
   const [path, name] = [storyId.slice(0, sep), storyId.slice(sep + 1)];
-  const file = Object.keys(stories).find(f => id(f) === path || id(f).endsWith('/' + path));
-  const mod = (file && await stories[file]()) as Record<string, any> | undefined;
+  const file = Object.keys(stories).find((f) => id(f) === path || id(f).endsWith("/" + path));
+  const mod = (file && (await stories[file]())) as Record<string, any> | undefined;
   return mod?.[name] ?? mod?.default;
 }
 
-const rootEl = document.getElementById('root')!;
+const rootEl = document.getElementById("root")!;
 let root: Root | undefined;
 
-(window as any).mount = async ({ story, props }: { story: string, props?: Record<string, any> }) => {
+(window as any).mount = async ({ story, props }: { story: string; props?: Record<string, any> }) => {
   const Story = await resolve(story);
-  if (!Story)
-    throw new Error(`Unknown story: ${story}`);
-  root ??= createRoot(rootEl);   // reuse the root so update() reconciles and preserves state
+  if (!Story) throw new Error(`Unknown story: ${story}`);
+  root ??= createRoot(rootEl); // reuse the root so update() reconciles and preserves state
   // flushSync so a render error rejects the promise instead of being swallowed.
   flushSync(() => root!.render(<Story {...props} />));
 };
@@ -114,7 +113,7 @@ once and update its refs — updating them re-renders in place, which is what pr
 
 ```ts
 // playwright/gallery/main.ts
-import { createApp, h, shallowRef, type App, type Component } from 'vue';
+import { createApp, h, shallowRef, type App, type Component } from "vue";
 
 // resolve() and the import.meta.glob are the same as the React example.
 const story = shallowRef<Component | null>(null);
@@ -122,15 +121,15 @@ const props = shallowRef<Record<string, any>>({});
 const host = { render: () => (story.value ? h(story.value, props.value) : null) };
 let app: App | undefined;
 
-(window as any).mount = async ({ story: id, props: next }: { story: string, props?: Record<string, any> }) => {
+(window as any).mount = async ({ story: id, props: next }: { story: string; props?: Record<string, any> }) => {
   const resolved = await resolve(id);
-  if (!resolved)
-    throw new Error(`Unknown story: ${id}`);
+  if (!resolved) throw new Error(`Unknown story: ${id}`);
   story.value = resolved;
   props.value = next ?? {};
-  if (!app) {                    // mount once; the ref updates above re-render in place
+  if (!app) {
+    // mount once; the ref updates above re-render in place
     app = createApp(host);
-    app.mount('#root');
+    app.mount("#root");
   }
 };
 

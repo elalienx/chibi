@@ -17,10 +17,10 @@ If components require context (theme, store, i18n, router), create one shared de
 
 ```tsx
 // src/stories/decorators.tsx
-import { ThemeProvider } from '../theme';
-import { MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from "../theme";
+import { MemoryRouter } from "react-router-dom";
 
-export function AppScaffold({ children, route = '/' }: { children: React.ReactNode, route?: string }) {
+export function AppScaffold({ children, route = "/" }: { children: React.ReactNode; route?: string }) {
   return (
     <ThemeProvider theme="light">
       <MemoryRouter initialEntries={[route]}>{children}</MemoryRouter>
@@ -33,7 +33,7 @@ export function AppScaffold({ children, route = '/' }: { children: React.ReactNo
 // src/components/ProfilePage.story.tsx
 export const LoggedIn = () => (
   <AppScaffold route="/profile/42">
-    <ProfilePage user={{ id: 42, name: 'Test User' }} />
+    <ProfilePage user={{ id: 42, name: "Test User" }} />
   </AppScaffold>
 );
 ```
@@ -46,15 +46,14 @@ Do not build the decorator into the gallery — keeping it in story files makes 
 
 ```tsx
 // src/components/Button.story.tsx
-export const WithTitle = ({ title = 'Default' }: { title?: string }) =>
-  <Button title={title} />;
+export const WithTitle = ({ title = "Default" }: { title?: string }) => <Button title={title} />;
 ```
 
 ```ts
 // src/components/button.spec.ts
-import type { WithTitle } from './Button.story';
+import type { WithTitle } from "./Button.story";
 
-const component = await mount<typeof WithTitle>('components/Button/WithTitle', { title: 'Hello' });
+const component = await mount<typeof WithTitle>("components/Button/WithTitle", { title: "Hello" });
 ```
 
 ## CSS
