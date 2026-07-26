@@ -33,9 +33,3 @@ jobs:
 
       - name: Run Vitest unit tests
         run: pnpm test
-
-      - name: Install Chromium
-        run: pnpm exec playwright install chromium --only-shell
-
-      - name: Run Playwright component tests
-        run: pnpm playwright

@@ -1,15 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "src/**/*", "playwright/**/*"],
+  "include": [".astro/types.d.ts", "src/**/*", "/**/*"],
   "exclude": ["node_modules", "dist", "public", ".astro"],
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/*"],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "incremental": true,
-    "types": ["astro/client"]
-  }
+    "types": ["astro/client"],
+  },
 }
