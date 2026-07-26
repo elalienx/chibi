@@ -29,7 +29,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm gallery:build && pnpm gallery:preview",
+    command: "pnpm playwright:build && pnpm playwright:preview",
     url: GALLERY_URL,
     reuseExistingServer: !process.env.CI,
   },
