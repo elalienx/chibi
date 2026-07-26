@@ -4,16 +4,15 @@ import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 
 // Project files
-// Global stylesheet, imported the same way the app's BaseLayout does.
 import "styles/style.css";
 
-// The Playwright component-testing gallery. It exposes `window.mount` /
-// `window.unmount` (see the skill's gallery-spec) so the built-in `mount`
-// fixture can render any story into `#root`.
-
-// Vite analyzes this glob statically, relative to this file, so it must stay inline.
-const stories = import.meta.glob("../src/**/*.story.{tsx,jsx}");
-
+/**
+ * About:
+ * The Playwright component-testing gallery. It exposes `window.mount` /
+ * `window.unmount` (see the skill's gallery-spec) so the built-in `mount`
+ * fixture can render any story into `#root`.
+ */
+const stories = import.meta.glob("../src/**/*.story.tsx");
 const id = (file: string) => file.replace(/^(\.\.\/)+src\//, "").replace(/\.story\.\w+$/, "");
 
 async function resolve(storyId: string) {
