@@ -1,12 +1,12 @@
-name: Continuous Deploy
+name: Continuous Integration
 
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
-  deploy:
-    name: Firebase hosting
+  frontend-test:
+    name: Frontend testing
     runs-on: ubuntu-latest
 
     steps:
@@ -25,16 +25,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Astro build
-        run: pnpm build
+      - name: Check formatting
+        run: pnpm format:check
 
-      - name: Storybook build
-        run: pnpm build-storybook
+      - name: Lint files
+        run: pnpm lint:check
 
-      - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_APHRODITE_CHIBI }}
-          projectId: aphrodite-chibi
-          channelId: live
+      - name: Run Vitest unit tests
+        run: pnpm test
+
+      - name: Install Chromium
+        run: pnpm exec playwright install chromium --only-shell
+
+      - name: Run Playwright component tests
+        run: pnpm playwright
