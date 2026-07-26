@@ -10,13 +10,18 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  reporter: "list",
   snapshotPathTemplate: "snapshots/{testFileName}-snapshots/{arg}-{platform}{ext}",
+  use: {
+    trace: "on-first-retry",
+  },
   projects: [
     {
       name: "components",
       testDir: TEST_FOLDER,
       use: {
         ...devices["Desktop Chrome"],
+        viewport: { width: 800, height: 600 },
         baseURL: GALLERY_URL,
         serviceWorkers: "block",
         reuseContext: true,
