@@ -5,12 +5,8 @@ import { createRoot, type Root } from "react-dom/client";
 
 // Project files
 import resolve from "./resolve";
+import type MountParams from "./MountParams";
 import "styles/style.css";
-
-interface MountParams {
-  story: string;
-  props?: Record<string, unknown>;
-}
 
 // Properties
 const rootEl = document.getElementById("root")!;
