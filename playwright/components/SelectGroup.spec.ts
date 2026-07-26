@@ -1,8 +1,5 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormPage from "forms/example-select-group/FormPage";
+import { test, expect, type Locator } from "@playwright/test";
 
 const error1 = "Choose one game developer company.";
 const error2 = "Choose one accessory.";
@@ -16,10 +13,10 @@ const output2A = "Select 2 internal value: 0";
 const output2B = "Select 2 internal value: 5";
 const submit = "Submit";
 const textCleanup = "Text to clean Playwright selector";
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-select-group/FormPage/Default");
 });
 
 test.afterEach(async () => {

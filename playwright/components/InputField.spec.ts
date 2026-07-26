@@ -1,8 +1,5 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormPage from "forms/example-input-field/FormPage";
+import { test, expect, type Locator } from "@playwright/test";
 
 const validName = "Eduardo";
 const invalidName = "Ed"; // Below minimum length
@@ -12,10 +9,10 @@ const item1 = "Full name";
 const item2 = "Age";
 const errorNameTooShort = "Name is too short";
 const parent = ".."; // The parent of the input is the one having the CSS styles
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-input-field/FormPage/Default");
 });
 
 test.afterEach(async () => {

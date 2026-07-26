@@ -1,8 +1,5 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormPage from "forms/example-modal/FormPage";
+import { test, expect, type Locator } from "@playwright/test";
 
 const button1 = "Open Guiness modal";
 const button2 = "Open PC-Engine modal";
@@ -11,10 +8,10 @@ const dialogBackgroundPosition = { position: { x: 0, y: 0 } }; // this is the to
 const textCleanup = "Text to clean Playwright selector";
 const title1 = "About Guiness!";
 const title2 = "I am a the PC-Engine modal!";
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-modal/FormPage/Default");
 });
 
 test.afterEach(async () => {

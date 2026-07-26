@@ -1,8 +1,5 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormPage from "forms/example-tooltip/FormPage";
+import { test, expect, type Locator } from "@playwright/test";
 
 const errorInput = "Please enter your full name.";
 const errorRadio = "Say either yes or no.";
@@ -15,10 +12,10 @@ const tooltipText1 = "Click me for more info";
 const tooltipText2 = "Write both your first and last name.";
 const tooltipText3 = "You can see yes if you like Cider as well.";
 const tooltipText4 = "About Guiness!";
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-tooltip/FormPage/Default");
 });
 
 test.afterEach(async () => {

@@ -1,19 +1,17 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
+import { test, expect, type Locator } from "@playwright/test";
 
-// Project files
-import FormPage from "forms/example-checkbox/FormPage";
-
+// Selectors
 const submit = "Submit";
 const item1 = "Do you accept our terms and conditions?";
 const item2 = "I certify that I am NOT a politically exposed person (PEP)";
 const textSuccess = "The form passed the validation";
 const textFailure = "The form failed the validation";
 const textCleanup = "Text to clean Playwright selector";
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-checkbox/FormPage/Default");
 });
 
 test.afterEach(async () => {
@@ -44,7 +42,7 @@ test("2. Should submit if you check the first checkbox", async () => {
   await expect(form.getByText(textSuccess)).toBeVisible();
 });
 
-test("3. Should fail if you uncheck the second checkbos due to the Political warning", async () => {
+test("3. Should fail if you uncheck the second checkbox due to the Political warning", async () => {
   // Arrange
   await form.getByRole("checkbox", { name: item2 }).uncheck();
 

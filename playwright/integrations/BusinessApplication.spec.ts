@@ -1,11 +1,8 @@
 // Node modules
-import { expect, test } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormManager from "forms/mvp-business/FormManager";
+import { expect, test } from "@playwright/test";
 
 test("Should be able to submit with no debt", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-business/FormManager/Default");
 
   await test.step("Step 1", async () => {
     await form.getByRole("heading", { name: "Business MVP" }).waitFor();
@@ -29,7 +26,7 @@ test("Should be able to submit with no debt", async ({ mount }) => {
 });
 
 test("Should be able to submit with debt", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-business/FormManager/Default");
 
   await test.step("Step 1", async () => {
     await form.getByRole("heading", { name: "Business MVP" }).waitFor();

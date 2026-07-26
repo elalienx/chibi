@@ -1,8 +1,5 @@
 // Node modules
-import { test, expect, type MountResult } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormPage from "forms/example-radio-group/FormPage";
+import { test, expect, type Locator } from "@playwright/test";
 
 const error1 = "#aria-error-likes_beer";
 const error2 = "#aria-error-likes_guiness";
@@ -11,10 +8,10 @@ const item2 = "#likes_guiness";
 const submit = "Submit";
 const textCleanup = "Text to clean Playwright selector";
 const textYes = "Yes";
-let form: MountResult;
+let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount(<FormPage />);
+  form = await mount("forms/example-radio-group/FormPage/Default");
 });
 
 test.afterEach(async () => {

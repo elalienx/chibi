@@ -1,11 +1,8 @@
 // Node modules
-import { expect, test } from "@playwright/experimental-ct-react";
-
-// Project files
-import FormManager from "forms/mvp-mortgage/FormManager";
+import { expect, test } from "@playwright/test";
 
 test("Should be able to apply for a house", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
     await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
@@ -35,7 +32,7 @@ test("Should be able to apply for a house", async ({ mount }) => {
 });
 
 test("Should be able to apply for an apartment", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
     await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
@@ -65,7 +62,7 @@ test("Should be able to apply for an apartment", async ({ mount }) => {
 });
 
 test("Should be able to apply for a terraced house (as rental)", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
     await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
@@ -96,7 +93,7 @@ test("Should be able to apply for a terraced house (as rental)", async ({ mount 
 });
 
 test("Should be able to apply for a terraced house (as ownership)", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
     await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
@@ -126,7 +123,7 @@ test("Should be able to apply for a terraced house (as ownership)", async ({ mou
 });
 
 test("Should be able to apply for a holiday home (same options as house)", async ({ mount }) => {
-  const form = await mount(<FormManager />);
+  const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
     await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();

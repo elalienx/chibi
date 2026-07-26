@@ -11,10 +11,11 @@
     "format:check": "oxfmt --check",
     "lint": "oxlint --fix",
     "lint:check": "oxlint --deny-warnings --format=github",
-    "playwright": "playwright test -c playwright-ct.config.ts",
     "preview": "astro preview",
     "storybook": "storybook dev -p 6006",
-    "test": "vitest"
+    "test": "vitest",
+    "playwright": "playwright test --project=components",
+    "gallery": "vite --config playwright/vite.config.ts"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.1",
@@ -27,14 +28,16 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@playwright/experimental-ct-react": "^1.61.1",
+    "@playwright/test": "^1.62.0",
     "@storybook/react-vite": "^10.5.2",
     "@types/node": "^25.9.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
     "oxfmt": "^0.37.0",
     "oxlint": "^1.74.0",
     "storybook": "^10.5.2",
+    "vite": "^8.1.5",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.10"
   },
