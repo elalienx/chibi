@@ -1,7 +1,7 @@
 // Node modules
 import { defineConfig, devices } from "@playwright/test";
 
-const GALLERY_URL = "http://localhost:3100/playwright/gallery/index.html";
+const GALLERY_URL = "http://localhost:3100/playwright/index.html";
 
 export default defineConfig({
   testDir: "./tests",
