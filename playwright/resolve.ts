@@ -4,14 +4,14 @@ const id = (file: string) => file.replace(/^(\.\.\/)+src\//, "").replace(/\.stor
 
 /**
  * About:
- * The Playwright component-testing gallery. It exposes `window.mount` /
- * `window.unmount` (see the skill's gallery-spec) so the built-in `mount`
- * fixture can render any story into `#root`.
+ * Maps a story id (e.g. "components/Button/Primary") to its component export,
+ * resolved from the globbed `*.story.tsx` files. Used by the gallery's
+ * `window.mount` to render the requested story into `#root`.
  */
-export default async function resolve(storyId: string) {
-  const sep = storyId.lastIndexOf("/");
-  const path = storyId.slice(0, sep);
-  const name = storyId.slice(sep + 1);
+export default async function resolve(story: string) {
+  const sep = story.lastIndexOf("/");
+  const path = story.slice(0, sep);
+  const name = story.slice(sep + 1);
   const file = Object.keys(stories).find((f) => id(f) === path || id(f).endsWith("/" + path));
   const mod = (file && (await stories[file]())) as Record<string, unknown> | undefined;
 
