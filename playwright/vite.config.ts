@@ -3,19 +3,17 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Standalone dev server for the Playwright component-testing gallery.
-// Astro's dev server routes HTML through its own middleware, so the gallery
-// gets its own small Vite server. The `*` -> `src/*` alias mirrors the app's
-// tsconfig so stories/gallery can import as `components/...` and `styles/...`.
-const src = fileURLToPath(new URL("../src", import.meta.url));
-const playwrightDir = fileURLToPath(new URL(".", import.meta.url));
+const assets = fileURLToPath(new URL("../public", import.meta.url));
+const sourceCode = fileURLToPath(new URL("../src", import.meta.url));
+const tests = fileURLToPath(new URL(".", import.meta.url));
+const regexSubFolder: RegExp = /^(components|styles|helpers|state|layouts)\//;
+const port = 3100;
 
 export default defineConfig({
-  root: playwrightDir, // Now root contains index.html
+  root: tests,
+  publicDir: assets,
   plugins: [react()],
-  resolve: {
-    alias: [{ find: /^(components|styles|helpers|state|layouts)\//, replacement: `${src}/$1/` }],
-  },
-  server: { port: 3100 },
-  preview: { port: 3100 },
+  resolve: { alias: [{ find: regexSubFolder, replacement: `${sourceCode}/$1/` }] },
+  server: { port: port },
+  preview: { port: port },
 });
