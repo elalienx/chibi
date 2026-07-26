@@ -29,7 +29,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: process.env.CI ? "pnpm gallery:build && pnpm gallery:preview" : "pnpm gallery:dev",
+    command: "pnpm gallery:build && pnpm gallery:preview",
     url: GALLERY_URL,
     reuseExistingServer: !process.env.CI,
   },
