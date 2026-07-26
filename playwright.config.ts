@@ -8,9 +8,6 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  reporter: "html",
-  // Keep all visual-regression baselines in a single root snapshots/ folder
-  // instead of scattering *-snapshots dirs next to each spec.
   snapshotPathTemplate: "snapshots/{testFileName}-snapshots/{arg}-{platform}{ext}",
   projects: [
     {
