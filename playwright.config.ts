@@ -9,10 +9,13 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: "html",
+  // Keep all visual-regression baselines in a single root snapshots/ folder
+  // instead of scattering *-snapshots dirs next to each spec.
+  snapshotPathTemplate: "snapshots/{testFileName}-snapshots/{arg}-{platform}{ext}",
   projects: [
     {
       name: "components",
-      testDir: "./tests/components",
+      testDir: "./tests",
       use: {
         ...devices["Desktop Chrome"],
         baseURL: GALLERY_URL,
