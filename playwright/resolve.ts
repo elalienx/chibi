@@ -9,11 +9,11 @@ const id = (file: string) => file.replace(/^(\.\.\/)+src\//, "").replace(/\.stor
  * `window.mount` to render the requested story into `#root`.
  */
 export default async function resolve(story: string) {
-  const sep = story.lastIndexOf("/");
-  const path = story.slice(0, sep);
-  const name = story.slice(sep + 1);
-  const file = Object.keys(stories).find((f) => id(f) === path || id(f).endsWith("/" + path));
-  const mod = (file && (await stories[file]())) as Record<string, unknown> | undefined;
+  const separator = story.lastIndexOf("/");
+  const path = story.slice(0, separator);
+  const name = story.slice(separator + 1);
+  const file = Object.keys(stories).find((filePath) => id(filePath) === path || id(filePath).endsWith("/" + path));
+  const module = (file && (await stories[file]())) as Record<string, unknown> | undefined;
 
-  return (mod?.[name] ?? mod?.default) as React.ComponentType<any> | undefined;
+  return (module?.[name] ?? module?.default) as React.ComponentType<any> | undefined;
 }
