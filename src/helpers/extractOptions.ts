@@ -14,7 +14,7 @@ interface Props<TProps extends {}> {
 }
 
 /**
- * React lacks a "slot" feature like Vue does to pass props to children without prop drilling or using Context API.
+ * React does not have Vue's "slot" feature to pass props to children without prop drilling or using Context API.
  *
  * This method builds on top of `extractComponents()` so form field groups can pass props to their option components.
  */
