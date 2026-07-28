@@ -1,4 +1,5 @@
 // Node modules
+import { useState } from "react";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
@@ -20,9 +21,15 @@ const schema = v.object({
 export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const [result, setResult] = useState("");
 
   // Methods
-  function submitForm() {
+  function submitForm(values: v.InferOutput<typeof schema>) {
+    const radioString = values.likes_beer;
+    const radioBoolean = values.likes_guiness;
+    const validateBoolean = typeof radioBoolean === "boolean" ? (radioBoolean ? "TRUE" : "FALSE") : "NON BOOLEAN";
+
+    setResult(`Result: Radio 1 "${radioString}" | Radio 2: ${validateBoolean}`);
     alert("Success");
   }
 
@@ -51,6 +58,7 @@ export default function FormPage() {
       <footer>
         <Button type="submit">Submit</Button>
         <small>(Text to clean Playwright selector)</small>
+        {result && <small>{result}</small>}
       </footer>
     </Form>
   );
