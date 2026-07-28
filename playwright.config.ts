@@ -14,9 +14,8 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: "list",
   snapshotPathTemplate: "snapshots/{testFileName}/{arg}-{platform}{ext}",
-  use: {
-    trace: "on-first-retry",
-  },
+  timeout: 1_000,
+  use: { trace: "on-first-retry" },
   projects: [
     {
       name: "components",
