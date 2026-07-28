@@ -8,7 +8,7 @@ const id = (file: string) => file.replace(/^(\.\.\/)+src\//, "").replace(/\.stor
  * resolved from the globbed `*.story.tsx` files. Used by the gallery's
  * `window.mount` to render the requested story into `#root`.
  */
-export default async function resolve(story: string) {
+export default async function resolveStory(story: string) {
   const separator = story.lastIndexOf("/");
   const path = story.slice(0, separator);
   const name = story.slice(separator + 1);
