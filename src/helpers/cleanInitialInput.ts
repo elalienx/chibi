@@ -7,11 +7,13 @@ interface Props {
 }
 
 /**
- * Formisch uses strings by default, just like native HTML `<input>`.
- * This creates a conflict when Valibot schemas find other data types
- * coming from local storage or endpoints trying to pre-fill the fields.
+ * Formisch uses strings by default, just like native HTML `<input>`,
+ * so every UI component returns the same data type.
  *
- * This method converts initial non-string values to avoid errors.
+ * However, local storage and endpoints may try to pre-fill the fields
+ * using numbers or booleans.
+ *
+ * This method converts those initial values into strings.
  * Values are converted back to the correct type during form validation.
  */
 export default function cleanInitialInput({ input, treatZeroAsEmpty = false }: Props): object {
