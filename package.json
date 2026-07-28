@@ -11,8 +11,6 @@
     "format": "oxfmt",
     "lint:check": "oxlint --deny-warnings --format=github",
     "lint": "oxlint --fix",
-    "playwright:build": "vite build --config playwright/vite.config.ts",
-    "playwright:preview": "vite preview --config playwright/vite.config.ts",
     "playwright": "playwright test --project=components",
     "preview": "astro preview",
     "storybook": "storybook dev -p 6006",

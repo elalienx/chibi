@@ -29,7 +29,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm playwright:build && pnpm playwright:preview",
+    command: "vite build --config playwright/vite.config.ts && vite preview --config playwright/vite.config.ts",
     url: GALLERY_URL,
     reuseExistingServer: !process.env.CI,
   },
