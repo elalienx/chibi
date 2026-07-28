@@ -4,6 +4,8 @@ import { defineConfig, devices } from "@playwright/test";
 // Properties
 const TEST_FOLDER = "./playwright";
 const GALLERY_URL = "http://localhost:3100/playwright/index.html";
+const compileFiles = "vite build --config playwright/vite.config.ts";
+const startServer = "vite preview --config playwright/vite.config.ts";
 
 export default defineConfig({
   testDir: TEST_FOLDER,
@@ -29,7 +31,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm playwright:build && pnpm playwright:preview",
+    command: `${compileFiles} && ${startServer}`,
     url: GALLERY_URL,
     reuseExistingServer: !process.env.CI,
   },
