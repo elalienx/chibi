@@ -10,20 +10,16 @@ import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
 import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
+import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 
 // Properties
 const PROPERTY_HINT = "Här anger du vilken typ av bostad lånet avser.";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
-
-export default function Step1({ setStep }: Props) {
+export default function Step1() {
   // Global state
   const { application, updateApplication } = useApplication();
+  const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: application });
@@ -37,7 +33,7 @@ export default function Step1({ setStep }: Props) {
   return (
     <Form of={form} onSubmit={submitForm} className="mortgage-form" id="step-1">
       <header>
-        <ArrowGoBack onClick={() => setStep("intro-step")} />
+        <ArrowGoBack onClick={goPreviousStep} />
         <h4>1. Om lånet</h4>
       </header>
 

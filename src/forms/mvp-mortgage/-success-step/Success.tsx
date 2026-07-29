@@ -1,16 +1,12 @@
 // Project files
 import Button from "components/button/Button";
-import type { Step } from "../types/Step";
 import useApplication from "../state/useApplication";
+import useFormNavigation from "../state/useFormNavigation";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
-
-export default function Success({ setStep }: Props) {
+export default function Success() {
   // Global state
   const { application, clearApplication } = useApplication();
+  const { resetNavigation } = useFormNavigation();
 
   // Derived state
   const hasMonthlyFee = application.monthly_fee > 0;
@@ -21,7 +17,7 @@ export default function Success({ setStep }: Props) {
   // Methods
   function startAgain() {
     clearApplication();
-    setStep("intro-step");
+    resetNavigation();
   }
 
   return (
