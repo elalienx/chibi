@@ -12,7 +12,7 @@ import SelectorGroup from "components/selector-group/SelectorGroup";
 import SelectorOption from "components/selector-option/SelectorOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
-import type { Step } from "../types/Step";
+import useFormNavigation from "../state/useFormNavigation";
 import type { PropertyType } from "../types/PropertyType";
 import requiresMonthlyFee from "./helpers/requiresMonthlyFee";
 import requiresOperatingCost from "./helpers/requiresOperatingCost";
@@ -23,14 +23,12 @@ import "./step-2.css";
 interface Props {
   /** The kind of home property the user selected to tailor this step questions. */
   propertyType: PropertyType;
-
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
 }
 
-export default function Step2({ propertyType, setStep }: Props) {
+export default function Step2({ propertyType }: Props) {
   // Global state
   const { application, updateApplication } = useApplication();
+  const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
   const form = useForm({
@@ -57,7 +55,7 @@ export default function Step2({ propertyType, setStep }: Props) {
   return (
     <Form of={form} onSubmit={submitForm} id="step-2" className="mortgage-form">
       <header>
-        <ArrowGoBack onClick={() => setStep("step-1")} />
+        <ArrowGoBack onClick={goPreviousStep} />
         <h4>2. Om bostaden</h4>
       </header>
 

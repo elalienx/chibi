@@ -1,14 +1,12 @@
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import type { Step } from "../types/Step";
+import useFormNavigation from "../state/useFormNavigation";
 
-interface Props {
-  /** Allows a button to change what step to display. */
-  setStep: (step: Step) => void;
-}
+export default function IntroStep() {
+  // Global state
+  const { setStep } = useFormNavigation();
 
-export default function IntroStep({ setStep }: Props) {
   return (
     <div id="intro-step" className="mortgage-form">
       <header>
