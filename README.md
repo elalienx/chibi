@@ -29,7 +29,7 @@ Our motto is... making Lendo more Kawaii <3
 Here is an explanation of the main folders:
 
 1. **📦 Components:** The UI components of Aphrodite Chibi. Each folder contains a React TypeScript file, a Storybook file, and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component styles are divided into layout, state, design, or any unique case scenarios.
-1. **📋 Forms:** Split into `example` folders showing component behavior and `mvp` folders simulating Lendo loan application forms.
+1. **📋 Forms:** Split into `example-` folders showing component behavior and `mvp-` folders simulating Lendo loan application forms.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Aphrodite Chibi UI with Formisch and Valibot.
 1. **📑 Pages:** Astro pages for accessing the examples of forms in action. As mentioned, `index.astro` is the entry point.
 
