@@ -17,10 +17,10 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.1",
+    "@astrojs/react": "^6.0.2",
     "@floating-ui/react": "^0.27.20",
     "@formisch/react": "1.0.0-rc.0",
-    "astro": "^7.1.4",
+    "astro": "^7.1.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "valibot": "^1.4.2",
@@ -32,7 +32,7 @@
     "@types/node": "^25.9.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
+    "@vitejs/plugin-react": "^6.0.5",
     "oxfmt": "^0.37.0",
     "oxlint": "^1.76.0",
     "storybook": "^10.5.5",
