@@ -4,12 +4,12 @@ import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 
 // Project files
-import resolve from "./resolve";
+import resolveStory from "./resolveStory";
 import type MountParams from "./MountParams";
 import "styles/style.css";
 
 // Properties
-const rootEl = document.getElementById("root")!;
+const rootElement = document.getElementById("root")!;
 let root: Root | undefined;
 
 /**
@@ -18,12 +18,12 @@ let root: Root | undefined;
  * flushSync so a render error rejects the promise instead of being swallowed.
  */
 (window as any).mount = async ({ story, props }: MountParams) => {
-  const Story = await resolve(story);
+  const Story = await resolveStory(story);
 
   // Safeguards
   if (!Story) throw new Error(`Unknown story: ${story}`);
 
-  root ??= createRoot(rootEl);
+  root ??= createRoot(rootElement);
 
   flushSync(() =>
     root!.render(

@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 // Properties
 const TEST_FOLDER = "./playwright";
-const GALLERY_URL = "http://localhost:3100/playwright/index.html";
+const GALLERY_URL = "http://localhost:3100/playwright/";
 const compileFiles = "vite build --config playwright/vite.config.ts";
 const startServer = "vite preview --config playwright/vite.config.ts";
 
