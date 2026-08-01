@@ -11,25 +11,37 @@ const meta = preview.meta({
 });
 
 // Components
-const BasicModal = (
-  <div className="modal" style={{ width: "320px", padding: "32px" }}>
-    <h1>Hello world</h1>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam suscipit eveniet sit similique illo laudantium
-      perferendis quae, exercitationem officia velit non labore ullam. Neque nam vel voluptas odio laborum sequi!
-    </p>
-  </div>
-);
+interface Props {
+  /** The method to execute when pressing the close button. */
+  closeModal: () => void;
+}
+
+function BasicModal({ closeModal }: Props) {
+  // Derived state
+  const style = { width: "320px", padding: "32px", display: "flex", flexDirection: "column", gap: "16px" } as const;
+
+  return (
+    <div className="modal" style={style}>
+      <h1>Hello world</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam suscipit eveniet sit similique illo laudantium
+        perferendis quae, exercitationem officia velit non labore ullam. Neque nam vel voluptas odio laborum sequi!
+      </p>
+      <Button onClick={closeModal}>Close me</Button>
+    </div>
+  );
+}
 
 // Stories
 export const Default = meta.story({
   name: "Default",
   render: () => {
-    const { setModal } = useModal.getState(); // Instead of useModal() to reduce re-renders
+    // Global state
+    const { setModal, closeModal } = useModal.getState(); // Instead of useModal() to reduce re-renders
 
     return (
       <div>
-        <Button onClick={() => setModal(BasicModal)}>Open modal</Button>
+        <Button onClick={() => setModal(<BasicModal closeModal={closeModal} />)}>Open modal</Button>
 
         {/* This component should be at the root of each app */}
         <Modal />
