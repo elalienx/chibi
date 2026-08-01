@@ -31,7 +31,7 @@ Here is an explanation of the main folders:
 1. **📦 Components:** The UI components of Aphrodite Chibi. Each folder contains a React TypeScript file, a Storybook file, and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component styles are divided into layout, state, design, or any unique case scenarios.
 1. **📋 Forms:** Split into `example-` folders showing component behavior and `mvp-` folders simulating Lendo loan application forms.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Aphrodite Chibi UI with Formisch and Valibot.
-1. **📑 Pages:** Astro pages for accessing the examples of forms in action. As mentioned, `index.astro` is the entry point.
+1. **📑 Pages:** Astro pages for accessing the examples of forms in action.
 
 ## Terminal commands
 
@@ -41,8 +41,8 @@ All commands are run from the root of the project:
 | :--------------------- | :------------------------------------------ |
 | `pnpm install`         | Installs dependencies                       |
 | `pnpm dev`             | Starts local dev server at `localhost:4321` |
-| `pnpm format`          | Format all files using Oxfmt formatter      |
-| `pnpm lint`            | Lint all files using Oxlint linter          |
+| `pnpm format`          | Format all files using Oxfmt                |
+| `pnpm lint`            | Lint all files using Oxlint                 |
 | `pnpm playwright --ui` | Open Playwright UI viewer to run tests      |
 | `pnpm storybook`       | Open Storybook to visualize components      |
 | `pnpm test`            | Run unit tests using Vitest                 |
