@@ -3,3 +3,13 @@ hr {
   margin: 0;
   border: solid 0.5px var(--divider-border);
 }
+
+/** 
+ * Default styles applied to components displayed as modals. 
+ * For the layout CSS used by the modal manager itself, see modal-manager.css.
+ */
+.modal {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
+}

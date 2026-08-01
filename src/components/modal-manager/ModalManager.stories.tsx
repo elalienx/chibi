@@ -1,13 +1,13 @@
 // Project files
 import preview from "../../../.storybook/preview";
 import Button from "components/button/Button";
-import Modal from "./Modal";
+import ModalManager from "./ModalManager";
 import useModal from "state/useModal";
 
 // Metadata
 const meta = preview.meta({
-  title: "Components/Modal",
-  component: Modal,
+  title: "Components/Modal Manager",
+  component: ModalManager,
 });
 
 // Components
@@ -16,7 +16,7 @@ interface Props {
   closeModal: () => void;
 }
 
-function BasicModal({ closeModal }: Props) {
+function Examplemodal({ closeModal }: Props) {
   // Derived state
   const style = { width: "320px", padding: "32px", display: "flex", flexDirection: "column", gap: "16px" } as const;
 
@@ -41,10 +41,10 @@ export const Default = meta.story({
 
     return (
       <div>
-        <Button onClick={() => setModal(<BasicModal closeModal={closeModal} />)}>Open modal</Button>
+        <Button onClick={() => setModal(<Examplemodal closeModal={closeModal} />)}>Open modal</Button>
 
         {/* This component should be at the root of each app */}
-        <Modal />
+        <ModalManager />
       </div>
     );
   },

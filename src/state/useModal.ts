@@ -3,13 +3,13 @@ import { create, type StateCreator } from "zustand";
 import type { ReactNode } from "react";
 
 interface Store {
-  /** The component currently displayed inside the modal. */
+  /** The component currently displayed inside the modal manager. */
   modal: ReactNode;
 
-  /** Method to close the modal. */
+  /** Method to close a modal. */
   closeModal: () => void;
 
-  /** Method to set and automatically show the modal with a component. */
+  /** Method to set and automatically show a modal. */
   setModal: (component: ReactNode) => void;
 }
 

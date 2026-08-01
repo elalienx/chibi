@@ -3,9 +3,15 @@ import { useEffect, useRef, type MouseEvent } from "react";
 
 // Project files
 import useModal from "state/useModal";
-import "./modal.css";
+import "./modal-manager.css";
 
-export default function Modal() {
+/**
+ * About:
+ * This component is not the individual modal content or window,
+ * but rather the global manager system. It leverages the native HTML
+ * `<dialog>` element to mount and display any given React component as a modal.
+ */
+export default function ModalManager() {
   // Global state
   const { modal, closeModal } = useModal();
 
@@ -29,7 +35,7 @@ export default function Modal() {
   }
 
   return (
-    <dialog id="modal" ref={nativeDialogRef} onClick={closeOnBackgroundClick} onClose={closeModal}>
+    <dialog id="modal-manager" ref={nativeDialogRef} onClick={closeOnBackgroundClick} onClose={closeModal}>
       {modal}
     </dialog>
   );
