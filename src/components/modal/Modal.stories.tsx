@@ -17,6 +17,7 @@ interface Props {
 }
 
 function BasicModal({ closeModal }: Props) {
+  // Derived state
   const style = { width: "320px", padding: "32px", display: "flex", flexDirection: "column", gap: "16px" } as const;
 
   return (
@@ -35,8 +36,8 @@ function BasicModal({ closeModal }: Props) {
 export const Default = meta.story({
   name: "Default",
   render: () => {
-    const setModal = useModal((state: any) => state.setModal);
-    const closeModal = useModal((state: any) => state.closeModal);
+    // Global state
+    const { setModal, closeModal } = useModal.getState(); // Instead of useModal() to reduce re-renders
 
     return (
       <div>
