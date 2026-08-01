@@ -1,13 +1,13 @@
 // Project files
 import preview from "../../../.storybook/preview";
 import Button from "components/button/Button";
-import Modal from "./Modal";
+import ModalManager from "./ModalManager";
 import useModal from "state/useModal";
 
 // Metadata
 const meta = preview.meta({
-  title: "Components/Modal",
-  component: Modal,
+  title: "Components/Modal Manager",
+  component: ModalManager,
 });
 
 // Components
@@ -44,7 +44,7 @@ export const Default = meta.story({
         <Button onClick={() => setModal(<BasicModal closeModal={closeModal} />)}>Open modal</Button>
 
         {/* This component should be at the root of each app */}
-        <Modal />
+        <ModalManager />
       </div>
     );
   },

@@ -2,7 +2,7 @@
 import Button from "components/button/Button";
 import GuinessModal from "./GuinessModal";
 import useModal from "state/useModal";
-import Modal from "components/modal/Modal";
+import ModalManager from "components/modal-manager/ModalManager";
 import PCEngineModal from "./PCEngineModal";
 
 export default function FormPage() {
@@ -32,7 +32,7 @@ export default function FormPage() {
       </footer>
 
       {/* This component should be at the root of each app */}
-      <Modal />
+      <ModalManager />
     </div>
   );
 }
