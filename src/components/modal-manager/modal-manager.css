@@ -8,9 +8,3 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
-
-.modal {
-  background-color: white;
-  border-radius: var(--card-border-radius);
-  box-shadow: var(--box-shadow);
-}

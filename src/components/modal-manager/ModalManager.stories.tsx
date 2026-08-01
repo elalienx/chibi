@@ -16,7 +16,7 @@ interface Props {
   closeModal: () => void;
 }
 
-function BasicModal({ closeModal }: Props) {
+function Examplemodal({ closeModal }: Props) {
   // Derived state
   const style = { width: "320px", padding: "32px", display: "flex", flexDirection: "column", gap: "16px" } as const;
 
@@ -41,7 +41,7 @@ export const Default = meta.story({
 
     return (
       <div>
-        <Button onClick={() => setModal(<BasicModal closeModal={closeModal} />)}>Open modal</Button>
+        <Button onClick={() => setModal(<Examplemodal closeModal={closeModal} />)}>Open modal</Button>
 
         {/* This component should be at the root of each app */}
         <ModalManager />
