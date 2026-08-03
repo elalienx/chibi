@@ -37,12 +37,12 @@ Here is an explanation of the main folders:
 
 All commands are run from the root of the project:
 
-| Command                | Action                                      |
-| :--------------------- | :------------------------------------------ |
-| `pnpm install`         | Installs dependencies                       |
-| `pnpm dev`             | Starts local dev server at `localhost:4321` |
-| `pnpm format`          | Format all files using Oxfmt                |
-| `pnpm lint`            | Lint all files using Oxlint                 |
-| `pnpm playwright --ui` | Open Playwright UI viewer to run tests      |
-| `pnpm storybook`       | Open Storybook to visualize components      |
-| `pnpm test`            | Run unit tests using Vitest                 |
+| Command                | Action                                       |
+| :--------------------- | :------------------------------------------- |
+| `pnpm install`         | Installs dependencies                        |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`  |
+| `pnpm format`          | Format all files using Oxfmt                 |
+| `pnpm lint`            | Lint all files using Oxlint                  |
+| `pnpm playwright --ui` | Run component tests using Playwright UI mode |
+| `pnpm storybook`       | Preview components using Storybook           |
+| `pnpm test`            | Run unit tests using Vitest                  |
