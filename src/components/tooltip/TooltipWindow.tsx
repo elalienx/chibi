@@ -26,14 +26,7 @@ interface Props {
   setFloating: (node: HTMLElement | null) => void;
 }
 
-export default function TooltipWindow({
-  arrowRef,
-  children,
-  context,
-  floatingStyles,
-  getFloatingProps,
-  setFloating,
-}: Props) {
+function TooltipWindow({ arrowRef, children, context, floatingStyles, getFloatingProps, setFloating }: Props) {
   return (
     <FloatingFocusManager context={context} modal={false}>
       <div
@@ -52,7 +45,12 @@ export default function TooltipWindow({
           <div className="content">{children}</div>
 
           {/* Close button */}
-          <button type="button" className="close-button" onClick={() => context.onOpenChange(false)}>
+          <button
+            aria-label="Stäng dialogruta"
+            className="close-button"
+            onClick={() => context.onOpenChange(false)}
+            type="button"
+          >
             <Icon name="x-mark" />
           </button>
         </div>
@@ -60,3 +58,5 @@ export default function TooltipWindow({
     </FloatingFocusManager>
   );
 }
+
+export default TooltipWindow;
