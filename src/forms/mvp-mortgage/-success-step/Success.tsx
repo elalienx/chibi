@@ -35,7 +35,7 @@ export default function Success() {
             Therefore your {feeType} is {formatedFeePrice} SEK.
           </p>
           <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
-          <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
+          <p>Feel free to criticize everything from missing icons, incorrect spacing, font size, etc.</p>
         </div>
       </section>
 
