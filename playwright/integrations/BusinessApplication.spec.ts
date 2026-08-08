@@ -21,7 +21,7 @@ test("Should be able to submit with no debt", async ({ mount }) => {
   await test.step("Acceptance", async () => {
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
-    await expect(form.getByText("You turnover is 1 000 000 kr and your existing debt is 0 kr.")).toBeVisible();
+    await expect(form.getByText("Your turnover is 1 000 000 kr and your existing debt is 0 kr.")).toBeVisible();
   });
 });
 
@@ -46,6 +46,6 @@ test("Should be able to submit with debt", async ({ mount }) => {
   await test.step("Acceptance", async () => {
     await form.getByRole("heading", { name: "Form submitted" }).waitFor();
 
-    await expect(form.getByText("You turnover is 500 000 kr and your existing debt is 250 000 kr.")).toBeVisible();
+    await expect(form.getByText("Your turnover is 500 000 kr and your existing debt is 250 000 kr.")).toBeVisible();
   });
 });

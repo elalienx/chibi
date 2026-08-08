@@ -27,10 +27,10 @@ export default function Success() {
       <section>
         <div className="content">
           <p>
-            You turnover is {formattedTurnover} kr and your existing debt is {formattedLoanDebt} kr.
+            Your turnover is {formattedTurnover} kr and your existing debt is {formattedLoanDebt} kr.
           </p>
           <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
-          <p>Feel free to critizise everything from missing icons, incorrect spacing, font size, etc.</p>
+          <p>Feel free to criticize everything from missing icons, incorrect spacing, font size, etc.</p>
         </div>
       </section>
 
