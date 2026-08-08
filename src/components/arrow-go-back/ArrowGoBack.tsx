@@ -12,7 +12,7 @@ interface Props {
 
 export default function ArrowGoBack({ onClick, hideLabel = false }: Props) {
   return (
-    <button className="arrow-go-back" onClick={onClick} type="button" aria-label={hideLabel ? "Tillbaka" : undefined}>
+    <button aria-label={hideLabel ? "Tillbaka" : undefined} className="arrow-go-back" onClick={onClick} type="button">
       <Icon name="arrow-left" />
       {!hideLabel && <>Tillbaka</>}
     </button>

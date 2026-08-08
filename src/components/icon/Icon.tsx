@@ -12,7 +12,7 @@ export default function Icon({ name }: Props) {
   const icon = icons[name] || icons._default;
 
   return (
-    <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+    <svg className="icon" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
       <path d={icon} />
     </svg>
   );
