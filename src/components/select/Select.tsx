@@ -28,7 +28,7 @@ export default function Select({ id, anchorId, children, activeText }: Props) {
   const textToDisplay = activeText ? activeText : children;
 
   return (
-    <button id={id} type="button" className="select" popoverTarget={listId} style={{ anchorName: anchorId }}>
+    <button id={id} className="select" popoverTarget={listId} style={{ anchorName: anchorId }} type="button">
       {textToDisplay}
       <Icon name={"chevron-down"} />
     </button>

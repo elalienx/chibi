@@ -43,16 +43,16 @@ export default function Tooltip({ children }: Props) {
   return (
     <>
       {/* Trigger */}
-      <TooltipTrigger setReference={refs.setReference} getReferenceProps={getReferenceProps} />
+      <TooltipTrigger getReferenceProps={getReferenceProps} setReference={refs.setReference} />
 
       {/* Window */}
       {isOpen && (
         <TooltipWindow
-          setFloating={refs.setFloating}
+          arrowRef={arrowRef}
+          context={context}
           floatingStyles={floatingStyles}
           getFloatingProps={getFloatingProps}
-          context={context}
-          arrowRef={arrowRef}
+          setFloating={refs.setFloating}
         >
           {children}
         </TooltipWindow>
