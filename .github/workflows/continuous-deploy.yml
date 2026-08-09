@@ -8,6 +8,9 @@ jobs:
   deploy:
     name: Firebase hosting
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       - name: Checkout code
