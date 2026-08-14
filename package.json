@@ -20,23 +20,23 @@
     "@astrojs/react": "^6.0.2",
     "@floating-ui/react": "^0.27.20",
     "@formisch/react": "1.0.0-rc.0",
-    "astro": "^7.1.6",
+    "astro": "^7.2.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "valibot": "^1.4.2",
-    "zustand": "^5.0.14"
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "@storybook/react-vite": "^10.5.6",
+    "@storybook/react-vite": "^10.5.7",
     "@types/node": "^25.9.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
     "oxfmt": "^0.37.0",
-    "oxlint": "^1.77.0",
-    "storybook": "^10.5.6",
-    "vite": "^8.2.0",
+    "oxlint": "^1.78.0",
+    "storybook": "^10.5.7",
+    "vite": "^8.2.1",
     "vitest": "^4.1.10"
   },
   "packageManager": "pnpm@11.19.0+sha512.7881f3ed590d472c4a955e2b88b2121791116066dcc88cbca3849ec9b60f1bbaa6d2ccb221fa91da4e1c65bef2bcbe379365aea7ac539c7bf86dedc3a1b22dce"
