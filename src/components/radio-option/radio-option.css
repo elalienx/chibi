@@ -8,6 +8,10 @@
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
 
+  input[type="radio"] {
+    margin: 0; /* We control the spacing using flex. */
+  }
+
   /* Animation */
   transition:
     background-color 0.15s ease-in,
