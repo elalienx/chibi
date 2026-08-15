@@ -17,7 +17,7 @@
   transition: background 0.1s;
 
   /* Removes the radio bullet/dot */
-  & input[type="radio"] {
+  input {
     appearance: none;
     margin: 0;
     width: 0;
@@ -33,7 +33,7 @@
  * We use the CSS :has() selector to style the label
  * based on the input’s state (hover or checked).
  */
-.select-option:has(input[type="radio"]:checked) {
+.select-option:has(input:checked) {
   background-color: var(--color-blue-40);
   color: white;
 }
