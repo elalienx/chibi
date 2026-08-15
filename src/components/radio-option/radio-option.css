@@ -8,7 +8,7 @@
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
 
-  input[type="radio"] {
+  input {
     margin: 0; /* We control the spacing using flex. */
   }
 
@@ -24,12 +24,12 @@
  * We use the CSS :has() selector to style the label
  * based on the input’s state (hover or checked).
  */
-.radio-option:has(input[type="radio"]:hover) {
+.radio-option:has(input:hover) {
   border-color: var(--input-border-hover);
   outline: solid 1px var(--input-border-hover);
 }
 
-.radio-option:has(input[type="radio"]:checked) {
+.radio-option:has(input:checked) {
   --color-background: var(--color-green-40);
   --color-accent: white;
 
@@ -38,7 +38,7 @@
   border-color: var(--color-background);
   outline: solid 1px var(--color-background);
 
-  input[type="radio"]:checked {
+  input:checked {
     accent-color: var(--color-accent);
   }
 }
