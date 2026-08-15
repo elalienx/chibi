@@ -16,17 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Enable pnpm
-        run: corepack enable
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
+      - name: Install pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          node-version: 24
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          version: next-12
+          runtime: node@lts
+          cache: true
 
       - name: Astro build
         run: pnpm build
