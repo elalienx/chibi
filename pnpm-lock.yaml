@@ -15,8 +15,8 @@ importers:
         specifier: ^0.27.20
         version: 0.27.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@formisch/react':
-        specifier: 1.0.0-rc.0
-        version: 1.0.0-rc.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))
+        specifier: ^1.0.0
+        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))
       astro:
         specifier: ^7.2.4
         version: 7.2.4(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@types/node@25.9.5)
@@ -515,13 +515,13 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@formisch/react@1.0.0-rc.0':
-    resolution: {integrity: sha512-KLYvwpg1MGubT3JutG/3S+iy7zktkDoLmI1Gl991ZKkKMTttyZBJC+gQet5UwOLTB7XDiuxQ3AaTQqs1o34a4w==}
+  '@formisch/react@1.0.0':
+    resolution: {integrity: sha512-3lHzk6orMgzvbgfEWZ4G/rTQie5/LB8/ffPIUjM1jQ0vnqZCeDfi2c70toa6DM6bDVN5BrYc7sAu+Ekb2t92vg==}
     peerDependencies:
-      react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      typescript: '>=5'
-      valibot: ^1.4.1
+      react: '>=16.8.0 <20'
+      react-dom: '>=16.8.0 <20'
+      typescript: '>=5 <8'
+      valibot: '>=1.4.1 <2'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -3406,7 +3406,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@formisch/react@1.0.0-rc.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))':
+  '@formisch/react@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))':
     dependencies:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
