@@ -21,12 +21,12 @@
 
 /* Fonts */
 :root {
-  --font-family: "Circular Pro", ui-sans-serif, sans-serif;
+  --font-family: "Figtree", ui-sans-serif, sans-serif;
   --font-size-normal: 16px;
   --font-size-small: 12px;
   --font-weight-bold: 700;
   --font-weight-medium: 500;
-  --font-weight-normal: 450;
+  --font-weight-normal: 450; 
 }
 
 /* Colors tokens */

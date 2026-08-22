@@ -1,23 +1,7 @@
 @font-face {
-  font-family: "Circular Pro";
-  src: url("/fonts/circular-pro-bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Circular Pro";
-  src: url("/fonts/circular-pro-medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Circular Pro";
-  src: url("/fonts/circular-pro-book.woff2") format("woff2");
-  font-weight: 450;
+  font-family: "Figtree";
+  src: url("/fonts/Figtree-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 900;
   font-style: normal;
   font-display: swap;
 }
