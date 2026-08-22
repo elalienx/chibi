@@ -21,7 +21,7 @@ interface Props<TProps extends {}> {
 export default function extractComponent<TProps extends {}>({ component, extractFrom, props }: Props<TProps>) {
   const components = Children.toArray(extractFrom);
   const child = components.find((child) => isValidElement(child) && child.type === component);
-  const rawProps = Object.entries(props).filter(([_, value]) => value !== undefined);
+  const rawProps = Object.entries(props).filter(([, value]) => value !== undefined);
   const cleanProps = Object.fromEntries(rawProps);
 
   // Safeguards
