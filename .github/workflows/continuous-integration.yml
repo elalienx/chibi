@@ -19,7 +19,7 @@ jobs:
       - name: Install pnpm and Node.js
         uses: pnpm/setup@v2
         with:
-          version: next-12
+          version: 12
           runtime: node@lts
           cache: true
 
