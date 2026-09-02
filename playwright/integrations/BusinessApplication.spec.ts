@@ -11,7 +11,7 @@ test("Should be able to submit with no debt", async ({ mount }) => {
 
   await test.step("Step 4: About the company", async () => {
     await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
-    await form.getByRole("button", { name: "Ditt lånesyfte" }).click();
+    await form.getByRole("textbox", { name: "Ditt lånesyfte" }).click();
     await form.getByText("Renovering av lokal").click();
     await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(1_000_000));
     await form.locator("#has_existing_loans").getByText("Nej").click();
@@ -35,7 +35,7 @@ test("Should be able to submit with debt", async ({ mount }) => {
 
   await test.step("Step 4: About the company", async () => {
     await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
-    await form.getByRole("button", { name: "Ditt lånesyfte" }).click();
+    await form.getByRole("textbox", { name: "Ditt lånesyfte" }).click();
     await form.getByText("Renovering av lokal").click();
     await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(500_000));
     await form.locator("#has_existing_loans").getByText("Ja").click();
