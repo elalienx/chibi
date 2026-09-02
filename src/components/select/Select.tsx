@@ -1,8 +1,10 @@
 // Node modules
-import type { ReactNode } from "react";
+import type { MouseEvent } from "react";
+import type { FormStore } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
+import Input from "components/input/Input";
 import "./select.css";
 
 interface Props {
@@ -12,25 +14,39 @@ interface Props {
   /** The position where the popover will attach to the <Select>. */
   anchorId?: string;
 
-  /** Text to display inside the selector option. */
-  children: ReactNode;
+  /** Text to display when no option is selected. */
+  children: string;
+
+  /** An instance of a Formisch form. */
+  form?: FormStore;
 
   /** The text inside the user selected option. */
-  activeText?: ReactNode;
+  activeText?: string;
 }
 
-export default function Select({ id, anchorId, children, activeText }: Props) {
+export default function Select({ id, anchorId, children, form, activeText }: Props) {
   // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
+  if (!form) return <p>This component requires a Formisch form</p>;
 
   // Derived state
   const listId = `list-${id}`;
-  const textToDisplay = activeText ? activeText : children;
+
+  // Methods
+  function toggleOptions(event: MouseEvent<HTMLDivElement>): void {
+    const target = event.target;
+    const validationMessage = ".input-validation-message";
+
+    // Safeguard
+    if (!(target instanceof Element) || target.closest(validationMessage)) return; // Avoids closing the list in case you touch the error message by mistake
+
+    document.getElementById(listId)?.togglePopover();
+  }
 
   return (
-    <button id={id} className="select" popoverTarget={listId} style={{ anchorName: anchorId }} type="button">
-      {textToDisplay}
+    <div className="select" onClick={toggleOptions} style={{ anchorName: anchorId }}>
+      <Input displayValue={activeText ?? ""} form={form} id={id} placeholder={children} readOnly type="text" />
       <Icon name={"chevron-down"} />
-    </button>
+    </div>
   );
 }

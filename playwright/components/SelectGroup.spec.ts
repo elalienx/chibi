@@ -38,7 +38,7 @@ test("1. Should show error state when submitting empty form", async () => {
 test("2. Should not submit when choosing only 1 option", async () => {
   // Arrange
   await test.step("First select", async () => {
-    await form.getByRole("button", { name: item1 }).click();
+    await form.getByRole("textbox", { name: item1 }).click();
     await form.getByText(item1Option1).click();
   });
 
@@ -54,11 +54,11 @@ test("2. Should not submit when choosing only 1 option", async () => {
 test("3. Should be able to submit", async () => {
   // Arrange
   await test.step("First select", async () => {
-    await form.getByRole("button", { name: item1 }).click();
+    await form.getByRole("textbox", { name: item1 }).click();
     await form.getByText(item1Option1).click();
   });
   await test.step("Second select", async () => {
-    await form.getByRole("button", { name: item2 }).click();
+    await form.getByRole("textbox", { name: item2 }).click();
     await form.getByText(item2Option1).click();
   });
 
@@ -75,11 +75,11 @@ test("3. Should be able to submit", async () => {
 test("4. Should be able to submit a long list", async () => {
   // Arrange
   await test.step("First select", async () => {
-    await form.getByRole("button", { name: item1 }).click();
+    await form.getByRole("textbox", { name: item1 }).click();
     await form.getByText(item1Option1).click();
   });
   await test.step("Second select", async () => {
-    await form.getByRole("button", { name: item2 }).click();
+    await form.getByRole("textbox", { name: item2 }).click();
     await form.getByText(item2Option2).click();
   });
 

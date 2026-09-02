@@ -15,6 +15,12 @@ export default interface InputProps {
   /** An example value to show when the field is empty. */
   placeholder?: string;
 
+  /** Prevents direct text editing when Input is used as a Select trigger. */
+  readOnly?: boolean;
+
+  /** Used to display the user-friendly name of the select option; otherwise, it would show the database value. Example: "car_2" instead of "Bil Två". */
+  displayValue?: string;
+
   /** Decoration text on the right side of the input. Used to indicate a currency or measurement unit. */
   suffix?: string;
 

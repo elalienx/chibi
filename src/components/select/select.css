@@ -1,23 +1,16 @@
 .select {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Pushes the selected option to the left and the chevron icon to the right. */
-  gap: var(--space-medium);
-  height: var(--height-of-field);
-  padding-inline: var(--space-medium);
-  background-color: white;
-  color: var(--typography-default);
-  text-align: start;
-  font-family: var(--font-family);
-  font-size: var(--font-size-normal);
-  font-weight: var(--font-weight-normal);
-  border: solid 1px var(--input-border-up);
-  border-radius: var(--border-radius);
-  outline: transparent;
-}
+  position: relative;
 
-.select:hover {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: var(--input-border-hover);
+  .input {
+    padding-right: calc(var(--space-medium) * 3);
+    cursor: pointer;
+  }
+
+  > .icon {
+    position: absolute;
+    top: calc(var(--height-of-field) / 2);
+    right: var(--space-medium);
+    translate: 0 -50%;
+    pointer-events: none;
+  }
 }
