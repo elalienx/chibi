@@ -11,15 +11,7 @@ import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputText({
-  id,
-  form,
-  placeholder = "",
-  readOnly = false,
-  selectDisplayValue,
-  suffix,
-  type,
-}: InputProps) {
+export default function InputText({ id, form, placeholder, readOnly, selectDisplayValue, suffix, type }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
