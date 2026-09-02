@@ -43,7 +43,7 @@ export default function Select({ id, anchorId, children, form, activeText }: Pro
 
   return (
     <div className="select" onClick={toggleOptions} style={{ anchorName: anchorId }}>
-      <Input form={form} id={id} placeholder={children} readOnly selectDisplayValue={activeText ?? ""} type="text" />
+      <Input displayValue={activeText ?? ""} form={form} id={id} placeholder={children} readOnly type="text" />
       <Icon name={"chevron-down"} />
     </div>
   );

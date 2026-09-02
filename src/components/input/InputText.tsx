@@ -11,7 +11,7 @@ import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputText({ id, form, placeholder, readOnly, selectDisplayValue, suffix, type }: InputProps) {
+export default function InputText({ displayValue, id, form, placeholder, readOnly, suffix, type }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -24,7 +24,7 @@ export default function InputText({ id, form, placeholder, readOnly, selectDispl
   // Derived state
   const ariaErrorId = `aria-error-${id}`;
   const cssSuffix = suffix ? "has-suffix" : "";
-  const customValue = selectDisplayValue ?? String(field.input ?? "");
+  const customValue = displayValue ?? String(field.input ?? "");
   const inputState = getInputState(form, field, committedState, isFocused);
   const mobileKeyboard = getCorrectMobileKeyboard(type);
   const hasErrors = inputState === "error" && field.errors;
