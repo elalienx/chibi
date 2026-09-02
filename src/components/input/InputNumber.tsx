@@ -56,7 +56,7 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
         {...field.props}
         id={id}
         aria-errormessage={ariaErrorId}
-        aria-invalid={!!field.errors}
+        aria-invalid={!!hasErrors}
         className="input type-number"
         inputMode={mobileKeyboard}
         onBlur={onBlur}
