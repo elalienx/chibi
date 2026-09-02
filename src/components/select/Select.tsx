@@ -35,8 +35,10 @@ export default function Select({ id, anchorId, children, form, activeText }: Pro
   // Methods
   function toggleOptions(event: MouseEvent<HTMLDivElement>): void {
     const target = event.target;
+    const validationMessage = ".input-validation-message";
 
-    if (!(target instanceof Element) || target.closest(".input-validation-message")) return;
+    // Safeguard
+    if (!(target instanceof Element) || target.closest(validationMessage)) return; // Avoids closing the list in case you touch the error message by mistake
 
     document.getElementById(listId)?.togglePopover();
   }
