@@ -48,7 +48,7 @@ export default function InputText({ displayValue, id, form, placeholder, readOnl
         {...field.props}
         id={id}
         aria-errormessage={ariaErrorId}
-        aria-invalid={!!field.errors}
+        aria-invalid={!!hasErrors}
         className="input"
         inputMode={mobileKeyboard}
         onBlur={onBlur}
