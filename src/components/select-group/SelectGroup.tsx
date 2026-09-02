@@ -6,7 +6,6 @@ import { useField, type FormStore } from "@formisch/react";
 import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectOption from "components/select-option/SelectOption";
-import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
 import extractOptions from "helpers/extractOptions";
 import "./select-group.css";
@@ -35,23 +34,24 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
 
   // Derived state
   const anchorId = `--anchor-${id}`; // Requires "--" to work properly.
-  const ariaErrorId = `aria-error-${id}`;
   const listId = `list-${id}`;
-  const hasErrors = form.isSubmitted && field.errors;
 
   // Components
   const hint = hints?.[id];
   const label = extractComponent({ component: Label, extractFrom: children, props: { id, hint } });
   const selectOptions = extractOptions({ component: SelectOption, extractFrom: children, props: { id, field } });
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
-  const activeText = activeOption && activeOption.props.children;
-  const select = extractComponent({ component: Select, extractFrom: children, props: { id, anchorId, activeText } });
+  const activeText = typeof activeOption?.props.children === "string" ? activeOption.props.children : undefined;
+  const select = extractComponent({
+    component: Select,
+    extractFrom: children,
+    props: { id, anchorId, activeText, form },
+  });
 
   return (
     <div className="select-group">
       {label}
       {select}
-      {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors[0]}</ValidationMessage>}
       <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
       </div>
