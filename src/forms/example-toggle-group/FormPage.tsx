@@ -6,8 +6,8 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Label from "components/label/Label";
-import SelectorGroup from "components/selector-group/SelectorGroup";
-import SelectorOption from "components/selector-option/SelectorOption";
+import ToggleGroup from "components/toggle-group/ToggleGroup";
+import ToggleOption from "components/toggle-option/ToggleOption";
 
 const schema = v.object({
   likes_beer: v.pipe(v.string(), v.nonEmpty("Say either yes or no.")),
@@ -25,32 +25,32 @@ export default function FormPage() {
 
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
-    const selectorString = values.likes_beer;
-    const selectorBoolean = values.likes_guiness;
-    const validateBoolean = typeof selectorBoolean === "boolean" ? (selectorBoolean ? "TRUE" : "FALSE") : "NON BOOLEAN";
+    const toggleString = values.likes_beer;
+    const toggleBoolean = values.likes_guiness;
+    const validateBoolean = typeof toggleBoolean === "boolean" ? (toggleBoolean ? "TRUE" : "FALSE") : "NON BOOLEAN";
 
-    setResult(`Result: Selector 1 "${selectorString}" | Selector 2: ${validateBoolean}`);
+    setResult(`Result: Toggle 1 "${toggleString}" | Toggle 2: ${validateBoolean}`);
     alert("Success");
   }
 
   return (
     <Form of={form} onSubmit={submitForm} className="default-form">
       <header>
-        <h4>Selector group tests</h4>
+        <h4>Toggle group tests</h4>
       </header>
 
       <section>
-        <SelectorGroup form={form} id="likes_beer">
+        <ToggleGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
-          <SelectorOption value="yes">Yes</SelectorOption>
-          <SelectorOption value="no">No</SelectorOption>
-        </SelectorGroup>
+          <ToggleOption value="yes">Yes</ToggleOption>
+          <ToggleOption value="no">No</ToggleOption>
+        </ToggleGroup>
 
-        <SelectorGroup form={form} id="likes_guiness">
+        <ToggleGroup form={form} id="likes_guiness">
           <Label>Do you like Guiness?</Label>
-          <SelectorOption value={true}>Yes</SelectorOption>
-          <SelectorOption value={false}>No</SelectorOption>
-        </SelectorGroup>
+          <ToggleOption value={true}>Yes</ToggleOption>
+          <ToggleOption value={false}>No</ToggleOption>
+        </ToggleGroup>
       </section>
 
       <hr />

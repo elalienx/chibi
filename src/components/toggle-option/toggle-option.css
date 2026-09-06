@@ -1,4 +1,4 @@
-.selector-option {
+.toggle-option {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,11 +30,11 @@
  * We use the CSS :has() selector to style the label
  * based on the input’s state (hover or checked).
  */
-.selector-option:has(input:hover) {
+.toggle-option:has(input:hover) {
   background-color: var(--color-green-95);
 }
 
-.selector-option:has(input:checked) {
+.toggle-option:has(input:checked) {
   --color-background: var(--color-green-40);
 
   background-color: var(--color-background);

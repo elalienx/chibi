@@ -4,12 +4,12 @@ import * as v from "valibot";
 
 // Project files
 import preview from "../../../.storybook/preview";
-import SelectorOption from "./SelectorOption";
+import ToggleOption from "./ToggleOption";
 
 // Metadata
 const meta = preview.meta({
-  title: "Form atoms/Selector Option",
-  component: SelectorOption,
+  title: "Form atoms/Toggle Option",
+  component: ToggleOption,
 });
 
 // Properties
@@ -30,9 +30,9 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <SelectorOption field={field as FieldStore} id="favorite_beer" value={true}>
+        <ToggleOption field={field as FieldStore} id="favorite_beer" value={true}>
           Guiness Beer
-        </SelectorOption>
+        </ToggleOption>
       </Form>
     );
   },
@@ -51,9 +51,9 @@ export const Selected = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <SelectorOption field={field as FieldStore} id="favorite_beer" value={true}>
+        <ToggleOption field={field as FieldStore} id="favorite_beer" value={true}>
           Guiness Beer
-        </SelectorOption>
+        </ToggleOption>
       </Form>
     );
   },

@@ -12,7 +12,7 @@ const textNo = "No";
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount("forms/example-selector-group/FormPage/Default");
+  form = await mount("forms/example-toggle-group/FormPage/Default");
 });
 
 test.afterEach(async () => {
@@ -42,7 +42,7 @@ test("2. Should submit form without errors (boolean is TRUE)", async () => {
   // Assert
   await expect(form.locator(error1)).not.toBeVisible();
   await expect(form.locator(error2)).not.toBeVisible();
-  await expect(form.getByText("Selector 2: TRUE")).toBeVisible();
+  await expect(form.getByText("Toggle 2: TRUE")).toBeVisible();
 });
 
 test("3. Should submit form without errors (boolean is FALSE)", async () => {
@@ -56,10 +56,10 @@ test("3. Should submit form without errors (boolean is FALSE)", async () => {
   // Assert
   await expect(form.locator(error1)).not.toBeVisible();
   await expect(form.locator(error2)).not.toBeVisible();
-  await expect(form.getByText("Selector 2: FALSE")).toBeVisible();
+  await expect(form.getByText("Toggle 2: FALSE")).toBeVisible();
 });
 
-test("4. Clicking on a selector with error should immediately remove the error", async () => {
+test("4. Clicking on a toggle with error should immediately remove the error", async () => {
   await test.step("Trigger error", async () => {
     // Arrange
     await form.locator(item1).getByText(textYes).click();

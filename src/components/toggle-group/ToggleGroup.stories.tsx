@@ -4,14 +4,14 @@ import * as v from "valibot";
 
 // Project files
 import preview from "../../../.storybook/preview";
-import SelectorGroup from "./SelectorGroup";
+import ToggleGroup from "./ToggleGroup";
 import Label from "components/label/Label";
-import SelectorOption from "components/selector-option/SelectorOption";
+import ToggleOption from "components/toggle-option/ToggleOption";
 
 // Metadata
 const meta = preview.meta({
-  title: "Form fields/Selector Group",
-  component: SelectorGroup,
+  title: "Form fields/Toggle Group",
+  component: ToggleGroup,
 });
 
 // Properties
@@ -20,21 +20,21 @@ const schema = v.object({ source_of_income });
 
 // Stories
 export const Default = meta.story({
-  name: "SelectorGroup",
+  name: "ToggleGroup",
   render: () => {
     // Local state
     const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <SelectorGroup form={form} id="source_of_income">
+        <ToggleGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
-          <SelectorOption value="savings">Savings</SelectorOption>
-          <SelectorOption value="salary">Salary</SelectorOption>
-          <SelectorOption value="inheritance">Inheritance</SelectorOption>
-          <SelectorOption value="pension">Pension</SelectorOption>
-          <SelectorOption value="other">Other</SelectorOption>
-        </SelectorGroup>
+          <ToggleOption value="savings">Savings</ToggleOption>
+          <ToggleOption value="salary">Salary</ToggleOption>
+          <ToggleOption value="inheritance">Inheritance</ToggleOption>
+          <ToggleOption value="pension">Pension</ToggleOption>
+          <ToggleOption value="other">Other</ToggleOption>
+        </ToggleGroup>
       </Form>
     );
   },

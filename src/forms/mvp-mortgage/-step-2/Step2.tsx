@@ -8,8 +8,8 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import SelectorGroup from "components/selector-group/SelectorGroup";
-import SelectorOption from "components/selector-option/SelectorOption";
+import ToggleGroup from "components/toggle-group/ToggleGroup";
+import ToggleOption from "components/toggle-option/ToggleOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
@@ -61,11 +61,11 @@ export default function Step2({ propertyType }: Props) {
 
       <section>
         {isTerracedHouse && (
-          <SelectorGroup form={form} hints={Hints} id="tenancy_type">
+          <ToggleGroup form={form} hints={Hints} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
-            <SelectorOption value="agreement">Bostadsrätt</SelectorOption>
-            <SelectorOption value="ownership">Äganderätt</SelectorOption>
-          </SelectorGroup>
+            <ToggleOption value="agreement">Bostadsrätt</ToggleOption>
+            <ToggleOption value="ownership">Äganderätt</ToggleOption>
+          </ToggleGroup>
         )}
 
         <InputField form={form} id="size">
