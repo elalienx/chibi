@@ -6,10 +6,10 @@ import type { FieldStore } from "@formisch/react";
 import "./select-option.css";
 
 interface Props {
-  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
+  /** Unique identifier of the parent select group. */
   id?: string;
 
-  /** Text to display inside the selector option. */
+  /** Text to display inside the select option. */
   children: ReactNode;
 
   /** An instance of a Formisch form. */

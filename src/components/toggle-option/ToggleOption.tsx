@@ -3,13 +3,13 @@ import type { ChangeEvent, FocusEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
-import "./selector-option.css";
+import "./toggle-option.css";
 
 interface Props {
-  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
+  /** Unique identifier of the parent toggle group to make sure only one toggle option is active. */
   id?: string;
 
-  /** Text to display inside the selector option. */
+  /** Text to display inside the toggle option. */
   children: ReactNode;
 
   /** An instance of a Formisch form. */
@@ -19,9 +19,9 @@ interface Props {
   value: string | number | boolean;
 }
 
-export default function SelectorOption({ id, children, field, value }: Props) {
+export default function ToggleOption({ id, children, field, value }: Props) {
   // Safeguards
-  if (!id) return <p>Pass an id to know which field this selector belongs</p>;
+  if (!id) return <p>Pass an id to know which field this toggle belongs</p>;
   if (!field) return <p>This component requires a Formisch field</p>;
 
   // Derived state
@@ -34,7 +34,7 @@ export default function SelectorOption({ id, children, field, value }: Props) {
   }
 
   return (
-    <label className="selector-option">
+    <label className="toggle-option">
       <input
         {...field.props}
         checked={field.input === stringValue}

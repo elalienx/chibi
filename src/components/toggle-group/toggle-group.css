@@ -1,4 +1,4 @@
-.selector-group {
+.toggle-group {
   display: flex;
   flex-direction: column;
   gap: var(--gap-between-label-and-field);
@@ -23,7 +23,7 @@
 
 /* Tablet */
 @media (min-width: 550px) {
-  .selector-group {
+  .toggle-group {
     width: auto;
   }
 }

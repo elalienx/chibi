@@ -26,7 +26,7 @@ interface Props {
 
 export default function SelectGroup({ id, children, form, hints }: Props) {
   // Safeguards
-  if (!children) return <p>Please add a Label and at least two SelectorOption to get started</p>;
+  if (!children) return <p>Please add a Label and at least two SelectOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
