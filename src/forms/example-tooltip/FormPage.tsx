@@ -7,11 +7,10 @@ import Button from "components/button/Button";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
-import Tooltip from "components/tooltip/Tooltip";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
-import ToggleOption from "components/toggle-option/ToggleOption";
+import Tooltip from "components/tooltip/Tooltip";
 import GuinessTooltip from "./GuinessTooltip";
 
 const schema = v.object({
@@ -52,14 +51,14 @@ export default function FormPage() {
 
         <RadioGroup form={form} hints={hints} id="likes_beer">
           <Label>Do you like beer?</Label>
-          <RadioOption value="yes">Yes</RadioOption>
-          <RadioOption value="no">No</RadioOption>
+          <Option value="yes">Yes</Option>
+          <Option value="no">No</Option>
         </RadioGroup>
 
         <ToggleGroup form={form} hints={hints} id="favorite_brand">
           <Label hint={GuinessTooltip}>Which brand do you like the most?</Label>
-          <ToggleOption value="guiness">Guiness</ToggleOption>
-          <ToggleOption value="heineken">Heineken</ToggleOption>
+          <Option value="guiness">Guiness</Option>
+          <Option value="heineken">Heineken</Option>
         </ToggleGroup>
       </section>
 

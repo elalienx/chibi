@@ -31,11 +31,11 @@ export const Default = meta.story({
         <SelectGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
           <Select>Choose an option</Select>
-          <SelectOption value="savings">Savings</SelectOption>
-          <SelectOption value="salary">Salary</SelectOption>
-          <SelectOption value="inheritance">Inheritance</SelectOption>
-          <SelectOption value="pension">Pension</SelectOption>
-          <SelectOption value="other">Other</SelectOption>
+          <Option value="savings">Savings</Option>
+          <Option value="salary">Salary</Option>
+          <Option value="inheritance">Inheritance</Option>
+          <Option value="pension">Pension</Option>
+          <Option value="other">Other</Option>
         </SelectGroup>
       </Form>
     );

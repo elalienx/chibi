@@ -8,8 +8,8 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
-import ToggleOption from "components/toggle-option/ToggleOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
@@ -63,8 +63,8 @@ export default function Step2({ propertyType }: Props) {
         {isTerracedHouse && (
           <ToggleGroup form={form} hints={Hints} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
-            <ToggleOption value="agreement">Bostadsrätt</ToggleOption>
-            <ToggleOption value="ownership">Äganderätt</ToggleOption>
+            <Option value="agreement">Bostadsrätt</Option>
+            <Option value="ownership">Äganderätt</Option>
           </ToggleGroup>
         )}
 

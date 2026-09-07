@@ -6,8 +6,8 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
-import ToggleOption from "components/toggle-option/ToggleOption";
 
 const schema = v.object({
   likes_beer: v.pipe(v.string(), v.nonEmpty("Say either yes or no.")),
@@ -42,14 +42,14 @@ export default function FormPage() {
       <section>
         <ToggleGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
-          <ToggleOption value="yes">Yes</ToggleOption>
-          <ToggleOption value="no">No</ToggleOption>
+          <Option value="yes">Yes</Option>
+          <Option value="no">No</Option>
         </ToggleGroup>
 
         <ToggleGroup form={form} id="likes_guiness">
           <Label>Do you like Guiness?</Label>
-          <ToggleOption value={true}>Yes</ToggleOption>
-          <ToggleOption value={false}>No</ToggleOption>
+          <Option value={true}>Yes</Option>
+          <Option value={false}>No</Option>
         </ToggleGroup>
       </section>
 

@@ -5,9 +5,9 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Label from "components/label/Label";
-import SelectGroup from "components/select-group/SelectGroup";
-import SelectOption from "components/select-option/SelectOption";
+import Option from "components/option/Option";
 import Select from "components/select/Select";
+import SelectGroup from "components/select-group/SelectGroup";
 
 const schema = v.object({
   publisher: v.pipe(v.string(), v.nonEmpty("Choose one game developer company.")),
@@ -37,20 +37,20 @@ export default function FormPage() {
         <SelectGroup form={form} id="publisher">
           <Label>What is your favorite game developer company?</Label>
           <Select>Choose a developer</Select>
-          <SelectOption value="capcom">Capcom</SelectOption>
-          <SelectOption value="electronic_arts">Electronic Arts</SelectOption>
-          <SelectOption value="konami">Konami</SelectOption>
+          <Option value="capcom">Capcom</Option>
+          <Option value="electronic_arts">Electronic Arts</Option>
+          <Option value="konami">Konami</Option>
         </SelectGroup>
 
         <SelectGroup form={form} id="accessory">
           <Label hint="This test validates numeric values">What was the best accessory in history?</Label>
           <Select>Choose an accessory</Select>
-          <SelectOption value={0}>Arcade stick</SelectOption>
-          <SelectOption value={1}>Kinnect</SelectOption>
-          <SelectOption value={2}>Multi-tap</SelectOption>
-          <SelectOption value={3}>Link cable</SelectOption>
-          <SelectOption value={4}>Wavebird controller</SelectOption>
-          <SelectOption value={5}>Zapper</SelectOption>
+          <Option value={0}>Arcade stick</Option>
+          <Option value={1}>Kinnect</Option>
+          <Option value={2}>Multi-tap</Option>
+          <Option value={3}>Link cable</Option>
+          <Option value={4}>Wavebird controller</Option>
+          <Option value={5}>Zapper</Option>
         </SelectGroup>
 
         <p>Text to verify Playwright assertions:</p>

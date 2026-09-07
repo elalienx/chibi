@@ -29,11 +29,11 @@ export const Default = meta.story({
       <Form of={form} onSubmit={() => alert("Success")}>
         <RadioGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
-          <RadioOption value="savings">Savings</RadioOption>
-          <RadioOption value="salary">Salary</RadioOption>
-          <RadioOption value="inheritance">Inheritance</RadioOption>
-          <RadioOption value="pension">Pension</RadioOption>
-          <RadioOption value="other">Other</RadioOption>
+          <Option value="savings">Savings</Option>
+          <Option value="salary">Salary</Option>
+          <Option value="inheritance">Inheritance</Option>
+          <Option value="pension">Pension</Option>
+          <Option value="other">Other</Option>
         </RadioGroup>
       </Form>
     );

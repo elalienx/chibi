@@ -29,11 +29,11 @@ export const Default = meta.story({
       <Form of={form} onSubmit={() => alert("Success")}>
         <ToggleGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
-          <ToggleOption value="savings">Savings</ToggleOption>
-          <ToggleOption value="salary">Salary</ToggleOption>
-          <ToggleOption value="inheritance">Inheritance</ToggleOption>
-          <ToggleOption value="pension">Pension</ToggleOption>
-          <ToggleOption value="other">Other</ToggleOption>
+          <Option value="savings">Savings</Option>
+          <Option value="salary">Salary</Option>
+          <Option value="inheritance">Inheritance</Option>
+          <Option value="pension">Pension</Option>
+          <Option value="other">Other</Option>
         </ToggleGroup>
       </Form>
     );

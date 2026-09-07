@@ -6,8 +6,8 @@ import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
 import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
@@ -40,10 +40,10 @@ export default function Step1() {
       <section>
         <RadioGroup form={form} id="property_type">
           <Label hint={PROPERTY_HINT}>För vilken typ av bostad söker du lån</Label>
-          <RadioOption value={house}>Villa</RadioOption>
-          <RadioOption value={apartment}>Lägenhet</RadioOption>
-          <RadioOption value={terracedHouse}>Radhus</RadioOption>
-          <RadioOption value={holidayHome}>Fritidshus</RadioOption>
+          <Option value={house}>Villa</Option>
+          <Option value={apartment}>Lägenhet</Option>
+          <Option value={terracedHouse}>Radhus</Option>
+          <Option value={holidayHome}>Fritidshus</Option>
         </RadioGroup>
       </section>
 

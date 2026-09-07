@@ -6,8 +6,8 @@ import * as v from "valibot";
 // Project files
 import Button from "components/button/Button";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
 
 const schema = v.object({
   likes_beer: v.pipe(v.string(), v.nonEmpty("Say either yes or no.")),
@@ -42,14 +42,14 @@ export default function FormPage() {
       <section>
         <RadioGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
-          <RadioOption value="yes">Yes</RadioOption>
-          <RadioOption value="no">No</RadioOption>
+          <Option value="yes">Yes</Option>
+          <Option value="no">No</Option>
         </RadioGroup>
 
         <RadioGroup form={form} id="likes_guiness">
           <Label>Do you like Guiness?</Label>
-          <RadioOption value={true}>Yes</RadioOption>
-          <RadioOption value={false}>No</RadioOption>
+          <Option value={true}>Yes</Option>
+          <Option value={false}>No</Option>
         </RadioGroup>
       </section>
 

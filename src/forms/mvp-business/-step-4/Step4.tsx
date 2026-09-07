@@ -8,11 +8,10 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import Option from "components/option/Option";
 import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
-import SelectOption from "components/select-option/SelectOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import purposes from "../data/purposes";
 import useApplication from "../state/useApplication";
@@ -61,9 +60,9 @@ export default function Step4() {
           <Label>Ditt lånesyfte</Label>
           <Select>Välj</Select>
           {purposes.map((item) => (
-            <SelectOption key={item.value} value={item.value}>
+            <Option key={item.value} value={item.value}>
               {item.label}
-            </SelectOption>
+            </Option>
           ))}
         </SelectGroup>
 
@@ -74,8 +73,8 @@ export default function Step4() {
 
         <RadioGroup form={form} id="has_existing_loans">
           <Label>Har bolaget befintliga lån?</Label>
-          <RadioOption value={true}>Ja</RadioOption>
-          <RadioOption value={false}>Nej</RadioOption>
+          <Option value={true}>Ja</Option>
+          <Option value={false}>Nej</Option>
         </RadioGroup>
 
         {hasExistingLoans && (
