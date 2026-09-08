@@ -8,7 +8,7 @@ import Input from "components/input/Input";
 import "./select.css";
 
 interface Props {
-  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
+  /** Unique identifier of the parent select group. */
   id?: string;
 
   /** The position where the popover will attach to the <Select>. */

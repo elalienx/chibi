@@ -5,6 +5,7 @@ This file is a directory of Agent Skills for creating UI components and complex 
 ## Available Skills
 
 - **formisch** — Form handling with Formisch
+- **modern-web-guidance** — Required best-practice guidance for frontend implementation tasks
 - **react-useeffect** — Helps removing unnecessary useEffect hooks.
 - **valibot** — Schema validation with Valibot
 
@@ -13,6 +14,8 @@ This file is a directory of Agent Skills for creating UI components and complex 
 When working on any task, start by reading the _Project Structure_ section inside the `README.md` file located at the project root. It will give context about the key folder locations.
 
 When working on tasks involving form handling consult the relevant form library skills in the `skills/` directory. Each skill contains a `SKILL.md` with detailed instructions.
+
+Before implementing any frontend feature, consult the `modern-web-guidance` skill and follow its required search and retrieval workflow.
 
 When creating UI components, consult the skill react-useeffect to prevent the creation of unnecessary side effects.
 

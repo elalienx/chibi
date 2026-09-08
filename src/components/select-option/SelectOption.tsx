@@ -1,15 +1,15 @@
 // Node modules
-import type { ChangeEvent, FocusEvent, ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
 import "./select-option.css";
 
 interface Props {
-  /** Unique identifier of the parent selector group to make sure only one selector option is active. */
+  /** Unique identifier of the parent select group. */
   id?: string;
 
-  /** Text to display inside the selector option. */
+  /** Text to display inside the select option. */
   children: ReactNode;
 
   /** An instance of a Formisch form. */
@@ -34,7 +34,7 @@ export default function SelectOption({ id, children, field, value }: Props) {
 
     selectPopover?.hidePopover();
     field?.props.onChange(event); // First, the default change event.
-    field?.props.onBlur(event as FocusEvent<HTMLInputElement>); // Then, blur to trigger Formisch re-validation.
+    field?.props.onBlur(); // Then, blur to trigger Formisch re-validation.
   }
 
   return (
