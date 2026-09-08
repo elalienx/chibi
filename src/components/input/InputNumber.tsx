@@ -1,5 +1,5 @@
 // Node modules
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
@@ -33,8 +33,8 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
-  function onBlur(): void {
-    field.props.onBlur();
+  function onBlur(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onBlur(event);
     setIsFocused(false);
     setCommittedState(inputState);
   }
@@ -44,8 +44,8 @@ export default function InputNumber({ id, form, placeholder = "0", suffix, type 
     field.props.onChange(event);
   }
 
-  function onFocus(): void {
-    field.props.onFocus();
+  function onFocus(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onFocus(event);
     setIsFocused(true);
     setCommittedState(inputState);
   }

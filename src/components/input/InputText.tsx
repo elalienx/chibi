@@ -1,5 +1,5 @@
 // Node modules
-import { useState } from "react";
+import { useState, type FocusEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
@@ -30,14 +30,14 @@ export default function InputText({ displayValue, id, form, placeholder, readOnl
   const hasErrors = inputState === "error" && field.errors;
 
   // Methods
-  function onBlur(): void {
-    field.props.onBlur();
+  function onBlur(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onBlur(event);
     setIsFocused(false);
     setCommittedState(inputState);
   }
 
-  function onFocus(): void {
-    field.props.onFocus();
+  function onFocus(event: FocusEvent<HTMLInputElement>): void {
+    field.props.onFocus(event);
     setIsFocused(true);
     setCommittedState(inputState);
   }
