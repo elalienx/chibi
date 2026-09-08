@@ -1,5 +1,5 @@
 // Node modules
-import type { ChangeEvent, FocusEvent, ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
@@ -30,7 +30,7 @@ export default function ToggleOption({ id, children, field, value }: Props) {
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
     field?.props.onChange(event); // First, the default change event.
-    field?.props.onBlur(event as FocusEvent<HTMLInputElement>); // Then, blur to trigger Formisch re-validation.
+    field?.props.onBlur(); // Then, blur to trigger Formisch re-validation.
   }
 
   return (
