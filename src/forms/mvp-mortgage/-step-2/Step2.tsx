@@ -33,7 +33,7 @@ export default function Step2({ propertyType }: Props) {
   // Local state
   const form = useForm({
     schema: buildSchema(propertyType),
-    validate: "blur",
+    validate: "initial",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });

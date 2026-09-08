@@ -28,7 +28,7 @@ export default function Step4() {
   // Local state
   const form = useForm({
     schema: schema,
-    validate: "blur",
+    validate: "initial",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });

@@ -22,7 +22,7 @@ export default function Step1() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur", initialInput: application });
+  const form = useForm({ schema: schema, validate: "initial", revalidate: "blur", initialInput: application });
 
   // Methods
   function submitForm(values: object) {

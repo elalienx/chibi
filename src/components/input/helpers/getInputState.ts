@@ -13,6 +13,8 @@ import type { InputState } from "../types/InputState";
  * This method extracts Lendo's UX guidelines so Input.tsx stays clean.
  */
 function getInputState(form: FormStore, field: FieldStore, inputState: InputState, isFocused: boolean): InputState {
+  const hasValue = field.input != null && String(field.input).trim() !== "";
+
   // Show error after form submission
   if (form.isSubmitted && !field.isValid) return "error";
 
@@ -27,6 +29,9 @@ function getInputState(form: FormStore, field: FieldStore, inputState: InputStat
 
   // While editing a fresh field, stay in focus state
   if (isFocused) return "focus";
+
+  // Show success for valid restored values once validation finishes
+  if (!form.isValidating && !field.isDirty && field.isValid && hasValue) return "success";
 
   // Default before interaction
   if (!field.isDirty) return "default";
