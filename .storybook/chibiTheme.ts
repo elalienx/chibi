@@ -14,9 +14,9 @@ export default create({
   // Typography
   fontBase: '"Helvetica Neue", "Open Sans", sans-serif',
   fontCode: '"Menlo", "monospace"',
-  brandTitle: "Aphrodite Chibi",
+  brandTitle: "Chibi",
   brandUrl: "https://lendo.se",
-  brandImage: "https://aphrodite-chibi.web.app/images/miku.png",
+  brandImage: "https://chibi-ui.web.app/images/miku.png",
   brandTarget: "_self",
 
   // Theme colors

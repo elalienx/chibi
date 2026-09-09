@@ -1,13 +1,18 @@
 {
   "projects": {
-    "default": "aphrodite-chibi"
+    "default": "chibi-ui"
   },
   "targets": {
-    "aphrodite-chibi": {
+    "chibi-ui": {
       "hosting": {
-        "app": ["aphrodite-chibi"],
-        "storybook": ["aphrodite-chibi-storybook"]
+        "app": [
+          "chibi-ui"
+        ],
+        "storybook": [
+          "chibi-ui-storybook"
+        ]
       }
     }
-  }
+  },
+  "etags": {}
 }
