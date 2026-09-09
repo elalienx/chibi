@@ -1,6 +1,6 @@
-# Aphrodite Chibi skills
+# Chibi skills
 
-This file is a directory of Agent Skills for creating UI components and complex multi-step forms using the UI library Aphrodite Chibi.
+This file is a directory of Agent Skills for creating UI components and complex multi-step forms using the UI library Chibi.
 
 ## Available Skills
 

@@ -10,7 +10,7 @@ const meta = preview.meta({
 
 // Properties
 const Link = (
-  <a target="_blank" href="https://github.com/elalienx/aphrodite-chibi">
+  <a target="_blank" href="https://github.com/elalienx/chibi">
     Official documentation
   </a>
 );
@@ -18,5 +18,5 @@ const Link = (
 // Stories
 export const Default = meta.story({
   name: "Default",
-  render: () => <Tooltip>To learn more about Aphrodite Chibi read the {Link}</Tooltip>,
+  render: () => <Tooltip>To learn more about Chibi read the {Link}</Tooltip>,
 });
