@@ -1,8 +1,6 @@
-.toggle-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-between-label-and-field);
+@import url("../shared/field-group.css");
 
+.toggle-group {
   .label {
     justify-content: center; /* Yes, this component label has centered text. */
   }
@@ -13,11 +11,6 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-wrap: wrap balance; /** Balance groups items in a better visual way but is not available to all browswers. */
-
-    /** remove style from the semantic tag <fieldset>. */
-    margin: 0;
-    padding: 0;
-    border: none;
   }
 }
 

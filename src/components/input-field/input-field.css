@@ -1,6 +1,1 @@
-.input-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-between-label-and-field);
-  min-width: var(--field-min-width);
-}
+@import url("../shared/field-group.css");

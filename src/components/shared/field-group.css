@@ -1,0 +1,23 @@
+/* Shared layout for a label, its control, and optional validation feedback. */
+.input-field,
+.radio-group,
+.select-group,
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-between-label-and-field);
+}
+
+.input-field,
+.radio-group,
+.select-group {
+  min-width: var(--field-min-width);
+}
+
+.radio-group .options,
+.toggle-group .options {
+  /* Reset the native fieldset box without changing each group's layout. */
+  margin: 0;
+  padding: 0;
+  border: none;
+}
