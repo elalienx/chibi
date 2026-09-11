@@ -15,8 +15,8 @@ importers:
         specifier: ^0.27.20
         version: 0.27.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@formisch/react':
-        specifier: ^1.0.0
-        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(valibot@1.4.2(typescript@7.0.2))
+        specifier: ^1.1.0
+        version: 1.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(valibot@1.4.2(typescript@7.0.2))
       astro:
         specifier: ^7.3.1
         version: 7.3.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.5.0)
@@ -512,8 +512,8 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@formisch/react@1.0.0':
-    resolution: {integrity: sha512-3lHzk6orMgzvbgfEWZ4G/rTQie5/LB8/ffPIUjM1jQ0vnqZCeDfi2c70toa6DM6bDVN5BrYc7sAu+Ekb2t92vg==}
+  '@formisch/react@1.1.0':
+    resolution: {integrity: sha512-/LSuYN1m28pownbofeQQIOHw8zPR/jpyR15e5nn+hkRwlHnm5jf9YG8C5iNZru998/KmxTYFLVG3F1XZPvTL8A==}
     peerDependencies:
       react: '>=16.8.0 <20'
       react-dom: '>=16.8.0 <20'
@@ -3293,7 +3293,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@formisch/react@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(valibot@1.4.2(typescript@7.0.2))':
+  '@formisch/react@1.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(valibot@1.4.2(typescript@7.0.2))':
     dependencies:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
