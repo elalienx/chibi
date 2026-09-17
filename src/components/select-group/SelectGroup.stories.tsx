@@ -24,7 +24,7 @@ export const Default = meta.story({
   name: "SelectGroup",
   render: () => {
     // Local state
-    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+    const form = useForm({ schema: schema, validate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>

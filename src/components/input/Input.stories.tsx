@@ -30,7 +30,7 @@ const numberSchema = v.object({
 export const Text = meta.story({
   name: "Text",
   render: () => {
-    const form = useForm({ schema: textSchema, validate: "blur", revalidate: "blur" });
+    const form = useForm({ schema: textSchema, validate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
@@ -43,7 +43,7 @@ export const Text = meta.story({
 export const Email = meta.story({
   name: "Email",
   render: () => {
-    const form = useForm({ schema: emailSchema, validate: "blur", revalidate: "blur" });
+    const form = useForm({ schema: emailSchema, validate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
@@ -56,7 +56,7 @@ export const Email = meta.story({
 export const Password = meta.story({
   name: "Password",
   render: () => {
-    const form = useForm({ schema: passwordSchema, validate: "blur", revalidate: "blur" });
+    const form = useForm({ schema: passwordSchema, validate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
@@ -69,7 +69,7 @@ export const Password = meta.story({
 export const NumberInput = meta.story({
   name: "Number",
   render: () => {
-    const form = useForm({ schema: numberSchema, validate: "blur", revalidate: "blur" });
+    const form = useForm({ schema: numberSchema, validate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>

@@ -34,7 +34,6 @@ export default function Step2({ propertyType }: Props) {
   const form = useForm({
     schema: buildSchema(propertyType),
     validate: "blur",
-    revalidate: "blur",
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 

@@ -23,7 +23,6 @@ export const Default = meta.story({
     const form = useForm({
       schema: schema,
       validate: "blur",
-      revalidate: "blur",
       initialInput: { favorite_beer: String(false) },
     });
     const field = useField(form, { path: ["favorite_beer"] });
@@ -44,7 +43,6 @@ export const Selected = meta.story({
     const form = useForm({
       schema: schema,
       validate: "blur",
-      revalidate: "blur",
       initialInput: { favorite_beer: String(true) },
     });
     const field = useField(form, { path: ["favorite_beer"] });

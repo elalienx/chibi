@@ -24,7 +24,6 @@ export const Unchecked = meta.story({
     const form = useForm({
       schema: schema,
       validate: "blur",
-      revalidate: "blur",
     });
 
     return (
@@ -44,7 +43,6 @@ export const Checked = meta.story({
     const form = useForm({
       schema: schema,
       validate: "blur",
-      revalidate: "blur",
       initialInput: { terms: true },
     });
 
@@ -65,7 +63,6 @@ export const CheckboxWithNoIdError = meta.story({
     const form = useForm({
       schema: schema,
       validate: "blur",
-      revalidate: "blur",
       initialInput: { terms: true },
     });
 

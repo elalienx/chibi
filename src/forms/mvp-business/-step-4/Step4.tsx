@@ -29,7 +29,6 @@ export default function Step4() {
   const form = useForm({
     schema: schema,
     validate: "blur",
-    revalidate: "blur",
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
