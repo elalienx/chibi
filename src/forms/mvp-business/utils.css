@@ -1,0 +1,11 @@
+/**
+    About:
+    Business loans have some custom tooltips with are just a heading an a paragraph.
+    They are so simple, they just need a CSS class, thus, there is no need to make a 
+    custom React component.
+*/
+.tooltip-with-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+}
