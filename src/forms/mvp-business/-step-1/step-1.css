@@ -10,6 +10,14 @@
       font-weight: var(--font-weight-bold);
     }
   }
+
+  #loan_amount {
+    width: 196px;
+  }
+
+  #loan_period {
+    width: 108px;
+  }
 }
 
 /* Tablet */
