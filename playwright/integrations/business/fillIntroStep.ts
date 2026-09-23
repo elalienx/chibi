@@ -1,9 +1,9 @@
 // Node modules
-import { test, type Page } from "@playwright/test";
+import { test, type Locator } from "@playwright/test";
 
-export default async function fillIntroStep(page: Page) {
+export default async function fillIntroStep(form: Locator) {
   await test.step("Intro", async () => {
-    await page.getByRole("heading", { name: "Business MVP" }).waitFor();
-    await page.getByRole("button", { name: "Start demo" }).click();
+    await form.getByRole("heading", { name: "Business MVP" }).waitFor();
+    await form.getByRole("button", { name: "Start demo" }).click();
   });
 }
