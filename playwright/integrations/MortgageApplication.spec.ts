@@ -1,5 +1,5 @@
 // Node modules
-import { test } from "@playwright/test";
+import { test, type Locator } from "@playwright/test";
 
 // Project files
 import checkSuccessStep from "./mortgage/checkSuccessStep";
@@ -7,8 +7,13 @@ import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
 import fillStep2 from "./mortgage/fillStep2";
 
-test("Should be able to apply for a house", async ({ mount }) => {
-  const form = await mount("forms/mvp-mortgage/FormManager/Default");
+let form: Locator;
+
+test.beforeEach(async ({ mount }) => {
+  form = await mount("forms/mvp-mortgage/FormManager/Default");
+});
+
+test("Should be able to apply for a house", async () => {
   const result1 = "You choose a 100m house with 4 rooms";
   const result2 = "Therefore your operating cost is 10 000 SEK";
 
@@ -19,8 +24,7 @@ test("Should be able to apply for a house", async ({ mount }) => {
   await checkSuccessStep(form, { result1, result2 });
 });
 
-test("Should be able to apply for an apartment", async ({ mount }) => {
-  const form = await mount("forms/mvp-mortgage/FormManager/Default");
+test("Should be able to apply for an apartment", async () => {
   const result1 = "You choose a 36m apartment with 1 rooms";
   const result2 = "Therefore your monthly fee is 3 125 SEK";
 
@@ -30,8 +34,7 @@ test("Should be able to apply for an apartment", async ({ mount }) => {
   await checkSuccessStep(form, { result1, result2 });
 });
 
-test("Should be able to apply for a terraced house (as rental)", async ({ mount }) => {
-  const form = await mount("forms/mvp-mortgage/FormManager/Default");
+test("Should be able to apply for a terraced house (as rental)", async () => {
   const result1 = "You choose a 36m terraced_house with 1 rooms";
   const result2 = "Therefore your monthly fee is 3 125 SEK";
 
@@ -41,8 +44,7 @@ test("Should be able to apply for a terraced house (as rental)", async ({ mount 
   await checkSuccessStep(form, { result1, result2 });
 });
 
-test("Should be able to apply for a terraced house (as ownership)", async ({ mount }) => {
-  const form = await mount("forms/mvp-mortgage/FormManager/Default");
+test("Should be able to apply for a terraced house (as ownership)", async () => {
   const result1 = "You choose a 100m terraced_house with 4 rooms";
   const result2 = "Therefore your operating cost is 10 000 SEK";
 
@@ -52,8 +54,7 @@ test("Should be able to apply for a terraced house (as ownership)", async ({ mou
   await checkSuccessStep(form, { result1, result2 });
 });
 
-test("Should be able to apply for a holiday home (same options as house)", async ({ mount }) => {
-  const form = await mount("forms/mvp-mortgage/FormManager/Default");
+test("Should be able to apply for a holiday home (same options as house)", async () => {
   const result1 = "You choose a 100m holiday_home with 4 rooms";
   const result2 = "Therefore your operating cost is 10 000 SEK";
 
