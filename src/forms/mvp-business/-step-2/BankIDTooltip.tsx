@@ -1,4 +1,4 @@
-const BankID = (
+const BankIDTooltip = (
   <div className="tooltip-with-title">
     <h5>Identifiering med BankID</h5>
     <p>
@@ -8,9 +8,4 @@ const BankID = (
   </div>
 );
 
-/** All the possible tooltip hints available in this step. */
-const Hints = {
-  bankid: BankID,
-};
-
-export default Hints;
+export default BankIDTooltip;

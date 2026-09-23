@@ -11,7 +11,7 @@ import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import Hints from "./Hints";
+import BankIDTooltip from "./BankIDTooltip";
 import schema from "./schema";
 
 export default function Step2() {
@@ -60,7 +60,7 @@ export default function Step2() {
       <footer>
         <Button type="submit">Fortsätt med BankID</Button>
         <small>
-          Varför ber vi om identifiering via BankID? <Tooltip>{Hints.bankid}</Tooltip>
+          Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
         </small>
       </footer>
     </Form>
