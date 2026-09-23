@@ -1,28 +1,39 @@
 // Node modules
 import { test, type Locator } from "@playwright/test";
 
-type Props = {
+interface Props {
   purpose?: string;
   turnover: number;
-} & ({ hasExistingLoans: false } | { hasExistingLoans: true; loanDebt: number });
+  hasExistingLoans: boolean;
+  loanDebt?: number;
+}
 
-export default async function fillStep4(form: Locator, props: Props) {
-  const { purpose = "Renovering av lokal" } = props;
+const DEFAULT_PURPOSE = "Renovering av lokal";
 
+export default async function fillStep4(form: Locator, { purpose, turnover, hasExistingLoans, loanDebt }: Props) {
   await test.step("Step 4: About the company", async () => {
-    await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
-    await form.getByRole("textbox", { name: "Ditt lånesyfte" }).click();
-    await form.getByText(purpose, { exact: true }).click();
-    await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(props.turnover));
-    await form
-      .locator("#has_existing_loans")
-      .getByText(props.hasExistingLoans ? "Ja" : "Nej", { exact: true })
-      .click();
+    // Safeguards
+    if (hasExistingLoans && loanDebt === undefined) throw new Error("Pass loanDebt when hasExistingLoans is true.");
+    if (!hasExistingLoans && loanDebt !== undefined) throw new Error("Pass loanDebt when hasExistingLoans is true.");
 
-    if (props.hasExistingLoans) {
-      await form.getByRole("textbox", { name: "Uppskattad total skuld på" }).fill(String(props.loanDebt));
+    await form.getByRole("heading", { name: "Lånesyfte & Omsättning" }).waitFor();
+
+    await form.getByRole("textbox", { name: "Ditt lånesyfte" }).click();
+    await form.getByText(purpose || DEFAULT_PURPOSE).click();
+    await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill(String(turnover));
+
+    if (hasExistingLoans) {
+      await form.locator("#has_existing_loans").getByText("Ja").click();
     }
-    
+
+    if (!hasExistingLoans) {
+      await form.locator("#has_existing_loans").getByText("Nej").click();
+    }
+
+    if (loanDebt !== undefined) {
+      await form.getByRole("textbox", { name: "Uppskattad total skuld på" }).fill(String(loanDebt));
+    }
+
     await form.getByRole("button", { name: "Fortsätt" }).click();
   });
 }
