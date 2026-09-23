@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm, type SubmitHandler } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 
 // Project files
 import Button from "components/button/Button";
@@ -11,6 +11,7 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
+import "./step-1.css";
 
 export default function Step1() {
   // Global state
@@ -26,13 +27,13 @@ export default function Step1() {
   });
 
   // Methods
-  const submitForm: SubmitHandler<typeof schema> = (values) => {
+  function submitForm(values: object) {
     updateApplication(values);
     setStep("step-2");
-  };
+  }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <Form of={form} onSubmit={submitForm} id="step-1" className="business-form">
       <section>
         <InputField form={form} id="loan_amount">
           <Label>Välj lånesumma:</Label>
