@@ -1,19 +1,56 @@
-/**
- * TODO
- * Components:
- * - Input.number: Välj lånesumma:, min 50_000, default 600_000, 30_000_000
- * - Slider: min 50_000, default loan_amount current value,max 30_000
- * - Input.number: Välj lånetid:, 1.5, år.
- * - Button.call-to-action: Påbörja ansökan, ->
- * - Small: (Ansökan är inte bindande)
- *
- * Notes:
- * - This step lacks a header because it is the first step, so skip it.
- * - The slider component does not exist, ignore it.
- * - The call to action and small text are part of the footer.
- * - There is not <hr/> divider in this page.
- */
+// Node modules
+import { Form, useForm, type SubmitHandler } from "@formisch/react";
+
+// Project files
+import Button from "components/button/Button";
+import Icon from "components/icon/Icon";
+import Input from "components/input/Input";
+import InputField from "components/input-field/InputField";
+import Label from "components/label/Label";
+import cleanInitialInput from "helpers/cleanInitialInput";
+import useApplication from "../state/useApplication";
+import useFormNavigation from "../state/useFormNavigation";
+import schema from "./schema";
 
 export default function Step1() {
-  return <div>step 1</div>;
+  // Global state
+  const { application, updateApplication } = useApplication();
+  const { setStep } = useFormNavigation();
+
+  // Local state
+  const form = useForm({
+    schema: schema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: cleanInitialInput({ input: application }),
+  });
+
+  // Methods
+  const submitForm: SubmitHandler<typeof schema> = (values) => {
+    updateApplication(values);
+    setStep("step-4");
+  };
+
+  return (
+    <Form of={form} onSubmit={submitForm} className="business-form">
+      <section>
+        <InputField form={form} id="loan_amount">
+          <Label>Välj lånesumma:</Label>
+          <Input type="number" suffix="kr" />
+        </InputField>
+
+        <InputField form={form} id="loan_period">
+          <Label>Välj lånetid:</Label>
+          <Input type="number" suffix="år" />
+        </InputField>
+      </section>
+
+      <footer>
+        <Button type="submit">
+          Påbörja ansökan <Icon name="arrow-right" />
+        </Button>
+        <small>(Ansökan är inte bindande)</small>
+      </footer>
+    </Form>
+  );
 }
