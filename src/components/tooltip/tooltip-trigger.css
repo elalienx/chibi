@@ -18,5 +18,10 @@
 
 p .tooltip-trigger {
   display: inline-block; /* To enable vertical-algin. */
-  vertical-align: text-top; /* To optically align with the paragraph flow. */
+  vertical-align: text-top; /* To optically align with the paragraph text flow. */
+}
+
+small .tooltip-trigger {
+  margin-top: -4px; /* To optically align with the small text. */
+  vertical-align: middle; /* To optically align with the small text flow. */
 }
