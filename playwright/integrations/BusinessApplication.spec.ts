@@ -11,7 +11,7 @@ test("Should be able to submit with no debt", async ({ mount }) => {
 
   await test.step("Step 1: Loan amount and period", async () => {
     await form.getByRole("textbox", { name: "Välj lånesumma:" }).fill(String(600_000));
-    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill("2");
+    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill(String(2));
     await form.getByRole("button", { name: "Påbörja ansökan" }).click();
   });
 
@@ -41,7 +41,7 @@ test("Should be able to submit with debt", async ({ mount }) => {
 
   await test.step("Step 1: Loan amount and period", async () => {
     await form.getByRole("textbox", { name: "Välj lånesumma:" }).fill(String(1_000_000));
-    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill("3");
+    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill(String(3));
     await form.getByRole("button", { name: "Påbörja ansökan" }).click();
   });
 
