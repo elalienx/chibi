@@ -13,11 +13,14 @@ export default async function fillStep2(
 ) {
   await test.step("Step 2: About the property", async () => {
     await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
+
     if (tenancyType !== undefined) {
       await form.locator("#tenancy_type").getByText(tenancyType, { exact: true }).click();
     }
+
     await form.getByRole("textbox", { name: "Kvadratmeter" }).fill(String(squareMeters));
     await form.getByRole("textbox", { name: "Antal rum" }).fill(String(rooms));
+    
     if (monthlyFee !== undefined) {
       await form.getByRole("textbox", { name: "Månadsavgift" }).fill(String(monthlyFee));
     } else {
