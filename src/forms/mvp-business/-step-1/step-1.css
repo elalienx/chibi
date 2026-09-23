@@ -1,0 +1,32 @@
+#step-1 {
+  --special-font-size: 24px;
+  --special-font-weight: var(--font-weight-bold);
+
+  .input-field {
+    display: flex;
+    flex-direction: row; /** To put label and input side by side. */
+    justify-content: space-between; /** To put label and input on oposite sides of the form. */
+    align-items: center; /** To align items vertically */
+    font-size: var(--special-font-size);
+    font-weight: var(--special-font-weight);
+  }
+
+  #loan_amount {
+    width: 196px;
+    font-size: var(--special-font-size);
+    font-weight: var(--special-font-weight);
+  }
+
+  #loan_period {
+    width: 108px;
+    font-size: var(--special-font-size);
+    font-weight: var(--special-font-weight);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-1 {
+    --special-font-size: 28px;
+  }
+}

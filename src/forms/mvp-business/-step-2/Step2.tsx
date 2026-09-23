@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm, type SubmitHandler } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -29,10 +29,10 @@ export default function Step2() {
   });
 
   // Methods
-  const submitForm: SubmitHandler<typeof schema> = (values) => {
+  function submitForm(values: object) {
     updateApplication(values);
     setStep("step-4");
-  };
+  }
 
   return (
     <Form of={form} onSubmit={submitForm} className="business-form">
