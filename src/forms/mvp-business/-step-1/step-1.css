@@ -1,0 +1,20 @@
+#step-1 {
+  .input-field {
+    display: flex;
+    flex-direction: row; /** To put label and input side by side. */
+    justify-content: space-between; /** To put label and input on oposite sides of the form. */
+    align-items: center; /** To align items vertically */
+
+    label {
+      font-size: 24px;
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .input-field label {
+    font-size: 28px;
+  }
+}
