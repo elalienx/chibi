@@ -1,13 +1,13 @@
 // Node modules
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 interface Props {
   result1: string;
 }
 
-export default async function checkSuccessStep(page: Page, { result1 }: Props) {
+export default async function checkSuccessStep(form: Locator, { result1 }: Props) {
   await test.step("Acceptance", async () => {
-    await page.getByRole("heading", { name: "Form submitted" }).waitFor();
-    await expect(page.getByText(result1)).toBeVisible();
+    await form.getByRole("heading", { name: "Form submitted" }).waitFor();
+    await expect(form.getByText(result1)).toBeVisible();
   });
 }
