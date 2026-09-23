@@ -4,6 +4,7 @@ import { Form, useForm, type SubmitHandler } from "@formisch/react";
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
+import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
@@ -58,7 +59,10 @@ export default function Step2() {
       <hr />
 
       <footer>
-        <Button type="submit">Fortsätt med BankID</Button>
+        <Button type="submit">
+          Fortsätt med BankID
+          <Icon name="arrow-right" />
+        </Button>
         <small>
           Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
         </small>
