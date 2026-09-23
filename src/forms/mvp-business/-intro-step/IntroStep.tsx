@@ -21,7 +21,6 @@ export default function IntroStep() {
       <hr />
 
       <footer>
-        {/* Note: We are moving directly to step 4 as we haven't mocked the other steps */}
         <Button onClick={() => setStep("step-1")}>
           Start demo
           <Icon name="arrow-right" />
