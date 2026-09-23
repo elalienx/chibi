@@ -1,8 +1,8 @@
 const BusinessFormConfig = {
   AMOUNT_STEP: 10_000,
   DEFAULT_AMOUNT: 600_000,
-  DEFAULT_PERIOD: 1.5,
-  MAX_AMOUNT: 5_000_000,
+  DEFAULT_PERIOD: 2, // Input.number currently supports whole years only.
+  MAX_AMOUNT: 30_000_000,
   MAX_AMOUNT_FASTIGHETSLAN: 50_000_000 /** Used for a special business link which allows higher loans. */,
   MAX_EXISTING_LOAN: 2_000_000_000,
   MAX_PERIOD: 5,

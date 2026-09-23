@@ -14,15 +14,16 @@ export default function IntroStep() {
       </header>
 
       <section>
-        <p>To see what is pending to reach MVP status, check the MVP 1.</p>
+        <p>This is the MVP of business, it will replicate all Business screens even if not all components are ready.</p>
+        <p>Please ask about the project management status to know about the progress of missing components.</p>
       </section>
 
       <hr />
 
       <footer>
-        {/* Note: We are moving directly to step 4 as we haven't mocked the other steps */}
-        <Button onClick={() => setStep("step-4")}>
-          Next <Icon name="arrow-right" />
+        <Button onClick={() => setStep("step-1")}>
+          Start demo
+          <Icon name="arrow-right" />
         </Button>
       </footer>
     </div>
