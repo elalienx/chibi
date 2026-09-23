@@ -1,26 +1,24 @@
 // Node modules
 import { expect, test } from "@playwright/test";
 
-test("Should be able to apply for a house", async ({ mount }) => {
+// Project files
+import fillIntroStep from "./mortgage/fillIntroStep";
+import fillStep1 from "./mortgage/fillStep1";
+import fillStep2 from "./mortgage/fillStep2";
+
+test("Should be able to apply for a house", async ({ mount, page }) => {
   const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await fillIntroStep(page);
   });
 
   await test.step("Step 1: About the loan", async () => {
-    await form.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await form.locator("#property_type").getByText("Villa").click();
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep1(page, { propertyType: "Villa" });
   });
 
   await test.step("Step 2: About the property", async () => {
-    await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await form.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
-    await form.getByRole("textbox", { name: "Antal rum" }).fill("4");
-    await form.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep2(page, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
   });
 
   await test.step("Acceptance", async () => {
@@ -31,26 +29,19 @@ test("Should be able to apply for a house", async ({ mount }) => {
   });
 });
 
-test("Should be able to apply for an apartment", async ({ mount }) => {
+test("Should be able to apply for an apartment", async ({ mount, page }) => {
   const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await fillIntroStep(page);
   });
 
   await test.step("Step 1: About the loan", async () => {
-    await form.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await form.locator("#property_type").getByText("Lägenhet").click();
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep1(page, { propertyType: "Lägenhet" });
   });
 
   await test.step("Step 2: About the property", async () => {
-    await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await form.getByRole("textbox", { name: "Kvadratmeter" }).fill("36");
-    await form.getByRole("textbox", { name: "Antal rum" }).fill("1");
-    await form.getByRole("textbox", { name: "Månadsavgift" }).fill("3125");
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep2(page, { squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
   });
 
   await test.step("Acceptance", async () => {
@@ -61,27 +52,19 @@ test("Should be able to apply for an apartment", async ({ mount }) => {
   });
 });
 
-test("Should be able to apply for a terraced house (as rental)", async ({ mount }) => {
+test("Should be able to apply for a terraced house (as rental)", async ({ mount, page }) => {
   const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await fillIntroStep(page);
   });
 
   await test.step("Step 1: About the loan", async () => {
-    await form.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await form.locator("#property_type").getByText("Radhus").click();
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep1(page, { propertyType: "Radhus" });
   });
 
   await test.step("Step 2: About the property", async () => {
-    await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await form.locator("#tenancy_type").getByText("Bostadsrätt").click();
-    await form.getByRole("textbox", { name: "Kvadratmeter" }).fill("36");
-    await form.getByRole("textbox", { name: "Antal rum" }).fill("1");
-    await form.getByRole("textbox", { name: "Månadsavgift" }).fill("3125");
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep2(page, { tenancyType: "Bostadsrätt", squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
   });
 
   await test.step("Acceptance", async () => {
@@ -92,26 +75,19 @@ test("Should be able to apply for a terraced house (as rental)", async ({ mount 
   });
 });
 
-test("Should be able to apply for a terraced house (as ownership)", async ({ mount }) => {
+test("Should be able to apply for a terraced house (as ownership)", async ({ mount, page }) => {
   const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await fillIntroStep(page);
   });
 
   await test.step("Step 1: About the loan", async () => {
-    await form.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await form.locator("#property_type").getByText("Radhus").click();
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep1(page, { propertyType: "Radhus" });
   });
 
   await test.step("Step 2: About the property", async () => {
-    await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await form.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
-    await form.getByRole("textbox", { name: "Antal rum" }).fill("4");
-    await form.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep2(page, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
   });
 
   await test.step("Acceptance", async () => {
@@ -122,26 +98,19 @@ test("Should be able to apply for a terraced house (as ownership)", async ({ mou
   });
 });
 
-test("Should be able to apply for a holiday home (same options as house)", async ({ mount }) => {
+test("Should be able to apply for a holiday home (same options as house)", async ({ mount, page }) => {
   const form = await mount("forms/mvp-mortgage/FormManager/Default");
 
   await test.step("Introduction", async () => {
-    await form.getByRole("heading", { name: "Mortgage MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await fillIntroStep(page);
   });
 
   await test.step("Step 1: About the loan", async () => {
-    await form.getByRole("heading", { name: "Om lånet" }).waitFor();
-    await form.locator("#property_type").getByText("Fritidshus").click();
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep1(page, { propertyType: "Fritidshus" });
   });
 
   await test.step("Step 2: About the property", async () => {
-    await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
-    await form.getByRole("textbox", { name: "Kvadratmeter" }).fill("100");
-    await form.getByRole("textbox", { name: "Antal rum" }).fill("4");
-    await form.getByRole("textbox", { name: "Driftskostnad" }).fill("10000");
-    await form.getByRole("button", { name: "Nästa" }).click();
+    await fillStep2(page, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
   });
 
   await test.step("Acceptance", async () => {
