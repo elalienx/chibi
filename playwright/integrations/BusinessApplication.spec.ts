@@ -4,9 +4,15 @@ import { expect, test } from "@playwright/test";
 test("Should be able to submit with no debt", async ({ mount }) => {
   const form = await mount("forms/mvp-business/FormManager/Default");
 
-  await test.step("Step 1", async () => {
+  await test.step("Intro", async () => {
     await form.getByRole("heading", { name: "Business MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await form.getByRole("button", { name: "Start demo" }).click();
+  });
+
+  await test.step("Step 1: Loan amount and period", async () => {
+    await form.getByRole("textbox", { name: "Välj lånesumma:" }).fill(String(600_000));
+    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill(String(2));
+    await form.getByRole("button", { name: "Påbörja ansökan" }).click();
   });
 
   await test.step("Step 4: About the company", async () => {
@@ -28,9 +34,15 @@ test("Should be able to submit with no debt", async ({ mount }) => {
 test("Should be able to submit with debt", async ({ mount }) => {
   const form = await mount("forms/mvp-business/FormManager/Default");
 
-  await test.step("Step 1", async () => {
+  await test.step("Intro", async () => {
     await form.getByRole("heading", { name: "Business MVP" }).waitFor();
-    await form.getByRole("button", { name: "Next" }).click();
+    await form.getByRole("button", { name: "Start demo" }).click();
+  });
+
+  await test.step("Step 1: Loan amount and period", async () => {
+    await form.getByRole("textbox", { name: "Välj lånesumma:" }).fill(String(1_000_000));
+    await form.getByRole("textbox", { name: "Välj lånetid:" }).fill(String(3));
+    await form.getByRole("button", { name: "Påbörja ansökan" }).click();
   });
 
   await test.step("Step 4: About the company", async () => {
