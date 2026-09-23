@@ -5,7 +5,6 @@ import Step2 from "./-step-2/Step2";
 import Step4 from "./-step-4/Step4";
 import Success from "./-success-step/Success";
 import useFormNavigation from "./state/useFormNavigation";
-import "./utils.css";
 
 export default function FormManager() {
   // Global state
