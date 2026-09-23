@@ -9,3 +9,10 @@
   flex-direction: column;
   gap: var(--space-base);
 }
+
+.business-bankid-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-tiny);
+}

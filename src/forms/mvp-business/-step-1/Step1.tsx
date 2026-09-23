@@ -28,7 +28,7 @@ export default function Step1() {
   // Methods
   const submitForm: SubmitHandler<typeof schema> = (values) => {
     updateApplication(values);
-    setStep("step-4");
+    setStep("step-2");
   };
 
   return (
