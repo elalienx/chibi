@@ -1,5 +1,5 @@
 // Node modules
-import { test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 // Project files
 import checkSuccessStep from "./business/checkSuccessStep";
@@ -32,4 +32,30 @@ test("Should be able to submit with debt", async () => {
   await fillStep2(form, { email: "erik@example.com", phone: "0707654321" });
   await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
   await checkSuccessStep(form, { result1 });
+});
+
+test("Should require a purpose after starting again", async () => {
+  test.setTimeout(15_000);
+
+  await fillIntroStep(form);
+  await fillStep1(form, { loanAmount: 600_000, loanPeriod: 2 });
+  await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
+  await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
+  await form.getByRole("button", { name: "START AGAIN" }).click();
+
+  await fillIntroStep(form);
+  await fillStep1(form, { loanAmount: 600_000, loanPeriod: 2 });
+  await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
+  await expect(form.getByRole("textbox", { name: "Ditt lånesyfte" })).toHaveValue("");
+  await form.getByRole("textbox", { name: "Bolagets omsättning från juni" }).fill("1000000");
+  await form.locator("#has_existing_loans").getByText("Nej").click();
+  await form.getByRole("button", { name: "Fortsätt" }).click();
+
+  await expect(form.getByRole("heading", { name: "Lånesyfte & Omsättning" })).toBeVisible();
+  await expect(form.getByText("Vänligen ange lånesyfte")).toBeVisible();
+
+  await form.getByRole("textbox", { name: "Ditt lånesyfte" }).click();
+  await form.getByText("Renovering av lokal").click();
+  await form.getByRole("button", { name: "Fortsätt" }).click();
+  await checkSuccessStep(form, { result1: "Your turnover is 1 000 000 kr and your existing debt is 0 kr." });
 });

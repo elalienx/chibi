@@ -24,7 +24,7 @@ const loan_debt = v.pipe(
   v.maxValue(MAX_EXISTING_LOAN, `Måste vara maximalt ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
 );
 
-const purpose = v.string("Vänligen ange lånesyfte");
+const purpose = v.pipe(v.string("Vänligen ange lånesyfte"), v.nonEmpty("Vänligen ange lånesyfte"));
 
 // Variants (for existing loan)
 const withLoans = v.object({
