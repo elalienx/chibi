@@ -4,4 +4,18 @@
     flex-direction: column;
     gap: var(--space-xs);
   }
+
+  .sub-form-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+    background-color: var(--color-blue-99);
+    border-radius: var(--border-radius);
+
+    .title {
+      color: var(--color-desaturated-30);
+      font-weight: var(--font-weight-medium);
+    }
+  }
 }
