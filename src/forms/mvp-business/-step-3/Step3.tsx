@@ -5,17 +5,15 @@ import { Form, useForm } from "@formisch/react";
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import Input from "components/input/Input";
-import InputField from "components/input-field/InputField";
-import Label from "components/label/Label";
-import Tooltip from "components/tooltip/Tooltip";
+import RadioGroup from "components/radio-group/RadioGroup";
+import RadioOption from "components/radio-option/RadioOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import BankIDTooltip from "./BankIDTooltip";
 import schema from "./schema";
+import "./step-3.css";
 
-export default function Step2() {
+export default function Step3() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
@@ -31,41 +29,33 @@ export default function Step2() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("step-3");
+    setStep("step-4");
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <Form of={form} onSubmit={submitForm} className="business-form" id="step-3">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h4>Personuppgifter</h4>
-        <small>Nästa: Val av bolag</small>
+        <h4>Val av bolag</h4>
+        <small>Nästa: Lånesyfte & Omsättning</small>
       </header>
 
       <hr />
 
       <section>
-        <InputField form={form} id="email">
-          <Label>E-postadress</Label>
-          <Input type="email" placeholder="namn@email.se" />
-        </InputField>
-
-        <InputField form={form} id="phone">
-          <Label>Mobilnummer</Label>
-          <Input type="tel" placeholder="+46 XX XXX XX XX" />
-        </InputField>
+        <RadioGroup form={form} id="company_org_number">
+          <RadioOption value="5590245535">Connys & Sjukvård AB</RadioOption>
+          <RadioOption value="5590480512">Birgers Guldsmedja AB</RadioOption>
+          <RadioOption value="5561081620">Christinas Sjukvård AB</RadioOption>
+        </RadioGroup>
       </section>
 
       <hr />
 
       <footer>
         <Button type="submit">
-          Fortsätt med BankID
-          <Icon name="arrow-right" />
+          Fortsätt <Icon name="arrow-right" />
         </Button>
-        <small>
-          Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
-        </small>
       </footer>
     </Form>
   );
