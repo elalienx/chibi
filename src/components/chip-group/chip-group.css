@@ -1,0 +1,16 @@
+.chip-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+
+  fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-medium);
+
+    /** Remove styles from the semantic tag <fieldset>. */
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
