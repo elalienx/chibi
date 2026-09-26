@@ -12,7 +12,6 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
-import "./step-5.css";
 
 export default function Step5() {
   // Global state
@@ -34,7 +33,7 @@ export default function Step5() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form" id="step-5">
+    <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte</h4>
