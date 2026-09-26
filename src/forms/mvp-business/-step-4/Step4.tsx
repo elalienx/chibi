@@ -10,11 +10,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import Select from "components/select/Select";
-import SelectGroup from "components/select-group/SelectGroup";
-import SelectOption from "components/select-option/SelectOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import purposes from "../data/purposes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import Hints from "./Hints";
@@ -57,16 +53,6 @@ export default function Step4() {
       <hr />
 
       <section>
-        <SelectGroup form={form} id={"purpose"}>
-          <Label>Ditt lånesyfte</Label>
-          <Select>Välj</Select>
-          {purposes.map((item) => (
-            <SelectOption key={item.value} value={item.value}>
-              {item.label}
-            </SelectOption>
-          ))}
-        </SelectGroup>
-
         <InputField form={form} hints={Hints} id="turnover">
           <Label>Bolagets omsättning från juni 2025 till idag</Label>
           <Input type="number" suffix="kr" />
