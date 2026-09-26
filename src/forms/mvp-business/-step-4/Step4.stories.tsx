@@ -4,13 +4,13 @@ import Step4 from "./Step4";
 
 // Metadata
 const meta = preview.meta({
-  title: "MVP Business/Step4",
+  title: "MVP Business/Step 4: Turnover",
   component: Step4,
 });
 
 // Stories
 export const Default = meta.story({
-  name: "Step4",
+  name: "Step 4: Turnover",
   render: () => <Step4 />,
 });
 
