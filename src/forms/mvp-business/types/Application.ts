@@ -1,3 +1,6 @@
+// Project files
+import type { Purpose } from "./Purpose";
+
 /** All the information gathered during the Business application form. */
 export default interface Application {
   company_org_number: string;
@@ -8,5 +11,6 @@ export default interface Application {
   loan_debt: number;
   loan_period: number;
   phone: string;
+  purpose: Purpose | undefined;
   turnover: number;
 }
