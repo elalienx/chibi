@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -7,6 +7,9 @@ import Button from "components/button/Button";
 import ChipGroup from "components/chip-group/ChipGroup";
 import ChipOption from "components/chip-option/ChipOption";
 import Icon from "components/icon/Icon";
+import Input from "components/input/Input";
+import InputField from "components/input-field/InputField";
+import Label from "components/label/Label";
 import purposes from "../data/purposes";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
@@ -26,6 +29,10 @@ export default function Step5() {
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application }),
   });
+
+  // Derived state
+  const purpose = getInput(form, { path: ["purpose"] });
+  const selectedPurpose = purposes.find((item) => item.value === purpose);
 
   // Methods
   function submitForm(values: object) {
@@ -56,6 +63,16 @@ export default function Step5() {
             </ChipOption>
           ))}
         </ChipGroup>
+
+        {selectedPurpose && (
+          <div className="sub-form-details">
+            <h5>Du valde: {selectedPurpose.label}</h5>
+            <InputField form={form} id="loan_purpose_details">
+              <Label>Berätta mer om ditt lånesyfte</Label>
+              <Input type="text" placeholder="t.ex. tre nya truckar till lagret..." />
+            </InputField>
+          </div>
+        )}
       </section>
 
       <hr />

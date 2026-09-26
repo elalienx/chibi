@@ -10,6 +10,7 @@ export default interface Application {
   loan_amount: number;
   loan_debt: number;
   loan_period: number;
+  loan_purpose_details?: string;
   phone: string;
   purpose: Purpose | undefined;
   turnover: number;

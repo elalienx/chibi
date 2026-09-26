@@ -37,6 +37,6 @@ test("Should be able to submit with debt", async () => {
   await fillStep2(form, { email: "erik@example.com", phone: "0707654321" });
   await fillStep3(form, { company: "Birgers Guldsmedja AB" });
   await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
-  await fillStep5(form, { purpose: "Renovering av lokal" });
+  await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
   await checkSuccessStep(form, { result1 });
 });
