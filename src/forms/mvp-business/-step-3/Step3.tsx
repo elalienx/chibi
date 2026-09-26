@@ -12,6 +12,7 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
+import "./step-3.css";
 
 export default function Step3() {
   // Global state
@@ -33,7 +34,7 @@ export default function Step3() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <Form of={form} onSubmit={submitForm} className="business-form" id="step-3">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Val av bolag</h4>
@@ -44,7 +45,6 @@ export default function Step3() {
 
       <section>
         <RadioGroup form={form} id="company_org_number">
-          <Label>Välj bolag</Label>
           <RadioOption value="5590245535">Connys & Sjukvård AB</RadioOption>
           <RadioOption value="5590480512">Birgers Guldsmedja AB</RadioOption>
           <RadioOption value="5561081620">Christinas Sjukvård AB</RadioOption>
