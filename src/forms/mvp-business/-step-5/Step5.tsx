@@ -12,6 +12,7 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
+import "./step-5.css";
 
 export default function Step5() {
   // Global state
@@ -33,7 +34,7 @@ export default function Step5() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <Form of={form} onSubmit={submitForm} className="business-form" id="step-5">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte</h4>
@@ -43,6 +44,11 @@ export default function Step5() {
       <hr />
 
       <section>
+        <header className="section-header">
+          <h4>Vad ska lånet användas till?</h4>
+          <p>Välj det som passar din verksamhet bäst.</p>
+        </header>
+
         <ChipGroup form={form} id="purpose">
           {purposes.map((item) => (
             <ChipOption key={item.value} value={item.value}>
