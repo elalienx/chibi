@@ -37,7 +37,7 @@ export default function Step3() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Val av bolag</h4>
-        <small>Nästa: Lånesyfte & Omsättning</small>
+        <small>Nästa: Omsättning</small>
       </header>
 
       <hr />
