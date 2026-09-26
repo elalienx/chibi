@@ -8,4 +8,5 @@
 /* Styles per page */
 @import url("./base/forms/business-form.css");
 @import url("./base/forms/default-form.css");
+@import url("./base/forms/hero-form.css");
 @import url("./base/forms/mortgage-form.css");
