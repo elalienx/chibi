@@ -34,7 +34,7 @@ function Examplemodal({ closeModal }: Props) {
 
 // Stories
 export const Default = meta.story({
-  name: "Default",
+  name: "Modal Manager",
   render: () => {
     // Global state
     const { setModal, closeModal } = useModal.getState(); // Instead of useModal() to reduce re-renders
