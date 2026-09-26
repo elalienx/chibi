@@ -9,10 +9,6 @@ interface Props {
 
 export default async function fillStep4(form: Locator, { turnover, hasExistingLoans, loanDebt }: Props) {
   await test.step("Step 4: About the company", async () => {
-    // Safeguards
-    if (hasExistingLoans && loanDebt === undefined) throw new Error("Pass loanDebt when hasExistingLoans is true.");
-    if (!hasExistingLoans && loanDebt !== undefined) throw new Error("Pass loanDebt when hasExistingLoans is true.");
-
     await form.getByRole("heading", { name: "Omsättning" }).waitFor();
 
     // Turnover
