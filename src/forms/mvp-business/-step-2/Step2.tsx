@@ -31,7 +31,7 @@ export default function Step2() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("step-4");
+    setStep("step-3");
   }
 
   return (
