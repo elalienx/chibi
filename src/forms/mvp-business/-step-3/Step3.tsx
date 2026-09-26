@@ -5,7 +5,6 @@ import { Form, useForm } from "@formisch/react";
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
