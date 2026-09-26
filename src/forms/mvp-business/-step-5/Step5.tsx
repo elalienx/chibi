@@ -4,9 +4,9 @@ import { Form, useForm } from "@formisch/react";
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
+import ChipGroup from "components/chip-group/ChipGroup";
+import ChipOption from "components/chip-option/ChipOption";
 import Icon from "components/icon/Icon";
-import RadioGroup from "components/radio-group/RadioGroup";
-import RadioOption from "components/radio-option/RadioOption";
 import purposes from "../data/purposes";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
@@ -43,13 +43,13 @@ export default function Step5() {
       <hr />
 
       <section>
-        <RadioGroup form={form} id="purpose">
+        <ChipGroup form={form} id="purpose">
           {purposes.map((item) => (
-            <RadioOption key={item.value} value={item.value}>
+            <ChipOption key={item.value} value={item.value}>
               {item.label}
-            </RadioOption>
+            </ChipOption>
           ))}
-        </RadioGroup>
+        </ChipGroup>
       </section>
 
       <hr />
