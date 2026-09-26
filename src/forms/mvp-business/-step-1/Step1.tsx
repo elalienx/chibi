@@ -33,18 +33,16 @@ export default function Step1() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} id="step-1" className="business-form">
-      <section>
-        <InputField form={form} id="loan_amount">
-          <Label>Välj lånesumma:</Label>
-          <Input type="number" suffix="kr" />
-        </InputField>
+    <Form of={form} onSubmit={submitForm} id="step-1" className="hero-form">
+      <InputField form={form} id="loan_amount">
+        <Label>Välj lånesumma:</Label>
+        <Input type="number" suffix="kr" />
+      </InputField>
 
-        <InputField form={form} id="loan_period">
-          <Label>Välj lånetid:</Label>
-          <Input type="number" suffix="år" />
-        </InputField>
-      </section>
+      <InputField form={form} id="loan_period">
+        <Label>Välj lånetid:</Label>
+        <Input type="number" suffix="år" />
+      </InputField>
 
       <footer>
         <Button type="submit">
