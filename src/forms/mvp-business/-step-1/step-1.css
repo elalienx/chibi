@@ -1,6 +1,16 @@
 #step-1 {
   --special-font-size: 24px;
 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xl);
+  padding-top: var(--space-3xl);
+  padding-inline: var(--space-3xl);
+  padding-bottom: var(--space-xl);
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
+
   .input-field {
     display: flex;
     flex-direction: row; /** To put label and input side by side. */
@@ -23,6 +33,26 @@
     width: 108px;
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    text-align: center;
+
+    .button {
+      --size: 72px;
+
+      height: var(--size);
+      border-radius: var(--size);
+      font-size: var(--special-font-size);
+      font-weight: var(--font-weight-bold);
+
+      .icon {
+        height: var(--special-font-size);
+      }
+    }
   }
 }
 
