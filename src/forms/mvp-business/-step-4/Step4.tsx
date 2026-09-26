@@ -47,7 +47,6 @@ export default function Step4() {
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h5>Omsättning</h5>
         <small>Nästa: Lånesyfte</small>
-        <Icon name="hashtag" />
       </header>
 
       <hr />

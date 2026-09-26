@@ -8,3 +8,8 @@ body,
   display: grid;
   place-items: center;
 }
+
+#storybook-root .business-form {
+  width: 100%;
+  max-width: 544px;
+}
