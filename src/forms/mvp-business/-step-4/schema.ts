@@ -24,8 +24,6 @@ const loan_debt = v.pipe(
   v.maxValue(MAX_EXISTING_LOAN, `Måste vara maximalt ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
 );
 
-const purpose = v.pipe(v.string("Vänligen ange lånesyfte"), v.nonEmpty("Vänligen ange lånesyfte"));
-
 // Variants (for existing loan)
 const withLoans = v.object({
   has_existing_loans: v.pipe(
@@ -45,6 +43,6 @@ const withoutLoans = v.object({
 const HAS_EXISTING_LOANS = v.variant("has_existing_loans", [withLoans, withoutLoans], "Gör ett val för att fortsätta.");
 
 // Schema
-const schema = v.pipe(v.intersect([v.object({ turnover, purpose }), HAS_EXISTING_LOANS]));
+const schema = v.pipe(v.intersect([v.object({ turnover }), HAS_EXISTING_LOANS]));
 
 export default schema;
