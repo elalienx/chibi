@@ -13,7 +13,6 @@ const Hints = {
   has_existing_loans: "",
   turnover: Turnover,
   loan_debt: "Räkna samman bolagets totala låneskuld",
-  purpose: "",
 };
 
 export default Hints;
