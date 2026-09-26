@@ -1,0 +1,45 @@
+.chip-option {
+  --border-width: 2px;
+  --duration: 200ms;
+  --easing: ease;
+
+  padding: calc(var(--space-small) - var(--border-width)) calc(var(--space-medium) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the chip. */
+  background-color: var(--color-gray-100);
+  border: solid var(--border-width) var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+  color: var(--color-desaturated-30);
+  font-weight: var(--font-weight-normal);
+  transition:
+    background-color var(--duration) var(--easing),
+    border-color var(--duration) var(--easing),
+    color var(--duration) var(--easing),
+    text-shadow var(--duration) var(--easing);
+
+  /* Remove the radio bullet/dot. */
+  input {
+    appearance: none;
+    margin: 0;
+    width: 0;
+  }
+}
+
+/* Style the label based on interaction and the radio input's state. */
+.chip-option:hover:has(input:not(:disabled)),
+.chip-option:has(input:checked) {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-50);
+  color: var(--color-gray-10);
+  text-shadow: 0 0 0.7px currentColor; /* Simulate a heavier font weight without layout shift. */
+}
+
+.chip-option:has(input:focus-visible) {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}
+
+.chip-option:has(input:disabled) {
+  background-color: var(--color-gray-95);
+  border-color: var(--color-gray-50);
+  color: var(--color-gray-50);
+  font-weight: var(--font-weight-normal);
+}
