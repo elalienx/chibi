@@ -66,7 +66,7 @@ export default function Step5() {
 
         {selectedPurpose && (
           <div className="sub-form-details">
-            <h5>Du valde: {selectedPurpose.label}</h5>
+            <h5 className="title">Du valde: {selectedPurpose.label}</h5>
             <InputField form={form} id="loan_purpose_details">
               <Label>Berätta mer om ditt lånesyfte</Label>
               <Input type="text" placeholder="t.ex. tre nya truckar till lagret..." />
