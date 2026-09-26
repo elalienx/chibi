@@ -31,7 +31,7 @@ export default function Step1() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="mortgage-form" id="step-1">
+    <Form of={form} onSubmit={submitForm} className="mortgage-form">
       <header>
         <ArrowGoBack onClick={goPreviousStep} />
         <h4>1. Om lånet</h4>
