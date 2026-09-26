@@ -3,8 +3,7 @@
   --duration: 200ms;
   --easing: ease;
 
-  /* Subtract the border from the padding to draw the stroke inside the chip. */
-  padding: calc(var(--space-small) - var(--border-width)) calc(var(--space-medium) - var(--border-width));
+  padding: calc(var(--space-small) - var(--border-width)) calc(var(--space-medium) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the chip. */
   background-color: var(--color-gray-100);
   border: solid var(--border-width) var(--color-desaturated-90);
   border-radius: var(--border-radius);
