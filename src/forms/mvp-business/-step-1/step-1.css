@@ -1,6 +1,5 @@
 #step-1 {
   --special-font-size: 24px;
-  --special-font-weight: var(--font-weight-bold);
 
   .input-field {
     display: flex;
@@ -8,19 +7,22 @@
     justify-content: space-between; /** To put label and input on oposite sides of the form. */
     align-items: center; /** To align items vertically */
     font-size: var(--special-font-size);
-    font-weight: var(--special-font-weight);
+
+    .label {
+      font-weight: var(--font-weight-bold);
+    }
   }
 
   #loan_amount {
     width: 196px;
     font-size: var(--special-font-size);
-    font-weight: var(--special-font-weight);
+    font-weight: var(--font-weight-bold);
   }
 
   #loan_period {
     width: 108px;
     font-size: var(--special-font-size);
-    font-weight: var(--special-font-weight);
+    font-weight: var(--font-weight-bold);
   }
 }
 
