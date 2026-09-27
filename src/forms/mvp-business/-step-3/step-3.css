@@ -2,26 +2,5 @@
   #company_org_number {
     grid-template-columns: repeat(1, 1fr);
     gap: var(--space-xl);
-
-    .radio-option {
-      height: auto;
-      padding-block: 16px;
-
-      .title-and-subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: sel;
-        font-weight: var(--font-weight-medium);
-
-        .title {
-          color: var(--color-gray-10);
-          font-weight: var(--font-weight-bold);
-        }
-
-        .subtitle {
-          color: var(--color-desaturated-30);
-        }
-      }
-    }
   }
 }

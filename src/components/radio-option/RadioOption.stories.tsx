@@ -58,3 +58,27 @@ export const Selected = meta.story({
     );
   },
 });
+
+export const WithTitleAndSubtitle = meta.story({
+  name: "With title and subtitle",
+  render: () => {
+    const form = useForm({
+      schema: schema,
+      validate: "blur",
+      revalidate: "blur",
+      initialInput: { favorite_beer: String(false) },
+    });
+    const field = useField(form, { path: ["favorite_beer"] });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <RadioOption field={field as FieldStore} id="favorite_beer" value={true}>
+          <div className="title-and-subtitle">
+            <span className="title">Guinness Beer</span>
+            <span className="subtitle">Irish dry stout</span>
+          </div>
+        </RadioOption>
+      </Form>
+    );
+  },
+});
