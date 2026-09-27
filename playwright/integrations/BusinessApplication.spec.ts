@@ -19,21 +19,21 @@ test.beforeEach(async ({ mount }) => {
 test("Should be able to submit with no debt", async () => {
   const result1 = "Your turnover is 1 000 000 kr and your existing debt is 0 kr.";
 
-  await fillStep1(form, { loanAmount: 600_000, loanPeriod: 2 });
+  await fillStep1(form);
   await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
   await fillStep3(form, { company: "Connys & Sjukvård AB" });
   await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
   await fillStep5(form, { purpose: "Renovering av lokal" });
-  await checkSuccessStep(form, { result1 });
+  await checkSuccessStep(form, { result: result1 });
 });
 
 test("Should be able to submit with debt", async () => {
   const result1 = "Your turnover is 500 000 kr and your existing debt is 250 000 kr.";
 
-  await fillStep1(form, { loanAmount: 1_000_000, loanPeriod: 3 });
+  await fillStep1(form);
   await fillStep2(form, { email: "erik@example.com", phone: "0707654321" });
   await fillStep3(form, { company: "Birgers Guldsmedja AB" });
   await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
   await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
-  await checkSuccessStep(form, { result1 });
+  await checkSuccessStep(form, { result: result1 });
 });

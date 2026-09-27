@@ -20,7 +20,6 @@ test("Should be able to apply for a house", async () => {
   await fillIntroStep(form);
   await fillStep1(form, { propertyType: "Villa" });
   await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
-
   await checkSuccessStep(form, { result1, result2 });
 });
 
