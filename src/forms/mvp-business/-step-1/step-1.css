@@ -3,6 +3,10 @@
   --size-loan-amount: 181px;
   --size-loan-period: 110px;
 
+  .label-tablet {
+    display: none;
+  }
+
   .input-field {
     display: flex;
     flex-direction: row; /** To put label and input side by side. */
@@ -15,14 +19,22 @@
     }
   }
 
+  .input-wrapper {
+    min-width: 0;
+  }
+
   #loan_amount {
-    width: var(--size-loan-amount);
+    min-width: 0;
+    width: 100%;
+    max-width: var(--size-loan-amount);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
 
   #loan_period {
-    width: var(--size-loan-period);
+    min-width: 0;
+    width: 100%;
+    max-width: var(--size-loan-period);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
@@ -47,5 +59,21 @@
     --special-font-size: 28px;
     --size-loan-amount: 199px;
     --size-loan-period: 110px;
+
+    #loan_amount {
+      width: var(--size-loan-amount);
+    }
+
+    #loan_period {
+      width: var(--size-loan-period);
+    }
+
+    .label-mobile {
+      display: none;
+    }
+
+    .label-tablet {
+      display: inline;
+    }
   }
 }
