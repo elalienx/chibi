@@ -3,10 +3,6 @@
   --size-loan-amount: 145px;
   --size-loan-period: 60px;
 
-  .label-tablet {
-    display: none;
-  }
-
   .input-field,
   .input-field .label,
   .input-field .sufix,
@@ -58,13 +54,5 @@
 @media (min-width: 550px) {
   #step-1 {
     --special-font-size: 28px;
-
-    .label-mobile {
-      display: none;
-    }
-
-    .label-tablet {
-      display: inline;
-    }
   }
 }

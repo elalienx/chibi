@@ -1,0 +1,24 @@
+.tooltip-with-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+}
+
+.label-tablet {
+  display: none;
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-1 {
+    --special-font-size: 28px;
+
+    .label-mobile {
+      display: none;
+    }
+
+    .label-tablet {
+      display: inline;
+    }
+  }
+}
