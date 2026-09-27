@@ -40,4 +40,42 @@ export const Default = meta.story({
   },
 });
 
+export const WithTitleAndSubtitle = meta.story({
+  name: "With title and subtitle",
+  render: () => {
+    const form = useForm({
+      schema: schema,
+      validate: "blur",
+      revalidate: "blur",
+      initialInput: { source_of_income: "salary" },
+    });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <RadioGroup form={form} id="source_of_income">
+          <Label>Source of income</Label>
+          <RadioOption value="savings">
+            <div className="title-and-subtitle">
+              <span className="title">Savings</span>
+              <span className="subtitle">Money you have set aside</span>
+            </div>
+          </RadioOption>
+          <RadioOption value="salary">
+            <div className="title-and-subtitle">
+              <span className="title">Salary</span>
+              <span className="subtitle">Income from employment</span>
+            </div>
+          </RadioOption>
+          <RadioOption value="pension">
+            <div className="title-and-subtitle">
+              <span className="title">Pension</span>
+              <span className="subtitle">Retirement income</span>
+            </div>
+          </RadioOption>
+        </RadioGroup>
+      </Form>
+    );
+  },
+});
+
 export default meta;
