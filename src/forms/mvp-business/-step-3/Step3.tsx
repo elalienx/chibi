@@ -10,14 +10,9 @@ import RadioOption from "components/radio-option/RadioOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import companyList from "./companyList";
 import schema from "./schema";
 import "./step-3.css";
-
-const COMPANY_LIST = [
-  { value: "5590245535", title: "Connys & Sjukvård AB" },
-  { value: "5590480512", title: "Birgers Guldsmedja AB" },
-  { value: "5561081620", title: "Christinas Sjukvård AB" },
-];
 
 export default function Step3() {
   // Global state
@@ -39,7 +34,7 @@ export default function Step3() {
   }
 
   // Components
-  const CompanyOptions = COMPANY_LIST.map(({ value, title }) => (
+  const CompanyOptions = companyList.map(({ value, title }) => (
     <RadioOption key={value} value={value}>
       <div className="title-and-subtitle">
         <span className="title">{title}</span>
