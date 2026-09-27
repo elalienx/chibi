@@ -11,7 +11,7 @@ const initialApplication: Application = {
   loan_debt: 0,
   loan_period: BusinessFormConfig.DEFAULT_PERIOD,
   phone: "",
-  purpose: undefined,
+  purpose: "",
   turnover: 0,
 };
 
