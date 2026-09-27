@@ -1,0 +1,4 @@
+ul.first-level {
+  padding-left: 0; /** To align first level <ul> to paragraphs. */
+  list-style-position: inside;
+}
