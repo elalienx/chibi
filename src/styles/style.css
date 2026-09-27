@@ -2,11 +2,17 @@
 @import url("./base/fonts.css");
 @import url("./base/layout.css");
 @import url("./base/sub-components.css");
-@import url("./base/typography.css");
+@import url("./base/utilities.css");
 @import url("./base/variables.css");
 
-/* Styles per page */
+/* Forms */
 @import url("./base/forms/business-form.css");
 @import url("./base/forms/default-form.css");
 @import url("./base/forms/hero-form.css");
 @import url("./base/forms/mortgage-form.css");
+
+/* Typogrpahy */
+@import url("./base/typography/anchor.css");
+@import url("./base/typography/code.css");
+@import url("./base/typography/headings.css");
+@import url("./base/typography/ul.css");
