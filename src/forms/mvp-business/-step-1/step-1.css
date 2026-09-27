@@ -1,5 +1,11 @@
 #step-1 {
   --special-font-size: 24px;
+  --size-loan-amount: 181px;
+  --size-loan-period: 110px;
+
+  .label-tablet {
+    display: none;
+  }
 
   .input-field {
     display: flex;
@@ -13,14 +19,22 @@
     }
   }
 
+  .input-wrapper {
+    min-width: 0;
+  }
+
   #loan_amount {
-    width: 196px;
+    min-width: 0;
+    width: 100%;
+    max-width: var(--size-loan-amount);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
 
   #loan_period {
-    width: 108px;
+    min-width: 0;
+    width: 100%;
+    max-width: var(--size-loan-period);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
@@ -43,5 +57,23 @@
 @media (min-width: 550px) {
   #step-1 {
     --special-font-size: 28px;
+    --size-loan-amount: 199px;
+    --size-loan-period: 110px;
+
+    #loan_amount {
+      width: var(--size-loan-amount);
+    }
+
+    #loan_period {
+      width: var(--size-loan-period);
+    }
+
+    .label-mobile {
+      display: none;
+    }
+
+    .label-tablet {
+      display: inline;
+    }
   }
 }

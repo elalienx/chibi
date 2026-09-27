@@ -4,6 +4,10 @@ body,
   height: 100%;
 }
 
+body.sb-show-main.sb-main-padded {
+  padding: 0; /** Storybook adds some padding in the UI view but our website lacks this. */
+}
+
 #storybook-root {
   display: grid;
   place-items: center;
