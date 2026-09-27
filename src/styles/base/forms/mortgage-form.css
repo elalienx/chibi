@@ -33,6 +33,8 @@
 /* Tablet */
 @media (min-width: 550px) {
   .mortgage-form {
+    width: 544px;
+
     > header {
       margin-block: var(--space-2xl) var(--space-medium);
       margin-inline: var(--space-2xl);
