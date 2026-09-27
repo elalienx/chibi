@@ -12,7 +12,7 @@ afterEach(() => {
 test("should go to the previous step and remove it from history", () => {
   // Arrange
   const currentStep = "success-step";
-  const previousSteps: Step[] = ["intro-step", "step-4"];
+  const previousSteps: Step[] = ["step-1", "step-2", "step-3", "step-4"];
 
   // Act
   const test = goPreviousStep(currentStep, previousSteps);

@@ -11,7 +11,7 @@ afterEach(() => {
 
 test("should set the new step and append the current step to history", () => {
   // Arrange
-  const currentStep: Step = "intro-step";
+  const currentStep: Step = "step-1";
   const previousSteps: Step[] = [];
   const newStep: Step = "step-4"; // as we havent mocked steps 1, 2, 3 yet.
 
@@ -25,7 +25,7 @@ test("should set the new step and append the current step to history", () => {
 test("should append properly when there is already history", () => {
   // Arrange
   const currentStep: Step = "step-4";
-  const previousSteps: Step[] = ["intro-step"];
+  const previousSteps: Step[] = ["step-1", "step-2", "step-3"];
   const newStep: Step = "success-step";
 
   // Act
@@ -39,7 +39,7 @@ test("should trigger the safeguard and return the same state if navigating to th
   // Arrange
   const consoleSpy = vi.spyOn(console, "info").mockImplementation(() => {});
   const currentStep: Step = "step-4";
-  const previousSteps: Step[] = ["intro-step"];
+  const previousSteps: Step[] = ["step-1", "step-2", "step-3"];
   const newStep: Step = "step-4"; // Same as current
 
   // Act

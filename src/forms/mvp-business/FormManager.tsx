@@ -1,5 +1,4 @@
 // Project files
-import IntroStep from "./-intro-step/IntroStep";
 import Step1 from "./-step-1/Step1";
 import Step2 from "./-step-2/Step2";
 import Step3 from "./-step-3/Step3";
@@ -15,7 +14,6 @@ export default function FormManager() {
 
   return (
     <>
-      {step === "intro-step" && <IntroStep />}
       {step === "step-1" && <Step1 />}
       {step === "step-2" && <Step2 />}
       {step === "step-3" && <Step3 />}
