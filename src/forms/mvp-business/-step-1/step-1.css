@@ -1,5 +1,7 @@
 #step-1 {
   --special-font-size: 24px;
+  --size-loan-amount: 181px;
+  --size-loan-period: 110px;
 
   .input-field {
     display: flex;
@@ -14,13 +16,13 @@
   }
 
   #loan_amount {
-    width: 196px;
+    width: var(--size-loan-amount);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
 
   #loan_period {
-    width: 108px;
+    width: var(--size-loan-period);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
   }
@@ -43,5 +45,7 @@
 @media (min-width: 550px) {
   #step-1 {
     --special-font-size: 28px;
+    --size-loan-amount: 199px;
+    --size-loan-period: 110px;
   }
 }
