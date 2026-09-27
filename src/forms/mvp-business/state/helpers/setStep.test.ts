@@ -24,28 +24,28 @@ test("should set the new step and append the current step to history", () => {
 
 test("should append properly when there is already history", () => {
   // Arrange
-  const currentStep: Step = "step-4";
-  const previousSteps: Step[] = ["step-1", "step-2", "step-3"];
-  const newStep: Step = "success-step";
+  const currentStep: Step = "step-3";
+  const previousSteps: Step[] = ["step-1", "step-2"];
+  const newStep: Step = "step-4";
 
   // Act
   const test = setStep(currentStep, previousSteps, newStep);
 
   // Assert
-  expect(test).toEqual({ step: "success-step", previousSteps: ["step-1", "step-2", "step-3", "step-4"] });
+  expect(test).toEqual({ step: "step-4", previousSteps: ["step-1", "step-2", "step-3"] });
 });
 
 test("should trigger the safeguard and return the same state if navigating to the current step", () => {
   // Arrange
   const consoleSpy = vi.spyOn(console, "info").mockImplementation(() => {});
-  const currentStep: Step = "step-4";
-  const previousSteps: Step[] = ["step-1", "step-2", "step-3"];
-  const newStep: Step = "step-4"; // Same as current
+  const currentStep: Step = "step-3";
+  const previousSteps: Step[] = ["step-1", "step-2"];
+  const newStep: Step = "step-3"; // Same as current
 
   // Act
   const result = setStep(currentStep, previousSteps, newStep);
 
   // Assert
-  expect(result).toEqual({ step: "step-4", previousSteps: ["step-1", "step-2", "step-3"] });
+  expect(result).toEqual({ step: "step-3", previousSteps: ["step-1", "step-2"] });
   expect(consoleSpy).toHaveBeenCalledWith("You are trying to navigate to the same page.");
 });
