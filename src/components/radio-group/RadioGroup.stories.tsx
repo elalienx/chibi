@@ -20,7 +20,7 @@ const schema = v.object({ source_of_income });
 
 // Stories
 export const Default = meta.story({
-  name: "Radio Group",
+  name: "Default",
   render: () => {
     // Local state
     const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
