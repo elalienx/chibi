@@ -7,11 +7,11 @@
 
   > header {
     display: grid;
-    gap: var(--space-tiny) var(--space-medium);
+    gap: var(--space-tiny) var(--space-xs);
     grid-template-areas:
       "left title right"
       "left subtitle right";
-    grid-template-columns: 64px 1fr 64px; /* To make the title and subtitle take the whole width. */
+    grid-template-columns: 48px 1fr 48px; /* Equal side columns keep the title and subtitle centered. */
     place-items: center;
     margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
@@ -67,6 +67,7 @@
   .business-form {
     > header {
       gap: var(--space-base) var(--space-medium);
+      grid-template-columns: 64px 1fr 64px;
 
       > .arrow-go-back {
         height: 64px;
