@@ -24,7 +24,7 @@ interface Store {
 }
 
 const initialState = {
-  step: "intro-step" as Step,
+  step: "step-1" as Step,
   previousSteps: [] as Step[],
 };
 
