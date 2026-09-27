@@ -13,13 +13,13 @@ test("should set the new step and append the current step to history", () => {
   // Arrange
   const currentStep: Step = "step-1";
   const previousSteps: Step[] = [];
-  const newStep: Step = "step-4"; // as we havent mocked steps 1, 2, 3 yet.
+  const newStep: Step = "step-2";
 
   // Act
   const test = setStep(currentStep, previousSteps, newStep);
 
   // Assert
-  expect(test).toEqual({ step: "step-4", previousSteps: ["intro-step"] });
+  expect(test).toEqual({ step: "step-2", previousSteps: ["step-1"] });
 });
 
 test("should append properly when there is already history", () => {
@@ -32,7 +32,7 @@ test("should append properly when there is already history", () => {
   const test = setStep(currentStep, previousSteps, newStep);
 
   // Assert
-  expect(test).toEqual({ step: "success-step", previousSteps: ["intro-step", "step-4"] });
+  expect(test).toEqual({ step: "success-step", previousSteps: ["step-1", "step-2", "step-3", "step-4"] });
 });
 
 test("should trigger the safeguard and return the same state if navigating to the current step", () => {
@@ -46,6 +46,6 @@ test("should trigger the safeguard and return the same state if navigating to th
   const result = setStep(currentStep, previousSteps, newStep);
 
   // Assert
-  expect(result).toEqual({ step: "step-4", previousSteps: ["intro-step"] });
+  expect(result).toEqual({ step: "step-4", previousSteps: ["step-1", "step-2", "step-3"] });
   expect(consoleSpy).toHaveBeenCalledWith("You are trying to navigate to the same page.");
 });

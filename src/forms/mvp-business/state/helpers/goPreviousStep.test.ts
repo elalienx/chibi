@@ -18,7 +18,7 @@ test("should go to the previous step and remove it from history", () => {
   const test = goPreviousStep(currentStep, previousSteps);
 
   // Assert
-  expect(test).toEqual({ step: "step-4", previousSteps: ["intro-step"] });
+  expect(test).toEqual({ step: "step-4", previousSteps: ["step-1", "step-2", "step-3"] });
 });
 
 test("should trigger the safeguard and return the exact same state if history is empty", () => {
