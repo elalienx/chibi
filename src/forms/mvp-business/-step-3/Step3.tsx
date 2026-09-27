@@ -13,6 +13,12 @@ import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import "./step-3.css";
 
+const COMPANY_LIST = [
+  { value: "5590245535", title: "Connys & Sjukvård AB" },
+  { value: "5590480512", title: "Birgers Guldsmedja AB" },
+  { value: "5561081620", title: "Christinas Sjukvård AB" },
+];
+
 export default function Step3() {
   // Global state
   const { application, updateApplication } = useApplication();
@@ -32,6 +38,16 @@ export default function Step3() {
     setStep("step-4");
   }
 
+  // Components
+  const CompanyOptions = COMPANY_LIST.map(({ value, title }) => (
+    <RadioOption key={value} value={value}>
+      <div className="title-and-subtitle">
+        <span className="title">{title}</span>
+        <span className="subtitle">{value}</span>
+      </div>
+    </RadioOption>
+  ));
+
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-3">
       <header>
@@ -44,9 +60,7 @@ export default function Step3() {
 
       <section>
         <RadioGroup form={form} id="company_org_number">
-          <RadioOption value="5590245535">Connys & Sjukvård AB</RadioOption>
-          <RadioOption value="5590480512">Birgers Guldsmedja AB</RadioOption>
-          <RadioOption value="5561081620">Christinas Sjukvård AB</RadioOption>
+          {CompanyOptions}
         </RadioGroup>
       </section>
 

@@ -12,6 +12,26 @@
     margin: 0; /* We control the spacing using flex. */
   }
 
+  &:has(.title-and-subtitle) {
+    height: auto;
+    padding-block: var(--space-medium);
+  }
+
+  .title-and-subtitle {
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--font-weight-medium);
+
+    .title {
+      color: var(--color-gray-10);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .subtitle {
+      color: var(--color-desaturated-30);
+    }
+  }
+
   /* Animation */
   transition:
     background-color 0.15s ease-in,
@@ -40,5 +60,9 @@
 
   input:checked {
     accent-color: var(--color-accent);
+  }
+
+  .title-and-subtitle :is(.title, .subtitle) {
+    color: inherit;
   }
 }

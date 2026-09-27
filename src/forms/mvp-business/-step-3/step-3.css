@@ -2,9 +2,5 @@
   #company_org_number {
     grid-template-columns: repeat(1, 1fr);
     gap: var(--space-xl);
-
-    label {
-      font-weight: var(--font-weight-medium);
-    }
   }
 }
