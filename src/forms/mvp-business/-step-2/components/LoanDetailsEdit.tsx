@@ -12,7 +12,11 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import schema from "../../-step-1/schema";
 import "./loan-details-edit.css";
 
-export default function LoanDetailOpen() {
+interface Props {
+  onSave: () => void;
+}
+
+export default function LoanDetailsEdit({ onSave }: Props) {
   // Global state
   const { application, updateApplication } = useApplication();
 
@@ -27,7 +31,7 @@ export default function LoanDetailOpen() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    // close this sub-form
+    onSave();
   }
 
   return (

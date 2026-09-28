@@ -1,4 +1,5 @@
 // Node modules
+import { useState } from "react";
 import { Form, useForm } from "@formisch/react";
 
 // Project files
@@ -14,6 +15,8 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./BankIDTooltip";
 import schema from "./schema";
+import LoanDetailsEdit from "./components/LoanDetailsEdit";
+import LoanDetailsView from "./components/LoanDetailsView";
 
 export default function Step2() {
   // Global state
@@ -21,6 +24,7 @@ export default function Step2() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
+  const [isEditingLoan, setIsEditingLoan] = useState(false);
   const form = useForm({
     schema: schema,
     validate: "blur",
@@ -35,38 +39,44 @@ export default function Step2() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <div className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
         <small>Nästa: Val av bolag</small>
       </header>
 
-      <hr />
+      {/* Editable box */}
+      {isEditingLoan && <LoanDetailsEdit onSave={() => setIsEditingLoan(false)} />}
+      {!isEditingLoan && <LoanDetailsView onEdit={() => setIsEditingLoan(true)} />}
 
-      <section>
-        <InputField form={form} id="email">
-          <Label>E-postadress</Label>
-          <Input type="email" placeholder="namn@email.se" />
-        </InputField>
+      <Form of={form} onSubmit={submitForm} className="business-form-content">
+        <hr />
 
-        <InputField form={form} id="phone">
-          <Label>Mobilnummer</Label>
-          <Input type="tel" placeholder="+46 XX XXX XX XX" />
-        </InputField>
-      </section>
+        <section>
+          <InputField form={form} id="email">
+            <Label>E-postadress</Label>
+            <Input type="email" placeholder="namn@email.se" />
+          </InputField>
 
-      <hr />
+          <InputField form={form} id="phone">
+            <Label>Mobilnummer</Label>
+            <Input type="tel" placeholder="+46 XX XXX XX XX" />
+          </InputField>
+        </section>
 
-      <footer>
-        <Button type="submit">
-          Fortsätt med BankID
-          <Icon name="arrow-right" />
-        </Button>
-        <small>
-          Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
-        </small>
-      </footer>
-    </Form>
+        <hr />
+
+        <footer>
+          <Button type="submit">
+            Fortsätt med BankID
+            <Icon name="arrow-right" />
+          </Button>
+          <small>
+            Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
+          </small>
+        </footer>
+      </Form>
+    </div>
   );
 }
