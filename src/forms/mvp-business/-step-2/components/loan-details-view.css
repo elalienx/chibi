@@ -1,8 +1,8 @@
 #loan-details-view {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-small);
+  justify-content: space-around;
+  gap: var(--space-medium);
   padding-inline: var(--space-medium);
   background-color: white;
   border-top: solid 1px var(--color-gray-80);
@@ -53,8 +53,6 @@
 /* Tablet */
 @media (min-width: 550px) {
   #loan-details-view {
-    gap: var(--space-medium);
-
     .item {
       display: flex;
       flex-direction: row;
