@@ -1,0 +1,25 @@
+#loan-details-edit {
+  --space: var(--space-small);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  padding: var(--space);
+  background-color: var(--color-blue-99);
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space);
+  }
+
+  button {
+    width: 100%;
+  }
+}
+/* Tablet */
+@media (min-width: 550px) {
+  #loan-details-edit {
+    --space: var(--space-medium);
+  }
+}
