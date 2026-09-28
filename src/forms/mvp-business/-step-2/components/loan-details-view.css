@@ -4,6 +4,7 @@
   gap: var(--space-small);
   padding-inline: var(--space-medium);
   background-color: white;
+  border-top: solid 1px var(--color-gray-80);
 
   .item {
     display: flex;
