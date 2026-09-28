@@ -7,6 +7,7 @@
   gap: var(--space);
   padding: var(--space);
   background-color: var(--color-blue-99);
+  border-top: solid 1px var(--color-gray-80);
 
   .columns {
     display: grid;

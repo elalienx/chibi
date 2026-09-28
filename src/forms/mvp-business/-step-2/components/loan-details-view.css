@@ -1,6 +1,7 @@
 #loan-details-view {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-small);
   padding-inline: var(--space-medium);
   background-color: white;
@@ -23,9 +24,29 @@
     }
   }
 
+  .item:nth-child(2) {
+    margin-right: auto; /** To push the rest of the content to the right. */
+  }
+
   .vertical-divider {
     align-self: stretch;
     border-inline-start: 1px solid var(--color-gray-80);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+    min-width: auto;
+    background: none;
+    padding-inline: var(--space-medium);
+    border: none;
+    color: var(--typography-link);
+    font-weight: var(--font-weight-book);
+    line-height: 1.5rem;
+    letter-spacing: 0.01rem;
+    text-decoration: none;
+    cursor: pointer;
   }
 }
 
