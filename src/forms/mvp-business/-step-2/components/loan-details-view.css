@@ -1,14 +1,46 @@
 #loan-details-view {
-  background-color: white;
   display: flex;
   align-items: center;
   gap: var(--space-small);
   padding-block: var(--space-xs);
   padding-inline: var(--space-medium);
 
-  font-weight: var(--font-weight-medium);
+  .item {
+    display: flex;
+    flex-direction: column;
 
-  .value {
-    font-weight: var(--font-weight-normal);
+    .title {
+      color: var(--color-gray-30);
+      font-weight: var(--font-weight-normal);
+      font-size: var(--font-size-small);
+    }
+
+    .value {
+      color: var(--color-gray-10);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-normal);
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #loan-details-view {
+    gap: var(--space-medium);
+
+    .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-xs);
+
+      .title {
+        font-size: var(--font-size-large);
+      }
+
+      .value {
+        font-size: var(--font-size-large);
+      }
+    }
   }
 }

@@ -2,31 +2,33 @@
 import type { ReactElement } from "react";
 
 // Project files
-import BusinessFormConfig from "../../data/BusinessFormConfig";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import "./loan-details-view.css";
-
-const { DEFAULT_AMOUNT, DEFAULT_PERIOD } = BusinessFormConfig;
 
 interface Props {
   loanAmount: number;
   loanTerm: number;
 }
 
-function LoanDetailView({ loanAmount = DEFAULT_AMOUNT, loanTerm = DEFAULT_PERIOD }: Props): ReactElement {
+function LoanDetailView({ loanAmount, loanTerm }: Props): ReactElement {
   return (
     <div id="loan-details-view">
-      <span>
-        Lånesumma:
+      {/* Loan amount */}
+      <div className="item">
+        <span className="title">Lånesumma:</span>
         <span className="value">{loanAmount} kr</span>
-      </span>
-      <p>
-        Lånetid:
+      </div>
+
+      {/* Loan period */}
+      <div className="item">
+        <span className="title">Lånetid:</span>
         <span className="value">{loanTerm} år</span>
-      </p>
+      </div>
+
+      {/* Edit button */}
       <Button>
-        <span className="label-tablet">Ändra</span>
+        Ändra
         <Icon name="circle-info" />
       </Button>
     </div>

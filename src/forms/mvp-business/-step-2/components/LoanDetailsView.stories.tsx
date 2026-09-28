@@ -11,7 +11,7 @@ const meta = preview.meta({
 // Stories
 export const Default = meta.story({
   name: "Loan Details View",
-  render: () => <LoanDetailsView />,
+  render: () => <LoanDetailsView loanAmount={600_000} loanTerm={2} />,
 });
 
 export default meta;
