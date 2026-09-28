@@ -33,16 +33,6 @@ export default function Step3() {
     setStep("step-4");
   }
 
-  // Components
-  const CompanyOptions = companyList.map(({ value, title }) => (
-    <RadioOption key={value} value={value}>
-      <div className="title-and-subtitle">
-        <span className="title">{title}</span>
-        <span className="subtitle">{value}</span>
-      </div>
-    </RadioOption>
-  ));
-
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-3">
       <header>
@@ -55,7 +45,14 @@ export default function Step3() {
 
       <section>
         <RadioGroup form={form} id="company_org_number">
-          {CompanyOptions}
+          {companyList.map(({ title, value }) => (
+            <RadioOption key={value} value={value}>
+              <div className="title-and-subtitle">
+                <span className="title">{title}</span>
+                <span className="subtitle">{value}</span>
+              </div>
+            </RadioOption>
+          ))}
         </RadioGroup>
       </section>
 
