@@ -5,11 +5,6 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 
-  > .business-form-content {
-    display: flex;
-    flex-direction: column;
-  }
-
   > header {
     display: grid;
     gap: var(--space-tiny) var(--space-xs);
@@ -49,8 +44,7 @@
     }
   }
 
-  > section,
-  > .business-form-content > section {
+  > section {
     display: flex;
     flex-direction: column;
     gap: var(--space-large);
@@ -58,8 +52,7 @@
     margin-inline: var(--space-medium);
   }
 
-  > footer,
-  > .business-form-content > footer {
+  > footer {
     display: flex;
     flex-direction: column;
     gap: var(--space-medium);
@@ -83,8 +76,7 @@
       }
     }
 
-    > section,
-    > .business-form-content > section {
+    > section {
       margin-block: var(--space-2xl);
       margin-inline: var(--space-2xl);
     }

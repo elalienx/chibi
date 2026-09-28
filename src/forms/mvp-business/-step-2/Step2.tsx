@@ -39,7 +39,7 @@ export default function Step2() {
   }
 
   return (
-    <div className="business-form">
+    <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
@@ -50,33 +50,31 @@ export default function Step2() {
       {isEditingLoan && <LoanDetailsEdit onSave={() => setIsEditingLoan(false)} />}
       {!isEditingLoan && <LoanDetailsView onEdit={() => setIsEditingLoan(true)} />}
 
-      <Form of={form} onSubmit={submitForm} className="business-form-content">
-        <hr />
+      <hr />
 
-        <section>
-          <InputField form={form} id="email">
-            <Label>E-postadress</Label>
-            <Input type="email" placeholder="namn@email.se" />
-          </InputField>
+      <section>
+        <InputField form={form} id="email">
+          <Label>E-postadress</Label>
+          <Input type="email" placeholder="namn@email.se" />
+        </InputField>
 
-          <InputField form={form} id="phone">
-            <Label>Mobilnummer</Label>
-            <Input type="tel" placeholder="+46 XX XXX XX XX" />
-          </InputField>
-        </section>
+        <InputField form={form} id="phone">
+          <Label>Mobilnummer</Label>
+          <Input type="tel" placeholder="+46 XX XXX XX XX" />
+        </InputField>
+      </section>
 
-        <hr />
+      <hr />
 
-        <footer>
-          <Button type="submit">
-            Fortsätt med BankID
-            <Icon name="arrow-right" />
-          </Button>
-          <small>
-            Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
-          </small>
-        </footer>
-      </Form>
-    </div>
+      <footer>
+        <Button type="submit">
+          Fortsätt med BankID
+          <Icon name="arrow-right" />
+        </Button>
+        <small>
+          Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>
+        </small>
+      </footer>
+    </Form>
   );
 }
