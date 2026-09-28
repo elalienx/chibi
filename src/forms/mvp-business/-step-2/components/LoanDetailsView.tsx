@@ -26,6 +26,8 @@ function LoanDetailView({ loanAmount, loanTerm }: Props): ReactElement {
         <span className="value">{loanTerm} år</span>
       </div>
 
+      <div className="vertical-divider"></div>
+
       {/* Edit button */}
       <Button>
         Ändra
