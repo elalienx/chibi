@@ -1,3 +1,14 @@
 #loan-details-view {
-  background-color: pink;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-medium);
+
+  font-weight: var(--font-weight-medium);
+
+  .value {
+    font-weight: var(--font-weight-normal);
+  }
 }

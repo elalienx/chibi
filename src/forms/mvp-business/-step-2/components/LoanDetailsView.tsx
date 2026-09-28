@@ -17,13 +17,13 @@ interface Props {
 function LoanDetailView({ loanAmount = DEFAULT_AMOUNT, loanTerm = DEFAULT_PERIOD }: Props): ReactElement {
   return (
     <div id="loan-details-view">
-      <p>
+      <span>
         Lånesumma:
-        <span>{loanAmount} kr</span>
-      </p>
+        <span className="value">{loanAmount} kr</span>
+      </span>
       <p>
         Lånetid:
-        <span>{loanTerm} år</span>
+        <span className="value">{loanTerm} år</span>
       </p>
       <Button>
         <span className="label-tablet">Ändra</span>
