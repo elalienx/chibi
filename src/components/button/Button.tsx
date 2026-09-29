@@ -2,7 +2,9 @@
 import type { ReactNode } from "react";
 
 // Project files
-import "./button.css";
+import "./button-bordeless.css";
+import "./button-primary.css";
+import "./button-secondary.css";
 
 interface Props {
   /**  Text and/or icon to display inside the button. */
@@ -13,11 +15,13 @@ interface Props {
 
   /** The behavior of the button when clicked. */
   type?: "button" | "submit" | "reset" | undefined;
+
+  style?: "primary" | "secondary" | "bordeless";
 }
 
-export default function Button({ children, onClick, type = "button" }: Props) {
+export default function Button({ children, onClick, type = "button", style = "primary" }: Props) {
   return (
-    <button className="button" onClick={onClick} type={type}>
+    <button className={`button ${style}`} onClick={onClick} type={type}>
       {children}
     </button>
   );
