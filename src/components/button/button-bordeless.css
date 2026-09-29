@@ -1,4 +1,4 @@
-.button .borderless {
+.button.borderless {
   display: flex;
   align-items: center;
   gap: var(--space-base);
@@ -18,6 +18,6 @@
   transition: background-color 0.3s ease-in;
 }
 
-.button .borderless:hover {
+.button.borderless:hover {
   background-color: var(--color-blue-30);
 }
