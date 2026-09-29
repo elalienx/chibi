@@ -33,7 +33,7 @@ export default function Step1() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} id="step-1" className="hero-form">
+    <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
       <InputField form={form} id="loan_amount">
         <Label>
           <span className="label-mobile">Lånesumma:</span>
@@ -41,7 +41,6 @@ export default function Step1() {
         </Label>
         <Input type="number" suffix="kr" />
       </InputField>
-
       <InputField form={form} id="loan_period">
         <Label>
           <span className="label-mobile">Lånetid:</span>
@@ -49,7 +48,6 @@ export default function Step1() {
         </Label>
         <Input type="number" suffix="år" />
       </InputField>
-
       <footer>
         <Button type="submit">
           Påbörja ansökan <Icon name="arrow-right" />
