@@ -7,11 +7,10 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import type schema from "../schema";
 import "./loan-details-edit.css";
 
 interface Props {
-  form: FormStore<typeof schema>;
+  form: FormStore;
   onClose: () => void;
 }
 
