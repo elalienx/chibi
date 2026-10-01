@@ -4,29 +4,27 @@ import type { ReactElement } from "react";
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import useApplication from "forms/mvp-business/state/useApplication";
 import "./loan-details-view.css";
 
 interface Props {
+  loanAmount: number;
+  loanTerm: number;
   onEdit: () => void;
 }
 
-function LoanDetailView({ onEdit }: Props): ReactElement {
-  // Global state
-  const { application } = useApplication();
-
+function LoanDetailView({ loanAmount, loanTerm, onEdit }: Props): ReactElement {
   return (
     <div id="loan-details-view">
       {/* Loan amount */}
       <div className="item">
         <span className="title">Lånesumma:</span>
-        <span className="value">{application.loan_amount} kr</span>
+        <span className="value">{loanAmount} kr</span>
       </div>
 
       {/* Loan period */}
       <div className="item">
         <span className="title">Lånetid:</span>
-        <span className="value">{application.loan_period} år</span>
+        <span className="value">{loanTerm} år</span>
       </div>
 
       <div className="vertical-divider">{/* The line is drawn with CSS */}</div>

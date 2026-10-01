@@ -8,10 +8,15 @@ const meta = preview.meta({
   component: LoanDetailsView,
 });
 
+// Methods
+function onEdit() {
+  alert("Dummy method. In real life this trigger an edit");
+}
+
 // Stories
 export const Default = meta.story({
   name: "Loan Details View",
-  render: () => <LoanDetailsView loanAmount={600_000} loanTerm={2} />,
+  render: () => <LoanDetailsView loanAmount={600_000} loanTerm={2} onEdit={onEdit} />,
 });
 
 export default meta;
