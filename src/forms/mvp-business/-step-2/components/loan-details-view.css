@@ -1,0 +1,64 @@
+#loan-details-view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-small);
+  padding-inline: var(--space-medium);
+  background-color: white;
+  border-top: solid 1px var(--color-gray-80); /** Border between the form and header. */
+
+  .item {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      color: var(--color-gray-30);
+      font-weight: var(--font-weight-normal);
+      font-size: var(--font-size-small);
+    }
+
+    .value {
+      color: var(--color-gray-10);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-normal);
+    }
+  }
+
+  .vertical-divider {
+    margin-left: auto; /** To push the rest of the content to the left. */
+    align-self: stretch; /** To make the height visible when parent uses flex */
+    border-right: 1px solid var(--color-gray-80);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+    min-width: auto;
+    background: none;
+    padding-inline: var(--space-medium);
+    border: none;
+    color: var(--typography-link);
+    font-weight: var(--font-weight-book);
+    line-height: 1.5rem;
+    letter-spacing: 0.01rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #loan-details-view {
+    .item {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-xs); /** Gap between title and value */
+
+      .title,
+      .value {
+        font-size: var(--font-size-large);
+      }
+    }
+  }
+}
