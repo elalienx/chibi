@@ -16,7 +16,7 @@ function onEdit() {
 // Stories
 export const Default = meta.story({
   name: "Loan Details View",
-  render: () => <LoanDetailsView loanAmount={600_000} loanTerm={2} onEdit={onEdit} />,
+  render: () => <LoanDetailsView amount={600_000} period={2} onEdit={onEdit} />,
 });
 
 export default meta;
