@@ -29,7 +29,7 @@ function LoanDetailView({ onEdit }: Props): ReactElement {
         <span className="value">{application.loan_period} år</span>
       </div>
 
-      <div className="vertical-divider"></div>
+      <div className="vertical-divider">{/* The line is drawn with CSS */}</div>
 
       {/* Edit button */}
       <Button onClick={onEdit}>
