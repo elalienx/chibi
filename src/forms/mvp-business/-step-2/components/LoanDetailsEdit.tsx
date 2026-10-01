@@ -12,7 +12,7 @@ import "./loan-details-edit.css";
 
 interface Props {
   form: FormStore<typeof schema>;
-  onClose: () => [];
+  onClose: () => void;
 }
 
 export default function LoanDetailsEdit({ form, onClose }: Props) {
