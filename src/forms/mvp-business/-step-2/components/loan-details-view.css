@@ -1,11 +1,11 @@
 #loan-details-view {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  gap: var(--space-medium);
+  gap: var(--space-small);
   padding-inline: var(--space-medium);
   background-color: white;
-  border-top: solid 1px var(--color-gray-80);
+  border-top: solid 1px var(--color-gray-80); /** Border between the form and header. */
 
   .item {
     display: flex;
@@ -24,13 +24,10 @@
     }
   }
 
-  .item:nth-child(2) {
-    margin-right: auto; /** To push the rest of the content to the right. */
-  }
-
   .vertical-divider {
-    align-self: stretch;
-    border-inline-start: 1px solid var(--color-gray-80);
+    margin-left: auto; /** To push the rest of the content to the left. */
+    align-self: stretch; /** To make the height visible when parent uses flex */
+    border-right: 1px solid var(--color-gray-80);
   }
 
   button {
@@ -56,13 +53,9 @@
     .item {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      gap: var(--space-xs);
+      gap: var(--space-xs); /** Gap between title and value */
 
-      .title {
-        font-size: var(--font-size-large);
-      }
-
+      .title,
       .value {
         font-size: var(--font-size-large);
       }

@@ -1,6 +1,7 @@
 // Node modules
 import { useState } from "react";
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
+import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -14,7 +15,7 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./components/BankIDTooltip";
-import schema from "./schema";
+import schema, { loanDetails } from "./schema";
 import LoanDetailsEdit from "./components/LoanDetailsEdit";
 import LoanDetailsView from "./components/LoanDetailsView";
 
@@ -33,13 +34,22 @@ export default function Step2() {
   });
 
   // Methods
-  function submitForm(values: object) {
+  function submitForm(values: v.InferOutput<typeof schema>) {
     updateApplication(values);
     setStep("step-3");
   }
 
+  function saveLoanDetails(values: v.InferOutput<typeof loanDetails>) {
+    updateApplication(values);
+    setIsEditingLoan(false);
+  }
+
+  function revealLoanErrors() {
+    if (!v.safeParse(loanDetails, getInput(form)).success) setIsEditingLoan(true);
+  }
+
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form">
+    <Form of={form} onSubmit={submitForm} onSubmitCapture={revealLoanErrors} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
@@ -47,7 +57,7 @@ export default function Step2() {
       </header>
 
       {/* Editable box */}
-      {isEditingLoan && <LoanDetailsEdit onSave={() => setIsEditingLoan(false)} />}
+      {isEditingLoan && <LoanDetailsEdit form={form} onSave={saveLoanDetails} />}
       {!isEditingLoan && <LoanDetailsView onEdit={() => setIsEditingLoan(true)} />}
 
       <hr />
