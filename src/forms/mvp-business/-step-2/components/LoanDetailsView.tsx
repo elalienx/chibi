@@ -7,27 +7,27 @@ import Icon from "components/icon/Icon";
 import "./loan-details-view.css";
 
 interface Props {
-  loanAmount: number;
-  loanTerm: number;
+  amount: number;
+  period: number;
   onEdit: () => void;
 }
 
-function LoanDetailView({ loanAmount, loanTerm, onEdit }: Props): ReactElement {
+export default function LoanDetailView({ amount, period, onEdit }: Props): ReactElement {
   return (
     <div id="loan-details-view">
       {/* Loan amount */}
       <div className="item">
         <span className="title">Lånesumma:</span>
-        <span className="value">{loanAmount} kr</span>
+        <span className="value">{amount} kr</span>
       </div>
 
       {/* Loan period */}
       <div className="item">
         <span className="title">Lånetid:</span>
-        <span className="value">{loanTerm} år</span>
+        <span className="value">{period} år</span>
       </div>
 
-      <div className="vertical-divider">{/* The line is drawn with CSS */}</div>
+      <div className="vertical-divider">{/* Drawn with CSS */}</div>
 
       {/* Edit button */}
       <Button onClick={onEdit}>
@@ -37,5 +37,3 @@ function LoanDetailView({ loanAmount, loanTerm, onEdit }: Props): ReactElement {
     </div>
   );
 }
-
-export default LoanDetailView;

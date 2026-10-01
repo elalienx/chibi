@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -24,13 +24,17 @@ export default function Step2() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
-  const [isEditingLoan, setIsEditingLoan] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const form = useForm({
     schema: schema,
     validate: "blur",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application }),
   });
+
+  // Derived state
+  const amount = Number(getInput(form, { path: ["loan_amount"] }));
+  const period = Number(getInput(form, { path: ["loan_period"] }));
 
   // Methods
   function submitForm(values: object) {
@@ -47,8 +51,8 @@ export default function Step2() {
       </header>
 
       {/* Editable box */}
-      {isEditingLoan && <LoanDetailsEdit form={form} onClose={() => setIsEditingLoan(false)} />}
-      {!isEditingLoan && <LoanDetailsView onEdit={() => setIsEditingLoan(true)} loanAmount={0} loanTerm={0} />}
+      {isEditing && <LoanDetailsEdit form={form} onClose={() => setIsEditing(false)} />}
+      {!isEditing && <LoanDetailsView onEdit={() => setIsEditing(true)} amount={amount} period={period} />}
 
       <hr />
 
