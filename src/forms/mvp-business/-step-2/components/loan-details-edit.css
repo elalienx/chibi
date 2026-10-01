@@ -27,6 +27,7 @@
     width: 100%;
   }
 }
+
 /* Tablet */
 @media (min-width: 550px) {
   #loan-details-edit {
