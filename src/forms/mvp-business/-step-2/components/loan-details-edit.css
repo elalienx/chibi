@@ -1,0 +1,36 @@
+#loan-details-edit {
+  --space: var(--space-small);
+  --field-min-width: 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  padding: var(--space);
+  background-color: var(--color-blue-99);
+  border-top: solid 1px var(--color-gray-80);
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space);
+  }
+
+  .input-wrapper {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .input {
+    min-inline-size: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #loan-details-edit {
+    --space: var(--space-medium);
+  }
+}
