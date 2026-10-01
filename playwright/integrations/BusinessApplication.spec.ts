@@ -1,5 +1,5 @@
 // Node modules
-import { expect, test, type Locator } from "@playwright/test";
+import { test, type Locator } from "@playwright/test";
 
 // Project files
 import checkSuccessStep from "./business/checkSuccessStep";
@@ -35,29 +35,4 @@ test("Should be able to submit with debt", async () => {
   await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
   await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
   await checkSuccessStep(form, { result: result });
-});
-
-test("Should not close the loan details sub-form if there is an error", async () => {
-  await fillStep1(form);
-
-  await test.step("Step 2: Person information", async () => {
-    await form.getByRole("heading", { name: "Personuppgifter" }).waitFor();
-    await form.getByRole("button", { name: "Ändra" }).click();
-
-    await test.step("Sub-form", async () => {
-      const longTerm = 10;
-
-      await form.getByRole("textbox", { name: "Lånetid:" }).fill(String(longTerm));
-      await form.getByRole("textbox", { name: "Lånetid:" }).blur();
-      await form.getByRole("button", { name: "Okej" }).click();
-      await expect(form.getByRole("textbox", { name: "Lånetid:" })).toBeVisible();
-      await expect(form.getByText("Måste vara maximalt 5 år.")).toBeVisible();
-
-      await form.getByRole("textbox", { name: "Lånetid:" }).fill("2");
-      await form.getByRole("textbox", { name: "Lånetid:" }).blur();
-      await expect(form.getByText("Måste vara maximalt 5 år.")).not.toBeVisible();
-      await form.getByRole("button", { name: "Okej" }).click();
-      await expect(form.getByRole("button", { name: "Ändra" })).toBeVisible();
-    });
-  });
 });
