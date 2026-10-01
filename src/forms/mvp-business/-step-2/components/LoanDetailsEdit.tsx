@@ -1,5 +1,5 @@
 // Node modules
-import { type FormStore } from "@formisch/react";
+import { getErrors, type FormStore } from "@formisch/react";
 
 // Project files
 import Button from "components/button/Button";
@@ -15,6 +15,15 @@ interface Props {
 }
 
 export default function LoanDetailsEdit({ form, onClose }: Props) {
+  // Methods
+  async function onPrepareToClose() {
+    // Safeguards
+    if (getErrors(form, { path: ["loan_amount"] })) return;
+    if (getErrors(form, { path: ["loan_period"] })) return;
+
+    onClose();
+  }
+
   return (
     <div id="loan-details-edit" aria-label="Låneuppgifter">
       <div className="columns">
@@ -30,7 +39,7 @@ export default function LoanDetailsEdit({ form, onClose }: Props) {
       </div>
 
       <footer>
-        <Button type="button" onClick={onClose}>
+        <Button type="button" onClick={onPrepareToClose}>
           Okej <Icon name="circle-info" />
         </Button>
       </footer>
