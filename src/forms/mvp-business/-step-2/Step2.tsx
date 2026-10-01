@@ -14,6 +14,9 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./components/BankIDTooltip";
 import schema from "./schema";
+import LoanDetailsEdit from "./components/LoanDetailsEdit";
+import LoanDetailsView from "./components/LoanDetailsView";
+import { useState } from "react";
 
 export default function Step2() {
   // Global state
@@ -21,6 +24,7 @@ export default function Step2() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
+  const [isEditingLoan, setIsEditingLoan] = useState(false);
   const form = useForm({
     schema: schema,
     validate: "blur",
@@ -41,6 +45,10 @@ export default function Step2() {
         <h4>Personuppgifter</h4>
         <small>Nästa: Val av bolag</small>
       </header>
+
+      {/* Editable box */}
+      {isEditingLoan && <LoanDetailsEdit form={form} onClose={() => setIsEditingLoan(false)} />}
+      {!isEditingLoan && <LoanDetailsView onEdit={() => setIsEditingLoan(true)} loanAmount={0} loanTerm={0} />}
 
       <hr />
 
