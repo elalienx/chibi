@@ -1,5 +1,6 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { useState } from "react";
+import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -12,7 +13,9 @@ import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import BankIDTooltip from "./BankIDTooltip";
+import BankIDTooltip from "./components/BankIDTooltip";
+import LoanDetailsEdit from "./components/LoanDetailsEdit";
+import LoanDetailsView from "./components/LoanDetailsView";
 import schema from "./schema";
 
 export default function Step2() {
@@ -21,12 +24,17 @@ export default function Step2() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
+  const [isEditing, setIsEditing] = useState(false);
   const form = useForm({
     schema: schema,
     validate: "blur",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application }),
   });
+
+  // Derived state
+  const amount = Number(getInput(form, { path: ["loan_amount"] }));
+  const period = Number(getInput(form, { path: ["loan_period"] }));
 
   // Methods
   function submitForm(values: object) {
@@ -41,6 +49,10 @@ export default function Step2() {
         <h4>Personuppgifter</h4>
         <small>Nästa: Val av bolag</small>
       </header>
+
+      {/* Editable box */}
+      {isEditing && <LoanDetailsEdit form={form} onClose={() => setIsEditing(false)} />}
+      {!isEditing && <LoanDetailsView onEdit={() => setIsEditing(true)} amount={amount} period={period} />}
 
       <hr />
 
