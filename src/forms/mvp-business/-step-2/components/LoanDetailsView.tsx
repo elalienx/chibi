@@ -13,12 +13,15 @@ interface Props {
 }
 
 export default function LoanDetailView({ amount, period, onEdit }: Props): ReactElement {
+  // Properties
+  const formatedAmount = amount.toLocaleString("sv-SE");
+
   return (
     <div id="loan-details-view">
       {/* Loan amount */}
       <div className="item">
         <span className="title">Lånesumma:</span>
-        <span className="value">{amount} kr</span>
+        <span className="value">{formatedAmount} kr</span>
       </div>
 
       {/* Loan period */}
