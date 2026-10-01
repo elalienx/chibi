@@ -1,4 +1,5 @@
 // Node modules
+import { useState } from "react";
 import { Form, getInput, useForm } from "@formisch/react";
 
 // Project files
@@ -12,11 +13,10 @@ import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import BankIDTooltip from "./BankIDTooltip";
-import schema from "./schema";
 import LoanDetailsEdit from "./components/LoanDetailsEdit";
 import LoanDetailsView from "./components/LoanDetailsView";
-import { useState } from "react";
+import BankIDTooltip from "./BankIDTooltip";
+import schema from "./schema";
 
 export default function Step2() {
   // Global state
