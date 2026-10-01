@@ -10,13 +10,16 @@ import Label from "components/label/Label";
 import "./loan-details-edit.css";
 
 interface Props {
+  /** The form sent by the parent. */
   form: FormStore;
+
+  /** The method to call when is time to close the sub-form. */
   onClose: () => void;
 }
 
 export default function LoanDetailsEdit({ form, onClose }: Props) {
   // Methods
-  async function onPrepareToClose() {
+  async function validateBeforeClose() {
     // Safeguards
     if (getErrors(form, { path: ["loan_amount"] })) return;
     if (getErrors(form, { path: ["loan_period"] })) return;
@@ -39,7 +42,7 @@ export default function LoanDetailsEdit({ form, onClose }: Props) {
       </div>
 
       <footer>
-        <Button type="button" onClick={onPrepareToClose}>
+        <Button type="button" onClick={validateBeforeClose}>
           Okej <Icon name="circle-info" />
         </Button>
       </footer>
