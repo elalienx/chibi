@@ -43,6 +43,4 @@ const phone = v.pipe(
 // Schema
 const schema = v.object({ loan_amount, loan_period, email, phone });
 
-export const loanDetails = v.pick(schema, ["loan_amount", "loan_period"]);
-
 export default schema;
