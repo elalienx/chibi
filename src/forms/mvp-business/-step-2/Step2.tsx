@@ -13,9 +13,9 @@ import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import BankIDTooltip from "./components/BankIDTooltip";
 import LoanDetailsEdit from "./components/LoanDetailsEdit";
 import LoanDetailsView from "./components/LoanDetailsView";
-import BankIDTooltip from "./BankIDTooltip";
 import schema from "./schema";
 
 export default function Step2() {
