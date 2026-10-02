@@ -1,5 +1,5 @@
 a {
-  font-size: var(--font-size);
+  font-size: var(--font-size-normal);
   line-height: 1.5rem;
   letter-spacing: 0.01rem;
   font-weight: var(--font-weight-book);
