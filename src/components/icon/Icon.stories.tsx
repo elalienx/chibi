@@ -1,6 +1,7 @@
 // Project files
 import preview from "../../../.storybook/preview";
 import Icon from "./Icon";
+import icons from "./font-awesome.json";
 
 // Metadata
 const meta = preview.meta({
@@ -9,7 +10,7 @@ const meta = preview.meta({
 });
 
 // Properties
-const icons = ["arrow-left", "arrow-right", "chevron-down", "circle-info", "hashtag", "x-mark"];
+const iconNames = Object.keys(icons).filter((key) => key !== "_default");
 
 // Stories
 export const Default = meta.story({
@@ -17,7 +18,7 @@ export const Default = meta.story({
   argTypes: {
     name: {
       control: { type: "radio" },
-      options: [...icons, "an invalid icon name..."],
+      options: [...iconNames, "an invalid icon name..."],
     },
   },
   args: { name: "circle-info" },
