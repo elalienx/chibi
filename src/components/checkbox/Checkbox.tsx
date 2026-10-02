@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 // Project files
+import Icon from "components/icon/Icon";
 import "./checkbox.css";
 
 interface Props {
@@ -28,7 +29,10 @@ export default function Checkbox({ id, children, form }: Props) {
     <label className="checkbox">
       <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
 
-      {/* Wrap content inside a div so links or icons don't get affected by the parent flexbox */}
+      {/* The icon we use to stylze the input, must go after the real <input> to appear on top */}
+      <Icon name="check" />
+
+      {/* Wrap content inside a div so links or icons don't get affected by the parent grid */}
       <div>{children}</div>
     </label>
   );

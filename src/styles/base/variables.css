@@ -99,6 +99,9 @@
   --color-desaturated-30: #4f5a70;
   --color-desaturated-20: #303a4e;
   --color-desaturated-10: #262f40;
+
+  /* Gradients */
+  --gradient-green: linear-gradient(to bottom, #29c466, #059142); /* Figma: Gradients/Linear */
 }
 
 /* Semantic values */
