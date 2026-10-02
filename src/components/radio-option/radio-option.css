@@ -39,7 +39,7 @@
       margin-top: 0; /* Reset the optical alignment because flex already centers it. */
     }
 
-    .icon:last-child {
+    .icon.circle-check-solid {
       display: none;
     }
   }
@@ -89,11 +89,11 @@
 }
 
 .radio-option:has(input:checked) .bullet {
-  .icon:first-child {
+  .icon.circle {
     display: none;
   }
 
-  .icon:last-child {
+  .icon.circle-check-solid {
     display: block;
   }
 }
