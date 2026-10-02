@@ -4,8 +4,9 @@
   --duration: 0.15s;
   --easing: ease-in;
 
-  display: flex;
-  gap: var(--space-small);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-small);
   min-width: var(--field-min-width);
   min-height: var(--height-of-field);
   align-items: center;
@@ -17,36 +18,34 @@
   color: var(--color-gray-30);
   font-weight: var(--font-weight-medium);
 
-  /* Replace the browser checkbox with a box and an icon stacked on top of each other. */
-  .box {
-    display: grid;
-    flex-shrink: 0;
+  /* The input itself is the visible box, so it stays clickable and accessible. */
+  input[type="checkbox"] {
+    grid-area: 1 / 1;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border: solid var(--border-width) var(--color-gray-50);
+    border-radius: 4px;
+    outline: none; /* The label draws the focus ring instead. */
+    cursor: pointer;
+  }
 
-    > * {
-      grid-area: 1 / 1; /* Stack the input and the icon in the same cell. */
-    }
+  /* Stack the icon on top of the input, in the same grid cell. */
+  .icon.check {
+    --size: 16px;
 
-    /* The input itself is the visible box, so it stays clickable and accessible. */
-    input[type="checkbox"] {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      margin: 0;
-      border: solid var(--border-width) var(--color-gray-50);
-      border-radius: 4px;
-      outline: none; /* The label draws the focus ring instead. */
-      cursor: pointer;
-    }
+    grid-area: 1 / 1;
+    display: none;
+    place-self: center;
+    margin-top: 0; /* Reset the optical alignment because the grid already centers it. */
+    color: var(--color-gray-100);
+    pointer-events: none; /* Let clicks pass through to the input below. */
+  }
 
-    .icon.check {
-      --size: 16px;
-
-      display: none;
-      place-self: center;
-      margin-top: 0; /* Reset the optical alignment because the grid already centers it. */
-      color: var(--color-gray-100);
-      pointer-events: none; /* Let clicks pass through to the input below. */
-    }
+  /* The text sits in the second column. */
+  > div {
+    grid-column: 2;
   }
 
   /* Animation */
@@ -72,15 +71,13 @@
   border-color: var(--color-accent);
   color: var(--color-green-10);
 
-  .box {
-    input[type="checkbox"] {
-      background: var(--gradient-green) border-box; /* Paint under the border so the gradient fills the whole box. */
-      border-color: transparent;
-    }
+  input[type="checkbox"] {
+    background: var(--gradient-green) border-box; /* Paint under the border so the gradient fills the whole box. */
+    border-color: transparent;
+  }
 
-    .icon.check {
-      display: block;
-    }
+  .icon.check {
+    display: block;
   }
 }
 
