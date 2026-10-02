@@ -14,7 +14,7 @@ interface Props {
   /** The behavior of the button when clicked. */
   type?: "button" | "submit" | "reset" | undefined;
 
-  /** The visual style of the button, matching the Figma Atoms/Buttons variants. */
+  /** The visual style of the button. */
   variant?: "primary" | "secondary" | "tertiary" | "borderless";
 }
 
