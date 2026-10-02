@@ -32,6 +32,11 @@
 /* Tablet */
 @media (min-width: 550px) {
   #loan-details-edit {
-    --space: var(--space-medium);
+    padding: var(--space-2xl);
+    gap: var(--space-medium);
+
+    .columns {
+      gap: var(--space-medium);
+    }
   }
 }

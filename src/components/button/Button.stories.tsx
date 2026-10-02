@@ -5,7 +5,7 @@ import Icon from "components/icon/Icon";
 
 // Metadata
 const meta = preview.meta({
-  title: "Components/Button",
+  title: "Components/Button/Default",
   component: Button,
 });
 
@@ -15,13 +15,13 @@ function onClick() {
 }
 
 // Stories
-export const Primary = meta.story({
-  name: "Primary",
+export const Default = meta.story({
+  name: "Default",
   render: () => <Button onClick={onClick}>Hello</Button>,
 });
 
-export const PrimaryWithIcon = meta.story({
-  name: "Primary with icon",
+export const WithIcon = meta.story({
+  name: "With icon",
   render: () => (
     <Button onClick={onClick}>
       Hello
@@ -30,8 +30,8 @@ export const PrimaryWithIcon = meta.story({
   ),
 });
 
-export const PrimaryWithIconLeft = meta.story({
-  name: "Primary with icon (left)",
+export const WithIconLeft = meta.story({
+  name: "With icon (left)",
   render: () => (
     <Button onClick={onClick}>
       <Icon name="arrow-left" />
