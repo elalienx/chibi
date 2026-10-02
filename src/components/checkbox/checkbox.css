@@ -17,41 +17,35 @@
   color: var(--color-gray-30);
   font-weight: var(--font-weight-medium);
 
-  position: relative; /* To stretch the input over the whole checkbox. */
-
-  /* Hide the browser checkbox but keep the input clickable and accessible. */
-  input[type="checkbox"] {
-    position: absolute; /* Remove it from the flex flow so it does not add an extra gap. */
-    inset: 0;
-    appearance: none;
-    margin: 0;
-    border-radius: inherit;
-    outline: none; /* The label draws the focus ring instead. */
-    cursor: pointer;
-  }
-
-  /* Keep links in the text above the stretched input so they stay clickable. */
-  a {
-    position: relative;
-  }
-
-  /* Replace the browser checkbox with a box and an icon. */
+  /* Replace the browser checkbox with a box and an icon stacked on top of each other. */
   .box {
-    display: flex;
+    display: grid;
     flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border: solid var(--border-width) var(--color-gray-50);
-    border-radius: 4px;
-    color: var(--color-gray-100);
+
+    > * {
+      grid-area: 1 / 1; /* Stack the input and the icon in the same cell. */
+    }
+
+    /* The input itself is the visible box, so it stays clickable and accessible. */
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      border: solid var(--border-width) var(--color-gray-50);
+      border-radius: 4px;
+      outline: none; /* The label draws the focus ring instead. */
+      cursor: pointer;
+    }
 
     .icon.check {
       --size: 16px;
 
       display: none;
-      margin-top: 0; /* Reset the optical alignment because flex already centers it. */
+      place-self: center;
+      margin-top: 0; /* Reset the optical alignment because the grid already centers it. */
+      color: var(--color-gray-100);
+      pointer-events: none; /* Let clicks pass through to the input below. */
     }
   }
 
@@ -79,8 +73,10 @@
   color: var(--color-green-10);
 
   .box {
-    background: var(--gradient-green) border-box; /* Paint under the border so the gradient fills the whole box. */
-    border-color: transparent;
+    input[type="checkbox"] {
+      background: var(--gradient-green) border-box; /* Paint under the border so the gradient fills the whole box. */
+      border-color: transparent;
+    }
 
     .icon.check {
       display: block;
