@@ -19,10 +19,11 @@
 
   .content {
     width: 100%;
-    padding: var(--space-xs) var(--space-medium);
+    padding: var(--space-xs) var(--space-small);
     background-color: var(--input-background-error);
     border: solid 2px var(--input-border-error);
     border-radius: var(--border-radius);
+    color: var(--typography-dark);
     font-weight: var(--font-weight-bold);
   }
 }
