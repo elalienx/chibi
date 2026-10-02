@@ -30,7 +30,9 @@ export default function Step4() {
   });
 
   // Derived state
-  const currentMonthAndYear = new Date().toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
+  const today = new Date();
+  const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), 1);
+  const startMonthAndYear = oneYearAgo.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
   const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
   const hasExistingLoans = Boolean(fieldExistingLoans === "true");
 
@@ -54,7 +56,7 @@ export default function Step4() {
 
       <section>
         <InputField form={form} hints={Hints} id="turnover">
-          <Label>Bolagets omsättning från {currentMonthAndYear} till idag</Label>
+          <Label>Bolagets omsättning från {startMonthAndYear} till idag</Label>
           <Input type="number" suffix="kr" />
         </InputField>
 
