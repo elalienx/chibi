@@ -4,7 +4,7 @@
   gap: var(--gap-between-label-and-field);
 
   .label {
-    justify-content: center; /* Yes, this component label has centered text. */
+    text-align: center; /* Yes, this component label has centered text. */
   }
 
   .options {
