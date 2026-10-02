@@ -3,4 +3,10 @@
   gap: var(--space-tiny);
   color: var(--typography-dark);
   font-weight: var(--font-weight-medium);
+
+  background-color: pink;
+
+  .tooltip-trigger {
+    background-color: aquamarine;
+  }
 }
