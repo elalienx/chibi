@@ -39,3 +39,60 @@ export const PrimaryWithIconLeft = meta.story({
     </Button>
   ),
 });
+
+export const Secondary = meta.story({
+  name: "Secondary",
+  render: () => (
+    <Button onClick={onClick} variant="secondary">
+      Hello
+    </Button>
+  ),
+});
+
+export const SecondaryWithIcon = meta.story({
+  name: "Secondary with icon",
+  render: () => (
+    <Button onClick={onClick} variant="secondary">
+      Hello
+      <Icon name="arrow-right" />
+    </Button>
+  ),
+});
+
+export const Tertiary = meta.story({
+  name: "Tertiary",
+  render: () => (
+    <Button onClick={onClick} variant="tertiary">
+      Hello
+    </Button>
+  ),
+});
+
+export const TertiaryWithIcon = meta.story({
+  name: "Tertiary with icon",
+  render: () => (
+    <Button onClick={onClick} variant="tertiary">
+      Hello
+      <Icon name="arrow-right" />
+    </Button>
+  ),
+});
+
+export const Borderless = meta.story({
+  name: "Borderless",
+  render: () => (
+    <Button onClick={onClick} variant="borderless">
+      Hello
+    </Button>
+  ),
+});
+
+export const BorderlessWithIcon = meta.story({
+  name: "Borderless with icon",
+  render: () => (
+    <Button onClick={onClick} variant="borderless">
+      Hello
+      <Icon name="arrow-right" />
+    </Button>
+  ),
+});

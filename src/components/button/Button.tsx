@@ -13,11 +13,14 @@ interface Props {
 
   /** The behavior of the button when clicked. */
   type?: "button" | "submit" | "reset" | undefined;
+
+  /** The visual style of the button, matching the Figma Atoms/Buttons variants. */
+  variant?: "primary" | "secondary" | "tertiary" | "borderless";
 }
 
-export default function Button({ children, onClick, type = "button" }: Props) {
+export default function Button({ children, onClick, type = "button", variant = "primary" }: Props) {
   return (
-    <button className="button" onClick={onClick} type={type}>
+    <button className={`button ${variant}`} onClick={onClick} type={type}>
       {children}
     </button>
   );
