@@ -1,26 +1,39 @@
 .checkbox {
+  --border-width: 2px;
   --color-accent: var(--color-green-50);
+  --duration: 0.15s;
+  --easing: ease-in;
 
   accent-color: var(--color-accent);
   display: flex;
   gap: var(--space-small);
   min-width: var(--field-min-width);
+  min-height: var(--height-of-field);
   align-items: center;
-  background-color: white;
-  padding-block: var(--space-small);
-  padding-inline: var(--space-medium);
-  border: solid 2px var(--color-gray-90);
+  background-color: var(--color-gray-100);
+  padding-block: calc(var(--space-small) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the checkbox. */
+  padding-inline: calc(var(--space-medium) - var(--border-width));
+  border: solid var(--border-width) var(--color-gray-90);
   border-radius: var(--border-radius);
+  color: var(--color-gray-30);
+  font-weight: var(--font-weight-medium);
 
   input[type="checkbox"] {
     margin: 0;
     transform: scale(1.25); /** Make it look bigger until we add custom SVG's */
   }
+
+  /* Animation */
+  transition:
+    background-color var(--duration) var(--easing),
+    border-color var(--duration) var(--easing),
+    color var(--duration) var(--easing);
 }
 
 .checkbox:hover {
   background-color: var(--color-green-99);
   border-color: var(--color-green-80);
+  color: var(--color-gray-10);
 }
 
 /**
@@ -29,11 +42,17 @@
  * based on the input’s state (hover or checked).
  */
 .checkbox:has(input[type="checkbox"]:checked) {
-  background-color: var(--color-green-99);
+  background-color: var(--color-green-95);
   border-color: var(--color-accent);
+  color: var(--color-green-10);
 }
 
 .checkbox:hover:has(input[type="checkbox"]:checked) {
-  background-color: var(--color-green-99);
-  border-color: var(--color-green-80);
+  background-color: var(--color-green-90);
+  border-color: var(--color-green-40);
+}
+
+.checkbox:has(input[type="checkbox"]:focus-visible) {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
 }
