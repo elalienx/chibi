@@ -1,6 +1,8 @@
 .label {
   display: flex; /* To align the label text with the tooltip button. */
+  align-items: start; /* To keep the tooltip button on the first line when the text wraps. */
   gap: var(--space-tiny);
+  text-wrap: balance; /* To avoid a single orphan word on the last line. */
   color: var(--typography-dark);
   font-weight: var(--font-weight-medium);
 }
