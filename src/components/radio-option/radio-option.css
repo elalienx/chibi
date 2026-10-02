@@ -7,7 +7,9 @@
   align-items: center;
   gap: var(--space-xs);
   height: var(--height-of-field);
-  padding-left: calc(var(--space-small) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the option. */
+  padding-left: calc(
+    var(--space-small) - var(--border-width)
+  ); /* Subtract the border from the padding to draw the stroke inside the option. */
   padding-right: calc(var(--space-medium) - var(--border-width));
   background-color: var(--color-gray-100);
   border: solid var(--border-width) var(--color-desaturated-90);
