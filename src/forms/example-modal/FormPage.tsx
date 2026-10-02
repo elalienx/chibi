@@ -21,8 +21,12 @@ export default function FormPage() {
 
       <section>
         <p>Each button triggers a different modal but re-using the same architecture!</p>
-        <Button onClick={() => setModal(Modal1)}>Open Guiness modal</Button>
-        <Button onClick={() => setModal(Modal2)}>Open PC-Engine modal</Button>
+        <Button onClick={() => setModal(Modal1)} variant="primary">
+          Open Guiness modal
+        </Button>
+        <Button onClick={() => setModal(Modal2)} variant="secondary">
+          Open PC-Engine modal
+        </Button>
       </section>
 
       <hr />
