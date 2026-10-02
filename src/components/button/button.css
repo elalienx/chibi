@@ -10,7 +10,7 @@
   border-radius: var(--border-radius);
   font-size: var(--font-size-normal);
   font-family: var(--font-family);
-  font-weight: 500;
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
 
   /* Animation */
@@ -42,7 +42,7 @@
 
 /* Tertiary */
 .button.tertiary {
-  height: var(--height-of-field); /* Figma only has this variant in the small size. */
+  height: var(--height-of-field); /* this variant uses an smaller height. */
   background-color: transparent;
   color: var(--color-gray-10);
   border: 1px solid var(--color-gray-30);
@@ -56,6 +56,7 @@
 .button.borderless {
   background-color: transparent;
   color: var(--color-blue-40);
+  font-weight: var(--font-weight-medium); /* this variant uses medium. */
 }
 
 .button.borderless:hover {
