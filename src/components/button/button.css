@@ -5,8 +5,6 @@
   gap: var(--space-xs);
   height: var(--height-of-button);
   padding: 0 var(--space-xl);
-  background-color: var(--color-blue-40);
-  color: white;
   overflow: hidden;
   border: none;
   border-radius: var(--border-radius);
@@ -16,9 +14,50 @@
   cursor: pointer;
 
   /* Animation */
-  transition: background-color 0.3s ease-in;
+  transition:
+    background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
 }
 
-.button:hover {
+/* Primary */
+.button.primary {
+  background-color: var(--color-blue-40);
+  color: white;
+}
+
+.button.primary:hover {
   background-color: var(--color-blue-30);
+}
+
+/* Secondary */
+.button.secondary {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-10);
+  border: 1px solid var(--color-desaturated-60);
+}
+
+.button.secondary:hover {
+  background-color: var(--color-blue-99);
+}
+
+/* Tertiary */
+.button.tertiary {
+  height: var(--height-of-field); /* Figma only has this variant in the small size. */
+  background-color: transparent;
+  color: var(--color-gray-10);
+  border: 1px solid var(--color-gray-30);
+}
+
+.button.tertiary:hover {
+  border-color: var(--color-gray-10);
+}
+
+/* Borderless */
+.button.borderless {
+  background-color: transparent;
+  color: var(--color-blue-40);
+}
+
+.button.borderless:hover {
+  background-color: color-mix(in oklab, var(--color-blue-40) 8%, transparent);
 }
