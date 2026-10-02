@@ -1,6 +1,8 @@
 .label {
-  display: flex; /* To align the label text with the tooltip button. */
-  gap: var(--space-tiny);
   color: var(--typography-dark);
   font-weight: var(--font-weight-medium);
+
+  .tooltip-trigger {
+    margin-left: var(--space-tiny);
+  }
 }
