@@ -2,9 +2,12 @@
 import icons from "./font-awesome.json";
 import "./icon.css";
 
+// Types
+type IconName = Exclude<keyof typeof icons, "_default">;
+
 interface Props {
-  /** The icon name */
-  name: "arrow-left" | "arrow-right" | "chevron-down" | "circle-info" | "hashtag" | "x-mark";
+  /** The icon name, taken from the keys of font-awesome.json. */
+  name: IconName;
 }
 
 export default function Icon({ name }: Props) {

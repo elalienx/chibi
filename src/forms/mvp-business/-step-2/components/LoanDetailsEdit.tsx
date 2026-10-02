@@ -43,7 +43,7 @@ export default function LoanDetailsEdit({ form, onClose }: Props) {
 
       <footer>
         <Button type="button" onClick={validateBeforeClose}>
-          Okej <Icon name="circle-info" />
+          Okej <Icon name="circle-check" />
         </Button>
       </footer>
     </div>
