@@ -27,8 +27,8 @@ export default function Checkbox({ id, children, form }: Props) {
 
   return (
     <label className="checkbox">
-      <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
       <span className="box">
+        <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
         <Icon name="check" />
       </span>
 
