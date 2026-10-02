@@ -3,6 +3,7 @@ import type { ChangeEvent, ReactNode } from "react";
 import type { FieldStore } from "@formisch/react";
 
 // Project files
+import Icon from "components/icon/Icon";
 import "./radio-option.css";
 
 interface Props {
@@ -43,6 +44,10 @@ export default function RadioOption({ id, children, field, value }: Props) {
         type="radio"
         value={stringValue}
       />
+      <span className="bullet">
+        <Icon name="circle" />
+        <Icon name="circle-check-solid" />
+      </span>
       {children}
     </label>
   );

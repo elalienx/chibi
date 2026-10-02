@@ -1,42 +1,74 @@
 .radio-option {
+  --border-width: 2px;
+  --duration: 0.15s;
+  --easing: ease-in;
+
   display: flex;
   align-items: center;
   gap: var(--space-xs);
   height: var(--height-of-field);
-  padding-inline: var(--space-medium);
-  background-color: white; /* In case it is used on a non-white background. */
-  border: solid 1px var(--input-border-up);
+  padding-left: calc(
+    var(--space-small) - var(--border-width)
+  ); /* Subtract the border from the padding to draw the stroke inside the option. */
+  padding-right: calc(var(--space-medium) - var(--border-width));
+  background-color: var(--color-gray-100);
+  border: solid var(--border-width) var(--color-desaturated-90);
   border-radius: var(--border-radius);
+  color: var(--color-desaturated-30);
 
+  position: relative; /* To stretch the input over the whole option. */
+
+  /* Hide the browser radio bullet but keep the input clickable and accessible. */
   input {
-    margin: 0; /* We control the spacing using flex. */
+    position: absolute; /* Remove it from the flex flow so it does not add an extra gap. */
+    inset: 0;
+    appearance: none;
+    margin: 0;
+    border-radius: inherit;
+    outline: none; /* The label draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  /* Replace the browser radio bullet with icons. */
+  .bullet {
+    display: flex;
+    color: var(--color-desaturated-30);
+    transition: color var(--duration) var(--easing);
+
+    .icon {
+      margin-top: 0; /* Reset the optical alignment because flex already centers it. */
+    }
+
+    .icon.circle-check-solid {
+      display: none;
+    }
   }
 
   &:has(.title-and-subtitle) {
-    height: auto;
-    padding-block: var(--space-medium);
+    height: var(--space-7xl);
   }
 
   .title-and-subtitle {
     display: flex;
     flex-direction: column;
-    font-weight: var(--font-weight-medium);
 
     .title {
-      color: var(--color-gray-10);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-medium);
+      line-height: 20px;
     }
 
     .subtitle {
-      color: var(--color-desaturated-30);
+      font-weight: var(--font-weight-normal);
+      line-height: 24px;
     }
   }
 
   /* Animation */
   transition:
-    background-color 0.15s ease-in,
-    border-color 0.15s ease-in,
-    outline-color 0.15s ease-in;
+    background-color var(--duration) var(--easing),
+    border-color var(--duration) var(--easing),
+    color var(--duration) var(--easing),
+    text-shadow var(--duration) var(--easing);
 }
 
 /**
@@ -44,25 +76,29 @@
  * We use the CSS :has() selector to style the label
  * based on the input’s state (hover or checked).
  */
-.radio-option:has(input:hover) {
-  border-color: var(--input-border-hover);
-  outline: solid 1px var(--input-border-hover);
+.radio-option:hover:has(input:not(:disabled)),
+.radio-option:has(input:checked) {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-50);
+  color: var(--color-gray-10);
+  text-shadow: 0 0 0.7px currentColor; /* Simulate a heavier font weight without layout shift. */
+
+  .bullet {
+    color: var(--color-green-50);
+  }
 }
 
-.radio-option:has(input:checked) {
-  --color-background: var(--color-green-40);
-  --color-accent: white;
-
-  background-color: var(--color-background);
-  color: var(--color-accent);
-  border-color: var(--color-background);
-  outline: solid 1px var(--color-background);
-
-  input:checked {
-    accent-color: var(--color-accent);
+.radio-option:has(input:checked) .bullet {
+  .icon.circle {
+    display: none;
   }
 
-  .title-and-subtitle :is(.title, .subtitle) {
-    color: inherit;
+  .icon.circle-check-solid {
+    display: block;
   }
+}
+
+.radio-option:has(input:focus-visible) {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
 }
