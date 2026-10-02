@@ -41,7 +41,9 @@ export const Default = meta.story({
 
     return (
       <div>
-        <Button onClick={() => setModal(<Examplemodal closeModal={closeModal} />)}>Open modal</Button>
+        <Button variant="borderless" onClick={() => setModal(<Examplemodal closeModal={closeModal} />)}>
+          Open modal
+        </Button>
 
         {/* This component should be at the root of each app */}
         <ModalManager />
