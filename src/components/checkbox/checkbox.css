@@ -11,7 +11,9 @@
   min-height: var(--height-of-field);
   align-items: center;
   background-color: var(--color-gray-100);
-  padding-block: calc(var(--space-small) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the checkbox. */
+  padding-block: calc(
+    var(--space-small) - var(--border-width)
+  ); /* Subtract the border from the padding to draw the stroke inside the checkbox. */
   padding-inline: calc(var(--space-medium) - var(--border-width));
   border: solid var(--border-width) var(--color-gray-90);
   border-radius: var(--border-radius);
