@@ -16,9 +16,32 @@
   border-radius: var(--border-radius);
   color: var(--color-desaturated-30);
 
+  position: relative; /* To stretch the input over the whole option. */
+
+  /* Hide the browser radio bullet but keep the input clickable and accessible. */
   input {
-    margin: 0; /* We control the spacing using flex. */
-    accent-color: var(--color-green-50);
+    position: absolute; /* Remove it from the flex flow so it does not add an extra gap. */
+    inset: 0;
+    appearance: none;
+    margin: 0;
+    border-radius: inherit;
+    outline: none; /* The label draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  /* Replace the browser radio bullet with icons. */
+  .bullet {
+    display: flex;
+    color: var(--color-desaturated-30);
+    transition: color var(--duration) var(--easing);
+
+    .icon {
+      margin-top: 0; /* Reset the optical alignment because flex already centers it. */
+    }
+
+    .icon:last-child {
+      display: none;
+    }
   }
 
   &:has(.title-and-subtitle) {
@@ -59,6 +82,20 @@
   border-color: var(--color-green-50);
   color: var(--color-gray-10);
   text-shadow: 0 0 0.7px currentColor; /* Simulate a heavier font weight without layout shift. */
+
+  .bullet {
+    color: var(--color-green-50);
+  }
+}
+
+.radio-option:has(input:checked) .bullet {
+  .icon:first-child {
+    display: none;
+  }
+
+  .icon:last-child {
+    display: block;
+  }
 }
 
 .radio-option:has(input:focus-visible) {
