@@ -5,6 +5,7 @@
   background-color: transparent;
   border: none;
   outline: transparent;
+  vertical-align: text-top; /* To optically align with the normal text size of 16px. */
 
   .icon {
     color: var(--typography-link);
@@ -12,15 +13,6 @@
 }
 
 /* Edge cases */
-.label .tooltip-trigger {
-  margin-top: -1px; /* To optically align with the label. */
-}
-
-p .tooltip-trigger {
-  display: inline-block; /* To enable vertical-algin. */
-  vertical-align: text-top; /* To optically align with the paragraph text flow. */
-}
-
 small .tooltip-trigger {
   margin-top: -4px; /* To optically align with the small text. */
   vertical-align: middle; /* To optically align with the small text flow. */
