@@ -35,7 +35,7 @@ export default function LoanDetailView({ amount, period, onEdit }: Props): React
       {/* Edit button */}
       <Button onClick={onEdit}>
         Ändra
-        <Icon name="circle-info" />
+        <Icon name="pen-to-square" />
       </Button>
     </div>
   );
