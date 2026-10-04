@@ -1,5 +1,5 @@
 // Properties
-const NON_DIGITS_EXCEPT_COMMA: RegExp = /[^\d,]/g;
+const NON_NUMBERS: RegExp = /[^\d.,]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
@@ -7,14 +7,18 @@ const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
  *
  * This method formats a numeric value by using the Swedish system of adding a space every 3 digits.
  *
- * Non-numeric characters are stripped, while decimal commas are preserved.
+ * Non-numeric characters are stripped, decimal periods are displayed as commas, and only the
+ * integer part is grouped.
  */
 export default function formatWithSpaces(value: string | number | undefined | null): string {
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const onlyDigits = String(value).replace(NON_DIGITS_EXCEPT_COMMA, "");
-  const formattedValue = onlyDigits.replace(SPACE_GROUPING_PATTERN, " ");
+  const normalizedValue = String(value).replace(NON_NUMBERS, "").replace(/,/g, ".");
+  const decimalIndex = normalizedValue.indexOf(".");
+  const integerPart = decimalIndex === -1 ? normalizedValue : normalizedValue.slice(0, decimalIndex);
+  const decimalPart = decimalIndex === -1 ? "" : normalizedValue.slice(decimalIndex + 1).replace(/\./g, "");
+  const formattedInteger = integerPart.replace(SPACE_GROUPING_PATTERN, " ");
 
-  return formattedValue;
+  return decimalIndex === -1 ? formattedInteger : `${formattedInteger},${decimalPart}`;
 }

@@ -5,9 +5,10 @@ const WHITE_SPACE: RegExp = /\s/g;
 /**
  * HTML `<input type="number"/>` accepts the characters `+`, `-`, and `e` (math exponent).
  *
- * This method cleans the user input to only allow the digits `0` to `9` and, optionally, one decimal comma.
+ * This method cleans the user input to only allow the digits `0` to `9` and, optionally, one decimal separator.
  *
- * `-`, `.`, and `e` are always stripped. Decimal commas are stripped unless `allowDecimals` is true.
+ * `-` and `e` are always stripped. Decimal separators are stripped unless `allowDecimals` is true;
+ * accepted commas are normalized to periods for storage.
  */
 export default function sanitizeNumber({
   value,
@@ -17,12 +18,13 @@ export default function sanitizeNumber({
   allowDecimals?: boolean;
 }): string {
   const onlyCharacters = value.replace(WHITE_SPACE, "");
-  const onlyDigits = onlyCharacters.replace(allowDecimals ? /[^\d,]/g : NON_DIGITS, "");
+  const onlyDigits = onlyCharacters.replace(allowDecimals ? /[^\d.,]/g : NON_DIGITS, "");
 
   if (!allowDecimals) return onlyDigits;
 
-  const decimalIndex = onlyDigits.indexOf(",");
-  if (decimalIndex === -1) return onlyDigits;
+  const normalizedValue = onlyDigits.replace(/,/g, ".");
+  const decimalIndex = normalizedValue.indexOf(".");
+  if (decimalIndex === -1) return normalizedValue;
 
-  return `${onlyDigits.slice(0, decimalIndex + 1)}${onlyDigits.slice(decimalIndex + 1).replace(/,/g, "")}`;
+  return `${normalizedValue.slice(0, decimalIndex + 1)}${normalizedValue.slice(decimalIndex + 1).replace(/\./g, "")}`;
 }
