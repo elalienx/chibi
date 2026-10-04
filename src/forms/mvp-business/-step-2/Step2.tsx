@@ -14,8 +14,8 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./components/BankIDTooltip";
-import LoanDetailsEdit from "./components/LoanDetailsEdit";
-import LoanDetailsView from "./components/LoanDetailsView";
+import LoanEdit from "./components/LoanEdit";
+import LoanView from "./components/LoanView";
 import schema from "./schema";
 
 export default function Step2() {
@@ -51,8 +51,8 @@ export default function Step2() {
       </header>
 
       {/* Editable box */}
-      {isEditing && <LoanDetailsEdit form={form} onClose={() => setIsEditing(false)} />}
-      {!isEditing && <LoanDetailsView onEdit={() => setIsEditing(true)} amount={amount} period={period} />}
+      {isEditing && <LoanEdit form={form} onClose={() => setIsEditing(false)} />}
+      {!isEditing && <LoanView onEdit={() => setIsEditing(true)} amount={amount} period={period} />}
 
       <hr />
 
