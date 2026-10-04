@@ -12,7 +12,6 @@ const loan_amount = v.pipe(
   v.string("Vänligen ange lånesumma."),
   v.nonEmpty("Vänligen ange lånesumma."),
   v.toNumber("Vänligen ange en giltig lånesumma."),
-  v.integer("Vänligen ange lånesumman i hela kronor."),
   v.minValue(MIN_AMOUNT, `Måste vara minst ${MIN_AMOUNT.toLocaleString("sv-SE")} kr.`),
   v.maxValue(MAX_AMOUNT, `Måste vara maximalt ${MAX_AMOUNT.toLocaleString("sv-SE")} kr.`),
 );
