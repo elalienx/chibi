@@ -1,5 +1,7 @@
 // Properties
-const NON_DIGITS: RegExp = /\D/g;
+const DECIMAL_COMMA: RegExp = /,/g;
+const DECIMAL_PERIOD: RegExp = /\./g;
+const NON_NUMBERS: RegExp = /[^\d.,]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
@@ -7,15 +9,27 @@ const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
  *
  * This method formats a numeric value by using the Swedish system of adding a space every 3 digits.
  *
- * Note: integer-only by design; `-` and `.` are stripped. Lendo has no negative numbers, and
- * decimals will be added once a form needs them.
+ * Non-numeric characters are stripped, decimal periods are displayed as commas, and only the
+ * integer part is grouped.
  */
 export default function formatWithSpaces(value: string | number | undefined | null): string {
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const onlyDigits = String(value).replace(NON_DIGITS, "");
-  const formattedValue = onlyDigits.replace(SPACE_GROUPING_PATTERN, " ");
+  // Initial checks
+  const normalizedValue = String(value).replace(NON_NUMBERS, "").replace(DECIMAL_COMMA, ".");
+  const decimalIndex = normalizedValue.indexOf(".");
+  const hasDecimals = decimalIndex !== -1;
 
-  return formattedValue;
+  // Integer formatting
+  const integerPartBeforeDecimal = normalizedValue.slice(0, decimalIndex);
+  const integers = hasDecimals ? integerPartBeforeDecimal : normalizedValue;
+  const formattedInteger = integers.replace(SPACE_GROUPING_PATTERN, " ");
+
+  // Decimal formatting
+  const decimalPartAfterSeparator = normalizedValue.slice(decimalIndex + 1).replace(DECIMAL_PERIOD, "");
+  const decimals = hasDecimals ? decimalPartAfterSeparator : "";
+  const decimalSuffix = hasDecimals ? `,${decimals}` : "";
+
+  return `${formattedInteger}${decimalSuffix}`;
 }
