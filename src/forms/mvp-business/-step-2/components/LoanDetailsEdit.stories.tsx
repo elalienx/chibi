@@ -17,7 +17,6 @@ const loan_amount = v.pipe(
   v.string("Vänligen ange lånesumma."),
   v.nonEmpty("Vänligen ange lånesumma."),
   v.toNumber("Vänligen ange en giltig lånesumma."),
-  v.integer("Vänligen ange lånesumman i hela kronor."),
   v.minValue(50_000, `Måste vara minst ${Number(50_000).toLocaleString("sv-SE")} kr.`),
   v.maxValue(30_000_000, `Måste vara maximalt ${Number(30_000_000).toLocaleString("sv-SE")} kr.`),
 );
@@ -26,7 +25,7 @@ const loan_period = v.pipe(
   v.nonEmpty("Vänligen ange lånetid."),
   v.toNumber("Vänligen ange en giltig lånetid."),
   v.integer("Vänligen ange lånetiden i hela år."),
-  v.minValue(Math.ceil(1), `Måste vara minst ${Math.ceil(1)} år.`),
+  v.minValue(0.5, `Måste vara minst ${0.5} år.`),
   v.maxValue(5, `Måste vara maximalt ${Number(5).toLocaleString("sv-SE")} år.`),
 );
 
