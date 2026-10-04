@@ -4,7 +4,7 @@ import type { ReactElement } from "react";
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import "./loan-details-view.css";
+import "./loan-view.css";
 
 interface Props {
   /** The current loan amount in the form. */
@@ -17,13 +17,13 @@ interface Props {
   onEdit: () => void;
 }
 
-export default function LoanDetailView({ amount, period, onEdit }: Props): ReactElement {
+export default function LoanView({ amount, period, onEdit }: Props): ReactElement {
   // Properties
   const formatedAmount = amount.toLocaleString("sv-SE");
   const formatedPeriod = period.toLocaleString("sv-SE");
 
   return (
-    <div id="loan-details-view">
+    <div id="loan-view">
       {/* Loan amount */}
       <div className="item">
         <span className="title">Lånesumma:</span>

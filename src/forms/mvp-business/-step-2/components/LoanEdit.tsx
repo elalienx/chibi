@@ -8,7 +8,7 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import BusinessFormConfig from "../../data/BusinessFormConfig";
-import "./loan-details-edit.css";
+import "./loan-edit.css";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
 
@@ -20,7 +20,7 @@ interface Props {
   onClose: () => void;
 }
 
-export default function LoanDetailsEdit({ form, onClose }: Props) {
+export default function LoanEdit({ form, onClose }: Props) {
   // Methods
   async function validateBeforeClose() {
     // Safeguards
@@ -31,7 +31,7 @@ export default function LoanDetailsEdit({ form, onClose }: Props) {
   }
 
   return (
-    <div id="loan-details-edit" aria-label="Låneuppgifter">
+    <div id="loan-edit" aria-label="Låneuppgifter">
       <div className="columns">
         <InputField form={form} id="loan_amount">
           <Label>Lånesumma:</Label>
