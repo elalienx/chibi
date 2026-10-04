@@ -11,7 +11,7 @@ describe("Error cases", () => {
     const result = "";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -23,7 +23,7 @@ describe("Error cases", () => {
     const result = "";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -37,7 +37,7 @@ describe("Normal cases", () => {
     const result = "1234";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -49,7 +49,7 @@ describe("Normal cases", () => {
     const result = "1234567";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -61,7 +61,7 @@ describe("Normal cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -75,7 +75,7 @@ describe("Edge cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -87,7 +87,7 @@ describe("Edge cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -99,9 +99,27 @@ describe("Edge cases", () => {
     const result = "12";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
+  });
+});
+
+describe("Decimal cases", () => {
+  test("should strip decimal points when decimals are disabled", () => {
+    expect(sanitizeNumber({ value: "12.34" })).toBe("1234");
+  });
+
+  test("should keep a decimal point when decimals are enabled", () => {
+    expect(sanitizeNumber({ value: "12.34", allowDecimals: true })).toBe("12.34");
+  });
+
+  test("should keep only the first decimal point", () => {
+    expect(sanitizeNumber({ value: "1.2.3", allowDecimals: true })).toBe("1.23");
+  });
+
+  test("should strip non-numeric characters except the decimal point", () => {
+    expect(sanitizeNumber({ value: "1e2.3", allowDecimals: true })).toBe("12.3");
   });
 });
