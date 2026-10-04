@@ -1,7 +1,7 @@
 #step-1 {
   --special-font-size: 24px;
   --size-loan-amount: 145px;
-  --size-loan-period: 60px;
+  --size-loan-period: 80px;
 
   .input-field,
   .input-field .label,

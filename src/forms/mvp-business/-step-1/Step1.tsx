@@ -41,13 +41,15 @@ export default function Step1() {
         </Label>
         <Input type="number" suffix="kr" />
       </InputField>
+
       <InputField form={form} id="loan_period">
         <Label>
           <span className="label-mobile">Lånetid:</span>
           <span className="label-tablet">Välj lånetid:</span>
         </Label>
-        <Input type="number" suffix="år" />
+        <Input type="number" suffix="år" allowDecimals />
       </InputField>
+
       <footer>
         <Button type="submit">
           Påbörja ansökan <Icon name="arrow-right" />
