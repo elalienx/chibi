@@ -11,7 +11,7 @@ describe("Error cases", () => {
     const result = "";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -23,7 +23,7 @@ describe("Error cases", () => {
     const result = "";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -37,7 +37,7 @@ describe("Normal cases", () => {
     const result = "1234";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -49,7 +49,7 @@ describe("Normal cases", () => {
     const result = "1234567";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -61,7 +61,69 @@ describe("Normal cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+});
+
+describe("Decimal cases", () => {
+  test("should strip decimal commas when decimals are disabled", () => {
+    // Arrange
+    const input = "12,34";
+    const result = "1234";
+
+    // Act
+    const test = sanitizeNumber({ value: input });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should convert a decimal comma to a period when decimals are enabled", () => {
+    // Arrange
+    const input = "12,34";
+    const result = "12.34";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should keep a decimal period when decimals are enabled", () => {
+    // Arrange
+    const input = "12.34";
+    const result = "12.34";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should keep only the first decimal separator", () => {
+    // Arrange
+    const input = "1,2,3";
+    const result = "1.23";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should strip non-numeric characters and normalize the decimal comma", () => {
+    // Arrange
+    const input = "1e2,3";
+    const result = "12.3";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
 
     // Assert
     expect(test).toBe(result);
@@ -75,7 +137,7 @@ describe("Edge cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -87,7 +149,7 @@ describe("Edge cases", () => {
     const result = "42";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
@@ -99,7 +161,7 @@ describe("Edge cases", () => {
     const result = "12";
 
     // Act
-    const test = sanitizeNumber(input);
+    const test = sanitizeNumber({ value: input });
 
     // Assert
     expect(test).toBe(result);
