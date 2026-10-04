@@ -2,21 +2,20 @@
 const NON_DIGITS: RegExp = /\D/g;
 const WHITE_SPACE: RegExp = /\s/g;
 
+interface Props {
+  /** The raw value to clean up. */
+  value: string;
+
+  /** Adds the option to keep `,` and `.` from cleanup to allow input decimal numbers. */
+  allowDecimals: boolean;
+}
+
 /**
  * HTML `<input type="number"/>` accepts the characters `+`, `-`, and `e` (math exponent).
  *
  * This method cleans the user input to only allow the digits `0` to `9` and, optionally, one decimal separator.
- *
- * `-` and `e` are always stripped. Decimal separators are stripped unless `allowDecimals` is true;
- * accepted commas are normalized to periods for storage.
  */
-export default function sanitizeNumber({
-  value,
-  allowDecimals = false,
-}: {
-  value: string;
-  allowDecimals?: boolean;
-}): string {
+export default function sanitizeNumber({ value, allowDecimals = false }: Props): string {
   const onlyCharacters = value.replace(WHITE_SPACE, "");
   const onlyDigits = onlyCharacters.replace(allowDecimals ? /[^\d.,]/g : NON_DIGITS, "");
 
