@@ -1,4 +1,6 @@
 // Properties
+const DECIMAL_COMMA: RegExp = /,/g;
+const EXTRA_DECIMAL_PERIODS: RegExp = /\./g;
 const NON_NUMBERS: RegExp = /[^\d.,]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
@@ -14,11 +16,21 @@ export default function formatWithSpaces(value: string | number | undefined | nu
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const normalizedValue = String(value).replace(NON_NUMBERS, "").replace(/,/g, ".");
+  // Initial checks
+  const normalizedValue = String(value).replace(NON_NUMBERS, "").replace(DECIMAL_COMMA, ".");
   const decimalIndex = normalizedValue.indexOf(".");
-  const integerPart = decimalIndex === -1 ? normalizedValue : normalizedValue.slice(0, decimalIndex);
-  const decimalPart = decimalIndex === -1 ? "" : normalizedValue.slice(decimalIndex + 1).replace(/\./g, "");
-  const formattedInteger = integerPart.replace(SPACE_GROUPING_PATTERN, " ");
+  const hasDecimals = decimalIndex !== -1;
 
-  return decimalIndex === -1 ? formattedInteger : `${formattedInteger},${decimalPart}`;
+  // Integer formatting
+  const integerPartWithoutDecimals = normalizedValue;
+  const integerPartBeforeDecimal = normalizedValue.slice(0, decimalIndex);
+  const integers = hasDecimals ? integerPartBeforeDecimal : integerPartWithoutDecimals;
+  const formattedInteger = integers.replace(SPACE_GROUPING_PATTERN, " ");
+
+  // Decimal formatting
+  const decimalPartAfterSeparator = normalizedValue.slice(decimalIndex + 1).replace(EXTRA_DECIMAL_PERIODS, "");
+  const decimals = hasDecimals ? decimalPartAfterSeparator : "";
+  const decimalSuffix = hasDecimals ? `,${decimals}` : "";
+
+  return `${formattedInteger}${decimalSuffix}`;
 }
