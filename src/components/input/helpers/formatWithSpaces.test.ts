@@ -59,8 +59,8 @@ describe("Normal cases", () => {
 describe("Decimal cases", () => {
   test("should format a 4-digit number with a space", () => {
     // Arrange
-    const input = 1234.99;
-    const result = "1 234.99";
+    const input = "1234,99";
+    const result = "1 234,99";
 
     // Act
     const test = formatWithSpaces(input);
@@ -71,8 +71,8 @@ describe("Decimal cases", () => {
 
   test("should format a long number (7 digits) with correct spacing", () => {
     // Arrange
-    const input = 1234567.99;
-    const result = "1 234 567.99";
+    const input = "1234567,99";
+    const result = "1 234 567,99";
 
     // Act
     const test = formatWithSpaces(input);

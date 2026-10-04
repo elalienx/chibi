@@ -1,5 +1,5 @@
 // Properties
-const NON_DIGITS_EXCEPT_DOT: RegExp = /[^\d.]/g;
+const NON_DIGITS_EXCEPT_COMMA: RegExp = /[^\d,]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
@@ -7,13 +7,13 @@ const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
  *
  * This method formats a numeric value by using the Swedish system of adding a space every 3 digits.
  *
- * Non-numeric characters are stripped, while decimal points are preserved.
+ * Non-numeric characters are stripped, while decimal commas are preserved.
  */
 export default function formatWithSpaces(value: string | number | undefined | null): string {
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const onlyDigits = String(value).replace(NON_DIGITS_EXCEPT_DOT, "");
+  const onlyDigits = String(value).replace(NON_DIGITS_EXCEPT_COMMA, "");
   const formattedValue = onlyDigits.replace(SPACE_GROUPING_PATTERN, " ");
 
   return formattedValue;

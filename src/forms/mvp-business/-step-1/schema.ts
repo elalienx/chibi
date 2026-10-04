@@ -21,8 +21,7 @@ const loan_period = v.pipe(
   v.string("Vänligen ange lånetid."),
   v.nonEmpty("Vänligen ange lånetid."),
   v.toNumber("Vänligen ange en giltig lånetid."),
-  v.integer("Vänligen ange lånetiden i hela år."),
-  v.minValue(Math.ceil(MIN_PERIOD), `Måste vara minst ${Math.ceil(MIN_PERIOD)} år.`),
+  v.minValue(MIN_PERIOD, `Måste vara minst ${MIN_PERIOD} år.`),
   v.maxValue(MAX_PERIOD, `Måste vara maximalt ${MAX_PERIOD.toLocaleString("sv-SE")} år.`),
 );
 

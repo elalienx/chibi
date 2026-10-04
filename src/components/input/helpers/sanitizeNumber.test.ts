@@ -69,9 +69,9 @@ describe("Normal cases", () => {
 });
 
 describe("Decimal cases", () => {
-  test("should strip decimal points when decimals are disabled", () => {
+  test("should strip decimal commas when decimals are disabled", () => {
     // Arrange
-    const input = "12.34";
+    const input = "12,34";
     const result = "1234";
 
     // Act
@@ -81,10 +81,10 @@ describe("Decimal cases", () => {
     expect(test).toBe(result);
   });
 
-  test("should keep a decimal point when decimals are enabled", () => {
+  test("should keep a decimal comma when decimals are enabled", () => {
     // Arrange
-    const input = "12.34";
-    const result = "12.34";
+    const input = "12,34";
+    const result = "12,34";
 
     // Act
     const test = sanitizeNumber({ value: input, allowDecimals: true });
@@ -93,10 +93,10 @@ describe("Decimal cases", () => {
     expect(test).toBe(result);
   });
 
-  test("should keep only the first decimal point", () => {
+  test("should keep only the first decimal comma", () => {
     // Arrange
-    const input = "1.2.3";
-    const result = "1.23";
+    const input = "1,2,3";
+    const result = "1,23";
 
     // Act
     const test = sanitizeNumber({ value: input, allowDecimals: true });
@@ -105,10 +105,10 @@ describe("Decimal cases", () => {
     expect(test).toBe(result);
   });
 
-  test("should strip non-numeric characters except the decimal point", () => {
+  test("should strip non-numeric characters except the decimal comma", () => {
     // Arrange
-    const input = "1e2.3";
-    const result = "12.3";
+    const input = "1e2,3";
+    const result = "12,3";
 
     // Act
     const test = sanitizeNumber({ value: input, allowDecimals: true });
