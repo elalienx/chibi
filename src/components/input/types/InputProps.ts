@@ -18,6 +18,12 @@ export default interface InputProps {
   /** Used to display the user-friendly name of the select option; otherwise, it would show the database value. Example: "car_2" instead of "Bil Två". */
   displayValue?: string;
 
+  /** The maximum value allowed for number inputs. */
+  max?: number;
+
+  /** The minimum value allowed for number inputs. */
+  min?: number;
+
   /** An example value to show when the field is empty. */
   placeholder?: string;
 

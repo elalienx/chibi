@@ -6,6 +6,7 @@ import { useField } from "@formisch/react";
 import formatWithSpaces from "./helpers/formatWithSpaces";
 import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
 import getInputState from "./helpers/getInputState";
+import limitNumberRange from "./helpers/limitNumberRange";
 import sanitizeNumber from "./helpers/sanitizeNumber";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
@@ -13,7 +14,9 @@ import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputNumber({ id, form, allowDecimals = false, placeholder = "0", suffix, type }: InputProps) {
+export default function InputNumber(props: InputProps) {
+  const { id, form, allowDecimals = false, max, min, placeholder = "0", suffix, type } = props;
+
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -40,7 +43,10 @@ export default function InputNumber({ id, form, allowDecimals = false, placehold
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
-    event.target.value = sanitizeNumber({ value: event.target.value, allowDecimals });
+    const cleanValue = sanitizeNumber({ value: event.target.value, allowDecimals });
+    const valueInRange = limitNumberRange({ value: cleanValue, min, max });
+
+    event.target.value = valueInRange;
     field.props.onChange(event);
   }
 
