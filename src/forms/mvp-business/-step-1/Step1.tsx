@@ -8,10 +8,13 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import BusinessFormConfig from "../data/BusinessFormConfig";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import "./step-1.css";
+
+const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
 
 export default function Step1() {
   // Global state
@@ -39,7 +42,7 @@ export default function Step1() {
           <span className="label-mobile">Lånesumma:</span>
           <span className="label-tablet">Välj lånesumma:</span>
         </Label>
-        <Input type="number" suffix="kr" />
+        <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
       </InputField>
 
       <InputField form={form} id="loan_period">
@@ -47,7 +50,7 @@ export default function Step1() {
           <span className="label-mobile">Lånetid:</span>
           <span className="label-tablet">Välj lånetid:</span>
         </Label>
-        <Input type="number" suffix="år" allowDecimals />
+        <Input type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
       </InputField>
 
       <footer>

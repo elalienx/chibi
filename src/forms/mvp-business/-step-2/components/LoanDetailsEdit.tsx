@@ -7,7 +7,10 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import BusinessFormConfig from "../../data/BusinessFormConfig";
 import "./loan-details-edit.css";
+
+const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
 
 interface Props {
   /** The form sent by the parent. */
@@ -32,12 +35,12 @@ export default function LoanDetailsEdit({ form, onClose }: Props) {
       <div className="columns">
         <InputField form={form} id="loan_amount">
           <Label>Lånesumma:</Label>
-          <Input type="number" suffix="kr" />
+          <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
         </InputField>
 
         <InputField form={form} id="loan_period">
           <Label>Lånetid:</Label>
-          <Input type="number" suffix="år" />
+          <Input type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
         </InputField>
       </div>
 
