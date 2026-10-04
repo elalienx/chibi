@@ -1,4 +1,4 @@
-#loan-details-edit {
+#loan-edit {
   --space: var(--space-small);
   --field-min-width: 0px;
 
@@ -31,7 +31,7 @@
 
 /* Tablet */
 @media (min-width: 550px) {
-  #loan-details-edit {
+  #loan-edit {
     padding: var(--space-2xl);
     gap: var(--space-medium);
 

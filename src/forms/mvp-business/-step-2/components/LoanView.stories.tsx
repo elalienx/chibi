@@ -1,11 +1,11 @@
 // Project files
 import preview from "../../../../../.storybook/preview";
-import LoanDetailsView from "./LoanDetailsView";
+import LoanView from "./LoanView";
 
 // Metadata
 const meta = preview.meta({
-  title: "MVP Business/Step 2: Personal info/Loan Details View",
-  component: LoanDetailsView,
+  title: "MVP Business/Step 2: Personal info/Loan View",
+  component: LoanView,
 });
 
 // Methods
@@ -15,8 +15,8 @@ function onEdit() {
 
 // Stories
 export const Default = meta.story({
-  name: "Loan Details View",
-  render: () => <LoanDetailsView amount={600_000} period={2} onEdit={onEdit} />,
+  name: "Loan View",
+  render: () => <LoanView amount={600_000} period={2} onEdit={onEdit} />,
 });
 
 export default meta;

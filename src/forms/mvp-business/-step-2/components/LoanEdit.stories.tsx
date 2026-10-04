@@ -4,12 +4,12 @@ import * as v from "valibot";
 
 // Project files
 import preview from "../../../../../.storybook/preview";
-import LoanDetailsEdit from "./LoanDetailsEdit";
+import LoanEdit from "./LoanEdit";
 
 // Metadata
 const meta = preview.meta({
-  title: "MVP Business/Step 2: Personal info/Loan Details Edit",
-  component: LoanDetailsEdit,
+  title: "MVP Business/Step 2: Personal info/Loan Edit",
+  component: LoanEdit,
 });
 
 // Properties
@@ -38,13 +38,13 @@ function onClose() {
 
 // Stories
 export const Default = meta.story({
-  name: "Loan Details Edit",
+  name: "Loan Edit",
   render: () => {
     const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <LoanDetailsEdit form={form} onClose={onClose} />
+        <LoanEdit form={form} onClose={onClose} />
       </Form>
     );
   },
