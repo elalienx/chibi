@@ -68,6 +68,56 @@ describe("Normal cases", () => {
   });
 });
 
+describe("Decimal cases", () => {
+  test("should strip decimal points when decimals are disabled", () => {
+    // Arrange
+    const input = "12.34";
+    const result = "1234";
+
+    // Act
+    const test = sanitizeNumber({ value: input });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should keep a decimal point when decimals are enabled", () => {
+    // Arrange
+    const input = "12.34";
+    const result = "12.34";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should keep only the first decimal point", () => {
+    // Arrange
+    const input = "1.2.3";
+    const result = "1.23";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+
+  test("should strip non-numeric characters except the decimal point", () => {
+    // Arrange
+    const input = "1e2.3";
+    const result = "12.3";
+
+    // Act
+    const test = sanitizeNumber({ value: input, allowDecimals: true });
+
+    // Assert
+    expect(test).toBe(result);
+  });
+});
+
 describe("Edge cases", () => {
   test("should strip the + character", () => {
     // Arrange
@@ -103,23 +153,5 @@ describe("Edge cases", () => {
 
     // Assert
     expect(test).toBe(result);
-  });
-});
-
-describe("Decimal cases", () => {
-  test("should strip decimal points when decimals are disabled", () => {
-    expect(sanitizeNumber({ value: "12.34" })).toBe("1234");
-  });
-
-  test("should keep a decimal point when decimals are enabled", () => {
-    expect(sanitizeNumber({ value: "12.34", allowDecimals: true })).toBe("12.34");
-  });
-
-  test("should keep only the first decimal point", () => {
-    expect(sanitizeNumber({ value: "1.2.3", allowDecimals: true })).toBe("1.23");
-  });
-
-  test("should strip non-numeric characters except the decimal point", () => {
-    expect(sanitizeNumber({ value: "1e2.3", allowDecimals: true })).toBe("12.3");
   });
 });
