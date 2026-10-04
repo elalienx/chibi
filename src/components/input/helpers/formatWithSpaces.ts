@@ -1,5 +1,5 @@
 // Properties
-const NON_DIGITS: RegExp = /\D/g;
+const NON_DIGITS_EXCEPT_DOT: RegExp = /[^\d.]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
@@ -7,14 +7,13 @@ const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
  *
  * This method formats a numeric value by using the Swedish system of adding a space every 3 digits.
  *
- * Note: integer-only by design; `-` and `.` are stripped. Lendo has no negative numbers, and
- * decimals will be added once a form needs them.
+ * Non-numeric characters are stripped, while decimal points are preserved.
  */
 export default function formatWithSpaces(value: string | number | undefined | null): string {
   // Safeguard
   if (value === undefined || value === null) return "";
 
-  const onlyDigits = String(value).replace(NON_DIGITS, "");
+  const onlyDigits = String(value).replace(NON_DIGITS_EXCEPT_DOT, "");
   const formattedValue = onlyDigits.replace(SPACE_GROUPING_PATTERN, " ");
 
   return formattedValue;
