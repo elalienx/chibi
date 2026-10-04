@@ -1,6 +1,6 @@
 // Properties
 const DECIMAL_COMMA: RegExp = /,/g;
-const EXTRA_DECIMAL_PERIODS: RegExp = /\./g;
+const DECIMAL_PERIOD: RegExp = /\./g;
 const NON_NUMBERS: RegExp = /[^\d.,]/g;
 const SPACE_GROUPING_PATTERN: RegExp = /\B(?=(\d{3})+(?!\d))/g;
 
@@ -22,13 +22,12 @@ export default function formatWithSpaces(value: string | number | undefined | nu
   const hasDecimals = decimalIndex !== -1;
 
   // Integer formatting
-  const integerPartWithoutDecimals = normalizedValue;
   const integerPartBeforeDecimal = normalizedValue.slice(0, decimalIndex);
-  const integers = hasDecimals ? integerPartBeforeDecimal : integerPartWithoutDecimals;
+  const integers = hasDecimals ? integerPartBeforeDecimal : normalizedValue;
   const formattedInteger = integers.replace(SPACE_GROUPING_PATTERN, " ");
 
   // Decimal formatting
-  const decimalPartAfterSeparator = normalizedValue.slice(decimalIndex + 1).replace(EXTRA_DECIMAL_PERIODS, "");
+  const decimalPartAfterSeparator = normalizedValue.slice(decimalIndex + 1).replace(DECIMAL_PERIOD, "");
   const decimals = hasDecimals ? decimalPartAfterSeparator : "";
   const decimalSuffix = hasDecimals ? `,${decimals}` : "";
 
