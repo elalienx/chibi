@@ -13,7 +13,7 @@ let amountSlider: Locator;
 test.beforeEach(async ({ mount }) => {
   form = await mount("forms/example-slider/FormPage/Default");
   amountInput = form.getByRole("textbox", { name: item1 });
-  amountSlider = form.getByRole("slider"); // Shares the id with the input, so the label only names the textbox
+  amountSlider = form.getByRole("slider", { name: item1 });
 });
 
 test.afterEach(async () => {

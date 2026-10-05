@@ -49,8 +49,8 @@ export default function FormPage() {
           <Label>Loan amount</Label>
           <Input type="number" suffix="kr" min={MINIMUM} max={MAXIMUM} />
         </InputField>
-
-        <Slider form={form} id="loan_amount" min={MINIMUM} max={MAXIMUM} step={INCREMENT} />
+        {/* Note: The Slider should be part of InputField */}
+        <Slider form={form} id="loan_amount" label="Loan amount" min={MINIMUM} max={MAXIMUM} step={INCREMENT} />
       </section>
 
       <hr />
