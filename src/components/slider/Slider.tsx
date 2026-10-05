@@ -8,10 +8,10 @@ import "./slider.css";
 
 interface Props {
   /** Unique identifier of a form field. */
-  id?: string;
+  id: string;
 
   /** An instance of a Formisch form. */
-  form?: FormStore;
+  form: FormStore;
 
   /** The maximum value of the slider. Also displayed as the right label. */
   max: number;
