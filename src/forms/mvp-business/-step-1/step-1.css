@@ -1,14 +1,17 @@
 #step-1 {
-  --special-font-size: 24px;
+  --label-font-size: 24px;
+  --label-line-height: 32px;
+  --label-letter-spacing: -0.48px;
   --input-font-size: var(--font-size-large);
-  --size-loan-amount: 145px;
+  --input-letter-spacing: normal;
+  --button-font-size: 24px;
   --size-loan-period: 80px;
 
   .input-field .label {
     font-weight: var(--font-weight-bold);
-    font-size: var(--special-font-size);
-    line-height: 32px;
-    letter-spacing: -0.48px;
+    font-size: var(--label-font-size);
+    line-height: var(--label-line-height);
+    letter-spacing: var(--label-letter-spacing);
   }
 
   .input-field {
@@ -26,6 +29,7 @@
     .suffix {
       font-weight: var(--font-weight-bold);
       font-size: var(--input-font-size);
+      letter-spacing: var(--input-letter-spacing);
     }
 
     .suffix {
@@ -54,12 +58,12 @@
 
     height: var(--size);
     border-radius: var(--size);
-    font-size: var(--special-font-size);
+    font-size: var(--button-font-size);
     font-weight: var(--font-weight-bold);
     letter-spacing: -0.48px;
 
     .icon {
-      height: var(--special-font-size);
+      height: var(--button-font-size);
     }
   }
 
@@ -71,15 +75,14 @@
 /* Tablet */
 @media (min-width: 550px) {
   #step-1 {
-    --special-font-size: 28px;
-    --input-font-size: var(--special-font-size);
+    --label-font-size: 28px;
+    --label-line-height: 36px;
+    --label-letter-spacing: -0.8px;
+    --input-font-size: 24px;
+    --input-letter-spacing: -0.48px;
 
-    .input-wrapper:has(#loan_amount) {
-      flex: initial;
-    }
-
-    #loan_amount {
-      max-width: var(--size-loan-amount);
+    .input-field {
+      gap: var(--space-5xl);
     }
   }
 }
