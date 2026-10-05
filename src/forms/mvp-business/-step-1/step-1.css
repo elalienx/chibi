@@ -7,6 +7,12 @@
   --button-font-size: 24px;
   --size-loan-period: 80px;
 
+  .input-with-slider {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+  }
+
   .input-field .label {
     font-weight: var(--font-weight-bold);
     font-size: var(--label-font-size);
