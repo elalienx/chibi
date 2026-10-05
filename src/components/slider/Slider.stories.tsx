@@ -29,7 +29,7 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Slider form={form} id="loan_amount" min={50_000} max={3_000_000} step={10_000} />
+        <Slider form={form} id="loan_amount" label="Loan amount" min={50_000} max={3_000_000} step={10_000} />
       </Form>
     );
   },
@@ -48,7 +48,7 @@ export const InitialValue = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Slider form={form} id="loan_amount" min={50_000} max={3_000_000} step={10_000} />
+        <Slider form={form} id="loan_amount" label="Loan amount" min={50_000} max={3_000_000} step={10_000} />
       </Form>
     );
   },
@@ -64,7 +64,7 @@ export const InsideForm = meta.story({
       <Form of={form} className="default-form" onSubmit={() => alert("Success")}>
         <section>
           <Input type="text" placeholder="Hatsume Miku" form={form} id="username" />
-          <Slider form={form} id="loan_amount" min={50_000} max={3_000_000} step={10_000} />
+          <Slider form={form} id="loan_amount" label="Loan amount" min={50_000} max={3_000_000} step={10_000} />
         </section>
       </Form>
     );
