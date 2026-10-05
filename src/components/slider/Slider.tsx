@@ -13,6 +13,9 @@ interface Props {
   /** An instance of a Formisch form. */
   form: FormStore;
 
+  /** Accessible name of the slider, announced by screen readers. */
+  label: string;
+
   /** The maximum value of the slider. Also displayed as the right label. */
   max: number;
 
@@ -23,7 +26,7 @@ interface Props {
   step?: number;
 }
 
-export default function Slider({ id, form, max, min, step = 1 }: Props) {
+export default function Slider({ id, form, label, max, min, step = 1 }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
@@ -40,7 +43,7 @@ export default function Slider({ id, form, max, min, step = 1 }: Props) {
     <div className="slider">
       <input
         {...field.props}
-        id={id}
+        aria-label={label}
         max={max}
         min={min}
         step={step}
