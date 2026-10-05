@@ -1,0 +1,92 @@
+.slider {
+  --border-width: 2px;
+  --color-fill: var(--color-blue-40);
+  --color-track: var(--color-gray-80);
+  --size-thumb: var(--height-of-field);
+  --size-track: 8px;
+  --thumb-shadow: 0 1px 2px rgb(0 0 0 / 25%), 0 2px 12px rgb(0 0 0 / 15%); /* Figma: Handle drop shadows */
+
+  display: grid;
+  grid-template-areas:
+    "bar bar"
+    "min max";
+  min-width: var(--field-min-width);
+  padding-bottom: var(--space-tiny);
+  border-bottom: solid 1px var(--color-track);
+  color: var(--color-gray-10);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.24px;
+  line-height: 16px;
+
+  input[type="range"] {
+    grid-area: bar;
+    appearance: none;
+    width: 100%;
+    height: var(--size-thumb);
+    margin: 0;
+    background: transparent;
+    outline: none; /* The thumb draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  .min {
+    grid-area: min;
+  }
+
+  .max {
+    grid-area: max;
+    justify-self: end;
+  }
+}
+
+/**
+ * Browsers do not share the same pseudo-elements for the range input,
+ * so the track and thumb styles are repeated for WebKit and Firefox.
+ */
+
+/* Track */
+.slider input[type="range"]::-webkit-slider-runnable-track {
+  height: var(--size-track);
+  border-radius: calc(var(--size-track) / 2);
+  background: linear-gradient(to right, var(--color-fill) var(--progress), var(--color-track) var(--progress));
+}
+
+.slider input[type="range"]::-moz-range-track {
+  height: var(--size-track);
+  border-radius: calc(var(--size-track) / 2);
+  background: linear-gradient(to right, var(--color-fill) var(--progress), var(--color-track) var(--progress));
+}
+
+/* Thumb */
+.slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  box-sizing: border-box;
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+  margin-top: calc((var(--size-track) - var(--size-thumb)) / 2); /* WebKit does not center the thumb on the track. */
+  background-color: var(--color-fill);
+  border: solid var(--border-width) var(--color-gray-100);
+  border-radius: 50%;
+  box-shadow: var(--thumb-shadow);
+}
+
+.slider input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+  background-color: var(--color-fill);
+  border: solid var(--border-width) var(--color-gray-100);
+  border-radius: 50%;
+  box-shadow: var(--thumb-shadow);
+}
+
+/* On focus */
+.slider input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}
+
+.slider input[type="range"]:focus-visible::-moz-range-thumb {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}
