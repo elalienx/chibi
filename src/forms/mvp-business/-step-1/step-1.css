@@ -1,15 +1,14 @@
 #step-1 {
   --special-font-size: 24px;
+  --input-font-size: var(--font-size-large);
   --size-loan-amount: 145px;
   --size-loan-period: 80px;
 
-  .input-field,
-  .input-field .label,
-  .input-field .sufix,
-  #loan_amount,
-  #loan_period {
+  .input-field .label {
     font-weight: var(--font-weight-bold);
     font-size: var(--special-font-size);
+    line-height: 32px;
+    letter-spacing: -0.48px;
   }
 
   .input-field {
@@ -17,17 +16,31 @@
     flex-direction: row; /** To put label and input side by side. */
     justify-content: space-between; /** To put label and input on oposite sides of the form. */
     align-items: center; /** To align items vertically */
-    font-size: var(--special-font-size);
+    gap: var(--space-xs); /* Space between label and input, overrides the default from input-field.css. */
   }
 
   .input-wrapper {
     min-width: 0;
+
+    .input,
+    .suffix {
+      font-weight: var(--font-weight-bold);
+      font-size: var(--input-font-size);
+    }
+
+    .suffix {
+      width: var(--height-of-field); /** To make it a square. */
+      padding-inline: 0;
+    }
+  }
+
+  .input-wrapper:has(#loan_amount) {
+    flex: 1; /** To fill the space left by the label. */
   }
 
   #loan_amount {
     min-width: 0;
     width: 100%;
-    max-width: var(--size-loan-amount);
   }
 
   #loan_period {
@@ -43,10 +56,15 @@
     border-radius: var(--size);
     font-size: var(--special-font-size);
     font-weight: var(--font-weight-bold);
+    letter-spacing: -0.48px;
 
     .icon {
       height: var(--special-font-size);
     }
+  }
+
+  footer small {
+    font-size: var(--font-size-normal);
   }
 }
 
@@ -54,5 +72,14 @@
 @media (min-width: 550px) {
   #step-1 {
     --special-font-size: 28px;
+    --input-font-size: var(--special-font-size);
+
+    .input-wrapper:has(#loan_amount) {
+      flex: initial;
+    }
+
+    #loan_amount {
+      max-width: var(--size-loan-amount);
+    }
   }
 }
