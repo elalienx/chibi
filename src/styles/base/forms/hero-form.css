@@ -1,6 +1,4 @@
 .hero-form {
-  --special-font-size: 24px;
-
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);

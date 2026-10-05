@@ -11,8 +11,6 @@
 /* Tablet */
 @media (min-width: 550px) {
   #step-1 {
-    --special-font-size: 28px;
-
     .label-mobile {
       display: none;
     }
