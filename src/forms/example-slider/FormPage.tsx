@@ -1,5 +1,4 @@
 // Node modules
-import { useState } from "react";
 import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
@@ -16,12 +15,12 @@ const schema = v.object({
     v.nonEmpty("Please enter a loan amount."),
     v.toNumber("Loan amount must be a valid number."),
   ),
-  loan_period: v.pipe(
-    v.string(),
-    v.nonEmpty("Please choose a loan period."),
-    v.toNumber("Loan period must be a valid number."),
-  ),
 });
+
+const INITIAL = 1_500_000;
+const MINIMUM = 50_000;
+const MAXIMUM = 3_000_000;
+const INCREMENT = 10_000;
 
 export default function FormPage() {
   // Local state
@@ -29,14 +28,14 @@ export default function FormPage() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { loan_amount: "640000", loan_period: "5" },
+    initialInput: { loan_amount: String(INITIAL) },
   });
-  const [formResult, setFormResult] = useState("On standby");
+
+  // Derived state
 
   // Methods
-  function submitForm(values: v.InferOutput<typeof schema>) {
+  function submitForm() {
     alert("Success");
-    setFormResult(`${values.loan_amount} kr over ${values.loan_period} years`);
   }
 
   return (
@@ -46,15 +45,12 @@ export default function FormPage() {
       </header>
 
       <section>
-        <Slider form={form} id="loan_period" min={1} max={30} />
-
         <InputField form={form} id="loan_amount">
           <Label>Loan amount</Label>
-          <Input type="number" suffix="kr" min={50_000} max={3_000_000} />
+          <Input type="number" suffix="kr" min={MINIMUM} max={MAXIMUM} />
         </InputField>
-        <Slider form={form} id="loan_amount" min={50_000} max={3_000_000} step={10_000} />
 
-        <span>Form status: {formResult}</span>
+        <Slider form={form} id="loan_amount" min={MINIMUM} max={MAXIMUM} step={INCREMENT} />
       </section>
 
       <hr />
