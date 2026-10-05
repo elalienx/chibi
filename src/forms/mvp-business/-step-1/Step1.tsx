@@ -13,6 +13,7 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import "./step-1.css";
+import Slider from "components/slider/Slider";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
 
@@ -37,13 +38,16 @@ export default function Step1() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
-      <InputField form={form} id="loan_amount">
-        <Label>
-          <span className="label-mobile">Lånesumma:</span>
-          <span className="label-tablet">Välj lånesumma:</span>
-        </Label>
-        <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
-      </InputField>
+      <div className="input-with-slider">
+        <InputField form={form} id="loan_amount">
+          <Label>
+            <span className="label-mobile">Lånesumma:</span>
+            <span className="label-tablet">Välj lånesumma:</span>
+          </Label>
+          <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
+        </InputField>
+        <Slider id={"loan_amount"} form={form} label={"Lånesumma"} min={MIN_AMOUNT} max={MAX_AMOUNT} />
+      </div>
 
       <InputField form={form} id="loan_period">
         <Label>
