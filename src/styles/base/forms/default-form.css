@@ -1,6 +1,7 @@
 .default-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
   background-color: white;
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
