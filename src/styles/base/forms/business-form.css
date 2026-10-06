@@ -1,6 +1,7 @@
 .business-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
   background-color: white;
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
@@ -65,8 +66,6 @@
 /* Tablet */
 @media (min-width: 550px) {
   .business-form {
-    width: 544px;
-
     > header {
       gap: var(--space-base) var(--space-medium);
       grid-template-columns: 64px 1fr 64px;
