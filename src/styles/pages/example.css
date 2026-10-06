@@ -1,7 +1,7 @@
 body {
   display: grid;
-  min-height: 100dvh;
   place-items: center;
+  min-height: 100dvh;
 }
 
 body main {
