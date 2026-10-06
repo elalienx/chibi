@@ -1,14 +1,14 @@
 body {
   display: grid;
-  min-height: 100dvh;
   place-items: center;
+  min-height: 100dvh;
 }
 
 body main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-medium);
-  width: 100%;
+  gap: var(--space-small);
+  align-items: center;
 
   > footer {
     text-align: center;
@@ -17,10 +17,6 @@ body main {
 
 /* Tablet */
 @media (min-width: 550px) {
-  body {
-    margin-inline: 5%;
-  }
-
   body main {
     max-width: 588px;
   }
