@@ -8,7 +8,7 @@ body main {
   display: flex;
   flex-direction: column;
   gap: var(--space-small);
-  align-items: center;
+  text-align: center;
 
   img {
     max-width: 320px;
