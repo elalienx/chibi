@@ -36,7 +36,7 @@
     gap: var(--space-base);
     min-width: auto;
     background: none;
-    padding-inline: var(--space-medium);
+    padding-inline: 0;
     border: none;
     color: var(--typography-link);
     font-weight: var(--font-weight-book);
