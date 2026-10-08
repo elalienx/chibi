@@ -4,7 +4,9 @@ import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import formatWithSpaces from "components/input/helpers/formatWithSpaces";
-import "./slider.css";
+import "./slider-design.css";
+import "./slider-thumb.css";
+import "./slider-track.css";
 
 interface Props {
   /** Unique identifier of a form field. */

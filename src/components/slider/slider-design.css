@@ -1,0 +1,51 @@
+.slider {
+  --border-width: 2px;
+  --color-fill: var(--color-blue-40);
+  --color-track: var(--color-gray-80);
+  --size-thumb: var(--height-of-field);
+  --size-track: 8px;
+  --thumb-shadow: 0 1px 2px rgb(0 0 0 / 25%), 0 2px 12px rgb(0 0 0 / 15%); /* Figma: Handle drop shadows */
+
+  display: grid;
+  grid-template-areas:
+    "bar bar"
+    "min max";
+  min-width: var(--field-min-width);
+  padding-bottom: var(--space-tiny);
+  border-bottom: solid 1px var(--color-track);
+  color: var(--color-gray-10);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.24px;
+  line-height: 16px;
+
+  input[type="range"] {
+    grid-area: bar;
+    appearance: none;
+    width: 100%;
+    height: var(--size-thumb);
+    margin: 0;
+    background: transparent;
+    outline: none; /* The thumb draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  .min {
+    grid-area: min;
+  }
+
+  .max {
+    grid-area: max;
+    justify-self: end;
+  }
+}
+
+/* On focus */
+.slider input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}
+
+.slider input[type="range"]:focus-visible::-moz-range-thumb {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}

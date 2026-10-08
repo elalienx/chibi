@@ -1,0 +1,11 @@
+.slider input[type="range"]::-webkit-slider-runnable-track {
+  height: var(--size-track);
+  border-radius: calc(var(--size-track) / 2);
+  background: linear-gradient(to right, var(--color-fill) var(--progress), var(--color-track) var(--progress));
+}
+
+.slider input[type="range"]::-moz-range-track {
+  height: var(--size-track);
+  border-radius: calc(var(--size-track) / 2);
+  background: linear-gradient(to right, var(--color-fill) var(--progress), var(--color-track) var(--progress));
+}

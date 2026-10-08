@@ -1,0 +1,21 @@
+.slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  box-sizing: border-box;
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+  margin-top: calc((var(--size-track) - var(--size-thumb)) / 2); /* WebKit does not center the thumb on the track. */
+  background-color: var(--color-fill);
+  border: solid var(--border-width) var(--color-gray-100);
+  border-radius: 50%;
+  box-shadow: var(--thumb-shadow);
+}
+
+.slider input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+  background-color: var(--color-fill);
+  border: solid var(--border-width) var(--color-gray-100);
+  border-radius: 50%;
+  box-shadow: var(--thumb-shadow);
+}

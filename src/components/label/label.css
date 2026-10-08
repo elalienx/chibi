@@ -1,7 +1,7 @@
 .label {
   color: var(--typography-dark);
   font-weight: var(--font-weight-medium);
-  text-wrap: pretty; /** To avoid the tooltip trigger being the unique item on a second line if the label is too long. */
+  text-wrap: pretty; /** To avoid the tooltip trigger being the only item on a second line if the label is too long. */
 
   .tooltip-trigger {
     margin-left: var(--space-tiny);
