@@ -1,66 +1,41 @@
 #step-1 {
-  --label-font-size: 24px;
-  --label-line-height: 32px;
-  --label-letter-spacing: -0.48px;
-  --input-font-size: var(--font-size-large);
-  --input-letter-spacing: normal;
-  --button-font-size: 24px;
-  --size-loan-period: 80px;
-
-  .input-with-slider {
+  .input-and-slider {
     display: flex;
     flex-direction: column;
     gap: var(--space-medium);
-  }
-
-  .input-field .label {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--label-font-size);
-    line-height: var(--label-line-height);
-    letter-spacing: var(--label-letter-spacing);
   }
 
   .input-field {
     display: flex;
     flex-direction: row; /** To put label and input side by side. */
     justify-content: space-between; /** To put label and input on oposite sides of the form. */
-    align-items: center; /** To align items vertically */
-    gap: var(--space-xs); /* Space between label and input, overrides the default from input-field.css. */
-  }
+    align-items: center;
+    gap: var(--space-xs);
 
-  .input-wrapper {
-    min-width: 0;
+    .label {
+      font-weight: var(--font-weight-bold);
+      font-size: 24px;
+      letter-spacing: -0.48px;
+    }
 
     .input,
     .suffix {
       font-weight: var(--font-weight-bold);
-      font-size: var(--input-font-size);
-      letter-spacing: var(--input-letter-spacing);
+      font-size: var(--font-size-large);
     }
-
-    .suffix {
-      width: var(--height-of-field); /** To make it a square. */
-      padding-inline: 0;
-    }
-  }
-
-  .input-wrapper:has(#loan_amount) {
-    flex: 1; /** To fill the space left by the label. */
   }
 
   #loan_amount {
     min-width: 0;
-    width: 100%;
   }
 
   #loan_period {
-    min-width: 0;
-    width: 100%;
-    max-width: var(--size-loan-period);
+    width: 80px;
   }
 
   .button {
     --size: 72px;
+    --button-font-size: 24px;
 
     height: var(--size);
     border-radius: var(--size);
@@ -81,14 +56,24 @@
 /* Tablet */
 @media (min-width: 550px) {
   #step-1 {
-    --label-font-size: 28px;
-    --label-line-height: 36px;
-    --label-letter-spacing: -0.8px;
-    --input-font-size: 24px;
-    --input-letter-spacing: -0.48px;
-
     .input-field {
       gap: var(--space-5xl);
+
+      .label {
+        font-weight: var(--font-weight-bold);
+        font-size: 28px;
+        letter-spacing: -0.8px;
+      }
+
+      .input,
+      .suffix {
+        font-size: 24px;
+        letter-spacing: -0.48px;
+      }
+    }
+
+    .input-wrapper:has(#loan_amount) {
+      flex: 1; /** To fill the space left by the label. */
     }
   }
 }
