@@ -7,17 +7,10 @@
   --button-font-size: 24px;
   --size-loan-period: 80px;
 
-  .input-with-slider {
+  .input-and-slider {
     display: flex;
     flex-direction: column;
     gap: var(--space-medium);
-  }
-
-  .input-field .label {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--label-font-size);
-    line-height: var(--label-line-height);
-    letter-spacing: var(--label-letter-spacing);
   }
 
   .input-field {
@@ -26,10 +19,12 @@
     justify-content: space-between; /** To put label and input on oposite sides of the form. */
     align-items: center; /** To align items vertically */
     gap: var(--space-xs); /* Space between label and input, overrides the default from input-field.css. */
-  }
 
-  .input-wrapper {
-    min-width: 0;
+    .label {
+      font-weight: var(--font-weight-bold);
+      font-size: var(--label-font-size);
+      letter-spacing: var(--label-letter-spacing);
+    }
 
     .input,
     .suffix {
@@ -37,15 +32,6 @@
       font-size: var(--input-font-size);
       letter-spacing: var(--input-letter-spacing);
     }
-
-    .suffix {
-      width: var(--height-of-field); /** To make it a square. */
-      padding-inline: 0;
-    }
-  }
-
-  .input-wrapper:has(#loan_amount) {
-    flex: 1; /** To fill the space left by the label. */
   }
 
   #loan_amount {
@@ -89,6 +75,10 @@
 
     .input-field {
       gap: var(--space-5xl);
+    }
+
+    .input-wrapper:has(#loan_amount) {
+      flex: 1; /** To fill the space left by the label. */
     }
   }
 }
