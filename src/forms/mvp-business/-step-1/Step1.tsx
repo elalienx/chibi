@@ -7,13 +7,13 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import Slider from "components/slider/Slider";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import BusinessFormConfig from "../data/BusinessFormConfig";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import "./step-1.css";
-import Slider from "components/slider/Slider";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
 
