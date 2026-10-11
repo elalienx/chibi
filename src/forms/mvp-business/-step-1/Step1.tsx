@@ -46,7 +46,8 @@ export default function Step1() {
           </Label>
           <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
         </InputField>
-        <Slider id={"loan_amount"} form={form} label={"Lånesumma"} min={MIN_AMOUNT} max={MAX_AMOUNT} />
+
+        <Slider id={"loan_amount"} form={form} label={"Lånesumma"} min={MIN_AMOUNT} max={MAX_AMOUNT} step={1_000} />
       </div>
 
       <InputField form={form} id="loan_period">
