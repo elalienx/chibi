@@ -11,16 +11,14 @@ const { title, description } = Astro.props;
 
 <html lang="sv">
   <head>
-    <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8" />
     <meta name="description" content={description} />
+    <meta name="format-detection" content="telephone=no"><!-- iOS may auto-link phone-like numbers, disrupting our localized number formatting.  -->
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aphrodite Chibi | {title}</title>
-    <!-- React Scan -->
-    <!-- This script allows us to visualize re-renders. Used to improve performance. Dissable it when not in use. -->
-    <!-- <script is:inline crossorigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js" /> -->
   </head>
   <body>
     <slot />
