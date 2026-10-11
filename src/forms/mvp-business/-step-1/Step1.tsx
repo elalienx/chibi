@@ -38,7 +38,7 @@ export default function Step1() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
-      <div className="input-with-slider">
+      <div className="input-and-slider">
         <InputField form={form} id="loan_amount">
           <Label>
             <span className="label-mobile">Lånesumma:</span>
