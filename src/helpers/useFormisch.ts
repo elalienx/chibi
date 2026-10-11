@@ -5,10 +5,17 @@ import { useForm } from "@formisch/react";
 import cleanInitialInput from "./cleanInitialInput";
 
 interface Props {
+  /** The schema of the form. */
   schema: any;
+
+  /** The initial input of the form. */
   initialInput: object;
-  cleanInput: boolean;
-  treatZeroAsEmpty: boolean;
+
+  /** Convert initial values to string. */
+  cleanInput?: boolean;
+
+  /** Treats the number 0 or the string "0" as an empty string. */
+  treatZeroAsEmpty?: boolean;
 }
 
 /**
