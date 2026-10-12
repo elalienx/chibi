@@ -1,8 +1,9 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, setInput, useForm } from "@formisch/react";
 
 // Project files
 import Button from "components/button/Button";
+import ButtonCircle from "components/button-circle/ButtonCircle";
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import Label from "components/label/Label";
@@ -15,7 +16,7 @@ import useMediaQuery from "state/useMediaQuery";
 import schema from "./schema";
 import "./step-1.css";
 
-const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
+const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = BusinessFormConfig;
 const LOAN_AMOUNT = "loan_amount";
 const LOAN_PEIROD = "loan_period";
 
@@ -34,6 +35,13 @@ export default function Step1() {
   });
 
   // Methods
+  function changePeriod(step: number) {
+    const period = Number(getInput(form, { path: [LOAN_PEIROD] })) || MIN_PERIOD;
+    const newPeriod = Math.min(Math.max(period + step, MIN_PERIOD), MAX_PERIOD);
+
+    setInput(form, { path: [LOAN_PEIROD], input: String(newPeriod) });
+  }
+
   function submitForm(values: object) {
     updateApplication(values);
     setStep("step-2");
@@ -49,9 +57,13 @@ export default function Step1() {
 
       <div id="input-with-counter-buttons">
         <Label id={LOAN_PEIROD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
-        {/* Add button "-"" here */}
+        <ButtonCircle label="Minska lånetid" onClick={() => changePeriod(-PERIOD_STEP)}>
+          <Icon name="minus" />
+        </ButtonCircle>
         <Input id={LOAN_PEIROD} form={form} type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
-        {/* Add button "+" here" */}
+        <ButtonCircle label="Öka lånetid" onClick={() => changePeriod(PERIOD_STEP)}>
+          <Icon name="plus" />
+        </ButtonCircle>
       </div>
 
       <footer>

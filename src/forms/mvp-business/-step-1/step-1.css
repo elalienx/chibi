@@ -13,9 +13,16 @@
 
   #input-with-counter-buttons {
     display: flex;
-    justify-content: space-between; /** To put label and input on oposite sides of the form. */
     align-items: center;
     gap: var(--space-xs);
+
+    .label {
+      margin-right: var(--space-xs); /** To double the gap between the label and the buttons. */
+    }
+
+    .input-wrapper {
+      flex: 1; /** To fill the space between the buttons. */
+    }
   }
 
   .label {
@@ -30,12 +37,9 @@
     font-size: var(--font-size-large);
   }
 
-  #loan_amount {
-    min-width: 0;
-  }
-
+  #loan_amount,
   #loan_period {
-    width: 80px;
+    min-width: 0;
   }
 
   .button {
@@ -65,8 +69,8 @@
       column-gap: var(--space-5xl);
     }
 
-    #input-with-counter-buttons {
-      gap: var(--space-5xl);
+    #input-with-counter-buttons .label {
+      width: 214px; /* Figma: fixed label width */
     }
 
     .label {
