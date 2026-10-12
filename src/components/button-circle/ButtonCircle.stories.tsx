@@ -1,7 +1,6 @@
 // Project files
 import preview from "../../../.storybook/preview";
 import ButtonCircle from "./ButtonCircle";
-import Icon from "components/icon/Icon";
 
 // Metadata
 const meta = preview.meta({
@@ -17,18 +16,10 @@ function onClick() {
 // Stories
 export const Plus = meta.story({
   name: "Plus",
-  render: () => (
-    <ButtonCircle label="Increase" onClick={onClick}>
-      <Icon name="plus" />
-    </ButtonCircle>
-  ),
+  render: () => <ButtonCircle label="Increase" icon="plus" onClick={onClick} />,
 });
 
 export const Minus = meta.story({
   name: "Minus",
-  render: () => (
-    <ButtonCircle label="Decrease" onClick={onClick}>
-      <Icon name="minus" />
-    </ButtonCircle>
-  ),
+  render: () => <ButtonCircle label="Decrease" icon="minus" onClick={onClick} />,
 });
