@@ -1,0 +1,34 @@
+#step-1 {
+  .label {
+    font-weight: var(--font-weight-bold);
+    font-size: 24px;
+    letter-spacing: -0.48px;
+  }
+
+  .input,
+  .suffix {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-large);
+  }
+
+  #loan_amount,
+  #loan_period {
+    min-width: 0;
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-1 {
+    .label {
+      font-size: 28px;
+      letter-spacing: -0.8px;
+    }
+
+    .input,
+    .suffix {
+      font-size: 24px;
+      letter-spacing: -0.48px;
+    }
+  }
+}

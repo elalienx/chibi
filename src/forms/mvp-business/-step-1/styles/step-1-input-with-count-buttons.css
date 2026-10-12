@@ -1,0 +1,20 @@
+#step-1 #input-with-stepper-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+
+  .label {
+    margin-right: var(--space-xs); /** To double the gap between the label and the buttons. */
+  }
+
+  .input-wrapper {
+    flex: 1; /** To fill the space between the buttons. */
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-1 #input-with-stepper-buttons .label {
+    width: 214px; /** To avoid the input being too wide */
+  }
+}
