@@ -1,36 +1,45 @@
 #step-1 {
-  .input-and-slider {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-medium);
+  #input-with-slider {
+    display: grid;
+    grid-template-columns: auto 1fr; /** To make the input fill the space left by the label. */
+    align-items: center;
+    column-gap: var(--space-xs);
+    row-gap: var(--space-medium);
+
+    .slider {
+      grid-column: 1 / -1; /** To put the slider below the label and input. */
+    }
   }
 
-  .input-field {
+  #input-with-counter-buttons {
     display: flex;
-    flex-direction: row; /** To put label and input side by side. */
-    justify-content: space-between; /** To put label and input on oposite sides of the form. */
     align-items: center;
     gap: var(--space-xs);
 
     .label {
-      font-weight: var(--font-weight-bold);
-      font-size: 24px;
-      letter-spacing: -0.48px;
+      margin-right: var(--space-xs); /** To double the gap between the label and the buttons. */
     }
 
-    .input,
-    .suffix {
-      font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-large);
+    .input-wrapper {
+      flex: 1; /** To fill the space between the buttons. */
     }
   }
 
-  #loan_amount {
-    min-width: 0;
+  .label {
+    font-weight: var(--font-weight-bold);
+    font-size: 24px;
+    letter-spacing: -0.48px;
   }
 
+  .input,
+  .suffix {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-large);
+  }
+
+  #loan_amount,
   #loan_period {
-    width: 80px;
+    min-width: 0;
   }
 
   .button {
@@ -56,24 +65,23 @@
 /* Tablet */
 @media (min-width: 550px) {
   #step-1 {
-    .input-field {
-      gap: var(--space-5xl);
-
-      .label {
-        font-weight: var(--font-weight-bold);
-        font-size: 28px;
-        letter-spacing: -0.8px;
-      }
-
-      .input,
-      .suffix {
-        font-size: 24px;
-        letter-spacing: -0.48px;
-      }
+    #input-with-slider {
+      column-gap: var(--space-5xl);
     }
 
-    .input-wrapper:has(#loan_amount) {
-      flex: 1; /** To fill the space left by the label. */
+    #input-with-counter-buttons .label {
+      width: 214px; /* Figma: fixed label width */
+    }
+
+    .label {
+      font-size: 28px;
+      letter-spacing: -0.8px;
+    }
+
+    .input,
+    .suffix {
+      font-size: 24px;
+      letter-spacing: -0.48px;
     }
   }
 }
