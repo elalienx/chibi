@@ -5,7 +5,6 @@ import { Form, useForm } from "@formisch/react";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
-import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import Slider from "components/slider/Slider";
 import cleanInitialInput from "helpers/cleanInitialInput";
