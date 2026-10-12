@@ -1,0 +1,23 @@
+.button-circle {
+  --size: var(--height-of-field);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /** To keep the circle shape inside flex containers. */
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-blue-40);
+  border: solid 2px var(--color-gray-100);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 25%);
+  color: white;
+  cursor: pointer;
+
+  /* Animation */
+  transition: background-color 0.3s ease-in;
+}
+
+.button-circle:hover {
+  background-color: var(--color-blue-30);
+}
