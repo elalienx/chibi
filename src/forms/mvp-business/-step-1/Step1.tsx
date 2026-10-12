@@ -5,7 +5,6 @@ import { Form, useForm } from "@formisch/react";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
-import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import Slider from "components/slider/Slider";
 import cleanInitialInput from "helpers/cleanInitialInput";
@@ -17,14 +16,16 @@ import schema from "./schema";
 import "./step-1.css";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = BusinessFormConfig;
+const LOAN_AMOUNT = "loan_amount";
+const LOAN_PEIROD = "loan_period";
 
 export default function Step1() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep } = useFormNavigation();
+  const isTablet = useMediaQuery("(min-width: 550px)");
 
   // Local state
-  const isTablet = useMediaQuery("(min-width: 550px)");
   const form = useForm({
     schema: schema,
     validate: "blur",
@@ -40,19 +41,18 @@ export default function Step1() {
 
   return (
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
-      <div className="input-and-slider">
-        <InputField form={form} id="loan_amount">
-          <Label>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
-          <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
-        </InputField>
-
-        <Slider id="loan_amount" form={form} label="Lånesumma" min={MIN_AMOUNT} max={MAX_AMOUNT} step={1_000} />
+      <div id="input-with-slider">
+        <Label id={LOAN_AMOUNT}>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
+        <Input id={LOAN_AMOUNT} form={form} type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
+        <Slider id={LOAN_AMOUNT} form={form} label="Lånesumma" min={MIN_AMOUNT} max={MAX_AMOUNT} step={1_000} />
       </div>
 
-      <InputField form={form} id="loan_period">
-        <Label>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
-        <Input type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
-      </InputField>
+      <div id="input-with-counter-buttons">
+        <Label id={LOAN_PEIROD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
+        {/* Add button "-"" here */}
+        <Input id={LOAN_PEIROD} form={form} type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
+        {/* Add button "+" here" */}
+      </div>
 
       <footer>
         <Button type="submit">
