@@ -12,6 +12,7 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import BusinessFormConfig from "../data/BusinessFormConfig";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import useMediaQuery from "state/useMediaQuery";
 import schema from "./schema";
 import "./step-1.css";
 
@@ -23,6 +24,7 @@ export default function Step1() {
   const { setStep } = useFormNavigation();
 
   // Local state
+  const isTablet = useMediaQuery("(min-width: 550px)");
   const form = useForm({
     schema: schema,
     validate: "blur",
@@ -40,10 +42,7 @@ export default function Step1() {
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
       <div className="input-and-slider">
         <InputField form={form} id="loan_amount">
-          <Label>
-            <span className="label-mobile">Lånesumma:</span>
-            <span className="label-tablet">Välj lånesumma:</span>
-          </Label>
+          <Label>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
           <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
         </InputField>
 
@@ -51,10 +50,7 @@ export default function Step1() {
       </div>
 
       <InputField form={form} id="loan_period">
-        <Label>
-          <span className="label-mobile">Lånetid:</span>
-          <span className="label-tablet">Välj lånetid:</span>
-        </Label>
+        <Label>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
         <Input type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
       </InputField>
 
