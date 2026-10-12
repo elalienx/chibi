@@ -1,12 +1,10 @@
-// Node modules
-import type { ReactNode } from "react";
-
 // Project files
+import Icon, { type IconName } from "components/icon/Icon";
 import "./button-circle.css";
 
 interface Props {
   /** Icon to display inside the button. */
-  children: ReactNode;
+  icon: IconName;
 
   /** Accessible name of the button, announced by screen readers. */
   label: string;
@@ -15,10 +13,10 @@ interface Props {
   onClick?: () => void;
 }
 
-export default function ButtonCircle({ children, label, onClick }: Props) {
+export default function ButtonCircle({ icon, label, onClick }: Props) {
   return (
     <button aria-label={label} className="button-circle" onClick={onClick} type="button">
-      {children}
+      <Icon name={icon} />
     </button>
   );
 }

@@ -3,7 +3,7 @@ import icons from "./font-awesome.json";
 import "./icon.css";
 
 // Types
-type IconName = Exclude<keyof typeof icons, "_default">;
+export type IconName = Exclude<keyof typeof icons, "_default">;
 
 interface Props {
   /** The icon name, taken from the keys of font-awesome.json. */
