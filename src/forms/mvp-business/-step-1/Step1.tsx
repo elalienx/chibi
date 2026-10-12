@@ -14,7 +14,10 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import useMediaQuery from "state/useMediaQuery";
 import schema from "./schema";
-import "./step-1.css";
+import "./styles/step-1-cta-button.css";
+import "./styles/step-1-input-design.css";
+import "./styles/step-1-input-with-slider.css";
+import "./styles/step-1-input-with-count-buttons.css";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = BusinessFormConfig;
 const LOAN_AMOUNT = "loan_amount";
@@ -55,7 +58,7 @@ export default function Step1() {
         <Slider id={LOAN_AMOUNT} form={form} label="Lånesumma" min={MIN_AMOUNT} max={MAX_AMOUNT} step={1_000} />
       </div>
 
-      <div id="input-with-counter-buttons">
+      <div id="input-with-stepper-buttons">
         <Label id={LOAN_PEIROD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
         <ButtonCircle label="Minska lånetid" onClick={() => changePeriod(-PERIOD_STEP)}>
           <Icon name="minus" />

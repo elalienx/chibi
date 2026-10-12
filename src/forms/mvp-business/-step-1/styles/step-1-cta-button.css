@@ -1,0 +1,20 @@
+#step-1 {
+  .button {
+    --size: 72px;
+    --button-font-size: 24px;
+
+    height: var(--size);
+    border-radius: var(--size);
+    font-size: var(--button-font-size);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.48px;
+
+    .icon {
+      height: var(--button-font-size);
+    }
+  }
+
+  footer small {
+    font-size: var(--font-size-normal);
+  }
+}

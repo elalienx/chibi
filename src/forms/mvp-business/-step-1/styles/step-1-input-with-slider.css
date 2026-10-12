@@ -1,0 +1,18 @@
+#step-1 #input-with-slider {
+  display: grid;
+  grid-template-columns: auto 1fr; /** To make the input fill the space left by the label. */
+  align-items: center;
+  column-gap: var(--space-xs);
+  row-gap: var(--space-medium);
+
+  .slider {
+    grid-column: 1 / -1; /** To put the slider below the label and input. */
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-1 #input-with-slider {
+    column-gap: var(--space-5xl);
+  }
+}
