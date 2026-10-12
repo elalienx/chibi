@@ -60,13 +60,9 @@ export default function Step1() {
 
       <div id="input-with-stepper-buttons">
         <Label id={LOAN_PEIROD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
-        <ButtonCircle label="Minska lånetid" onClick={() => changePeriod(-PERIOD_STEP)}>
-          <Icon name="minus" />
-        </ButtonCircle>
+        <ButtonCircle label="Minska lånetid" icon="minus" onClick={() => changePeriod(-PERIOD_STEP)} />
         <Input id={LOAN_PEIROD} form={form} type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
-        <ButtonCircle label="Öka lånetid" onClick={() => changePeriod(PERIOD_STEP)}>
-          <Icon name="plus" />
-        </ButtonCircle>
+        <ButtonCircle label="Öka lånetid" icon="plus" onClick={() => changePeriod(PERIOD_STEP)} />
       </div>
 
       <footer>
