@@ -1,4 +1,4 @@
-# Chibi
+# Chibi!
 
 Chibi is a UI component library for building complex multi-step forms.
 
