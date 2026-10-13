@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: Firebase hosting
-    runs-on: ubuntu-latest-arm
+    runs-on: ubuntu-26.04-arm
     permissions:
       contents: read
       issues: write
