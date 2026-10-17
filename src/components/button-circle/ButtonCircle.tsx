@@ -7,15 +7,15 @@ interface Props {
   icon: IconName;
 
   /** Accessible name of the button, announced by screen readers. */
-  label: string;
+  name: string;
 
   /** The function to execute when clicked. */
   onClick?: () => void;
 }
 
-export default function ButtonCircle({ icon, label, onClick }: Props) {
+export default function ButtonCircle({ icon, name, onClick }: Props) {
   return (
-    <button aria-label={label} className="button-circle" onClick={onClick} type="button">
+    <button aria-label={name} className="button-circle" onClick={onClick} type="button">
       <Icon name={icon} />
     </button>
   );
