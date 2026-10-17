@@ -16,10 +16,10 @@ function onClick() {
 // Stories
 export const Plus = meta.story({
   name: "Plus",
-  render: () => <ButtonCircle label="Increase" icon="plus" onClick={onClick} />,
+  render: () => <ButtonCircle name="Increase" icon="plus" onClick={onClick} />,
 });
 
 export const Minus = meta.story({
   name: "Minus",
-  render: () => <ButtonCircle label="Decrease" icon="minus" onClick={onClick} />,
+  render: () => <ButtonCircle name="Decrease" icon="minus" onClick={onClick} />,
 });
