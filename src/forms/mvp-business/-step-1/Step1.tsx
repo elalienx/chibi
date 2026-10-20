@@ -9,7 +9,7 @@ import Input from "components/input/Input";
 import Label from "components/label/Label";
 import Slider from "components/slider/Slider";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import BusinessFormConfig from "../data/BusinessFormConfig";
+import businessFormConfig from "../data/businessFormConfig";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import useMediaQuery from "state/useMediaQuery";
@@ -19,7 +19,7 @@ import "./styles/step-1-input-design.css";
 import "./styles/step-1-input-with-slider.css";
 import "./styles/step-1-input-with-count-buttons.css";
 
-const { AMOUNT_STEP, MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = BusinessFormConfig;
+const { AMOUNT_STEP, MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = businessFormConfig;
 const LOAN_AMOUNT = "loan_amount";
 const LOAN_PEIROD = "loan_period";
 
