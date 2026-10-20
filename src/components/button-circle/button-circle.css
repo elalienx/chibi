@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0; /** To keep the circle shape inside flex containers. */
+  flex-shrink: 0; /* To keep the circle shape inside flex containers. */
   width: var(--size);
   height: var(--size);
   background-color: var(--color-blue-40);

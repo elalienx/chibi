@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-base);
-  width: fit-content; /** to avoid taking the whole width **/
+  width: fit-content; /* to avoid taking the whole width */
   background: none;
   padding: 0;
   border: none;
