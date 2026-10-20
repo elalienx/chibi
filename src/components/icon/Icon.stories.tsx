@@ -14,7 +14,7 @@ const iconNames = Object.keys(icons).filter((key) => key !== "_default");
 
 // Stories
 export const Default = meta.story({
-  name: "Icon",
+  name: "Default",
   argTypes: {
     name: {
       control: { type: "radio" },
