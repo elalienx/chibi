@@ -8,7 +8,7 @@
     flex-wrap: wrap;
     gap: var(--space-medium);
 
-    /** Remove styles from the semantic tag <fieldset>. */
+    /* Remove styles from the semantic tag <fieldset>. */
     margin: 0;
     padding: 0;
     border: none;

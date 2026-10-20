@@ -8,7 +8,7 @@
   min-width: var(--field-min-width);
 }
 
-/** Chevron animation */
+/* Chevron animation */
 .select-group:has(.select-list:popover-open) {
   .select .icon {
     transform: rotate(180deg);
