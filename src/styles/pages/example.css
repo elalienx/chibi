@@ -18,6 +18,6 @@ body main {
 /* Tablet */
 @media (min-width: 550px) {
   body main {
-    max-width: 544px;
+    max-width: var(--width-of-form);
   }
 }
