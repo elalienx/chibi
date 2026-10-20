@@ -71,7 +71,7 @@
     text-shadow var(--duration) var(--easing);
 }
 
-/**
+/*
  * The <input type="radio"/> is placed inside a <label>.
  * We use the CSS :has() selector to style the label
  * based on the input’s state (hover or checked).
