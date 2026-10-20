@@ -92,5 +92,3 @@ export const NumberInput = meta.story({
     );
   },
 });
-
-export default meta;
