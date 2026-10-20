@@ -46,8 +46,8 @@ export default function Step2({ propertyType }: Props) {
 
   // Methods
   function submitForm(values: object) {
-    // The property's fee fields are mutually exclusive — reset both so only the
-    // one the user actually filled in is sent to the backend, never both.
+    // Fee fields are mutually exclusive.
+    // Reset both so only the user's active input is sent to the backend.
     updateApplication({ monthly_fee: 0, operating_cost: 0, ...values });
     setStep("success-step");
   }
