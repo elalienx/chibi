@@ -77,5 +77,3 @@ export const WithTitleAndSubtitle = meta.story({
     );
   },
 });
-
-export default meta;

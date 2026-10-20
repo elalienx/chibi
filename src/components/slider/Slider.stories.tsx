@@ -89,5 +89,3 @@ export const SliderWithNoFormError = meta.story({
   name: "Slider (form error)",
   render: () => <Slider min={50_000} max={3_000_000} />,
 });
-
-export default meta;

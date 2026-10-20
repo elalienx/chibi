@@ -41,5 +41,3 @@ export const Default = meta.story({
     );
   },
 });
-
-export default meta;

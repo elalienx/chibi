@@ -81,5 +81,3 @@ export const CheckboxWithNoFormError = meta.story({
   name: "Checbox (form error)",
   render: () => <Checkbox>I accept the terms and conditions</Checkbox>,
 });
-
-export default meta;
