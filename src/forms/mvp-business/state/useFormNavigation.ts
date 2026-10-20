@@ -2,7 +2,7 @@
 import { create, type StateCreator } from "zustand";
 
 // Project files
-import { type Step } from "../types/Step";
+import type { Step } from "../types/Step";
 import goPreviousStep from "./helpers/goPreviousStep";
 import setStep from "./helpers/setStep";
 
