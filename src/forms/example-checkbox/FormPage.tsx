@@ -1,6 +1,6 @@
 // Node modules
 import { useState } from "react";
-import { Form, getInput, useForm } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
@@ -18,10 +18,8 @@ export default function FormPage() {
   const [result, setResult] = useState("On standby");
 
   // Methods
-  function submitForm() {
-    const isPEP = getInput(form, { path: ["isPEP"] });
-
-    if (!isPEP) {
+  function submitForm(values: v.InferOutput<typeof schema>) {
+    if (!values.isPEP) {
       alert("You cannot proceed if PEP 🚫");
       setResult("The form failed the validation");
       return;
