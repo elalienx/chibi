@@ -1,5 +1,5 @@
 // Node modules
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useField, type FormStore } from "@formisch/react";
 
 // Project files
