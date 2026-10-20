@@ -2,10 +2,10 @@
 import * as v from "valibot";
 
 // Project files
-import BusinessFormConfig from "../data/BusinessFormConfig";
+import businessFormConfig from "../data/businessFormConfig";
 
 // Properties
-const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = BusinessFormConfig;
+const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = businessFormConfig;
 
 // Fields
 const turnover = v.pipe(

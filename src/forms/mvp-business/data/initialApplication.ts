@@ -1,15 +1,15 @@
 // Project files
 import type Application from "../types/Application";
-import BusinessFormConfig from "./BusinessFormConfig";
+import businessFormConfig from "./businessFormConfig";
 
 const initialApplication: Application = {
   company_org_number: "",
   email: "",
   has_existing_loans: undefined,
   is_guarantor: false,
-  loan_amount: BusinessFormConfig.DEFAULT_AMOUNT,
+  loan_amount: businessFormConfig.DEFAULT_AMOUNT,
   loan_debt: 0,
-  loan_period: BusinessFormConfig.DEFAULT_PERIOD,
+  loan_period: businessFormConfig.DEFAULT_PERIOD,
   phone: "",
   purpose: "",
   turnover: 0,
