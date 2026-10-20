@@ -1,7 +1,7 @@
 .mortgage-form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--color-gray-100);
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 
@@ -33,7 +33,7 @@
 /* Tablet */
 @media (min-width: 550px) {
   .mortgage-form {
-    width: 544px;
+    width: var(--width-of-form);
 
     > header {
       margin-block: var(--space-2xl) var(--space-medium);

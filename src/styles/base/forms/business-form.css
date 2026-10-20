@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: white;
+  background-color: var(--color-gray-100);
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 
@@ -12,14 +12,14 @@
     grid-template-areas:
       "left title right"
       "left subtitle right";
-    grid-template-columns: 48px 1fr 48px; /* Equal side columns keep the title and subtitle centered. */
+    grid-template-columns: var(--space-5xl) 1fr var(--space-5xl); /* Equal side columns keep the title and subtitle centered. */
     place-items: center;
     margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
 
     > .arrow-go-back {
       width: 100%;
-      height: 48px;
+      height: var(--space-5xl);
       border-radius: var(--border-radius);
       grid-area: left;
 
@@ -28,7 +28,7 @@
       }
 
       &:hover {
-        background-color: aliceblue;
+        background-color: var(--color-blue-95);
       }
     }
 
@@ -68,10 +68,10 @@
   .business-form {
     > header {
       gap: var(--space-base) var(--space-medium);
-      grid-template-columns: 64px 1fr 64px;
+      grid-template-columns: var(--space-7xl) 1fr var(--space-7xl);
 
       > .arrow-go-back {
-        height: 64px;
+        height: var(--space-7xl);
       }
     }
 
