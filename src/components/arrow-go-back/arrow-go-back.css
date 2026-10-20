@@ -8,7 +8,7 @@
   border: none;
   color: var(--typography-link);
   font-size: var(--font-size-normal);
-  font-weight: var(--font-weight-book);
+  font-weight: var(--font-weight-normal);
   line-height: 1.5rem;
   letter-spacing: 0.01rem;
   text-decoration: none;
