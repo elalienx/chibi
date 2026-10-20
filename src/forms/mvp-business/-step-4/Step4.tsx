@@ -48,7 +48,7 @@ export default function Step4() {
     <Form of={form} onSubmit={submitForm} className="business-form">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
-        <h5>Omsättning</h5>
+        <h4>Omsättning</h4>
         <small>Nästa: Lånesyfte</small>
       </header>
 
