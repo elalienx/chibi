@@ -1,4 +1,4 @@
-const BusinessFormConfig = {
+const businessFormConfig = {
   AMOUNT_STEP: 10_000,
   DEFAULT_AMOUNT: 600_000,
   DEFAULT_PERIOD: 1.5,
@@ -18,4 +18,4 @@ const BusinessFormConfig = {
   PROPERTY_FORM_AMOUNT: 600_000,
 } as const;
 
-export default BusinessFormConfig;
+export default businessFormConfig;
