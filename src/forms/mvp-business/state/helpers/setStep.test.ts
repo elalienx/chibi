@@ -3,7 +3,7 @@ import { afterEach, expect, test, vi } from "vitest";
 
 // Project files
 import setStep from "./setStep";
-import type { Step } from "forms/mvp-business/types/Step";
+import type { Step } from "../../types/Step";
 
 afterEach(() => {
   vi.restoreAllMocks();
