@@ -39,7 +39,7 @@
   }
 }
 
-/**
+/*
  * Browsers do not share the same pseudo-elements for the range input,
  * so the track and thumb styles are repeated for WebKit and Firefox.
  */

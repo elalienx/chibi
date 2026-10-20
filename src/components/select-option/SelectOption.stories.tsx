@@ -58,3 +58,5 @@ export const Selected = meta.story({
     );
   },
 });
+
+export default meta;

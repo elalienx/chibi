@@ -27,8 +27,8 @@ const numberSchema = v.object({
 });
 
 // Stories
-export const Text = meta.story({
-  name: "Text",
+export const Default = meta.story({
+  name: "Default",
   render: () => {
     const form = useForm({ schema: textSchema, validate: "blur", revalidate: "blur" });
 

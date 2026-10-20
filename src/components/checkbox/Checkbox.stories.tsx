@@ -17,8 +17,8 @@ const terms = { terms: v.optional(v.boolean()) };
 const schema = v.object(terms);
 
 // Stories
-export const Unchecked = meta.story({
-  name: "Unchecked",
+export const Default = meta.story({
+  name: "Default",
   render: () => {
     // Local state
     const form = useForm({

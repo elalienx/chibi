@@ -15,3 +15,5 @@ export const Default = meta.story({
     return <Select id="favorite_videogame">Favorite videogame</Select>;
   },
 });
+
+export default meta;

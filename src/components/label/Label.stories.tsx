@@ -10,7 +10,7 @@ const meta = preview.meta({
 
 // Stories
 export const Default = meta.story({
-  name: "Label",
+  name: "Default",
   render: () => <Label id="email">Write your email</Label>,
 });
 
@@ -27,3 +27,5 @@ export const WithError = meta.story({
   name: "Label (id error)",
   render: () => <Label>Write your email</Label>,
 });
+
+export default meta;

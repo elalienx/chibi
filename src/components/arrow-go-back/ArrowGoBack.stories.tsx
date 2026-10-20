@@ -23,3 +23,5 @@ export const ArrowGoBacNoTitle = meta.story({
   name: "Without label",
   render: () => <ArrowGoBack onClick={onClick} hideLabel />,
 });
+
+export default meta;

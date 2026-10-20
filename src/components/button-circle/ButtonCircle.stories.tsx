@@ -14,8 +14,8 @@ function onClick() {
 }
 
 // Stories
-export const Plus = meta.story({
-  name: "Plus",
+export const Default = meta.story({
+  name: "Default",
   render: () => <ButtonCircle name="Increase" icon="plus" onClick={onClick} />,
 });
 
@@ -23,3 +23,5 @@ export const Minus = meta.story({
   name: "Minus",
   render: () => <ButtonCircle name="Decrease" icon="minus" onClick={onClick} />,
 });
+
+export default meta;

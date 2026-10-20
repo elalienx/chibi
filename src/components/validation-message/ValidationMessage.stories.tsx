@@ -13,6 +13,8 @@ const errorID = "aria-error-id";
 
 // Stories
 export const Default = meta.story({
-  name: "Validation Message",
+  name: "Default",
   render: () => <ValidationMessage ariaErrorId={errorID}>This field cannot be empty</ValidationMessage>,
 });
+
+export default meta;

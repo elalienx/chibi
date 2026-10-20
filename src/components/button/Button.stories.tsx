@@ -16,8 +16,8 @@ function onClick() {
 
 // Stories
 // -- Primary
-export const Primary = meta.story({
-  name: "Primary",
+export const Default = meta.story({
+  name: "Default",
   render: () => <Button onClick={onClick}>Hello</Button>,
 });
 
@@ -130,3 +130,5 @@ export const BorderlessWithIconLeft = meta.story({
     </Button>
   ),
 });
+
+export default meta;
