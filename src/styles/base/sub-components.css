@@ -9,7 +9,7 @@ hr {
  * For the layout CSS used by the modal manager itself, see modal-manager.css.
  */
 .modal {
-  background-color: white;
+  background-color: var(--color-gray-100);
   border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
 }
