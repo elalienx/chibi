@@ -27,7 +27,7 @@
   transform: scale(1) translateY(0);
 }
 
-/** Visual hint (to infor the user it can scroll to see more items) */
+/* Visual hint (to infor the user it can scroll to see more items) */
 .select-list:has(> :nth-child(5))::after {
   --height: 64px;
   --gradient-start: rgba(255, 255, 255, 0);

@@ -1,6 +1,6 @@
 .input-wrapper {
   border-radius: var(--border-radius);
-  overflow: hidden; /** To hide the square border-radius of the children. */
+  overflow: hidden; /* To hide the square border-radius of the children. */
 
   .input {
     height: var(--height-of-field);

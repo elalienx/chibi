@@ -3,7 +3,7 @@
   padding: 0;
   border: none;
 
-  /** The color of the black screen behind the modal */
+  /* The color of the black screen behind the modal */
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }

@@ -7,7 +7,7 @@
   border-color: var(--input-border-up);
 
   .input {
-    border-right: solid var(--border-thin) white; /** The color is set to not be visible on purpose to color it on state changes. */
+    border-right: solid var(--border-thin) white; /* The color is set to not be visible on purpose to color it on state changes. */
   }
 
   .suffix {
@@ -71,7 +71,7 @@
   }
 }
 
-/** On being valid */
+/* On being valid */
 .input-wrapper.success {
   border-color: var(--input-border-success);
   outline-color: var(--input-border-success);
