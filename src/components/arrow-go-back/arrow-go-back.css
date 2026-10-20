@@ -9,8 +9,8 @@
   color: var(--typography-link);
   font-size: var(--font-size-normal);
   font-weight: var(--font-weight-normal);
-  line-height: 1.5rem;
-  letter-spacing: 0.01rem;
+  line-height: 24px;
+  letter-spacing: 0.16px;
   text-decoration: none;
   cursor: pointer;
 }
