@@ -19,7 +19,7 @@
 
     > .arrow-go-back {
       width: 100%;
-      height: var(--space-5xl);
+      height: var(--height-of-field);
       border-radius: var(--border-radius);
       grid-area: left;
 
