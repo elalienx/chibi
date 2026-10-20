@@ -1,7 +1,7 @@
 a {
   font-size: var(--font-size-normal);
-  line-height: 1.5rem;
-  letter-spacing: 0.01rem;
+  line-height: 24px;
+  letter-spacing: 0.16px;
   font-weight: var(--font-weight-normal);
   color: var(--typography-link);
 
