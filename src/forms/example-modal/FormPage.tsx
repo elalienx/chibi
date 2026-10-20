@@ -1,8 +1,8 @@
 // Project files
 import Button from "components/button/Button";
-import GuinessModal from "./GuinessModal";
-import useModal from "state/useModal";
 import ModalManager from "components/modal-manager/ModalManager";
+import useModal from "state/useModal";
+import GuinessModal from "./GuinessModal";
 import PCEngineModal from "./PCEngineModal";
 
 export default function FormPage() {

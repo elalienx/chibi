@@ -15,7 +15,7 @@ const schema = v.object({
 export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [formResult, setFormResult] = useState("On standby");
+  const [result, setResult] = useState("On standby");
 
   // Methods
   function submitForm() {
@@ -23,12 +23,12 @@ export default function FormPage() {
 
     if (!isPEP) {
       alert("You cannot proceed if PEP 🚫");
-      setFormResult("The form failed the validation");
+      setResult("The form failed the validation");
       return;
     }
 
     alert("Success! 🎉");
-    setFormResult("The form passed the validation");
+    setResult("The form passed the validation");
   }
 
   return (
@@ -49,7 +49,7 @@ export default function FormPage() {
           I certify that I am NOT a politically exposed person (PEP) in the European Union.
         </Checkbox>
 
-        <span>Form status: {formResult}</span>
+        <span>Form status: {result}</span>
       </section>
 
       <hr />
