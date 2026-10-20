@@ -57,7 +57,7 @@ export default function FormPage() {
         </RadioGroup>
 
         <ToggleGroup form={form} hints={hints} id="favorite_brand">
-          <Label hint={GuinessTooltip}>Which brand do you like the most?</Label>
+          <Label hint={<GuinessTooltip />}>Which brand do you like the most?</Label>
           <ToggleOption value="guiness">Guiness</ToggleOption>
           <ToggleOption value="heineken">Heineken</ToggleOption>
         </ToggleGroup>
