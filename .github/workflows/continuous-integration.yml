@@ -7,7 +7,7 @@ on:
 jobs:
   frontend-test:
     name: Frontend testing
-    runs-on: avrea-ubuntu-latest-8-vcpu-16gb
+    runs-on: avrea-ubuntu-latest-arm-8-vcpu-16gb	
     permissions:
       contents: read
       issues: write
