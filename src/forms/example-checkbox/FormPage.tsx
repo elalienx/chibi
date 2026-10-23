@@ -15,18 +15,18 @@ const schema = v.object({
 export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [result, setResult] = useState("On standby");
+  const [result, setResult] = useState("On standby ℹ️");
 
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
     if (!values.isPEP) {
-      alert("You cannot proceed if PEP 🚫");
-      setResult("The form failed the validation");
+      alert("You cannot proceed if PEP");
+      setResult("The form failed the validation ❌");
       return;
     }
 
-    alert("Success! 🎉");
-    setResult("The form passed the validation");
+    alert("Success!");
+    setResult("The form passed the validation ✅");
   }
 
   return (
