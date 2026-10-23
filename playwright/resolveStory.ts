@@ -1,6 +1,8 @@
 // Project files
 const stories = import.meta.glob("../src/**/*.story.tsx");
-const id = (file: string) => file.replace(/^(\.\.\/)+src\//, "").replace(/\.story\.\w+$/, "");
+const sourceDirectory: RegExp = /^(\.\.\/)+src\//;
+const storyExtension: RegExp = /\.story\.\w+$/;
+const getId = (file: string) => file.replace(sourceDirectory, "").replace(storyExtension, "");
 
 /**
  * About:
@@ -12,7 +14,7 @@ export default async function resolveStory(story: string) {
   const separator = story.lastIndexOf("/");
   const path = story.slice(0, separator);
   const name = story.slice(separator + 1);
-  const file = Object.keys(stories).find((filePath) => id(filePath) === path || id(filePath).endsWith("/" + path));
+  const file = Object.keys(stories).find((item) => getId(item) === path || getId(item).endsWith("/" + path));
   const module = (file && (await stories[file]())) as Record<string, unknown> | undefined;
 
   return (module?.[name] ?? module?.default) as React.ComponentType<any> | undefined;
