@@ -19,8 +19,7 @@ test.beforeEach(async ({ mount }) => {
 test.afterEach(async () => {
   await expect(form.getByText(textCleanup)).toBeVisible();
 
-  // Only run visual regression locally
-  if (!process.env.CI) await expect(form).toHaveScreenshot();
+  await expect(form).toHaveScreenshot();
 });
 
 test("1. Should move the connected slider when typing in the input", async () => {
