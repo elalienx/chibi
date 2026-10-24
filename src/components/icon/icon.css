@@ -2,7 +2,7 @@
   --size: 20px;
 
   height: var(--size);
+  margin-top: 1px; /* for optical aligment */
   fill: currentColor; /* to utilize the parent text color */
   vertical-align: middle; /* to align icons to the text */
-  margin-top: 1px; /* for optical aligment */
 }

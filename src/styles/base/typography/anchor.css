@@ -1,9 +1,9 @@
 a {
+  color: var(--typography-link);
   font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
   line-height: 24px;
   letter-spacing: 0.16px;
-  font-weight: var(--font-weight-normal);
-  color: var(--typography-link);
 
   &:hover {
     text-decoration: none;

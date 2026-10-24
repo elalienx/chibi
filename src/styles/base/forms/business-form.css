@@ -8,20 +8,20 @@
 
   > header {
     display: grid;
-    gap: var(--space-tiny) var(--space-xs);
     grid-template-areas:
       "left title right"
       "left subtitle right";
     grid-template-columns: var(--space-5xl) 1fr var(--space-5xl); /* Equal side columns keep the title and subtitle centered. */
     place-items: center;
+    gap: var(--space-tiny) var(--space-xs);
     margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
 
     > .arrow-go-back {
+      grid-area: left;
       width: 100%;
       height: var(--height-of-field);
       border-radius: var(--border-radius);
-      grid-area: left;
 
       & .icon {
         margin: 0 auto;
@@ -67,8 +67,8 @@
 @media (min-width: 550px) {
   .business-form {
     > header {
-      gap: var(--space-base) var(--space-medium);
       grid-template-columns: var(--space-7xl) 1fr var(--space-7xl);
+      gap: var(--space-base) var(--space-medium);
 
       > .arrow-go-back {
         height: var(--space-7xl);
