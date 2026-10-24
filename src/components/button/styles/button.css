@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
+  overflow: hidden;
   height: var(--height-of-button);
   padding: 0 var(--space-xl);
-  overflow: hidden;
   border: none;
   border-radius: var(--border-radius);
-  font-size: var(--font-size-normal);
   font-family: var(--font-family);
+  font-size: var(--font-size-normal);
   font-weight: var(--font-weight-bold);
   cursor: pointer;
   transition-property: background-color, border-color;

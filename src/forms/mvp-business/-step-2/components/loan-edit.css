@@ -32,8 +32,8 @@
 /* Tablet */
 @media (min-width: 550px) {
   #loan-edit {
-    padding: var(--space-2xl);
     gap: var(--space-medium);
+    padding: var(--space-2xl);
 
     .columns {
       gap: var(--space-medium);

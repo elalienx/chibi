@@ -4,21 +4,20 @@
   --total-gaps-height: calc(var(--space-base) * (var(--visible-items) - 1));
   --container-max-height: calc(var(--total-items-height) + var(--total-gaps-height));
 
-  display: none; /* It is switched to display: flex when the popover is open. */
-  padding: var(--space-base);
-  flex-direction: column;
-  gap: var(--space-base);
-  max-height: var(--container-max-height);
-  border: solid 1px var(--input-border-up);
-  border-radius: var(--border-radius);
-  overflow-y: auto;
-  width: anchor-size(width);
-
   /* Positioning */
   position: fixed;
   inset: unset;
   top: calc(anchor(bottom) + var(--space-base));
   left: anchor(center);
+  display: none; /* It is switched to display: flex when the popover is open. */
+  flex-direction: column;
+  gap: var(--space-base);
+  overflow-y: auto;
+  width: anchor-size(width);
+  max-height: var(--container-max-height);
+  padding: var(--space-base);
+  border: solid 1px var(--input-border-up);
+  border-radius: var(--border-radius);
   translate: -50% 0;
 }
 
@@ -37,11 +36,11 @@
   position: sticky;
   bottom: calc(var(--space-base) * -1);
   left: 0;
+  z-index: 2;
+  flex-shrink: 0;
   width: 100%;
   height: var(--height);
-  flex-shrink: 0;
   margin-top: calc((var(--height) - var(--space-base)) * -1);
   background: linear-gradient(var(--gradient-start), var(--gradient-end));
   pointer-events: none; /* Important: allow clicks to pass through to items */
-  z-index: 2;
 }

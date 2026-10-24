@@ -1,19 +1,18 @@
 .input-wrapper {
-  border-radius: var(--border-radius);
   overflow: hidden; /* To hide the square border-radius of the children. */
+  border-radius: var(--border-radius);
 
   .input {
     height: var(--height-of-field);
     padding-inline: var(--space-medium);
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
     color: var(--typography-default);
     font-family: var(--font-family);
     font-size: var(--font-size-normal);
     font-weight: var(--font-weight-normal);
     outline: transparent;
-
-    border-left: none;
-    border-top: none;
-    border-bottom: none;
   }
 
   .suffix {

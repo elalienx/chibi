@@ -1,11 +1,11 @@
 .tooltip-trigger {
   width: fit-content; /* to avoid taking the whole width */
-  padding: 0;
   margin: 0;
+  padding: 0;
   background-color: transparent;
   border: none;
-  outline: transparent;
   vertical-align: text-top; /* To optically align with the normal text size of 16px. */
+  outline: transparent;
 
   .icon {
     color: var(--typography-link);
