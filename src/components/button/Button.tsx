@@ -2,7 +2,11 @@
 import type { ReactNode } from "react";
 
 // Project files
-import "./button.css";
+import "./styles/button.css";
+import "./styles/button-primary.css";
+import "./styles/button-secondary.css";
+import "./styles/button-tertiary.css";
+import "./styles/button-borderless.css";
 
 interface Props {
   /**  Text and/or icon to display inside the button. */
