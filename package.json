@@ -14,6 +14,7 @@
     "playwright": "playwright test --project=components",
     "preview": "astro preview",
     "storybook": "storybook dev -p 6006",
+    "super-update": "pnpm update --include-github-actions",
     "test": "vitest"
   },
   "dependencies": {
