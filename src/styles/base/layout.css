@@ -6,8 +6,8 @@ body {
   margin: 0;
   background-color: var(--page-background);
   color: var(--typography-default);
-  font-size: var(--font-size-normal);
   font-family: var(--font-family);
+  font-size: var(--font-size-normal);
   font-weight: var(--font-weight-normal);
   line-height: 24px;
   letter-spacing: 0.16px;

@@ -8,15 +8,15 @@
   background-color: white; /* In case it is used on a non-white background. */
   border: solid 1px var(--input-border-up);
   border-radius: var(--border-radius);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
   color: var(--color-green-30);
   font-weight: var(--font-weight-bold);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
 
   /* Removes the radio bullet/dot */
   input {
     appearance: none;
-    margin: 0;
     width: 0;
+    margin: 0;
   }
 
   /* Animation */
@@ -38,7 +38,7 @@
   --color-background: var(--color-green-40);
 
   background-color: var(--color-background);
-  color: white;
   border-color: var(--color-background);
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0px inset;
+  color: white;
 }

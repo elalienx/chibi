@@ -10,8 +10,8 @@
   border-bottom: solid 1px var(--color-track);
   color: var(--color-gray-10);
   font-size: var(--font-size-small);
-  letter-spacing: 0.24px;
   line-height: 16px;
+  letter-spacing: 0.24px;
 
   input[type="range"] {
     appearance: none;

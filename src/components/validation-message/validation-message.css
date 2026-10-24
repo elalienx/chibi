@@ -9,11 +9,11 @@
 
     width: var(--size);
     height: var(--size);
+    margin-bottom: var(--offset);
     background-color: var(--input-background-error);
     border: solid 2px var(--input-border-error);
     border-right: none;
     border-bottom: none;
-    margin-bottom: var(--offset);
     rotate: 45deg;
   }
 
