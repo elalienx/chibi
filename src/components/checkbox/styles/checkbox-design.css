@@ -17,7 +17,7 @@
     margin: 0;
     border: solid var(--border-width) var(--color-gray-50);
     border-radius: 4px;
-    outline: none; /* The label draws the focus ring instead. */
+    outline: none;
     cursor: pointer;
   }
 

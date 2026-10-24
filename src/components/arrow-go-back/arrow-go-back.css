@@ -3,8 +3,8 @@
   align-items: center;
   gap: var(--space-base);
   width: fit-content; /* to avoid taking the whole width */
-  background: none;
   padding: 0;
+  background: none;
   border: none;
   color: var(--typography-link);
   font-size: var(--font-size-normal);
