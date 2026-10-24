@@ -12,6 +12,8 @@ Chibi is a UI component library for building complex multi-step forms.
 ├── public/
 ├── skills/
 ├── snapshots/
+│   └── ci/ 🤖 Screenshots taken by the CI
+│   └── local/ 💻 Screenshots taken on our computers
 ├── src/
 │   └── components/
 │   └── forms/

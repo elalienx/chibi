@@ -36,4 +36,4 @@ jobs:
         run: pnpm exec playwright install chromium --only-shell
 
       - name: Run Playwright component tests
-        run: pnpm playwright
+        run: pnpm playwright --ignore-snapshots # Temporary until snapshots/ci/ exists. Create it with the "Update CI screenshots" workflow.

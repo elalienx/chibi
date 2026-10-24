@@ -6,6 +6,7 @@ const TEST_FOLDER = "./playwright";
 const GALLERY_URL = "http://localhost:3100/playwright/";
 const compileFiles = "vite build --config playwright/vite.config.ts";
 const startServer = "vite preview --config playwright/vite.config.ts";
+const SNAPSHOT_FOLDER = process.env.CI ? "ci" : "local"; // CI renders differently than our computers, so each keeps its own screenshots.
 
 export default defineConfig({
   testDir: TEST_FOLDER,
@@ -13,7 +14,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: "list",
-  snapshotPathTemplate: "snapshots/{testFileName}/{arg}-{platform}{ext}",
+  snapshotPathTemplate: `snapshots/${SNAPSHOT_FOLDER}/{testFileName}/{arg}{ext}`,
   timeout: 1_000,
   use: { trace: "on-first-retry" },
   projects: [
