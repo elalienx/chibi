@@ -38,16 +38,16 @@ Here is an explanation of the main folders:
 
 All commands are run from the root of the project:
 
-| Command                              | Action                                                |
-| :----------------------------------- | :---------------------------------------------------- |
-| `pn install`                         | Installs dependencies                                 |
-| `pn dev`                             | Starts local dev server at `localhost:4321`           |
-| `pn format`                          | Format all files using Oxfmt                          |
-| `pn lint`                            | Lint all files using Oxlint                           |
-| `pn playwright --ui`                 | Run component tests using Playwright UI mode          |
-| `pn storybook`                       | Preview components using Storybook                    |
-| `pn test`                            | Run unit tests using Vitest                           |
-| `pn update --include-github-actions` | Update project dependencies and GitHub Action plugins |
+| Command              | Action                                                |
+| :------------------- | :---------------------------------------------------- |
+| `pn install`         | Installs dependencies                                 |
+| `pn dev`             | Starts local dev server at `localhost:4321`           |
+| `pn format`          | Format all files using Oxfmt                          |
+| `pn lint`            | Lint all files using Oxlint                           |
+| `pn playwright --ui` | Run component tests using Playwright UI mode          |
+| `pn storybook`       | Preview components using Storybook                    |
+| `pn test`            | Run unit tests using Vitest                           |
+| `pn super-update`    | Update project dependencies and GitHub Action plugins |
 
 ## Updating screenshots
 
