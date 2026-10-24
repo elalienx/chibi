@@ -10,7 +10,7 @@
     position: absolute;
     top: calc(var(--height-of-field) / 2);
     right: var(--space-medium);
-    translate: 0 -50%;
     pointer-events: none;
+    translate: 0 -50%;
   }
 }
