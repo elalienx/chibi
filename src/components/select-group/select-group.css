@@ -11,12 +11,13 @@
 /* Chevron animation */
 .select-group:has(.select-list:popover-open) {
   .select .icon {
-    transform: rotate(180deg);
+    rotate: 180deg;
   }
 }
 
 .select-group {
   .select .icon {
-    transition: transform 0.3s ease;
+    rotate: 0deg; /* Start value for the transition. */
+    transition: rotate 0.3s ease;
   }
 }
