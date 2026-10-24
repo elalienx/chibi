@@ -1,7 +1,7 @@
 .button.secondary {
   background-color: var(--color-gray-100);
-  border: 1px solid var(--color-desaturated-60);
   color: var(--color-gray-10);
+  border: 1px solid var(--color-desaturated-60);
 
   &:hover {
     background-color: var(--color-blue-99);
