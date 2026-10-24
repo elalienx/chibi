@@ -4,7 +4,9 @@ import type { FieldStore } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
-import "./radio-option.css";
+import "./styles/radio-option-design.css";
+import "./styles/radio-option-layout.css";
+import "./styles/radio-option-state.css";
 
 interface Props {
   /** Unique identifier of the parent radio group to make sure only one radio option is active. */

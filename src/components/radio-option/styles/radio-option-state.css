@@ -1,0 +1,39 @@
+.radio-option {
+  transition-property: background-color, border-color, color, text-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in;
+
+  .bullet {
+    transition: color 0.15s ease-in;
+  }
+}
+
+/* On hover or checked (the label reacts to its inner input via :has) */
+.radio-option:hover:has(input:not(:disabled)),
+.radio-option:has(input:checked) {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-50);
+  color: var(--color-gray-10);
+  text-shadow: 0 0 0.7px currentColor; /* Simulate a heavier font weight without layout shift. */
+
+  .bullet {
+    color: var(--color-green-50);
+  }
+}
+
+/* On checked, swap the empty circle for the checked one */
+.radio-option:has(input:checked) .bullet {
+  .icon.circle {
+    display: none;
+  }
+
+  .icon.circle-check-solid {
+    display: block;
+  }
+}
+
+/* On keyboard focus */
+.radio-option:has(input:focus-visible) {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}

@@ -1,0 +1,25 @@
+.radio-option {
+  position: relative; /* To stretch the input over the whole option. */
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  height: var(--height-of-field);
+
+  &:has(.title-and-subtitle) {
+    height: var(--space-7xl);
+  }
+
+  input {
+    position: absolute; /* Remove it from the flex flow so it does not add an extra gap. */
+    inset: 0;
+  }
+
+  .bullet {
+    display: flex;
+  }
+
+  .title-and-subtitle {
+    display: flex;
+    flex-direction: column;
+  }
+}
