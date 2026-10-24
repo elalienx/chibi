@@ -28,8 +28,8 @@
 /* Visual hint (to infor the user it can scroll to see more items) */
 .select-list:has(> :nth-child(5))::after {
   --height: 64px;
-  --gradient-start: rgba(255, 255, 255, 0);
-  --gradient-end: rgba(255, 255, 255, 0.99);
+  --gradient-start: rgb(255 255 255 / 0%);
+  --gradient-end: rgb(255 255 255 / 99%);
 
   content: "";
   position: sticky;
