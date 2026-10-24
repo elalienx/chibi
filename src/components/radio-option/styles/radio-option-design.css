@@ -1,0 +1,42 @@
+.radio-option {
+  --border-width: 2px;
+
+  padding-left: calc(var(--space-small) - var(--border-width)); /* Subtract the border to draw the stroke inside. */
+  padding-right: calc(var(--space-medium) - var(--border-width));
+  background-color: var(--color-gray-100);
+  border: solid var(--border-width) var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+  color: var(--color-desaturated-30);
+
+  /* Hide the browser radio bullet but keep the input clickable and accessible. */
+  input {
+    appearance: none;
+    margin: 0;
+    border-radius: inherit;
+    outline: none; /* The label draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  /* Replace the browser radio bullet with icons. */
+  .bullet {
+    color: var(--color-desaturated-30);
+
+    .icon {
+      margin-top: 0; /* Reset the optical alignment because flex already centers it. */
+    }
+
+    .icon.circle-check-solid {
+      display: none;
+    }
+  }
+
+  .title {
+    font-weight: var(--font-weight-medium);
+    line-height: 20px;
+  }
+
+  .subtitle {
+    font-weight: var(--font-weight-normal);
+    line-height: 24px;
+  }
+}
