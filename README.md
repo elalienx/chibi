@@ -32,6 +32,7 @@ Here is an explanation of the main folders:
 1. **📋 Forms:** Split into `example-` folders showing component behavior and `mvp-` folders simulating a complex loan application forms.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Chibi UI with Formisch and Valibot.
 1. **📑 Pages:** Astro pages for accessing the examples of forms in action.
+1. **📸 Snapshots:** The screenshots Playwright compares the component tests against, split into `local/` for our computers and `ci/` for the CI. See [Updating screenshots](#updating-screenshots) for how to update them.
 
 ## Terminal commands
 
