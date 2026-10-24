@@ -4,7 +4,9 @@ import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
-import "./checkbox.css";
+import "./styles/checkbox-design.css";
+import "./styles/checkbox-layout.css";
+import "./styles/checkbox-state.css";
 
 interface Props {
   /** Unique identifier of a form field. */
