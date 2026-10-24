@@ -1,0 +1,9 @@
+.button.borderless {
+  background-color: transparent;
+  color: var(--color-blue-40);
+  font-weight: var(--font-weight-medium); /* This variant uses medium. */
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--color-blue-40) 8%, transparent);
+  }
+}

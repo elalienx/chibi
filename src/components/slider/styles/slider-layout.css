@@ -1,0 +1,22 @@
+.slider {
+  display: grid;
+  grid-template-areas:
+    "bar bar"
+    "min max";
+  min-width: var(--field-min-width);
+
+  input[type="range"] {
+    grid-area: bar;
+    width: 100%;
+    height: var(--size-thumb);
+  }
+
+  .min {
+    grid-area: min;
+  }
+
+  .max {
+    grid-area: max;
+    justify-self: end;
+  }
+}
