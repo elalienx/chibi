@@ -1,0 +1,32 @@
+.checkbox {
+  --border-width: 2px;
+
+  padding-block: calc(var(--space-small) - var(--border-width)); /* Subtract the border to draw the stroke inside. */
+  padding-inline: calc(var(--space-medium) - var(--border-width));
+  background-color: var(--color-gray-100);
+  border: solid var(--border-width) var(--color-gray-90);
+  border-radius: var(--border-radius);
+  color: var(--color-gray-30);
+  font-weight: var(--font-weight-medium);
+
+  /* The input itself is the visible box, so it stays clickable and accessible. */
+  input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border: solid var(--border-width) var(--color-gray-50);
+    border-radius: 4px;
+    outline: none; /* The label draws the focus ring instead. */
+    cursor: pointer;
+  }
+
+  .icon {
+    --size: 16px;
+
+    display: none;
+    margin-top: 0; /* Reset the optical alignment because the grid already centers it. */
+    color: var(--color-gray-100);
+    pointer-events: none; /* Let clicks pass through to the input below. */
+  }
+}
