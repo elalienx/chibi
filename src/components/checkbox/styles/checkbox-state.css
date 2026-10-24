@@ -1,0 +1,40 @@
+.checkbox {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in;
+}
+
+/* On hover */
+.checkbox:hover {
+  background-color: var(--color-green-99);
+  border-color: var(--color-green-80);
+  color: var(--color-gray-10);
+}
+
+/* On checked (the label reacts to its inner input via :has) */
+.checkbox:has(input:checked) {
+  background-color: var(--color-green-95);
+  border-color: var(--color-green-50);
+  color: var(--color-green-10);
+
+  input {
+    background: var(--gradient-green) border-box; /* Paint under the border so the gradient fills the whole box. */
+    border-color: transparent;
+  }
+
+  .icon {
+    display: block;
+  }
+}
+
+/* On hover while checked */
+.checkbox:hover:has(input:checked) {
+  background-color: var(--color-green-90);
+  border-color: var(--color-green-40);
+}
+
+/* On keyboard focus */
+.checkbox:has(input:focus-visible) {
+  outline: solid var(--border-width) var(--input-border-focus);
+  outline-offset: var(--space-tiny);
+}
