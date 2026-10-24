@@ -36,15 +36,15 @@ export default function FormPage() {
       </header>
 
       <section>
+        <Checkbox form={form} id="isPEP">
+          I certify that I am NOT a politically exposed person (PEP) in the European Union.
+        </Checkbox>
+
         <Checkbox form={form} id="terms">
           Do you accept our terms and conditions?{" "}
           <a href="https://wikipedia.org/wiki/Terms_of_service" target="_blank">
             View terms
           </a>
-        </Checkbox>
-
-        <Checkbox form={form} id="isPEP">
-          I certify that I am NOT a politically exposed person (PEP) in the European Union.
         </Checkbox>
 
         <span>Form status: {result}</span>
