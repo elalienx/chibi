@@ -6,7 +6,7 @@ interface Props {
   /** The function to execute when clicked. */
   onClick?: () => void;
 
-  /** Removes the label "Tillbaka" and adds an aria-label as replacement. Used on certain forms which prefers to only use the arrow icon. */
+  /** Removes the label "Tillbaka" and adds an aria-label as replacement. Used on forms which prefer to only use the arrow icon. */
   hideLabel?: boolean;
 }
 
