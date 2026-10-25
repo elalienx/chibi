@@ -9,15 +9,11 @@
 }
 
 /* Chevron animation */
-.select-group:has(.select-list:popover-open) {
-  .select .icon {
-    rotate: 180deg;
-  }
+.select-group .select .icon {
+  rotate: 0deg; /* Start value for the transition. */
+  transition: rotate 0.3s ease;
 }
 
-.select-group {
-  .select .icon {
-    rotate: 0deg; /* Start value for the transition. */
-    transition: rotate 0.3s ease;
-  }
+.select-group:has(.select-list:popover-open) .select .icon {
+  rotate: 180deg;
 }
