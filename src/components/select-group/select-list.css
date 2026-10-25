@@ -4,7 +4,6 @@
   --total-gaps-height: calc(var(--space-base) * (var(--visible-items) - 1));
   --container-max-height: calc(var(--total-items-height) + var(--total-gaps-height));
 
-  /* Positioning */
   position: fixed;
   inset: unset;
   top: calc(anchor(bottom) + var(--space-base));
