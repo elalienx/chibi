@@ -16,7 +16,7 @@ export default async function fillStep2(form: Locator, props: Props) {
     await form.getByRole("heading", { name: "Om bostaden" }).waitFor();
 
     // Tenancy type
-    if (tenancyType) await form.locator("#tenancy_type").getByRole("radio", { name: tenancyType }).check();
+    if (tenancyType) await form.getByRole("radio", { name: tenancyType }).check();
 
     // Property size in square metters
     await form.getByRole("textbox", { name: "Kvadratmeter" }).fill(String(squareMeters));
