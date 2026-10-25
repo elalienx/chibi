@@ -45,9 +45,9 @@ export default function ToggleGroup({ children, id, form, hints }: Props) {
     <div className="toggle-group">
       {label}
 
-      <fieldset id={id} className="options">
+      <div id={id} className="options">
         {toggleOptions}
-      </fieldset>
+      </div>
 
       {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors[0]}</ValidationMessage>}
     </div>

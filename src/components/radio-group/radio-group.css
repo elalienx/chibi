@@ -7,11 +7,6 @@
   .options {
     display: grid;
     gap: var(--space-small);
-
-    /* remove style from the semantic tag <fieldset>. */
-    margin: 0;
-    padding: 0;
-    border: none;
   }
 }
 
