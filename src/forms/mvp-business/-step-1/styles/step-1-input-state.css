@@ -1,0 +1,42 @@
+/* Step 1 inputs are always prefilled, so they keep the default gray instead of turning green. */
+
+/* On being valid */
+#step-1 .input-wrapper.success {
+  border-color: var(--input-border-up);
+  outline-style: none;
+
+  &.has-suffix .input {
+    border-color: white;
+  }
+
+  .suffix {
+    border-color: var(--input-border-up);
+  }
+}
+
+/* On hover */
+#step-1 .input-wrapper:hover {
+  outline-style: solid;
+  outline-color: var(--input-border-up);
+
+  &.has-suffix .input {
+    background-color: white;
+  }
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-up);
+  }
+}
+
+/* On focus, using :focus-within because refocusing a valid field keeps the success state */
+#step-1 .input-wrapper:focus-within {
+  border-color: var(--input-border-focus);
+  outline-style: solid;
+  outline-color: var(--input-border-focus);
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-focus);
+  }
+}
