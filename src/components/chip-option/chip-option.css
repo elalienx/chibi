@@ -1,7 +1,5 @@
 .chip-option {
   --border-width: 2px;
-  --duration: 200ms;
-  --easing: ease;
 
   position: relative;
   padding: calc(var(--space-small) - var(--border-width)) calc(var(--space-medium) - var(--border-width)); /* Subtract the border from the padding to draw the stroke inside the chip. */
@@ -10,11 +8,9 @@
   border-radius: var(--border-radius);
   color: var(--color-desaturated-30);
   font-weight: var(--font-weight-normal);
-  transition:
-    background-color var(--duration) var(--easing),
-    border-color var(--duration) var(--easing),
-    color var(--duration) var(--easing),
-    text-shadow var(--duration) var(--easing);
+  transition-property: background-color, border-color, color, text-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
 
   /* Remove the radio bullet/dot. */
   input {
@@ -44,5 +40,4 @@
   background-color: var(--color-gray-95);
   border-color: var(--color-gray-50);
   color: var(--color-gray-50);
-  font-weight: var(--font-weight-normal);
 }
