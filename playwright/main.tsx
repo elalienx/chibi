@@ -14,17 +14,17 @@ let root: Root | undefined;
 
 /**
  * About:
- * Reuse the root so update() reconciles and preserves component state.
- * flushSync so a render error rejects the promise instead of being swallowed.
+ * Renders the requested story into `#root`. Called by Playwright's `mount` fixture.
+ * Reuses the root so update() reconciles and preserves component state.
+ * Uses flushSync so a render error rejects the promise instead of being swallowed.
  */
-(window as any).mount = async ({ story, props }: MountParams) => {
+async function mount({ story, props }: MountParams) {
   const Story = await resolveStory(story);
 
   // Safeguards
   if (!Story) throw new Error(`Unknown story: ${story}`);
 
   root ??= createRoot(rootElement);
-
   flushSync(() =>
     root!.render(
       <StrictMode>
@@ -32,9 +32,14 @@ let root: Root | undefined;
       </StrictMode>,
     ),
   );
-};
+}
 
-(window as any).unmount = async () => {
+/**
+ * Removes the mounted story so the next test starts with a fresh root.
+ */
+async function unmount() {
   root?.unmount();
   root = undefined;
-};
+}
+
+Object.assign(window, { mount, unmount });
