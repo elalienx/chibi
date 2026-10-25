@@ -1,7 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
-// Selectors
+// Properties
 const submit = "Submit";
 const item1 = "Loan amount";
 const textSuccess = "Success";

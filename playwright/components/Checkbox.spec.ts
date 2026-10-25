@@ -1,7 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
-// Selectors
+// Properties
 const submit = "Submit";
 const item1 = "Do you accept our terms and conditions?";
 const item2 = "I certify that I am NOT a politically exposed person (PEP)";

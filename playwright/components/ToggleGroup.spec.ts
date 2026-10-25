@@ -1,6 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
+// Properties
 const error1 = "#aria-error-likes_beer";
 const error2 = "#aria-error-likes_guiness";
 const item1 = "#likes_beer";
