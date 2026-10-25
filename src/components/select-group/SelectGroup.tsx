@@ -49,9 +49,9 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
     <div className="select-group">
       {label}
       {select}
-      <fieldset id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
+      <div id={listId} className="select-list" popover="auto" style={{ positionAnchor: anchorId }}>
         {selectOptions}
-      </fieldset>
+      </div>
     </div>
   );
 }

@@ -44,9 +44,9 @@ export default function ChipGroup({ children, id, form, hints }: Props) {
   return (
     <div className="chip-group">
       {label}
-      <fieldset id={id} className="options">
+      <div id={id} className="options">
         {chipOptions}
-      </fieldset>
+      </div>
       {hasErrors && <ValidationMessage ariaErrorId={ariaErrorId}>{field.errors[0]}</ValidationMessage>}
     </div>
   );
