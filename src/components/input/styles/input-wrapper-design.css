@@ -5,9 +5,7 @@
   .input {
     height: var(--height-of-field);
     padding-inline: var(--space-medium);
-    border-left: none;
-    border-top: none;
-    border-bottom: none;
+    border: none; /* input-wrapper-state.css adds the border-right back. */
     color: var(--typography-default);
     font-family: var(--font-family);
     font-size: var(--font-size-normal);

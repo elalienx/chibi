@@ -15,10 +15,3 @@
     gap: var(--space-xs);
   }
 }
-
-/* Tablet */
-@media (min-width: 550px) {
-  .toggle-group {
-    width: auto;
-  }
-}
