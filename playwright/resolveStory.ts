@@ -1,4 +1,7 @@
-// Project files
+// Node modules
+import type { ComponentType } from "react";
+
+// Properties
 const stories = import.meta.glob("../src/**/*.story.tsx");
 const sourceDirectory: RegExp = /^(\.\.\/)+src\//;
 const storyExtension: RegExp = /\.story\.\w+$/;
@@ -17,5 +20,5 @@ export default async function resolveStory(story: string) {
   const file = Object.keys(stories).find((item) => getId(item) === path || getId(item).endsWith("/" + path));
   const module = (file && (await stories[file]())) as Record<string, unknown> | undefined;
 
-  return (module?.[name] ?? module?.default) as React.ComponentType<any> | undefined;
+  return (module?.[name] ?? module?.default) as ComponentType<Record<string, unknown>> | undefined;
 }

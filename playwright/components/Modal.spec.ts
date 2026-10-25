@@ -1,6 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
+// Properties
 const button1 = "Open Guiness modal";
 const button2 = "Open PC-Engine modal";
 const buttonClose = "Close";
