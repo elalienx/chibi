@@ -38,7 +38,7 @@ test("2. Should not submit when choosing only 1 option", async () => {
   // Arrange
   await test.step("First select", async () => {
     await form.getByRole("textbox", { name: item1 }).click();
-    await form.getByText(item1Option1).click();
+    await form.getByRole("radio", { name: item1Option1 }).check();
   });
 
   // Act
@@ -54,11 +54,11 @@ test("3. Should be able to submit", async () => {
   // Arrange
   await test.step("First select", async () => {
     await form.getByRole("textbox", { name: item1 }).click();
-    await form.getByText(item1Option1).click();
+    await form.getByRole("radio", { name: item1Option1 }).check();
   });
   await test.step("Second select", async () => {
     await form.getByRole("textbox", { name: item2 }).click();
-    await form.getByText(item2Option1).click();
+    await form.getByRole("radio", { name: item2Option1 }).check();
   });
 
   // Act
@@ -75,11 +75,11 @@ test("4. Should be able to submit a long list", async () => {
   // Arrange
   await test.step("First select", async () => {
     await form.getByRole("textbox", { name: item1 }).click();
-    await form.getByText(item1Option1).click();
+    await form.getByRole("radio", { name: item1Option1 }).check();
   });
   await test.step("Second select", async () => {
     await form.getByRole("textbox", { name: item2 }).click();
-    await form.getByText(item2Option2).click();
+    await form.getByRole("radio", { name: item2Option2 }).check();
   });
 
   // Act
