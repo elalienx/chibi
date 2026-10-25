@@ -2,7 +2,9 @@
   --border-thin: 1px;
   --border-thick: 2px;
 
-  border: solid var(--border-thin) var(--input-border-up);
+  border-style: solid;
+  border-width: var(--border-thin);
+  border-color: var(--input-border-up);
 
   .input {
     border-right: solid var(--border-thin) white; /* The color is set to not be visible on purpose to color it on state changes. */
@@ -17,48 +19,68 @@
   }
 }
 
+/* Shared outline behaviour */
+.input-wrapper:hover,
+.input-wrapper.focus,
+.input-wrapper.error,
+.input-wrapper.success {
+  outline-style: solid;
+  outline-width: var(--border-thin);
+}
+
 /* On hover */
 .input-wrapper:hover {
-  --color-state: var(--input-border-hover);
+  outline-color: var(--input-border-hover);
 
   &.has-suffix .input {
     background-color: var(--input-background-hover); /* Suffix do not get this background color */
+  }
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-hover);
   }
 }
 
 /* On focus */
 .input-wrapper.focus {
-  --color-state: var(--input-border-focus);
+  border-color: var(--input-border-focus);
+  outline-color: var(--input-border-focus);
+
+  &.has-suffix .input,
+  .suffix {
+    border-color: var(--input-border-focus);
+  }
 }
 
 /* On showing error message */
 .input-wrapper.error {
-  --color-state: var(--input-border-error);
+  border-color: var(--input-border-error);
+  outline-color: var(--input-border-error);
 
   &.has-suffix .input,
   .suffix {
-    background-color: white; /* Validation message has its pink background color */
+    background-color: white;
+    /* Validation message has its pink background color */
+  }
+
+  &.has-suffix .input,
+  .suffix,
+  .input-validation-message {
+    border-color: var(--input-border-error);
   }
 }
 
 /* On being valid */
 .input-wrapper.success {
-  --color-state: var(--input-border-success);
-}
-
-/* Shared state colors (hover keeps the default outer border) */
-.input-wrapper:is(:hover, .focus, .error, .success) {
-  outline: solid var(--border-thin) var(--color-state);
+  border-color: var(--input-border-success);
+  outline-color: var(--input-border-success);
 
   &.has-suffix .input,
   .suffix,
   .input-validation-message {
-    border-color: var(--color-state);
+    border-color: var(--input-border-success);
   }
-}
-
-.input-wrapper:is(.focus, .error, .success) {
-  border-color: var(--color-state);
 }
 
 /* On browser autofill */
