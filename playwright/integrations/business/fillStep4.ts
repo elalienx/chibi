@@ -15,8 +15,8 @@ export default async function fillStep4(form: Locator, { turnover, hasExistingLo
     await form.getByRole("textbox", { name: "Bolagets omsättning" }).fill(String(turnover));
 
     // Has existing loans?
-    if (hasExistingLoans) await form.locator("#has_existing_loans").getByText("Ja").click();
-    if (!hasExistingLoans) await form.locator("#has_existing_loans").getByText("Nej").click();
+    if (hasExistingLoans) await form.locator("#has_existing_loans").getByRole("radio", { name: "Ja" }).check();
+    if (!hasExistingLoans) await form.locator("#has_existing_loans").getByRole("radio", { name: "Nej" }).check();
 
     // Loan Debt
     if (loanDebt !== undefined) await form.getByRole("textbox", { name: "Uppskattad total" }).fill(String(loanDebt));
