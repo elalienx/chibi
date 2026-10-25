@@ -11,7 +11,7 @@ export default async function fillStep5(form: Locator, { purpose, details }: Pro
     await form.getByRole("heading", { name: "Lånesyfte" }).waitFor();
 
     // Loan purpose
-    await form.getByText(purpose).click();
+    await form.locator("#purpose").getByRole("radio", { name: purpose }).check();
 
     // Optional loan purpose detail
     if (details) await form.getByRole("textbox", { name: "Berätta mer" }).fill(details);
