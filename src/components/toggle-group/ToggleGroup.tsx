@@ -34,6 +34,7 @@ export default function ToggleGroup({ children, id, form, hints }: Props) {
 
   // Derived state
   const ariaErrorId = `aria-error-${id}`;
+  const labelId = `label-${id}`;
   const hasErrors = form.isSubmitted && field.errors;
 
   // Components
@@ -45,7 +46,13 @@ export default function ToggleGroup({ children, id, form, hints }: Props) {
     <div className="toggle-group">
       {label}
 
-      <fieldset id={id} className="options">
+      <fieldset
+        aria-describedby={hasErrors ? ariaErrorId : undefined}
+        aria-labelledby={labelId}
+        className="options"
+        id={id}
+        role="radiogroup"
+      >
         {toggleOptions}
       </fieldset>
 

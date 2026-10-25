@@ -20,8 +20,11 @@ export default function Label({ id, children, hint }: Props) {
   // Safeguards
   if (!id) return <p>Please pass an id to connect this label to a form field</p>;
 
+  // Derived state
+  const labelId = `label-${id}`; // Lets groups of options use this label as their name.
+
   return (
-    <label className="label" htmlFor={id}>
+    <label className="label" htmlFor={id} id={labelId}>
       {children}
       {hint && <Tooltip>{hint}</Tooltip>}
     </label>
