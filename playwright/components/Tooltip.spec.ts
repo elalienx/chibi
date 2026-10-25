@@ -1,6 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
+// Properties
 const errorInput = "Please enter your full name.";
 const errorRadio = "Say either yes or no.";
 const item1 = "The InputField and RadioGroup were added to make sure clicking the tooltip don't trigger a form";

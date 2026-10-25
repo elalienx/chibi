@@ -7,6 +7,7 @@ import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
 import fillStep2 from "./mortgage/fillStep2";
 
+// Properties
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {

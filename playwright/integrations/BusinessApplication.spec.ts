@@ -9,6 +9,7 @@ import fillStep3 from "./business/fillStep3";
 import fillStep4 from "./business/fillStep4";
 import fillStep5 from "./business/fillStep5";
 
+// Properties
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {

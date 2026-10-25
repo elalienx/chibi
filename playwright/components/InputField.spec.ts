@@ -1,6 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
+// Properties
 const validName = "Eduardo";
 const invalidName = "Ed"; // Below minimum length
 const submit = "Submit";

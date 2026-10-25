@@ -1,6 +1,7 @@
 // Node modules
 import { test, expect, type Locator } from "@playwright/test";
 
+// Properties
 const error1 = "Choose one game developer company.";
 const error2 = "Choose one accessory.";
 const item1 = "What is your favorite game developer company?";
