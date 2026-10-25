@@ -1,4 +1,5 @@
 .toggle-option {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,10 +19,9 @@
   /* Removes the radio bullet/dot */
   input {
     appearance: none;
-    width: 1px; /* Smallest size Playwright can click, so tests can target the radio by role. */
-    height: 1px;
+    position: absolute; /* Cover the whole option so the pointer always lands on the radio. */
+    inset: 0;
     margin: 0;
-    margin-left: -1px; /* Cancel the 1px width so the label layout does not change. */
   }
 }
 
