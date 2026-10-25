@@ -16,6 +16,7 @@ import useMediaQuery from "state/useMediaQuery";
 import schema from "./schema";
 import "./styles/step-1-cta-button.css";
 import "./styles/step-1-input-design.css";
+import "./styles/step-1-input-state.css";
 import "./styles/step-1-input-with-slider.css";
 import "./styles/step-1-input-with-count-buttons.css";
 
