@@ -28,8 +28,8 @@ function getInputState(form: FormStore, field: FieldStore, inputState: InputStat
   // While editing a fresh field, stay in focus state
   if (isFocused) return "focus";
 
-  // Default before interaction
-  if (!field.isDirty) return "default";
+  // Default before interaction, unless the field was prefilled
+  if (!field.isDirty && !field.input) return "default";
 
   // Validate success
   if (field.isValid) return "success";
