@@ -20,7 +20,8 @@
     appearance: none;
     width: 1px; /* Smallest size Playwright can click, so tests can target the radio by role. */
     height: 1px;
-    margin: 0 0 0 -1px; /* Cancel the 1px width so the label layout does not change. */
+    margin: 0;
+    margin-left: -1px; /* Cancel the 1px width so the label layout does not change. */
   }
 }
 
