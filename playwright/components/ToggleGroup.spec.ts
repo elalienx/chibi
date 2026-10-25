@@ -7,8 +7,6 @@ const item1 = "#likes_beer";
 const item2 = "#likes_guiness";
 const submit = "Submit";
 const textCleanup = "Text to clean Playwright selector";
-const textYes = "Yes";
-const textNo = "No";
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
@@ -32,8 +30,8 @@ test("1. Should show error state when submitting empty form", async () => {
 
 test("2. Should submit form without errors (boolean is TRUE)", async () => {
   // Arrange
-  await form.locator(item1).getByText(textYes).click();
-  await form.locator(item2).getByText(textYes).click();
+  await form.locator(item1).getByRole("radio", { name: "Yes" }).check();
+  await form.locator(item2).getByRole("radio", { name: "Yes" }).check();
 
   // Act
   await form.getByRole("button", { name: submit }).click();
@@ -46,8 +44,8 @@ test("2. Should submit form without errors (boolean is TRUE)", async () => {
 
 test("3. Should submit form without errors (boolean is FALSE)", async () => {
   // Arrange
-  await form.locator(item1).getByText(textYes).click();
-  await form.locator(item2).getByText(textNo).click();
+  await form.locator(item1).getByRole("radio", { name: "Yes" }).check();
+  await form.locator(item2).getByRole("radio", { name: "No" }).check();
 
   // Act
   await form.getByRole("button", { name: submit }).click();
@@ -61,7 +59,7 @@ test("3. Should submit form without errors (boolean is FALSE)", async () => {
 test("4. Clicking on a toggle with error should immediately remove the error", async () => {
   await test.step("Trigger error", async () => {
     // Arrange
-    await form.locator(item1).getByText(textYes).click();
+    await form.locator(item1).getByRole("radio", { name: "Yes" }).check();
 
     // Act
     await form.getByRole("button", { name: submit }).click();
@@ -73,7 +71,7 @@ test("4. Clicking on a toggle with error should immediately remove the error", a
 
   await test.step("Clear error", async () => {
     // Act
-    await form.locator(item2).getByText(textYes).click();
+    await form.locator(item2).getByRole("radio", { name: "Yes" }).check();
 
     // Assert
     await expect(form.locator(error1)).not.toBeVisible();
