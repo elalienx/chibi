@@ -13,11 +13,6 @@
     flex-wrap: wrap balance; /* Balance groups items in a better visual way but is not available to all browswers. */
     justify-content: center;
     gap: var(--space-xs);
-
-    /* remove style from the semantic tag <fieldset>. */
-    margin: 0;
-    padding: 0;
-    border: none;
   }
 }
 
