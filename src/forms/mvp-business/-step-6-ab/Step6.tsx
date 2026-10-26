@@ -27,7 +27,7 @@ export default function Step6() {
   });
 
   // Derived state
-  const privacyPolicyURL = "https://stage.lendo.se/privacy-policy/personuppgiftspolicy";
+  const privacyPolicyURL = "https://www.lendo.se/privacy-policy/personuppgiftspolicy";
 
   // Methods
   function submitForm(values: object) {
@@ -52,13 +52,16 @@ export default function Step6() {
 
         <ul className="check-list">
           <li>
-            <Icon name="circle-check" /> 50% större chans att lånet beviljas.
+            <Icon name="circle-check" />
+            50% större chans att lånet beviljas.
           </li>
           <li>
-            <Icon name="circle-check" /> Chans till bättre villkor och lägre ränta.
+            <Icon name="circle-check" />
+            Chans till bättre villkor och lägre ränta.
           </li>
           <li>
-            <Icon name="circle-check" /> Ingen påverkan på din kreditvärdighet.
+            <Icon name="circle-check" />
+            Ingen påverkan på din kreditvärdighet.
           </li>
         </ul>
 
