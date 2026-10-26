@@ -10,16 +10,16 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import companyList from "../-step-3/companyList";
-import exampleSSNs from "../data/exampleSSNs";
+import exampleSSNs from "./exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
-import "./login-with-bank-id.css";
+import "./bank-id-login.css";
 
 // Properties
 const { MULTIPLE_PUBLIC_COMPANIES, SINGLE_PUBLIC_COMPANY, SOLE_TRADER } = exampleSSNs;
 
-export default function LoginWithBankID() {
+export default function BankIDLogin() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
@@ -53,7 +53,7 @@ export default function LoginWithBankID() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form" id="login-with-bank-id">
+    <Form of={form} onSubmit={submitForm} className="business-form" id="bank-id-login">
       <section>
         <InputField form={form} id="ssn">
           <Label>Personnummer</Label>

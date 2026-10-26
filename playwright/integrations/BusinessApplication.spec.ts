@@ -2,9 +2,9 @@
 import { test, type Locator } from "@playwright/test";
 
 // Project files
-import exampleSSNs from "../../src/forms/mvp-business/data/exampleSSNs";
+import exampleSSNs from "../../src/forms/mvp-business/-bank-id-login/exampleSSNs";
 import checkSuccessStep from "./business/checkSuccessStep";
-import fillLoginWithBankID from "./business/fillLoginWithBankID";
+import fillBankIDLogin from "./business/fillBankIDLogin";
 import fillStep1 from "./business/fillStep1";
 import fillStep2 from "./business/fillStep2";
 import fillStep3 from "./business/fillStep3";
@@ -25,7 +25,7 @@ test("Should be able to submit with no debt", async () => {
 
   await fillStep1(form);
   await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-  await fillLoginWithBankID(form, { ssn: exampleSSNs.MULTIPLE_PUBLIC_COMPANIES });
+  await fillBankIDLogin(form, { ssn: exampleSSNs.MULTIPLE_PUBLIC_COMPANIES });
   await fillStep3(form, { company: "Connys & Sjukvård AB" });
   await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
   await fillStep5(form, { purpose: "Renovering av lokal" });
@@ -38,7 +38,7 @@ test("Should be able to submit with debt", async () => {
 
   await fillStep1(form);
   await fillStep2(form, { email: "erik@example.com", phone: "0707654321" });
-  await fillLoginWithBankID(form, { ssn: "199001011234" }); // Any other personnummer shows the company selector.
+  await fillBankIDLogin(form, { ssn: "199001011234" }); // Any other personnummer shows the company selector.
   await fillStep3(form, { company: "Birgers Guldsmedja AB" });
   await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
   await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
@@ -51,7 +51,7 @@ test("Should skip the company selector for a single public company", async () =>
 
   await fillStep1(form);
   await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-  await fillLoginWithBankID(form, { ssn: exampleSSNs.SINGLE_PUBLIC_COMPANY });
+  await fillBankIDLogin(form, { ssn: exampleSSNs.SINGLE_PUBLIC_COMPANY });
   await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
   await fillStep5(form, { purpose: "Renovering av lokal" });
   await fillStep6AB(form);
@@ -63,7 +63,7 @@ test("Should skip the company selector and show existing loans for a sole trader
 
   await fillStep1(form);
   await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-  await fillLoginWithBankID(form, { ssn: exampleSSNs.SOLE_TRADER });
+  await fillBankIDLogin(form, { ssn: exampleSSNs.SOLE_TRADER });
   await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
   await fillStep5(form, { purpose: "Renovering av lokal" });
   await fillStep6EN(form);
