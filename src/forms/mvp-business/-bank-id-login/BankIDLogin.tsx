@@ -10,14 +10,15 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import companyList from "../-step-3/companyList";
-import exampleSSNs from "./exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import ExampleSSNList from "./components/ExampleSSNList";
+import exampleSSNs from "./exampleSSNs";
 import schema from "./schema";
 import "./bank-id-login.css";
 
 // Properties
-const { MULTIPLE_PUBLIC_COMPANIES, SINGLE_PUBLIC_COMPANY, SOLE_TRADER } = exampleSSNs;
+const { SINGLE_PUBLIC_COMPANY, SOLE_TRADER } = exampleSSNs;
 
 export default function BankIDLogin() {
   // Global state
@@ -74,29 +75,7 @@ export default function BankIDLogin() {
           </Button>
         </div>
 
-        <div className="examples">
-          <h4>Example SSN</h4>
-          <ul className="check-list">
-            <li>
-              <Icon name="circle-check" /> Multiple public companies:{" "}
-              <button type="button" className="example-ssn" onClick={() => fillSSN(MULTIPLE_PUBLIC_COMPANIES)}>
-                {MULTIPLE_PUBLIC_COMPANIES}
-              </button>
-            </li>
-            <li>
-              <Icon name="circle-check" /> Single public company:{" "}
-              <button type="button" className="example-ssn" onClick={() => fillSSN(SINGLE_PUBLIC_COMPANY)}>
-                {SINGLE_PUBLIC_COMPANY}
-              </button>
-            </li>
-            <li>
-              <Icon name="circle-check" /> Sole trader:{" "}
-              <button type="button" className="example-ssn" onClick={() => fillSSN(SOLE_TRADER)}>
-                {SOLE_TRADER}
-              </button>
-            </li>
-          </ul>
-        </div>
+        <ExampleSSNList onSelect={fillSSN} />
       </section>
     </Form>
   );
