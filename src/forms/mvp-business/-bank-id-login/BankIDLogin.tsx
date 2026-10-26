@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm } from "@formisch/react";
+import { Form, setInput, useForm, validate } from "@formisch/react";
 import type * as v from "valibot";
 
 // Project files
@@ -33,6 +33,11 @@ export default function BankIDLogin() {
   });
 
   // Methods
+  function fillSSN(ssn: string) {
+    setInput(form, { path: ["ssn"], input: ssn });
+    validate(form); // To clear a previous error, as this form only validates on blur.
+  }
+
   function submitForm(values: v.InferOutput<typeof schema>) {
     // Single company: pre-select it and skip the company selector.
     if (values.ssn === SINGLE_PUBLIC_COMPANY) {
@@ -73,13 +78,22 @@ export default function BankIDLogin() {
           <h4>Example SSN</h4>
           <ul className="check-list">
             <li>
-              <Icon name="circle-check" /> Multiple public companies: {MULTIPLE_PUBLIC_COMPANIES}
+              <Icon name="circle-check" /> Multiple public companies:{" "}
+              <button type="button" className="example-ssn" onClick={() => fillSSN(MULTIPLE_PUBLIC_COMPANIES)}>
+                {MULTIPLE_PUBLIC_COMPANIES}
+              </button>
             </li>
             <li>
-              <Icon name="circle-check" /> Single public company: {SINGLE_PUBLIC_COMPANY}
+              <Icon name="circle-check" /> Single public company:{" "}
+              <button type="button" className="example-ssn" onClick={() => fillSSN(SINGLE_PUBLIC_COMPANY)}>
+                {SINGLE_PUBLIC_COMPANY}
+              </button>
             </li>
             <li>
-              <Icon name="circle-check" /> Sole trader: {SOLE_TRADER}
+              <Icon name="circle-check" /> Sole trader:{" "}
+              <button type="button" className="example-ssn" onClick={() => fillSSN(SOLE_TRADER)}>
+                {SOLE_TRADER}
+              </button>
             </li>
           </ul>
         </div>
