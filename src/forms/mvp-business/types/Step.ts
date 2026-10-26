@@ -2,7 +2,7 @@
 export type Step =
   | "step-1"
   | "step-2"
-  | "login-with-bank-id"
+  | "bank-id-login"
   | "step-3"
   | "step-4"
   | "step-5"

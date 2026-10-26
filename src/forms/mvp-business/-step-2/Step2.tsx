@@ -39,7 +39,7 @@ export default function Step2() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("login-with-bank-id");
+    setStep("bank-id-login");
   }
 
   return (
