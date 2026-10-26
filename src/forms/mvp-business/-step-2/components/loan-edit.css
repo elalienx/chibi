@@ -15,10 +15,6 @@
     gap: var(--space);
   }
 
-  .input-wrapper {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
   .input {
     min-inline-size: 0;
   }

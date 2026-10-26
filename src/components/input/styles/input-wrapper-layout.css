@@ -1,6 +1,6 @@
 .input-wrapper {
   display: grid;
-  grid-template-columns: 1fr auto; /* To make the input take the full width if suffix does not exist. */
+  grid-template-columns: minmax(0, 1fr) auto; /* Full width if suffix does not exist. minmax(0) lets the <input> shrink below its intrinsic width, so it fits in narrow columns. */
   grid-template-areas:
     "top-left top-right"
     "bottom bottom";
