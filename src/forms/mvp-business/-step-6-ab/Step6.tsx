@@ -1,0 +1,87 @@
+// Node modules
+import { Form, useForm } from "@formisch/react";
+
+// Project files
+import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
+import Button from "components/button/Button";
+import Icon from "components/icon/Icon";
+import RadioGroup from "components/radio-group/RadioGroup";
+import RadioOption from "components/radio-option/RadioOption";
+import cleanInitialInput from "helpers/cleanInitialInput";
+import useApplication from "../state/useApplication";
+import useFormNavigation from "../state/useFormNavigation";
+import schema from "./schema";
+import "./step-6.css";
+
+export default function Step6() {
+  // Global state
+  const { application, updateApplication } = useApplication();
+  const { setStep, goPreviousStep } = useFormNavigation();
+
+  // Local state
+  const form = useForm({
+    schema: schema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: cleanInitialInput({ input: application }),
+  });
+
+  // Derived state
+  const privacyPolicyURL = "https://stage.lendo.se/privacy-policy/personuppgiftspolicy";
+
+  // Methods
+  function submitForm(values: object) {
+    updateApplication(values);
+    setStep("success-step");
+  }
+
+  return (
+    <Form of={form} onSubmit={submitForm} className="business-form" id="step-6">
+      <header>
+        <ArrowGoBack hideLabel onClick={goPreviousStep} />
+        <h4>Borgensman</h4>
+      </header>
+
+      <hr />
+
+      <section>
+        <header className="section-header">
+          <h4>Lägg till personlig borgensman</h4>
+          <p>Att gå i personlig borgen betyder att du betalar för lånet om företaget inte kan.</p>
+        </header>
+
+        <ul className="benefits">
+          <li>
+            <Icon name="circle-check" /> 50% större chans att lånet beviljas.
+          </li>
+          <li>
+            <Icon name="circle-check" /> Chans till bättre villkor och lägre ränta.
+          </li>
+          <li>
+            <Icon name="circle-check" /> Ingen påverkan på din kreditvärdighet.
+          </li>
+        </ul>
+
+        <RadioGroup form={form} id="is_guarantor">
+          <RadioOption value={true}>Jag vill gå i personlig borgen.</RadioOption>
+          <RadioOption value={false}>Jag vill uppge en borgensman senare.</RadioOption>
+        </RadioGroup>
+      </section>
+
+      <hr />
+
+      <footer>
+        <p className="terms">
+          Genom att slutföra din ansökan godkänner du <a href="#">användaravtalet</a> och vår{" "}
+          <a href={privacyPolicyURL} target="_blank">
+            personuppgiftspolicy
+          </a>
+          .
+        </p>
+        <Button type="submit">
+          Skicka in ansökan <Icon name="bankid" />
+        </Button>
+      </footer>
+    </Form>
+  );
+}
