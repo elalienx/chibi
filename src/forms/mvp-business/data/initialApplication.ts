@@ -15,6 +15,7 @@ const initialApplication: Application = {
   loan_period: businessFormConfig.DEFAULT_PERIOD,
   phone: "",
   purpose: "",
+  ssn: "",
   turnover: 0,
 };
 

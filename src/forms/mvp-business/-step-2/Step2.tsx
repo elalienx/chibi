@@ -39,7 +39,7 @@ export default function Step2() {
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("step-3");
+    setStep("bank-id-login");
   }
 
   return (
@@ -73,7 +73,7 @@ export default function Step2() {
       <footer>
         <Button type="submit">
           Fortsätt med BankID
-          <Icon name="arrow-right" />
+          <Icon name="bankid" />
         </Button>
         <small>
           Varför ber vi om identifiering via BankID? <Tooltip>{BankIDTooltip}</Tooltip>

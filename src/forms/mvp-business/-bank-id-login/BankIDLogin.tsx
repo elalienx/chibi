@@ -54,7 +54,7 @@ export default function BankIDLogin() {
       return;
     }
 
-    // note: update the application when we add SSN to it
+    updateApplication(values);
     setStep("step-3");
   }
 
