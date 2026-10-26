@@ -50,7 +50,7 @@ export default function Step6() {
           <p>Att gå i personlig borgen betyder att du betalar för lånet om företaget inte kan.</p>
         </header>
 
-        <ul className="benefits">
+        <ul className="check-list">
           <li>
             <Icon name="circle-check" /> 50% större chans att lånet beviljas.
           </li>
