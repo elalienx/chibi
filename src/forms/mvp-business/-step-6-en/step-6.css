@@ -4,10 +4,6 @@
 
     display: grid;
     gap: var(--space-small);
-
-    .input-wrapper {
-      grid-template-columns: minmax(0, 1fr) auto; /* Lets the <input> shrink below its intrinsic width. */
-    }
   }
 
   .terms {
