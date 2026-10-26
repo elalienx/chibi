@@ -1,0 +1,25 @@
+#step-6 {
+  .columns {
+    --field-min-width: 0px; /* So 2 input fields fit side by side. */
+
+    display: grid;
+    gap: var(--space-small);
+
+    .input-wrapper {
+      grid-template-columns: minmax(0, 1fr) auto; /* Lets the <input> shrink below its intrinsic width. */
+    }
+  }
+
+  .terms {
+    text-align: start;
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-6 {
+    .columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
