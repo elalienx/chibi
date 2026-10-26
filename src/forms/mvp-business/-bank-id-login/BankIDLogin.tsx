@@ -10,10 +10,10 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import companyList from "../-step-3/companyList";
-import exampleSSNs from "./exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import ExampleSSNList from "./components/ExampleSSNList";
+import exampleSSNs from "./exampleSSNs";
 import schema from "./schema";
 import "./bank-id-login.css";
 
