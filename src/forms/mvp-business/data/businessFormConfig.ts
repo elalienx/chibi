@@ -6,6 +6,7 @@ const businessFormConfig = {
   MAX_AMOUNT_FASTIGHETSLAN: 50_000_000 /** Used for a special business link which allows higher loans. */,
   MAX_EXISTING_LOAN: 2_000_000_000,
   MAX_PERIOD: 5,
+  MAX_PRIVATE_LOAN: 100_000_000,
   MAX_TURNOVER: 999_999_999,
   MIN_ALLOWED_INCOME: 8_400,
   MIN_AMOUNT: 50_000,
