@@ -26,14 +26,23 @@ export default function Step6() {
     initialInput: cleanInitialInput({ input: application }),
   });
 
-  // Derived state
-  const privacyPolicyURL = "https://www.lendo.se/privacy-policy/personuppgiftspolicy";
-
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
     setStep("success-step");
   }
+
+  // Components
+  const UserAgreement = (
+    <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
+      användaravtalet
+    </a>
+  );
+  const PrivacyPolicy = (
+    <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
+      personuppgiftspolicy
+    </a>
+  );
 
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-6">
@@ -52,16 +61,13 @@ export default function Step6() {
 
         <ul className="check-list">
           <li>
-            <Icon name="circle-check" />
-            50% större chans att lånet beviljas.
+            <Icon name="circle-check" /> 50% större chans att lånet beviljas.
           </li>
           <li>
-            <Icon name="circle-check" />
-            Chans till bättre villkor och lägre ränta.
+            <Icon name="circle-check" /> Chans till bättre villkor och lägre ränta.
           </li>
           <li>
-            <Icon name="circle-check" />
-            Ingen påverkan på din kreditvärdighet.
+            <Icon name="circle-check" /> Ingen påverkan på din kreditvärdighet.
           </li>
         </ul>
 
@@ -75,11 +81,8 @@ export default function Step6() {
 
       <footer>
         <p className="terms">
-          Genom att slutföra din ansökan godkänner du <a href="#">användaravtalet</a> och vår{" "}
-          <a href={privacyPolicyURL} target="_blank">
-            personuppgiftspolicy
-          </a>
-          .
+          Genom att slutföra din ansökan godkänner du {UserAgreement}
+          och vår {PrivacyPolicy}.
         </p>
         <Button type="submit">
           Skicka in ansökan <Icon name="bankid" />
