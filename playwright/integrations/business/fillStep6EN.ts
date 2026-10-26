@@ -12,11 +12,17 @@ export default async function fillStep6EN(form: Locator, { blancoLoans, installm
     await form.getByRole("heading", { name: "Befintliga lån" }).waitFor();
 
     // Optional loans
-    if (blancoLoans !== undefined) await form.getByRole("textbox", { name: "Blancolån" }).fill(String(blancoLoans));
+    if (blancoLoans !== undefined) {
+      await form.getByRole("textbox", { name: "Blancolån" }).fill(String(blancoLoans));
+    }
+
     if (installmentLoans !== undefined) {
       await form.getByRole("textbox", { name: "Avbetalningskrediter" }).fill(String(installmentLoans));
     }
-    if (houseLoans !== undefined) await form.getByRole("textbox", { name: "Bolån" }).fill(String(houseLoans));
+
+    if (houseLoans !== undefined) {
+      await form.getByRole("textbox", { name: "Bolån" }).fill(String(houseLoans));
+    }
 
     await form.getByRole("button", { name: "Slutför" }).click();
   });
