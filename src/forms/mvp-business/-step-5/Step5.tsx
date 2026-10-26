@@ -12,6 +12,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import purposes from "../data/purposes";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import exampleSSNs from "../-bank-id-login/exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
@@ -33,11 +34,12 @@ export default function Step5() {
   // Derived state
   const purpose = getInput(form, { path: ["purpose"] });
   const selectedPurpose = purposes.find((item) => item.value === purpose);
+  const isSoleTrader = application.ssn === exampleSSNs.SOLE_TRADER;
 
   // Methods
   function submitForm(values: object) {
     updateApplication(values);
-    setStep("success-step");
+    setStep(isSoleTrader ? "step-6-en" : "step-6-ab");
   }
 
   return (
@@ -45,7 +47,7 @@ export default function Step5() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte</h4>
-        <small>Nästa: Borgensman</small>
+        <small>Nästa: {isSoleTrader ? "Befintliga lån" : "Borgensman"}</small>
       </header>
 
       <hr />
