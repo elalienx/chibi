@@ -61,7 +61,7 @@ test.describe("Public company", () => {
 });
 
 test.describe("Sole trader", () => {
-  test("Should skip the company selector and show existing loans for a sole trader", async () => {
+  test("Should be able to submit with no private loans", async () => {
     const result = "Your turnover is 1 000 000 kr and your existing debt is 0 kr.";
 
     await fillStep1(form);
@@ -70,6 +70,18 @@ test.describe("Sole trader", () => {
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6EN(form);
+    await checkSuccessStep(form, { result: result });
+  });
+
+  test("Should be able to submit with private loans", async () => {
+    const result = "Your turnover is 1 000 000 kr and your existing debt is 0 kr.";
+
+    await fillStep1(form);
+    await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
+    await fillBankIDLogin(form, { ssn: exampleSSNs.SOLE_TRADER });
+    await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
+    await fillStep5(form, { purpose: "Renovering av lokal" });
+    await fillStep6EN(form, { blancoLoans: 50_000, installmentLoans: 25_000, houseLoans: 1_500_000 });
     await checkSuccessStep(form, { result: result });
   });
 });
