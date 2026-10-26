@@ -3,8 +3,7 @@ import * as v from "valibot";
 
 // Fields
 const is_guarantor = v.pipe(
-  v.string("Gör ett val för att fortsätta."),
-  v.nonEmpty("Gör ett val för att fortsätta."),
+  v.string(),
   v.transform((value) => value === String(true)),
 );
 
