@@ -5,7 +5,7 @@ import * as v from "valibot";
 import businessFormConfig from "../data/businessFormConfig";
 
 // Properties
-const { MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = businessFormConfig;
+const { MAX_PRIVATE_LOAN } = businessFormConfig;
 
 // Fields
 function debt(message: string) {
@@ -13,18 +13,20 @@ function debt(message: string) {
     v.string(message),
     v.nonEmpty(message),
     v.toNumber(message),
-    v.minValue(MIN_EXISTING_LOAN, `Måste vara minst ${MIN_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
-    v.maxValue(MAX_EXISTING_LOAN, `Måste vara maximalt ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
+    v.maxValue(
+      MAX_PRIVATE_LOAN,
+      `Högsta värdet på fastigheten är ${MAX_PRIVATE_LOAN.toLocaleString("sv-SE")}, ring in till kundstjänst för att få vidare hjälp`,
+    ),
   );
 }
 
-const unsecured_loan_debt = debt("Vänligen ange skuld på blancolån, lägsta värde är 0.");
+const blanco_loans = debt("Vänligen ange skuld på blancolån, lägsta värde är 0.");
 
-const installment_credit_debt = debt("Vänligen ange skuld på avbetalningskrediter, lägsta värde är 0.");
+const installment_loans = debt("Vänligen ange skuld på avbetalningskrediter, lägsta värde är 0.");
 
-const mortgage_debt = debt("Vänligen ange skuld på bolån, lägsta värde är 0.");
+const house_loans = debt("Vänligen ange skuld på bolån, lägsta värde är 0.");
 
 // Schema
-const schema = v.object({ unsecured_loan_debt, installment_credit_debt, mortgage_debt });
+const schema = v.object({ blanco_loans, installment_loans, house_loans });
 
 export default schema;
