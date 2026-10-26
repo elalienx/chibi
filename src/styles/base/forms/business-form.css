@@ -17,6 +17,10 @@
     margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
 
+    &:not(:has(> small)) {
+      grid-template-areas: "left title right"; /* Single row keeps the title centered when there is no subtitle. */
+    }
+
     > .arrow-go-back {
       grid-area: left;
       width: 100%;
