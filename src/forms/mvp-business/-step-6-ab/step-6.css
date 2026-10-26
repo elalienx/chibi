@@ -8,8 +8,4 @@
   .radio-group .options {
     grid-template-columns: 1fr; /* Overrides the 2 columns from tablet to match the design. */
   }
-
-  .terms {
-    text-align: start;
-  }
 }
