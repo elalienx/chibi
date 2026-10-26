@@ -57,18 +57,18 @@ export default function Step6() {
 
       <section>
         <div className="columns">
-          <InputField form={form} hints={Hints} id="unsecured_loan_debt">
+          <InputField form={form} hints={Hints} id="blanco_loans">
             <Label>Blancolån</Label>
             <Input type="number" suffix="kr" />
           </InputField>
 
-          <InputField form={form} hints={Hints} id="installment_credit_debt">
+          <InputField form={form} hints={Hints} id="installment_loans">
             <Label>Avbetalningskrediter</Label>
             <Input type="number" suffix="kr" />
           </InputField>
         </div>
 
-        <InputField form={form} id="mortgage_debt">
+        <InputField form={form} id="house_loans">
           <Label>Bolån</Label>
           <Input type="number" suffix="kr" />
         </InputField>

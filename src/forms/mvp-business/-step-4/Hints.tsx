@@ -1,5 +1,5 @@
 const Turnover = (
-  <div className="tooltip-with-title ">
+  <div className="tooltip-with-title">
     <h5>Omsättning de senaste 12 månaderna</h5>
     <p>
       Uppskatta bolagets omsättning under de senaste 12 månaderna. Detta hjälper långivarna att ge er ett mer konkret
