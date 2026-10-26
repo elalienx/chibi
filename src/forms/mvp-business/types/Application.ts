@@ -13,5 +13,6 @@ export default interface Application {
   loan_purpose_details?: string;
   phone: string;
   purpose: string;
+  ssn: string;
   turnover: number;
 }
