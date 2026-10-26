@@ -53,7 +53,6 @@ export default function BankIDLogin() {
       return;
     }
 
-    updateApplication(values);
     setStep("step-3");
   }
 
