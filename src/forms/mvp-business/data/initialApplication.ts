@@ -6,7 +6,7 @@ const initialApplication: Application = {
   company_org_number: "",
   email: "",
   has_existing_loans: undefined,
-  is_guarantor: false,
+  is_guarantor: true,
   loan_amount: businessFormConfig.DEFAULT_AMOUNT,
   loan_debt: 0,
   loan_period: businessFormConfig.DEFAULT_PERIOD,
