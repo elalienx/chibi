@@ -33,6 +33,7 @@ export default function Step6AB() {
   }
 
   // Components
+  const CheckIcon = <Icon name="circle-check" />;
   const UserAgreement = () => (
     <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
       användaravtalet
@@ -43,7 +44,6 @@ export default function Step6AB() {
       personuppgiftspolicy
     </a>
   );
-  const CheckIcon = <Icon name="circle-check" />;
 
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-6">
