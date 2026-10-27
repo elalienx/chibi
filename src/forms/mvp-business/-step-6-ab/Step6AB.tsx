@@ -11,9 +11,9 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
-import "./step-6.css";
+import "./step-6-ab.css";
 
-export default function Step6() {
+export default function Step6AB() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
@@ -33,12 +33,13 @@ export default function Step6() {
   }
 
   // Components
-  const UserAgreement = () => (
+  const CheckIcon = <Icon name="circle-check" />;
+  const UserAgreement = (
     <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
       användaravtalet
     </a>
   );
-  const PrivacyPolicy = () => (
+  const PrivacyPolicy = (
     <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
       personuppgiftspolicy
     </a>
@@ -60,15 +61,9 @@ export default function Step6() {
         </header>
 
         <ul className="check-list">
-          <li>
-            <Icon name="circle-check" /> 50% större chans att lånet beviljas.
-          </li>
-          <li>
-            <Icon name="circle-check" /> Chans till bättre villkor och lägre ränta.
-          </li>
-          <li>
-            <Icon name="circle-check" /> Ingen påverkan på din kreditvärdighet.
-          </li>
+          <li>{CheckIcon} 50% större chans att lånet beviljas.</li>
+          <li>{CheckIcon} Chans till bättre villkor och lägre ränta.</li>
+          <li>{CheckIcon} Ingen påverkan på din kreditvärdighet.</li>
         </ul>
 
         <RadioGroup form={form} id="is_guarantor">
@@ -81,7 +76,7 @@ export default function Step6() {
 
       <footer>
         <p className="terms">
-          Genom att slutföra din ansökan godkänner du <UserAgreement /> och vår <PrivacyPolicy />.
+          Genom att slutföra din ansökan godkänner du {UserAgreement} och vår {PrivacyPolicy}.
         </p>
         <Button type="submit">
           Skicka in ansökan <Icon name="bankid" />

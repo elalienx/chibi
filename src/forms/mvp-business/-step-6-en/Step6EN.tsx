@@ -13,9 +13,9 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import Hints from "./Hints";
 import schema from "./schema";
-import "./step-6.css";
+import "./step-6-en.css";
 
-export default function Step6() {
+export default function Step6EN() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
@@ -35,12 +35,12 @@ export default function Step6() {
   }
 
   // Components
-  const UserAgreement = () => (
+  const UserAgreement = (
     <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
       användaravtalet
     </a>
   );
-  const PrivacyPolicy = () => (
+  const PrivacyPolicy = (
     <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
       personuppgiftspolicy
     </a>
@@ -78,7 +78,7 @@ export default function Step6() {
 
       <footer>
         <p className="terms">
-          Genom att slutföra din ansökan godkänner du <UserAgreement /> och vår <PrivacyPolicy />.
+          Genom att slutföra din ansökan godkänner du {UserAgreement} och vår {PrivacyPolicy}.
         </p>
         <Button type="submit">
           Slutför <Icon name="circle-check" />
