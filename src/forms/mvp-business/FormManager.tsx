@@ -5,8 +5,8 @@ import Step2 from "./-step-2/Step2";
 import Step3 from "./-step-3/Step3";
 import Step4 from "./-step-4/Step4";
 import Step5 from "./-step-5/Step5";
-import Step6AB from "./-step-6-ab/Step6";
-import Step6EN from "./-step-6-en/Step6";
+import Step6AB from "./-step-6-ab/Step6AB";
+import Step6EN from "./-step-6-en/Step6EN";
 import Success from "./-success-step/Success";
 import useFormNavigation from "./state/useFormNavigation";
 
