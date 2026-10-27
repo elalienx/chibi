@@ -34,7 +34,7 @@ export const Text = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="text" placeholder="Hatsume Miku" form={form} id="username" />
+        <Input type="text" placeholder="Hatsune Miku" form={form} id="username" />
       </Form>
     );
   },
