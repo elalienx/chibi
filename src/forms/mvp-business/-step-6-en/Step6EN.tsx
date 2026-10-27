@@ -35,12 +35,12 @@ export default function Step6EN() {
   }
 
   // Components
-  const UserAgreement = () => (
+  const UserAgreement = (
     <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
       användaravtalet
     </a>
   );
-  const PrivacyPolicy = () => (
+  const PrivacyPolicy = (
     <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
       personuppgiftspolicy
     </a>
@@ -78,7 +78,7 @@ export default function Step6EN() {
 
       <footer>
         <p className="terms">
-          Genom att slutföra din ansökan godkänner du <UserAgreement /> och vår <PrivacyPolicy />.
+          Genom att slutföra din ansökan godkänner du {UserAgreement} och vår {PrivacyPolicy}.
         </p>
         <Button type="submit">
           Slutför <Icon name="circle-check" />
