@@ -13,9 +13,9 @@ import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import Hints from "./Hints";
 import schema from "./schema";
-import "./step-6.css";
+import "./step-6-en.css";
 
-export default function Step6() {
+export default function Step6EN() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
