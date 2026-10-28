@@ -8,8 +8,8 @@ const TenancyType = (
   </>
 );
 
-/** All the possible tooltips hints available in this step. */
-const Hints = {
+/** All the possible tooltips available in this step. */
+const Tooltips = {
   monthly_fee: `Ange månadsavgiften till bostadsrättsföreningen.`,
   operating_cost: `Ange de sammanlagda kostnaderna förknippade med boendet exempelvis hemförsäkring, värme, vatten, el, mm. En uppskattning återfinns ofta i bostadens objektbeskrivning.`,
   tenancy_type: TenancyType,
@@ -17,4 +17,4 @@ const Hints = {
   size: "",
 };
 
-export default Hints;
+export default Tooltips;

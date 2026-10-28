@@ -13,17 +13,17 @@ interface Props {
   children: ReactNode;
 
   /** The text or content to display when opening the information tooltip. */
-  hint?: string | ReactNode;
+  tooltip?: string | ReactNode;
 }
 
-export default function Label({ id, children, hint }: Props) {
+export default function Label({ id, children, tooltip }: Props) {
   // Safeguards
   if (!id) return <p>Please pass an id to connect this label to a form field</p>;
 
   return (
     <label className="label" htmlFor={id}>
       {children}
-      {hint && <Tooltip>{hint}</Tooltip>}
+      {tooltip && <Tooltip>{tooltip}</Tooltip>}
     </label>
   );
 }
