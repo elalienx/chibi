@@ -15,9 +15,9 @@ const InstallmentLoans = (
   </div>
 );
 
-const Hints = {
+const Tooltips = {
   blanco_loans: BlancoLoans,
   installment_loans: InstallmentLoans,
 };
 
-export default Hints;
+export default Tooltips;

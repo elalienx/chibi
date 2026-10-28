@@ -9,10 +9,10 @@ const Turnover = (
 );
 
 /** All the possible tooltips hints available in this step. */
-const Hints = {
+const Tooltips = {
   has_existing_loans: "",
   turnover: Turnover,
   loan_debt: "Räkna samman bolagets totala låneskuld",
 };
 
-export default Hints;
+export default Tooltips;
