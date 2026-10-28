@@ -20,11 +20,11 @@ interface Props {
   /** An instance of a Formisch form. */
   form: FormStore;
 
-  /** All the possible tooltips hints available in this form. */
-  hints?: Record<string, ReactNode>;
+  /** All the possible tooltips available in this form. */
+  tooltips?: Record<string, ReactNode>;
 }
 
-export default function SelectGroup({ id, children, form, hints }: Props) {
+export default function SelectGroup({ id, children, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and at least two SelectOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
@@ -37,8 +37,8 @@ export default function SelectGroup({ id, children, form, hints }: Props) {
   const listId = `list-${id}`;
 
   // Components
-  const hint = hints?.[id];
-  const label = extractComponent({ component: Label, extractFrom: children, props: { id, hint } });
+  const tooltip = tooltips?.[id];
+  const label = extractComponent({ component: Label, extractFrom: children, props: { id, tooltip } });
   const selectOptions = extractOptions({ component: SelectOption, extractFrom: children, props: { id, field } });
   const activeOption = selectOptions.find((item) => String(item.props.value) === field.input);
   const activeText = activeOption && activeOption.props.children;

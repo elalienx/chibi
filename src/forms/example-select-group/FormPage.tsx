@@ -43,7 +43,7 @@ export default function FormPage() {
         </SelectGroup>
 
         <SelectGroup form={form} id="accessory">
-          <Label hint="This test validates numeric values">What was the best accessory in history?</Label>
+          <Label tooltip="This test validates numeric values">What was the best accessory in history?</Label>
           <Select>Choose an accessory</Select>
           <SelectOption value={0}>Arcade stick</SelectOption>
           <SelectOption value={1}>Kinnect</SelectOption>
