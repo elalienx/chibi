@@ -14,7 +14,7 @@ import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 
 // Properties
-const PROPERTY_HINT = "Här anger du vilken typ av bostad lånet avser.";
+const PROPERTY_TOOLTIP = "Här anger du vilken typ av bostad lånet avser.";
 
 export default function Step1() {
   // Global state
@@ -39,7 +39,7 @@ export default function Step1() {
 
       <section>
         <RadioGroup form={form} id="property_type">
-          <Label hint={PROPERTY_HINT}>För vilken typ av bostad söker du lån</Label>
+          <Label tooltip={PROPERTY_TOOLTIP}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>
           <RadioOption value={terracedHouse}>Radhus</RadioOption>

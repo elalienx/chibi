@@ -13,8 +13,8 @@ import RadioOption from "components/radio-option/RadioOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import Hints from "./Hints";
 import schema from "./schema";
+import Tooltips from "./Tooltips";
 
 export default function Step4() {
   // Global state
@@ -55,7 +55,7 @@ export default function Step4() {
       <hr />
 
       <section>
-        <InputField form={form} hints={Hints} id="turnover">
+        <InputField form={form} tooltips={Tooltips} id="turnover">
           <Label>Bolagets omsättning från {startMonthAndYear} till idag</Label>
           <Input type="number" suffix="kr" />
         </InputField>
@@ -67,7 +67,7 @@ export default function Step4() {
         </RadioGroup>
 
         {hasExistingLoans && (
-          <InputField form={form} hints={Hints} id="loan_debt">
+          <InputField form={form} tooltips={Tooltips} id="loan_debt">
             <Label>Uppskattad total skuld på befintliga lån</Label>
             <Input type="number" suffix="kr" />
           </InputField>

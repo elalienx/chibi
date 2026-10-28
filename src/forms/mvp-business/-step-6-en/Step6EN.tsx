@@ -11,8 +11,8 @@ import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import Hints from "./Hints";
 import schema from "./schema";
+import Tooltips from "./Tooltips";
 import "./step-6-en.css";
 
 export default function Step6EN() {
@@ -57,12 +57,12 @@ export default function Step6EN() {
 
       <section>
         <div className="columns">
-          <InputField form={form} hints={Hints} id="blanco_loans">
+          <InputField form={form} tooltips={Tooltips} id="blanco_loans">
             <Label>Blancolån</Label>
             <Input type="number" suffix="kr" />
           </InputField>
 
-          <InputField form={form} hints={Hints} id="installment_loans">
+          <InputField form={form} tooltips={Tooltips} id="installment_loans">
             <Label>Avbetalningskrediter</Label>
             <Input type="number" suffix="kr" />
           </InputField>
