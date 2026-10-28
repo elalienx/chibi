@@ -81,7 +81,7 @@ test("3. Clicking on another tooltip closes the previous one", async () => {
   });
 });
 
-test("4. Can render a tooltip if the parent hints fail but the child label has a backup hint", async () => {
+test("4. Can render a tooltip if the parent tooltips fail but the child label has a backup tooltip", async () => {
   // Act
   await form.getByText(item4).getByRole("button").click();
 

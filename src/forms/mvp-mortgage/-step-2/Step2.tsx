@@ -61,7 +61,7 @@ export default function Step2({ propertyType }: Props) {
 
       <section>
         {isTerracedHouse && (
-          <ToggleGroup form={form} hints={Tooltips} id="tenancy_type">
+          <ToggleGroup form={form} tooltips={Tooltips} id="tenancy_type">
             <Label>Vad har radhuset för upplåtelseform?</Label>
             <ToggleOption value="agreement">Bostadsrätt</ToggleOption>
             <ToggleOption value="ownership">Äganderätt</ToggleOption>
@@ -73,20 +73,20 @@ export default function Step2({ propertyType }: Props) {
           <Input type="number" suffix="kvm" />
         </InputField>
 
-        <InputField form={form} hints={Tooltips} id="rooms">
+        <InputField form={form} tooltips={Tooltips} id="rooms">
           <Label>Antal rum</Label>
           <Input type="number" suffix="st" />
         </InputField>
 
         {hasMonthlyFee && (
-          <InputField form={form} hints={Tooltips} id="monthly_fee">
+          <InputField form={form} tooltips={Tooltips} id="monthly_fee">
             <Label>Månadsavgift</Label>
             <Input type="number" suffix="kr/mån" />
           </InputField>
         )}
 
         {hasOperatingCost && (
-          <InputField form={form} hints={Tooltips} id="operating_cost">
+          <InputField form={form} tooltips={Tooltips} id="operating_cost">
             <Label>Driftskostnad</Label>
             <Input type="number" suffix="kr/mån" />
           </InputField>

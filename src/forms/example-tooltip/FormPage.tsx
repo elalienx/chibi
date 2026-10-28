@@ -20,7 +20,7 @@ const schema = v.object({
   favorite_brand: v.pipe(v.string(), v.nonEmpty("Choose a brand.")),
 });
 
-const hints = {
+const tooltips = {
   name: "Write both your first and last name.",
   likes_beer: "You can see yes if you like Cider as well.",
 };
@@ -45,19 +45,19 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} hints={hints} id="name">
+        <InputField form={form} tooltips={tooltips} id="name">
           <Label>Full name</Label>
           <Input type="text" placeholder="Leif Lend" />
         </InputField>
 
-        <RadioGroup form={form} hints={hints} id="likes_beer">
+        <RadioGroup form={form} tooltips={tooltips} id="likes_beer">
           <Label>Do you like beer?</Label>
           <RadioOption value="yes">Yes</RadioOption>
           <RadioOption value="no">No</RadioOption>
         </RadioGroup>
 
-        <ToggleGroup form={form} hints={hints} id="favorite_brand">
-          <Label hint={<GuinessTooltip />}>Which brand do you like the most?</Label>
+        <ToggleGroup form={form} tooltips={tooltips} id="favorite_brand">
+          <Label tooltip={<GuinessTooltip />}>Which brand do you like the most?</Label>
           <ToggleOption value="guiness">Guiness</ToggleOption>
           <ToggleOption value="heineken">Heineken</ToggleOption>
         </ToggleGroup>

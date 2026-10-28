@@ -17,7 +17,7 @@ export const Default = meta.story({
 export const WithTooltip = meta.story({
   name: "Label with tooltip",
   render: () => (
-    <Label id="email" hint="We ask for your email so you can login again in the future.">
+    <Label id="email" tooltip="We ask for your email so you can login again in the future.">
       Write your email
     </Label>
   ),

@@ -18,18 +18,18 @@ interface Props {
   /** An instance of a Formisch form. */
   form: FormStore;
 
-  /** All the possible tooltips hints available in this form. */
-  hints?: Record<string, ReactNode>;
+  /** All the possible tooltips available in this form. */
+  tooltips?: Record<string, ReactNode>;
 }
 
-export default function InputField({ id, children, form, hints }: Props) {
+export default function InputField({ id, children, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and a InputField to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Components
-  const hint = hints?.[id];
-  const label = extractComponent({ component: Label, extractFrom: children, props: { id, hint } });
+  const tooltip = tooltips?.[id];
+  const label = extractComponent({ component: Label, extractFrom: children, props: { id, tooltip } });
   const input = extractComponent({ component: Input, extractFrom: children, props: { id, form } });
 
   return (

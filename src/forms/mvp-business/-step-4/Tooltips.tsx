@@ -8,7 +8,7 @@ const Turnover = (
   </div>
 );
 
-/** All the possible tooltips hints available in this step. */
+/** All the possible tooltips available in this step. */
 const Tooltips = {
   has_existing_loans: "",
   turnover: Turnover,
