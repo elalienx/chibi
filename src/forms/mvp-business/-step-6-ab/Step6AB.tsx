@@ -7,11 +7,16 @@ import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import exampleSSNs from "../-bank-id-login/exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import "./step-6-ab.css";
+
+// Properties
+const { SINGLE_PUBLIC_COMPANY, SOLE_TRADER } = exampleSSNs;
 
 export default function Step6AB() {
   // Global state
@@ -25,6 +30,11 @@ export default function Step6AB() {
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application }),
   });
+
+  // Derived state
+  const skippedCompanySelector = [SINGLE_PUBLIC_COMPANY, SOLE_TRADER].includes(application.ssn);
+  const currentStep = skippedCompanySelector ? 5 : 6;
+  const totalSteps = skippedCompanySelector ? 5 : 6;
 
   // Methods
   function submitForm(values: object) {
@@ -50,6 +60,7 @@ export default function Step6AB() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Borgensman</h4>
+        <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
       </header>
 
       <hr />

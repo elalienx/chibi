@@ -8,6 +8,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
@@ -51,6 +52,7 @@ export default function Step6EN() {
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Befintliga lån</h4>
+        <StepIndicator currentStep={5} totalSteps={5} />
       </header>
 
       <hr />

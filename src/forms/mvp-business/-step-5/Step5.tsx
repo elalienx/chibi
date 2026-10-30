@@ -10,6 +10,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import purposes from "../data/purposes";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import exampleSSNs from "../-bank-id-login/exampleSSNs";
@@ -35,6 +36,9 @@ export default function Step5() {
   const purpose = getInput(form, { path: ["purpose"] });
   const selectedPurpose = purposes.find((item) => item.value === purpose);
   const isSoleTrader = application.ssn === exampleSSNs.SOLE_TRADER;
+  const skippedCompanySelector = [exampleSSNs.SINGLE_PUBLIC_COMPANY, exampleSSNs.SOLE_TRADER].includes(application.ssn);
+  const currentStep = skippedCompanySelector ? 4 : 5;
+  const totalSteps = skippedCompanySelector ? 5 : 6;
 
   // Methods
   function submitForm(values: object) {
@@ -48,6 +52,7 @@ export default function Step5() {
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Lånesyfte</h4>
         <small>Nästa: {isSoleTrader ? "Befintliga lån" : "Borgensman"}</small>
+        <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
       </header>
 
       <hr />
