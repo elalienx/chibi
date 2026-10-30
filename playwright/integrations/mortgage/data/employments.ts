@@ -1,4 +1,3 @@
-/** Employment for the main applicant in Step 5. */
 export const mainEmployment = {
   employer: "Crypton Future Media",
   sinceYear: 2007, // Miku's release year
