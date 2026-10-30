@@ -19,14 +19,14 @@ export default async function fillStep4(form: Locator, props: Props) {
 
     // Relationship
     await form.getByRole("textbox", { name: "Vad har du för relation till din medsökande?" }).click();
-    await form.getByRole("radio", { name: relationship, exact: true }).check();
+    await form.getByRole("radio", { name: relationship }).check();
 
     // Social security number
     await form.getByRole("textbox", { name: "Medsökandes personnummer" }).fill(ssn);
 
     // Civil state
     await form.getByRole("textbox", { name: "Medsökandes civilstånd" }).click();
-    await form.getByRole("radio", { name: civilState, exact: true }).check();
+    await form.getByRole("radio", { name: civilState }).check();
 
     // Contact details
     await form.getByRole("textbox", { name: "Medsökandes e-post" }).fill(email);
@@ -34,12 +34,14 @@ export default async function fillStep4(form: Locator, props: Props) {
 
     // Employment type
     await form.getByRole("textbox", { name: "Medsökandes anställningsform" }).click();
-    await form.getByRole("radio", { name: employmentType, exact: true }).check();
+    await form.getByRole("radio", { name: employmentType }).check();
 
     // Politically exposed person (PEP)
     if (claimsPep) await form.getByRole("checkbox", { name: "Jag intygar att min medsökande INTE" }).uncheck();
 
     await form.getByRole("button", { name: "Nästa" }).click();
+
+    // PEP check
     if (claimsPep) await form.page().getByRole("button", { name: "Gå vidare" }).click();
   });
 }
