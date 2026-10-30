@@ -1,5 +1,6 @@
 // Node modules
 import { Form, useForm } from "@formisch/react";
+import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -21,6 +22,7 @@ import employmentTypes from "../data/employmentTypes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import PEPInfoModal from "./components/PEPInfoModal";
+import PEPWarningModal from "./components/PEPWarningModal";
 import schema from "./schema";
 import Tooltips from "./Tooltips";
 import "./step-3.css";
@@ -40,7 +42,22 @@ export default function Step3() {
   });
 
   // Methods
-  function submitForm(values: object) {
+  function submitForm(values: v.InferOutput<typeof schema>) {
+    // PEP users can still apply, but we warn them first.
+    if (!values.is_not_pep) {
+      setModal(<PEPWarningModal onClose={closeModal} onContinue={() => continueAsPEP(values)} />);
+      return;
+    }
+
+    goNextStep(values);
+  }
+
+  function continueAsPEP(values: object) {
+    closeModal();
+    goNextStep(values);
+  }
+
+  function goNextStep(values: object) {
     updateApplication(values);
     setStep("success-step");
   }
