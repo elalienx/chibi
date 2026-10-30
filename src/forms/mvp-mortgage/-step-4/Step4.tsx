@@ -35,7 +35,7 @@ export default function Step4() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: !application.co_claims_pep }, // The checkbox shows the opposite, see schema
+    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: !application.co_claims_pep },
   });
 
   // Derived state
@@ -54,7 +54,7 @@ export default function Step4() {
     setStep("step-5");
   }
 
-  function continueAsPEP(values: v.InferOutput<typeof schema>) {
+  function continueAsPEP(values: object) {
     closeModal();
     updateApplication(values);
     setStep("step-5");
