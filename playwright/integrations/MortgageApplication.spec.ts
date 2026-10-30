@@ -3,8 +3,8 @@ import { test, type Locator } from "@playwright/test";
 
 // Project files
 import checkSuccessStep from "./mortgage/checkSuccessStep";
-import { mainApplicant } from "./mortgage/data/applicants";
-import { mainEmployment } from "./mortgage/data/employments";
+import { coApplicant, mainApplicant } from "./mortgage/data/applicants";
+import { coEmployment, mainEmployment } from "./mortgage/data/employments";
 import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
 import fillStep2 from "./mortgage/fillStep2";
@@ -91,23 +91,9 @@ test.describe("With co-applicant", () => {
     await fillStep1(form, { propertyType: "Lägenhet" });
     await fillStep2(form, { squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Ja" });
-    await fillStep4(form, {
-      relationship: "Make/Maka",
-      ssn: "198001011234",
-      civilState: "Gift",
-      email: "bo@example.com",
-      phone: "+46 70 765 43 21",
-      employmentType: "Egenföretagare",
-    });
+    await fillStep4(form, coApplicant);
     await fillStep5(form, mainEmployment);
-    await fillStep6(form, {
-      employer: "Bo Konsult AB",
-      sinceYear: 2015,
-      sinceMonth: "Augusti",
-      monthlyIncome: 38_000,
-      profession: "Konsult",
-      foreignCurrency: "Nej",
-    });
+    await fillStep6(form, coEmployment);
     await checkSuccessStep(form, { result1, result2 });
   });
 });
