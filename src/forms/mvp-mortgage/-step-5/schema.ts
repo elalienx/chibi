@@ -40,8 +40,8 @@ const main_employment_profession = v.pipe(
 
 const main_employment_income_in_foreign_currency = v.pipe(
   v.string("Svara ja eller nej för att gå vidare."),
-  v.nonEmpty("Svara ja eller nej för att gå vidare."), // input radio send us a string even if we send a boolean
-  v.transform((value) => value === String(true)), // thus, this converts it back to boolean
+  v.nonEmpty("Svara ja eller nej för att gå vidare."),
+  v.transform((value) => value === String(true)),
 );
 
 // Schema
