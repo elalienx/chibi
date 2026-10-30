@@ -9,7 +9,9 @@ import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
 import fillStep2 from "./mortgage/fillStep2";
 import fillStep3 from "./mortgage/fillStep3";
+import fillStep4 from "./mortgage/fillStep4";
 import fillStep5 from "./mortgage/fillStep5";
+import fillStep6 from "./mortgage/fillStep6";
 
 // Properties
 let form: Locator;
@@ -76,6 +78,36 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await checkSuccessStep(form, { result1, result2 });
+  });
+});
+
+test.describe("With co-applicant", () => {
+  test("Should be able to apply for an apartment", async () => {
+    const result1 = "You choose a 36m apartment with 1 rooms";
+    const result2 = "Therefore your monthly fee is 3 125 SEK";
+
+    await fillIntroStep(form);
+    await fillStep1(form, { propertyType: "Lägenhet" });
+    await fillStep2(form, { squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
+    await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Ja" });
+    await fillStep4(form, {
+      relationship: "Make/Maka",
+      ssn: "198001011234",
+      civilState: "Gift",
+      email: "bo@example.com",
+      phone: "+46 70 765 43 21",
+      employmentType: "Egenföretagare",
+    });
+    await fillStep5(form, mainEmployment);
+    await fillStep6(form, {
+      employer: "Bo Konsult AB",
+      sinceYear: 2015,
+      sinceMonth: "Augusti",
+      monthlyIncome: 38_000,
+      profession: "Konsult",
+      foreignCurrency: "Nej",
+    });
     await checkSuccessStep(form, { result1, result2 });
   });
 });
