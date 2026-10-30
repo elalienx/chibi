@@ -15,6 +15,8 @@ import SelectOption from "components/select-option/SelectOption";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import civilStatuses from "../data/civilStatuses";
+import employmentTypes from "../data/employmentTypes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
@@ -58,9 +60,11 @@ export default function Step3() {
         <SelectGroup form={form} id="civil_status">
           <Label>Civilstånd</Label>
           <Select>Ange civilstånd</Select>
-          <SelectOption value="option_1">Alternativ 1</SelectOption>
-          <SelectOption value="option_2">Alternativ 2</SelectOption>
-          <SelectOption value="option_3">Alternativ 3</SelectOption>
+          {civilStatuses.map(({ label, value }) => (
+            <SelectOption key={value} value={value}>
+              {label}
+            </SelectOption>
+          ))}
         </SelectGroup>
 
         <InputField form={form} id="email">
@@ -76,9 +80,11 @@ export default function Step3() {
         <SelectGroup form={form} tooltips={Tooltips} id="employment_type">
           <Label>Anställningsform</Label>
           <Select>Ange anställningsform</Select>
-          <SelectOption value="option_1">Alternativ 1</SelectOption>
-          <SelectOption value="option_2">Alternativ 2</SelectOption>
-          <SelectOption value="option_3">Alternativ 3</SelectOption>
+          {employmentTypes.map(({ label, value }) => (
+            <SelectOption key={value} value={value}>
+              {label}
+            </SelectOption>
+          ))}
         </SelectGroup>
 
         <ToggleGroup form={form} tooltips={Tooltips} id="has_co_applicant">
