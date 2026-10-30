@@ -1,4 +1,5 @@
 // Project files
+import ModalManager from "components/modal-manager/ModalManager";
 import IntroStep from "./-intro-step/IntroStep";
 import Step1 from "./-step-1/Step1";
 import Step2 from "./-step-2/Step2";
@@ -20,6 +21,9 @@ export default function FormManager() {
       {step === "step-1" && <Step1 />}
       {step === "step-2" && <Step2 propertyType={propertyType} />}
       {step === "success-step" && <Success />}
+
+      {/* Lives at the root so any step can open a modal */}
+      <ModalManager />
     </>
   );
 }

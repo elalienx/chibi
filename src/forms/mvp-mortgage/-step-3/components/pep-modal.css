@@ -1,0 +1,4 @@
+#pep-modal {
+  max-width: 550px;
+  padding: var(--space-medium);
+}
