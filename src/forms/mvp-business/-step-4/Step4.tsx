@@ -10,11 +10,16 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import exampleSSNs from "../-bank-id-login/exampleSSNs";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import schema from "./schema";
 import Tooltips from "./Tooltips";
+
+// Properties
+const { SINGLE_PUBLIC_COMPANY, SOLE_TRADER } = exampleSSNs;
 
 export default function Step4() {
   // Global state
@@ -35,6 +40,9 @@ export default function Step4() {
   const startMonthAndYear = oneYearAgo.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
   const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
   const hasExistingLoans = Boolean(fieldExistingLoans === "true");
+  const skippedCompanySelector = [SINGLE_PUBLIC_COMPANY, SOLE_TRADER].includes(application.ssn);
+  const currentStep = skippedCompanySelector ? 3 : 4;
+  const totalSteps = skippedCompanySelector ? 5 : 6;
 
   // Methods
   function submitForm(values: object) {
@@ -50,6 +58,7 @@ export default function Step4() {
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Omsättning</h4>
         <small>Nästa: Lånesyfte</small>
+        <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
       </header>
 
       <hr />
