@@ -1,0 +1,40 @@
+#pep-warning-modal {
+  max-width: 736px;
+  color: var(--typography-dark);
+
+  /* Text */
+  section {
+    padding: var(--space-medium);
+
+    h5 {
+      margin-bottom: var(--space-xs);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: var(--space-xl);
+    }
+  }
+
+  /* Buttons */
+  footer {
+    display: flex;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+    border-top: solid 1px var(--color-gray-80);
+
+    .primary {
+      flex: 1; /* Avbryt keeps its text width while Gå vidare fills the rest. */
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #pep-warning-modal section {
+    padding: var(--space-2xl);
+  }
+}
