@@ -3,6 +3,8 @@ import { test, type Locator } from "@playwright/test";
 
 // Project files
 import checkSuccessStep from "./mortgage/checkSuccessStep";
+import { mainApplicant } from "./mortgage/data/applicants";
+import { mainEmployment } from "./mortgage/data/employments";
 import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
 import fillStep2 from "./mortgage/fillStep2";
@@ -11,22 +13,6 @@ import fillStep5 from "./mortgage/fillStep5";
 
 // Properties
 let form: Locator;
-
-const mainApplicant = {
-  civilState: "Gift",
-  email: "anna@example.com",
-  phone: "+46 70 123 45 67",
-  employmentType: "Fast anställning / tillsvidare",
-};
-
-const mainEmployment = {
-  employer: "Lendo AB",
-  sinceYear: 2020,
-  sinceMonth: "Mars",
-  monthlyIncome: 45_000,
-  profession: "Sjuksköterska",
-  foreignCurrency: "Nej",
-} as const;
 
 // The mortgage journeys have up to 6 steps, more than the global 1 second allows.
 test.describe.configure({ timeout: 3_000 });
