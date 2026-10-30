@@ -24,7 +24,6 @@ import useFormNavigation from "../state/useFormNavigation";
 import PEPInfoModal from "./components/PEPInfoModal";
 import PEPWarningModal from "./components/PEPWarningModal";
 import schema from "./schema";
-import Tooltips from "./Tooltips";
 import "./step-3.css";
 
 export default function Step3() {
@@ -40,6 +39,10 @@ export default function Step3() {
     revalidate: "blur",
     initialInput: { ...cleanInitialInput({ input: application }), is_not_pep: true },
   });
+
+  // Derived state
+  const employmentTooltip = `Är du över 65 år? För att du ska få korrekta erbjudanden är det viktigt att du anger pension som anställningsform, trots att du fortfarande arbetar just nu.`;
+  const coApplicantTooltip = `Medsökande är en person som står tillsammans med dig på lånet, kan exempelvis vara en sambo eller annan familjemedlem.`;
 
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
@@ -97,8 +100,8 @@ export default function Step3() {
           <Input type="tel" placeholder="+46 XX XXX XX XX" />
         </InputField>
 
-        <SelectGroup form={form} tooltips={Tooltips} id="employment_type">
-          <Label>Anställningsform</Label>
+        <SelectGroup form={form} id="employment_type">
+          <Label tooltip={employmentTooltip}>Anställningsform</Label>
           <Select>Ange anställningsform</Select>
           {employmentTypes.map(({ label, value }) => (
             <SelectOption key={value} value={value}>
@@ -107,8 +110,8 @@ export default function Step3() {
           ))}
         </SelectGroup>
 
-        <ToggleGroup form={form} tooltips={Tooltips} id="has_co_applicant">
-          <Label>Har du en medsökande?</Label>
+        <ToggleGroup form={form} id="has_co_applicant">
+          <Label tooltip={coApplicantTooltip}>Har du en medsökande?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>
         </ToggleGroup>
