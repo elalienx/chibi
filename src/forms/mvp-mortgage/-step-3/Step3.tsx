@@ -29,10 +29,6 @@ import PEPWarningModal from "./components/PEPWarningModal";
 import schema from "./schema";
 import "./step-3.css";
 
-// Properties
-const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
-const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
-
 export default function Step3() {
   // Global state
   const { application, updateApplication } = useApplication();
@@ -44,7 +40,7 @@ export default function Step3() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), main_claims_pep: !application.main_claims_pep }, // The checkbox shows the opposite, see schema
+    initialInput: { ...cleanInitialInput({ input: application }), main_claims_pep: !application.main_claims_pep },
   });
 
   // Derived state
@@ -54,22 +50,24 @@ export default function Step3() {
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
     // Without a co-applicant we skip Step 4 and 6, so clear any co-applicant data saved on a previous visit.
-    const updates = values.has_co_applicant ? values : { ...coApplicantReset, ...values };
+    const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
+    const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
+    const newValues = values.has_co_applicant ? values : { ...coApplicantReset, ...values };
     const nextStep = values.has_co_applicant ? "step-4" : "step-5";
 
     // PEP users can still apply, but we warn them first.
     if (values.main_claims_pep) {
-      setModal(<PEPWarningModal onClose={closeModal} onContinue={() => continueAsPEP(updates, nextStep)} />);
+      setModal(<PEPWarningModal onClose={closeModal} onContinue={() => continueAsPEP(newValues, nextStep)} />);
       return;
     }
 
-    updateApplication(updates);
+    updateApplication(newValues);
     setStep(nextStep);
   }
 
-  function continueAsPEP(updates: Partial<Application>, nextStep: Step) {
+  function continueAsPEP(values: object, nextStep: Step) {
     closeModal();
-    updateApplication(updates);
+    updateApplication(values);
     setStep(nextStep);
   }
 
