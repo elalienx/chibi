@@ -1,5 +1,6 @@
 /* Outer wrapper for the content and pointy arrow */
 .tooltip-window {
+  z-index: 1; /* To float above later positioned siblings, like the toggle options. */
   max-width: 90%;
   padding-inline: var(--space-medium); /*  To avoid touching the screen. */
   outline: transparent; /* To remove the focusable blue line. */
