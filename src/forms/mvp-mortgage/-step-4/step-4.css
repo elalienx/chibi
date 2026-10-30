@@ -1,0 +1,32 @@
+#step-4 {
+  /* Political Exposed Person (PEP) checkbox */
+  .pep {
+    gap: var(--space-xs);
+    margin-block: var(--space-xl);
+
+    small {
+      font-size: var(--font-size-small);
+      line-height: 16px;
+      letter-spacing: 0.24px;
+
+      /* Looks like a link, but it is a button because it opens a modal. */
+      .pep-info {
+        padding: 0;
+        background: none;
+        border: none;
+        color: var(--typography-link);
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: var(--font-weight-medium);
+        line-height: inherit;
+        text-decoration: underline;
+        letter-spacing: inherit;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
