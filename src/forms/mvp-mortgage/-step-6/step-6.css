@@ -1,0 +1,22 @@
+#step-6 {
+  /* Year and month selects */
+  .date {
+    --field-min-width: 0px; /* Lets both selects shrink to share the row. */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-medium);
+  }
+
+  /* Month labels */
+  .select-group:has(#co_employment_since_month, #co_employment_to_month) .label {
+    color: transparent; /* Hidden on screen but still read by screen readers. Keeps the row height so both selects line up. */
+    user-select: none;
+  }
+
+  /* Foreign currency toggle */
+  .toggle-group:has(#co_employment_income_in_foreign_currency) .toggle-option {
+    min-width: 80px; /* Use min-width so longer text can still grow the option. */
+  }
+}
