@@ -35,7 +35,7 @@ export default function Step4() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), co_applicant_is_not_pep: true },
+    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: true },
   });
 
   // Derived state
@@ -45,7 +45,7 @@ export default function Step4() {
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
     // PEP co-applicants can still apply, but we warn them first.
-    if (!values.co_applicant_is_not_pep) {
+    if (values.co_claims_pep) {
       setModal(<PEPWarningModalCoApplicant onClose={closeModal} onContinue={() => continueAsPEP(values)} />);
       return;
     }
@@ -80,7 +80,7 @@ export default function Step4() {
       </header>
 
       <section>
-        <SelectGroup form={form} id="co_applicant_relation">
+        <SelectGroup form={form} id="co_relationship_with_main_applicant">
           <Label>Vad har du för relation till din medsökande?</Label>
           <Select>Ange relation</Select>
           <SelectOption value="married">Make/Maka</SelectOption>
@@ -89,12 +89,12 @@ export default function Step4() {
           <SelectOption value="other">Annan relation</SelectOption>
         </SelectGroup>
 
-        <InputField form={form} id="co_applicant_ssn">
+        <InputField form={form} id="co_ssn">
           <Label tooltip={ssnTooltip}>Medsökandes personnummer</Label>
           <Input type="text" placeholder="ÅÅÅÅMMDDXXXX" />
         </InputField>
 
-        <SelectGroup form={form} id="co_applicant_civil_status">
+        <SelectGroup form={form} id="co_civil_state">
           <Label>Medsökandes civilstånd</Label>
           <Select>Ange civilstånd</Select>
           {civilStatuses.map(({ label, value }) => (
@@ -104,17 +104,17 @@ export default function Step4() {
           ))}
         </SelectGroup>
 
-        <InputField form={form} id="co_applicant_email">
+        <InputField form={form} id="co_email">
           <Label>Medsökandes e-post</Label>
           <Input type="email" placeholder="namn@email.se" />
         </InputField>
 
-        <InputField form={form} id="co_applicant_phone">
+        <InputField form={form} id="co_phone">
           <Label>Medsökandes mobilnummer</Label>
           <Input type="tel" placeholder="+46 XX XXX XX XX" />
         </InputField>
 
-        <SelectGroup form={form} id="co_applicant_employment_type">
+        <SelectGroup form={form} id="co_employment_type">
           <Label tooltip={employmentTooltip}>Medsökandes anställningsform</Label>
           <Select>Ange anställningsform</Select>
           {employmentTypes.map(({ label, value }) => (
@@ -128,7 +128,7 @@ export default function Step4() {
       <hr />
 
       <section className="pep">
-        <Checkbox form={form} id="co_applicant_is_not_pep">
+        <Checkbox form={form} id="co_claims_pep">
           Jag intygar att min medsökande INTE är en person i politisk utsatt ställning (PEP).
         </Checkbox>
         <small>
