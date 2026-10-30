@@ -19,6 +19,10 @@
 
     &:not(:has(> small)) {
       grid-template-areas: "left title right"; /* Single row keeps the title centered when there is no subtitle. */
+
+      > h4 {
+        align-self: center;
+      }
     }
 
     > .arrow-go-back {
@@ -38,16 +42,19 @@
 
     > h4 {
       grid-area: title;
+      align-self: end; /* Keeps the title and subtitle together when the side columns are taller. */
       font-size: var(--font-size-normal);
     }
 
     > small {
       grid-area: subtitle;
+      align-self: start;
       color: var(--typography-default);
       font-size: var(--font-size-small);
     }
 
-    > .icon {
+    > .icon,
+    > .step-indicator {
       grid-area: right;
     }
   }
@@ -74,7 +81,7 @@
 @media (min-width: 550px) {
   .business-form {
     > header {
-      grid-template-columns: var(--space-7xl) 1fr var(--space-7xl);
+      grid-template-columns: var(--space-8xl) 1fr var(--space-8xl); /* Fits the 72px step indicator. */
       gap: var(--space-base) var(--space-medium);
 
       > .arrow-go-back {
