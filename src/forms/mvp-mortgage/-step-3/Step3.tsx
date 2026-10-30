@@ -15,10 +15,12 @@ import SelectOption from "components/select-option/SelectOption";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import useModal from "state/useModal";
 import civilStatuses from "../data/civilStatuses";
 import employmentTypes from "../data/employmentTypes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import PEPModal from "./components/PEPModal";
 import schema from "./schema";
 import Tooltips from "./Tooltips";
 import "./step-3.css";
@@ -27,6 +29,7 @@ export default function Step3() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
+  const { setModal } = useModal.getState();
 
   // Local state
   const form = useForm({
@@ -44,9 +47,9 @@ export default function Step3() {
 
   // Components
   const PEPInfo = (
-    <a href="#" target="_blank">
+    <button type="button" className="pep-info" onClick={() => setModal(<PEPModal />)}>
       Klicka här
-    </a>
+    </button>
   );
 
   return (
