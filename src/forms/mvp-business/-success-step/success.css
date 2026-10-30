@@ -1,10 +1,9 @@
 #success-step {
-  > section {
-    align-items: center;
-    gap: var(--space-medium);
-    margin-block: var(--space-xl);
-    text-align: center;
-  }
+  align-items: center;
+  gap: var(--space-medium);
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-medium);
+  text-align: center;
 
   .success-indicator {
     width: 100px;
@@ -32,29 +31,24 @@
       color: var(--typography-default);
       line-height: 24px;
       text-align: start;
-      letter-spacing: 0.16px;
     }
   }
 
-  > section > .button {
+  > .button {
     width: 100%;
   }
 
   .bank-id-information {
     color: var(--typography-default);
     font-weight: var(--font-weight-medium);
-    line-height: 24px;
-    letter-spacing: 0.16px;
   }
 }
 
 /* Tablet */
 @media (min-width: 550px) {
   #success-step {
-    > section {
-      gap: var(--space-xl);
-      margin-block: var(--space-2xl);
-    }
+    gap: var(--space-xl);
+    padding: var(--space-2xl);
 
     .success-indicator {
       width: 148px;
@@ -66,13 +60,10 @@
 
       > h4 {
         font-size: 24px;
-        line-height: 32px;
-        letter-spacing: -0.48px;
       }
 
       > p {
         font-size: var(--font-size-large);
-        letter-spacing: 0;
       }
     }
   }
