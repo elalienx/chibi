@@ -49,7 +49,7 @@ export default function Step2({ propertyType }: Props) {
     // Fee fields are mutually exclusive.
     // Reset both so only the user's active input is sent to the backend.
     updateApplication({ monthly_fee: 0, operating_cost: 0, ...values });
-    setStep("success-step");
+    setStep("step-3");
   }
 
   return (
