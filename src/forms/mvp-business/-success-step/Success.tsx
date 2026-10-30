@@ -26,25 +26,23 @@ export default function Success() {
 
   return (
     <div className="business-form" id="success-step">
-      <section>
-        <img alt="Ansökan skickad" className="success-indicator" src="/images/success-indicator.svg" />
+      <img alt="Ansökan skickad" className="success-indicator" src="/images/success-indicator.svg" />
 
-        <h3>Tack för din ansökan!</h3>
+      <h3>Tack för din ansökan!</h3>
 
-        <div className="what-happens-now">
-          <h4>Vad händer nu?</h4>
-          <p>
-            Din ansökan har skickats till våra långivare. Du kan se dina personliga erbjudanden genom att trycka på
-            knappen nedan. Tänk på att det kan ta upp till 24 timmar att få svar från alla långivare.
-          </p>
-        </div>
+      <div className="what-happens-now">
+        <h4>Vad händer nu?</h4>
+        <p>
+          Din ansökan har skickats till våra långivare. Du kan se dina personliga erbjudanden genom att trycka på
+          knappen nedan. Tänk på att det kan ta upp till 24 timmar att få svar från alla långivare.
+        </p>
+      </div>
 
-        <Button onClick={startAgain}>Börja om</Button>
+      <Button onClick={startAgain}>Börja om</Button>
 
-        <div className="bank-id-information">
-          Varför ber vi om BankID-identifiering? <Tooltip>{InfoTooltip}</Tooltip>
-        </div>
-      </section>
+      <div className="bank-id-information">
+        Varför ber vi om BankID-identifiering? <Tooltip>{InfoTooltip}</Tooltip>
+      </div>
     </div>
   );
 }
