@@ -27,7 +27,7 @@ export default function Success() {
   return (
     <div className="business-form" id="success-step">
       <section>
-        <img alt="" className="success-indicator" height="148" src="/images/success-indicator.svg" width="148" />
+        <img alt="Ansökan skickad" className="success-indicator" src="/images/success-indicator.svg" />
 
         <h3>Tack för din ansökan!</h3>
 
