@@ -1,4 +1,46 @@
-#pep-modal {
-  max-width: 550px;
+#pep-info-modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  max-width: 736px;
   padding: var(--space-medium);
+  color: var(--typography-dark);
+
+  p,
+  ul {
+    margin: 0; /* The parent gaps handle the spacing. */
+  }
+
+  /* Text blocks */
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  /* Lists split in two columns */
+  .columns {
+    display: grid;
+    gap: var(--space-base);
+
+    ul {
+      padding-left: var(--space-xl);
+    }
+
+    li + li {
+      margin-top: var(--space-base);
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #pep-info-modal {
+    padding: var(--space-2xl);
+
+    .columns {
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+  }
 }

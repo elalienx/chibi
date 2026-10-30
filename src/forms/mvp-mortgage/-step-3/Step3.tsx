@@ -20,7 +20,7 @@ import civilStatuses from "../data/civilStatuses";
 import employmentTypes from "../data/employmentTypes";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import PEPModal from "./components/PEPModal";
+import PEPInfoModal from "./components/PEPInfoModal";
 import schema from "./schema";
 import Tooltips from "./Tooltips";
 import "./step-3.css";
@@ -29,7 +29,7 @@ export default function Step3() {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
-  const { setModal } = useModal.getState();
+  const { setModal, closeModal } = useModal.getState();
 
   // Local state
   const form = useForm({
@@ -47,7 +47,7 @@ export default function Step3() {
 
   // Components
   const PEPInfo = (
-    <button type="button" className="pep-info" onClick={() => setModal(<PEPModal />)}>
+    <button type="button" className="pep-info" onClick={() => setModal(<PEPInfoModal onClose={closeModal} />)}>
       Klicka här
     </button>
   );
