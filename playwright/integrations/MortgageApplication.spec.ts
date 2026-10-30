@@ -14,9 +14,6 @@ import fillStep5 from "./mortgage/fillStep5";
 // Properties
 let form: Locator;
 
-// The mortgage journeys have up to 6 steps, more than the global 1 second allows.
-test.describe.configure({ timeout: 3_000 });
-
 test.beforeEach(async ({ mount }) => {
   form = await mount("forms/mvp-mortgage/FormManager/Default");
 });
