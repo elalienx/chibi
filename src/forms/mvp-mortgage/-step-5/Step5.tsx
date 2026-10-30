@@ -1,5 +1,6 @@
 // Node modules
 import { Form, getInput, useForm } from "@formisch/react";
+import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -37,7 +38,7 @@ export default function Step5() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput({ input: application }),
+    initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
   // Derived state
@@ -48,9 +49,9 @@ export default function Step5() {
   const foreignCurrencyTooltip = `Om du tjänar din inkomst i annan valuta än svenska kronor kan det påverka din möjlighet att få ett lån.`;
 
   // Methods
-  function submitForm(values: object) {
+  function submitForm(values: v.InferOutput<typeof schema>) {
     updateApplication(values);
-    setStep("success-step");
+    setStep(application.has_co_applicant ? "step-6" : "success-step");
   }
 
   return (
@@ -78,7 +79,7 @@ export default function Step5() {
           </SelectGroup>
 
           <SelectGroup form={form} id="main_employment_since_month">
-            <Label>Månad</Label>
+            <Label>Anställd sedan, månad</Label>
             <Select>Ange månad</Select>
             {sinceMonths.map(({ label, value }) => (
               <SelectOption key={value} value={value}>
@@ -100,7 +101,7 @@ export default function Step5() {
           </SelectGroup>
 
           <SelectGroup form={form} id="main_employment_to_month">
-            <Label>Månad</Label>
+            <Label>Anställd till, månad</Label>
             <Select>Ange månad</Select>
             {months.map(({ label, value }) => (
               <SelectOption key={value} value={value}>
