@@ -9,6 +9,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
@@ -48,6 +49,7 @@ export default function Step2() {
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Personuppgifter</h4>
         <small>Nästa: Val av bolag</small>
+        <StepIndicator currentStep={2} totalSteps={5} />
       </header>
 
       {/* Editable box */}
