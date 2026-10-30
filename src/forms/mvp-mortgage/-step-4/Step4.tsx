@@ -35,7 +35,7 @@ export default function Step4() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: true },
+    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: !application.co_claims_pep }, // The checkbox shows the opposite, see schema
   });
 
   // Derived state
@@ -50,19 +50,14 @@ export default function Step4() {
       return;
     }
 
-    goNextStep(values);
-  }
-
-  function continueAsPEP(values: object) {
-    closeModal();
-    goNextStep(values);
-  }
-
-  // Temporary: typing values as object hides that Application lacks this step fields.
-  // In the wiring PR, add them to Application, then inline this method.
-  function goNextStep(values: object) {
     updateApplication(values);
-    setStep("success-step");
+    setStep("step-5");
+  }
+
+  function continueAsPEP(values: v.InferOutput<typeof schema>) {
+    closeModal();
+    updateApplication(values);
+    setStep("step-5");
   }
 
   // Components
