@@ -35,7 +35,7 @@ export default function Step4() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: true }, // true = checked box, see schema
+    initialInput: { ...cleanInitialInput({ input: application }), co_claims_pep: true },
   });
 
   // Derived state
