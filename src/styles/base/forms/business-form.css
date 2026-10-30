@@ -13,7 +13,7 @@
       "left subtitle right";
     grid-template-columns: var(--space-5xl) 1fr var(--space-5xl); /* Equal side columns keep the title and subtitle centered. */
     place-items: center;
-    gap: var(--space-tiny) var(--space-xs);
+    gap: var(--space-tiny) var(--space-medium);
     margin-block: var(--space-xs);
     margin-inline: var(--space-medium);
 
@@ -38,10 +38,13 @@
 
     > h4 {
       grid-area: title;
+      font-size: var(--font-size-normal);
     }
 
     > small {
       grid-area: subtitle;
+      color: var(--typography-default);
+      font-size: var(--font-size-small);
     }
 
     > .icon {
@@ -76,6 +79,14 @@
 
       > .arrow-go-back {
         height: var(--space-7xl);
+      }
+
+      > h4 {
+        font-size: var(--font-size-large);
+      }
+
+      > small {
+        font-size: var(--font-size-normal);
       }
     }
 
