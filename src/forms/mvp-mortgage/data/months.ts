@@ -1,4 +1,3 @@
-/** The months of the year, numbered from 1 like the old mortgage state. */
 const months = [
   { value: 1, label: "Januari" },
   { value: 2, label: "Februari" },
