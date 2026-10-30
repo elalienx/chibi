@@ -7,6 +7,7 @@ import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
+import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
@@ -39,6 +40,7 @@ export default function Step3() {
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Val av bolag</h4>
         <small>Nästa: Omsättning</small>
+        <StepIndicator currentStep={3} totalSteps={6} />
       </header>
 
       <hr />
