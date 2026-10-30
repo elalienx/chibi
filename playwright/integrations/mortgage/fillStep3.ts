@@ -18,7 +18,7 @@ export default async function fillStep3(form: Locator, props: Props) {
 
     // Civil state
     await form.getByRole("textbox", { name: "Civilstånd" }).click();
-    await form.getByRole("radio", { name: civilState, exact: true }).check();
+    await form.getByRole("radio", { name: civilState }).check();
 
     // Contact details
     await form.getByRole("textbox", { name: "E-postadress" }).fill(email);
@@ -26,15 +26,17 @@ export default async function fillStep3(form: Locator, props: Props) {
 
     // Employment type
     await form.getByRole("textbox", { name: "Anställningsform" }).click();
-    await form.getByRole("radio", { name: employmentType, exact: true }).check();
+    await form.getByRole("radio", { name: employmentType }).check();
 
     // Co-applicant
-    await form.getByRole("radio", { name: hasCoApplicant, exact: true }).check();
+    await form.getByRole("radio", { name: hasCoApplicant }).check();
 
     // Politically exposed person (PEP)
     if (claimsPep) await form.getByRole("checkbox", { name: "Jag intygar att jag INTE" }).uncheck();
 
     await form.getByRole("button", { name: "Nästa" }).click();
+
+    // PEP check
     if (claimsPep) await form.page().getByRole("button", { name: "Gå vidare" }).click();
   });
 }

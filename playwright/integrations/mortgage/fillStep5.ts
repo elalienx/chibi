@@ -22,19 +22,19 @@ export default async function fillStep5(form: Locator, props: Props) {
     await form.getByRole("textbox", { name: "Arbetsgivare" }).fill(employer);
 
     // Employed since
-    await form.getByRole("textbox", { name: "Anställd sedan", exact: true }).click();
-    await form.getByRole("radio", { name: String(sinceYear), exact: true }).check();
-    await form.getByRole("textbox", { name: "Anställd sedan, månad", exact: true }).click();
-    await form.getByRole("radio", { name: sinceMonth, exact: true }).check();
+    await form.getByRole("textbox", { name: "Anställd sedan", exact: true }).click(); // requires exact as starts identically as month
+    await form.getByRole("radio", { name: String(sinceYear) }).check();
+    await form.getByRole("textbox", { name: "Anställd sedan, månad" }).click();
+    await form.getByRole("radio", { name: sinceMonth }).check();
 
     // Employed until
     if (toYear) {
-      await form.getByRole("textbox", { name: "Anställd till", exact: true }).click();
-      await form.getByRole("radio", { name: String(toYear), exact: true }).check();
+      await form.getByRole("textbox", { name: "Anställd till", exact: true }).click(); // requires exact as starts identically as month
+      await form.getByRole("radio", { name: String(toYear) }).check();
     }
     if (toMonth) {
-      await form.getByRole("textbox", { name: "Anställd till, månad", exact: true }).click();
-      await form.getByRole("radio", { name: toMonth, exact: true }).check();
+      await form.getByRole("textbox", { name: "Anställd till, månad" }).click();
+      await form.getByRole("radio", { name: toMonth }).check();
     }
 
     // Income and profession
@@ -42,7 +42,7 @@ export default async function fillStep5(form: Locator, props: Props) {
     await form.getByRole("textbox", { name: "Yrke" }).fill(profession);
 
     // Foreign currency income
-    await form.getByRole("radio", { name: foreignCurrency, exact: true }).check();
+    await form.getByRole("radio", { name: foreignCurrency }).check();
 
     await form.getByRole("button", { name: "Nästa" }).click();
   });
