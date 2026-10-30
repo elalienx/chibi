@@ -102,6 +102,7 @@
 
   /* Gradients */
   --gradient-green: linear-gradient(to bottom, #29c466, #059142); /* Figma: Gradients/Linear */
+  --gradient-primary-soft: linear-gradient(to bottom, #f9fafb, #f3f7fe); /* Figma: Gradients/PrimarySoft */
 }
 
 /* Semantic values */
