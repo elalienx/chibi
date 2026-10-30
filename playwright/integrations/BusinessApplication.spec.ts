@@ -29,7 +29,7 @@ test.describe("Public company", () => {
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6AB(form);
-    await checkSuccessStep(form, { result: "Your turnover is 1 000 000 kr and your existing debt is 0 kr." });
+    await checkSuccessStep(form);
   });
 
   test("Should be able to submit with debt", async () => {
@@ -40,7 +40,7 @@ test.describe("Public company", () => {
     await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
     await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
     await fillStep6AB(form);
-    await checkSuccessStep(form, { result: "Your turnover is 500 000 kr and your existing debt is 250 000 kr." });
+    await checkSuccessStep(form);
   });
 
   test("Should skip the company selector for a single public company", async () => {
@@ -50,7 +50,7 @@ test.describe("Public company", () => {
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6AB(form);
-    await checkSuccessStep(form, { result: "Your turnover is 1 000 000 kr and your existing debt is 0 kr." });
+    await checkSuccessStep(form);
   });
 });
 
@@ -62,7 +62,7 @@ test.describe("Sole trader", () => {
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6EN(form);
-    await checkSuccessStep(form, { result: "Your turnover is 1 000 000 kr and your existing debt is 0 kr." });
+    await checkSuccessStep(form);
   });
 
   test("Should be able to submit with private loans", async () => {
@@ -72,6 +72,6 @@ test.describe("Sole trader", () => {
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6EN(form, { blancoLoans: 50_000, installmentLoans: 25_000, houseLoans: 1_500_000 });
-    await checkSuccessStep(form, { result: "Your turnover is 1 000 000 kr and your existing debt is 0 kr." });
+    await checkSuccessStep(form);
   });
 });
