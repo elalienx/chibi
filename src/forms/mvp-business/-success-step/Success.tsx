@@ -3,15 +3,23 @@ import Button from "components/button/Button";
 import Tooltip from "components/tooltip/Tooltip";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import BankIDTooltip from "./BankIDTooltip";
 import "./success.css";
 
 export default function Success() {
   // Global state
-  const { clearApplication } = useApplication();
+  const { application, clearApplication } = useApplication();
   const { resetNavigation } = useFormNavigation();
+
+  // Derived state
+  const formattedTurnover = application.turnover.toLocaleString("sv-SE");
+  const formattedLoanDebt = application.loan_debt.toLocaleString("sv-SE");
+  const result = `Your turnover is ${formattedTurnover} kr and your existing debt is ${formattedLoanDebt} kr.`;
+  const InfoTooltip = <BankIDTooltip />;
 
   // Methods
   function startAgain() {
+    console.log("Business submission", result);
     clearApplication();
     resetNavigation();
   }
@@ -34,16 +42,7 @@ export default function Success() {
         <Button onClick={startAgain}>Börja om</Button>
 
         <div className="bank-id-information">
-          Varför ber vi om BankID-identifiering?{" "}
-          <Tooltip>
-            <div className="tooltip-with-title">
-              <h5>Identifiering med BankID</h5>
-              <p>
-                För din och bankens säkerhet ber vi dig att verifiera dig med ditt BankID. Det förhindrar att någon
-                obehörig använder sig av dina uppgifter.
-              </p>
-            </div>
-          </Tooltip>
+          Varför ber vi om BankID-identifiering? <Tooltip>{InfoTooltip}</Tooltip>
         </div>
       </section>
     </div>
