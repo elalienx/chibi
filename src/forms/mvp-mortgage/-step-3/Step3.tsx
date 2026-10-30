@@ -37,7 +37,7 @@ export default function Step3() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), is_not_pep: true },
+    initialInput: { ...cleanInitialInput({ input: application }), main_claims_pep: true }, // true = checked box, see schema
   });
 
   // Derived state
@@ -47,7 +47,7 @@ export default function Step3() {
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
     // PEP users can still apply, but we warn them first.
-    if (!values.is_not_pep) {
+    if (values.main_claims_pep) {
       setModal(<PEPWarningModal onClose={closeModal} onContinue={() => continueAsPEP(values)} />);
       return;
     }
@@ -80,7 +80,7 @@ export default function Step3() {
       </header>
 
       <section>
-        <SelectGroup form={form} id="civil_status">
+        <SelectGroup form={form} id="main_civil_state">
           <Label>Civilstånd</Label>
           <Select>Ange civilstånd</Select>
           {civilStatuses.map(({ label, value }) => (
@@ -90,17 +90,17 @@ export default function Step3() {
           ))}
         </SelectGroup>
 
-        <InputField form={form} id="email">
+        <InputField form={form} id="main_email">
           <Label>E-postadress</Label>
           <Input type="email" placeholder="namn@email.se" />
         </InputField>
 
-        <InputField form={form} id="phone">
+        <InputField form={form} id="main_phone">
           <Label>Mobilnummer</Label>
           <Input type="tel" placeholder="+46 XX XXX XX XX" />
         </InputField>
 
-        <SelectGroup form={form} id="employment_type">
+        <SelectGroup form={form} id="main_employment_type">
           <Label tooltip={employmentTooltip}>Anställningsform</Label>
           <Select>Ange anställningsform</Select>
           {employmentTypes.map(({ label, value }) => (
@@ -120,7 +120,7 @@ export default function Step3() {
       <hr />
 
       <section className="pep">
-        <Checkbox form={form} id="is_not_pep">
+        <Checkbox form={form} id="main_claims_pep">
           Jag intygar att jag INTE är en person i politisk utsatt ställning (PEP).
         </Checkbox>
         <small>
