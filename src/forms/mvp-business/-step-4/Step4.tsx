@@ -35,9 +35,8 @@ export default function Step4() {
   });
 
   // Derived state
-  const today = new Date();
-  const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), 1);
-  const startMonthAndYear = oneYearAgo.toLocaleDateString("sv-SE", { month: "long", year: "numeric" });
+  const oneYearAgo = Temporal.Now.plainDateISO().subtract({ years: 1 });
+  const startMonthAndYear = oneYearAgo.toLocaleString("sv-SE", { month: "long", year: "numeric" });
   const fieldExistingLoans = getInput(form, { path: ["has_existing_loans"] });
   const hasExistingLoans = Boolean(fieldExistingLoans === "true");
   const skippedCompanySelector = [SINGLE_PUBLIC_COMPANY, SOLE_TRADER].includes(application.ssn);
