@@ -31,6 +31,7 @@ const initialApplication: Application = {
   main_employment_company_name: "",
   main_employment_income_in_foreign_currency: undefined,
   main_employment_monthly_income: 0,
+  main_employment_monthly_pension: 0,
   main_employment_profession: "",
   main_employment_since_month: 0,
   main_employment_since_year: 0,
