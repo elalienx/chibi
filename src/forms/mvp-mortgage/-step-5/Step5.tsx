@@ -48,7 +48,7 @@ export default function Step5({ employmentType }: Props) {
 
   // Derived state
   const { hasEmployer, hasEndDate, hasPension, hasProfession, hasIncome } = getEmploymentFields(employmentType);
-  const startYear = hasEmployer ? Number(getInput(form, { path: ["main_employment_since_year"] })) : 0; // The field only exists when there is an employer
+  const startYear = hasEmployer ? Number(getInput(form, { path: ["main_employment_since_year"] })) : 0;
   const hasForeignIncome = getInput(form, { path: ["main_employment_income_in_foreign_currency"] }) === "true";
 
   // Methods
