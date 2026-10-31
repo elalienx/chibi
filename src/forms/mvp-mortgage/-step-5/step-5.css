@@ -1,6 +1,6 @@
 #step-5 {
   /* Year and month selects */
-  .date {
+  .date-columns {
     --field-min-width: 0px; /* Lets both selects shrink to share the row. */
 
     display: grid;
