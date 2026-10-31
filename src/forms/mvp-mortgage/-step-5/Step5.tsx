@@ -17,7 +17,6 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import initialApplication from "../data/initialApplication";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import type Application from "../types/Application";
 import EndMonthOptions from "./components/EndMonthOptions";
 import EndYearOptions from "./components/EndYearOptions";
 import StartMonthOptions from "./components/StartMonthOptions";
@@ -56,7 +55,7 @@ export default function Step5({ employmentType }: Props) {
     // Fields depend on the employment type.
     // Reset them all so only the user's active input is sent to the backend.
     const employmentEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("main_employment_"));
-    const employmentReset = Object.fromEntries(employmentEntries) as Partial<Application>;
+    const employmentReset = Object.fromEntries(employmentEntries);
 
     updateApplication({ ...employmentReset, ...values });
     setStep(application.has_co_applicant ? "step-6" : "success-step");
@@ -77,7 +76,7 @@ export default function Step5({ employmentType }: Props) {
               <Input type="text" placeholder="Ex. Lendo AB" />
             </InputField>
 
-            <div className="date">
+            <div className="date-columns">
               <SelectGroup form={form} id="main_employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året du började</Select>
@@ -94,7 +93,7 @@ export default function Step5({ employmentType }: Props) {
         )}
 
         {hasEndDate && (
-          <div className="date">
+          <div className="date-columns">
             <SelectGroup form={form} id="main_employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
