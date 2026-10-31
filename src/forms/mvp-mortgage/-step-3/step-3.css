@@ -16,10 +16,6 @@
       justify-content: start;
     }
 
-    .toggle-option {
-      min-width: 80px; /* Use min-width so longer text can still grow the option. */
-    }
-
     .validation-message {
       grid-column: 1 / -1;
     }
