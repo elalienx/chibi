@@ -10,28 +10,24 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
-import SelectOption from "components/select-option/SelectOption";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import employmentEndYears from "../data/employmentEndYears";
-import employmentStartYears from "../data/employmentStartYears";
 import initialApplication from "../data/initialApplication";
-import months from "../data/months";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import type Application from "../types/Application";
+import EndMonthOptions from "./components/EndMonthOptions";
+import EndYearOptions from "./components/EndYearOptions";
+import StartMonthOptions from "./components/StartMonthOptions";
+import StartYearOptions from "./components/StartYearOptions";
 import getEmploymentFields from "./helpers/getEmploymentFields";
 import buildSchema from "./schema";
 import Tooltips from "./Tooltips";
 import "./step-5.css";
 
 // Properties
-const today = new Date();
-const currentYear = today.getFullYear();
-const currentMonth = today.getMonth() + 1; // getMonth() starts at 0
-
 interface Props {
   /** The employment type the user selected in Step 3 to tailor this step questions. */
   employmentType: string;
@@ -52,8 +48,7 @@ export default function Step5({ employmentType }: Props) {
 
   // Derived state
   const { hasEmployer, hasEndDate, hasPension, hasProfession, hasIncome } = getEmploymentFields(employmentType);
-  const sinceYear = hasEmployer ? Number(getInput(form, { path: ["main_employment_since_year"] })) : 0; // The field only exists when there is an employer
-  const sinceMonths = sinceYear === currentYear ? months.filter(({ value }) => value <= currentMonth) : months;
+  const sinceYear = hasEmployer ? Number(getInput(form, { path: ["main_employment_since_year"] })) : 0;
   const hasForeignIncome = getInput(form, { path: ["main_employment_income_in_foreign_currency"] }) === "true";
 
   // Methods
@@ -86,21 +81,13 @@ export default function Step5({ employmentType }: Props) {
               <SelectGroup form={form} id="main_employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året du började</Select>
-                {employmentStartYears.map((year) => (
-                  <SelectOption key={year} value={year}>
-                    {year}
-                  </SelectOption>
-                ))}
+                {StartYearOptions()}
               </SelectGroup>
 
               <SelectGroup form={form} id="main_employment_since_month">
                 <Label>Anställd sedan, månad</Label>
                 <Select>Ange månad</Select>
-                {sinceMonths.map(({ label, value }) => (
-                  <SelectOption key={value} value={value}>
-                    {label}
-                  </SelectOption>
-                ))}
+                {StartMonthOptions(sinceYear)}
               </SelectGroup>
             </div>
           </>
@@ -111,21 +98,13 @@ export default function Step5({ employmentType }: Props) {
             <SelectGroup form={form} id="main_employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
-              {employmentEndYears.map((year) => (
-                <SelectOption key={year} value={year}>
-                  {year}
-                </SelectOption>
-              ))}
+              {EndYearOptions()}
             </SelectGroup>
 
             <SelectGroup form={form} id="main_employment_to_month">
               <Label>Anställd till, månad</Label>
               <Select>Ange månad</Select>
-              {months.map(({ label, value }) => (
-                <SelectOption key={value} value={value}>
-                  {label}
-                </SelectOption>
-              ))}
+              {EndMonthOptions()}
             </SelectGroup>
           </div>
         )}
