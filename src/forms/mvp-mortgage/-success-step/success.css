@@ -1,0 +1,71 @@
+#success-step {
+  align-items: center;
+  gap: var(--space-medium);
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-medium);
+  text-align: center;
+
+  .success-indicator {
+    width: 100px;
+    height: 100px;
+  }
+
+  .what-happens-now {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    width: 100%;
+    padding: var(--space-medium);
+    background-color: var(--color-green-99);
+    border: solid 1px var(--color-green-90);
+    border-radius: var(--border-radius);
+
+    > h4 {
+      font-size: var(--font-size-large);
+      line-height: 24px;
+    }
+
+    > .body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-small);
+      color: var(--typography-dark);
+      line-height: 24px;
+      text-align: start;
+    }
+  }
+
+  > .button {
+    width: 100%;
+  }
+
+  .bank-id-information {
+    color: var(--typography-default);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #success-step {
+    gap: var(--space-xl);
+    padding: var(--space-2xl);
+
+    .success-indicator {
+      width: 148px;
+      height: 148px;
+    }
+
+    .what-happens-now {
+      gap: var(--space-small);
+      padding-top: var(--space-medium);
+      padding-bottom: var(--space-xl);
+      padding-inline: var(--space-xl);
+
+      > h4 {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+  }
+}
