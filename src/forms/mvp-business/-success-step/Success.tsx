@@ -15,7 +15,6 @@ export default function Success() {
   const formattedTurnover = application.turnover.toLocaleString("sv-SE");
   const formattedLoanDebt = application.loan_debt.toLocaleString("sv-SE");
   const result = `Your turnover is ${formattedTurnover} kr and your existing debt is ${formattedLoanDebt} kr.`;
-  const InfoTooltip = <BankIDTooltip />;
 
   // Methods
   function startAgain() {
@@ -23,6 +22,9 @@ export default function Success() {
     clearApplication();
     resetNavigation();
   }
+
+  // Components
+  const InfoTooltip = <BankIDTooltip />;
 
   return (
     <div className="business-form" id="success-step">
