@@ -18,6 +18,7 @@ export default function FormManager() {
 
   // Derived state
   const propertyType = application.property_type;
+  const employmentType = application.main_employment_type;
 
   return (
     <>
@@ -26,7 +27,7 @@ export default function FormManager() {
       {step === "step-2" && <Step2 propertyType={propertyType} />}
       {step === "step-3" && <Step3 />}
       {step === "step-4" && <Step4 />}
-      {step === "step-5" && <Step5 />}
+      {step === "step-5" && <Step5 employmentType={employmentType} />}
       {step === "step-6" && <Step6 />}
       {step === "success-step" && <Success />}
 
