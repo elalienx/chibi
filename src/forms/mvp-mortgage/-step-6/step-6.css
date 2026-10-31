@@ -14,9 +14,4 @@
     color: transparent; /* Hidden on screen but still read by screen readers. Keeps the row height so both selects line up. */
     user-select: none;
   }
-
-  /* Foreign currency toggle */
-  .toggle-group:has(#co_employment_income_in_foreign_currency) .toggle-option {
-    min-width: 80px; /* Use min-width so longer text can still grow the option. */
-  }
 }
