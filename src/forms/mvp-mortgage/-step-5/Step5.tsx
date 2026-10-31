@@ -24,9 +24,7 @@ import schema from "./schema";
 import "./step-5.css";
 
 // Properties
-const today = new Date();
-const currentYear = today.getFullYear();
-const currentMonth = today.getMonth() + 1; // getMonth() starts at 0
+const { year: currentYear, month: currentMonth } = Temporal.Now.plainDateISO();
 
 export default function Step5() {
   // Global state
