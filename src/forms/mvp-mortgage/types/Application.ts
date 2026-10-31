@@ -33,11 +33,12 @@ export default interface Application {
   main_employment_company_name: string;
   main_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
   main_employment_monthly_income: number;
+  main_employment_monthly_pension: number;
   main_employment_profession: string;
   main_employment_since_month: number;
   main_employment_since_year: number;
-  main_employment_to_month: string /** Optional until the employment type variations are defined. */;
-  main_employment_to_year: string /** Optional until the employment type variations are defined. */;
+  main_employment_to_month: string /** Dynamic field depending on main_employment_type. */;
+  main_employment_to_year: string /** Dynamic field depending on main_employment_type. */;
 
   // Step 6: Co-applicant employment
   co_employment_company_name: string;
