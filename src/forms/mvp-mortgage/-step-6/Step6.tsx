@@ -73,7 +73,7 @@ export default function Step6() {
             <Select>Ange år</Select>
             {years.map((year) => (
               <SelectOption key={year} value={year}>
-                {String(year)}
+                {year}
               </SelectOption>
             ))}
           </SelectGroup>
@@ -95,7 +95,7 @@ export default function Step6() {
             <Select>Ange år</Select>
             {years.map((year) => (
               <SelectOption key={year} value={year}>
-                {String(year)}
+                {year}
               </SelectOption>
             ))}
           </SelectGroup>
