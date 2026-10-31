@@ -15,10 +15,10 @@ import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import futureYears from "../data/futureYears";
+import employmentEndYears from "../data/employmentEndYears";
+import employmentStartYears from "../data/employmentStartYears";
 import initialApplication from "../data/initialApplication";
 import months from "../data/months";
-import years from "../data/years";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import type Application from "../types/Application";
@@ -86,7 +86,7 @@ export default function Step5({ employmentType }: Props) {
               <SelectGroup form={form} id="main_employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året du började</Select>
-                {years.map((year) => (
+                {employmentStartYears.map((year) => (
                   <SelectOption key={year} value={year}>
                     {year}
                   </SelectOption>
@@ -111,7 +111,7 @@ export default function Step5({ employmentType }: Props) {
             <SelectGroup form={form} id="main_employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
-              {futureYears.map((year) => (
+              {employmentEndYears.map((year) => (
                 <SelectOption key={year} value={year}>
                   {year}
                 </SelectOption>
