@@ -1,7 +1,10 @@
 // Project files
 import Button from "components/button/Button";
+import Tooltip from "components/tooltip/Tooltip";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import BankIDTooltip from "./BankIDTooltip";
+import "./success.css";
 
 export default function Success() {
   // Global state
@@ -9,41 +12,42 @@ export default function Success() {
   const { resetNavigation } = useFormNavigation();
 
   // Derived state
-  const hasMonthlyFee = application.monthly_fee > 0;
+  const { monthly_fee, operating_cost, property_type, rooms, size } = application;
+  const hasMonthlyFee = monthly_fee > 0;
   const feeType = hasMonthlyFee ? "monthly fee" : "operating cost";
-  const feePrice = hasMonthlyFee ? application.monthly_fee : application.operating_cost;
+  const feePrice = hasMonthlyFee ? monthly_fee : operating_cost;
   const formatedFeePrice = feePrice.toLocaleString("sv-SE");
+  const result = `You choose a ${size}m ${property_type} with ${rooms} rooms. Therefore your ${feeType} is ${formatedFeePrice} SEK.`;
 
   // Methods
   function startAgain() {
+    console.log("Mortgage submission", result);
     clearApplication();
     resetNavigation();
   }
 
+  // Components
+  const InfoTooltip = <BankIDTooltip />;
+
   return (
-    <div className="mortgage-form">
-      <header>
-        <h4>Form submitted</h4>
-      </header>
+    <div className="mortgage-form" id="success-step">
+      <img alt="Ansökan skickad" className="success-indicator" src="/images/success-indicator.svg" />
 
-      <section>
-        <div className="content">
-          <p>
-            You choose a {application.size}m {application.property_type} with {application.rooms} rooms.
-          </p>
-          <p>
-            Therefore your {feeType} is {formatedFeePrice} SEK.
-          </p>
-          <p>Please share which parts of the previous screen did not behave like the real Lendo site.</p>
-          <p>Feel free to criticize everything from missing icons, incorrect spacing, font size, etc.</p>
+      <h3>Tack för din ansökan!</h3>
+
+      <div className="what-happens-now">
+        <h4>Vad händer nu?</h4>
+        <div className="body">
+          <p>En handläggare från Lendo kommer att ringa upp dig inom kort för att gå igenom din ansökan.</p>
+          <p>Se dina erbjudanden genom att logga in med BankID nedan.</p>
         </div>
-      </section>
+      </div>
 
-      <hr />
+      <Button onClick={startAgain}>Börja om</Button>
 
-      <footer>
-        <Button onClick={startAgain}>START AGAIN</Button>
-      </footer>
+      <div className="bank-id-information">
+        Varför ber vi om BankID-identifiering? <Tooltip>{InfoTooltip}</Tooltip>
+      </div>
     </div>
   );
 }
