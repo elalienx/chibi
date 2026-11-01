@@ -62,53 +62,55 @@ const main_employment_income_in_foreign_currency = v.pipe(
   v.transform((value) => value === String(true)),
 );
 
+// Variants
+const employer = {
+  main_employment_company_name,
+  main_employment_since_year,
+  main_employment_since_month,
+};
+
+const retirement = v.object({
+  main_employment_monthly_pension,
+  main_employment_income_in_foreign_currency,
+});
+
+const student = v.object({
+  main_employment_monthly_income,
+  main_employment_income_in_foreign_currency,
+});
+
+const temporary = v.object({
+  ...employer,
+  main_employment_to_year,
+  main_employment_to_month,
+  main_employment_profession,
+  main_employment_monthly_income,
+  main_employment_income_in_foreign_currency,
+});
+
+const permanent = v.object({
+  ...employer,
+  main_employment_profession,
+  main_employment_monthly_income,
+  main_employment_income_in_foreign_currency,
+});
+
+const selfEmployment = v.object({
+  ...employer,
+  main_employment_monthly_income,
+  main_employment_income_in_foreign_currency,
+});
+
 export default function buildSchema(employmentType: string): FormSchema {
   const { hasEmployer, hasEndDate, hasPension, hasProfession } = getEmploymentFields(employmentType);
-  const employer = {
-    main_employment_company_name,
-    main_employment_since_year,
-    main_employment_since_month,
-  };
 
   // Without an employer
-  if (hasPension) {
-    return v.object({
-      main_employment_monthly_pension,
-      main_employment_income_in_foreign_currency,
-    });
-  }
-
-  if (!hasEmployer) {
-    return v.object({
-      main_employment_monthly_income,
-      main_employment_income_in_foreign_currency,
-    });
-  }
+  if (hasPension) return retirement;
+  if (!hasEmployer) return student;
 
   // With an employer
-  if (hasEndDate) {
-    return v.object({
-      ...employer,
-      main_employment_to_year,
-      main_employment_to_month,
-      main_employment_profession,
-      main_employment_monthly_income,
-      main_employment_income_in_foreign_currency,
-    });
-  }
+  if (hasEndDate) return temporary;
+  if (hasProfession) return permanent;
 
-  if (hasProfession) {
-    return v.object({
-      ...employer,
-      main_employment_profession,
-      main_employment_monthly_income,
-      main_employment_income_in_foreign_currency,
-    });
-  }
-
-  return v.object({
-    ...employer,
-    main_employment_monthly_income,
-    main_employment_income_in_foreign_currency,
-  });
+  return selfEmployment;
 }
