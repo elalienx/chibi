@@ -14,7 +14,7 @@ The variant depends on the **employment type** chosen in Step 3 (the "Anställni
 // FormManager.tsx
 const employmentType = application.main_employment_type;
 
-<Step5 employmentType={employmentType} />
+<Step5 employmentType={employmentType} />;
 ```
 
 From there, two files work together:
