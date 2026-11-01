@@ -53,9 +53,8 @@ export default function Step5({ employmentType }: Props) {
   // Methods
   function submitForm(values: object) {
     const employmentDefaults = getEmploymentDefaults(employmentType);
-    const newValues = { ...employmentDefaults, ...values };
 
-    updateApplication(newValues);
+    updateApplication({ ...employmentDefaults, ...values });
     setStep(application.has_co_applicant ? "step-6" : "success-step");
   }
 
