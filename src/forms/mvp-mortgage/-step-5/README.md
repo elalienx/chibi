@@ -6,8 +6,6 @@ Step 5 asks about the applicant's work situation. People earn their income in di
 - a fixed-term employee has an end date
 - a student has neither
 
-Asking only the questions that apply keeps the form short and avoids collecting data the backend doesn't need.
-
 ## What triggers the variants
 
 The variant depends on the **employment type** chosen in Step 3 (the "Anställningsform" select). That answer is saved under the key `main_employment_type` and passed to Step 5 as the `employmentType` prop:
@@ -24,19 +22,17 @@ From there, two files work together:
 - [`helpers/getEmploymentFields.ts`](./helpers/getEmploymentFields.ts) decides which fields to show.
 - [`schema.ts`](./schema.ts) builds a matching Valibot schema, so only the visible fields are validated.
 
-When the form is submitted, all `main_employment_*` values are reset first, so answers left over from a previously chosen employment type are never sent.
-
 ## Variants
 
-The 11 employment types in [`data/employmentTypes.ts`](../data/employmentTypes.ts) share 5 variants. Every variant also asks the foreign-currency question ("Har du huvudsaklig inkomst i utländsk valuta?").
+The 11 employment types in [`data/employmentTypes.ts`](../data/employmentTypes.ts) are grouped as 5 variants.
 
-| Variant           | Employment types                                                       | Fields                                           |
-| :---------------- | :--------------------------------------------------------------------- | :----------------------------------------------- |
-| `Permanent`       | `permanent_employment`, `probationary_employment`, `hourly_employment` | Employer, since date, profession, income         |
-| `Self-employment` | `self_employment`                                                      | Employer, since date, income                     |
-| `Temporary`       | `temporary_employment`, `substitute_employment`                        | Employer, since and to dates, profession, income |
-| `Retirement`      | `retirement`, `early_retirement`, `disability_retirement`              | Pension                                          |
-| `Student`         | `student`, `no_employment`                                             | Income                                           |
+| Variant             | Employment types                                                       | Fields                                           |
+| :------------------ | :--------------------------------------------------------------------- | :----------------------------------------------- |
+| **Permanent**       | `permanent_employment`, `probationary_employment`, `hourly_employment` | Employer, since date, profession, income         |
+| **Self-employment** | `self_employment`                                                      | Employer, since date, income                     |
+| **Temporary**       | `temporary_employment`, `substitute_employment`                        | Employer, since and to dates, profession, income |
+| **Retirement**      | `retirement`, `early_retirement`, `disability_retirement`              | Pension                                          |
+| **Student**         | `student`, `no_employment`                                             | Income                                           |
 
 ## See them in action
 
