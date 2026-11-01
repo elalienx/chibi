@@ -20,7 +20,7 @@ import EndMonthOptions from "./components/EndMonthOptions";
 import EndYearOptions from "./components/EndYearOptions";
 import StartMonthOptions from "./components/StartMonthOptions";
 import StartYearOptions from "./components/StartYearOptions";
-import clearUnusedEmploymentFields from "./helpers/clearUnusedEmploymentFields";
+import getEmploymentDefaults from "./helpers/getEmploymentDefaults";
 import getEmploymentFields from "./helpers/getEmploymentFields";
 import buildSchema from "./schema";
 import Tooltips from "./Tooltips";
@@ -52,9 +52,9 @@ export default function Step5({ employmentType }: Props) {
 
   // Methods
   function submitForm(values: object) {
-    const employmentFields = clearUnusedEmploymentFields(employmentType);
+    const employmentDefaults = getEmploymentDefaults(employmentType);
 
-    updateApplication({ ...employmentFields, ...values });
+    updateApplication({ ...employmentDefaults, ...values });
     setStep(application.has_co_applicant ? "step-6" : "success-step");
   }
 
