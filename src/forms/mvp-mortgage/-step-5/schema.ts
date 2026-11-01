@@ -27,11 +27,13 @@ const main_employment_since_month = v.pipe(
 const main_employment_to_year = v.pipe(
   v.string("Ange året du slutar för att gå vidare."),
   v.nonEmpty("Ange året du slutar för att gå vidare."),
+  v.toNumber("Ange året du slutar för att gå vidare."),
 );
 
 const main_employment_to_month = v.pipe(
   v.string("Ange månaden du slutar för att gå vidare."),
   v.nonEmpty("Ange månaden du slutar för att gå vidare."),
+  v.toNumber("Ange månaden du slutar för att gå vidare."),
 );
 
 const main_employment_monthly_income = v.pipe(

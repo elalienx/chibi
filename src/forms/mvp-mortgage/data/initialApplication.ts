@@ -35,8 +35,8 @@ const initialApplication: Application = {
   main_employment_profession: "",
   main_employment_since_month: 0,
   main_employment_since_year: 0,
-  main_employment_to_month: "",
-  main_employment_to_year: "",
+  main_employment_to_month: 0,
+  main_employment_to_year: 0,
 
   // Step 6: Co-applicant employment
   co_employment_company_name: "",
@@ -45,8 +45,8 @@ const initialApplication: Application = {
   co_employment_profession: "",
   co_employment_since_month: 0,
   co_employment_since_year: 0,
-  co_employment_to_month: "",
-  co_employment_to_year: "",
+  co_employment_to_month: 0,
+  co_employment_to_year: 0,
 };
 
 export default initialApplication;

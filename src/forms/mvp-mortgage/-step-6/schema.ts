@@ -20,9 +20,9 @@ const co_employment_since_month = v.pipe(
   v.toNumber("Ange månaden medsökande började för att gå vidare."),
 );
 
-const co_employment_to_year = v.optional(v.string(), ""); // Optional until we know when the end date is required
+const co_employment_to_year = v.optional(v.pipe(v.string(), v.toNumber()), "");
 
-const co_employment_to_month = v.optional(v.string(), ""); // Optional until we know when the end date is required
+const co_employment_to_month = v.optional(v.pipe(v.string(), v.toNumber()), "");
 
 const co_employment_monthly_income = v.pipe(
   v.string("Ange medsökandes månadsinkomst för att gå vidare."),
