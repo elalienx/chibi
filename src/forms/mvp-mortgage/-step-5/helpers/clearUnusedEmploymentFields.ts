@@ -1,0 +1,11 @@
+// Project files
+import initialApplication from "../../data/initialApplication";
+
+/** Used when submitting Step 5. */
+export default function clearUnusedEmploymentFields(employmentType: string) {
+  const employmentEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("main_employment_"));
+  const employmentReset = Object.fromEntries(employmentEntries);
+
+  // Step 3 value, restored after the reset.
+  return { ...employmentReset, main_employment_type: employmentType };
+}
