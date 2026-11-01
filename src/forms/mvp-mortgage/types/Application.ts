@@ -37,8 +37,8 @@ export default interface Application {
   main_employment_profession: string;
   main_employment_since_month: number;
   main_employment_since_year: number;
-  main_employment_to_month: string /** Dynamic field depending on main_employment_type. */;
-  main_employment_to_year: string /** Dynamic field depending on main_employment_type. */;
+  main_employment_to_month: number /** Dynamic field depending on main_employment_type. */;
+  main_employment_to_year: number /** Dynamic field depending on main_employment_type. */;
 
   // Step 6: Co-applicant employment
   co_employment_company_name: string;
@@ -47,6 +47,6 @@ export default interface Application {
   co_employment_profession: string;
   co_employment_since_month: number;
   co_employment_since_year: number;
-  co_employment_to_month: string /** Optional until the employment type variations are defined. */;
-  co_employment_to_year: string /** Optional until the employment type variations are defined. */;
+  co_employment_to_month: number /** Optional until the employment type variations are defined. */;
+  co_employment_to_year: number /** Optional until the employment type variations are defined. */;
 }
