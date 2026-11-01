@@ -14,13 +14,13 @@ import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import initialApplication from "../data/initialApplication";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import EndMonthOptions from "./components/EndMonthOptions";
 import EndYearOptions from "./components/EndYearOptions";
 import StartMonthOptions from "./components/StartMonthOptions";
 import StartYearOptions from "./components/StartYearOptions";
+import clearUnusedEmploymentFields from "./helpers/clearUnusedEmploymentFields";
 import getEmploymentFields from "./helpers/getEmploymentFields";
 import buildSchema from "./schema";
 import Tooltips from "./Tooltips";
@@ -52,12 +52,9 @@ export default function Step5({ employmentType }: Props) {
 
   // Methods
   function submitForm(values: object) {
-    // Fields depend on the employment type.
-    // Reset them all so only the user's active input is sent to the backend.
-    const employmentEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("main_employment_"));
-    const employmentReset = Object.fromEntries(employmentEntries);
+    const employmentFields = clearUnusedEmploymentFields(employmentType);
 
-    updateApplication({ ...employmentReset, ...values });
+    updateApplication({ ...employmentFields, ...values });
     setStep(application.has_co_applicant ? "step-6" : "success-step");
   }
 
