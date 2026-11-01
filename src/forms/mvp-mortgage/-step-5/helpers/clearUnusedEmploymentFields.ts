@@ -1,9 +1,8 @@
 // Project files
 import initialApplication from "../../data/initialApplication";
-import type Application from "../../types/Application";
 
 /** Used when submitting Step 5. */
-export default function clearUnusedEmploymentFields(employmentType: string): Partial<Application> {
+export default function clearUnusedEmploymentFields(employmentType: string) {
   const employmentEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("main_employment_"));
   const employmentReset = Object.fromEntries(employmentEntries);
 
