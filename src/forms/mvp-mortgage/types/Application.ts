@@ -47,6 +47,6 @@ export default interface Application {
   co_employment_profession: string;
   co_employment_since_month: number;
   co_employment_since_year: number;
-  co_employment_to_month: number /** Optional until the employment type variations are defined. */;
-  co_employment_to_year: number /** Optional until the employment type variations are defined. */;
+  co_employment_to_month: number;
+  co_employment_to_year: number;
 }
