@@ -43,7 +43,7 @@ const co_employment_type = v.pipe(
 
 // The checkbox certifies the co-applicant is NOT a PEP, so a checked box means claims_pep is false.
 const co_claims_pep = v.pipe(
-  v.optional(v.boolean(), true), // We use optional() because the user certifies it by default
+  v.optional(v.boolean(), true),
   v.transform((isNotPEP) => !isNotPEP),
 );
 
