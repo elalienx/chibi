@@ -28,13 +28,13 @@ const main_employment_type = v.pipe(
 
 const has_co_applicant = v.pipe(
   v.string("Svara ja eller nej för att gå vidare."),
-  v.nonEmpty("Svara ja eller nej för att gå vidare."), // input radio send us a string even if we send a boolean
-  v.transform((value) => value === String(true)), // thus, this converts it back to boolean
+  v.nonEmpty("Svara ja eller nej för att gå vidare."),
+  v.transform((value) => value === String(true)),
 );
 
 // The checkbox certifies the user is NOT a PEP, so a checked box means claims_pep is false.
 const main_claims_pep = v.pipe(
-  v.optional(v.boolean(), true), // We use optional() because the user certifies it by default
+  v.optional(v.boolean(), true),
   v.transform((isNotPEP) => !isNotPEP),
 );
 
