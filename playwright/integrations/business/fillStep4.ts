@@ -1,5 +1,5 @@
 // Node modules
-import { test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 interface Props {
   turnover: number;
@@ -21,6 +21,7 @@ export default async function fillStep4(form: Locator, { turnover, hasExistingLo
     // Loan Debt
     if (loanDebt !== undefined) await form.getByRole("textbox", { name: "Uppskattad total" }).fill(String(loanDebt));
 
+    await expect(form).toHaveScreenshot();
     await form.getByRole("button", { name: "Fortsätt" }).click();
   });
 }

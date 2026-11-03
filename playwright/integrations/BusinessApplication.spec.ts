@@ -16,6 +16,8 @@ import fillStep6EN from "./business/fillStep6EN";
 // Properties
 let form: Locator;
 
+test.describe.configure({ timeout: 5_000 }); // Each step takes a screenshot, so the whole journey needs more than the global 1s.
+
 test.beforeEach(async ({ mount }) => {
   form = await mount("forms/mvp-business/FormManager/Default");
 });

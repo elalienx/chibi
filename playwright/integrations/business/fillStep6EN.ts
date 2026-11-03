@@ -1,5 +1,5 @@
 // Node modules
-import { test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 interface Props {
   blancoLoans?: number;
@@ -24,6 +24,7 @@ export default async function fillStep6EN(form: Locator, { blancoLoans, installm
       await form.getByRole("textbox", { name: "Bolån" }).fill(String(houseLoans));
     }
 
+    await expect(form).toHaveScreenshot();
     await form.getByRole("button", { name: "Slutför" }).click();
   });
 }

@@ -1,5 +1,5 @@
 // Node modules
-import { test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 interface Props {
   isGuarantor?: boolean;
@@ -13,6 +13,7 @@ export default async function fillStep6AB(form: Locator, { isGuarantor }: Props 
     if (isGuarantor) await form.getByRole("radio", { name: "Jag vill gå i personlig borgen." }).check();
     if (!isGuarantor) await form.getByRole("radio", { name: "Jag vill uppge en borgensman senare." }).check();
 
+    await expect(form).toHaveScreenshot();
     await form.getByRole("button", { name: "Skicka in ansökan" }).click();
   });
 }

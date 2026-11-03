@@ -1,5 +1,5 @@
 // Node modules
-import { test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 interface Props {
   email: string;
@@ -11,6 +11,7 @@ export default async function fillStep2(form: Locator, { email, phone }: Props) 
     await form.getByRole("heading", { name: "Personuppgifter" }).waitFor();
     await form.getByRole("textbox", { name: "E-postadress" }).fill(email);
     await form.getByRole("textbox", { name: "Mobilnummer" }).fill(phone);
+    await expect(form).toHaveScreenshot();
     await form.getByRole("button", { name: "Fortsätt med BankID" }).click();
   });
 }
