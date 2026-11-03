@@ -18,5 +18,5 @@ const Link = (
 // Stories
 export const Default = meta.story({
   name: "Default",
-  render: () => <Tooltip>To learn more about Aphrodite Chibi read the {Link}</Tooltip>,
+  render: () => <Tooltip>To learn more about Chibi read the {Link}</Tooltip>,
 });
