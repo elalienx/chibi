@@ -2,3 +2,6 @@ allowBuilds:
   esbuild: true
   sharp: false
 autoDedupe: true
+overrides:
+  # minimatch <11.0.1 is vulnerable (globparts DoS); upstream still pins glob ^13 -> minimatch ^10
+  "@joshwooding/vite-plugin-react-docgen-typescript>glob": ^14.0.3
