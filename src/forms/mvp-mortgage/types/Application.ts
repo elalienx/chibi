@@ -44,9 +44,10 @@ export default interface Application {
   co_employment_company_name: string;
   co_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
   co_employment_monthly_income: number;
+  co_employment_monthly_pension: number;
   co_employment_profession: string;
   co_employment_since_month: number;
   co_employment_since_year: number;
-  co_employment_to_month: number;
-  co_employment_to_year: number;
+  co_employment_to_month: number /** Dynamic field depending on co_employment_type. */;
+  co_employment_to_year: number /** Dynamic field depending on co_employment_type. */;
 }

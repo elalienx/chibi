@@ -42,6 +42,7 @@ const initialApplication: Application = {
   co_employment_company_name: "",
   co_employment_income_in_foreign_currency: undefined,
   co_employment_monthly_income: 0,
+  co_employment_monthly_pension: 0,
   co_employment_profession: "",
   co_employment_since_month: 0,
   co_employment_since_year: 0,
