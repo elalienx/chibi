@@ -1,6 +1,5 @@
 // Node modules
 import { Form, getInput, useForm } from "@formisch/react";
-import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -11,46 +10,51 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
-import SelectOption from "components/select-option/SelectOption";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import employmentStartYears from "../data/employmentStartYears";
-import months from "../data/months";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import schema from "./schema";
+import EndMonthOptions from "./components/EndMonthOptions";
+import EndYearOptions from "./components/EndYearOptions";
+import StartMonthOptions from "./components/StartMonthOptions";
+import StartYearOptions from "./components/StartYearOptions";
+import getEmploymentDefaults from "./helpers/getEmploymentDefaults";
+import getEmploymentFields from "./helpers/getEmploymentFields";
+import buildSchema from "./schema";
+import Tooltips from "./Tooltips";
 import "./step-6.css";
 
 // Properties
-const today = new Date();
-const currentYear = today.getFullYear();
-const currentMonth = today.getMonth() + 1; // getMonth() starts at 0
+interface Props {
+  /** The employment type the user selected in Step 4 to tailor this step questions. */
+  employmentType: string;
+}
 
-export default function Step6() {
+export default function Step6({ employmentType }: Props) {
   // Global state
   const { application, updateApplication } = useApplication();
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
   const form = useForm({
-    schema: schema,
+    schema: buildSchema(employmentType),
     validate: "blur",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
   });
 
   // Derived state
-  const sinceYear = Number(getInput(form, { path: ["co_employment_since_year"] }));
-  const sinceMonths = sinceYear === currentYear ? months.filter(({ value }) => value <= currentMonth) : months;
+  const { hasEmployer, hasEndDate, hasPension, hasProfession, hasIncome } = getEmploymentFields(employmentType);
+  const startYear = hasEmployer ? Number(getInput(form, { path: ["co_employment_since_year"] })) : 0;
   const hasForeignIncome = getInput(form, { path: ["co_employment_income_in_foreign_currency"] }) === "true";
-  const incomeTooltip = `I månadsinkomsten ska du ej räkna in bidrag utan enbart inkomster du skattar för.`;
-  const foreignCurrencyTooltip = `Om du tjänar din inkomst i annan valuta än svenska kronor kan det påverka din möjlighet att få ett lån.`;
 
   // Methods
-  function submitForm(values: v.InferOutput<typeof schema>) {
-    updateApplication(values);
+  function submitForm(values: object) {
+    const employmentDefaults = getEmploymentDefaults(employmentType);
+
+    updateApplication({ ...employmentDefaults, ...values });
     setStep("success-step");
   }
 
@@ -62,67 +66,68 @@ export default function Step6() {
       </header>
 
       <section>
-        <InputField form={form} id="co_employment_company_name">
-          <Label>Medsökandes arbetsgivare</Label>
-          <Input type="text" placeholder="Ex. Lendo AB" />
-        </InputField>
+        {hasEmployer && (
+          <>
+            <InputField form={form} id="co_employment_company_name">
+              <Label>Medsökandes arbetsgivare</Label>
+              <Input type="text" placeholder="Ex. Lendo AB" />
+            </InputField>
 
-        <div className="date">
-          <SelectGroup form={form} id="co_employment_since_year">
-            <Label>Anställd sedan</Label>
-            <Select>Ange år</Select>
-            {employmentStartYears.map((year) => (
-              <SelectOption key={year} value={year}>
-                {year}
-              </SelectOption>
-            ))}
-          </SelectGroup>
+            <div className="date-columns">
+              <SelectGroup form={form} id="co_employment_since_year">
+                <Label>Anställd sedan</Label>
+                <Select>Ange året medsökande började</Select>
+                {StartYearOptions()}
+              </SelectGroup>
 
-          <SelectGroup form={form} id="co_employment_since_month">
-            <Label>Anställd sedan, månad</Label>
-            <Select>Ange månad</Select>
-            {sinceMonths.map(({ label, value }) => (
-              <SelectOption key={value} value={value}>
-                {label}
-              </SelectOption>
-            ))}
-          </SelectGroup>
-        </div>
+              <SelectGroup form={form} id="co_employment_since_month">
+                <Label>Anställd sedan, månad</Label>
+                <Select>Ange månad</Select>
+                {StartMonthOptions(startYear)}
+              </SelectGroup>
+            </div>
+          </>
+        )}
 
-        <div className="date">
-          <SelectGroup form={form} id="co_employment_to_year">
-            <Label>Anställd till</Label>
-            <Select>Ange år</Select>
-            {employmentStartYears.map((year) => (
-              <SelectOption key={year} value={year}>
-                {year}
-              </SelectOption>
-            ))}
-          </SelectGroup>
+        {hasEndDate && (
+          <div className="date-columns">
+            <SelectGroup form={form} id="co_employment_to_year">
+              <Label>Anställd till</Label>
+              <Select>Ange år</Select>
+              {EndYearOptions()}
+            </SelectGroup>
 
-          <SelectGroup form={form} id="co_employment_to_month">
-            <Label>Anställd till, månad</Label>
-            <Select>Ange månad</Select>
-            {months.map(({ label, value }) => (
-              <SelectOption key={value} value={value}>
-                {label}
-              </SelectOption>
-            ))}
-          </SelectGroup>
-        </div>
+            <SelectGroup form={form} id="co_employment_to_month">
+              <Label>Anställd till, månad</Label>
+              <Select>Ange månad</Select>
+              {EndMonthOptions()}
+            </SelectGroup>
+          </div>
+        )}
 
-        <InputField form={form} id="co_employment_monthly_income">
-          <Label tooltip={incomeTooltip}>Medsökandes månadsinkomst (före skatt)</Label>
-          <Input type="number" suffix="kr" />
-        </InputField>
+        {hasProfession && (
+          <InputField form={form} id="co_employment_profession">
+            <Label>Medsökandes yrke</Label>
+            <Input type="text" placeholder="Ex. Sjuksköterska" />
+          </InputField>
+        )}
 
-        <InputField form={form} id="co_employment_profession">
-          <Label>Medsökandes yrke</Label>
-          <Input type="text" placeholder="Ex. Sjuksköterska" />
-        </InputField>
+        {hasIncome && (
+          <InputField form={form} tooltips={Tooltips} id="co_employment_monthly_income">
+            <Label>Medsökandes månadsinkomst (före skatt)</Label>
+            <Input type="number" suffix="kr" />
+          </InputField>
+        )}
 
-        <ToggleGroup form={form} id="co_employment_income_in_foreign_currency">
-          <Label tooltip={foreignCurrencyTooltip}>Har din medsökande huvudsaklig inkomst i utländsk valuta?</Label>
+        {hasPension && (
+          <InputField form={form} tooltips={Tooltips} id="co_employment_monthly_pension">
+            <Label>Medsökandes livsvariga pension (före skatt)</Label>
+            <Input type="number" suffix="kr" />
+          </InputField>
+        )}
+
+        <ToggleGroup form={form} tooltips={Tooltips} id="co_employment_income_in_foreign_currency">
+          <Label>Har din medsökande huvudsaklig inkomst i utländsk valuta?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>
         </ToggleGroup>

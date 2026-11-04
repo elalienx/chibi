@@ -9,9 +9,29 @@ const meta = preview.meta({
 });
 
 // Stories
-export const Default = meta.story({
-  name: "Step 6: Co-applicant employment",
-  render: () => <Step6 />,
+export const Permanent = meta.story({
+  name: "Permanent",
+  render: () => <Step6 employmentType="permanent_employment" />,
+});
+
+export const SelfEmployment = meta.story({
+  name: "Self-employment",
+  render: () => <Step6 employmentType="self_employment" />,
+});
+
+export const Temporary = meta.story({
+  name: "Temporary",
+  render: () => <Step6 employmentType="temporary_employment" />,
+});
+
+export const Retirement = meta.story({
+  name: "Retirement",
+  render: () => <Step6 employmentType="retirement" />,
+});
+
+export const Student = meta.story({
+  name: "Student",
+  render: () => <Step6 employmentType="student" />,
 });
 
 export default meta;
