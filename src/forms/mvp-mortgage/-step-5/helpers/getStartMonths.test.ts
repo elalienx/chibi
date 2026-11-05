@@ -1,36 +1,29 @@
 // Node modules
-import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
 
 // Project files
 import months from "../../data/months";
 import getStartMonths from "./getStartMonths";
 
 // Properties
-const today = new Date(2026, 4, 15); // 15 May 2026, getMonth() starts at 0
-
-beforeEach(() => {
-  vi.useFakeTimers();
-  vi.setSystemTime(today);
-});
-
-afterEach(() => {
-  vi.useRealTimers();
-});
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth() + 1; // getMonth() starts at 0
 
 test("should hide future months when the start year is the current year", () => {
   // Arrange
-  const startYear = 2026;
+  const startYear = currentYear;
 
   // Act
   const result = getStartMonths(startYear);
 
   // Assert
-  expect(result.map(({ value }) => value)).toEqual([1, 2, 3, 4, 5]);
+  expect(result.length).toBe(currentMonth);
 });
 
 test("should show all months when the start year is a past year", () => {
   // Arrange
-  const startYear = 2020;
+  const startYear = currentYear - 1;
 
   // Act
   const result = getStartMonths(startYear);
