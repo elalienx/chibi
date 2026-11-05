@@ -10,18 +10,19 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
+import SelectOption from "components/select-option/SelectOption";
 import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import employmentEndYears from "../data/employmentEndYears";
+import employmentStartYears from "../data/employmentStartYears";
+import months from "../data/months";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import EndMonthOptions from "./components/EndMonthOptions";
-import EndYearOptions from "./components/EndYearOptions";
-import StartMonthOptions from "./components/StartMonthOptions";
-import StartYearOptions from "./components/StartYearOptions";
 import getEmploymentDefaults from "./helpers/getEmploymentDefaults";
 import getEmploymentFields from "./helpers/getEmploymentFields";
+import getStartMonths from "./helpers/getStartMonths";
 import buildSchema from "./schema";
 import Tooltips from "./Tooltips";
 import "./step-6.css";
@@ -48,6 +49,7 @@ export default function Step6({ employmentType }: Props) {
   // Derived state
   const { hasEmployer, hasEndDate, hasPension, hasProfession, hasIncome } = getEmploymentFields(employmentType);
   const startYear = hasEmployer ? Number(getInput(form, { path: ["co_employment_since_year"] })) : 0;
+  const startMonths = getStartMonths(startYear);
   const hasForeignIncome = getInput(form, { path: ["co_employment_income_in_foreign_currency"] }) === "true";
 
   // Methods
@@ -77,13 +79,21 @@ export default function Step6({ employmentType }: Props) {
               <SelectGroup form={form} id="co_employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året medsökande började</Select>
-                {StartYearOptions()}
+                {employmentStartYears.map((year) => (
+                  <SelectOption key={year} value={year}>
+                    {year}
+                  </SelectOption>
+                ))}
               </SelectGroup>
 
               <SelectGroup form={form} id="co_employment_since_month">
                 <Label>Anställd sedan, månad</Label>
                 <Select>Ange månad</Select>
-                {StartMonthOptions(startYear)}
+                {startMonths.map(({ label, value }) => (
+                  <SelectOption key={value} value={value}>
+                    {label}
+                  </SelectOption>
+                ))}
               </SelectGroup>
             </div>
           </>
@@ -94,13 +104,21 @@ export default function Step6({ employmentType }: Props) {
             <SelectGroup form={form} id="co_employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
-              {EndYearOptions()}
+              {employmentEndYears.map((year) => (
+                <SelectOption key={year} value={year}>
+                  {year}
+                </SelectOption>
+              ))}
             </SelectGroup>
 
             <SelectGroup form={form} id="co_employment_to_month">
               <Label>Anställd till, månad</Label>
               <Select>Ange månad</Select>
-              {EndMonthOptions()}
+              {months.map(({ label, value }) => (
+                <SelectOption key={value} value={value}>
+                  {label}
+                </SelectOption>
+              ))}
             </SelectGroup>
           </div>
         )}
