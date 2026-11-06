@@ -40,7 +40,10 @@ export default function Step3() {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: { ...cleanInitialInput({ input: application }), main_claims_pep: !application.main_claims_pep },
+    initialInput: {
+      ...cleanInitialInput({ input: { ...application.main, has_co_applicant: application.has_co_applicant } }),
+      claims_pep: !application.main.claims_pep,
+    },
   });
 
   // Derived state
@@ -52,11 +55,13 @@ export default function Step3() {
     // Without a co-applicant we skip Step 4 and 6, so clear any co-applicant data saved on a previous visit.
     const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
     const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
-    const newValues = values.has_co_applicant ? values : { ...coApplicantReset, ...values };
-    const nextStep = values.has_co_applicant ? "step-4" : "step-5";
+    const { has_co_applicant, ...mainValues } = values;
+    const coValues = has_co_applicant ? {} : coApplicantReset;
+    const newValues = { ...coValues, has_co_applicant, main: { ...application.main, ...mainValues } };
+    const nextStep = has_co_applicant ? "step-4" : "step-5";
 
     // PEP users can still apply, but we warn them first.
-    if (values.main_claims_pep) {
+    if (values.claims_pep) {
       setModal(<PEPWarningModal onClose={closeModal} onContinue={() => continueAsPEP(newValues, nextStep)} />);
       return;
     }
@@ -86,7 +91,7 @@ export default function Step3() {
       </header>
 
       <section>
-        <SelectGroup form={form} id="main_civil_state">
+        <SelectGroup form={form} id="civil_state">
           <Label>Civilstånd</Label>
           <Select>Ange civilstånd</Select>
           {civilStatuses.map(({ label, value }) => (
@@ -96,17 +101,17 @@ export default function Step3() {
           ))}
         </SelectGroup>
 
-        <InputField form={form} id="main_email">
+        <InputField form={form} id="email">
           <Label>E-postadress</Label>
           <Input type="email" placeholder="namn@email.se" />
         </InputField>
 
-        <InputField form={form} id="main_phone">
+        <InputField form={form} id="phone">
           <Label>Mobilnummer</Label>
           <Input type="tel" placeholder="+46 XX XXX XX XX" />
         </InputField>
 
-        <SelectGroup form={form} id="main_employment_type">
+        <SelectGroup form={form} id="employment_type">
           <Label tooltip={employmentTooltip}>Anställningsform</Label>
           <Select>Ange anställningsform</Select>
           {employmentTypes.map(({ label, value }) => (
@@ -126,7 +131,7 @@ export default function Step3() {
       <hr />
 
       <section className="pep">
-        <Checkbox form={form} id="main_claims_pep">
+        <Checkbox form={form} id="claims_pep">
           Jag intygar att jag INTE är en person i politisk utsatt ställning (PEP).
         </Checkbox>
         <small>

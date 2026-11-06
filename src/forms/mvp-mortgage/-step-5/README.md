@@ -8,11 +8,11 @@ Step 5 asks about the applicant's work situation. People earn their income in di
 
 ## What triggers the variants
 
-The variant depends on the **employment type** chosen in Step 3 (the "Anställningsform" select). That answer is saved under the key `main_employment_type` and passed to Step 5 as the `employmentType` prop:
+The variant depends on the **employment type** chosen in Step 3 (the "Anställningsform" select). That answer is saved under the key `main.employment_type` and passed to Step 5 as the `employmentType` prop:
 
 ```tsx
 // FormManager.tsx
-const employmentType = application.main_employment_type;
+const employmentType = application.main.employment_type;
 
 <Step5 employmentType={employmentType} />;
 ```

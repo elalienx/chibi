@@ -15,12 +15,12 @@ import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import initialApplication from "../data/initialApplication";
 import employmentEndYears from "../data/employmentEndYears";
 import employmentStartYears from "../data/employmentStartYears";
 import months from "../data/months";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import getEmploymentDefaults from "./helpers/getEmploymentDefaults";
 import getEmploymentFields from "./helpers/getEmploymentFields";
 import getStartMonths from "./helpers/getStartMonths";
 import buildSchema from "./schema";
@@ -54,8 +54,9 @@ export default function Step5({ employmentType }: Props) {
 
   // Methods
   function submitForm(values: object) {
-    // Resets the fields hidden by the current employment type.
-    updateApplication({ main: { ...initialApplication.main, ...values } });
+    const employmentDefaults = getEmploymentDefaults(employmentType);
+
+    updateApplication({ main: { ...application.main, ...employmentDefaults, ...values } });
     setStep(application.has_co_applicant ? "step-6" : "success-step");
   }
 

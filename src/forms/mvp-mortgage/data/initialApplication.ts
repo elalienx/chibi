@@ -12,11 +12,6 @@ const initialApplication: Application = {
 
   // Step 3: Main applicant personal info
   has_co_applicant: undefined,
-  main_civil_state: "",
-  main_claims_pep: false,
-  main_email: "",
-  main_employment_type: "",
-  main_phone: "",
 
   // Step 4: Co-applicant personal info
   co_civil_state: "",
@@ -27,8 +22,16 @@ const initialApplication: Application = {
   co_relationship_with_main_applicant: "",
   co_ssn: "",
 
-  // Step 5: Main applicant employment
+  // Steps 3 and 5: Main applicant
   main: {
+    // Step 3: Personal info
+    civil_state: "",
+    claims_pep: false,
+    email: "",
+    employment_type: "",
+    phone: "",
+
+    // Step 5: Employment
     employment_company_name: "",
     employment_income_in_foreign_currency: undefined,
     employment_monthly_income: 0,
