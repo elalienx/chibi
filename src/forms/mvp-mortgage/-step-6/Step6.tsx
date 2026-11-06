@@ -21,10 +21,10 @@ import employmentStartYears from "../data/employmentStartYears";
 import months from "../data/months";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import getEmploymentFields from "./helpers/getEmploymentFields";
-import getStartMonths from "./helpers/getStartMonths";
+import getEmploymentFields from "../-step-5/helpers/getEmploymentFields";
+import getStartMonths from "../-step-5/helpers/getStartMonths";
 import buildSchema from "./schema";
-import Tooltips from "./Tooltips";
+import Tooltips from "../-step-5/Tooltips";
 import "./step-6.css";
 
 // Properties

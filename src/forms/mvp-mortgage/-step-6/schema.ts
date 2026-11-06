@@ -3,7 +3,7 @@ import type { FormSchema } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
-import getEmploymentFields from "./helpers/getEmploymentFields";
+import getEmploymentFields from "../-step-5/helpers/getEmploymentFields";
 
 // Fields
 const employment_company_name = v.pipe(
