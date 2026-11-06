@@ -10,7 +10,7 @@
   }
 
   /* Month labels */
-  .select-group:has(#main_employment_since_month, #main_employment_to_month) .label {
+  .select-group:has(#employment_since_month, #employment_to_month) .label {
     color: transparent; /* Hidden on screen but still read by screen readers. Keeps the row height so both selects line up. */
     user-select: none;
   }
