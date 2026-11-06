@@ -22,7 +22,6 @@ import employmentTypes from "../data/employmentTypes";
 import initialApplication from "../data/initialApplication";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
-import type Application from "../types/Application";
 import type { Step } from "../types/Step";
 import PEPInfoModal from "./components/PEPInfoModal";
 import PEPWarningModal from "./components/PEPWarningModal";
@@ -50,9 +49,7 @@ export default function Step3() {
   // Methods
   function submitForm(values: v.InferOutput<typeof schema>) {
     // Without a co-applicant we skip Step 4 and 6, so clear any co-applicant data saved on a previous visit.
-    const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
-    const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
-    const newValues = values.has_co_applicant ? values : { ...coApplicantReset, ...values };
+    const newValues = values.has_co_applicant ? values : { ...values, co: initialApplication.co };
     const nextStep = values.has_co_applicant ? "step-4" : "step-5";
 
     // PEP users can still apply, but we warn them first.

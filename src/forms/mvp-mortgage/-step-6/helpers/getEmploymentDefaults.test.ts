@@ -13,7 +13,7 @@ test("should keep the employment type selected in Step 4", () => {
   const result = getEmploymentDefaults(employmentType);
 
   // Assert
-  expect(result.co_employment_type).toBe(employmentType);
+  expect(result.employment_type).toBe(employmentType);
 });
 
 test("should reset the Step 6 employment fields", () => {
@@ -24,9 +24,9 @@ test("should reset the Step 6 employment fields", () => {
   const result = getEmploymentDefaults(employmentType);
 
   // Assert
-  expect(result.co_employment_company_name).toBe(initialApplication.co_employment_company_name);
-  expect(result.co_employment_monthly_income).toBe(initialApplication.co_employment_monthly_income);
-  expect(result.co_employment_to_year).toBe(initialApplication.co_employment_to_year);
+  expect(result.employment_company_name).toBe(initialApplication.co.employment_company_name);
+  expect(result.employment_monthly_income).toBe(initialApplication.co.employment_monthly_income);
+  expect(result.employment_to_year).toBe(initialApplication.co.employment_to_year);
 });
 
 test("should not touch fields outside Step 6", () => {
@@ -37,6 +37,5 @@ test("should not touch fields outside Step 6", () => {
   const result = getEmploymentDefaults(employmentType);
 
   // Assert
-  expect(result).not.toHaveProperty("co_email");
-  expect(result).not.toHaveProperty("main_employment_type");
+  expect(result).not.toHaveProperty("email");
 });

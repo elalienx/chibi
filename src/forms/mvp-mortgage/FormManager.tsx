@@ -19,7 +19,7 @@ export default function FormManager() {
   // Derived state
   const propertyType = application.property_type;
   const employmentType = application.main_employment_type;
-  const coEmploymentType = application.co_employment_type;
+  const coEmploymentType = application.co.employment_type;
 
   return (
     <>

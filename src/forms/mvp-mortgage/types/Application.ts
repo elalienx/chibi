@@ -20,15 +20,6 @@ export default interface Application {
   main_employment_type: string;
   main_phone: string;
 
-  // Step 4: Co-applicant personal info
-  co_civil_state: string;
-  co_claims_pep: boolean;
-  co_email: string;
-  co_employment_type: string;
-  co_phone: string;
-  co_relationship_with_main_applicant: string;
-  co_ssn: string;
-
   // Step 5: Main applicant employment
   main: {
     employment_company_name: string;
@@ -42,14 +33,26 @@ export default interface Application {
     employment_to_year: number /** Dynamic field depending on main_employment_type. */;
   };
 
-  // Step 6: Co-applicant employment
-  co_employment_company_name: string;
-  co_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
-  co_employment_monthly_income: number;
-  co_employment_monthly_pension: number;
-  co_employment_profession: string;
-  co_employment_since_month: number;
-  co_employment_since_year: number;
-  co_employment_to_month: number /** Dynamic field depending on co_employment_type. */;
-  co_employment_to_year: number /** Dynamic field depending on co_employment_type. */;
+  // Steps 4 and 6: Co-applicant
+  co: {
+    // Step 4: Personal info
+    civil_state: string;
+    claims_pep: boolean;
+    email: string;
+    employment_type: string;
+    phone: string;
+    relationship_with_main_applicant: string;
+    ssn: string;
+
+    // Step 6: Employment
+    employment_company_name: string;
+    employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
+    employment_monthly_income: number;
+    employment_monthly_pension: number;
+    employment_profession: string;
+    employment_since_month: number;
+    employment_since_year: number;
+    employment_to_month: number /** Dynamic field depending on employment_type. */;
+    employment_to_year: number /** Dynamic field depending on employment_type. */;
+  };
 }

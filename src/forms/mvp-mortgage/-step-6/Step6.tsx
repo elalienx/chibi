@@ -43,20 +43,20 @@ export default function Step6({ employmentType }: Props) {
     schema: buildSchema(employmentType),
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput({ input: application, treatZeroAsEmpty: true }),
+    initialInput: cleanInitialInput({ input: application.co, treatZeroAsEmpty: true }),
   });
 
   // Derived state
   const { hasEmployer, hasEndDate, hasPension, hasProfession, hasIncome } = getEmploymentFields(employmentType);
-  const startYear = hasEmployer ? Number(getInput(form, { path: ["co_employment_since_year"] })) : 0;
+  const startYear = hasEmployer ? Number(getInput(form, { path: ["employment_since_year"] })) : 0;
   const startMonths = getStartMonths(startYear);
-  const hasForeignIncome = getInput(form, { path: ["co_employment_income_in_foreign_currency"] }) === "true";
+  const hasForeignIncome = getInput(form, { path: ["employment_income_in_foreign_currency"] }) === "true";
 
   // Methods
   function submitForm(values: object) {
     const employmentDefaults = getEmploymentDefaults(employmentType);
 
-    updateApplication({ ...employmentDefaults, ...values });
+    updateApplication({ co: { ...application.co, ...employmentDefaults, ...values } });
     setStep("success-step");
   }
 
@@ -70,13 +70,13 @@ export default function Step6({ employmentType }: Props) {
       <section>
         {hasEmployer && (
           <>
-            <InputField form={form} id="co_employment_company_name">
+            <InputField form={form} id="employment_company_name">
               <Label>Medsökandes arbetsgivare</Label>
               <Input type="text" placeholder="Ex. Lendo AB" />
             </InputField>
 
             <div className="date-columns">
-              <SelectGroup form={form} id="co_employment_since_year">
+              <SelectGroup form={form} id="employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året medsökande började</Select>
                 {employmentStartYears.map((year) => (
@@ -86,7 +86,7 @@ export default function Step6({ employmentType }: Props) {
                 ))}
               </SelectGroup>
 
-              <SelectGroup form={form} id="co_employment_since_month">
+              <SelectGroup form={form} id="employment_since_month">
                 <Label>Anställd sedan, månad</Label>
                 <Select>Ange månad</Select>
                 {startMonths.map(({ label, value }) => (
@@ -101,7 +101,7 @@ export default function Step6({ employmentType }: Props) {
 
         {hasEndDate && (
           <div className="date-columns">
-            <SelectGroup form={form} id="co_employment_to_year">
+            <SelectGroup form={form} id="employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
               {employmentEndYears.map((year) => (
@@ -111,7 +111,7 @@ export default function Step6({ employmentType }: Props) {
               ))}
             </SelectGroup>
 
-            <SelectGroup form={form} id="co_employment_to_month">
+            <SelectGroup form={form} id="employment_to_month">
               <Label>Anställd till, månad</Label>
               <Select>Ange månad</Select>
               {months.map(({ label, value }) => (
@@ -124,27 +124,27 @@ export default function Step6({ employmentType }: Props) {
         )}
 
         {hasProfession && (
-          <InputField form={form} id="co_employment_profession">
+          <InputField form={form} id="employment_profession">
             <Label>Medsökandes yrke</Label>
             <Input type="text" placeholder="Ex. Sjuksköterska" />
           </InputField>
         )}
 
         {hasIncome && (
-          <InputField form={form} tooltips={Tooltips} id="co_employment_monthly_income">
+          <InputField form={form} tooltips={Tooltips} id="employment_monthly_income">
             <Label>Medsökandes månadsinkomst (före skatt)</Label>
             <Input type="number" suffix="kr" />
           </InputField>
         )}
 
         {hasPension && (
-          <InputField form={form} tooltips={Tooltips} id="co_employment_monthly_pension">
+          <InputField form={form} tooltips={Tooltips} id="employment_monthly_pension">
             <Label>Medsökandes livsvariga pension (före skatt)</Label>
             <Input type="number" suffix="kr" />
           </InputField>
         )}
 
-        <ToggleGroup form={form} tooltips={Tooltips} id="co_employment_income_in_foreign_currency">
+        <ToggleGroup form={form} tooltips={Tooltips} id="employment_income_in_foreign_currency">
           <Label>Har din medsökande huvudsaklig inkomst i utländsk valuta?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>
