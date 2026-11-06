@@ -29,6 +29,7 @@ import "styles/base/page.css";
 <script>
   document.querySelector("#clear-cache")?.addEventListener("click", () => {
     localStorage.removeItem("business-loan-application");
+    localStorage.removeItem("consumer-application");
     localStorage.removeItem("mortgage-application");
   });
 </script>
