@@ -41,15 +41,17 @@ const initialApplication: Application = {
   },
 
   // Step 6: Co-applicant employment
-  co_employment_company_name: "",
-  co_employment_income_in_foreign_currency: undefined,
-  co_employment_monthly_income: 0,
-  co_employment_monthly_pension: 0,
-  co_employment_profession: "",
-  co_employment_since_month: 0,
-  co_employment_since_year: 0,
-  co_employment_to_month: 0,
-  co_employment_to_year: 0,
+  co: {
+    employment_company_name: "",
+    employment_income_in_foreign_currency: undefined,
+    employment_monthly_income: 0,
+    employment_monthly_pension: 0,
+    employment_profession: "",
+    employment_since_month: 0,
+    employment_since_year: 0,
+    employment_to_month: 0,
+    employment_to_year: 0,
+  },
 };
 
 export default initialApplication;
