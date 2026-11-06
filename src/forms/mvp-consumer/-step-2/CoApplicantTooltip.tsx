@@ -1,4 +1,4 @@
-const CoApplicant = (
+const CoApplicantTooltip = (
   <div className="tooltip-with-title">
     <h5>Medsökande</h5>
     <p>
@@ -8,9 +8,4 @@ const CoApplicant = (
   </div>
 );
 
-/** All the possible tooltips available in this step. */
-const Tooltips = {
-  has_co_applicant: CoApplicant,
-};
-
-export default Tooltips;
+export default CoApplicantTooltip;

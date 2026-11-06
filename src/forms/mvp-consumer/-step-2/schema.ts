@@ -2,9 +2,9 @@
 import * as v from "valibot";
 
 // Fields
+// Always answered because it starts on "Nej".
 const has_co_applicant = v.pipe(
-  v.string("Svara ja eller nej för att gå vidare."),
-  v.nonEmpty("Svara ja eller nej för att gå vidare."),
+  v.string(),
   v.transform((value) => value === String(true)),
 );
 
