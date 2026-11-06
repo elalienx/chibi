@@ -28,15 +28,17 @@ const initialApplication: Application = {
   co_ssn: "",
 
   // Step 5: Main applicant employment
-  main_employment_company_name: "",
-  main_employment_income_in_foreign_currency: undefined,
-  main_employment_monthly_income: 0,
-  main_employment_monthly_pension: 0,
-  main_employment_profession: "",
-  main_employment_since_month: 0,
-  main_employment_since_year: 0,
-  main_employment_to_month: 0,
-  main_employment_to_year: 0,
+  main: {
+    employment_company_name: "",
+    employment_income_in_foreign_currency: undefined,
+    employment_monthly_income: 0,
+    employment_monthly_pension: 0,
+    employment_profession: "",
+    employment_since_month: 0,
+    employment_since_year: 0,
+    employment_to_month: 0,
+    employment_to_year: 0,
+  },
 
   // Step 6: Co-applicant employment
   co_employment_company_name: "",
