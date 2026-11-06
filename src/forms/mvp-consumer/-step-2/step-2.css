@@ -20,11 +20,6 @@
       font-size: var(--font-size-normal);
     }
   }
-
-  /* The header arrow already goes back on mobile. */
-  > footer > .secondary {
-    display: none;
-  }
 }
 
 /* Tablet */
@@ -36,19 +31,6 @@
 
     .toggle-group .label {
       font-size: var(--font-size-large);
-    }
-
-    > footer {
-      flex-direction: row;
-
-      > .button {
-        flex: 1;
-      }
-
-      > .secondary {
-        display: flex;
-        max-width: 160px; /* Gives the forward button more weight than the back button. */
-      }
     }
   }
 }
