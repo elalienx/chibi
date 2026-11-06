@@ -25,7 +25,7 @@ const store: StateCreator<Store> = (set) => ({
 
 const localStorage: PersistOptions<Store> = {
   name: "consumer-application",
-  version: 1, // Bump when the Application shape changes to discard old saved data.
+  version: 2, // Bump when the Application shape changes to discard old saved data.
 };
 
 /**
