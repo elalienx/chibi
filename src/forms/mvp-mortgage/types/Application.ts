@@ -43,13 +43,15 @@ export default interface Application {
   };
 
   // Step 6: Co-applicant employment
-  co_employment_company_name: string;
-  co_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
-  co_employment_monthly_income: number;
-  co_employment_monthly_pension: number;
-  co_employment_profession: string;
-  co_employment_since_month: number;
-  co_employment_since_year: number;
-  co_employment_to_month: number /** Dynamic field depending on co_employment_type. */;
-  co_employment_to_year: number /** Dynamic field depending on co_employment_type. */;
+  co: {
+    employment_company_name: string;
+    employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
+    employment_monthly_income: number;
+    employment_monthly_pension: number;
+    employment_profession: string;
+    employment_since_month: number;
+    employment_since_year: number;
+    employment_to_month: number /** Dynamic field depending on co_employment_type. */;
+    employment_to_year: number /** Dynamic field depending on co_employment_type. */;
+  };
 }
