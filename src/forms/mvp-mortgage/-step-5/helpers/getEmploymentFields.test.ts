@@ -90,7 +90,7 @@ test("should only show the end date and profession when there is an employer", (
 
 test("should fall back to only the income field when the employment type is unknown", () => {
   // Arrange
-  const employmentType = ""; // Default value before the user answers Step 3 or 4
+  const employmentType = ""; // Default value before the user answers its work situation
 
   // Act
   const result = getEmploymentFields(employmentType);
