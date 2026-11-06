@@ -10,7 +10,7 @@ const withEmployer = [
 const withEndDate = ["temporary_employment", "substitute_employment"];
 const withPension = ["retirement", "early_retirement", "disability_retirement"];
 
-/** Decides which employment fields to show based on the selected work situation. */
+/** Decides which employment fields to show based on the user work situation. */
 export default function getEmploymentFields(employmentType: string) {
   const hasEmployer = withEmployer.includes(employmentType);
   const hasEndDate = withEndDate.includes(employmentType);
