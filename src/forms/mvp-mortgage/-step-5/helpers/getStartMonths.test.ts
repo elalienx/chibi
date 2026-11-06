@@ -34,7 +34,7 @@ test("should show all months when the start year is a past year", () => {
 
 test("should show all months when no start year is selected", () => {
   // Arrange
-  const startYear = 0; // Step 5 passes 0 when the employer fields are hidden
+  const startYear = 0; // Step 5 and 6 pass 0 when the employer fields are hidden
 
   // Act
   const result = getStartMonths(startYear);
