@@ -45,6 +45,12 @@ export default function Step3({ hasCoApplicant }: Props) {
     setStep("step-4");
   }
 
+  // Components
+  const applicantIcon = <Icon name="user" />;
+  const coApplicantIcon = <Icon name="user-group-simple" />;
+  const applicantHeader = <h5>{applicantIcon} Dina uppgifter</h5>;
+  const coApplicantHeader = <h5>{coApplicantIcon} Din medsökande</h5>;
+
   return (
     <Form of={form} onSubmit={submitForm} className="consumer-form" id="step-3">
       <header>
@@ -57,25 +63,17 @@ export default function Step3({ hasCoApplicant }: Props) {
       <hr />
 
       <section>
-        {hasCoApplicant && (
-          <h5>
-            <Icon name="user" /> Dina uppgifter
-          </h5>
-        )}
+        {hasCoApplicant && applicantHeader}
         <ApplicantFields form={form} prefix="main" />
       </section>
 
-      {hasCoApplicant && (
-        <>
-          <hr className="applicant-divider" />
+      {hasCoApplicant && <hr className="applicant-divider" />}
 
-          <section>
-            <h5>
-              <Icon name="user-group-simple" /> Din medsökande
-            </h5>
-            <ApplicantFields form={form} prefix="co" />
-          </section>
-        </>
+      {hasCoApplicant && (
+        <section>
+          {coApplicantHeader}
+          <ApplicantFields form={form} prefix="co" />
+        </section>
       )}
 
       <hr />
