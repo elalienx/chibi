@@ -18,7 +18,7 @@ export default function IntroStep() {
       <hr />
 
       <footer>
-        <Button onClick={() => setStep("step-1")}>
+        <Button onClick={() => setStep("step-2")}>
           Next <Icon name="arrow-right" />
         </Button>
       </footer>
