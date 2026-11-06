@@ -50,10 +50,7 @@ export default function Step2() {
 
       <section>
         <ToggleGroup form={form} id="has_co_applicant">
-          <Label tooltip={CoApplicantTooltip}>
-            Vill du lägga till en medsökande?
-            <small>(Kan öka dina chanser att få ett lån)</small>
-          </Label>
+          <Label tooltip={CoApplicantTooltip}>Vill du lägga till en medsökande?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>
         </ToggleGroup>
