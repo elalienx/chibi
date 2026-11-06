@@ -1,0 +1,123 @@
+.consumer-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-gray-100);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
+
+  > header {
+    display: grid;
+    grid-template-areas:
+      "left title right"
+      "left subtitle right";
+    grid-template-columns: var(--space-5xl) 1fr var(--space-5xl); /* Equal side columns keep the title and subtitle centered. */
+    place-items: center;
+    gap: var(--space-tiny) var(--space-medium);
+    margin-block: var(--space-xs);
+    margin-inline: var(--space-medium);
+
+    &:not(:has(> small)) {
+      grid-template-areas: "left title right"; /* Single row keeps the title centered when there is no subtitle. */
+
+      > h4 {
+        align-self: center;
+      }
+    }
+
+    > .arrow-go-back {
+      grid-area: left;
+      width: 100%;
+      height: var(--height-of-field);
+      border-radius: var(--border-radius);
+
+      & .icon {
+        margin: 0 auto;
+      }
+
+      &:hover {
+        background-color: var(--color-blue-95);
+      }
+    }
+
+    > h4 {
+      grid-area: title;
+      align-self: end; /* Keeps the title and subtitle together when the side columns are taller. */
+      font-size: var(--font-size-normal);
+    }
+
+    > small {
+      grid-area: subtitle;
+      align-self: start;
+      color: var(--typography-default);
+      font-size: var(--font-size-small);
+    }
+
+    > .icon,
+    > .step-indicator {
+      grid-area: right;
+    }
+  }
+
+  > section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-large);
+    margin-block: var(--space-medium);
+    margin-inline: var(--space-medium);
+  }
+
+  > footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+    margin-block: var(--space-medium);
+    margin-inline: var(--space-medium);
+    text-align: center;
+
+    /* The header arrow already goes back on mobile. */
+    > .secondary {
+      display: none;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .consumer-form {
+    > header {
+      grid-template-columns: var(--space-8xl) 1fr var(--space-8xl); /* Fits the 72px step indicator. */
+      gap: var(--space-base) var(--space-medium);
+
+      > .arrow-go-back {
+        height: var(--space-7xl);
+      }
+
+      > h4 {
+        font-size: var(--font-size-large);
+      }
+
+      > small {
+        font-size: var(--font-size-normal);
+      }
+    }
+
+    > section {
+      margin-block: var(--space-2xl);
+      margin-inline: var(--space-2xl);
+    }
+
+    > footer {
+      flex-direction: row;
+
+      > .button {
+        flex: 1;
+      }
+
+      > .secondary {
+        display: flex;
+        max-width: 160px; /* Gives the forward button more weight than the back button. */
+      }
+    }
+  }
+}
