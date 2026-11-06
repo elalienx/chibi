@@ -15,14 +15,6 @@
     color: var(--typography-dark);
     font-weight: var(--font-weight-bold);
 
-    small {
-      order: 1; /* Moves the subtitle below the tooltip trigger so the trigger stays next to the question. */
-      width: 100%;
-      color: var(--typography-default);
-      font-size: var(--font-size-small);
-      font-weight: var(--font-weight-normal);
-    }
-
     /* The tooltip renders inside the label, so it inherits the larger question size. */
     .tooltip-window {
       font-size: var(--font-size-normal);
@@ -44,10 +36,6 @@
 
     .toggle-group .label {
       font-size: var(--font-size-large);
-
-      small {
-        font-size: var(--font-size-normal);
-      }
     }
 
     > footer {
