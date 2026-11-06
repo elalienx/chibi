@@ -38,7 +38,7 @@ export default function Step2() {
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="business-form" id="step-2">
+    <Form of={form} onSubmit={submitForm} className="consumer-form" id="step-2">
       <header>
         <ArrowGoBack hideLabel onClick={goPreviousStep} />
         <h4>Medsökande</h4>
