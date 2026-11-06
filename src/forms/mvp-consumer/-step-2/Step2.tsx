@@ -14,8 +14,8 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import ConsumerAgencyWarning from "../components/ConsumerAgencyWarning";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
+import CoApplicantTooltip from "./CoApplicantTooltip";
 import schema from "./schema";
-import Tooltips from "./Tooltips";
 import "./step-2.css";
 
 export default function Step2() {
@@ -49,8 +49,8 @@ export default function Step2() {
       <hr />
 
       <section>
-        <ToggleGroup form={form} tooltips={Tooltips} id="has_co_applicant">
-          <Label>
+        <ToggleGroup form={form} id="has_co_applicant">
+          <Label tooltip={CoApplicantTooltip}>
             Vill du lägga till en medsökande?
             <small>(Kan öka dina chanser att få ett lån)</small>
           </Label>
