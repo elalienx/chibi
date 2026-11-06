@@ -62,6 +62,7 @@ export default function Step3({ hasCoApplicant }: Props) {
 
       <hr />
 
+      {/* Applicant */}
       <section>
         {hasCoApplicant && applicantHeader}
         <ApplicantFields form={form} prefix="main" />
@@ -69,6 +70,7 @@ export default function Step3({ hasCoApplicant }: Props) {
 
       {hasCoApplicant && <hr className="applicant-divider" />}
 
+      {/* Co-applicant */}
       {hasCoApplicant && (
         <section>
           {coApplicantHeader}
