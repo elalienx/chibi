@@ -19,7 +19,15 @@ import "styles/base/page.css";
     <a href="/example-tooltip" data-astro-prefetch>Tooltip tests</a>
     <a href="/mvp-business" data-astro-prefetch>MVP Business</a>
     <a href="/mvp-mortgage" data-astro-prefetch>MVP Mortgage</a>
+    <button id="clear-cache" type="button">Clear form cache</button>
     <hr/>
     <small>© 2026 Eduardo Alvarez<br/>Hatsune Miku © Crypton Future Media</small>
   </main>
 </BaseLayout>
+
+<script>
+  document.querySelector("#clear-cache")?.addEventListener("click", () => {
+    localStorage.removeItem("business-loan-application");
+    localStorage.removeItem("mortgage-application");
+  });
+</script>
