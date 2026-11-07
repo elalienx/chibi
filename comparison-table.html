@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chibi comparison table</title>
+    <style>
+      body {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        color: #1f2937;
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+      }
+
+      h2 {
+        margin-block: 2.5rem 0.75rem;
+        font-size: 1.5rem;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+      }
+
+      table {
+        /* Steps share the remaining width equally */
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        font-variant-numeric: tabular-nums;
+      }
+
+      th,
+      td {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #d1d5db;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      thead th {
+        background-color: #f3f4f6;
+      }
+
+      /* Difference row */
+      .difference {
+        background-color: #f9fafb;
+        font-weight: 600;
+
+        .smaller {
+          color: #15803d;
+        }
+
+        .larger {
+          color: #b91c1c;
+        }
+      }
+
+      /* First column: library name */
+      th[scope="row"],
+      thead th:first-child {
+        width: 7rem;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lines of code comparison</h1>
+
+    <!-- Consumer -->
+    <h2>👨🏻 Consumer</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Library</th>
+            <th scope="col">Intro</th>
+            <th scope="col">Step 2</th>
+            <th scope="col">Step 3</th>
+            <th scope="col">Step 4</th>
+            <th scope="col">Step 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Current</th>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th scope="row">Chibi</th>
+            <td>28</td>
+            <td>139</td>
+            <td>329</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Business -->
+    <h2>💼 Business</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Library</th>
+            <th scope="col">Step 1</th>
+            <th scope="col">Step 2</th>
+            <th scope="col">Step 3</th>
+            <th scope="col">Step 4</th>
+            <th scope="col">Step 5</th>
+            <th scope="col">Step 6 AB</th>
+            <th scope="col">Step 6 EN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Current</th>
+            <td>183</td>
+            <td>281</td>
+            <td>132</td>
+            <td>344</td>
+            <td>187</td>
+            <td>152</td>
+            <td>356</td>
+          </tr>
+          <tr>
+            <th scope="row">Chibi</th>
+            <td>79</td>
+            <td>87</td>
+            <td>71</td>
+            <td>96</td>
+            <td>96</td>
+            <td>99</td>
+            <td>92</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mortgage -->
+    <h2>🏠 Mortgage</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Library</th>
+            <th scope="col">Intro</th>
+            <th scope="col">Step 1</th>
+            <th scope="col">Step 2</th>
+            <th scope="col">Step 3</th>
+            <th scope="col">Step 4</th>
+            <th scope="col">Step 5</th>
+            <th scope="col">Step 6</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Current</th>
+            <td>898</td>
+            <td>632</td>
+            <td>399</td>
+            <td>401</td>
+            <td>388</td>
+            <td>758</td>
+            <td>758</td>
+          </tr>
+          <tr>
+            <th scope="row">Chibi</th>
+            <td>-</td>
+            <td>(incomplete)</td>
+            <td>106</td>
+            <td>151</td>
+            <td>148</td>
+            <td>169</td>
+            <td>169</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      // Adds a "Difference" row to every table: how much smaller Chibi is than Current.
+      // Formula: (current - chibi) / current. Negative means Chibi has more lines.
+      for (const tbody of document.querySelectorAll("tbody")) {
+        const [currentRow, chibiRow] = tbody.rows;
+        const currentCells = [...currentRow.cells].slice(1);
+        const chibiCells = [...chibiRow.cells].slice(1);
+        const differenceRow = tbody.insertRow();
+        const label = document.createElement("th");
+
+        label.scope = "row";
+        label.textContent = "Difference";
+        differenceRow.className = "difference";
+        differenceRow.append(label);
+
+        currentCells.forEach((currentCell, index) => {
+          const current = Number(currentCell.textContent);
+          const chibi = Number(chibiCells[index].textContent);
+          const cell = differenceRow.insertCell();
+
+          if (!current || !chibi) {
+            cell.textContent = "—";
+            return;
+          }
+
+          const percentage = Math.round(((current - chibi) / current) * 100);
+
+          cell.textContent = `${percentage}%`.replace("-", "−");
+          cell.classList.add(percentage >= 0 ? "smaller" : "larger");
+        });
+      }
+    </script>
+  </body>
+</html>
