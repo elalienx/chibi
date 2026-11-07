@@ -1,0 +1,36 @@
+#step-2 {
+  /* The question floats in the middle of the card. Heights are hardcoded because they are not part of the design system. */
+  > section {
+    display: grid;
+    place-items: center;
+    min-height: 396px;
+    margin-block: 0;
+  }
+
+  /* Co-applicant toggle */
+  .toggle-group .label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--typography-dark);
+    font-weight: var(--font-weight-bold);
+
+    /* The tooltip renders inside the label, so it inherits the larger question size. */
+    .tooltip-window {
+      font-size: var(--font-size-normal);
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-2 {
+    > section {
+      min-height: 436px;
+    }
+
+    .toggle-group .label {
+      font-size: var(--font-size-large);
+    }
+  }
+}

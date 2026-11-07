@@ -1,0 +1,38 @@
+#step-3 {
+  /* Applicant headings ("Dina uppgifter" and "Din medsökande") */
+  h5 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-large);
+    line-height: 24px;
+
+    .icon {
+      --size: 32px;
+
+      margin-top: 0; /* Removes the optical alignment meant for icons next to body text. */
+    }
+  }
+
+  .civil-state-and-children {
+    --field-min-width: 0px; /* Lets both selects shrink to share the row. */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-medium);
+  }
+
+  /* Separates the main applicant from the co-applicant without touching the card edges. */
+  > .applicant-divider {
+    width: auto;
+    margin-inline: var(--space-medium);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #step-3 > .applicant-divider {
+    margin-inline: var(--space-2xl);
+  }
+}

@@ -19,6 +19,7 @@ export default function FormManager() {
   // Derived state
   const propertyType = application.property_type;
   const employmentType = application.main_employment_type;
+  const coEmploymentType = application.co_employment_type;
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function FormManager() {
       {step === "step-3" && <Step3 />}
       {step === "step-4" && <Step4 />}
       {step === "step-5" && <Step5 employmentType={employmentType} />}
-      {step === "step-6" && <Step6 />}
+      {step === "step-6" && <Step6 employmentType={coEmploymentType} />}
       {step === "success-step" && <Success />}
 
       {/* Lives at the root so any step can open a modal */}
