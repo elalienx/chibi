@@ -1,6 +1,6 @@
 # Benefits
 
-What teams gain by building forms with Chibi.
+What teams gain by building forms with Chibi!
 
 | #   | Title                    | Description                               | Category           |
 | :-- | :----------------------- | :---------------------------------------- | :----------------- |
