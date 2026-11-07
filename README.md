@@ -2,7 +2,7 @@
 
 Chibi is a UI component library for building complex multi-step forms.
 
-[Demo website](https://aphrodite-chibi.web.app) | [Storybook gallery](https://aphrodite-chibi-storybook.web.app)
+[Demo website](https://aphrodite-chibi.web.app) | [Storybook gallery](https://aphrodite-chibi-storybook.web.app) | [Benefits](BENEFITS.md)
 
 ## Project Structure
 
