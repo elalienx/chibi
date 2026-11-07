@@ -30,23 +30,28 @@ export default interface Application {
   co_ssn: string;
 
   // Step 5: Main applicant employment
-  main_employment_company_name: string;
-  main_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
-  main_employment_monthly_income: number;
-  main_employment_monthly_pension: number;
-  main_employment_profession: string;
-  main_employment_since_month: number;
-  main_employment_since_year: number;
-  main_employment_to_month: number /** Dynamic field depending on main_employment_type. */;
-  main_employment_to_year: number /** Dynamic field depending on main_employment_type. */;
+  main: {
+    employment_company_name: string;
+    employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
+    employment_monthly_income: number;
+    employment_monthly_pension: number;
+    employment_profession: string;
+    employment_since_month: number;
+    employment_since_year: number;
+    employment_to_month: number /** Dynamic field depending on main_employment_type. */;
+    employment_to_year: number /** Dynamic field depending on main_employment_type. */;
+  };
 
   // Step 6: Co-applicant employment
-  co_employment_company_name: string;
-  co_employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
-  co_employment_monthly_income: number;
-  co_employment_profession: string;
-  co_employment_since_month: number;
-  co_employment_since_year: number;
-  co_employment_to_month: number;
-  co_employment_to_year: number;
+  co: {
+    employment_company_name: string;
+    employment_income_in_foreign_currency: boolean | undefined /** Undefined until answered. */;
+    employment_monthly_income: number;
+    employment_monthly_pension: number;
+    employment_profession: string;
+    employment_since_month: number;
+    employment_since_year: number;
+    employment_to_month: number /** Dynamic field depending on co_employment_type. */;
+    employment_to_year: number /** Dynamic field depending on co_employment_type. */;
+  };
 }

@@ -1,0 +1,17 @@
+.consumer-agency-warning {
+  display: flex;
+  align-items: start;
+  gap: var(--space-medium);
+  margin-inline: var(--space-medium);
+  padding-block-end: var(--space-2xl);
+
+  img {
+    flex-shrink: 0; /* Keeps the warning sign at its full size when the text is long. */
+  }
+
+  strong {
+    display: block;
+    color: var(--typography-dark);
+    font-weight: var(--font-weight-bold);
+  }
+}

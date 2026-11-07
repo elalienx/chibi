@@ -1,0 +1,15 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import FormManager from "forms/mvp-consumer/FormManager";
+
+import "styles/base/page.css";
+---
+
+<BaseLayout title="MVP Consumer" description="Example of a form with Chibi">
+  <main>
+    <FormManager client:visible />
+    <footer>
+      <a href="/">Go back to home</a>
+    </footer>
+  </main>
+</BaseLayout>
