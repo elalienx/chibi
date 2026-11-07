@@ -41,6 +41,20 @@
 
       thead th {
         background-color: #f3f4f6;
+        line-height: 1.2;
+        text-align: left;
+        vertical-align: top;
+
+        /* English name of the step */
+        span {
+          /* Inline-block so the line height applies to wrapped lines */
+          display: inline-block;
+          color: #6b7280;
+          font-size: 0.8125rem;
+          font-weight: 400;
+          line-height: 1.2;
+          white-space: normal;
+        }
       }
 
       /* Difference row */
@@ -76,10 +90,10 @@
           <tr>
             <th scope="col">Library</th>
             <th scope="col">Intro</th>
-            <th scope="col">Step 2</th>
-            <th scope="col">Step 3</th>
-            <th scope="col">Step 4</th>
-            <th scope="col">Step 5</th>
+            <th scope="col">Step 2<br /><span>Has co-applicant?</span></th>
+            <th scope="col">Step 3<br /><span>Personal information</span></th>
+            <th scope="col">Step 4<br /><span>Housing and work</span></th>
+            <th scope="col">Step 5<br /><span>Employment</span></th>
           </tr>
         </thead>
         <tbody>
@@ -110,13 +124,13 @@
         <thead>
           <tr>
             <th scope="col">Library</th>
-            <th scope="col">Step 1</th>
-            <th scope="col">Step 2</th>
-            <th scope="col">Step 3</th>
-            <th scope="col">Step 4</th>
-            <th scope="col">Step 5</th>
-            <th scope="col">Step 6 AB</th>
-            <th scope="col">Step 6 EN</th>
+            <th scope="col">Step 1<br /><span>Hero</span></th>
+            <th scope="col">Step 2<br /><span>Personal info</span></th>
+            <th scope="col">Step 3<br /><span>Choose company</span></th>
+            <th scope="col">Step 4<br /><span>Turnover</span></th>
+            <th scope="col">Step 5<br /><span>Loan details</span></th>
+            <th scope="col">Step 6 AB<br /><span>Guarantor</span></th>
+            <th scope="col">Step 6 EN<br /><span>Existing loans</span></th>
           </tr>
         </thead>
         <tbody>
@@ -152,12 +166,12 @@
           <tr>
             <th scope="col">Library</th>
             <th scope="col">Intro</th>
-            <th scope="col">Step 1</th>
-            <th scope="col">Step 2</th>
-            <th scope="col">Step 3</th>
-            <th scope="col">Step 4</th>
-            <th scope="col">Step 5</th>
-            <th scope="col">Step 6</th>
+            <th scope="col">Step 1<br /><span>About the loan</span></th>
+            <th scope="col">Step 2<br /><span>About the property</span></th>
+            <th scope="col">Step 3<br /><span>Personal info</span></th>
+            <th scope="col">Step 4<br /><span>Co-applicant info</span></th>
+            <th scope="col">Step 5<br /><span>Employment</span></th>
+            <th scope="col">Step 6<br /><span>Co-applicant employment</span></th>
           </tr>
         </thead>
         <tbody>
