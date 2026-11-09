@@ -42,7 +42,7 @@ export default function Step3({ hasCoApplicant }: Props) {
     const newValues = hasCoApplicant ? values : { ...coApplicantReset, ...values };
 
     updateApplication(newValues);
-    setStep("step-4");
+    setStep("success-step"); // Skips Steps 4 and 5 until they are built.
   }
 
   // Components
