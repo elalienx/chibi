@@ -3,7 +3,7 @@ import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
-import preview from "../../../../.storybook/preview";
+import preview from "../../../../../.storybook/preview";
 import LoanEdit from "./components/LoanEdit";
 import LoanView from "./components/LoanView";
 import Step2 from "./Step2";

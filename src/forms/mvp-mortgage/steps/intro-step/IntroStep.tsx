@@ -1,7 +1,7 @@
 // Project files
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
-import useFormNavigation from "../state/useFormNavigation";
+import useFormNavigation from "../../state/useFormNavigation";
 
 export default function IntroStep() {
   // Global state

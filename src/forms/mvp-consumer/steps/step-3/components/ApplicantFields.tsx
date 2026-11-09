@@ -8,8 +8,8 @@ import Label from "components/label/Label";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
-import childrenUnder21 from "../../data/childrenUnder21";
-import civilStatuses from "../../data/civilStatuses";
+import childrenUnder21 from "../../../data/childrenUnder21";
+import civilStatuses from "../../../data/civilStatuses";
 import Tooltips from "../Tooltips";
 
 interface Props {

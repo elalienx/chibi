@@ -1,5 +1,5 @@
 // Project files
-import months from "../../data/months";
+import months from "../../../data/months";
 
 /** Used in the employment start month ("Anställd sedan, månad") to hide future months of the current year. */
 export default function getStartMonths(startYear: number) {

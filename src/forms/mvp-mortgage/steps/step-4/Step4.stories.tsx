@@ -1,5 +1,5 @@
 // Project files
-import preview from "../../../../.storybook/preview";
+import preview from "../../../../../.storybook/preview";
 import ModalManager from "components/modal-manager/ModalManager";
 import PEPInfoModal from "./components/PEPInfoModal";
 import PEPWarningModalCoApplicant from "./components/PEPWarningModalCoApplicant";

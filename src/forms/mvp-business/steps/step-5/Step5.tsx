@@ -11,11 +11,11 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import StepIndicator from "components/step-indicator/StepIndicator";
-import purposes from "../data/purposes";
+import purposes from "../../data/purposes";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import exampleSSNs from "../-bank-id-login/exampleSSNs";
-import useApplication from "../state/useApplication";
-import useFormNavigation from "../state/useFormNavigation";
+import exampleSSNs from "../bank-id-login/exampleSSNs";
+import useApplication from "../../state/useApplication";
+import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
 import "./step-5.css";
 

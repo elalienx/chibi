@@ -1,6 +1,6 @@
 // Node modules
 import * as v from "valibot";
-import type { PropertyType } from "../types/PropertyType";
+import type { PropertyType } from "../../types/PropertyType";
 
 // Fields
 const monthly_fee = v.pipe(

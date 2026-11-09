@@ -2,7 +2,7 @@
 import { expect, test } from "vitest";
 
 // Project files
-import employmentTypes from "../../data/employmentTypes";
+import employmentTypes from "../../../data/employmentTypes";
 import getEmploymentFields from "./getEmploymentFields";
 
 // Properties

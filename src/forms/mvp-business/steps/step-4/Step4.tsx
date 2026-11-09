@@ -12,9 +12,9 @@ import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
 import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import exampleSSNs from "../-bank-id-login/exampleSSNs";
-import useApplication from "../state/useApplication";
-import useFormNavigation from "../state/useFormNavigation";
+import exampleSSNs from "../bank-id-login/exampleSSNs";
+import useApplication from "../../state/useApplication";
+import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
 import Tooltips from "./Tooltips";
 

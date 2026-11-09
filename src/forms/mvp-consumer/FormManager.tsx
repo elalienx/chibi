@@ -1,9 +1,9 @@
 // Project files
 import ModalManager from "components/modal-manager/ModalManager";
-import IntroStep from "./-intro-step/IntroStep";
-import Step2 from "./-step-2/Step2";
-import Step3 from "./-step-3/Step3";
-import Success from "./-success-step/Success";
+import IntroStep from "./steps/intro-step/IntroStep";
+import Step2 from "./steps/step-2/Step2";
+import Step3 from "./steps/step-3/Step3";
+import Success from "./steps/success-step/Success";
 import useApplication from "./state/useApplication";
 import useFormNavigation from "./state/useFormNavigation";
 

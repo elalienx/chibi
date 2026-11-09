@@ -2,7 +2,7 @@
 import { expect, test } from "vitest";
 
 // Project files
-import months from "../../data/months";
+import months from "../../../data/months";
 import getStartMonths from "./getStartMonths";
 
 // Properties
