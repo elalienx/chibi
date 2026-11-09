@@ -14,6 +14,10 @@
         line-height: 1.5;
       }
 
+      a {
+        color: #0071eb;
+      }
+
       h2 {
         margin-block: 2.5rem 0.75rem;
         font-size: 1.5rem;
@@ -71,6 +75,79 @@
         }
       }
 
+      /* Summary: total difference and research */
+      .summary {
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) 2fr;
+        align-items: center;
+        gap: 2rem;
+        margin-block-start: 3rem;
+        padding: 2rem;
+        background-color: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 0.75rem;
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        h2 {
+          margin-block-start: 0;
+        }
+
+        li + li {
+          margin-block-start: 0.5rem;
+        }
+      }
+
+      .total {
+        color: #15803d;
+        text-align: center;
+
+        strong {
+          display: block;
+          font-size: 5rem;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.03em;
+        }
+
+        span {
+          display: block;
+          margin-block-start: 0.5rem;
+          color: #166534;
+          font-size: 1.125rem;
+          font-weight: 600;
+        }
+
+        .source {
+          margin-block-start: 0.25rem;
+          color: #6b7280;
+          font-size: 0.8125rem;
+          font-weight: 400;
+        }
+      }
+
+      .source {
+        color: #6b7280;
+        font-size: 0.8125rem;
+      }
+
+      /* Small text below a table */
+      .note {
+        margin-block-start: 0.5rem;
+        color: #6b7280;
+        font-size: 0.875rem;
+      }
+
+      @media (width < 48rem) {
+        .summary {
+          grid-template-columns: 1fr;
+        }
+      }
+
       /* First column: library name */
       th[scope="row"],
       thead th:first-child {
@@ -89,7 +166,7 @@
         <thead>
           <tr>
             <th scope="col">Library</th>
-            <th scope="col">Intro</th>
+            <th scope="col">Step 1<br /><span>Hero</span></th>
             <th scope="col">Step 2<br /><span>Has co-applicant?</span></th>
             <th scope="col">Step 3<br /><span>Personal information</span></th>
             <th scope="col">Step 4<br /><span>Housing and work</span></th>
@@ -99,11 +176,11 @@
         <tbody>
           <tr>
             <th scope="row">Current</th>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
+            <td>377</td>
+            <td>128</td>
+            <td>390</td>
+            <td>277</td>
+            <td>343</td>
           </tr>
           <tr>
             <th scope="row">Chibi</th>
@@ -165,7 +242,7 @@
         <thead>
           <tr>
             <th scope="col">Library</th>
-            <th scope="col">Intro</th>
+            <th scope="col">Step 0<br /><span>Hero</span></th>
             <th scope="col">Step 1<br /><span>About the loan</span></th>
             <th scope="col">Step 2<br /><span>About the property</span></th>
             <th scope="col">Step 3<br /><span>Personal info</span></th>
@@ -198,8 +275,68 @@
         </tbody>
       </table>
     </div>
+    <p class="note">Steps 7, 8 and 9 are out of scope for the MVP.</p>
+
+    <!-- Summary -->
+    <section class="summary">
+      <p class="total">
+        <strong id="total-difference">—</strong>
+        <span>less code with Chibi</span>
+        <span class="source" id="total-detail"></span>
+      </p>
+      <div>
+        <h2>Why a shorter codebase matters</h2>
+        <ul>
+          <li>
+            🐞 <b>Fewer bugs.</b> Code size is one of the strongest predictors of defects: studies consistently find
+            that the number of faults grows with lines of code
+            <span class="source"
+              >(<a target="_blank" href="https://ieeexplore.ieee.org/document/935855">El Emam et al., 2001</a>;
+              <a target="_blank" href="https://www.oreilly.com/library/view/code-complete-2nd/0735619670/"
+                >McConnell, <i>Code Complete</i></a
+              >)</span
+            >.
+          </li>
+          <li>
+            🤖 <b>Lower AI cost.</b> AI skills help agents find code in big codebases, but they still have to read it.
+            Fewer lines mean fewer tokens, cheaper requests and more accurate answers
+            <span class="source">(<a target="_blank" href="https://arxiv.org/abs/2307.03172">Liu et al., 2023</a>)</span
+            >.
+          </li>
+          <li>
+            🛠️ <b>Cheaper maintenance.</b> Maintenance makes up 60–80% of a software system's lifetime cost, and it
+            scales with the amount of code to maintain
+            <span class="source"
+              >(<a target="_blank" href="https://www.oreilly.com/library/view/facts-and-fallacies/0321117425/"
+                >Glass, <i>Facts and Fallacies of Software Engineering</i></a
+              >)</span
+            >.
+          </li>
+          <li>
+            🔍 <b>Better code reviews.</b> Reviewers find defects effectively up to about 200–400 lines at a time;
+            smaller changes get more thorough reviews
+            <span class="source"
+              >(<a target="_blank" href="https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/"
+                >SmartBear / Cisco code review study</a
+              >)</span
+            >.
+          </li>
+          <li>
+            🚀 <b>Faster onboarding.</b> Less code lowers cognitive load, so new team members can become productive
+            sooner
+            <span class="source"
+              >(<a target="_blank" href="https://doi.org/10.1207/s15516709cog1202_4">Sweller, 1988</a>)</span
+            >.
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <script>
+      // Running totals for the summary, counting only steps both libraries have.
+      let totalCurrent = 0;
+      let totalChibi = 0;
+
       // Adds a "Difference" row to every table: how much smaller Chibi is than Current.
       // Formula: (current - chibi) / current. Negative means Chibi has more lines.
       for (const tbody of document.querySelectorAll("tbody")) {
@@ -226,10 +363,18 @@
 
           const percentage = Math.round(((current - chibi) / current) * 100);
 
+          totalCurrent += current;
+          totalChibi += chibi;
           cell.textContent = `${percentage}%`.replace("-", "−");
           cell.classList.add(percentage >= 0 ? "smaller" : "larger");
         });
       }
+
+      const totalPercentage = Math.round(((totalCurrent - totalChibi) / totalCurrent) * 100);
+
+      document.getElementById("total-difference").textContent = `${totalPercentage}%`;
+      document.getElementById("total-detail").textContent =
+        `${totalChibi.toLocaleString("en")} vs ${totalCurrent.toLocaleString("en")} lines`;
     </script>
   </body>
 </html>
