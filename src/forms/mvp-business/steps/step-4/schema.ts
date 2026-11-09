@@ -1,0 +1,48 @@
+// Node modules
+import * as v from "valibot";
+
+// Project files
+import businessFormConfig from "../../data/businessFormConfig";
+
+// Properties
+const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = businessFormConfig;
+
+// Fields
+const turnover = v.pipe(
+  v.string("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
+  v.nonEmpty("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
+  v.toNumber("Vänligen ange din omsättning från de senaste 12 månaderna, lägsta värde är 0."),
+  v.minValue(MIN_TURNOVER, `Måste vara minst ${MIN_TURNOVER.toLocaleString("sv-SE")} kr.`),
+  v.maxValue(MAX_TURNOVER, `Måste vara maximalt ${MAX_TURNOVER.toLocaleString("sv-SE")} kr.`),
+);
+
+const loan_debt = v.pipe(
+  v.string("Vänligen ange bolagets skulder, lägsta värde är 0."),
+  v.nonEmpty("Vänligen ange bolagets skulder, lägsta värde är 0."),
+  v.toNumber("Vänligen ange bolagets skulder, lägsta värde är 0."),
+  v.minValue(MIN_EXISTING_LOAN, `Måste vara minst ${MIN_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
+  v.maxValue(MAX_EXISTING_LOAN, `Måste vara maximalt ${MAX_EXISTING_LOAN.toLocaleString("sv-SE")} kr`),
+);
+
+// Variants (for existing loan)
+const withLoans = v.object({
+  has_existing_loans: v.pipe(
+    v.literal("true", "Gör ett val för att fortsätta."),
+    v.transform(() => true),
+  ),
+  loan_debt,
+});
+
+const withoutLoans = v.object({
+  has_existing_loans: v.pipe(
+    v.literal("false", "Gör ett val för att fortsätta."),
+    v.transform(() => false),
+  ),
+});
+
+const HAS_EXISTING_LOANS = v.variant("has_existing_loans", [withLoans, withoutLoans], "Gör ett val för att fortsätta.");
+
+// Schema
+const schema = v.pipe(v.intersect([v.object({ turnover }), HAS_EXISTING_LOANS]));
+
+export default schema;

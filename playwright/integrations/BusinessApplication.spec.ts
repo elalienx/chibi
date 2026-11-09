@@ -2,7 +2,7 @@
 import { test, type Locator } from "@playwright/test";
 
 // Project files
-import exampleSSNs from "../../src/forms/mvp-business/-bank-id-login/exampleSSNs";
+import exampleSSNs from "../../src/forms/mvp-business/steps/bank-id-login/exampleSSNs";
 import checkSuccessStep from "./business/checkSuccessStep";
 import fillBankIDLogin from "./business/fillBankIDLogin";
 import fillStep1 from "./business/fillStep1";
