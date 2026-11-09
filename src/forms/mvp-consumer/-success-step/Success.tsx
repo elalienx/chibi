@@ -4,7 +4,6 @@ import Tooltip from "components/tooltip/Tooltip";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./BankIDTooltip";
-import "./success.css";
 
 interface Props {
   /** Shows the co-applicant BankID instructions when the user answered "Ja" in Step 2. */
