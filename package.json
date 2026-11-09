@@ -18,7 +18,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@astrojs/react": "^7.1.2",
+    "@astrojs/react": "^7.1.4",
     "@floating-ui/react": "^0.27.20",
     "@formisch/react": "^1.2.0",
     "astro": "^7.4.5",
