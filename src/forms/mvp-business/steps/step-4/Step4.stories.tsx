@@ -1,5 +1,5 @@
 // Project files
-import preview from "../../../../.storybook/preview";
+import preview from "../../../../../.storybook/preview";
 import Step4 from "./Step4";
 
 // Metadata

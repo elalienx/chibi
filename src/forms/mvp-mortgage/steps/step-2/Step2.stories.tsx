@@ -1,6 +1,6 @@
 // Project files
-import preview from "../../../../.storybook/preview";
-import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
+import preview from "../../../../../.storybook/preview";
+import { apartment, holidayHome, terracedHouse, house } from "../../data/propertyTypes";
 import Step2 from "./Step2";
 
 // Metadata

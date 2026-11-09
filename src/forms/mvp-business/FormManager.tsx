@@ -1,13 +1,13 @@
 // Project files
-import BankIDLogin from "./-bank-id-login/BankIDLogin";
-import Step1 from "./-step-1/Step1";
-import Step2 from "./-step-2/Step2";
-import Step3 from "./-step-3/Step3";
-import Step4 from "./-step-4/Step4";
-import Step5 from "./-step-5/Step5";
-import Step6AB from "./-step-6-ab/Step6AB";
-import Step6EN from "./-step-6-en/Step6EN";
-import Success from "./-success-step/Success";
+import BankIDLogin from "./steps/bank-id-login/BankIDLogin";
+import Step1 from "./steps/step-1/Step1";
+import Step2 from "./steps/step-2/Step2";
+import Step3 from "./steps/step-3/Step3";
+import Step4 from "./steps/step-4/Step4";
+import Step5 from "./steps/step-5/Step5";
+import Step6AB from "./steps/step-6-ab/Step6AB";
+import Step6EN from "./steps/step-6-en/Step6EN";
+import Success from "./steps/success-step/Success";
 import useFormNavigation from "./state/useFormNavigation";
 
 export default function FormManager() {

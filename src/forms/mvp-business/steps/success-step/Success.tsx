@@ -1,8 +1,8 @@
 // Project files
 import Button from "components/button/Button";
 import Tooltip from "components/tooltip/Tooltip";
-import useApplication from "../state/useApplication";
-import useFormNavigation from "../state/useFormNavigation";
+import useApplication from "../../state/useApplication";
+import useFormNavigation from "../../state/useFormNavigation";
 import BankIDTooltip from "./BankIDTooltip";
 
 export default function Success() {

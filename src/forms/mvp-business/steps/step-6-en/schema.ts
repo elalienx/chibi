@@ -2,7 +2,7 @@
 import * as v from "valibot";
 
 // Project files
-import businessFormConfig from "../data/businessFormConfig";
+import businessFormConfig from "../../data/businessFormConfig";
 
 // Properties
 const { MAX_PRIVATE_LOAN } = businessFormConfig;

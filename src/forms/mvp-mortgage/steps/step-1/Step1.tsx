@@ -8,9 +8,9 @@ import Icon from "components/icon/Icon";
 import Label from "components/label/Label";
 import RadioGroup from "components/radio-group/RadioGroup";
 import RadioOption from "components/radio-option/RadioOption";
-import { apartment, holidayHome, terracedHouse, house } from "../data/propertyTypes";
-import useApplication from "../state/useApplication";
-import useFormNavigation from "../state/useFormNavigation";
+import { apartment, holidayHome, terracedHouse, house } from "../../data/propertyTypes";
+import useApplication from "../../state/useApplication";
+import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
 
 // Properties

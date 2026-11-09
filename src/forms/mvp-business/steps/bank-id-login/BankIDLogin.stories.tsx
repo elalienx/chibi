@@ -1,5 +1,5 @@
 // Project files
-import preview from "../../../../.storybook/preview";
+import preview from "../../../../../.storybook/preview";
 import BankIDLogin from "./BankIDLogin";
 
 // Metadata

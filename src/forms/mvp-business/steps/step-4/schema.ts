@@ -2,7 +2,7 @@
 import * as v from "valibot";
 
 // Project files
-import businessFormConfig from "../data/businessFormConfig";
+import businessFormConfig from "../../data/businessFormConfig";
 
 // Properties
 const { MIN_TURNOVER, MAX_TURNOVER, MIN_EXISTING_LOAN, MAX_EXISTING_LOAN } = businessFormConfig;

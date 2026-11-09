@@ -15,16 +15,16 @@ import ToggleGroup from "components/toggle-group/ToggleGroup";
 import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import initialApplication from "../data/initialApplication";
-import employmentEndYears from "../data/employmentEndYears";
-import employmentStartYears from "../data/employmentStartYears";
-import months from "../data/months";
-import useApplication from "../state/useApplication";
-import useFormNavigation from "../state/useFormNavigation";
-import getEmploymentFields from "../-step-5/helpers/getEmploymentFields";
-import getStartMonths from "../-step-5/helpers/getStartMonths";
+import initialApplication from "../../data/initialApplication";
+import employmentEndYears from "../../data/employmentEndYears";
+import employmentStartYears from "../../data/employmentStartYears";
+import months from "../../data/months";
+import useApplication from "../../state/useApplication";
+import useFormNavigation from "../../state/useFormNavigation";
+import getEmploymentFields from "../step-5/helpers/getEmploymentFields";
+import getStartMonths from "../step-5/helpers/getStartMonths";
 import buildSchema from "./schema";
-import Tooltips from "../-step-5/Tooltips";
+import Tooltips from "../step-5/Tooltips";
 import "./step-6.css";
 
 // Properties

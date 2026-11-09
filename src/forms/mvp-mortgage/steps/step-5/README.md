@@ -24,7 +24,7 @@ From there, two files work together:
 
 ## Variants
 
-The 11 employment types in [`data/employmentTypes.ts`](../data/employmentTypes.ts) are grouped as 5 variants.
+The 11 employment types in [`data/employmentTypes.ts`](../../data/employmentTypes.ts) are grouped as 5 variants.
 
 | Variant             | Employment types                                                       | Fields                                           |
 | :------------------ | :--------------------------------------------------------------------- | :----------------------------------------------- |

@@ -7,7 +7,7 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import businessFormConfig from "../../data/businessFormConfig";
+import businessFormConfig from "../../../data/businessFormConfig";
 import "./loan-edit.css";
 
 const { MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD } = businessFormConfig;
