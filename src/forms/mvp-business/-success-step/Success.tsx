@@ -4,7 +4,6 @@ import Tooltip from "components/tooltip/Tooltip";
 import useApplication from "../state/useApplication";
 import useFormNavigation from "../state/useFormNavigation";
 import BankIDTooltip from "./BankIDTooltip";
-import "./success.css";
 
 export default function Success() {
   // Global state

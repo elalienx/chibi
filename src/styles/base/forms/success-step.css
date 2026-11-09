@@ -1,4 +1,4 @@
-#success-step {
+#success-step:is(.business-form, .consumer-form) {
   align-items: center;
   gap: var(--space-medium);
   padding-block: var(--space-xl);
@@ -46,7 +46,7 @@
 
 /* Tablet */
 @media (min-width: 550px) {
-  #success-step {
+  #success-step:is(.business-form, .consumer-form) {
     gap: var(--space-xl);
     padding: var(--space-2xl);
 
