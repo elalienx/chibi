@@ -102,6 +102,48 @@
         }
       }
 
+      /* Benefits tabs */
+      .tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-block-end: 1.25rem;
+        border-block-end: 1px solid #bbf7d0;
+
+        button {
+          margin-block-end: -1px;
+          padding: 0.5rem 1rem;
+          background: none;
+          border: none;
+          border-block-end: 3px solid transparent;
+          color: #6b7280;
+          font: inherit;
+          font-weight: 600;
+          cursor: pointer;
+          transition:
+            color 0.15s ease-in,
+            border-color 0.15s ease-in;
+
+          &:hover {
+            color: #166534;
+          }
+
+          &[aria-selected="true"] {
+            border-block-end-color: #15803d;
+            color: #15803d;
+          }
+
+          &:focus-visible {
+            outline: 2px solid #0071eb;
+            outline-offset: 2px;
+          }
+        }
+      }
+
+      [role="tabpanel"]:focus-visible {
+        outline: 2px solid #0071eb;
+        outline-offset: 4px;
+      }
+
       .total {
         color: #15803d;
         text-align: center;
@@ -293,8 +335,25 @@
         <span class="source" id="total-detail"></span>
       </p>
       <div>
-        <h2>Why a shorter codebase matters</h2>
-        <ul>
+        <h2 id="benefits-title">Benefits</h2>
+        <div class="tabs" role="tablist" aria-labelledby="benefits-title">
+          <button type="button" role="tab" id="tab-engineering" aria-controls="panel-engineering" aria-selected="true">
+            ⚙️ Engineering
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-business"
+            aria-controls="panel-business"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            📈 Business
+          </button>
+        </div>
+
+        <!-- Engineering -->
+        <ul role="tabpanel" id="panel-engineering" aria-labelledby="tab-engineering" tabindex="0">
           <li>
             🐞 <b>Fewer bugs.</b> Code size is one of the strongest predictors of defects: studies consistently find
             that the number of faults grows with lines of code
@@ -302,21 +361,6 @@
               >(<a target="_blank" href="https://ieeexplore.ieee.org/document/935855">El Emam et al., 2001</a>;
               <a target="_blank" href="https://www.oreilly.com/library/view/code-complete-2nd/0735619670/"
                 >McConnell, <i>Code Complete</i></a
-              >)</span
-            >.
-          </li>
-          <li>
-            🤖 <b>Lower AI cost.</b> AI skills help agents find code in big codebases, but they still have to read it.
-            Fewer lines mean fewer tokens, cheaper requests and more accurate answers
-            <span class="source">(<a target="_blank" href="https://arxiv.org/abs/2307.03172">Liu et al., 2023</a>)</span
-            >.
-          </li>
-          <li>
-            🛠️ <b>Cheaper maintenance.</b> Maintenance makes up 60–80% of a software system's lifetime cost, and it
-            scales with the amount of code to maintain
-            <span class="source"
-              >(<a target="_blank" href="https://www.oreilly.com/library/view/facts-and-fallacies/0321117425/"
-                >Glass, <i>Facts and Fallacies of Software Engineering</i></a
               >)</span
             >.
           </li>
@@ -330,11 +374,50 @@
             >.
           </li>
           <li>
+            🤖 <b>More accurate AI help.</b> AI skills help agents find code in big codebases, but they still have to
+            read it. Models get less accurate as their context grows, so less code means better answers
+            <span class="source">(<a target="_blank" href="https://arxiv.org/abs/2307.03172">Liu et al., 2023</a>)</span
+            >.
+          </li>
+          <li>
             🚀 <b>Faster onboarding.</b> Less code lowers cognitive load, so new team members can become productive
             sooner
             <span class="source"
               >(<a target="_blank" href="https://doi.org/10.1207/s15516709cog1202_4">Sweller, 1988</a>)</span
             >.
+          </li>
+          <li>
+            🛠️ <b>Cheaper maintenance.</b> Maintenance makes up 60–80% of a software system's lifetime cost, and it
+            scales with the amount of code to maintain
+            <span class="source"
+              >(<a target="_blank" href="https://www.oreilly.com/library/view/facts-and-fallacies/0321117425/"
+                >Glass, <i>Facts and Fallacies of Software Engineering</i></a
+              >)</span
+            >.
+          </li>
+        </ul>
+
+        <!-- Business -->
+        <ul role="tabpanel" id="panel-business" aria-labelledby="tab-business" tabindex="0" hidden>
+          <li>
+            ⏱️ <b>Faster idea to production.</b> New steps and forms are assembled from ready-made components instead of
+            written from scratch, so ideas reach customers sooner.
+          </li>
+          <li>
+            🧪 <b>Quicker experiments.</b> Smaller steps are easier to change, so A/B tests take less time to set up,
+            ship and roll back.
+          </li>
+          <li>
+            💰 <b>Lower AI spend.</b> AI tools are billed per token. Fewer lines mean fewer tokens in every request,
+            which lowers the cost of AI-assisted development.
+          </li>
+          <li>
+            ☎️ <b>Less support tickets.</b> Fewer bugs in production mean fewer customers who get stuck halfway through
+            a form and have to contact support.
+          </li>
+          <li>
+            🧩 <b>Consistent forms.</b> Every step is built from the same Chibi components and validation patterns, so
+            fields look, behave and validate the same way across all forms.
           </li>
         </ul>
       </div>
@@ -383,6 +466,34 @@
       document.getElementById("total-difference").textContent = `${totalPercentage}%`;
       document.getElementById("total-detail").textContent =
         `${totalChibi.toLocaleString("en")} vs ${totalCurrent.toLocaleString("en")} lines`;
+
+      // Benefits tabs: click or use the arrow keys to switch between panels.
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+
+      function selectTab(selectedTab) {
+        for (const tab of tabs) {
+          const isSelected = tab === selectedTab;
+
+          tab.setAttribute("aria-selected", isSelected);
+          tab.tabIndex = isSelected ? 0 : -1;
+          document.getElementById(tab.getAttribute("aria-controls")).hidden = !isSelected;
+        }
+
+        selectedTab.focus();
+      }
+
+      for (const tab of tabs) {
+        tab.addEventListener("click", () => selectTab(tab));
+        tab.addEventListener("keydown", (event) => {
+          const index = tabs.indexOf(tab);
+          const moves = { ArrowRight: 1, ArrowLeft: -1 };
+
+          if (!(event.key in moves)) return;
+
+          event.preventDefault();
+          selectTab(tabs[(index + moves[event.key] + tabs.length) % tabs.length]);
+        });
+      }
     </script>
   </body>
 </html>
