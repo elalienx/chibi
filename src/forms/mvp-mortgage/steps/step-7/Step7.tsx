@@ -35,7 +35,6 @@ export default function Step7() {
   const isAddingChild = childIndex !== null;
 
   // Methods
-
   function saveChild(child: Child, index: number) {
     const updatedChildren = [...children];
 
