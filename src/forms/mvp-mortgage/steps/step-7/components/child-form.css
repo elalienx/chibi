@@ -1,0 +1,89 @@
+.child-form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-gray-100);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-medium);
+    padding: var(--space-medium) var(--space-medium) 0;
+
+    h5 {
+      flex: 1;
+      font-size: var(--font-size-large); /* One step above the global h5, as in Figma. */
+    }
+
+    .close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--space-2xl);
+      height: var(--space-2xl);
+      padding: 0;
+      background: none;
+      border: none;
+      color: var(--color-blue-40);
+      cursor: pointer;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding: var(--space-medium);
+  }
+
+  .yes-no-questions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    .options {
+      grid-template-columns: repeat(2, 1fr); /* Force Ja and Nej to stay side by side on mobile. */
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .child-form {
+    header {
+      padding: var(--space-2xl) var(--space-2xl) 0;
+
+      h5 {
+        font-size: 24px;
+      }
+    }
+
+    .content {
+      gap: var(--space-2xl);
+      padding: var(--space-medium) var(--space-2xl) var(--space-2xl);
+    }
+
+    /* Age select */
+    .select-group:has(#child_age) {
+      --field-min-width: 0px; /* Lets the fixed width below win over the default field width. */
+
+      width: 198px; /* Matches the width of one radio option column. */
+    }
+
+    footer {
+      flex-direction: row;
+
+      .button {
+        flex: 1; /* Avbryt and Spara share the row equally. */
+      }
+    }
+  }
+}
