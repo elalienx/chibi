@@ -1,0 +1,10 @@
+.button:disabled {
+  background-color: var(--color-gray-70);
+  border-color: transparent;
+  color: var(--color-gray-95);
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: var(--color-gray-70); /* Cancels the hover color of every variant. */
+  }
+}

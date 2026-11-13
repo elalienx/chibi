@@ -21,6 +21,16 @@ export const Primary = meta.story({
   render: () => <Button onClick={onClick}>Hello</Button>,
 });
 
+export const PrimaryDisabled = meta.story({
+  name: "Primary (disabled)",
+  render: () => (
+    <Button onClick={onClick} disabled>
+      Nästa
+      <Icon name="arrow-right" />
+    </Button>
+  ),
+});
+
 export const PrimaryWithIcon = meta.story({
   name: "Primary with icon",
   render: () => (
