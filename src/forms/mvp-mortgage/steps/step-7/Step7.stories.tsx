@@ -10,7 +10,7 @@ const meta = preview.meta({
 
 // Stories
 export const Default = meta.story({
-  name: "Default",
+  name: "Step 7: Household",
   render: () => <Step7 />,
 });
 
