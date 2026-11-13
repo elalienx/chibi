@@ -10,8 +10,8 @@ import RadioOption from "components/radio-option/RadioOption";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
-import childSchema from "./childSchema";
 import ChildTooltips from "./ChildTooltips";
+import schema from "./schema";
 import "./child-form.css";
 
 interface Props {
@@ -22,12 +22,12 @@ interface Props {
   onCancel?: () => void;
 
   /** Receives the validated child information when the user clicks "Spara". */
-  onSave?: SubmitHandler<typeof childSchema>;
+  onSave?: SubmitHandler<typeof schema>;
 }
 
 export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: Props) {
   // Local state
-  const form = useForm({ schema: childSchema, validate: "blur", revalidate: "blur" });
+  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
 
   // Derived state
   const maxAge = 18;
