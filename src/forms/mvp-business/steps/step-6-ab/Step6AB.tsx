@@ -38,9 +38,10 @@ export default function Step6AB() {
 
   // Methods
   function submitForm(values: object) {
-    // The existing loans only apply to sole traders (Step 6 EN).
-    // Reset them so stale values are not sent to the backend if the user changed the BankID login.
-    updateApplication({ blanco_loans: 0, house_loans: 0, installment_loans: 0, ...values });
+    // Reset in case the user changed the BankID login, so stale values are not sent to the backend.
+    const soleTraderFields = { blanco_loans: 0, house_loans: 0, installment_loans: 0 };
+
+    updateApplication({ ...soleTraderFields, ...values });
     setStep("success-step");
   }
 

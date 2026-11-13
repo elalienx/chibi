@@ -32,9 +32,10 @@ export default function Step6EN() {
 
   // Methods
   function submitForm(values: object) {
-    // The guarantor question only applies to AB companies (Step 6 AB).
-    // Reset it so a stale value is not sent to the backend if the user changed the BankID login.
-    updateApplication({ ...values, is_guarantor: initialApplication.is_guarantor });
+    // Reset in case the user changed the BankID login, so a stale value is not sent to the backend.
+    const publicCompanyFields = { is_guarantor: initialApplication.is_guarantor };
+
+    updateApplication({ ...publicCompanyFields, ...values });
     setStep("success-step");
   }
 
