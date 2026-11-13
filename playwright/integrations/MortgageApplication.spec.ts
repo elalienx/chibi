@@ -12,6 +12,7 @@ import fillStep3 from "./mortgage/fillStep3";
 import fillStep4 from "./mortgage/fillStep4";
 import fillStep5 from "./mortgage/fillStep5";
 import fillStep6 from "./mortgage/fillStep6";
+import fillStep7 from "./mortgage/fillStep7";
 
 // Properties
 let form: Locator;
@@ -27,6 +28,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 
@@ -36,6 +38,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 
@@ -45,6 +48,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { tenancyType: "Bostadsrätt", squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 
@@ -54,6 +58,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 
@@ -63,6 +68,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 });
@@ -76,6 +82,7 @@ test.describe("With co-applicant", () => {
     await fillStep4(form, coApplicant);
     await fillStep5(form, mainEmployment);
     await fillStep6(form, coEmployment);
+    await fillStep7(form);
     await checkSuccessStep(form);
   });
 });

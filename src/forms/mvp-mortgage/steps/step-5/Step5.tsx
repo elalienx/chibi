@@ -56,7 +56,7 @@ export default function Step5({ employmentType }: Props) {
   function submitForm(values: object) {
     // Resets the fields hidden by the current employment type.
     updateApplication({ main: { ...initialApplication.main, ...values } });
-    setStep(application.has_co_applicant ? "step-6" : "success-step");
+    setStep(application.has_co_applicant ? "step-6" : "step-7");
   }
 
   return (
