@@ -22,6 +22,8 @@ export default async function fillStep7(form: Locator, props: Props) {
     const { adults, children = [] } = props;
 
     await form.getByRole("heading", { name: "Om hushållet" }).waitFor();
+
+    // Adults
     await form.getByRole("textbox", { name: "Hur många vuxna är ni i hushållet?" }).fill(String(adults));
 
     // Children
