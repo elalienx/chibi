@@ -25,12 +25,13 @@ interface Props {
   onSave?: SubmitHandler<typeof childSchema>;
 }
 
-const MAX_AGE = 18;
-const AGE_RAGE = Array.from({ length: MAX_AGE + 1 }, (_, age) => age);
-
 export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: Props) {
   // Local state
   const form = useForm({ schema: childSchema, validate: "blur", revalidate: "blur" });
+
+  // Derived state
+  const maxAge = 18;
+  const ageRange = Array.from({ length: maxAge + 1 }, (_, age) => age);
 
   return (
     <Form of={form} onSubmit={onSave} className="child-form">
@@ -45,9 +46,9 @@ export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: 
         <SelectGroup form={form} id="child_age">
           <Label>Barnets ålder</Label>
           <Select>Ange ålder</Select>
-          {AGE_RAGE.map((age) => (
+          {ageRange.map((age) => (
             <SelectOption key={age} value={age}>
-              {`${age} år`}
+              {age === 0 ? "Under 1 år" : `${age} år`}
             </SelectOption>
           ))}
         </SelectGroup>
