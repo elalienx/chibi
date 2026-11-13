@@ -10,9 +10,9 @@ import cleanInitialInput from "helpers/cleanInitialInput";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import type Child from "../../types/Child";
-import ChildForm from "./components/ChildForm";
-import Counter from "./components/Counter";
-import EditCard from "./components/EditCard";
+import ChildForm from "./components/child-form/ChildForm";
+import Counter from "./components/counter/Counter";
+import EditCard from "./components/edit-card/EditCard";
 import schema from "./schema";
 import "./step-7.css";
 
