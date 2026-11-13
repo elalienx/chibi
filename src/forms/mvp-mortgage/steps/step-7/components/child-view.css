@@ -16,27 +16,6 @@
     h5 {
       flex: 1;
     }
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      background-color: var(--color-gray-100);
-      border: solid 1px var(--color-desaturated-90);
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .edit {
-      color: var(--color-blue-40);
-    }
-
-    .delete {
-      color: var(--color-red-50);
-    }
   }
 
   /* Summary rows */
