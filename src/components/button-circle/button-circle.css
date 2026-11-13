@@ -19,3 +19,9 @@
 .button-circle:hover {
   background-color: var(--color-blue-30);
 }
+
+.button-circle:disabled {
+  background-color: var(--color-gray-70);
+  box-shadow: none;
+  cursor: not-allowed;
+}
