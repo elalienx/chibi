@@ -34,7 +34,7 @@ Here is an explanation of the key files:
 - **Step 3:** the applicant chooses whether to apply with a co-applicant, which changes the flow:
   - **👤 Single applicant:** skips Steps 4 (Co-applicant info) and 6 (Co-applicant employment).
   - **👥 With co-applicant:** shows all steps.
-- **Steps 5 and 6:** change their fields depending on the employment type selected in Steps 3 and 4. Read the [Step 5 README](./steps/step-5/README.md) for details.
+- **Steps 5 and 6:** Change the income related questions depending on the employment type selected in Steps 3 and 4. Read the [Step 5 README](./steps/step-5/README.md) for details.
 
 ## Things to watch out
 
