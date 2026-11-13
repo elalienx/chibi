@@ -2,7 +2,7 @@
 import type * as v from "valibot";
 
 // Project files
-import Icon from "components/icon/Icon";
+import ButtonIcon from "components/button-icon/ButtonIcon";
 import schema from "./schema";
 import "./child-view.css";
 
@@ -33,12 +33,8 @@ export default function ChildView({ childNumber, child, onEdit, onDelete }: Prop
     <div className="child-view">
       <header>
         <h5>Barn {childNumber}</h5>
-        <button aria-label={`Ändra barn ${childNumber}`} className="edit" onClick={onEdit} type="button">
-          <Icon name="pen-to-square" />
-        </button>
-        <button aria-label={`Ta bort barn ${childNumber}`} className="delete" onClick={onDelete} type="button">
-          <Icon name="trash-xmark" />
-        </button>
+        <ButtonIcon icon="pen-to-square" name={`Ändra barn ${childNumber}`} onClick={onEdit} />
+        <ButtonIcon icon="trash-xmark" name={`Ta bort barn ${childNumber}`} onClick={onDelete} variant="danger" />
       </header>
 
       <dl>
