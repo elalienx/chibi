@@ -32,7 +32,9 @@ Here is an explanation of the key files:
 
 ## Flow variants
 
-Steps 1, 4, and 5 aren't built yet, so the form goes from the intro to Steps 2, 3, and the success step. In Step 2, the applicant chooses whether to apply with a co-applicant:
+Steps 1, 4, and 5 aren't built yet, so the form goes from the intro to Steps 2, 3, and the success step.
+
+In Step 2, the applicant chooses whether to apply with a co-applicant:
 
 - **👤 Single applicant:** Step 3 only shows the applicant's personal info.
 - **👥 With co-applicant:** Step 3 also shows the co-applicant's personal info.
