@@ -22,7 +22,6 @@ interface Props {
 
 export default function ChildView({ childNumber, child, onEdit, onDelete }: Props) {
   // Derived state
-  const yesNo = (value: boolean) => (value ? "Ja" : "Nej");
   const age = child.child_age === 0 ? "Under 1 år" : `${child.child_age} år`;
   const maintenance = {
     pays: "Betalar underhåll",
@@ -49,15 +48,15 @@ export default function ChildView({ childNumber, child, onEdit, onDelete }: Prop
         </div>
         <div>
           <dt>Barnbidrag/Studiebidrag</dt>
-          <dd>{yesNo(child.child_receives_allowance)}</dd>
+          <dd>{child.child_receives_allowance ? "Ja" : "Nej"}</dd>
         </div>
         <div>
           <dt>Bor barnet hos dig</dt>
-          <dd>{yesNo(child.child_lives_with_applicant)}</dd>
+          <dd>{child.child_lives_with_applicant ? "Ja" : "Nej"}</dd>
         </div>
         <div>
           <dt>Delad vårdnad</dt>
-          <dd>{yesNo(child.child_shared_custody)}</dd>
+          <dd>{child.child_shared_custody ? "Ja" : "Nej"}</dd>
         </div>
         <div>
           <dt>Underhåll</dt>
