@@ -8,28 +8,15 @@
     h5 {
       font-size: var(--font-size-large);
       font-weight: var(--font-weight-medium);
-      line-height: 24px;
-      letter-spacing: 0;
     }
 
     p {
-      margin: 0;
-      line-height: 24px;
-      letter-spacing: 0.16px;
+      margin-bottom: var(--space-small); /* With the 4px gap, makes 16px before the next item. */
     }
   }
 
   /* Adults counter */
   .adults {
     margin-bottom: var(--space-2xl); /* Same space between adults and children on mobile and desktop. */
-
-    .counter {
-      margin-top: var(--space-small); /* Adds to the 4px gap for 16px between the description and the counter. */
-    }
-  }
-
-  /* Add child button */
-  .children .button {
-    margin-top: var(--space-small); /* Adds to the 4px gap for 16px between the description and the button. */
   }
 }
