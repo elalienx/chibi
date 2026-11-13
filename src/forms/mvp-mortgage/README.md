@@ -30,12 +30,11 @@ Here is an explanation of the key files:
 
 ## Flow variants
 
-In Step 3, the applicant chooses whether to apply with a co-applicant, which changes the flow:
-
-- **👤 Without co-applicant:** skips Steps 4 and 6, then shows Steps 5 and 7.
-- **👥 With co-applicant:** shows Steps 4 (Co-applicant info), 5, 6 (Co-applicant employment), and 7.
-
-Some steps also change their fields: Step 2 based on the property type, and Steps 5 and 6 based on the employment type. See the [Step 5 README](./steps/step-5/README.md).
+- **Step 2:** changes its fields depending on the property type selected in Step 1.
+- **Step 3:** the applicant chooses whether to apply with a co-applicant, which changes the flow:
+  - **👤 Single applicant:** skips Steps 4 (Co-applicant info) and 6 (Co-applicant employment).
+  - **👥 With co-applicant:** shows all steps.
+- **Steps 5 and 6:** change their fields depending on the employment type selected in Steps 3 and 4. Read the [Step 5 README](./steps/step-5/README.md) for details.
 
 ## Things to watch out
 
