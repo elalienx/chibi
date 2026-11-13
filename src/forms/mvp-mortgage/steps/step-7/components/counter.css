@@ -1,0 +1,46 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-medium);
+  padding: var(--space-medium);
+  background-color: var(--color-blue-99);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+
+  .label {
+    text-align: center;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-medium);
+
+    .input-wrapper {
+      width: var(--height-of-field); /* Square, same size as the circle buttons. */
+    }
+
+    /* The count always starts valid, so the green success border adds no information. */
+    .input-wrapper.success {
+      border-color: var(--input-border-up);
+      outline: none;
+    }
+
+    .input {
+      text-align: center;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .counter {
+    flex-direction: row;
+
+    .label {
+      flex: 1;
+      text-align: left;
+    }
+  }
+}

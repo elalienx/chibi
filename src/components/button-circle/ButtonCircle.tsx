@@ -11,11 +11,14 @@ interface Props {
 
   /** The function to execute when clicked. */
   onClick?: () => void;
+
+  /** Prevents clicks and shows the grey style. Used when a counter reaches its limit. */
+  disabled?: boolean;
 }
 
-export default function ButtonCircle({ icon, name, onClick }: Props) {
+export default function ButtonCircle({ icon, name, onClick, disabled = false }: Props) {
   return (
-    <button aria-label={name} className="button-circle" onClick={onClick} type="button">
+    <button aria-label={name} className="button-circle" disabled={disabled} onClick={onClick} type="button">
       <Icon name={icon} />
     </button>
   );
