@@ -19,8 +19,10 @@ export default async function fillChild(form: Locator, props: Props) {
     await child.getByRole("heading", { name: `Barn ${childNumber}` }).waitFor();
 
     // Age
+    const ageLabel = age === 0 ? "Under 1 år" : `${age} år`; // Same labels as ChildForm.
+
     await child.getByRole("textbox", { name: "Barnets ålder" }).click();
-    await child.getByRole("radio", { name: `${age} år`, exact: true }).check();
+    await child.getByRole("radio", { name: ageLabel, exact: true }).check();
 
     // Yes/no questions
     await child.locator("#child_receives_allowance").getByRole("radio", { name: receivesAllowance }).check();
