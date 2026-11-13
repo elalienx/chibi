@@ -1,0 +1,28 @@
+#step-7 {
+  /* Adults counter */
+  .adults {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    .heading {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-base);
+      color: var(--typography-dark);
+
+      h5 {
+        font-size: var(--font-size-large);
+        font-weight: var(--font-weight-medium);
+        line-height: 24px;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0;
+        line-height: 24px;
+        letter-spacing: 0.16px;
+      }
+    }
+  }
+}
