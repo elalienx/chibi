@@ -20,13 +20,13 @@ Here is an explanation of the main folders:
 
 1. **📦 Components:** Components shared across steps, like the consumer agency warning.
 1. **📑 Data:** The select options and the initial empty application.
-1. **💾 State:** Global Zustand stores for the user's application responses and the navigation.
+1. **💾 State:** Global Zustand stores for the user's application progress and the step navigation.
 1. **📝 Form steps:** One folder per step. Each folder contains a React TypeScript file and, except for the intro step, a Storybook file. Steps with inputs also have a Valibot schema and a CSS file.
 1. **🏷️ Types:** The TypeScript types shared across steps, like `Application` and `Step`.
 
 Here is an explanation of the key files:
 
-1. **[useApplication](./state/useApplication.ts):** Saves the user's application responses. It persists to localStorage under the key "consumer-application". It discards old saved data automatically when its version is bumped, which you must do by hand every time the [Application](./types/Application.ts) type changes.
+1. **[useApplication](./state/useApplication.ts):** Saves the user's application progress. It persists to localStorage under the key "consumer-application". It discards old saved data automatically when its version is bumped, which you must do by hand every time the [Application](./types/Application.ts) type changes.
 1. **[useFormNavigation](./state/useFormNavigation.ts):** Saves the current step and a history of previous steps. The back arrow uses that history, so steps don't need to know where they came from.
 1. **[FormManager](./FormManager.tsx):** Imports every step and toggles which one is visible, based on the current step in useFormNavigation. It also reads useApplication to tell Step 3 and the success step if there is a co-applicant.
 
