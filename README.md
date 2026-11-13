@@ -19,7 +19,7 @@ Chibi is a UI component library for building complex multi-step forms.
 │   └── forms/
 │   └── helpers/
 │   └── layouts/
-│   └── pages/index.astro 🏁 Entry point
+│   └── pages/index.astro (🏁 Entry point)
 │   └── state/
 │   └── styles/
 └── package.json
@@ -29,7 +29,7 @@ Chibi is a UI component library for building complex multi-step forms.
 Here is an explanation of the main folders:
 
 1. **📦 Components:** The UI components of Chibi. Each folder contains a React TypeScript file, a Storybook file, and at least one CSS file. If the folder contains more than one CSS file, the name explains how the component styles are divided into layout, state, design, or any unique case scenarios.
-1. **📋 Forms:** Split into `example-` folders showing component behavior and `mvp-` folders simulating a complex loan application forms.
+1. **📋 Forms:** Split into `example-` folders showing component behavior and `mvp-` folders simulating complex loan application forms for [business](src/forms/mvp-business/README.md), consumer, and mortgage.
 1. **🧑‍💻 Helpers:** Scripts designed to smooth the integration between Chibi UI with Formisch and Valibot.
 1. **📑 Pages:** Astro pages for accessing the examples of forms in action.
 1. **📸 Snapshots:** The screenshots Playwright compares the component tests against, split into `local/` for our computers and `ci/` for the CI. See [Updating screenshots](#updating-screenshots) for how to update them.
