@@ -1,7 +1,7 @@
 // Project files
 import preview from "../../../../../.storybook/preview";
 import ChildForm from "./components/ChildForm";
-import ChildView from "./components/ChildView";
+import EditCard from "./components/EditCard";
 import Step7 from "./Step7";
 
 // Metadata
@@ -47,9 +47,9 @@ export const ChildFormStory = meta.story({
   render: () => <ChildForm childNumber={1} onCancel={onCancel} onSave={onSave} />,
 });
 
-export const ChildViewStory = meta.story({
-  name: "Child View",
-  render: () => <ChildView childNumber={1} child={child} onEdit={onEdit} onDelete={onDelete} />,
+export const EditCardStory = meta.story({
+  name: "Edit Card",
+  render: () => <EditCard childNumber={1} child={child} onEdit={onEdit} onDelete={onDelete} />,
 });
 
 export default meta;

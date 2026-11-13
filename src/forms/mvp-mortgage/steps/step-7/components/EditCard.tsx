@@ -4,7 +4,7 @@ import type * as v from "valibot";
 // Project files
 import ButtonIcon from "components/button-icon/ButtonIcon";
 import schema from "./schema";
-import "./child-view.css";
+import "./edit-card.css";
 
 interface Props {
   /** The position of the child in the household list, shown in the title as "Barn 1", "Barn 2", etc. */
@@ -20,7 +20,7 @@ interface Props {
   onDelete: () => void;
 }
 
-export default function ChildView({ childNumber, child, onEdit, onDelete }: Props) {
+export default function EditCard({ childNumber, child, onEdit, onDelete }: Props) {
   // Derived state
   const age = child.child_age === 0 ? "Under 1 år" : `${child.child_age} år`;
   const maintenance = {
@@ -30,7 +30,7 @@ export default function ChildView({ childNumber, child, onEdit, onDelete }: Prop
   }[child.child_maintenance];
 
   return (
-    <div className="child-view">
+    <div className="edit-card">
       <header>
         <h5>Barn {childNumber}</h5>
         <ButtonIcon icon="pen-to-square" name={`Ändra barn ${childNumber}`} onClick={onEdit} />
