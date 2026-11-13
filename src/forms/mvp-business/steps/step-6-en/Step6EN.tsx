@@ -10,7 +10,6 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import initialApplication from "../../data/initialApplication";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
@@ -32,10 +31,7 @@ export default function Step6EN() {
 
   // Methods
   function submitForm(values: object) {
-    // Reset in case the user changed the BankID login, so a stale value is not sent to the backend.
-    const publicCompanyFields = { is_guarantor: initialApplication.is_guarantor };
-
-    updateApplication({ ...publicCompanyFields, ...values });
+    updateApplication(values);
     setStep("success-step");
   }
 
