@@ -1,6 +1,11 @@
+// Node modules
+import { Form, useForm } from "@formisch/react";
+import * as v from "valibot";
+
 // Project files
 import preview from "../../../../../.storybook/preview";
 import ChildForm from "./components/ChildForm";
+import Counter from "./components/Counter";
 import EditCard from "./components/EditCard";
 import Step7 from "./Step7";
 
@@ -36,6 +41,8 @@ const child = {
   child_maintenance: "pays" as const,
 };
 
+const counterSchema = v.object({ household_adults: v.pipe(v.string(), v.toNumber()) });
+
 // Stories
 export const Default = meta.story({
   name: "Step 7: Household",
@@ -50,6 +57,19 @@ export const ChildFormStory = meta.story({
 export const EditCardStory = meta.story({
   name: "Edit Card",
   render: () => <EditCard childNumber={1} child={child} onEdit={onEdit} onDelete={onDelete} />,
+});
+
+export const CounterStory = meta.story({
+  name: "Counter",
+  render: () => {
+    const form = useForm({ schema: counterSchema, initialInput: { household_adults: "1" } });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={15} />
+      </Form>
+    );
+  },
 });
 
 export default meta;
