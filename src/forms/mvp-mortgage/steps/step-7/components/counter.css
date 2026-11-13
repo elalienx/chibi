@@ -1,0 +1,46 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-medium);
+  padding: var(--space-medium);
+  background-color: var(--color-blue-99);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+
+  .label {
+    text-align: center;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-medium);
+
+    .input-wrapper {
+      width: 50px; /* Fits two digits. */
+    }
+
+    .input-wrapper.success {
+      border-color: var(--input-border-up); /* The count always starts valid, so remove the green border. */
+      outline: none;
+    }
+
+    .input {
+      padding-inline: 0; /* The default 16px on each side leaves no room for two digits in a 48px box. */
+      text-align: center;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .counter {
+    flex-direction: row;
+
+    .label {
+      flex: 1;
+      text-align: left;
+    }
+  }
+}
