@@ -40,10 +40,10 @@ export default function Step7() {
 
       <section>
         <div className="adults">
-          <div className="heading">
+          <header>
             <h5>Antal vuxna</h5>
             <p>Ange hur många vuxna (18 år eller äldre) som bor i hushållet. Räkna med dig själv.</p>
-          </div>
+          </header>
           <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={15} />
         </div>
       </section>
