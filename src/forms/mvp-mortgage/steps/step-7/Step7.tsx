@@ -22,7 +22,7 @@ export default function Step7() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
-  const [editingIndex, setEditingIndex] = useState<number | null>(null); // null = no child form open.
+  const [childIndex, setChildIndex] = useState<number | null>(null);
   const form = useForm({
     schema,
     validate: "blur",
@@ -32,22 +32,19 @@ export default function Step7() {
 
   // Derived state
   const children = application.household_children;
-  const isAddingChild = editingIndex !== null; // A child form is open, for a new or a saved child.
+  const isAddingChild = childIndex !== null;
 
   // Methods
   function addChild() {
-    setEditingIndex(children.length);
+    setChildIndex(children.length);
   }
 
-  function saveChild(child: Child) {
-    // Safeguard
-    if (editingIndex === null) return;
-
+  function saveChild(child: Child, index: number) {
     const updatedChildren = [...children];
 
-    updatedChildren[editingIndex] = child; // children.length adds a new child; any other index replaces a saved one.
+    updatedChildren[index] = child;
     updateApplication({ household_children: updatedChildren });
-    setEditingIndex(null);
+    setChildIndex(null);
   }
 
   function deleteChild(deleteIndex: number) {
@@ -57,7 +54,7 @@ export default function Step7() {
   }
 
   function cancelChild() {
-    setEditingIndex(null);
+    setChildIndex(null);
   }
 
   function submitForm(values: object) {
@@ -86,33 +83,31 @@ export default function Step7() {
           Ange hur många barn under 18 år du eller din medsökande har, även om de inte bor hos er. Har du inga barn? Då
           kan du hoppa över den här delen.
         </p>
-        <div className="child-list">
-          {!isAddingChild &&
-            children.map((child, index) => (
-              <EditCard
-                key={index}
-                childNumber={index + 1}
-                child={child}
-                onEdit={() => setEditingIndex(index)}
-                onDelete={() => deleteChild(index)}
-              />
-            ))}
-
-          {!isAddingChild && (
-            <Button variant="secondary" onClick={addChild}>
-              Lägg till ett barn <Icon name="plus" />
-            </Button>
-          )}
-
-          {isAddingChild && (
-            <ChildForm
-              childNumber={editingIndex + 1}
-              child={children[editingIndex]}
-              onCancel={cancelChild}
-              onSave={saveChild}
+        {!isAddingChild &&
+          children.map((child, index) => (
+            <EditCard
+              key={index}
+              childNumber={index + 1}
+              child={child}
+              onEdit={() => setChildIndex(index)}
+              onDelete={() => deleteChild(index)}
             />
-          )}
-        </div>
+          ))}
+
+        {!isAddingChild && (
+          <Button variant="secondary" onClick={addChild}>
+            Lägg till ett barn <Icon name="plus" />
+          </Button>
+        )}
+
+        {isAddingChild && (
+          <ChildForm
+            childNumber={childIndex + 1}
+            child={children[childIndex]}
+            onCancel={cancelChild}
+            onSave={(child) => saveChild(child, childIndex)}
+          />
+        )}
       </section>
 
       <hr />
