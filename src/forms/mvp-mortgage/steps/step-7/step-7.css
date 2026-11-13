@@ -2,21 +2,27 @@
   /* Adults and children sections */
   .adults,
   .children {
-    gap: var(--space-base); /* Between the title and the description. */
+    gap: 0; /* Spacing comes from each item's margin-bottom. */
     color: var(--typography-dark);
 
     h5 {
+      margin-bottom: var(--space-base);
       font-size: var(--font-size-large);
       font-weight: var(--font-weight-medium);
     }
 
     p {
-      margin-bottom: var(--space-small); /* With the 4px gap, makes 16px before the next item. */
+      margin-bottom: var(--space-medium);
     }
   }
 
   /* Adults counter */
   .adults {
     margin-bottom: var(--space-2xl); /* Same space between adults and children on mobile and desktop. */
+  }
+
+  /* Saved children */
+  .children .edit-card {
+    margin-bottom: var(--space-medium);
   }
 }

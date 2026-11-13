@@ -1,9 +1,6 @@
-// Node modules
-import type * as v from "valibot";
-
 // Project files
 import ButtonIcon from "components/button-icon/ButtonIcon";
-import schema from "./schema";
+import type Child from "../../../types/Child";
 import "./edit-card.css";
 
 interface Props {
@@ -11,7 +8,7 @@ interface Props {
   childNumber: number;
 
   /** The saved child information, in the same shape that ChildForm sends on save. */
-  child: v.InferOutput<typeof schema>;
+  child: Child;
 
   /** The method to call when is time to open the sub-form. */
   onEdit: () => void;

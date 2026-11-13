@@ -1,4 +1,5 @@
 // Project files
+import type Child from "./Child";
 import type { PropertyType } from "./PropertyType";
 import type { TenancyType } from "./TenancyType";
 
@@ -57,4 +58,5 @@ export default interface Application {
 
   // Step 7: Household
   household_adults: number /** Starts at 1 because the main applicant always counts. */;
+  household_children: Child[];
 }
