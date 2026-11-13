@@ -1,5 +1,5 @@
 // Node modules
-import { Form, useForm, type SubmitHandler } from "@formisch/react";
+import { handleSubmit, useForm } from "@formisch/react";
 
 // Project files
 import Button from "components/button/Button";
@@ -10,6 +10,8 @@ import RadioOption from "components/radio-option/RadioOption";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
+import cleanInitialInput from "helpers/cleanInitialInput";
+import type Child from "../../../types/Child";
 import Tooltips from "./Tooltips";
 import schema from "./schema";
 import "./child-form.css";
@@ -18,23 +20,31 @@ interface Props {
   /** The position of the child in the household list, shown in the title as "Barn 1", "Barn 2", etc. */
   childNumber: number;
 
+  /** The saved child to edit. Leave empty to add a new child. */
+  child?: Child;
+
   /** Closes the sub-form without saving. Used by both the close icon and the "Avbryt" button. */
   onCancel?: () => void;
 
   /** Receives the validated child information when the user clicks "Spara". */
-  onSave?: SubmitHandler<typeof schema>;
+  onSave?: (child: Child) => void;
 }
 
-export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: Props) {
+export default function ChildForm({ childNumber, child, onCancel, onSave = () => {} }: Props) {
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
+  const form = useForm({
+    schema: schema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: child ? cleanInitialInput({ input: child }) : undefined,
+  });
 
   // Derived state
   const maxAge = 18;
   const ageRange = Array.from({ length: maxAge + 1 }, (_, age) => age);
 
   return (
-    <Form of={form} onSubmit={onSave} className="child-form">
+    <div className="child-form">
       <header>
         <h5>Barn {childNumber}</h5>
         <button aria-label={`Stäng barn ${childNumber}`} className="close" onClick={onCancel} type="button">
@@ -87,8 +97,9 @@ export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: 
         <Button variant="secondary" onClick={onCancel}>
           Avbryt
         </Button>
-        <Button type="submit">Spara</Button>
+        {/* Not a submit button: the child form lives inside the Step 7 form, and HTML forms cannot be nested. */}
+        <Button onClick={handleSubmit(form, onSave)}>Spara</Button>
       </footer>
-    </Form>
+    </div>
   );
 }
