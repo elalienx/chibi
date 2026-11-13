@@ -320,7 +320,11 @@
             <td data-file="src/forms/mvp-mortgage/steps/step-4/Step4.tsx">148</td>
             <td data-file="src/forms/mvp-mortgage/steps/step-5/Step5.tsx">169</td>
             <td data-file="src/forms/mvp-mortgage/steps/step-6/Step6.tsx">169</td>
-            <td>—</td>
+            <td
+              data-file="src/forms/mvp-mortgage/steps/step-7/Step7.tsx src/forms/mvp-mortgage/steps/step-7/components/child-form/ChildForm.tsx"
+            >
+              222
+            </td>
           </tr>
         </tbody>
       </table>
@@ -349,6 +353,16 @@
             tabindex="-1"
           >
             📈 Business
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-design"
+            aria-controls="panel-design"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            🎨 Design
           </button>
         </div>
 
@@ -401,23 +415,83 @@
         <ul role="tabpanel" id="panel-business" aria-labelledby="tab-business" tabindex="0" hidden>
           <li>
             ⏱️ <b>Faster idea to production.</b> New steps and forms are assembled from ready-made components instead of
-            written from scratch, so ideas reach customers sooner.
+            written from scratch, so ideas reach customers sooner. Teams that ship small changes have shorter lead times
+            and deploy more often
+            <span class="source"
+              >(<a target="_blank" href="https://itrevolution.com/product/accelerate/"
+                >Forsgren, Humble &amp; Kim, <i>Accelerate</i></a
+              >)</span
+            >.
           </li>
           <li>
             🧪 <b>Quicker experiments.</b> Smaller steps are easier to change, so A/B tests take less time to set up,
-            ship and roll back.
+            ship and roll back. The more experiments a team can run, the more it learns about what works
+            <span class="source"
+              >(<a
+                target="_blank"
+                href="https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59"
+                >Kohavi, Tang &amp; Xu, <i>Trustworthy Online Controlled Experiments</i></a
+              >)</span
+            >.
           </li>
           <li>
             💰 <b>Lower AI spend.</b> AI tools are billed per token. Fewer lines mean fewer tokens in every request,
-            which lowers the cost of AI-assisted development.
+            which lowers the cost of AI-assisted development
+            <span class="source"
+              >(<a target="_blank" href="https://www.anthropic.com/pricing">Anthropic API pricing</a>)</span
+            >.
           </li>
           <li>
             ☎️ <b>Less support tickets.</b> Fewer bugs in production mean fewer customers who get stuck halfway through
-            a form and have to contact support.
+            a form and have to contact support. Software bugs cost the US economy an estimated $59.5 billion a year,
+            much of it paid by users
+            <span class="source"
+              >(<a target="_blank" href="https://www.nist.gov/document/report02-3pdf">NIST, 2002</a>)</span
+            >, and 18% of online shoppers abandon a checkout because it is too long or complicated
+            <span class="source"
+              >(<a target="_blank" href="https://baymard.com/lists/cart-abandonment-rate">Baymard Institute</a>)</span
+            >.
           </li>
           <li>
             🧩 <b>Consistent forms.</b> Every step is built from the same Chibi components and validation patterns, so
             fields look, behave and validate the same way across all forms.
+          </li>
+        </ul>
+
+        <!-- Design -->
+        <ul role="tabpanel" id="panel-design" aria-labelledby="tab-design" tabindex="0" hidden>
+          <li>
+            🪞 <b>Consistent look.</b> Every form uses the same components, so users recognise patterns from one step to
+            the next. Consistency is one of the core usability heuristics
+            <span class="source"
+              >(<a target="_blank" href="https://www.nngroup.com/articles/consistency-and-standards/"
+                >Nielsen Norman Group, Heuristic #4</a
+              >)</span
+            >.
+          </li>
+          <li>
+            ✏️ <b>Faster prototyping.</b> New ideas are built from existing components instead of drawn from scratch. In
+            Figma's study, designers with a design system finished their task 34% faster
+            <span class="source"
+              >(<a target="_blank" href="https://www.figma.com/blog/measuring-the-value-of-design-systems/"
+                >Figma, 2019</a
+              >)</span
+            >.
+          </li>
+          <li>
+            🧠 <b>Familiar for users.</b> People expect a new screen to work like the ones they already know. Reusing
+            the same patterns lets them fill in forms without relearning them
+            <span class="source"
+              >(<a target="_blank" href="https://lawsofux.com/jakobs-law/">Jakob's Law, Laws of UX</a>)</span
+            >.
+          </li>
+          <li>
+            🔁 <b>Change once, update everywhere.</b> A design update to a Chibi component, such as a new color or
+            spacing, reaches every form at once instead of being repeated step by step.
+          </li>
+          <li>
+            🤝 <b>Smoother handoff.</b> Designers and developers share the same set of components, so less gets lost
+            between the design file and the finished form.
           </li>
         </ul>
       </div>
