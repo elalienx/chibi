@@ -10,6 +10,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import initialApplication from "../../data/initialApplication";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
@@ -31,7 +32,9 @@ export default function Step6EN() {
 
   // Methods
   function submitForm(values: object) {
-    updateApplication(values);
+    // The guarantor question only applies to AB companies (Step 6 AB).
+    // Reset it so a stale value is not sent to the backend if the user changed the BankID login.
+    updateApplication({ ...values, is_guarantor: initialApplication.is_guarantor });
     setStep("success-step");
   }
 
