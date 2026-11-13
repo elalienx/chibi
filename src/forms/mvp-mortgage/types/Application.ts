@@ -54,4 +54,7 @@ export default interface Application {
     employment_to_month: number /** Dynamic field depending on co_employment_type. */;
     employment_to_year: number /** Dynamic field depending on co_employment_type. */;
   };
+
+  // Step 7: Household
+  household_adults: number /** Starts at 1 because the main applicant always counts. */;
 }

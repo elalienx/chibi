@@ -42,5 +42,9 @@
       flex: 1;
       text-align: left;
     }
+
+    .controls {
+      gap: var(--space-small); /* Saves 8px so the question fits on one line next to the controls. */
+    }
   }
 }
