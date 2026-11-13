@@ -35,10 +35,6 @@ export default function Step7() {
   const isAddingChild = childIndex !== null;
 
   // Methods
-  function addChild() {
-    setChildIndex(children.length);
-  }
-
   function saveChild(child: Child, index: number) {
     const updatedChildren = [...children];
 
@@ -51,10 +47,6 @@ export default function Step7() {
     const updatedChildren = children.filter((_, index) => index !== deleteIndex);
 
     updateApplication({ household_children: updatedChildren });
-  }
-
-  function cancelChild() {
-    setChildIndex(null);
   }
 
   function submitForm(values: object) {
@@ -83,6 +75,16 @@ export default function Step7() {
           Ange hur många barn under 18 år du eller din medsökande har, även om de inte bor hos er. Har du inga barn? Då
           kan du hoppa över den här delen.
         </p>
+
+        {isAddingChild && (
+          <ChildForm
+            childNumber={childIndex + 1}
+            child={children[childIndex]}
+            onCancel={() => setChildIndex(null)}
+            onSave={(child) => saveChild(child, childIndex)}
+          />
+        )}
+
         {!isAddingChild &&
           children.map((child, index) => (
             <EditCard
@@ -95,18 +97,9 @@ export default function Step7() {
           ))}
 
         {!isAddingChild && (
-          <Button variant="secondary" onClick={addChild}>
+          <Button variant="secondary" onClick={() => setChildIndex(children.length)}>
             Lägg till ett barn <Icon name="plus" />
           </Button>
-        )}
-
-        {isAddingChild && (
-          <ChildForm
-            childNumber={childIndex + 1}
-            child={children[childIndex]}
-            onCancel={cancelChild}
-            onSave={(child) => saveChild(child, childIndex)}
-          />
         )}
       </section>
 
