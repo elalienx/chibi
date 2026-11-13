@@ -1,0 +1,25 @@
+.button-icon {
+  --size: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* To keep the square shape inside flex containers. */
+  width: var(--size);
+  height: var(--size);
+  padding: 0;
+  background-color: var(--color-gray-100);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: 4px;
+  color: var(--color-blue-40);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+
+  &.danger {
+    color: var(--color-red-50);
+  }
+
+  &:hover {
+    background-color: var(--color-blue-99);
+  }
+}
