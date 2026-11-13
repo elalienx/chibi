@@ -26,6 +26,7 @@ Here is an explanation of the key files:
 
 1. **[useApplication](./state/useApplication.ts):** Saves the user's application responses. It persists to localStorage under the key "business-application". It discards old saved data automatically when its version is bumped, which you must do by hand every time the [Application](./types/Application.ts) type changes.
 1. **[useFormNavigation](./state/useFormNavigation.ts):** Saves the current step and a history of previous steps. The back arrow uses that history, so steps don't need to know where they came from.
+1. **[FormManager](./FormManager.tsx):** Imports every step and toggles which one is visible, based on the current step in useFormNavigation.
 
 ## Flow variants
 
@@ -39,8 +40,8 @@ After Step 2, we authenticate the user with BankID. Then we collect their compan
 
 Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
 
-- **📝 Step 4:** resets the loan debt when the company has no existing loans.
 - **🪪 BankID login:** resets the company for sole traders.
+- **📝 Step 4:** resets the loan debt when the company has no existing loans.
 - **📝 Steps 6 AB and 6 EN:** each one resets the fields of the other, in case the user changed the BankID login.
 
 ## See it in action
