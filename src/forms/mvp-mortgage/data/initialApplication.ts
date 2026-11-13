@@ -55,6 +55,7 @@ const initialApplication: Application = {
 
   // Step 7: Household
   household_adults: 1,
+  household_children: [],
 };
 
 export default initialApplication;
