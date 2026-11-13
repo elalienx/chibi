@@ -7,6 +7,7 @@ import "./styles/button-primary.css";
 import "./styles/button-secondary.css";
 import "./styles/button-tertiary.css";
 import "./styles/button-borderless.css";
+import "./styles/button-disabled.css"; // Last, so it wins over every variant.
 
 interface Props {
   /**  Text and/or icon to display inside the button. */
@@ -20,11 +21,14 @@ interface Props {
 
   /** The visual style of the button. */
   variant?: "primary" | "secondary" | "tertiary" | "borderless";
+
+  /** Prevents clicks and shows the grey style. */
+  disabled?: boolean;
 }
 
-export default function Button({ children, onClick, type = "button", variant = "primary" }: Props) {
+export default function Button({ children, onClick, type = "button", variant = "primary", disabled = false }: Props) {
   return (
-    <button className={`button ${variant}`} onClick={onClick} type={type}>
+    <button className={`button ${variant}`} disabled={disabled} onClick={onClick} type={type}>
       {children}
     </button>
   );
