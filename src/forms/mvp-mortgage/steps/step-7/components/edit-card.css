@@ -1,0 +1,61 @@
+.edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-medium);
+  background-color: var(--color-blue-99);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+
+  /* Title, edit and delete buttons */
+  header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+
+    h5 {
+      flex: 1;
+    }
+  }
+
+  /* Summary rows */
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+    margin: 0;
+    font-weight: var(--font-weight-normal);
+    line-height: 24px;
+    letter-spacing: 0.16px;
+
+    div {
+      display: flex;
+      gap: var(--space-medium);
+    }
+
+    dt {
+      flex: 1;
+      color: var(--typography-dark);
+    }
+
+    dd {
+      flex: 1;
+      margin: 0;
+      color: var(--typography-default);
+      text-align: right;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .edit-card {
+    gap: var(--space-medium);
+    width: 448px;
+    max-width: 100%; /* Shrinks with the parent if it is narrower than 448px. */
+
+    header {
+      gap: var(--space-medium);
+    }
+  }
+}
