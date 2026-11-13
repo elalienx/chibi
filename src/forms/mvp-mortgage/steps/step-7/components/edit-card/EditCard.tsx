@@ -1,6 +1,6 @@
 // Project files
 import ButtonIcon from "components/button-icon/ButtonIcon";
-import type Child from "../../../types/Child";
+import type Child from "../../../../types/Child";
 import "./edit-card.css";
 
 interface Props {

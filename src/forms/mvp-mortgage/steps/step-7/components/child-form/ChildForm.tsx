@@ -11,8 +11,8 @@ import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
 import cleanInitialInput from "helpers/cleanInitialInput";
-import type Child from "../../../types/Child";
-import Tooltips from "./Tooltips";
+import type Child from "../../../../types/Child";
+import Tooltips from "../../Tooltips";
 import schema from "./schema";
 import "./child-form.css";
 
