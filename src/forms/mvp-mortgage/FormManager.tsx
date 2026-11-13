@@ -7,6 +7,7 @@ import Step3 from "./steps/step-3/Step3";
 import Step4 from "./steps/step-4/Step4";
 import Step5 from "./steps/step-5/Step5";
 import Step6 from "./steps/step-6/Step6";
+import Step7 from "./steps/step-7/Step7";
 import Success from "./steps/success-step/Success";
 import useApplication from "./state/useApplication";
 import useFormNavigation from "./state/useFormNavigation";
@@ -30,6 +31,7 @@ export default function FormManager() {
       {step === "step-4" && <Step4 />}
       {step === "step-5" && <Step5 employmentType={mainEmploymentType} />}
       {step === "step-6" && <Step6 employmentType={coEmploymentType} />}
+      {step === "step-7" && <Step7 />}
       {step === "success-step" && <Success />}
 
       {/* Lives at the root so any step can open a modal */}
