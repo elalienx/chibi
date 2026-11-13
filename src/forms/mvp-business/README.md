@@ -35,6 +35,14 @@ After Step 2, we authenticate the user with BankID. Then we collect their compan
 - **🏢 AB Single company:** skips Step 3 because it only has one company, then shows Steps 4, 5, and 6 AB (Guarantor).
 - **🧑‍💼 Sole trader:** skips Step 3 because there is no company to choose, then shows Steps 4, 5, and 6 EN (Existing loans).
 
+## Things to watch out
+
+Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
+
+- **📝 Step 4:** resets the loan debt when the company has no existing loans.
+- **🪪 BankID login:** resets the company for sole traders.
+- **📝 Steps 6 AB and 6 EN:** each one resets the fields of the other, in case the user changed the BankID login.
+
 ## See it in action
 
 - Run `pn storybook` from the project root.
