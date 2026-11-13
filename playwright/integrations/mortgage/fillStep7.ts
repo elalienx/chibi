@@ -8,12 +8,11 @@ interface Props {
 export default async function fillStep7(form: Locator, props: Props) {
   await test.step("Step 7: Household", async () => {
     const { adults } = props;
+    const adultsInput = form.getByRole("textbox", { name: "Hur många vuxna är ni i hushållet?" });
 
     await form.getByRole("heading", { name: "Om hushållet" }).waitFor();
 
-    // Adults (the counter starts at 1)
-    const adultsInput = form.getByRole("textbox", { name: "Hur många vuxna är ni i hushållet?" });
-
+    // Fill the number of adults and expect it to work
     for (let count = 1; count < adults; count++) await form.getByRole("button", { name: "Öka" }).click();
     await expect(adultsInput).toHaveValue(String(adults));
 
