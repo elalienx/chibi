@@ -42,7 +42,6 @@ Fields that get hidden or skipped keep their old value in the application, so th
 
 - **🪪 BankID login:** resets the company for sole traders.
 - **📝 Step 4:** resets the loan debt when the company has no existing loans.
-- **📝 Steps 6 AB and 6 EN:** each one resets the fields of the other, in case the user changed the BankID login.
 
 ## See it in action
 

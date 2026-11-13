@@ -38,10 +38,7 @@ export default function Step6AB() {
 
   // Methods
   function submitForm(values: object) {
-    // Reset in case the user changed the BankID login, so stale values are not sent to the backend.
-    const soleTraderFields = { blanco_loans: 0, house_loans: 0, installment_loans: 0 };
-
-    updateApplication({ ...soleTraderFields, ...values });
+    updateApplication(values);
     setStep("success-step");
   }
 
