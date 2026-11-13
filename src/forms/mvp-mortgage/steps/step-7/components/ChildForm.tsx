@@ -10,7 +10,7 @@ import RadioOption from "components/radio-option/RadioOption";
 import Select from "components/select/Select";
 import SelectGroup from "components/select-group/SelectGroup";
 import SelectOption from "components/select-option/SelectOption";
-import ChildTooltips from "./ChildTooltips";
+import Tooltips from "./Tooltips";
 import schema from "./schema";
 import "./child-form.css";
 
@@ -54,7 +54,7 @@ export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: 
         </SelectGroup>
 
         <div className="yes-no-questions">
-          <RadioGroup form={form} tooltips={ChildTooltips} id="child_receives_allowance">
+          <RadioGroup form={form} tooltips={Tooltips} id="child_receives_allowance">
             <Label>Får du barnbidrag eller studiebidrag?</Label>
             <RadioOption value={true}>Ja</RadioOption>
             <RadioOption value={false}>Nej</RadioOption>
@@ -73,7 +73,7 @@ export default function ChildForm({ childNumber, onCancel, onSave = () => {} }: 
           </RadioGroup>
         </div>
 
-        <RadioGroup form={form} tooltips={ChildTooltips} id="child_maintenance">
+        <RadioGroup form={form} tooltips={Tooltips} id="child_maintenance">
           <Label>Betalar eller får du underhåll?</Label>
           <RadioOption value="pays">Betalar underhåll</RadioOption>
           <RadioOption value="receives">Får underhåll</RadioOption>
