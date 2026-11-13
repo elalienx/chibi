@@ -66,7 +66,7 @@ export const CounterStory = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={10} />
+        <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={15} />
       </Form>
     );
   },

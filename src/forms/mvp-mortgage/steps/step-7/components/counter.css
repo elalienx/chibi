@@ -18,16 +18,16 @@
     gap: var(--space-medium);
 
     .input-wrapper {
-      width: var(--height-of-field); /* Square, same size as the circle buttons. */
+      width: 50px; /* Fits two digits. */
     }
 
-    /* The count always starts valid, so the green success border adds no information. */
     .input-wrapper.success {
-      border-color: var(--input-border-up);
+      border-color: var(--input-border-up); /* The count always starts valid, so remove the green border. */
       outline: none;
     }
 
     .input {
+      padding-inline: 0; /* The default 16px on each side leaves no room for two digits in a 48px box. */
       text-align: center;
     }
   }
