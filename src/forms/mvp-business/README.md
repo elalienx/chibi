@@ -20,7 +20,7 @@ Here is an explanation of the main folders:
 1. **📑 Data:** The loan limits in `businessFormConfig.ts`, the select options, and the initial empty application.
 1. **💾 State:** Global Zustand stores for the user's application responses and the navigation.
 1. **📝 Form steps:** One folder per step. Each folder contains a React TypeScript file and a Storybook file. Steps with inputs also have a Valibot schema, and most have a CSS file.
-1. **🏷️ Types:** The TypeScript types shared across steps, like the `Application` with every application response and the list of available `Step`s.
+1. **🏷️ Types:** The TypeScript types shared across steps.
 
 Here is an explanation of the key files:
 
