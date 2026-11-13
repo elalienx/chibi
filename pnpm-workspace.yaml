@@ -2,3 +2,5 @@ allowBuilds:
   esbuild: true
   sharp: false
 autoDedupe: true
+overrides:
+  "@joshwooding/vite-plugin-react-docgen-typescript>glob": ^14.0.3
