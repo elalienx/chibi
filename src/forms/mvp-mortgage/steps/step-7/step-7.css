@@ -1,28 +1,35 @@
 #step-7 {
+  /* Adults and children sections */
+  .adults,
+  .children {
+    gap: var(--space-base); /* Between the title and the description. */
+    color: var(--typography-dark);
+
+    h5 {
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-medium);
+      line-height: 24px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+  }
+
   /* Adults counter */
   .adults {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-medium);
+    margin-bottom: var(--space-2xl); /* Same space between adults and children on mobile and desktop. */
 
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-base);
-      color: var(--typography-dark);
-
-      h5 {
-        font-size: var(--font-size-large);
-        font-weight: var(--font-weight-medium);
-        line-height: 24px;
-        letter-spacing: 0;
-      }
-
-      p {
-        margin: 0;
-        line-height: 24px;
-        letter-spacing: 0.16px;
-      }
+    .counter {
+      margin-top: var(--space-small); /* Adds to the 4px gap for 16px between the description and the counter. */
     }
+  }
+
+  /* Add child button */
+  .children .button {
+    margin-top: var(--space-small); /* Adds to the 4px gap for 16px between the description and the button. */
   }
 }

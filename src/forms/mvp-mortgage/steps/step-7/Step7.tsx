@@ -38,14 +38,23 @@ export default function Step7() {
         <h4>7. Om hushållet</h4>
       </header>
 
-      <section>
-        <div className="adults">
-          <header>
-            <h5>Antal vuxna</h5>
-            <p>Ange hur många vuxna (18 år eller äldre) som bor i hushållet. Räkna med dig själv.</p>
-          </header>
-          <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={15} />
-        </div>
+      {/* Adult information */}
+      <section className="adults">
+        <h5>Antal vuxna</h5>
+        <p>Ange hur många vuxna (18 år eller äldre) som bor i hushållet. Räkna med dig själv.</p>
+        <Counter id="household_adults" form={form} label="Hur många vuxna är ni i hushållet?" min={1} max={15} />
+      </section>
+
+      {/* Children information */}
+      <section className="children">
+        <h5>Antal barn</h5>
+        <p>
+          Ange hur många barn under 18 år du eller din medsökande har, även om de inte bor hos er. Har du inga barn? Då
+          kan du hoppa över den här delen.
+        </p>
+        <Button variant="secondary" onClick={() => alert("To be added in the future")}>
+          Lägg till ett barn <Icon name="plus" />
+        </Button>
       </section>
 
       <hr />
