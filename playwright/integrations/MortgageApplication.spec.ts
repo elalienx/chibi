@@ -4,7 +4,7 @@ import { test, type Locator } from "@playwright/test";
 // Project files
 import checkSuccessStep from "./mortgage/checkSuccessStep";
 import { coApplicant, mainApplicant } from "./mortgage/data/applicants";
-import { children } from "./mortgage/data/children";
+import { len, rin } from "./mortgage/data/children";
 import { coEmployment, mainEmployment } from "./mortgage/data/employments";
 import fillIntroStep from "./mortgage/fillIntroStep";
 import fillStep1 from "./mortgage/fillStep1";
@@ -83,7 +83,7 @@ test.describe("With co-applicant", () => {
     await fillStep4(form, coApplicant);
     await fillStep5(form, mainEmployment);
     await fillStep6(form, coEmployment);
-    await fillStep7(form, { adults: 2, children });
+    await fillStep7(form, { adults: 2, children: [rin, len] });
     await checkSuccessStep(form);
   });
 });
