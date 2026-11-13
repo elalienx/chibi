@@ -28,7 +28,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 1 });
     await checkSuccessStep(form);
   });
 
@@ -38,7 +38,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 1 });
     await checkSuccessStep(form);
   });
 
@@ -48,7 +48,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { tenancyType: "Bostadsrätt", squareMeters: 36, rooms: 1, monthlyFee: 3_125 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 1 });
     await checkSuccessStep(form);
   });
 
@@ -58,7 +58,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 1 });
     await checkSuccessStep(form);
   });
 
@@ -68,7 +68,7 @@ test.describe("Single applicant", () => {
     await fillStep2(form, { squareMeters: 100, rooms: 4, operatingCost: 10_000 });
     await fillStep3(form, { ...mainApplicant, hasCoApplicant: "Nej" });
     await fillStep5(form, mainEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 1 });
     await checkSuccessStep(form);
   });
 });
@@ -82,7 +82,7 @@ test.describe("With co-applicant", () => {
     await fillStep4(form, coApplicant);
     await fillStep5(form, mainEmployment);
     await fillStep6(form, coEmployment);
-    await fillStep7(form);
+    await fillStep7(form, { adults: 2 });
     await checkSuccessStep(form);
   });
 });

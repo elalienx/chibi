@@ -52,6 +52,9 @@ const initialApplication: Application = {
     employment_to_month: 0,
     employment_to_year: 0,
   },
+
+  // Step 7: Household
+  household_adults: 1,
 };
 
 export default initialApplication;
