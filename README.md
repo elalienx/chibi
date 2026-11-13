@@ -19,7 +19,7 @@ Chibi is a UI component library for building complex multi-step forms.
 │   └── forms/
 │   └── helpers/
 │   └── layouts/
-│   └── pages/index.astro 🏁 Entry point
+│   └── pages/index.astro (🏁 Entry point)
 │   └── state/
 │   └── styles/
 └── package.json
