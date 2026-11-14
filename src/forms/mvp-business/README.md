@@ -6,6 +6,7 @@ This folder simulates a business loan application. A company representative pick
 
 ```text
 / mvp-business/
+├── components/
 ├── data/
 ├── state/
 │   └── useApplication.ts (⭐️ Key file)
@@ -17,6 +18,7 @@ This folder simulates a business loan application. A company representative pick
 
 Here is an explanation of the main folders:
 
+1. **📦 Components:** Components shared across steps, like the terms notice on the last step of each company type.
 1. **📑 Data:** The loan limits in `businessFormConfig.ts`, the select options, and the initial empty application.
 1. **💾 State:** Global Zustand stores for the user's application progress and the step navigation.
 1. **📝 Form steps:** One folder per step. Each folder contains a React TypeScript file and a Storybook file. Steps with inputs also have a Valibot schema, and most have a CSS file.
