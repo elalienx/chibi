@@ -30,19 +30,20 @@ Here is an explanation of the key files:
 
 ## Flow variants
 
-- **Step 2:** changes its fields depending on the property type selected in Step 1.
-- **Step 3:** the applicant chooses whether to apply with a co-applicant, which changes the flow:
-  - **👤 Single applicant:** skips Steps 4 (Co-applicant info) and 6 (Co-applicant employment).
-  - **👥 With co-applicant:** shows all steps.
+- **Step 2:** Changes its fields depending on the property type selected in Step 1.
+- **Step 3:** The applicant chooses whether to apply with a co-applicant, which changes the flow:
+  - **👤 Single applicant:** Skips Steps 4 (Co-applicant info) and 6 (Co-applicant employment).
+  - **👥 With co-applicant:** Shows all steps.
 - **Steps 5 and 6:** Change the income related questions depending on the employment type selected in Steps 3 and 4. Read the [Step 5 README](./steps/step-5/README.md) for details.
 
-## Things to watch out
+## Things to watch out for
 
-Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
+Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving.
 
-- **📝 Step 2:** resets the monthly fee and operating cost, so only the visible one is saved.
-- **📝 Step 3:** resets the co-applicant data when there is no co-applicant.
-- **📝 Steps 5 and 6:** reset the employment fields hidden by the employment type.
+- **📝 Step 2:** Resets the monthly fee and operating cost, so only the visible one is saved.
+- **📝 Step 3:** Resets the co-applicant data when there is no co-applicant.
+- **📝 Steps 5 and 6:** Reset the employment fields hidden by the employment type.
+- **📝 Step 7:** This step uses arrays to store multiple sub-forms for each children.
 
 ## See it in action
 

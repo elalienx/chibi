@@ -34,16 +34,16 @@ Here is an explanation of the key files:
 
 After Step 2, we authenticate the user with BankID. Then we collect their company information and change the flow depending on the company type:
 
-- **🏙️ AB Multiple companies:** shows Steps 3 (Choose company), 4, 5, and 6 AB (Guarantor).
-- **🏢 AB Single company:** skips Step 3 because it only has one company, then shows Steps 4, 5, and 6 AB (Guarantor).
-- **🧑‍💼 Sole trader:** skips Step 3 because there is no company to choose, then shows Steps 4, 5, and 6 EN (Existing loans).
+- **🏙️ AB Multiple companies:** Shows Steps 3 (Choose company), 4, 5, and 6 AB (Guarantor).
+- **🏢 AB Single company:** Skips Step 3 because it only has one company, then shows Steps 4, 5, and 6 AB (Guarantor).
+- **🧑‍💼 Sole trader:** Skips Step 3 because there is no company to choose, then shows Steps 4, 5, and 6 EN (Existing loans).
 
 ## Things to watch out
 
 Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
 
-- **🪪 BankID login:** resets the company for sole traders.
-- **📝 Step 4:** resets the loan debt when the company has no existing loans.
+- **🪪 BankID login:** Resets the company for sole traders.
+- **📝 Step 4:** Resets the loan debt when the company has no existing loans.
 
 ## See it in action
 

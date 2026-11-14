@@ -43,7 +43,7 @@ In Step 2, the applicant chooses whether to apply with a co-applicant:
 
 Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
 
-- **📝 Step 3:** resets the co-applicant data when there is no co-applicant.
+- **📝 Step 3:** Resets the co-applicant data when there is no co-applicant.
 
 ## See it in action
 
