@@ -38,12 +38,13 @@ Here is an explanation of the key files:
 
 ## Things to watch out for
 
-Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving.
+Fields that get hidden or skipped keep their old value in the application, so the `submitForm` method resets them before saving:
 
 - **📝 Step 2:** Resets the monthly fee and operating cost, so only the visible one is saved.
 - **📝 Step 3:** Resets the co-applicant data when there is no co-applicant.
 - **📝 Steps 5 and 6:** Reset the employment fields hidden by the employment type.
-- **📝 Step 7:** This step uses arrays to store multiple sub-forms for each children.
+
+The 📝 Step 7 requires the `ChildForm` sub-form because it needs to store several child data separately. Watch how it automatically saves on add, edit, and delete.
 
 ## See it in action
 
