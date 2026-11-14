@@ -10,6 +10,7 @@ import RadioOption from "components/radio-option/RadioOption";
 import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import exampleSSNs from "../bank-id-login/exampleSSNs";
+import BusinessTerms from "../../components/BusinessTerms";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
@@ -44,16 +45,6 @@ export default function Step6AB() {
 
   // Components
   const CheckIcon = <Icon name="circle-check" />;
-  const UserAgreement = (
-    <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
-      användaravtalet
-    </a>
-  );
-  const PrivacyPolicy = (
-    <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
-      personuppgiftspolicy
-    </a>
-  );
 
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-6">
@@ -86,9 +77,7 @@ export default function Step6AB() {
       <hr />
 
       <footer>
-        <p className="terms">
-          Genom att slutföra din ansökan godkänner du {UserAgreement} och vår {PrivacyPolicy}.
-        </p>
+        <BusinessTerms />
         <Button type="submit">
           Skicka in ansökan <Icon name="bankid" />
         </Button>

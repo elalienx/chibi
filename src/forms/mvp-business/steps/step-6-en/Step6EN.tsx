@@ -10,6 +10,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import StepIndicator from "components/step-indicator/StepIndicator";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import BusinessTerms from "../../components/BusinessTerms";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import schema from "./schema";
@@ -34,18 +35,6 @@ export default function Step6EN() {
     updateApplication(values);
     setStep("success-step");
   }
-
-  // Components
-  const UserAgreement = (
-    <a href="https://se.cdn.lendocdn.com/pdf/terms_conditions_business_loans.pdf" target="_blank">
-      användaravtalet
-    </a>
-  );
-  const PrivacyPolicy = (
-    <a href="https://www.lendo.se/privacy-policy/personuppgiftspolicy" target="_blank">
-      personuppgiftspolicy
-    </a>
-  );
 
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="step-6">
@@ -79,9 +68,7 @@ export default function Step6EN() {
       <hr />
 
       <footer>
-        <p className="terms">
-          Genom att slutföra din ansökan godkänner du {UserAgreement} och vår {PrivacyPolicy}.
-        </p>
+        <BusinessTerms />
         <Button type="submit">
           Slutför <Icon name="circle-check" />
         </Button>
