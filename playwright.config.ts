@@ -14,6 +14,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: "list",
+  expect: { toHaveScreenshot: { type: "webp" } },
   snapshotPathTemplate: `snapshots/${SNAPSHOT_FOLDER}/{testFileName}/{arg}{ext}`,
   timeout: 3_000,
   use: { trace: "on-first-retry" },
