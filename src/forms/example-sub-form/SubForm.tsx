@@ -14,26 +14,24 @@ import "./sub-form.css";
 
 // The ids start with "friend_" so they don't clash with the ids of the parent form
 const schema = v.object({
-  friend_name: v.pipe(
+  employee_name: v.pipe(
     v.string(),
-    v.nonEmpty("Please enter your friend's full name."),
+    v.nonEmpty("Please enter the employee full name."),
     v.minLength(3, "Name is too short."),
     v.maxLength(50, "Name is too long."),
   ),
-  friend_song: v.pipe(v.string(), v.nonEmpty("Pick a song.")),
+  job_role: v.pipe(v.string(), v.nonEmpty("Pick a job role.")),
 });
-
-export type Item = v.InferOutput<typeof schema>;
 
 interface Props {
   /** The saved item to edit. Leave empty to add a new item. */
-  item?: Item;
+  item?: object;
 
   /** Closes the sub-form without saving. */
   onCancel: () => void;
 
   /** Receives the validated item when the user clicks "Save". */
-  onSave: (item: Item) => void;
+  onSave: (item: object) => void;
 }
 
 export default function SubForm({ item, onCancel, onSave }: Props) {
@@ -42,22 +40,22 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
     schema: schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: item ? cleanInitialInput({ input: item }) : undefined,
+    initialInput: item && cleanInitialInput({ input: item }),
   });
 
   return (
     <div className="sub-form">
-      <InputField form={form} id="friend_name">
-        <Label>Friend name</Label>
+      <InputField form={form} id="employee_name">
+        <Label>Employee name</Label>
         <Input type="text" placeholder="Leif Lend" />
       </InputField>
 
-      <ChipGroup form={form} id="friend_song">
-        <Label>Favorite Miku song</Label>
-        <ChipOption value="World is Mine">World is Mine</ChipOption>
-        <ChipOption value="Senbonzakura">Senbonzakura</ChipOption>
-        <ChipOption value="Melt">Melt</ChipOption>
-        <ChipOption value="Rolling Girl">Rolling Girl</ChipOption>
+      <ChipGroup form={form} id="job_role">
+        <Label>Job role</Label>
+        <ChipOption value="developer">Developer</ChipOption>
+        <ChipOption value="graphic_designer">Graphic designer</ChipOption>
+        <ChipOption value="maanger">Manager</ChipOption>
+        <ChipOption value="product_owner">Product owner</ChipOption>
       </ChipGroup>
 
       <footer>

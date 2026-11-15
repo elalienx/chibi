@@ -10,12 +10,12 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import ViewCard from "./ViewCard";
-import SubForm, { type Item } from "./SubForm";
+import SubForm from "./SubForm";
 
 const schema = v.object({
-  name: v.pipe(
+  company_name: v.pipe(
     v.string(),
-    v.nonEmpty("Please enter your full name."),
+    v.nonEmpty("Please enter the company full name."),
     v.minLength(3, "Name is too short."),
     v.maxLength(50, "Name is too long."),
   ),
@@ -24,14 +24,14 @@ const schema = v.object({
 export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [items, setItems] = useState<Item[]>([]); // Saved outside the parent form, on each sub-form save
+  const [items, setItems] = useState<object[]>([]); // Saved outside the parent form, on each sub-form save
   const [itemIndex, setItemIndex] = useState<number | null>(null); // null = sub-form closed
 
   // Derived state
   const isEditingItem = itemIndex !== null;
 
   // Methods
-  function saveItem(item: Item, index: number) {
+  function saveItem(item: object, index: number) {
     const updatedItems = [...items];
 
     updatedItems[index] = item;
@@ -44,7 +44,7 @@ export default function FormPage() {
   }
 
   function submitForm(values: v.InferOutput<typeof schema>) {
-    alert(`Success! ${values.name} has ${items.length} friend(s)`);
+    alert(`Success! ${values.company_name} has ${items.length} employee(s)`);
   }
 
   return (
@@ -54,14 +54,10 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} id="name">
-          <Label>Your name</Label>
-          <Input type="text" placeholder="Leif Lend" />
+        <InputField form={form} id="company_name">
+          <Label>Company name</Label>
+          <Input type="text" placeholder="Lendo" />
         </InputField>
-      </section>
-
-      <section>
-        <h5>Friends</h5>
 
         {isEditingItem && (
           <SubForm
@@ -78,7 +74,7 @@ export default function FormPage() {
 
         {!isEditingItem && (
           <Button variant="secondary" onClick={() => setItemIndex(items.length)}>
-            Add <Icon name="plus" />
+            Add employee <Icon name="plus" />
           </Button>
         )}
       </section>
