@@ -16,11 +16,11 @@ interface Props {
 
 export default function ViewCard({ item, onEdit, onDelete }: Props) {
   // Derived state
-  const name = item.friend_name;
+  const name = item.employee_name;
 
   return (
     <article className="view-card">
-      <span>{name}</span>
+      <span className="name">{name}</span>
       <ButtonIcon icon="pen-to-square" name={`Edit ${name}`} onClick={onEdit} />
       <ButtonIcon icon="trash-xmark" name={`Delete ${name}`} onClick={onDelete} variant="danger" />
     </article>
