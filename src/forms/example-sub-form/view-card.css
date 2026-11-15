@@ -1,0 +1,12 @@
+.view-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-medium);
+  padding: var(--space-medium);
+  background-color: var(--color-blue-99);
+  border-radius: var(--border-radius);
+
+  span {
+    flex: 1; /* To push the buttons to the other side. */
+  }
+}

@@ -1,0 +1,15 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import FormPage from "forms/example-sub-form/FormPage";
+
+import "styles/base/page.css";
+---
+
+<BaseLayout title="Sub-form tests" description="Example of a form with Chibi">
+  <main>
+    <FormPage client:visible />
+    <footer>
+      <a href="/">Go back to home</a>
+    </footer>
+  </main>
+</BaseLayout>
