@@ -21,7 +21,7 @@
     "@astrojs/react": "^7.1.8",
     "@floating-ui/react": "^0.27.20",
     "@formisch/react": "^1.2.0",
-    "astro": "^7.4.11",
+    "astro": "^7.4.12",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "valibot": "^1.5.0",
