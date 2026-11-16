@@ -1,6 +1,6 @@
 // Node modules
 import { useImperativeHandle, type Ref } from "react";
-import { handleSubmit, useForm } from "@formisch/react";
+import { useForm, type FormStore } from "@formisch/react";
 
 // Project files
 import ButtonIcon from "components/button-icon/ButtonIcon";
@@ -22,33 +22,16 @@ interface Props {
   /** Removes this sub-form from the list. */
   onDelete: () => void;
 
-  /** Lets the parent validate this sub-form, e.g. before adding a new one. */
-  ref?: Ref<SubFormHandle>;
-}
-
-export interface SubFormHandle {
-  /** Shows the errors of this sub-form and resolves to true if it is valid. */
-  validate: () => Promise<boolean>;
+  /** Receives the Formisch form of this sub-form, so the parent can validate all sub-forms at once. */
+  ref?: Ref<FormStore>;
 }
 
 export default function SubForm({ id, title, onDelete, ref }: Props) {
   // Local state
   const form = useForm({ schema: createSubFormSchema(id), validate: "blur", revalidate: "blur" });
 
-  // Methods
-  async function validateForm() {
-    let isValid = false;
-
-    // Not Formisch's validate(): Chibi inputs only show their errors once the form is submitted.
-    await handleSubmit(form, () => {
-      isValid = true;
-    })();
-
-    return isValid;
-  }
-
-  // Exposes the validation to the parent, which cannot reach this form store otherwise.
-  useImperativeHandle(ref, () => ({ validate: validateForm }));
+  // Hands the form to the parent, which cannot reach it otherwise.
+  useImperativeHandle(ref, () => form, [form]);
 
   return (
     <article className="sub-form-open">
