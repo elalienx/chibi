@@ -49,7 +49,7 @@ export default function Step7() {
     updateApplication({ household_children: updatedChildren });
   }
 
-  function submitForm(values) {
+  function submitForm(values: object) {
     updateApplication(values);
     setStep("success-step");
   }
