@@ -32,7 +32,9 @@ export default function FormPage() {
   }
 
   function deleteItem(deleteIndex: number) {
-    setItems(items.filter((_, index) => index !== deleteIndex));
+    const updatedItems = items.filter((_item, index) => index !== deleteIndex);
+
+    setItems(updatedItems);
   }
 
   function submitForm(values: v.InferOutput<typeof mainSchema>) {
