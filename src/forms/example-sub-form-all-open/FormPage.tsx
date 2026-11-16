@@ -1,16 +1,5 @@
 // Node modules
-import { useState } from "react";
-import {
-  focus,
-  Form,
-  getDeepErrorEntry,
-  insert,
-  isValid,
-  remove,
-  useFieldArray,
-  useForm,
-  validate,
-} from "@formisch/react";
+import { Form, insert, remove, useFieldArray, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
@@ -19,7 +8,6 @@ import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import ValidationMessage from "components/validation-message/ValidationMessage";
 import SubForm from "./SubForm";
 import { mainSchema } from "./schema";
 
@@ -35,20 +23,10 @@ export default function FormPage() {
     initialInput: { company_name: "", employees: [] },
   });
   const employees = useFieldArray(form, { path: PATH });
-  const [isAddBlocked, setIsAddBlocked] = useState(false);
-
-  // Derived state
-  const areEmployeesValid = isValid(form, { path: PATH });
-  const showAddError = isAddBlocked && !areEmployeesValid; // Hides itself once the user fixes the employees
 
   // Methods
-  async function addEmployee() {
-    await validate(form); // Also stores the company name errors, but Chibi only shows them after submit
-    const firstError = getDeepErrorEntry(form, { path: PATH });
-
-    setIsAddBlocked(firstError !== null);
-    if (firstError) focus(form, { path: firstError.path });
-    else insert(form, { path: PATH, initialInput: INITIAL_EMPLOYEE });
+  function addEmployee() {
+    insert(form, { path: PATH, initialInput: INITIAL_EMPLOYEE });
   }
 
   function deleteEmployee(index: number) {
@@ -84,12 +62,6 @@ export default function FormPage() {
         <Button variant="secondary" onClick={addEmployee}>
           Add employee <Icon name="plus" />
         </Button>
-
-        {showAddError && (
-          <ValidationMessage ariaErrorId="aria-error-employees">
-            Please make sure the employees are correct before adding another
-          </ValidationMessage>
-        )}
       </section>
 
       <hr />
