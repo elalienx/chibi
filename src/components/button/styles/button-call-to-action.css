@@ -1,0 +1,19 @@
+.button.call-to-action {
+  --size: 72px;
+  --button-font-size: 24px;
+
+  height: var(--size);
+  background-color: var(--color-blue-40);
+  border-radius: var(--size);
+  color: white;
+  font-size: var(--button-font-size);
+  letter-spacing: -0.48px;
+
+  &:hover {
+    background-color: var(--color-blue-30);
+  }
+
+  .icon {
+    height: var(--button-font-size);
+  }
+}
