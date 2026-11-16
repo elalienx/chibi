@@ -11,27 +11,19 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import ViewCard from "./ViewCard";
 import SubForm from "./SubForm";
-
-const schema = v.object({
-  company_name: v.pipe(
-    v.string(),
-    v.nonEmpty("Please enter the company full name."),
-    v.minLength(3, "Name is too short."),
-    v.maxLength(50, "Name is too long."),
-  ),
-});
+import { mainSchema, type Item } from "./schema";
 
 export default function FormPage() {
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [items, setItems] = useState<object[]>([]); // Saved outside the parent form, on each sub-form save
+  const form = useForm({ schema: mainSchema, validate: "blur", revalidate: "blur" });
+  const [items, setItems] = useState<Item[]>([]); // Saved outside the parent form, on each sub-form save
   const [itemIndex, setItemIndex] = useState<number | null>(null); // null = sub-form closed
 
   // Derived state
   const isEditingItem = itemIndex !== null;
 
   // Methods
-  function saveItem(item: object, index: number) {
+  function saveItem(item: Item, index: number) {
     const updatedItems = [...items];
 
     updatedItems[index] = item;
@@ -43,7 +35,7 @@ export default function FormPage() {
     setItems(items.filter((_, index) => index !== deleteIndex));
   }
 
-  function submitForm(values: v.InferOutput<typeof schema>) {
+  function submitForm(values: v.InferOutput<typeof mainSchema>) {
     alert(`Success! ${values.company_name} has ${items.length} employee(s)`);
   }
 
@@ -69,7 +61,12 @@ export default function FormPage() {
 
         {!isEditingItem &&
           items.map((item, index) => (
-            <ViewCard key={index} item={item} onEdit={() => setItemIndex(index)} onDelete={() => deleteItem(index)} />
+            <ViewCard
+              key={index}
+              title={item.employee_name}
+              onEdit={() => setItemIndex(index)}
+              onDelete={() => deleteItem(index)}
+            />
           ))}
 
         {!isEditingItem && (

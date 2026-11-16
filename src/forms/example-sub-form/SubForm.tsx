@@ -1,6 +1,5 @@
 // Node modules
 import { handleSubmit, useForm } from "@formisch/react";
-import * as v from "valibot";
 
 // Project files
 import Button from "components/button/Button";
@@ -10,34 +9,24 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import { subFormSchema, type Item } from "./schema";
 import "./sub-form.css";
-
-// The ids start with "friend_" so they don't clash with the ids of the parent form
-const schema = v.object({
-  employee_name: v.pipe(
-    v.string(),
-    v.nonEmpty("Please enter the employee full name."),
-    v.minLength(3, "Name is too short."),
-    v.maxLength(50, "Name is too long."),
-  ),
-  job_role: v.pipe(v.string(), v.nonEmpty("Pick a job role.")),
-});
 
 interface Props {
   /** The saved item to edit. Leave empty to add a new item. */
-  item?: object;
+  item?: Item;
 
   /** Closes the sub-form without saving. */
   onCancel: () => void;
 
   /** Receives the validated item when the user clicks "Save". */
-  onSave: (item: object) => void;
+  onSave: (item: Item) => void;
 }
 
 export default function SubForm({ item, onCancel, onSave }: Props) {
   // Local state
   const form = useForm({
-    schema: schema,
+    schema: subFormSchema,
     validate: "blur",
     revalidate: "blur",
     initialInput: item && cleanInitialInput({ input: item }),
