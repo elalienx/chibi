@@ -379,6 +379,16 @@
             >.
           </li>
           <li>
+            🤖 <b>More accurate AI help.</b> AI skills help agents find code in big codebases, but they still have to
+            read it. Models get less accurate as their context grows, so less code means better answers
+            <span class="source">(<a target="_blank" href="https://arxiv.org/abs/2307.03172">Liu et al., 2023</a>)</span
+            >.
+          </li>
+          <li>
+            ⚡ <b>Faster pipelines and tests.</b> Less code to build, lint and test means shorter CI runs per pull
+            request and quicker feedback while developing.
+          </li>
+          <li>
             🔍 <b>Better code reviews.</b> Reviewers find defects effectively up to about 200–400 lines at a time;
             smaller changes get more thorough reviews
             <span class="source"
@@ -388,67 +398,16 @@
             >.
           </li>
           <li>
-            🤖 <b>More accurate AI help.</b> AI skills help agents find code in big codebases, but they still have to
-            read it. Models get less accurate as their context grows, so less code means better answers
-            <span class="source">(<a target="_blank" href="https://arxiv.org/abs/2307.03172">Liu et al., 2023</a>)</span
-            >.
-          </li>
-          <li>
             🚀 <b>Faster onboarding.</b> Less code lowers cognitive load, so new team members can become productive
             sooner
             <span class="source"
               >(<a target="_blank" href="https://doi.org/10.1207/s15516709cog1202_4">Sweller, 1988</a>)</span
             >.
           </li>
-          <li>
-            🛠️ <b>Cheaper maintenance.</b> Maintenance makes up 60–80% of a software system's lifetime cost, and it
-            scales with the amount of code to maintain
-            <span class="source"
-              >(<a target="_blank" href="https://www.oreilly.com/library/view/facts-and-fallacies/0321117425/"
-                >Glass, <i>Facts and Fallacies of Software Engineering</i></a
-              >)</span
-            >.
-          </li>
-          <li>
-            📊 <b>Tracking built in.</b> Chibi components come with tracking, so steps don't need their own tracking
-            code.
-          </li>
-          <li>
-            ⚡ <b>Faster pipelines and tests.</b> Less code to build, lint and test means shorter CI runs per pull
-            request and quicker feedback while developing.
-          </li>
         </ul>
 
         <!-- Business -->
         <ul role="tabpanel" id="panel-business" aria-labelledby="tab-business" tabindex="0" hidden>
-          <li>
-            ⏱️ <b>Faster idea to production.</b> New steps and forms are assembled from ready-made components instead of
-            written from scratch, so ideas reach customers sooner. Teams that ship small changes have shorter lead times
-            and deploy more often
-            <span class="source"
-              >(<a target="_blank" href="https://itrevolution.com/product/accelerate/"
-                >Forsgren, Humble &amp; Kim, <i>Accelerate</i></a
-              >)</span
-            >.
-          </li>
-          <li>
-            🧪 <b>Quicker experiments.</b> Smaller steps are easier to change, so A/B tests take less time to set up,
-            ship and roll back. The more experiments a team can run, the more it learns about what works
-            <span class="source"
-              >(<a
-                target="_blank"
-                href="https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59"
-                >Kohavi, Tang &amp; Xu, <i>Trustworthy Online Controlled Experiments</i></a
-              >)</span
-            >.
-          </li>
-          <li>
-            💰 <b>Lower AI spend.</b> AI tools are billed per token. Fewer lines mean fewer tokens in every request,
-            which lowers the cost of AI-assisted development
-            <span class="source"
-              >(<a target="_blank" href="https://www.anthropic.com/pricing">Anthropic API pricing</a>)</span
-            >.
-          </li>
           <li>
             ☎️ <b>Less support tickets.</b> Fewer bugs in production mean fewer customers who get stuck halfway through
             a form and have to contact support. Software bugs cost the US economy an estimated $59.5 billion a year,
@@ -462,21 +421,54 @@
             same issues again.
           </li>
           <li>
-            🧩 <b>Consistent forms.</b> Every step is built from the same Chibi components and validation patterns, so
-            fields look, behave and validate the same way across all forms.
+            💰 <b>Lower AI spend.</b> AI tools are billed per token. Fewer lines mean fewer tokens in every request,
+            which lowers the cost of AI-assisted development
+            <span class="source"
+              >(<a target="_blank" href="https://www.anthropic.com/pricing">Anthropic API pricing</a>)</span
+            >.
           </li>
           <li>💶 <b>Cheaper pipelines.</b> Shorter CI runs mean fewer CI minutes billed for every pull request.</li>
+          <li>
+            ⏱️ <b>Faster idea to production.</b> New steps and forms are assembled from ready-made components instead of
+            written from scratch, so ideas reach customers sooner and A/B tests take less time to set up, ship and roll
+            back. Teams that ship small changes have shorter lead times and deploy more often
+            <span class="source"
+              >(<a target="_blank" href="https://itrevolution.com/product/accelerate/"
+                >Forsgren, Humble &amp; Kim, <i>Accelerate</i></a
+              >)</span
+            >, and the more experiments a team can run, the more it learns about what works
+            <span class="source"
+              >(<a
+                target="_blank"
+                href="https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59"
+                >Kohavi, Tang &amp; Xu, <i>Trustworthy Online Controlled Experiments</i></a
+              >)</span
+            >.
+          </li>
+          <li>
+            🛠️ <b>Cheaper maintenance.</b> Maintenance takes 40–80% of software costs, 60% on average, which makes it
+            the most expensive phase of a system's life
+            <span class="source"
+              >(<a target="_blank" href="https://www.oreilly.com/library/view/facts-and-fallacies/0321117425/"
+                >Glass, <i>Facts and Fallacies of Software Engineering</i></a
+              >)</span
+            >. Less code means less to maintain.
+          </li>
         </ul>
 
         <!-- Design -->
         <ul role="tabpanel" id="panel-design" aria-labelledby="tab-design" tabindex="0" hidden>
           <li>
-            🪞 <b>Consistent look.</b> Every form uses the same components, so users recognise patterns from one step to
-            the next. Consistency is one of the core usability heuristics
+            🪞 <b>Consistent and familiar.</b> Every form uses the same components, so users recognise patterns from one
+            step to the next and fill in forms without relearning them. Consistency is one of the core usability
+            heuristics
             <span class="source"
               >(<a target="_blank" href="https://www.nngroup.com/articles/consistency-and-standards/"
                 >Nielsen Norman Group, Heuristic #4</a
               >)</span
+            >, and people expect a new screen to work like the ones they already know
+            <span class="source"
+              >(<a target="_blank" href="https://lawsofux.com/jakobs-law/">Jakob's Law, Laws of UX</a>)</span
             >.
           </li>
           <li>
@@ -489,22 +481,16 @@
             >.
           </li>
           <li>
-            🧠 <b>Familiar for users.</b> People expect a new screen to work like the ones they already know. Reusing
-            the same patterns lets them fill in forms without relearning them
-            <span class="source"
-              >(<a target="_blank" href="https://lawsofux.com/jakobs-law/">Jakob's Law, Laws of UX</a>)</span
-            >.
-          </li>
-          <li>
-            🔁 <b>Change once, update everywhere.</b> A design update to a Chibi component, such as a new color or
-            spacing, reaches every form at once instead of being repeated step by step.
+            🔁 <b>Change once, update everywhere.</b> A design update or a refined detail in a Chibi component, such as
+            a new color or spacing, reaches every form at once instead of being repeated step by step.
           </li>
           <li>
             🤝 <b>Smoother handoff.</b> Designers and developers share the same set of components, so less gets lost
             between the design file and the finished form.
           </li>
           <li>
-            ✨ <b>More polished UI.</b> Details refined once in a Chibi component show up refined on every screen.
+            📊 <b>Tracking built in.</b> Every Chibi component reports user interactions the same way, so designers get
+            comparable data on how each step performs.
           </li>
         </ul>
       </div>
