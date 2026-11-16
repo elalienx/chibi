@@ -70,22 +70,3 @@ export const InsideForm = meta.story({
     );
   },
 });
-
-export const SliderWithNoIdError = meta.story({
-  name: "Slider (id error)",
-  render: () => {
-    // Local state
-    const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-
-    return (
-      <Form of={form} onSubmit={() => alert("Success")}>
-        <Slider form={form} min={50_000} max={3_000_000} />
-      </Form>
-    );
-  },
-});
-
-export const SliderWithNoFormError = meta.story({
-  name: "Slider (form error)",
-  render: () => <Slider min={50_000} max={3_000_000} />,
-});

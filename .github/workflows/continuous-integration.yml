@@ -29,6 +29,9 @@ jobs:
       - name: Lint files
         run: pnpm lint:check
 
+      - name: Check types
+        run: pnpm type:check
+
       - name: Run Vitest unit tests
         run: pnpm test
 
