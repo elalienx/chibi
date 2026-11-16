@@ -14,7 +14,7 @@ import "./sub-form.css";
 
 interface Props {
   /** The saved item to edit. Leave empty to add a new item. */
-  item?: Item;
+  item?: Partial<Item>;
 
   /** Closes the sub-form without saving. */
   onCancel: () => void;

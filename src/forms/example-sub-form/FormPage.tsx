@@ -1,6 +1,6 @@
 // Node modules
 import { useState } from "react";
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, insert, remove, replace, useFieldArray, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
@@ -15,28 +15,30 @@ import { mainSchema, type Item } from "./schema";
 
 export default function FormPage() {
   // Local state
-  const form = useForm({ schema: mainSchema, validate: "blur", revalidate: "blur" });
-  const [items, setItems] = useState<Item[]>([]); // Saved outside the parent form, on each sub-form save
+  const form = useForm({
+    schema: mainSchema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: { employees: [] },
+  });
+  const employees = useFieldArray(form, { path: ["employees"] });
   const [itemIndex, setItemIndex] = useState<number | null>(null); // null = sub-form closed
 
   // Derived state
   const isEditingItem = itemIndex !== null;
+  const savedEmployees = getInput(form, { path: ["employees"] });
 
   // Methods
   function saveItem(item: Item, index: number) {
-    const updatedItems = [...items];
+    const isNewItem = index === employees.items.length;
 
-    updatedItems[index] = item;
-    setItems(updatedItems);
+    if (isNewItem) insert(form, { path: ["employees"], initialInput: item });
+    else replace(form, { path: ["employees"], at: index, initialInput: item });
     setItemIndex(null);
   }
 
-  function deleteItem(deleteIndex: number) {
-    setItems(items.filter((_, index) => index !== deleteIndex));
-  }
-
   function submitForm(values: v.InferOutput<typeof mainSchema>) {
-    alert(`Success! ${values.company_name} has ${items.length} employee(s)`);
+    alert(`Success! ${values.company_name} has ${values.employees.length} employee(s)`);
   }
 
   return (
@@ -53,24 +55,24 @@ export default function FormPage() {
 
         {isEditingItem && (
           <SubForm
-            item={items[itemIndex]}
+            item={savedEmployees[itemIndex]}
             onCancel={() => setItemIndex(null)}
             onSave={(item) => saveItem(item, itemIndex)}
           />
         )}
 
         {!isEditingItem &&
-          items.map((item, index) => (
+          employees.items.map((key, index) => (
             <ViewCard
-              key={index}
-              title={item.employee_name}
+              key={key}
+              title={savedEmployees[index].employee_name ?? ""}
               onEdit={() => setItemIndex(index)}
-              onDelete={() => deleteItem(index)}
+              onDelete={() => remove(form, { path: ["employees"], at: index })}
             />
           ))}
 
         {!isEditingItem && (
-          <Button variant="secondary" onClick={() => setItemIndex(items.length)}>
+          <Button variant="secondary" onClick={() => setItemIndex(employees.items.length)}>
             Add employee <Icon name="plus" />
           </Button>
         )}
