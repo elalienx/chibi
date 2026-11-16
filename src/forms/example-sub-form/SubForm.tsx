@@ -1,6 +1,5 @@
 // Node modules
 import { handleSubmit, useForm } from "@formisch/react";
-import * as v from "valibot";
 
 // Project files
 import Button from "components/button/Button";
@@ -10,18 +9,8 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
+import employeeSchema from "./employeeSchema";
 import "./sub-form.css";
-
-// The ids start with "friend_" so they don't clash with the ids of the parent form
-const schema = v.object({
-  employee_name: v.pipe(
-    v.string(),
-    v.nonEmpty("Please enter the employee full name."),
-    v.minLength(3, "Name is too short."),
-    v.maxLength(50, "Name is too long."),
-  ),
-  job_role: v.pipe(v.string(), v.nonEmpty("Pick a job role.")),
-});
 
 interface Props {
   /** The saved item to edit. Leave empty to add a new item. */
@@ -37,7 +26,7 @@ interface Props {
 export default function SubForm({ item, onCancel, onSave }: Props) {
   // Local state
   const form = useForm({
-    schema: schema,
+    schema: employeeSchema,
     validate: "blur",
     revalidate: "blur",
     initialInput: item && cleanInitialInput({ input: item }),
@@ -54,7 +43,7 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
         <Label>Job role</Label>
         <ChipOption value="developer">Developer</ChipOption>
         <ChipOption value="graphic_designer">Graphic designer</ChipOption>
-        <ChipOption value="maanger">Manager</ChipOption>
+        <ChipOption value="manager">Manager</ChipOption>
         <ChipOption value="product_owner">Product owner</ChipOption>
       </ChipGroup>
 

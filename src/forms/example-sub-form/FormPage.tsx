@@ -1,6 +1,6 @@
 // Node modules
 import { useState } from "react";
-import { Form, useForm } from "@formisch/react";
+import { Form, getInput, insert, remove, replace, useFieldArray, useForm } from "@formisch/react";
 import * as v from "valibot";
 
 // Project files
@@ -11,40 +11,38 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import ViewCard from "./ViewCard";
 import SubForm from "./SubForm";
-
-const schema = v.object({
-  company_name: v.pipe(
-    v.string(),
-    v.nonEmpty("Please enter the company full name."),
-    v.minLength(3, "Name is too short."),
-    v.maxLength(50, "Name is too long."),
-  ),
-});
+import companySchema from "./companySchema";
 
 export default function FormPage() {
   // Local state
-  const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [items, setItems] = useState<object[]>([]); // Saved outside the parent form, on each sub-form save
+  const form = useForm({
+    schema: companySchema,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: { employees: [] },
+  });
+  const employeesArray = useFieldArray(form, { path: ["employees"] });
   const [itemIndex, setItemIndex] = useState<number | null>(null); // null = sub-form closed
 
   // Derived state
+  const items = getInput(form, { path: ["employees"] });
   const isEditingItem = itemIndex !== null;
 
   // Methods
   function saveItem(item: object, index: number) {
-    const updatedItems = [...items];
+    const isNewItem = index === employeesArray.items.length;
 
-    updatedItems[index] = item;
-    setItems(updatedItems);
+    if (isNewItem) insert(form, { path: ["employees"], initialInput: item });
+    else replace(form, { path: ["employees"], at: index, initialInput: item });
     setItemIndex(null);
   }
 
-  function deleteItem(deleteIndex: number) {
-    setItems(items.filter((_, index) => index !== deleteIndex));
+  function deleteItem(index: number) {
+    remove(form, { path: ["employees"], at: index });
   }
 
-  function submitForm(values: v.InferOutput<typeof schema>) {
-    alert(`Success! ${values.company_name} has ${items.length} employee(s)`);
+  function submitForm(values: v.InferOutput<typeof companySchema>) {
+    alert(`Success! ${values.company_name} has ${values.employees.length} employee(s)`);
   }
 
   return (
@@ -68,8 +66,13 @@ export default function FormPage() {
         )}
 
         {!isEditingItem &&
-          items.map((item, index) => (
-            <ViewCard key={index} item={item} onEdit={() => setItemIndex(index)} onDelete={() => deleteItem(index)} />
+          employeesArray.items.map((id, index) => (
+            <ViewCard
+              key={id}
+              item={items[index]}
+              onEdit={() => setItemIndex(index)}
+              onDelete={() => deleteItem(index)}
+            />
           ))}
 
         {!isEditingItem && (

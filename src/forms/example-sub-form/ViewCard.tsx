@@ -1,11 +1,10 @@
 // Project files
 import ButtonIcon from "components/button-icon/ButtonIcon";
-import type { Item } from "./SubForm";
 import "./view-card.css";
 
 interface Props {
   /** The saved item, in the same shape that SubForm sends on save. */
-  item: Item;
+  item: object;
 
   /** Opens the sub-form to edit this item. */
   onEdit: () => void;
