@@ -11,7 +11,7 @@ const employeeName = "Leif Lend";
 const employeeNameSecond = "Lena Lend";
 const jobRole = "Developer";
 const errorEmployeeName = "Please enter the employee full name";
-const errorJobRole = "Pick a job role";
+const errorAddEmployee = "Please make sure the employees are correct before adding another";
 const inputWrapperParent = ".."; // The parent of the input is the one having the CSS styles
 let form: Locator;
 
@@ -51,7 +51,7 @@ test("1. Should start without sub-forms and open one when clicking add", async (
   });
 });
 
-test("2. Should add a sub-form without validating the current one", async () => {
+test("2. Should show a message and not add a sub-form when the current one is invalid", async () => {
   // Arrange
   await addEmployee();
 
@@ -59,9 +59,9 @@ test("2. Should add a sub-form without validating the current one", async () => 
   await addEmployee();
 
   // Assert
-  await expect(form.getByRole("article")).toHaveCount(2);
-  await expect(form.getByText(errorEmployeeName)).toHaveCount(0);
-  await expect(form.getByText(errorJobRole)).toHaveCount(0);
+  await expect(form.getByRole("article")).toHaveCount(1);
+  await expect(form.getByText(errorAddEmployee)).toBeVisible();
+  await expect(form.getByRole("textbox", { name: item2 })).toBeFocused();
 });
 
 test("3. Should add a sub-form when the previous one is valid", async () => {
@@ -162,4 +162,16 @@ test("8. Should submit the parent form with the employees", async ({ page }) => 
 
   // Assert
   await expect.poll(() => alertMessage).toBe("Success! Eduardo has 1 employee(s)");
+});
+
+test("9. Should hide the add message once the employees are fixed", async () => {
+  // Arrange
+  await addEmployee();
+  await addEmployee();
+
+  // Act
+  await fillEmployee(form.getByRole("article").nth(0), employeeName);
+
+  // Assert
+  await expect(form.getByText(errorAddEmployee)).toHaveCount(0);
 });
