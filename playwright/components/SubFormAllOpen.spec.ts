@@ -51,7 +51,7 @@ test("1. Should start without sub-forms and open one when clicking add", async (
   });
 });
 
-test("2. Should show errors and not add a sub-form when the current one is empty", async () => {
+test("2. Should add a sub-form without validating the current one", async () => {
   // Arrange
   await addEmployee();
 
@@ -59,9 +59,9 @@ test("2. Should show errors and not add a sub-form when the current one is empty
   await addEmployee();
 
   // Assert
-  await expect(form.getByText(errorEmployeeName)).toBeVisible();
-  await expect(form.getByText(errorJobRole)).toBeVisible();
-  await expect(form.getByRole("article")).toHaveCount(1);
+  await expect(form.getByRole("article")).toHaveCount(2);
+  await expect(form.getByText(errorEmployeeName)).toHaveCount(0);
+  await expect(form.getByText(errorJobRole)).toHaveCount(0);
 });
 
 test("3. Should add a sub-form when the previous one is valid", async () => {
@@ -77,8 +77,14 @@ test("3. Should add a sub-form when the previous one is valid", async () => {
   await expect(form.getByRole("heading", { name: "Employee 2" })).toBeVisible();
 });
 
-test("4. Should validate every sub-form, not only the last one", async () => {
+test("4. Should validate every sub-form on submit, not only the last one", async ({ page }) => {
   // Arrange
+  let isAlertShown = false;
+  page.once("dialog", async (dialog) => {
+    isAlertShown = true;
+    await dialog.accept();
+  });
+  await form.getByRole("textbox", { name: item1 }).fill("Eduardo");
   await addEmployee();
   await fillEmployee(form.getByRole("article").nth(0), employeeName);
   await addEmployee();
@@ -86,11 +92,12 @@ test("4. Should validate every sub-form, not only the last one", async () => {
   await form.getByRole("article").nth(0).getByRole("textbox", { name: item2 }).clear();
 
   // Act
-  await addEmployee();
+  await form.getByRole("button", { name: buttonSubmit }).click();
 
   // Assert
   await expect(form.getByRole("article").nth(0).getByText(errorEmployeeName)).toBeVisible();
-  await expect(form.getByRole("article")).toHaveCount(2);
+  await expect(form.getByRole("article").nth(1).getByText(errorEmployeeName)).toHaveCount(0);
+  expect(isAlertShown).toBe(false);
 });
 
 test("5. Should not validate the parent form when adding a sub-form", async () => {
