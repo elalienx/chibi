@@ -27,7 +27,7 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <ChipGroup form={form} id="source_of_income">
+        <ChipGroup form={form} path={["source_of_income"]}>
           <Label>Source of income</Label>
           <ChipOption value="savings">Savings</ChipOption>
           <ChipOption value="salary">Salary</ChipOption>
