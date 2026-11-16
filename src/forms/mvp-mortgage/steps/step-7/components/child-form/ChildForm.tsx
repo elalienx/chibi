@@ -33,7 +33,7 @@ interface Props {
 export default function ChildForm({ childNumber, child, onCancel, onSave }: Props) {
   // Local state
   const form = useForm({
-    schema,
+    schema: schema,
     validate: "blur",
     revalidate: "blur",
     initialInput: child && cleanInitialInput({ input: child }),
