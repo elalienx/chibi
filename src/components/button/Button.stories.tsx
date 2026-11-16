@@ -140,3 +140,14 @@ export const BorderlessWithIconLeft = meta.story({
     </Button>
   ),
 });
+
+// -- Call to action
+export const CallToAction = meta.story({
+  name: "Call to action",
+  render: () => (
+    <Button onClick={onClick} variant="call-to-action">
+      Hello
+      <Icon name="arrow-right" />
+    </Button>
+  ),
+});

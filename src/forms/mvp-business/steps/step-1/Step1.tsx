@@ -14,11 +14,11 @@ import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import useMediaQuery from "state/useMediaQuery";
 import schema from "./schema";
-import "./styles/step-1-cta-button.css";
 import "./styles/step-1-input-design.css";
 import "./styles/step-1-input-state.css";
 import "./styles/step-1-input-with-slider.css";
 import "./styles/step-1-input-with-count-buttons.css";
+import "./styles/step-1-footer.css";
 
 const { AMOUNT_STEP, MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = businessFormConfig;
 const LOAN_AMOUNT = "loan_amount";
@@ -68,7 +68,7 @@ export default function Step1() {
       </div>
 
       <footer>
-        <Button type="submit">
+        <Button type="submit" variant="call-to-action">
           Påbörja ansökan <Icon name="arrow-right" />
         </Button>
         <small>(Ansökan är inte bindande)</small>

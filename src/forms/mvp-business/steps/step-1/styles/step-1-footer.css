@@ -1,0 +1,5 @@
+#step-1 {
+  footer small {
+    font-size: var(--font-size-normal);
+  }
+}

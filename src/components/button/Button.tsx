@@ -7,6 +7,7 @@ import "./styles/button-primary.css";
 import "./styles/button-secondary.css";
 import "./styles/button-tertiary.css";
 import "./styles/button-borderless.css";
+import "./styles/button-call-to-action.css";
 import "./styles/button-disabled.css"; // Last, so it wins over every variant.
 
 interface Props {
@@ -20,7 +21,7 @@ interface Props {
   type?: "button" | "submit" | "reset" | undefined;
 
   /** The visual style of the button. */
-  variant?: "primary" | "secondary" | "tertiary" | "borderless";
+  variant?: "primary" | "secondary" | "tertiary" | "borderless" | "call-to-action";
 
   /** Prevents clicks and shows the grey style. */
   disabled?: boolean;
