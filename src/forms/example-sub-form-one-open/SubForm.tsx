@@ -10,7 +10,7 @@ import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import { subFormSchema, type Item } from "./schema";
-import "./sub-form.css";
+import "./sub-form-one-open.css";
 
 interface Props {
   /** The saved item to edit. Leave empty to add a new item. */
@@ -33,7 +33,7 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
   });
 
   return (
-    <div className="sub-form">
+    <div className="sub-form-one-open">
       <InputField form={form} id="employee_name">
         <Label>Employee name</Label>
         <Input type="text" placeholder="Leif Lend" />
