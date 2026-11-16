@@ -16,7 +16,7 @@ const inputWrapperParent = ".."; // The parent of the input is the one having th
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount("forms/example-sub-form-open/FormPage/Default");
+  form = await mount("forms/example-sub-form-all-open/FormPage/Default");
 });
 
 test.afterEach(async () => {

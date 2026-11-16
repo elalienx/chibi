@@ -1,4 +1,4 @@
-.sub-form-open {
+.sub-form-all-open {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -16,7 +16,7 @@
 
 /* Tablet */
 @media (min-width: 550px) {
-  .sub-form-open {
+  .sub-form-all-open {
     gap: var(--space-2xl);
     padding: var(--space-2xl);
   }

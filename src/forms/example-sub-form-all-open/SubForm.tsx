@@ -10,7 +10,7 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import { createSubFormSchema } from "./schema";
-import "./sub-form-open.css";
+import "./sub-form-all-open.css";
 
 interface Props {
   /** Stable number of this sub-form, used to make its field ids unique on the page. */
@@ -34,7 +34,7 @@ export default function SubForm({ id, title, onDelete, ref }: Props) {
   useImperativeHandle(ref, () => form, [form]);
 
   return (
-    <article className="sub-form-open">
+    <article className="sub-form-all-open">
       <header>
         <h5>{title}</h5>
         <ButtonIcon icon="trash-xmark" name={`Delete ${title}`} onClick={onDelete} variant="danger" />
