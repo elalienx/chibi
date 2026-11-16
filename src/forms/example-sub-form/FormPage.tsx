@@ -21,17 +21,30 @@ const schema = v.object({
   ),
 });
 
+const subFormSchema = v.object({
+  employee_name: v.pipe(
+    v.string(),
+    v.nonEmpty("Please enter the employee full name."),
+    v.minLength(3, "Name is too short."),
+    v.maxLength(50, "Name is too long."),
+  ),
+  job_role: v.pipe(v.string(), v.nonEmpty("Pick a job role.")),
+});
+
+export type SubFormSchema = typeof subFormSchema;
+export type Item = v.InferOutput<SubFormSchema>;
+
 export default function FormPage() {
   // Local state
   const form = useForm({ schema: schema, validate: "blur", revalidate: "blur" });
-  const [items, setItems] = useState<object[]>([]); // Saved outside the parent form, on each sub-form save
+  const [items, setItems] = useState<Item[]>([]); // Saved outside the parent form, on each sub-form save
   const [itemIndex, setItemIndex] = useState<number | null>(null); // null = sub-form closed
 
   // Derived state
   const isEditingItem = itemIndex !== null;
 
   // Methods
-  function saveItem(item: object, index: number) {
+  function saveItem(item: Item, index: number) {
     const updatedItems = [...items];
 
     updatedItems[index] = item;
@@ -61,6 +74,7 @@ export default function FormPage() {
 
         {isEditingItem && (
           <SubForm
+            schema={subFormSchema}
             item={items[itemIndex]}
             onCancel={() => setItemIndex(null)}
             onSave={(item) => saveItem(item, itemIndex)}
@@ -69,7 +83,12 @@ export default function FormPage() {
 
         {!isEditingItem &&
           items.map((item, index) => (
-            <ViewCard key={index} item={item} onEdit={() => setItemIndex(index)} onDelete={() => deleteItem(index)} />
+            <ViewCard
+              key={index}
+              title={item.employee_name}
+              onEdit={() => setItemIndex(index)}
+              onDelete={() => deleteItem(index)}
+            />
           ))}
 
         {!isEditingItem && (
