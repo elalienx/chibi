@@ -47,6 +47,7 @@ All commands are run from the root of the project:
 | `pn playwright --ui` | Run component tests using Playwright UI mode          |
 | `pn storybook`       | Preview components using Storybook                    |
 | `pn test`            | Run unit tests using Vitest                           |
+| `pn type:check`      | Check TypeScript types using tsc                      |
 | `pn super-update`    | Update project dependencies and GitHub Action plugins |
 
 ## Updating screenshots

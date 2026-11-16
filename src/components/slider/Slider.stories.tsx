@@ -79,7 +79,6 @@ export const SliderWithNoIdError = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        {/* @ts-expect-error: Missing id on purpose to show the error message */}
         <Slider form={form} min={50_000} max={3_000_000} />
       </Form>
     );
@@ -88,6 +87,5 @@ export const SliderWithNoIdError = meta.story({
 
 export const SliderWithNoFormError = meta.story({
   name: "Slider (form error)",
-  // @ts-expect-error: Missing form on purpose to show the error message
   render: () => <Slider min={50_000} max={3_000_000} />,
 });
