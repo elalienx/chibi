@@ -1,0 +1,23 @@
+.sub-form-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-medium);
+  border: solid 1px var(--color-desaturated-90);
+  border-radius: var(--border-radius);
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-medium);
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  .sub-form-open {
+    gap: var(--space-2xl);
+    padding: var(--space-2xl);
+  }
+}
