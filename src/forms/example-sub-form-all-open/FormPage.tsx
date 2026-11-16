@@ -9,7 +9,10 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import SubForm from "./SubForm";
-import { emptyEmployee, mainSchema } from "./schema";
+import { mainSchema } from "./schema";
+
+const PATH = ["employees"] as const;
+const INITIAL_EMPLOYEE = { employee_name: "", job_role: "" };
 
 export default function FormPage() {
   // Local state
@@ -19,15 +22,15 @@ export default function FormPage() {
     revalidate: "blur",
     initialInput: { company_name: "", employees: [] },
   });
-  const employees = useFieldArray(form, { path: ["employees"] });
+  const employees = useFieldArray(form, { path: PATH });
 
   // Methods
   function addEmployee() {
-    insert(form, { path: ["employees"], initialInput: emptyEmployee });
+    insert(form, { path: PATH, initialInput: INITIAL_EMPLOYEE });
   }
 
   function deleteEmployee(index: number) {
-    remove(form, { path: ["employees"], at: index });
+    remove(form, { path: PATH, at: index });
   }
 
   function submitForm(values: v.InferOutput<typeof mainSchema>) {

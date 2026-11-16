@@ -22,6 +22,3 @@ export const mainSchema = v.object({
   ),
   employees: v.array(employeeSchema),
 });
-
-// Initial input of each new employee sub-form
-export const emptyEmployee = { employee_name: "", job_role: "" };
