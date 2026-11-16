@@ -24,19 +24,19 @@ interface Props {
   child?: Child;
 
   /** Closes the sub-form without saving. Used by both the close icon and the "Avbryt" button. */
-  onCancel?: () => void;
+  onCancel: () => void;
 
   /** Receives the validated child information when the user clicks "Spara". */
-  onSave?: (child: Child) => void;
+  onSave: (child: Child) => void;
 }
 
-export default function ChildForm({ childNumber, child, onCancel, onSave = () => {} }: Props) {
+export default function ChildForm({ childNumber, child, onCancel, onSave }: Props) {
   // Local state
   const form = useForm({
-    schema: schema,
+    schema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: child ? cleanInitialInput({ input: child }) : undefined,
+    initialInput: child && cleanInitialInput({ input: child }),
   });
 
   // Derived state

@@ -1,6 +1,7 @@
 // Node modules
 import { useState } from "react";
 import { Form, useForm } from "@formisch/react";
+import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -22,17 +23,17 @@ export default function Step7() {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
-  const [childIndex, setChildIndex] = useState<number | null>(null);
   const form = useForm({
     schema,
     validate: "blur",
     revalidate: "blur",
     initialInput: cleanInitialInput({ input: application }),
   });
+  const [childIndex, setChildIndex] = useState<number | null>(null); // null = child form closed
 
   // Derived state
   const children = application.household_children;
-  const isAddingChild = childIndex !== null;
+  const isEditingChild = childIndex !== null;
 
   // Methods
   function saveChild(child: Child, index: number) {
@@ -44,12 +45,12 @@ export default function Step7() {
   }
 
   function deleteChild(deleteIndex: number) {
-    const updatedChildren = children.filter((_, index) => index !== deleteIndex);
+    const updatedChildren = children.filter((_child, index) => index !== deleteIndex);
 
     updateApplication({ household_children: updatedChildren });
   }
 
-  function submitForm(values: object) {
+  function submitForm(values: v.InferOutput<typeof schema>) {
     updateApplication(values);
     setStep("success-step");
   }
@@ -76,7 +77,7 @@ export default function Step7() {
           kan du hoppa över den här delen.
         </p>
 
-        {isAddingChild && (
+        {isEditingChild && (
           <ChildForm
             childNumber={childIndex + 1}
             child={children[childIndex]}
@@ -85,7 +86,7 @@ export default function Step7() {
           />
         )}
 
-        {!isAddingChild &&
+        {!isEditingChild &&
           children.map((child, index) => (
             <EditCard
               key={index}
@@ -96,7 +97,7 @@ export default function Step7() {
             />
           ))}
 
-        {!isAddingChild && (
+        {!isEditingChild && (
           <Button variant="secondary" onClick={() => setChildIndex(children.length)}>
             Lägg till ett barn <Icon name="plus" />
           </Button>
@@ -106,7 +107,7 @@ export default function Step7() {
       <hr />
 
       <footer>
-        <Button type="submit" disabled={isAddingChild}>
+        <Button type="submit" disabled={isEditingChild}>
           Nästa <Icon name="arrow-right" />
         </Button>
       </footer>
