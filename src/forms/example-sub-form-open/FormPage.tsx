@@ -23,7 +23,9 @@ export default function FormPage() {
   function registerSubForm(id: number, handle: SubFormHandle | null) {
     if (handle) subForms.current.set(id, handle);
 
-    return () => subForms.current.delete(id);
+    return () => {
+      subForms.current.delete(id); // Braces on purpose: React cleanups must return nothing, and delete() returns a boolean.
+    };
   }
 
   async function validateSubForms() {
