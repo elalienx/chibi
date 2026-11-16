@@ -1,7 +1,6 @@
 // Node modules
 import { useState } from "react";
 import { Form, useForm } from "@formisch/react";
-import * as v from "valibot";
 
 // Project files
 import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
@@ -50,7 +49,7 @@ export default function Step7() {
     updateApplication({ household_children: updatedChildren });
   }
 
-  function submitForm(values: v.InferOutput<typeof schema>) {
+  function submitForm(values) {
     updateApplication(values);
     setStep("success-step");
   }
