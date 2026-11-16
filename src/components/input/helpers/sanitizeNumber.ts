@@ -7,7 +7,7 @@ interface Props {
   value: string;
 
   /** Adds the option to keep `,` and `.` from cleanup to allow input decimal numbers. */
-  allowDecimals: boolean;
+  allowDecimals?: boolean;
 }
 
 /**
