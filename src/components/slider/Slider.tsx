@@ -35,7 +35,7 @@ export default function Slider({ id: path, form, label, max, min, step = 1 }: Pr
   if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path });
+  const field = useField(form, { path: path as [string] });
 
   // Derived state
   const value = Number(field.input ?? min);
