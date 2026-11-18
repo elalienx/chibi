@@ -31,7 +31,7 @@ export default function ToggleGroup({ children, id: path, form, tooltips }: Prop
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  const field = useField(form, { path });
+  const field = useField(form, { path: path as [string] });
 
   // Derived state
   const id = pathToId(path);

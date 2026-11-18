@@ -26,7 +26,7 @@ export default function Checkbox({ id: path, children, form }: Props) {
   if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path });
+  const field = useField(form, { path: path as [string] });
 
   // Derived state
   const id = pathToId(path);
