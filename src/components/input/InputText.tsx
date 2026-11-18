@@ -12,10 +12,10 @@ import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputText({ displayValue, path, form, placeholder, readOnly, suffix, type }: InputProps) {
+export default function InputText({ displayValue, id: path, form, placeholder, readOnly, suffix, type }: InputProps) {
   // Safeguards
-  if (!form) return <p>This component requires a Formisch form and path</p>;
-  if (!path) return <p>Pass a path to know which field this input belongs</p>;
+  if (!form) return <p>This component requires a Formisch form and id</p>;
+  if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
   const field = useField(form, { path });

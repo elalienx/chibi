@@ -10,6 +10,9 @@ import "./styles/slider-vendor-mozilla.css";
 import "./styles/slider-vendor-safari.css";
 
 interface Props {
+  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  id: RequiredPath;
+
   /** An instance of a Formisch form. */
   form: FormStore;
 
@@ -22,17 +25,14 @@ interface Props {
   /** The minimum value of the slider. Also displayed as the left label. */
   min: number;
 
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
-  path: RequiredPath;
-
   /** The amount the value changes on each drag or arrow key press. */
   step?: number;
 }
 
-export default function Slider({ form, label, max, min, path, step = 1 }: Props) {
+export default function Slider({ id: path, form, label, max, min, step = 1 }: Props) {
   // Safeguards
-  if (!form) return <p>This component requires a Formisch form and path</p>;
-  if (!path) return <p>Pass a path to know which field this input belongs</p>;
+  if (!form) return <p>This component requires a Formisch form and id</p>;
+  if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
   const field = useField(form, { path });

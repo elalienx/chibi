@@ -9,6 +9,9 @@ import pathToId from "helpers/pathToId";
 import "./select.css";
 
 interface Props {
+  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  id?: RequiredPath;
+
   /** The position where the popover will attach to the <Select>. */
   anchorId?: string;
 
@@ -18,16 +21,13 @@ interface Props {
   /** An instance of a Formisch form. */
   form?: FormStore;
 
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
-  path?: RequiredPath;
-
   /** The text inside the user selected option. */
   activeText?: string;
 }
 
-export default function Select({ anchorId, children, form, path, activeText }: Props) {
+export default function Select({ id: path, anchorId, children, form, activeText }: Props) {
   // Safeguards
-  if (!path) return <p>Pass a path to know which field this input belongs</p>;
+  if (!path) return <p>Pass an id to know which field this input belongs</p>;
   if (!form) return <p>This component requires a Formisch form</p>;
 
   // Derived state
@@ -47,7 +47,7 @@ export default function Select({ anchorId, children, form, path, activeText }: P
 
   return (
     <div className="select" onClick={toggleOptions} style={{ anchorName: anchorId }}>
-      <Input displayValue={activeText ?? ""} form={form} path={path} placeholder={children} readOnly type="text" />
+      <Input displayValue={activeText ?? ""} form={form} id={path} placeholder={children} readOnly type="text" />
       <Icon name={"chevron-down"} />
     </div>
   );

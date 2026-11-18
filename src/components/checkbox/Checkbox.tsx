@@ -10,20 +10,20 @@ import "./styles/checkbox-layout.css";
 import "./styles/checkbox-state.css";
 
 interface Props {
+  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  id?: RequiredPath;
+
   /** The text to display next to the checkbox. */
   children: ReactNode;
 
   /** An instance of a Formisch form. */
   form?: FormStore;
-
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
-  path?: RequiredPath;
 }
 
-export default function Checkbox({ children, form, path }: Props) {
+export default function Checkbox({ id: path, children, form }: Props) {
   // Safeguards
-  if (!form) return <p>This component requires a Formisch form and path</p>;
-  if (!path) return <p>Pass a path to know which field this input belongs</p>;
+  if (!form) return <p>This component requires a Formisch form and id</p>;
+  if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
   const field = useField(form, { path });
