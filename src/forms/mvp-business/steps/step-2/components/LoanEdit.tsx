@@ -33,12 +33,12 @@ export default function LoanEdit({ form, onClose }: Props) {
   return (
     <div id="loan-edit" aria-label="Låneuppgifter">
       <div className="columns">
-        <InputField form={form} id="loan_amount">
+        <InputField form={form} id={["loan_amount"]}>
           <Label>Lånesumma:</Label>
           <Input type="number" suffix="kr" min={MIN_AMOUNT} max={MAX_AMOUNT} />
         </InputField>
 
-        <InputField form={form} id="loan_period">
+        <InputField form={form} id={["loan_period"]}>
           <Label>Lånetid:</Label>
           <Input type="number" suffix="år" allowDecimals min={MIN_PERIOD} max={MAX_PERIOD} />
         </InputField>

@@ -64,19 +64,19 @@ export default function Step4() {
       <hr />
 
       <section>
-        <InputField form={form} tooltips={Tooltips} id="turnover">
+        <InputField form={form} tooltips={Tooltips} id={["turnover"]}>
           <Label>Bolagets omsättning från {startMonthAndYear} till idag</Label>
           <Input type="number" suffix="kr" />
         </InputField>
 
-        <RadioGroup form={form} id="has_existing_loans">
+        <RadioGroup form={form} id={["has_existing_loans"]}>
           <Label>Har bolaget befintliga lån?</Label>
           <RadioOption value={true}>Ja</RadioOption>
           <RadioOption value={false}>Nej</RadioOption>
         </RadioGroup>
 
         {hasExistingLoans && (
-          <InputField form={form} tooltips={Tooltips} id="loan_debt">
+          <InputField form={form} tooltips={Tooltips} id={["loan_debt"]}>
             <Label>Uppskattad total skuld på befintliga lån</Label>
             <Input type="number" suffix="kr" />
           </InputField>
