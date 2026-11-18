@@ -10,7 +10,7 @@ import "./styles/slider-vendor-mozilla.css";
 import "./styles/slider-vendor-safari.css";
 
 interface Props {
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  /** Unique identifier of a form field. */
   id: RequiredPath;
 
   /** An instance of a Formisch form. */

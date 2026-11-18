@@ -12,7 +12,7 @@ import pathToId from "helpers/pathToId";
 import "./toggle-group.css";
 
 interface Props {
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  /** Unique identifier of the parent toggle group to make sure only one toggle option is active. */
   id: RequiredPath;
 
   /** Content to display inside the toggle group. */

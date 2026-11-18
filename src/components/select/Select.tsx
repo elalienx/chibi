@@ -9,7 +9,7 @@ import pathToId from "helpers/pathToId";
 import "./select.css";
 
 interface Props {
-  /** Formisch path of the form field, like `["employees", 0, "employee_name"]`. Also used to create the DOM id. */
+  /** Unique identifier of the parent select group. */
   id?: RequiredPath;
 
   /** The position where the popover will attach to the <Select>. */
