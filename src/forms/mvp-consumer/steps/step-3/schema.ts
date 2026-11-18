@@ -73,11 +73,24 @@ const co_children_under_21 = v.pipe(
 );
 
 // Schemas
-const mainApplicant = { main_email, main_phone, main_ssn, main_civil_state, main_children_under_21 };
-const coApplicant = { co_email, co_phone, co_ssn, co_civil_state, co_children_under_21 };
+const main = v.object({
+  children_under_21: main_children_under_21,
+  civil_state: main_civil_state,
+  email: main_email,
+  phone: main_phone,
+  ssn: main_ssn,
+});
+
+const co = v.object({
+  children_under_21: co_children_under_21,
+  civil_state: co_civil_state,
+  email: co_email,
+  phone: co_phone,
+  ssn: co_ssn,
+});
 
 export default function buildSchema(hasCoApplicant: boolean) {
-  if (hasCoApplicant) return v.object({ ...mainApplicant, ...coApplicant });
+  if (hasCoApplicant) return v.object({ main, co });
 
-  return v.object(mainApplicant);
+  return v.object({ main });
 }

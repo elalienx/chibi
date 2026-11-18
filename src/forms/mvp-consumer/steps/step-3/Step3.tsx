@@ -27,21 +27,21 @@ export default function Step3({ hasCoApplicant }: Props) {
   const { setStep, goPreviousStep } = useFormNavigation();
 
   // Local state
+  const initialInput = {
+    main: cleanInitialInput({ input: application.main }), // One call per applicant, because cleanInitialInput only converts top-level values.
+    co: cleanInitialInput({ input: application.co }),
+  };
   const form = useForm({
     schema: buildSchema(hasCoApplicant),
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput({ input: application }),
+    initialInput,
   });
 
   // Methods
-  function submitForm(values: object) {
+  function submitForm(values: Partial<Application>) {
     // Without a co-applicant, clear any co-applicant data saved on a previous visit.
-    const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
-    const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
-    const newValues = hasCoApplicant ? values : { ...coApplicantReset, ...values };
-
-    updateApplication(newValues);
+    updateApplication(hasCoApplicant ? values : { ...values, co: initialApplication.co });
     setStep("success-step"); // Skips Steps 4 and 5 until they are built.
   }
 
