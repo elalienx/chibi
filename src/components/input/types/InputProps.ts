@@ -1,5 +1,5 @@
 // Node modules
-import type { FormStore } from "@formisch/react";
+import type { FormStore, RequiredPath } from "@formisch/react";
 
 /**
  * About:
@@ -7,7 +7,7 @@ import type { FormStore } from "@formisch/react";
  */
 export default interface InputProps {
   /** Unique identifier of a form field. */
-  id?: string;
+  id?: RequiredPath;
 
   /** An instance of a Formisch form. */
   form?: FormStore;

@@ -65,7 +65,7 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} id="company_name">
+        <InputField form={form} id={["company_name"]}>
           <Label>Company name</Label>
           <Input type="text" placeholder="Lendo" />
         </InputField>

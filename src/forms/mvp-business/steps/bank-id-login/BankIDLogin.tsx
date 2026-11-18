@@ -61,7 +61,7 @@ export default function BankIDLogin() {
   return (
     <Form of={form} onSubmit={submitForm} className="business-form" id="bank-id-login">
       <section>
-        <InputField form={form} id="ssn">
+        <InputField form={form} id={["ssn"]}>
           <Label>Personnummer</Label>
           <Input type="text" placeholder="ÅÅÅÅMMDDXXXX" />
         </InputField>

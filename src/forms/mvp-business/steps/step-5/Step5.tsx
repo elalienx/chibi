@@ -63,7 +63,7 @@ export default function Step5() {
           <p>Välj det som passar din verksamhet bäst.</p>
         </header>
 
-        <ChipGroup form={form} id="purpose">
+        <ChipGroup form={form} id={["purpose"]}>
           {purposes.map((item) => (
             <ChipOption key={item.value} value={item.value}>
               {item.label}
@@ -74,7 +74,7 @@ export default function Step5() {
         {selectedPurpose && (
           <div className="sub-form-details">
             <h5 className="title">Du valde: {selectedPurpose.label}</h5>
-            <InputField form={form} id="loan_purpose_details">
+            <InputField form={form} id={["loan_purpose_details"]}>
               <Label>Berätta mer om ditt lånesyfte</Label>
               <Input type="text" placeholder="t.ex. tre nya truckar till lagret..." />
             </InputField>
