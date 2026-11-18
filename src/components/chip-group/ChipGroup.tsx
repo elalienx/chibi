@@ -31,7 +31,7 @@ export default function ChipGroup({ children, id: path, form, tooltips }: Props)
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  const field = useField(form, { path });
+  const field = useField(form, { path: path as [string] }); // Components receive an untyped form, so Formisch can only validate paths with one key.
 
   // Derived state
   const id = pathToId(path);

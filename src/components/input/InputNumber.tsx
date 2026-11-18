@@ -23,7 +23,7 @@ export default function InputNumber(props: InputProps) {
   if (!path) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path });
+  const field = useField(form, { path: path as [string] }); // Components receive an untyped form, so Formisch can only validate paths with one key.
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [isFocused, setIsFocused] = useState(false);
 
