@@ -49,7 +49,7 @@ export default function SubForm({ id, title, onDelete, ref }: Props) {
         <Label>Job role</Label>
         <ChipOption value="developer">Developer</ChipOption>
         <ChipOption value="graphic_designer">Graphic designer</ChipOption>
-        <ChipOption value="maanger">Manager</ChipOption>
+        <ChipOption value="manager">Manager</ChipOption>
         <ChipOption value="product_owner">Product owner</ChipOption>
       </ChipGroup>
     </article>

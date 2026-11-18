@@ -8,7 +8,6 @@ import ChipOption from "components/chip-option/ChipOption";
 import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
-import cleanInitialInput from "helpers/cleanInitialInput";
 import { subFormSchema, type Item } from "./schema";
 import "./sub-form-one-open.css";
 
@@ -29,7 +28,7 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
     schema: subFormSchema,
     validate: "blur",
     revalidate: "blur",
-    initialInput: item && cleanInitialInput({ input: item }),
+    initialInput: item,
   });
 
   return (
@@ -43,7 +42,7 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
         <Label>Job role</Label>
         <ChipOption value="developer">Developer</ChipOption>
         <ChipOption value="graphic_designer">Graphic designer</ChipOption>
-        <ChipOption value="maanger">Manager</ChipOption>
+        <ChipOption value="manager">Manager</ChipOption>
         <ChipOption value="product_owner">Product owner</ChipOption>
       </ChipGroup>
 
