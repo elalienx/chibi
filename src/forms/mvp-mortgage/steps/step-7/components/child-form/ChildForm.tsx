@@ -53,7 +53,7 @@ export default function ChildForm({ childNumber, child, onCancel, onSave }: Prop
       </header>
 
       <section className="content">
-        <SelectGroup form={form} id={["child_age"]}>
+        <SelectGroup form={form} id="child_age">
           <Label>Barnets ålder</Label>
           <Select>Ange ålder</Select>
           {ageRange.map((age) => (
@@ -64,26 +64,26 @@ export default function ChildForm({ childNumber, child, onCancel, onSave }: Prop
         </SelectGroup>
 
         <div className="yes-no-questions">
-          <RadioGroup form={form} tooltips={Tooltips} id={["child_receives_allowance"]}>
+          <RadioGroup form={form} tooltips={Tooltips} id="child_receives_allowance">
             <Label>Får du barnbidrag eller studiebidrag?</Label>
             <RadioOption value={true}>Ja</RadioOption>
             <RadioOption value={false}>Nej</RadioOption>
           </RadioGroup>
 
-          <RadioGroup form={form} id={["child_lives_with_applicant"]}>
+          <RadioGroup form={form} id="child_lives_with_applicant">
             <Label>Bor barnet hos dig?</Label>
             <RadioOption value={true}>Ja</RadioOption>
             <RadioOption value={false}>Nej</RadioOption>
           </RadioGroup>
 
-          <RadioGroup form={form} id={["child_shared_custody"]}>
+          <RadioGroup form={form} id="child_shared_custody">
             <Label>Har du delad vårdnad?</Label>
             <RadioOption value={true}>Ja</RadioOption>
             <RadioOption value={false}>Nej</RadioOption>
           </RadioGroup>
         </div>
 
-        <RadioGroup form={form} tooltips={Tooltips} id={["child_maintenance"]}>
+        <RadioGroup form={form} tooltips={Tooltips} id="child_maintenance">
           <Label>Betalar eller får du underhåll?</Label>
           <RadioOption value="pays">Betalar underhåll</RadioOption>
           <RadioOption value="receives">Får underhåll</RadioOption>

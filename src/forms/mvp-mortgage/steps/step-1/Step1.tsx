@@ -38,7 +38,7 @@ export default function Step1() {
       </header>
 
       <section>
-        <RadioGroup form={form} id={["property_type"]}>
+        <RadioGroup form={form} id="property_type">
           <Label tooltip={PROPERTY_TOOLTIP}>För vilken typ av bostad söker du lån</Label>
           <RadioOption value={house}>Villa</RadioOption>
           <RadioOption value={apartment}>Lägenhet</RadioOption>

@@ -40,7 +40,7 @@ export default function Counter({ id, form, label, min, max }: Props) {
       <Label id={id}>{label}</Label>
       <div className="controls">
         <ButtonCircle icon="minus" name="Minska" disabled={count <= min} onClick={() => onChangeCount(-1)} />
-        <Input id={[id]} form={form} type="number" min={min} max={max} />
+        <Input id={id} form={form} type="number" min={min} max={max} />
         <ButtonCircle icon="plus" name="Öka" disabled={count >= max} onClick={() => onChangeCount(1)} />
       </div>
     </div>

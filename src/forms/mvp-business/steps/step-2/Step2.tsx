@@ -59,12 +59,12 @@ export default function Step2() {
       <hr />
 
       <section>
-        <InputField form={form} id={["email"]}>
+        <InputField form={form} id="email">
           <Label>E-postadress</Label>
           <Input type="email" placeholder="namn@email.se" />
         </InputField>
 
-        <InputField form={form} id={["phone"]}>
+        <InputField form={form} id="phone">
           <Label>Mobilnummer</Label>
           <Input type="tel" placeholder="+46 XX XXX XX XX" />
         </InputField>

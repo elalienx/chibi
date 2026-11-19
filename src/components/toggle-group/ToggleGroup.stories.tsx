@@ -27,7 +27,7 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <ToggleGroup form={form} id={["source_of_income"]}>
+        <ToggleGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
           <ToggleOption value="savings">Savings</ToggleOption>
           <ToggleOption value="salary">Salary</ToggleOption>

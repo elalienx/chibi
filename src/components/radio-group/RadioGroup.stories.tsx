@@ -27,7 +27,7 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <RadioGroup form={form} id={["source_of_income"]}>
+        <RadioGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
           <RadioOption value="savings">Savings</RadioOption>
           <RadioOption value="salary">Salary</RadioOption>
@@ -52,7 +52,7 @@ export const WithTitleAndSubtitle = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <RadioGroup form={form} id={["source_of_income"]}>
+        <RadioGroup form={form} id="source_of_income">
           <Label>Source of income</Label>
           <RadioOption value="savings">
             <div className="title-and-subtitle">
