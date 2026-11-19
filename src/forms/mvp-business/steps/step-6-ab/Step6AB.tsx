@@ -68,7 +68,7 @@ export default function Step6AB() {
           <li>{CheckIcon} Ingen påverkan på din kreditvärdighet.</li>
         </ul>
 
-        <RadioGroup form={form} id={["is_guarantor"]}>
+        <RadioGroup form={form} id="is_guarantor">
           <RadioOption value={true}>Jag vill gå i personlig borgen.</RadioOption>
           <RadioOption value={false}>Jag vill uppge en borgensman senare.</RadioOption>
         </RadioGroup>

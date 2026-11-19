@@ -69,13 +69,13 @@ export default function Step5({ employmentType }: Props) {
       <section>
         {hasEmployer && (
           <>
-            <InputField form={form} id={["employment_company_name"]}>
+            <InputField form={form} id="employment_company_name">
               <Label>Arbetsgivare</Label>
               <Input type="text" placeholder="Ex. Lendo AB" />
             </InputField>
 
             <div className="date-columns">
-              <SelectGroup form={form} id={["employment_since_year"]}>
+              <SelectGroup form={form} id="employment_since_year">
                 <Label>Anställd sedan</Label>
                 <Select>Ange året du började</Select>
                 {employmentStartYears.map((year) => (
@@ -85,7 +85,7 @@ export default function Step5({ employmentType }: Props) {
                 ))}
               </SelectGroup>
 
-              <SelectGroup form={form} id={["employment_since_month"]}>
+              <SelectGroup form={form} id="employment_since_month">
                 <Label>Anställd sedan, månad</Label>
                 <Select>Ange månad</Select>
                 {startMonths.map(({ label, value }) => (
@@ -100,7 +100,7 @@ export default function Step5({ employmentType }: Props) {
 
         {hasEndDate && (
           <div className="date-columns">
-            <SelectGroup form={form} id={["employment_to_year"]}>
+            <SelectGroup form={form} id="employment_to_year">
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
               {employmentEndYears.map((year) => (
@@ -110,7 +110,7 @@ export default function Step5({ employmentType }: Props) {
               ))}
             </SelectGroup>
 
-            <SelectGroup form={form} id={["employment_to_month"]}>
+            <SelectGroup form={form} id="employment_to_month">
               <Label>Anställd till, månad</Label>
               <Select>Ange månad</Select>
               {months.map(({ label, value }) => (
@@ -123,27 +123,27 @@ export default function Step5({ employmentType }: Props) {
         )}
 
         {hasProfession && (
-          <InputField form={form} id={["employment_profession"]}>
+          <InputField form={form} id="employment_profession">
             <Label>Yrke</Label>
             <Input type="text" placeholder="Ex. Sjuksköterska" />
           </InputField>
         )}
 
         {hasIncome && (
-          <InputField form={form} tooltips={Tooltips} id={["employment_monthly_income"]}>
+          <InputField form={form} tooltips={Tooltips} id="employment_monthly_income">
             <Label>Månadsinkomst (före skatt)</Label>
             <Input type="number" suffix="kr" />
           </InputField>
         )}
 
         {hasPension && (
-          <InputField form={form} tooltips={Tooltips} id={["employment_monthly_pension"]}>
+          <InputField form={form} tooltips={Tooltips} id="employment_monthly_pension">
             <Label>Livsvarig pension (före skatt)</Label>
             <Input type="number" suffix="kr" />
           </InputField>
         )}
 
-        <ToggleGroup form={form} tooltips={Tooltips} id={["employment_income_in_foreign_currency"]}>
+        <ToggleGroup form={form} tooltips={Tooltips} id="employment_income_in_foreign_currency">
           <Label>Har du huvudsaklig inkomst i utländsk valuta?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>

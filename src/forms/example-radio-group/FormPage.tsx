@@ -40,13 +40,13 @@ export default function FormPage() {
       </header>
 
       <section>
-        <RadioGroup form={form} id={["likes_beer"]}>
+        <RadioGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
           <RadioOption value="yes">Yes</RadioOption>
           <RadioOption value="no">No</RadioOption>
         </RadioGroup>
 
-        <RadioGroup form={form} id={["likes_guiness"]}>
+        <RadioGroup form={form} id="likes_guiness">
           <Label>Do you like Guiness?</Label>
           <RadioOption value={true}>Yes</RadioOption>
           <RadioOption value={false}>No</RadioOption>

@@ -40,12 +40,12 @@ export default function SubForm({ id, title, onDelete, ref }: Props) {
         <ButtonIcon icon="trash-xmark" name={`Delete ${title}`} onClick={onDelete} variant="danger" />
       </header>
 
-      <InputField form={form} id={[`employee_name_${id}`]}>
+      <InputField form={form} id={`employee_name_${id}`}>
         <Label>Employee name</Label>
         <Input type="text" placeholder="Leif Lend" />
       </InputField>
 
-      <ChipGroup form={form} id={[`job_role_${id}`]}>
+      <ChipGroup form={form} id={`job_role_${id}`}>
         <Label>Job role</Label>
         <ChipOption value="developer">Developer</ChipOption>
         <ChipOption value="graphic_designer">Graphic designer</ChipOption>

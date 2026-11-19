@@ -33,12 +33,12 @@ export default function SubForm({ item, onCancel, onSave }: Props) {
 
   return (
     <div className="sub-form-one-open">
-      <InputField form={form} id={["employee_name"]}>
+      <InputField form={form} id="employee_name">
         <Label>Employee name</Label>
         <Input type="text" placeholder="Leif Lend" />
       </InputField>
 
-      <ChipGroup form={form} id={["job_role"]}>
+      <ChipGroup form={form} id="job_role">
         <Label>Job role</Label>
         <ChipOption value="developer">Developer</ChipOption>
         <ChipOption value="graphic_designer">Graphic designer</ChipOption>

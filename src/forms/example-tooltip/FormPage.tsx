@@ -45,18 +45,18 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} tooltips={tooltips} id={["name"]}>
+        <InputField form={form} tooltips={tooltips} id="name">
           <Label>Full name</Label>
           <Input type="text" placeholder="Leif Lend" />
         </InputField>
 
-        <RadioGroup form={form} tooltips={tooltips} id={["likes_beer"]}>
+        <RadioGroup form={form} tooltips={tooltips} id="likes_beer">
           <Label>Do you like beer?</Label>
           <RadioOption value="yes">Yes</RadioOption>
           <RadioOption value="no">No</RadioOption>
         </RadioGroup>
 
-        <ToggleGroup form={form} tooltips={tooltips} id={["favorite_brand"]}>
+        <ToggleGroup form={form} tooltips={tooltips} id="favorite_brand">
           <Label tooltip={<GuinessTooltip />}>Which brand do you like the most?</Label>
           <ToggleOption value="guiness">Guiness</ToggleOption>
           <ToggleOption value="heineken">Heineken</ToggleOption>
