@@ -66,7 +66,18 @@
         background-color: #f9fafb;
         font-weight: 600;
 
-        .smaller {
+        /* Reduction of 50% or less */
+        .modest {
+          color: #65a30d;
+        }
+
+        /* Reduction between 51% and 65% */
+        .good {
+          color: #16a34a;
+        }
+
+        /* Reduction of 66% or more */
+        .great {
           color: #15803d;
         }
 
@@ -314,7 +325,7 @@
           <tr>
             <th scope="row">Chibi</th>
             <td>-</td>
-            <td>(incomplete)</td>
+            <td>—</td>
             <td data-file="src/forms/mvp-mortgage/steps/step-2/Step2.tsx">106</td>
             <td data-file="src/forms/mvp-mortgage/steps/step-3/Step3.tsx">151</td>
             <td data-file="src/forms/mvp-mortgage/steps/step-4/Step4.tsx">148</td>
@@ -329,7 +340,7 @@
         </tbody>
       </table>
     </div>
-    <p class="note">Steps 8 and 9 are out of scope for the MVP.</p>
+    <p class="note">Steps 0, 8 and 9 are out of scope. Step 1 only has the property type.</p>
 
     <!-- Summary -->
     <section class="summary">
@@ -501,6 +512,15 @@
       let totalCurrent = 0;
       let totalChibi = 0;
 
+      // Color of a difference cell: red when Chibi is larger, then darker greens as the reduction grows.
+      function getReductionClass(percentage) {
+        if (percentage < 0) return "larger";
+        if (percentage <= 50) return "modest";
+        if (percentage <= 65) return "good";
+
+        return "great";
+      }
+
       // Adds a "Difference" row to every table: how much smaller Chibi is than Current.
       // Formula: (current - chibi) / current. Negative means Chibi has more lines.
       for (const tbody of document.querySelectorAll("tbody")) {
@@ -530,7 +550,7 @@
           totalCurrent += current;
           totalChibi += chibi;
           cell.textContent = `${percentage}%`.replace("-", "−");
-          cell.classList.add(percentage >= 0 ? "smaller" : "larger");
+          cell.classList.add(getReductionClass(percentage));
         });
       }
 
