@@ -29,13 +29,13 @@ export default function FormPage() {
 
   // Methods
   async function addEmployee() {
-    await handleSubmit(employeesForm, () => {})(); // Submit instead of validate(), because Chibi inputs only show their errors once their form is submitted.
+    await handleSubmit(employeesForm, () => {})();
 
+    // Safeguard
     if (!employeesForm.isValid) return;
 
-    // Clears the submitted state, so the new employee does not show errors before the user fills it.
-    reset(employeesForm, { keepInput: true, keepTouched: true, keepEdited: true });
     insert(employeesForm, { path: ["employees"], initialInput: { employee_name: "", job_role: "" } });
+    reset(employeesForm, { keepInput: true, keepTouched: true, keepEdited: true }); // Clears the submitted state, so the new employee does not show errors before the user fills it.
   }
 
   function deleteEmployee(index: number) {
@@ -45,13 +45,16 @@ export default function FormPage() {
   async function submitForms(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // One after the other, so the focus lands on the first error from the top of the page.
-    await handleSubmit(employeesForm, () => {})();
     await handleSubmit(companyForm, () => {})();
+    await handleSubmit(employeesForm, () => {})();
 
-    if (!employeesForm.isValid || !companyForm.isValid) return;
+    // Safeguard
+    if (!companyForm.isValid || !employeesForm.isValid) return;
 
-    // The MVP forms would store both in useApplication() here.
+    onSuccess();
+  }
+
+  function onSuccess() {
     const company = getInput(companyForm);
     const staff = getInput(employeesForm);
 
