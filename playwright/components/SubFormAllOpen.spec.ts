@@ -87,6 +87,7 @@ test("4. Should validate every sub-form, not only the last one", async () => {
 
   // Act
   await addEmployee();
+  await form.getByText(textCleanup).click(); // Moves the mouse away, because focusing the error scrolls a chip under it and the screenshot catches it hovered.
 
   // Assert
   await expect(form.getByRole("article").nth(0).getByText(errorEmployeeName)).toBeVisible();
