@@ -34,7 +34,7 @@ export default function FormPage() {
       </header>
 
       <section>
-        <SelectGroup form={form} id="publisher">
+        <SelectGroup form={form} id={["publisher"]}>
           <Label>What is your favorite game developer company?</Label>
           <Select>Choose a developer</Select>
           <SelectOption value="capcom">Capcom</SelectOption>
@@ -42,7 +42,7 @@ export default function FormPage() {
           <SelectOption value="konami">Konami</SelectOption>
         </SelectGroup>
 
-        <SelectGroup form={form} id="accessory">
+        <SelectGroup form={form} id={["accessory"]}>
           <Label tooltip="This test validates numeric values">What was the best accessory in history?</Label>
           <Select>Choose an accessory</Select>
           <SelectOption value={0}>Arcade stick</SelectOption>

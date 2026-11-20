@@ -40,12 +40,12 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} id="name">
+        <InputField form={form} id={["name"]}>
           <Label>Full name</Label>
           <Input type="text" placeholder="Leif Lend" />
         </InputField>
 
-        <InputField form={form} id="age">
+        <InputField form={form} id={["age"]}>
           <Label>Age</Label>
           <Input type="number" placeholder="18" />
         </InputField>

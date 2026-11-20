@@ -1,15 +1,16 @@
 // Node modules
 import type { MouseEvent } from "react";
-import type { FormStore } from "@formisch/react";
+import type { FormStore, RequiredPath } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
+import pathToId from "helpers/pathToId";
 import "./select.css";
 
 interface Props {
   /** Unique identifier of the parent select group. */
-  id?: string;
+  id?: RequiredPath;
 
   /** The position where the popover will attach to the <Select>. */
   anchorId?: string;
@@ -24,12 +25,13 @@ interface Props {
   activeText?: string;
 }
 
-export default function Select({ id, anchorId, children, form, activeText }: Props) {
+export default function Select({ id: path, anchorId, children, form, activeText }: Props) {
   // Safeguards
-  if (!id) return <p>Pass an id to know which field this input belongs</p>;
+  if (!path) return <p>Pass an id to know which field this input belongs</p>;
   if (!form) return <p>This component requires a Formisch form</p>;
 
   // Derived state
+  const id = pathToId(path);
   const listId = `list-${id}`;
 
   // Methods
@@ -45,7 +47,7 @@ export default function Select({ id, anchorId, children, form, activeText }: Pro
 
   return (
     <div className="select" onClick={toggleOptions} style={{ anchorName: anchorId }}>
-      <Input displayValue={activeText ?? ""} form={form} id={id} placeholder={children} readOnly type="text" />
+      <Input displayValue={activeText ?? ""} form={form} id={path} placeholder={children} readOnly type="text" />
       <Icon name={"chevron-down"} />
     </div>
   );

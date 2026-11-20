@@ -56,14 +56,22 @@ export default function Step1() {
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
       <div id="input-with-slider">
         <Label id={LOAN_AMOUNT}>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
-        <Input id={LOAN_AMOUNT} form={form} max={MAX_AMOUNT} min={MIN_AMOUNT} suffix="kr" type="number" />
-        <Slider id={LOAN_AMOUNT} form={form} label="Lånesumma" max={MAX_AMOUNT} min={MIN_AMOUNT} step={AMOUNT_STEP} />
+        <Input id={[LOAN_AMOUNT]} form={form} max={MAX_AMOUNT} min={MIN_AMOUNT} suffix="kr" type="number" />
+        <Slider id={[LOAN_AMOUNT]} form={form} label="Lånesumma" max={MAX_AMOUNT} min={MIN_AMOUNT} step={AMOUNT_STEP} />
       </div>
 
       <div id="input-with-stepper-buttons">
         <Label id={LOAN_PERIOD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
         <ButtonCircle icon="minus" name="Minska lånetid" onClick={() => onChangePeriod(-PERIOD_STEP)} />
-        <Input id={LOAN_PERIOD} form={form} allowDecimals type="number" max={MAX_PERIOD} min={MIN_PERIOD} suffix="år" />
+        <Input
+          id={[LOAN_PERIOD]}
+          form={form}
+          allowDecimals
+          type="number"
+          max={MAX_PERIOD}
+          min={MIN_PERIOD}
+          suffix="år"
+        />
         <ButtonCircle icon="plus" name="Öka lånetid" onClick={() => onChangePeriod(PERIOD_STEP)} />
       </div>
 
