@@ -6,18 +6,22 @@ const initialApplication: Application = {
   has_co_applicant: false,
 
   // Step 3: Main applicant personal info
-  main_children_under_21: undefined,
-  main_civil_state: "",
-  main_email: "",
-  main_phone: "",
-  main_ssn: "",
+  main: {
+    children_under_21: undefined,
+    civil_state: "",
+    email: "",
+    phone: "",
+    ssn: "",
+  },
 
   // Step 3: Co-applicant personal info
-  co_children_under_21: undefined,
-  co_civil_state: "",
-  co_email: "",
-  co_phone: "",
-  co_ssn: "",
+  co: {
+    children_under_21: undefined,
+    civil_state: "",
+    email: "",
+    phone: "",
+    ssn: "",
+  },
 };
 
 export default initialApplication;

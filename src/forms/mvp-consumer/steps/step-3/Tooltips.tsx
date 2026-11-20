@@ -32,10 +32,10 @@ const CoChildrenUnder21 = (
 
 /** All the possible tooltips available in this step. */
 const Tooltips = {
-  main_ssn: MainSSN,
-  main_children_under_21: MainChildrenUnder21,
-  co_ssn: CoSSN,
-  co_children_under_21: CoChildrenUnder21,
+  "main.ssn": MainSSN,
+  "main.children_under_21": MainChildrenUnder21,
+  "co.ssn": CoSSN,
+  "co.children_under_21": CoChildrenUnder21,
 };
 
 export default Tooltips;

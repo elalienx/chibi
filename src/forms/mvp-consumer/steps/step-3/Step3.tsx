@@ -11,7 +11,6 @@ import ConsumerAgencyWarning from "../../components/ConsumerAgencyWarning";
 import initialApplication from "../../data/initialApplication";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
-import type Application from "../../types/Application";
 import ApplicantFields from "./components/ApplicantFields";
 import buildSchema from "./schema";
 import "./step-3.css";
@@ -31,15 +30,16 @@ export default function Step3({ hasCoApplicant }: Props) {
     schema: buildSchema(hasCoApplicant),
     validate: "blur",
     revalidate: "blur",
-    initialInput: cleanInitialInput({ input: application }),
+    initialInput: {
+      main: cleanInitialInput({ input: application.main }),
+      ...(hasCoApplicant && { co: cleanInitialInput({ input: application.co }) }),
+    },
   });
 
   // Methods
   function submitForm(values: object) {
     // Without a co-applicant, clear any co-applicant data saved on a previous visit.
-    const coApplicantEntries = Object.entries(initialApplication).filter(([key]) => key.startsWith("co_"));
-    const coApplicantReset = Object.fromEntries(coApplicantEntries) as Partial<Application>;
-    const newValues = hasCoApplicant ? values : { ...coApplicantReset, ...values };
+    const newValues = hasCoApplicant ? values : { ...values, co: initialApplication.co };
 
     updateApplication(newValues);
     setStep("success-step"); // Skips Steps 4 and 5 until they are built.

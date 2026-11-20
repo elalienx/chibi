@@ -16,7 +16,7 @@ export default function Success({ hasCoApplicant }: Props) {
   const { resetNavigation } = useFormNavigation();
 
   // Derived state
-  const coApplicantPhone = application.co_phone || "(telefonnummer saknas)";
+  const coApplicantPhone = application.co.phone || "(telefonnummer saknas)";
 
   // Methods
   function startAgain() {
