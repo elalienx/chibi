@@ -13,19 +13,23 @@ import { schemaCompany, schemaEmployees } from "./schema";
 
 export default function FormPage() {
   // Local state
-  const companyForm = useForm({ schema: schemaCompany, validate: "blur", revalidate: "blur" });
+  const companyForm = useForm({
+    schema: schemaCompany,
+    validate: "blur",
+    revalidate: "blur",
+    initialInput: { company_name: "" },
+  });
   const employeesForm = useForm({
     schema: schemaEmployees,
     initialInput: { employees: [] },
     validate: "blur",
     revalidate: "blur",
   });
-  const employees = useFieldArray(employeesForm, { path: ["employees"] }); // Stable item ids, so deleting a sub-form keeps the inputs of the others
+  const employees = useFieldArray(employeesForm, { path: ["employees"] });
 
   // Methods
   async function addEmployee() {
-    // Submit instead of validate(), because Chibi inputs only show their errors once their form is submitted.
-    await handleSubmit(employeesForm, () => {})();
+    await handleSubmit(employeesForm, () => {})(); // Submit instead of validate(), because Chibi inputs only show their errors once their form is submitted.
 
     if (!employeesForm.isValid) return;
 
