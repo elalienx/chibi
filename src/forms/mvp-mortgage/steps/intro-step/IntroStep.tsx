@@ -13,7 +13,7 @@ export default function IntroStep() {
         <h4>Mortgage MVP</h4>
       </header>
 
-      <section>This is a demo and its missing the full details for Step 1 and Step 7 to 9.</section>
+      <section>This is a demo and its missing the full details for Step 1 and Steps 8 & 9.</section>
 
       <hr />
 
