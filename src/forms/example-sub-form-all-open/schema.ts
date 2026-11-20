@@ -1,26 +1,29 @@
 // Node modules
 import * as v from "valibot";
 
-// Schema of the main page
-export const mainSchema = v.object({
-  company_name: v.pipe(
-    v.string(),
-    v.nonEmpty("Please enter the company full name."),
-    v.minLength(3, "Name is too short."),
-    v.maxLength(50, "Name is too long."),
-  ),
+// Fields
+const company_name = v.pipe(
+  v.string(),
+  v.nonEmpty("Please enter the company full name."),
+  v.minLength(3, "Name is too short."),
+  v.maxLength(50, "Name is too long."),
+);
+
+const employee_name = v.pipe(
+  v.string(),
+  v.nonEmpty("Please enter the employee full name."),
+  v.minLength(3, "Name is too short."),
+  v.maxLength(50, "Name is too long."),
+);
+
+const job_role = v.pipe(v.string(), v.nonEmpty("Pick a job role."));
+
+// Company schema
+export const schemaCompany = v.object({
+  company_name,
 });
 
-// Schema for each employee sub-form.
-// The suffix makes the keys unique per sub-form, because Chibi also uses them as the DOM id of each field.
-export function createSubFormSchema(suffix: number) {
-  return v.object({
-    [`employee_name_${suffix}`]: v.pipe(
-      v.string(),
-      v.nonEmpty("Please enter the employee full name."),
-      v.minLength(3, "Name is too short."),
-      v.maxLength(50, "Name is too long."),
-    ),
-    [`job_role_${suffix}`]: v.pipe(v.string(), v.nonEmpty("Pick a job role.")),
-  });
-}
+// Employees schema
+export const schemaEmployees = v.object({
+  employees: v.array(v.object({ employee_name, job_role })),
+});

@@ -1,7 +1,6 @@
 // Node modules
-import { useRef, useState } from "react";
-import { Form, handleSubmit, useForm, type FormStore } from "@formisch/react";
-import * as v from "valibot";
+import type { SubmitEvent } from "react";
+import { getInput, handleSubmit, insert, remove, reset, useFieldArray, useForm } from "@formisch/react";
 
 // Project files
 import Button from "components/button/Button";
@@ -10,77 +9,74 @@ import Input from "components/input/Input";
 import InputField from "components/input-field/InputField";
 import Label from "components/label/Label";
 import SubForm from "./SubForm";
-import { mainSchema } from "./schema";
+import { schemaCompany, schemaEmployees } from "./schema";
 
 export default function FormPage() {
   // Local state
-  const form = useForm({ schema: mainSchema, validate: "blur", revalidate: "blur" });
-  const [subFormIds, setSubFormIds] = useState<number[]>([]); // Stable ids, so deleting a sub-form keeps the inputs of the others
-  const subForms = useRef(new Set<FormStore>()); // Filled by each sub-form ref, used to validate them all at once
+  const companyForm = useForm({ schema: schemaCompany, validate: "blur", revalidate: "blur" });
+  const employeesForm = useForm({
+    schema: schemaEmployees,
+    initialInput: { employees: [] },
+    validate: "blur",
+    revalidate: "blur",
+  });
+  const employees = useFieldArray(employeesForm, { path: ["employees"] }); // Stable item ids, so deleting a sub-form keeps the inputs of the others
 
   // Methods
-  // Ref callback: React calls it with the sub-form on mount, and calls the returned cleanup on unmount.
-  function registerSubForm(subForm: FormStore | null) {
-    if (!subForm) return;
-
-    subForms.current.add(subForm);
-
-    return () => {
-      subForms.current.delete(subForm); // Braces on purpose: React cleanups must return nothing, and delete() returns a boolean.
-    };
-  }
-
-  async function validateSubForms() {
-    const forms = [...subForms.current];
-
+  async function addEmployee() {
     // Submit instead of validate(), because Chibi inputs only show their errors once their form is submitted.
-    await Promise.all(forms.map((subForm) => handleSubmit(subForm, () => {})()));
+    await handleSubmit(employeesForm, () => {})();
 
-    return forms.every((subForm) => subForm.isValid);
+    if (!employeesForm.isValid) return;
+
+    // Clears the submitted state, so the new employee does not show errors before the user fills it.
+    reset(employeesForm, { keepInput: true, keepTouched: true, keepEdited: true });
+    insert(employeesForm, { path: ["employees"], initialInput: { employee_name: "", job_role: "" } });
   }
 
-  async function addSubForm() {
-    const isValid = await validateSubForms();
-    const nextId = Math.max(0, ...subFormIds) + 1;
-
-    if (isValid) setSubFormIds([...subFormIds, nextId]);
+  function deleteEmployee(index: number) {
+    remove(employeesForm, { path: ["employees"], at: index });
   }
 
-  function deleteSubForm(deleteId: number) {
-    const updatedIds = subFormIds.filter((id) => id !== deleteId);
+  async function submitForms(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-    setSubFormIds(updatedIds);
-  }
+    // One after the other, so the focus lands on the first error from the top of the page.
+    await handleSubmit(employeesForm, () => {})();
+    await handleSubmit(companyForm, () => {})();
 
-  async function submitForm(values: v.InferOutput<typeof mainSchema>) {
-    const isValid = await validateSubForms();
+    if (!employeesForm.isValid || !companyForm.isValid) return;
 
-    if (isValid) alert(`Success! ${values.company_name} has ${subFormIds.length} employee(s)`);
+    // The MVP forms would store both in useApplication() here.
+    const company = getInput(companyForm);
+    const staff = getInput(employeesForm);
+
+    alert(`Success! ${company.company_name} has ${staff.employees?.length} employee(s)`);
   }
 
   return (
-    <Form of={form} onSubmit={submitForm} className="default-form">
+    <form noValidate onSubmit={submitForms} className="default-form">
       <header>
         <h4>Sub-form open tests</h4>
       </header>
 
       <section>
-        <InputField form={form} id={["company_name"]}>
+        <InputField form={companyForm} id={["company_name"]}>
           <Label>Company name</Label>
           <Input type="text" placeholder="Lendo" />
         </InputField>
 
-        {subFormIds.map((id, index) => (
+        {employees.items.map((key, index) => (
           <SubForm
-            key={id}
-            id={id}
+            key={key}
+            form={employeesForm}
+            index={index}
             title={`Employee ${index + 1}`}
-            onDelete={() => deleteSubForm(id)}
-            ref={registerSubForm}
+            onDelete={() => deleteEmployee(index)}
           />
         ))}
 
-        <Button variant="secondary" onClick={addSubForm}>
+        <Button variant="secondary" onClick={addEmployee}>
           Add employee <Icon name="plus" />
         </Button>
       </section>
@@ -91,6 +87,6 @@ export default function FormPage() {
         <Button type="submit">Submit</Button>
         <small>(Text to clean Playwright selector)</small>
       </footer>
-    </Form>
+    </form>
   );
 }
