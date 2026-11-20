@@ -40,13 +40,13 @@ export default function FormPage() {
       </header>
 
       <section>
-        <ToggleGroup form={form} id="likes_beer">
+        <ToggleGroup form={form} id={["likes_beer"]}>
           <Label>Do you like beer?</Label>
           <ToggleOption value="yes">Yes</ToggleOption>
           <ToggleOption value="no">No</ToggleOption>
         </ToggleGroup>
 
-        <ToggleGroup form={form} id="likes_guiness">
+        <ToggleGroup form={form} id={["likes_guiness"]}>
           <Label>Do you like Guiness?</Label>
           <ToggleOption value={true}>Yes</ToggleOption>
           <ToggleOption value={false}>No</ToggleOption>

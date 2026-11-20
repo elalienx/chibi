@@ -43,12 +43,12 @@ export default function FormPage() {
       </header>
 
       <section>
-        <InputField form={form} id="loan_amount">
+        <InputField form={form} id={["loan_amount"]}>
           <Label>Loan amount</Label>
           <Input type="number" suffix="kr" min={MINIMUM} max={MAXIMUM} />
         </InputField>
 
-        <Slider form={form} id="loan_amount" label="Loan amount" min={MINIMUM} max={MAXIMUM} step={INCREMENT} />
+        <Slider form={form} id={["loan_amount"]} label="Loan amount" min={MINIMUM} max={MAXIMUM} step={INCREMENT} />
       </section>
 
       <hr />
