@@ -11,6 +11,9 @@ import Label from "components/label/Label";
 import SubForm from "./SubForm";
 import { schemaCompany, schemaEmployees } from "./schema";
 
+const INITIAL_EMPLOYEE = { employee_name: "", job_role: "" };
+const CLEAR_SUBMIT_STATE = { keepInput: true, keepTouched: true, keepEdited: true };
+
 export default function FormPage() {
   // Local state
   const companyForm = useForm({
@@ -21,9 +24,9 @@ export default function FormPage() {
   });
   const employeesForm = useForm({
     schema: schemaEmployees,
-    initialInput: { employees: [] },
     validate: "blur",
     revalidate: "blur",
+    initialInput: { employees: [] },
   });
   const employees = useFieldArray(employeesForm, { path: ["employees"] });
 
@@ -34,15 +37,11 @@ export default function FormPage() {
     // Safeguard
     if (!employeesForm.isValid) return;
 
-    insert(employeesForm, { path: ["employees"], initialInput: { employee_name: "", job_role: "" } });
-    reset(employeesForm, { keepInput: true, keepTouched: true, keepEdited: true }); // Clears the submitted state, so the new employee does not show errors before the user fills it.
+    insert(employeesForm, { path: ["employees"], initialInput: INITIAL_EMPLOYEE });
+    reset(employeesForm, CLEAR_SUBMIT_STATE);
   }
 
-  function deleteEmployee(index: number) {
-    remove(employeesForm, { path: ["employees"], at: index });
-  }
-
-  async function submitForms(event: SubmitEvent<HTMLFormElement>) {
+  async function validateForms(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     await handleSubmit(companyForm, () => {})();
@@ -51,10 +50,10 @@ export default function FormPage() {
     // Safeguard
     if (!companyForm.isValid || !employeesForm.isValid) return;
 
-    onSuccess();
+    submitForms();
   }
 
-  function onSuccess() {
+  function submitForms() {
     const company = getInput(companyForm);
     const staff = getInput(employeesForm);
 
@@ -62,7 +61,7 @@ export default function FormPage() {
   }
 
   return (
-    <form noValidate onSubmit={submitForms} className="default-form">
+    <form noValidate onSubmit={validateForms} className="default-form">
       <header>
         <h4>Sub-form open tests</h4>
       </header>
@@ -79,7 +78,7 @@ export default function FormPage() {
             form={employeesForm}
             index={index}
             title={`Employee ${index + 1}`}
-            onDelete={() => deleteEmployee(index)}
+            onDelete={() => remove(employeesForm, { path: ["employees"], at: index })}
           />
         ))}
 
