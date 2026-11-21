@@ -1,0 +1,43 @@
+#remove-co-applicant-modal {
+  max-width: 480px;
+  color: var(--typography-dark);
+
+  /* Icon and text */
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-medium);
+    text-align: center;
+
+    .icon {
+      --size: 96px;
+
+      margin-top: 0; /* Removes the optical alignment meant for icons next to body text. */
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  /* Buttons */
+  footer {
+    display: flex;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+    border-top: solid 1px var(--color-gray-80);
+
+    .button {
+      flex: 1; /* Both choices carry the same weight. */
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 550px) {
+  #remove-co-applicant-modal section {
+    padding: var(--space-2xl);
+  }
+}

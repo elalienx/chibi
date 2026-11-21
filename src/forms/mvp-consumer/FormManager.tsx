@@ -19,7 +19,8 @@ export default function FormManager() {
     <>
       {step === "intro-step" && <IntroStep />}
       {step === "step-2" && <Step2 />}
-      {step === "step-3" && <Step3 hasCoApplicant={hasCoApplicant} />}
+      {/* The key remounts Step 3 with the right schema when the co-applicant is removed. */}
+      {step === "step-3" && <Step3 key={String(hasCoApplicant)} hasCoApplicant={hasCoApplicant} />}
       {step === "success-step" && <Success hasCoApplicant={hasCoApplicant} />}
 
       {/* Lives at the root so any step can open a modal */}
