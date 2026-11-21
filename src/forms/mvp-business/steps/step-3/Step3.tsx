@@ -46,7 +46,7 @@ export default function Step3() {
       <hr />
 
       <section>
-        <RadioGroup form={form} id="company_org_number">
+        <RadioGroup form={form} id={["company_org_number"]}>
           {companyList.map(({ title, value }) => (
             <RadioOption key={value} value={value}>
               <div className="title-and-subtitle">

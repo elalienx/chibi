@@ -1,6 +1,6 @@
 // Node modules
 import type { ReactNode } from "react";
-import { useField, type FormStore } from "@formisch/react";
+import { useField, type FormStore, type RequiredPath } from "@formisch/react";
 
 // Project files
 import Label from "components/label/Label";
@@ -8,11 +8,12 @@ import RadioOption from "components/radio-option/RadioOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
 import extractOptions from "helpers/extractOptions";
+import pathToId from "helpers/pathToId";
 import "./radio-group.css";
 
 interface Props {
   /** Unique identifier of the parent input group to make sure only one radio option is active. */
-  id: string;
+  id: RequiredPath;
 
   /**  Content to display inside the input field. */
   children?: ReactNode;
@@ -24,15 +25,16 @@ interface Props {
   tooltips?: Record<string, ReactNode>;
 }
 
-export default function RadioGroup({ children, id, form, tooltips }: Props) {
+export default function RadioGroup({ children, id: path, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and at least two RadioOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  const field = useField(form, { path: [id] });
+  const field = useField(form, { path: path as [string] });
 
   // Derived state
+  const id = pathToId(path);
   const ariaErrorId = `aria-error-${id}`;
   const hasErrors = form.isSubmitted && field.errors;
 

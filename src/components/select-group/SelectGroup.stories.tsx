@@ -28,7 +28,7 @@ export const Default = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <SelectGroup form={form} id="source_of_income">
+        <SelectGroup form={form} id={["source_of_income"]}>
           <Label>Source of income</Label>
           <Select>Choose an option</Select>
           <SelectOption value="savings">Savings</SelectOption>
