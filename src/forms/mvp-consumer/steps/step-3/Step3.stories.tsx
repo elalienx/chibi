@@ -1,6 +1,6 @@
 // Project files
 import preview from "../../../../../.storybook/preview";
-import ApplicantHeader from "./components/ApplicantHeader";
+import ApplicantHeader from "./components/MainApplicantHeader";
 import CoApplicantHeader from "./components/CoApplicantHeader";
 import RemoveCoApplicantModal from "./components/RemoveCoApplicantModal";
 import Step3 from "./Step3";

@@ -14,7 +14,7 @@ import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import type Application from "../../types/Application";
 import ApplicantFields from "./components/ApplicantFields";
-import ApplicantHeader from "./components/ApplicantHeader";
+import ApplicantHeader from "./components/MainApplicantHeader";
 import CoApplicantHeader from "./components/CoApplicantHeader";
 import RemoveCoApplicantModal from "./components/RemoveCoApplicantModal";
 import buildSchema from "./schema";
