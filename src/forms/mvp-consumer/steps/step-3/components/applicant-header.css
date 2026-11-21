@@ -1,0 +1,22 @@
+/* Applicant headings ("Dina uppgifter" and "Din medsökande") */
+.applicant-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-large);
+  line-height: 24px;
+
+  .icon {
+    --size: 32px;
+
+    margin-top: 0; /* Removes the optical alignment meant for icons next to body text. */
+  }
+}
+
+/* Puts "Ta bort" on the same row as "Din medsökande" */
+.co-applicant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-medium);
+}
