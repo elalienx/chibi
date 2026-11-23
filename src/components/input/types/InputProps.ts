@@ -1,5 +1,5 @@
 // Node modules
-import type { FormStore, RequiredPath } from "@formisch/react";
+import type { FormStore } from "@formisch/react";
 
 /**
  * About:
@@ -10,7 +10,7 @@ export default interface InputProps {
   id?: string;
 
   /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
-  path?: RequiredPath;
+  path?: readonly (string | number)[];
 
   /** An instance of a Formisch form. */
   form?: FormStore;

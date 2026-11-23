@@ -1,6 +1,6 @@
 // Node modules
 import type { ReactNode } from "react";
-import { useField, type FormStore, type RequiredPath } from "@formisch/react";
+import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Label from "components/label/Label";
@@ -8,8 +8,6 @@ import Select from "components/select/Select";
 import SelectOption from "components/select-option/SelectOption";
 import extractComponent from "helpers/extractComponent";
 import extractOptions from "helpers/extractOptions";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./select-group.css";
 
 interface Props {
@@ -17,7 +15,7 @@ interface Props {
   id: string;
 
   /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
-  path?: RequiredPath;
+  path?: readonly (string | number)[];
 
   /**  Content to display inside the select. */
   children?: ReactNode;
@@ -29,16 +27,16 @@ interface Props {
   tooltips?: Record<string, ReactNode>;
 }
 
-export default function SelectGroup({ id, path, children, form, tooltips }: Props) {
+export default function SelectGroup({ id, path = [], children, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and at least two SelectOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  const field = useField(form, { path: getFieldPath(id, path) as [string] });
+  const field = useField(form, { path: [...path, id] as [string] });
 
   // Derived state
-  const htmlId = pathToId(field.path);
+  const htmlId = [...path, id].join(".");
   const anchorId = `--anchor-${htmlId}`; // Requires "--" to work properly.
   const listId = `list-${htmlId}`;
 

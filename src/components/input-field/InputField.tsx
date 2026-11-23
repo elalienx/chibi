@@ -1,13 +1,11 @@
 // Node modules
 import type { ReactNode } from "react";
-import type { FormStore, RequiredPath } from "@formisch/react";
+import type { FormStore } from "@formisch/react";
 
 // Project files
 import Input from "components/input/Input";
 import Label from "components/label/Label";
 import extractComponent from "helpers/extractComponent";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./input-field.css";
 
 interface Props {
@@ -15,7 +13,7 @@ interface Props {
   id: string;
 
   /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
-  path?: RequiredPath;
+  path?: readonly (string | number)[];
 
   /**  Content to display inside the input field. */
   children?: ReactNode;
@@ -27,13 +25,13 @@ interface Props {
   tooltips?: Record<string, ReactNode>;
 }
 
-export default function InputField({ id, path, children, form, tooltips }: Props) {
+export default function InputField({ id, path = [], children, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and a InputField to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Derived state
-  const htmlId = pathToId(getFieldPath(id, path));
+  const htmlId = [...path, id].join(".");
 
   // Components
   const tooltip = tooltips?.[id];

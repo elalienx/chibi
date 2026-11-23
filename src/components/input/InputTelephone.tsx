@@ -9,8 +9,6 @@ import getInputState from "./helpers/getInputState";
 import sanitizeTelephone from "./helpers/sanitizeTelephone";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
@@ -18,18 +16,18 @@ import "./styles/input-wrapper-state.css";
 // Properties
 const COUNTRY_CODE = "+46";
 
-export default function InputTelephone({ id, path, form, placeholder = "+46 XX XXX XX XX" }: InputProps) {
+export default function InputTelephone({ id, path = [], form, placeholder = "+46 XX XXX XX XX" }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: getFieldPath(id, path) as [string] });
+  const field = useField(form, { path: [...path, id] as [string] });
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [isFocused, setIsFocused] = useState(false);
 
   // Derived state
-  const htmlId = pathToId(field.path);
+  const htmlId = [...path, id].join(".");
   const ariaErrorId = `aria-error-${htmlId}`;
   const displayValue = formatTelephone(String(field.input ?? ""));
   const inputState = getInputState(form, field, committedState, isFocused);

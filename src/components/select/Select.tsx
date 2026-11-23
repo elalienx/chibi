@@ -1,12 +1,10 @@
 // Node modules
 import type { MouseEvent } from "react";
-import type { FormStore, RequiredPath } from "@formisch/react";
+import type { FormStore } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
 import Input from "components/input/Input";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./select.css";
 
 interface Props {
@@ -14,7 +12,7 @@ interface Props {
   id?: string;
 
   /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
-  path?: RequiredPath;
+  path?: readonly (string | number)[];
 
   /** The position where the popover will attach to the <Select>. */
   anchorId?: string;
@@ -29,13 +27,13 @@ interface Props {
   activeText?: string;
 }
 
-export default function Select({ id, path, anchorId, children, form, activeText }: Props) {
+export default function Select({ id, path = [], anchorId, children, form, activeText }: Props) {
   // Safeguards
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
   if (!form) return <p>This component requires a Formisch form</p>;
 
   // Derived state
-  const htmlId = pathToId(getFieldPath(id, path));
+  const htmlId = [...path, id].join(".");
   const listId = `list-${htmlId}`;
 
   // Methods

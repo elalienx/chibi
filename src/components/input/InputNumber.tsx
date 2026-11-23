@@ -10,26 +10,24 @@ import limitNumberRange from "./helpers/limitNumberRange";
 import sanitizeNumber from "./helpers/sanitizeNumber";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
 export default function InputNumber(props: InputProps) {
-  const { id, path, form, allowDecimals = false, max, min, placeholder = "0", suffix, type } = props;
+  const { id, path = [], form, allowDecimals = false, max, min, placeholder = "0", suffix, type } = props;
 
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: getFieldPath(id, path) as [string] });
+  const field = useField(form, { path: [...path, id] as [string] });
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [isFocused, setIsFocused] = useState(false);
 
   // Derived state
-  const htmlId = pathToId(field.path);
+  const htmlId = [...path, id].join(".");
   const ariaErrorId = `aria-error-${htmlId}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = String(field.input ?? "");

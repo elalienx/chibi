@@ -1,11 +1,9 @@
 // Node modules
 import type { ReactNode } from "react";
-import { useField, type FormStore, type RequiredPath } from "@formisch/react";
+import { useField, type FormStore } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
-import getFieldPath from "helpers/getFieldPath";
-import pathToId from "helpers/pathToId";
 import "./styles/checkbox-design.css";
 import "./styles/checkbox-layout.css";
 import "./styles/checkbox-state.css";
@@ -15,7 +13,7 @@ interface Props {
   id?: string;
 
   /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
-  path?: RequiredPath;
+  path?: readonly (string | number)[];
 
   /** The text to display next to the checkbox. */
   children: ReactNode;
@@ -24,16 +22,16 @@ interface Props {
   form?: FormStore;
 }
 
-export default function Checkbox({ id, path, children, form }: Props) {
+export default function Checkbox({ id, path = [], children, form }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: getFieldPath(id, path) as [string] });
+  const field = useField(form, { path: [...path, id] as [string] });
 
   // Derived state
-  const htmlId = pathToId(field.path);
+  const htmlId = [...path, id].join(".");
 
   return (
     <label className="checkbox">
