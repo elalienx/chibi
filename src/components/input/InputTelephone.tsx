@@ -15,9 +15,8 @@ import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
 // Properties
-const COUNTRY_CODE = "+46";
 
-export default function InputTelephone({ id: path, form, placeholder = "+46 XX XXX XX XX" }: InputProps) {
+export default function InputTelephone({ id: path, form, placeholder = "XX XXX XX XX" }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!path) return <p>Pass an id to know which field this input belongs</p>;
@@ -30,6 +29,7 @@ export default function InputTelephone({ id: path, form, placeholder = "+46 XX X
   // Derived state
   const id = pathToId(path);
   const ariaErrorId = `aria-error-${id}`;
+  const countryCode = "+46";
   const displayValue = formatTelephone(String(field.input ?? ""));
   const inputState = getInputState(form, field, committedState, isFocused);
   const hasErrors = inputState === "error" && field.errors;
@@ -43,8 +43,9 @@ export default function InputTelephone({ id: path, form, placeholder = "+46 XX X
 
   function onChange(event: ChangeEvent<HTMLInputElement>): void {
     const localDigits = sanitizeTelephone(event.target.value);
+    const fullNumber = countryCode + localDigits;
 
-    event.target.value = localDigits ? `${COUNTRY_CODE}${localDigits}` : ""; // Stores the full number, example: +46729479111
+    event.target.value = localDigits ? fullNumber : "";
     field.props.onChange(event);
   }
 
@@ -58,7 +59,7 @@ export default function InputTelephone({ id: path, form, placeholder = "+46 XX X
     <div className={`input-wrapper ${inputState} has-prefix`}>
       <span className="prefix">
         <img alt="" className="flag" src={flagSweden} />
-        {COUNTRY_CODE}
+        {countryCode}
       </span>
       <input
         {...field.props}

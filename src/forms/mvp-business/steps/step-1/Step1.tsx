@@ -21,8 +21,8 @@ import "./styles/step-1-input-with-count-buttons.css";
 import "./styles/step-1-footer.css";
 
 const { AMOUNT_STEP, MIN_AMOUNT, MAX_AMOUNT, MIN_PERIOD, MAX_PERIOD, PERIOD_STEP } = businessFormConfig;
-const LOAN_AMOUNT = "loan_amount";
-const LOAN_PERIOD = "loan_period";
+const AMOUNT = "loan_amount";
+const PERIOD = "loan_period";
 
 export default function Step1() {
   // Global state
@@ -40,11 +40,11 @@ export default function Step1() {
 
   // Methods
   function onChangePeriod(step: number) {
-    const formField = getInput(form, { path: [LOAN_PERIOD] });
+    const formField = getInput(form, { path: [PERIOD] });
     const currentPeriod = Number(formField);
     const newPeriod = Math.min(Math.max(currentPeriod + step, MIN_PERIOD), MAX_PERIOD);
 
-    setInput(form, { path: [LOAN_PERIOD], input: String(newPeriod) });
+    setInput(form, { path: [PERIOD], input: String(newPeriod) });
   }
 
   function submitForm(values: object) {
@@ -55,23 +55,15 @@ export default function Step1() {
   return (
     <Form of={form} onSubmit={submitForm} className="hero-form" id="step-1">
       <div id="input-with-slider">
-        <Label id={LOAN_AMOUNT}>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
-        <Input id={[LOAN_AMOUNT]} form={form} max={MAX_AMOUNT} min={MIN_AMOUNT} suffix="kr" type="number" />
-        <Slider id={[LOAN_AMOUNT]} form={form} label="Lånesumma" max={MAX_AMOUNT} min={MIN_AMOUNT} step={AMOUNT_STEP} />
+        <Label id={AMOUNT}>{isTablet ? "Välj lånesumma:" : "Lånesumma:"}</Label>
+        <Input id={[AMOUNT]} form={form} max={MAX_AMOUNT} min={MIN_AMOUNT} suffix="kr" type="number" />
+        <Slider id={[AMOUNT]} form={form} label="Lånesumma" max={MAX_AMOUNT} min={MIN_AMOUNT} step={AMOUNT_STEP} />
       </div>
 
       <div id="input-with-stepper-buttons">
-        <Label id={LOAN_PERIOD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
+        <Label id={PERIOD}>{isTablet ? "Välj lånetid:" : "Lånetid:"}</Label>
         <ButtonCircle icon="minus" name="Minska lånetid" onClick={() => onChangePeriod(-PERIOD_STEP)} />
-        <Input
-          id={[LOAN_PERIOD]}
-          form={form}
-          allowDecimals
-          type="number"
-          max={MAX_PERIOD}
-          min={MIN_PERIOD}
-          suffix="år"
-        />
+        <Input id={[PERIOD]} form={form} allowDecimals type="number" max={MAX_PERIOD} min={MIN_PERIOD} suffix="år" />
         <ButtonCircle icon="plus" name="Öka lånetid" onClick={() => onChangePeriod(PERIOD_STEP)} />
       </div>
 
