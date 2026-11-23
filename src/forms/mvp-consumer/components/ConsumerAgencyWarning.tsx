@@ -1,4 +1,5 @@
 // Project files
+import consumerAgencyWarning from "assets/consumer-agency-warning.svg?url";
 import "./consumer-agency-warning.css";
 
 // Properties
@@ -10,7 +11,7 @@ const KONSUMENTVERKET_URL = "https://www.konsumentverket.se/";
 export default function ConsumerAgencyWarning() {
   return (
     <aside className="consumer-agency-warning">
-      <img alt="" src="/images/consumer-agency-warning.svg" />
+      <img alt="" src={consumerAgencyWarning} />
       <div>
         <strong>Att låna kostar pengar!</strong>
         <p>
