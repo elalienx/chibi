@@ -17,3 +17,16 @@
     grid-area: bottom;
   }
 }
+
+/* Edge cases */
+.input-wrapper.has-prefix {
+  grid-template-columns: auto minmax(0, 1fr); /* The prefix only takes the space it needs, the input takes the rest. */
+
+  .prefix {
+    grid-area: top-left;
+  }
+
+  .input {
+    grid-area: top-right;
+  }
+}
