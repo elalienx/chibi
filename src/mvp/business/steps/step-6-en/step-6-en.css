@@ -1,6 +1,7 @@
 #step-6 {
   .columns {
     display: grid;
+    align-items: end; /* Lines up the fields when one label wraps to 2 lines. */
     gap: var(--space-small);
   }
 }
