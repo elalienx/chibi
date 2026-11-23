@@ -25,6 +25,13 @@ const numberSchema = v.object({
     v.maxValue(10_000_000, "Must be less than 10 000 000 SEK"),
   ),
 });
+const telephoneSchema = v.object({
+  phone: v.pipe(
+    v.string(),
+    v.nonEmpty("Enter your mobile number"),
+    v.regex(/^\+46\d{9}$/, "Enter a valid mobile number"),
+  ),
+});
 
 // Stories
 export const Text = meta.story({
@@ -74,6 +81,19 @@ export const NumberInput = meta.story({
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
         <Input type="number" placeholder="250 000" form={form} id="loan_amount" />
+      </Form>
+    );
+  },
+});
+
+export const Telephone = meta.story({
+  name: "Telephone",
+  render: () => {
+    const form = useForm({ schema: telephoneSchema, validate: "blur", revalidate: "blur" });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")}>
+        <Input type="tel" form={form} id="phone" />
       </Form>
     );
   },
