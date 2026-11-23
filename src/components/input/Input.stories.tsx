@@ -93,7 +93,7 @@ export const Telephone = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="tel" form={form} id="phone" />
+        <Input type="tel" form={form} id={["phone"]} />
       </Form>
     );
   },

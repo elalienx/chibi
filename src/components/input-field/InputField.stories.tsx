@@ -107,7 +107,7 @@ export const Telephone = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <InputField form={form} id="phone">
+        <InputField form={form} id={["phone"]}>
           <Label>Mobile number</Label>
           <Input type="tel" />
         </InputField>
