@@ -1,4 +1,5 @@
 // Project files
+import successIndicator from "assets/success-indicator.svg?url";
 import Button from "components/button/Button";
 import Tooltip from "components/tooltip/Tooltip";
 import useApplication from "../../state/useApplication";
@@ -27,7 +28,7 @@ export default function Success() {
 
   return (
     <div className="business-form" id="success-step">
-      <img alt="Ansökan skickad" className="success-indicator" src="/images/success-indicator.svg" />
+      <img alt="Ansökan skickad" className="success-indicator" src={successIndicator} />
 
       <h3>Tack för din ansökan!</h3>
 
