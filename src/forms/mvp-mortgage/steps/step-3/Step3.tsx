@@ -86,7 +86,7 @@ export default function Step3() {
       </header>
 
       <section>
-        <SelectGroup form={form} id="main_civil_state">
+        <SelectGroup form={form} id={["main_civil_state"]}>
           <Label>Civilstånd</Label>
           <Select>Ange civilstånd</Select>
           {civilStatuses.map(({ label, value }) => (
@@ -96,17 +96,17 @@ export default function Step3() {
           ))}
         </SelectGroup>
 
-        <InputField form={form} id="main_email">
+        <InputField form={form} id={["main_email"]}>
           <Label>E-postadress</Label>
           <Input type="email" placeholder="namn@email.se" />
         </InputField>
 
-        <InputField form={form} id="main_phone">
+        <InputField form={form} id={["main_phone"]}>
           <Label>Mobilnummer</Label>
           <Input type="tel" />
         </InputField>
 
-        <SelectGroup form={form} id="main_employment_type">
+        <SelectGroup form={form} id={["main_employment_type"]}>
           <Label tooltip={employmentTooltip}>Anställningsform</Label>
           <Select>Ange anställningsform</Select>
           {employmentTypes.map(({ label, value }) => (
@@ -116,7 +116,7 @@ export default function Step3() {
           ))}
         </SelectGroup>
 
-        <ToggleGroup form={form} id="has_co_applicant">
+        <ToggleGroup form={form} id={["has_co_applicant"]}>
           <Label tooltip={coApplicantTooltip}>Har du en medsökande?</Label>
           <ToggleOption value={true}>Ja</ToggleOption>
           <ToggleOption value={false}>Nej</ToggleOption>
@@ -126,7 +126,7 @@ export default function Step3() {
       <hr />
 
       <section className="pep">
-        <Checkbox form={form} id="main_claims_pep">
+        <Checkbox form={form} id={["main_claims_pep"]}>
           Jag intygar att jag INTE är en person i politisk utsatt ställning (PEP).
         </Checkbox>
         <small>

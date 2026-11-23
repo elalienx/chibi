@@ -41,7 +41,7 @@ export const Text = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="text" placeholder="Hatsune Miku" form={form} id="username" />
+        <Input type="text" placeholder="Hatsune Miku" form={form} id={["username"]} />
       </Form>
     );
   },
@@ -54,7 +54,7 @@ export const Email = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="email" placeholder="hatsume@miku.com" form={form} id="email" />
+        <Input type="email" placeholder="hatsume@miku.com" form={form} id={["email"]} />
       </Form>
     );
   },
@@ -67,7 +67,7 @@ export const Password = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="password" placeholder="Password" form={form} id="password" />
+        <Input type="password" placeholder="Password" form={form} id={["password"]} />
       </Form>
     );
   },
@@ -80,7 +80,7 @@ export const NumberInput = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="number" placeholder="250 000" form={form} id="loan_amount" />
+        <Input type="number" placeholder="250 000" form={form} id={["loan_amount"]} />
       </Form>
     );
   },
@@ -93,7 +93,7 @@ export const Telephone = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Input type="tel" form={form} id="phone" />
+        <Input type="tel" form={form} id={["phone"]} />
       </Form>
     );
   },

@@ -12,6 +12,6 @@ const meta = preview.meta({
 export const Default = meta.story({
   name: "Default",
   render: () => {
-    return <Select id="favorite_videogame">Favorite videogame</Select>;
+    return <Select id={["favorite_videogame"]}>Favorite videogame</Select>;
   },
 });
