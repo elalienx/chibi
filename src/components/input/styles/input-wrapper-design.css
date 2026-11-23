@@ -20,6 +20,22 @@
     text-align: center;
   }
 
+  .prefix {
+    display: flex;
+    align-items: center;
+    gap: var(--space-small);
+    padding-left: var(--space-medium);
+    background-color: white; /* In case it is used on a non-white background. */
+    color: var(--typography-default);
+    font-family: var(--font-family);
+    font-size: var(--font-size-normal);
+    font-weight: var(--font-weight-normal);
+
+    .flag {
+      width: var(--space-medium);
+    }
+  }
+
   .input-validation-message {
     padding: var(--space-small) var(--space-medium);
     background-color: var(--input-background-error);
@@ -30,4 +46,8 @@
 /* Edge cases */
 .input-wrapper .input.type-number {
   text-align: center; /* Lendo always center the numbers */
+}
+
+.input-wrapper.has-prefix .input {
+  padding-left: var(--space-small); /* Same gap as between the flag and the country code. */
 }

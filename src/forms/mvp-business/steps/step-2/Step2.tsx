@@ -66,7 +66,7 @@ export default function Step2() {
 
         <InputField form={form} id="phone">
           <Label>Mobilnummer</Label>
-          <Input type="tel" placeholder="+46 XX XXX XX XX" />
+          <Input type="tel" />
         </InputField>
       </section>
 
