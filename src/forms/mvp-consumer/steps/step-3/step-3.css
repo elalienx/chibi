@@ -1,7 +1,5 @@
 #step-3 {
   .civil-state-and-children {
-    --field-min-width: 0px; /* Lets both selects shrink to share the row. */
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;

@@ -1,6 +1,5 @@
 #loan-edit {
   --space: var(--space-small);
-  --field-min-width: 0px;
 
   display: flex;
   flex-direction: column;

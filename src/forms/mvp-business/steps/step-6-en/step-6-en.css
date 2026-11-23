@@ -1,7 +1,5 @@
 #step-6 {
   .columns {
-    --field-min-width: 0px; /* So 2 input fields fit side by side. */
-
     display: grid;
     gap: var(--space-small);
   }
