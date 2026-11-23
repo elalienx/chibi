@@ -109,7 +109,8 @@
       margin-inline: var(--space-2xl);
     }
 
-    > footer {
+    /* Back and forward buttons sit side by side; footers without a back button stay in a single column. */
+    > footer:has(> .secondary) {
       flex-direction: row;
 
       > .button {

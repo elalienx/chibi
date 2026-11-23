@@ -6,6 +6,7 @@ import ArrowGoBack from "components/arrow-go-back/ArrowGoBack";
 import Button from "components/button/Button";
 import Icon from "components/icon/Icon";
 import StepIndicator from "components/step-indicator/StepIndicator";
+import Tooltip from "components/tooltip/Tooltip";
 import cleanInitialInput from "helpers/cleanInitialInput";
 import useModal from "state/useModal";
 import ConsumerAgencyWarning from "../../components/ConsumerAgencyWarning";
@@ -19,6 +20,7 @@ import CoApplicantHeader from "./components/CoApplicantHeader";
 import MainApplicantFields from "./components/MainApplicantFields";
 import RemoveCoApplicantModal from "./components/RemoveCoApplicantModal";
 import buildSchema from "./schema";
+import Tooltips from "./Tooltips";
 import "./step-3.css";
 
 interface Props {
@@ -95,11 +97,12 @@ export default function Step3({ hasCoApplicant }: Props) {
       <hr />
 
       <footer>
-        <Button variant="secondary" onClick={goPreviousStep}>
-          <Icon name="arrow-left" /> Tillbaka
-        </Button>
+        <small>
+          Varför ber vi om BankID-identifiering? <Tooltip>{Tooltips.bank_id}</Tooltip>
+        </small>
         <Button type="submit">
-          Fortsätt <Icon name="arrow-right" />
+          Fortsätt med BankID
+          <Icon name="bankid" />
         </Button>
       </footer>
 
