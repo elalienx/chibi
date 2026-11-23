@@ -26,7 +26,6 @@ export default async function fillStep3(form: Locator, { mainApplicant, coApplic
     await test.step("Main applicant", async () => {
       await mainSection.getByRole("textbox", { name: "E-postadress" }).fill(mainApplicant.email);
       await mainSection.getByRole("textbox", { name: "Mobilnummer" }).fill(mainApplicant.phone);
-      await mainSection.getByRole("textbox", { name: "Personnummer" }).fill(mainApplicant.ssn);
       await mainSection.getByRole("textbox", { name: "Civilstatus" }).click();
       await mainSection.getByRole("radio", { name: mainApplicant.civilState, exact: true }).check();
       await mainSection.getByRole("textbox", { name: "Barn under 21 år" }).click();

@@ -15,34 +15,26 @@ import Tooltips from "../Tooltips";
 interface Props {
   /** An instance of a Formisch form. */
   form: FormStore;
-
-  /** Decides if the fields belong to the main applicant or the co-applicant. */
-  prefix: "main" | "co";
 }
 
 /**
- * The same group of fields is used for the main applicant and the co-applicant in Step 3.
+ * The fields of the main applicant in Step 3.
  */
-export default function ApplicantFields({ form, prefix }: Props) {
+export default function MainApplicantFields({ form }: Props) {
   return (
     <>
-      <InputField form={form} id={[`${prefix}_email`]}>
+      <InputField form={form} id={["main_email"]}>
         <Label>E-postadress</Label>
         <Input type="email" placeholder="namn@email.com" />
       </InputField>
 
-      <InputField form={form} id={[`${prefix}_phone`]}>
+      <InputField form={form} id={["main_phone"]}>
         <Label>Mobilnummer</Label>
         <Input type="tel" />
       </InputField>
 
-      <InputField form={form} tooltips={Tooltips} id={[`${prefix}_ssn`]}>
-        <Label>Personnummer</Label>
-        <Input type="text" placeholder="ÅÅÅÅMMDDXXXX" />
-      </InputField>
-
-      <div className="civil-state-and-children">
-        <SelectGroup form={form} id={[`${prefix}_civil_state`]}>
+      <div className="columns">
+        <SelectGroup form={form} id={["main_civil_state"]}>
           <Label>Civilstatus</Label>
           <Select>Välj</Select>
           {civilStatuses.map(({ label, value }) => (
@@ -52,7 +44,7 @@ export default function ApplicantFields({ form, prefix }: Props) {
           ))}
         </SelectGroup>
 
-        <SelectGroup form={form} tooltips={Tooltips} id={[`${prefix}_children_under_21`]}>
+        <SelectGroup form={form} tooltips={Tooltips} id={["main_children_under_21"]}>
           <Label>Barn under 21 år</Label>
           <Select>Välj</Select>
           {childrenUnder21.map(({ label, value }) => (

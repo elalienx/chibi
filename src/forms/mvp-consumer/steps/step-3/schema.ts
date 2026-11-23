@@ -21,13 +21,6 @@ const main_phone = v.pipe(
   v.check((input) => phoneDigits.test(input.replace(phoneFormatting, "")), "Ange ett giltigt mobilnummer."),
 );
 
-const main_ssn = v.pipe(
-  v.string("Ange ditt personnummer för att gå vidare."),
-  v.trim(),
-  v.nonEmpty("Ange ditt personnummer för att gå vidare."),
-  v.regex(ssnDigits, "Ange ett giltigt personnummer med 12 siffror (ÅÅÅÅMMDDXXXX)."),
-);
-
 const main_civil_state = v.pipe(
   v.string("Ange civilstatus för att gå vidare."),
   v.nonEmpty("Ange civilstatus för att gå vidare."),
@@ -73,7 +66,7 @@ const co_children_under_21 = v.pipe(
 );
 
 // Schemas
-const mainApplicant = { main_email, main_phone, main_ssn, main_civil_state, main_children_under_21 };
+const mainApplicant = { main_email, main_phone, main_civil_state, main_children_under_21 };
 const coApplicant = { co_email, co_phone, co_ssn, co_civil_state, co_children_under_21 };
 
 export default function buildSchema(hasCoApplicant: boolean) {
