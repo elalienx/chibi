@@ -1,9 +1,13 @@
 .label {
   color: var(--typography-dark);
   font-weight: var(--font-weight-medium);
-  text-wrap: pretty; /* To avoid the tooltip trigger being the unique item on a second line if the label is too long. */
+  text-wrap: balance; /* To avoid the tooltip trigger being the unique item on a second line if the label is too long. */
 
   .tooltip-trigger {
     margin-left: var(--space-tiny);
+  }
+
+  .tooltip-window {
+    text-wrap: pretty; /* Paragraphs inside the tooltip use the full width instead of inheriting the balanced label lines. */
   }
 }
