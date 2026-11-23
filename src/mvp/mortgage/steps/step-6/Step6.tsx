@@ -74,7 +74,7 @@ export default function Step6({ employmentType }: Props) {
               <Input type="text" placeholder="Ex. Lendo AB" />
             </InputField>
 
-            <div className="date-columns">
+            <div className="columns">
               <SelectGroup form={form} id={["employment_since_year"]}>
                 <Label>Anställd sedan</Label>
                 <Select>Ange året medsökande började</Select>
@@ -99,7 +99,7 @@ export default function Step6({ employmentType }: Props) {
         )}
 
         {hasEndDate && (
-          <div className="date-columns">
+          <div className="columns">
             <SelectGroup form={form} id={["employment_to_year"]}>
               <Label>Anställd till</Label>
               <Select>Ange år</Select>
