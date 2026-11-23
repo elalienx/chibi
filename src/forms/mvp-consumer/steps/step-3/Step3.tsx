@@ -13,9 +13,10 @@ import initialApplication from "../../data/initialApplication";
 import useApplication from "../../state/useApplication";
 import useFormNavigation from "../../state/useFormNavigation";
 import type Application from "../../types/Application";
-import ApplicantFields from "./components/ApplicantFields";
 import ApplicantHeader from "./components/MainApplicantHeader";
+import CoApplicantFields from "./components/CoApplicantFields";
 import CoApplicantHeader from "./components/CoApplicantHeader";
+import MainApplicantFields from "./components/MainApplicantFields";
 import RemoveCoApplicantModal from "./components/RemoveCoApplicantModal";
 import buildSchema from "./schema";
 import "./step-3.css";
@@ -78,7 +79,7 @@ export default function Step3({ hasCoApplicant }: Props) {
       {/* Applicant */}
       <section>
         {hasCoApplicant && <ApplicantHeader />}
-        <ApplicantFields form={form} prefix="main" />
+        <MainApplicantFields form={form} />
       </section>
 
       {hasCoApplicant && <hr className="applicant-divider" />}
@@ -87,7 +88,7 @@ export default function Step3({ hasCoApplicant }: Props) {
       {hasCoApplicant && (
         <section>
           <CoApplicantHeader onRemove={() => setModal(removeCoApplicantModal)} />
-          <ApplicantFields form={form} prefix="co" />
+          <CoApplicantFields form={form} />
         </section>
       )}
 

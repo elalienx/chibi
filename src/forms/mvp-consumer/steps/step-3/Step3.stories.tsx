@@ -1,8 +1,14 @@
+// Node modules
+import { Form, useForm } from "@formisch/react";
+
 // Project files
 import preview from "../../../../../.storybook/preview";
 import ApplicantHeader from "./components/MainApplicantHeader";
+import CoApplicantFields from "./components/CoApplicantFields";
 import CoApplicantHeader from "./components/CoApplicantHeader";
+import MainApplicantFields from "./components/MainApplicantFields";
 import RemoveCoApplicantModal from "./components/RemoveCoApplicantModal";
+import buildSchema from "./schema";
 import Step3 from "./Step3";
 
 // Metadata
@@ -39,6 +45,32 @@ export const ApplicantHeaderStory = meta.story({
 export const CoApplicantHeaderStory = meta.story({
   name: "Co-applicant header",
   render: () => <CoApplicantHeader onRemove={onRemove} />,
+});
+
+export const MainApplicantFieldsStory = meta.story({
+  name: "Main applicant fields",
+  render: () => {
+    const form = useForm({ schema: buildSchema(true), validate: "blur", revalidate: "blur" });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")} id="step-3">
+        <MainApplicantFields form={form} />
+      </Form>
+    );
+  },
+});
+
+export const CoApplicantFieldsStory = meta.story({
+  name: "Co-applicant fields",
+  render: () => {
+    const form = useForm({ schema: buildSchema(true), validate: "blur", revalidate: "blur" });
+
+    return (
+      <Form of={form} onSubmit={() => alert("Success")} id="step-3">
+        <CoApplicantFields form={form} />
+      </Form>
+    );
+  },
 });
 
 export const RemoveCoApplicantModalStory = meta.story({
