@@ -5,7 +5,7 @@ This folder simulates a mortgage application. The applicant describes the proper
 ## Folder structure
 
 ```text
-/ mvp-mortgage/
+/ mortgage/
 ├── data/
 ├── state/
 │   └── useApplication.ts (⭐️ Key file)

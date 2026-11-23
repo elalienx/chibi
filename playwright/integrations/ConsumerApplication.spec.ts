@@ -12,7 +12,7 @@ import fillStep3 from "./consumer/fillStep3";
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount("forms/mvp-consumer/FormManager/Default");
+  form = await mount("mvp/consumer/FormManager/Default");
 });
 
 test("Should be able to apply as a single applicant", async () => {

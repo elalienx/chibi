@@ -19,7 +19,7 @@ import fillStep7 from "./mortgage/fillStep7";
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount("forms/mvp-mortgage/FormManager/Default");
+  form = await mount("mvp/mortgage/FormManager/Default");
 });
 
 test.describe("Single applicant", () => {
