@@ -33,7 +33,7 @@ export default function ApplicantFields({ form, prefix }: Props) {
 
       <InputField form={form} id={`${prefix}_phone`}>
         <Label>Mobilnummer</Label>
-        <Input type="tel" placeholder="070XXXXXXX" />
+        <Input type="tel" />
       </InputField>
 
       <InputField form={form} tooltips={Tooltips} id={`${prefix}_ssn`}>

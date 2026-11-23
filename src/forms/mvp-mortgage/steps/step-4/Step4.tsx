@@ -106,7 +106,7 @@ export default function Step4() {
 
         <InputField form={form} id="co_phone">
           <Label>Medsökandes mobilnummer</Label>
-          <Input type="tel" placeholder="+46 XX XXX XX XX" />
+          <Input type="tel" />
         </InputField>
 
         <SelectGroup form={form} id="co_employment_type">

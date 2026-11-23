@@ -103,7 +103,7 @@ export default function Step3() {
 
         <InputField form={form} id="main_phone">
           <Label>Mobilnummer</Label>
-          <Input type="tel" placeholder="+46 XX XXX XX XX" />
+          <Input type="tel" />
         </InputField>
 
         <SelectGroup form={form} id="main_employment_type">
