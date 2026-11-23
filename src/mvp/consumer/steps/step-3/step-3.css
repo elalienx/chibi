@@ -4,7 +4,7 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: end; /* Lines up the fields when one label wraps to 2 lines. */
     gap: var(--space-medium);
   }
 

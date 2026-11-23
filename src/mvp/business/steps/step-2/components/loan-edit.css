@@ -12,6 +12,7 @@
   .columns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end; /* Lines up the fields when one label wraps to 2 lines. */
     gap: var(--space);
   }
 
