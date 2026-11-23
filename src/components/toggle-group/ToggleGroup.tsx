@@ -8,12 +8,16 @@ import ToggleOption from "components/toggle-option/ToggleOption";
 import ValidationMessage from "components/validation-message/ValidationMessage";
 import extractComponent from "helpers/extractComponent";
 import extractOptions from "helpers/extractOptions";
+import getFieldPath from "helpers/getFieldPath";
 import pathToId from "helpers/pathToId";
 import "./toggle-group.css";
 
 interface Props {
   /** Unique identifier of the parent toggle group to make sure only one toggle option is active. */
-  id: RequiredPath;
+  id: string;
+
+  /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
+  path?: RequiredPath;
 
   /** Content to display inside the toggle group. */
   children?: ReactNode;
@@ -25,29 +29,33 @@ interface Props {
   tooltips?: Record<string, ReactNode>;
 }
 
-export default function ToggleGroup({ children, id: path, form, tooltips }: Props) {
+export default function ToggleGroup({ children, id, path, form, tooltips }: Props) {
   // Safeguards
   if (!children) return <p>Please add a Label and at least two ToggleOption to get started</p>;
   if (!form) return <p>Please add a Formisch form to get started</p>;
 
   // Local state
-  const field = useField(form, { path: path as [string] });
+  const field = useField(form, { path: getFieldPath(id, path) as [string] });
 
   // Derived state
-  const id = pathToId(path);
-  const ariaErrorId = `aria-error-${id}`;
+  const htmlId = pathToId(field.path);
+  const ariaErrorId = `aria-error-${htmlId}`;
   const hasErrors = form.isSubmitted && field.errors;
 
   // Components
   const tooltip = tooltips?.[id];
-  const label = extractComponent({ component: Label, extractFrom: children, props: { id, tooltip } });
-  const toggleOptions = extractOptions({ component: ToggleOption, extractFrom: children, props: { id, field } });
+  const label = extractComponent({ component: Label, extractFrom: children, props: { id: htmlId, tooltip } });
+  const toggleOptions = extractOptions({
+    component: ToggleOption,
+    extractFrom: children,
+    props: { id: htmlId, field },
+  });
 
   return (
     <div className="toggle-group">
       {label}
 
-      <div id={id} className="options">
+      <div id={htmlId} className="options">
         {toggleOptions}
       </div>
 

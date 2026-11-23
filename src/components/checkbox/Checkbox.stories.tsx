@@ -29,7 +29,7 @@ export const Unchecked = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Checkbox form={form} id={["terms"]}>
+        <Checkbox form={form} id="terms">
           I accept the terms and conditions
         </Checkbox>
       </Form>
@@ -50,7 +50,7 @@ export const Checked = meta.story({
 
     return (
       <Form of={form} onSubmit={() => alert("Success")}>
-        <Checkbox form={form} id={["terms"]}>
+        <Checkbox form={form} id="terms">
           I accept the terms and conditions
         </Checkbox>
       </Form>

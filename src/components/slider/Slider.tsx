@@ -4,6 +4,7 @@ import { useField, type FormStore, type RequiredPath } from "@formisch/react";
 
 // Project files
 import formatWithSpaces from "components/input/helpers/formatWithSpaces";
+import getFieldPath from "helpers/getFieldPath";
 import "./styles/slider-design.css";
 import "./styles/slider-layout.css";
 import "./styles/slider-vendor-mozilla.css";
@@ -11,7 +12,10 @@ import "./styles/slider-vendor-safari.css";
 
 interface Props {
   /** Unique identifier of a form field. */
-  id: RequiredPath;
+  id: string;
+
+  /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
+  path?: RequiredPath;
 
   /** An instance of a Formisch form. */
   form: FormStore;
@@ -29,13 +33,13 @@ interface Props {
   step?: number;
 }
 
-export default function Slider({ id: path, form, label, max, min, step = 1 }: Props) {
+export default function Slider({ id, path, form, label, max, min, step = 1 }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
-  if (!path) return <p>Pass an id to know which field this input belongs</p>;
+  if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: path as [string] });
+  const field = useField(form, { path: getFieldPath(id, path) as [string] });
 
   // Derived state
   const value = Number(field.input ?? min);

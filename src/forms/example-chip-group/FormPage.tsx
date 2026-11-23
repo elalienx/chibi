@@ -40,13 +40,13 @@ export default function FormPage() {
       </header>
 
       <section>
-        <ChipGroup form={form} id={["likes_beer"]}>
+        <ChipGroup form={form} id="likes_beer">
           <Label>Do you like beer?</Label>
           <ChipOption value="yes">Yes</ChipOption>
           <ChipOption value="no">No</ChipOption>
         </ChipGroup>
 
-        <ChipGroup form={form} id={["likes_guiness"]}>
+        <ChipGroup form={form} id="likes_guiness">
           <Label>Do you like Guiness?</Label>
           <ChipOption value={true}>Yes</ChipOption>
           <ChipOption value={false}>No</ChipOption>

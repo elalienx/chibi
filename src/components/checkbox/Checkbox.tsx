@@ -4,6 +4,7 @@ import { useField, type FormStore, type RequiredPath } from "@formisch/react";
 
 // Project files
 import Icon from "components/icon/Icon";
+import getFieldPath from "helpers/getFieldPath";
 import pathToId from "helpers/pathToId";
 import "./styles/checkbox-design.css";
 import "./styles/checkbox-layout.css";
@@ -11,7 +12,10 @@ import "./styles/checkbox-state.css";
 
 interface Props {
   /** Unique identifier of a form field. */
-  id?: RequiredPath;
+  id?: string;
+
+  /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
+  path?: RequiredPath;
 
   /** The text to display next to the checkbox. */
   children: ReactNode;
@@ -20,20 +24,20 @@ interface Props {
   form?: FormStore;
 }
 
-export default function Checkbox({ id: path, children, form }: Props) {
+export default function Checkbox({ id, path, children, form }: Props) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
-  if (!path) return <p>Pass an id to know which field this input belongs</p>;
+  if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: path as [string] });
+  const field = useField(form, { path: getFieldPath(id, path) as [string] });
 
   // Derived state
-  const id = pathToId(path);
+  const htmlId = pathToId(field.path);
 
   return (
     <label className="checkbox">
-      <input {...field.props} id={id} checked={field.input === true} type="checkbox" value="true" />
+      <input {...field.props} id={htmlId} checked={field.input === true} type="checkbox" value="true" />
 
       {/* The icon we use to stylze the input, must go after the real <input> to appear on top */}
       <Icon name="check" />

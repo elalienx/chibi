@@ -7,7 +7,10 @@ import type { FormStore, RequiredPath } from "@formisch/react";
  */
 export default interface InputProps {
   /** Unique identifier of a form field. */
-  id?: RequiredPath;
+  id?: string;
+
+  /** Parent path of the field, only needed inside nested forms. Example: `["employees", 0]`. */
+  path?: RequiredPath;
 
   /** An instance of a Formisch form. */
   form?: FormStore;

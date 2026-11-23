@@ -7,24 +7,25 @@ import getCorrectMobileKeyboard from "./helpers/getCorrectMobileKeyboard";
 import getInputState from "./helpers/getInputState";
 import type { InputState } from "./types/InputState";
 import type InputProps from "./types/InputProps";
+import getFieldPath from "helpers/getFieldPath";
 import pathToId from "helpers/pathToId";
 import "./styles/input-wrapper-design.css";
 import "./styles/input-wrapper-layout.css";
 import "./styles/input-wrapper-state.css";
 
-export default function InputText({ displayValue, id: path, form, placeholder, readOnly, suffix, type }: InputProps) {
+export default function InputText({ displayValue, id, path, form, placeholder, readOnly, suffix, type }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
-  if (!path) return <p>Pass an id to know which field this input belongs</p>;
+  if (!id) return <p>Pass an id to know which field this input belongs</p>;
 
   // Local state
-  const field = useField(form, { path: path as [string] });
+  const field = useField(form, { path: getFieldPath(id, path) as [string] });
   const [committedState, setCommittedState] = useState<InputState>("default");
   const [isFocused, setIsFocused] = useState(false);
 
   // Derived state
-  const id = pathToId(path);
-  const ariaErrorId = `aria-error-${id}`;
+  const htmlId = pathToId(field.path);
+  const ariaErrorId = `aria-error-${htmlId}`;
   const cssSuffix = suffix ? "has-suffix" : "";
   const customValue = displayValue ?? String(field.input ?? "");
   const inputState = getInputState(form, field, committedState, isFocused);
@@ -48,7 +49,7 @@ export default function InputText({ displayValue, id: path, form, placeholder, r
     <div className={`input-wrapper ${inputState} ${cssSuffix}`}>
       <input
         {...field.props}
-        id={id}
+        id={htmlId}
         aria-errormessage={ariaErrorId}
         aria-invalid={!!hasErrors}
         className="input"
