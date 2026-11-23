@@ -3,7 +3,7 @@
   grid-template-areas:
     "bar bar"
     "min max";
-  min-width: var(--field-min-width);
+  min-width: min(var(--field-min-width), 100%); /* Shrinks to fit narrow containers such as 2-column grids. */
 
   input[type="range"] {
     grid-area: bar;
