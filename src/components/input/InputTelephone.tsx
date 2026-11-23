@@ -3,7 +3,7 @@ import { useState, type ChangeEvent } from "react";
 import { useField } from "@formisch/react";
 
 // Project files
-import flagSweden from "./assets/flag-sweden.svg?url";
+import flagSweden from "assets/flag-sweden.svg?url";
 import formatTelephone from "./helpers/formatTelephone";
 import getInputState from "./helpers/getInputState";
 import sanitizeTelephone from "./helpers/sanitizeTelephone";
