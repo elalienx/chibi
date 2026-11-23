@@ -2,7 +2,6 @@
 import { test, type Locator } from "@playwright/test";
 
 // Project files
-import exampleSSNs from "../../src/forms/mvp-business/steps/bank-id-login/exampleSSNs";
 import checkSuccessStep from "./business/checkSuccessStep";
 import fillBankIDLogin from "./business/fillBankIDLogin";
 import fillStep1 from "./business/fillStep1";
@@ -17,14 +16,14 @@ import fillStep6EN from "./business/fillStep6EN";
 let form: Locator;
 
 test.beforeEach(async ({ mount }) => {
-  form = await mount("forms/mvp-business/FormManager/Default");
+  form = await mount("mvp/business/FormManager/Default");
 });
 
 test.describe("Public company", () => {
   test("Should be able to submit with no debt", async () => {
     await fillStep1(form);
     await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-    await fillBankIDLogin(form, { ssn: exampleSSNs.MULTIPLE_PUBLIC_COMPANIES });
+    await fillBankIDLogin(form, { ssn: "197810196597" });
     await fillStep3(form, { company: "Connys & Sjukvård AB" });
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
@@ -35,7 +34,7 @@ test.describe("Public company", () => {
   test("Should be able to submit with debt", async () => {
     await fillStep1(form);
     await fillStep2(form, { email: "erik@example.com", phone: "0707654321" });
-    await fillBankIDLogin(form, { ssn: "199001011234" }); // Any other personnummer shows the company selector.
+    await fillBankIDLogin(form, { ssn: "197810196597" });
     await fillStep3(form, { company: "Birgers Guldsmedja AB" });
     await fillStep4(form, { turnover: 500_000, hasExistingLoans: true, loanDebt: 250_000 });
     await fillStep5(form, { purpose: "Renovering av lokal", details: "Nytt golv i lokalen" });
@@ -46,7 +45,7 @@ test.describe("Public company", () => {
   test("Should skip the company selector for a single public company", async () => {
     await fillStep1(form);
     await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-    await fillBankIDLogin(form, { ssn: exampleSSNs.SINGLE_PUBLIC_COMPANY });
+    await fillBankIDLogin(form, { ssn: "197604261136" });
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6AB(form);
@@ -58,7 +57,7 @@ test.describe("Sole trader", () => {
   test("Should be able to submit with no private loans", async () => {
     await fillStep1(form);
     await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-    await fillBankIDLogin(form, { ssn: exampleSSNs.SOLE_TRADER });
+    await fillBankIDLogin(form, { ssn: "194207073091" });
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6EN(form);
@@ -68,7 +67,7 @@ test.describe("Sole trader", () => {
   test("Should be able to submit with private loans", async () => {
     await fillStep1(form);
     await fillStep2(form, { email: "anna@example.com", phone: "+46 70 123 45 67" });
-    await fillBankIDLogin(form, { ssn: exampleSSNs.SOLE_TRADER });
+    await fillBankIDLogin(form, { ssn: "194207073091" });
     await fillStep4(form, { turnover: 1_000_000, hasExistingLoans: false });
     await fillStep5(form, { purpose: "Renovering av lokal" });
     await fillStep6EN(form, { blancoLoans: 50_000, installmentLoans: 25_000, houseLoans: 1_500_000 });

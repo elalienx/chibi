@@ -5,7 +5,7 @@ This folder simulates a consumer loan application. The applicant applies alone o
 ## Folder structure
 
 ```text
-/ mvp-consumer/
+/ consumer/
 ├── components/
 ├── data/
 ├── state/

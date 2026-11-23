@@ -5,7 +5,7 @@ This folder simulates a business loan application. A company representative pick
 ## Folder structure
 
 ```text
-/ mvp-business/
+/ business/
 ├── components/
 ├── data/
 ├── state/
