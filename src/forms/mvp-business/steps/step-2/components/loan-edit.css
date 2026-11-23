@@ -1,5 +1,6 @@
 #loan-edit {
   --space: var(--space-small);
+  --field-min-width: 0px; /* Lets both fields shrink to share the row. Safari ignores the 100% cap in the component's min-width. */
 
   display: flex;
   flex-direction: column;
