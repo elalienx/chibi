@@ -16,7 +16,7 @@ import "./styles/input-wrapper-state.css";
 // Properties
 const COUNTRY_CODE = "+46";
 
-export default function InputTelephone({ id, form, placeholder = "XX XXX XX XX" }: InputProps) {
+export default function InputTelephone({ id, form, placeholder = "+46 XX XXX XX XX" }: InputProps) {
   // Safeguards
   if (!form) return <p>This component requires a Formisch form and id</p>;
   if (!id) return <p>Pass an id to know which field this input belongs</p>;
