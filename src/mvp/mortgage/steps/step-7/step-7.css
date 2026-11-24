@@ -5,13 +5,14 @@
     gap: 0; /* Spacing comes from each item's margin-bottom. */
     color: var(--typography-dark);
 
-    h5 {
+    /* Direct children only, so the rules skip the headings and error messages inside the cards. */
+    > h5 {
       margin-bottom: var(--space-base);
       font-size: var(--font-size-large);
       font-weight: var(--font-weight-medium);
     }
 
-    p {
+    > p {
       margin-bottom: var(--space-medium);
     }
   }
