@@ -82,7 +82,7 @@ export default function FormPage() {
           />
         ))}
 
-        <Button variant="borderless" onClick={addEmployee}>
+        <Button variant="secondary" onClick={addEmployee}>
           Add employee <Icon name="plus" />
         </Button>
       </section>
