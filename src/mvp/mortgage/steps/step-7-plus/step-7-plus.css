@@ -1,0 +1,28 @@
+#step-7-plus {
+  /* Adults and children sections */
+  .adults,
+  .children {
+    gap: 0; /* Spacing comes from each item's margin-bottom. */
+    color: var(--typography-dark);
+
+    h5 {
+      margin-bottom: var(--space-base);
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-medium);
+    }
+
+    p {
+      margin-bottom: var(--space-medium);
+    }
+  }
+
+  /* Adults counter */
+  .adults {
+    margin-bottom: var(--space-2xl); /* Same space between adults and children on mobile and desktop. */
+  }
+
+  /* Open children sub-forms */
+  .children .child-sub-form {
+    margin-bottom: var(--space-medium);
+  }
+}
