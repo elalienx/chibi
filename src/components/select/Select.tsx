@@ -32,7 +32,8 @@ export default function Select({ id: path, anchorId, children, form, activeText 
 
   // Derived state
   const id = pathToId(path);
-  const listId = `list-${id}`;
+  const pathId = id.replaceAll(".", "-"); // CSS names cannot contain the dots of nested paths.
+  const listId = `list-${pathId}`;
 
   // Methods
   function toggleOptions(event: MouseEvent<HTMLDivElement>): void {
