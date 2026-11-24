@@ -25,12 +25,11 @@ export default function SelectOption({ id, children, field, value }: Props) {
   if (!field) return <p>This component requires a Formisch field</p>;
 
   // Derived state
-  const pathId = id.replaceAll(".", "-"); // CSS names cannot contain the dots of nested paths.
-  const listId = `list-${pathId}`;
   const stringValue = String(value);
 
   // Methods
   function onChangeAndForceBlur(event: ChangeEvent<HTMLInputElement>): void {
+    const listId = `list-${id}`;
     const selectPopover = document.getElementById(listId);
 
     selectPopover?.hidePopover();

@@ -35,9 +35,9 @@ export default function SelectGroup({ id: path, children, form, tooltips }: Prop
 
   // Derived state
   const id = pathToId(path);
-  const pathId = id.replaceAll(".", "-"); // CSS names cannot contain the dots of nested paths.
-  const anchorId = `--anchor-${pathId}`; // Requires "--" to work properly.
-  const listId = `list-${pathId}`;
+  const parsedId = id.replaceAll(".", "-"); // CSS names cannot contain the dots of nested paths.
+  const anchorId = `--anchor-${parsedId}`; // Requires "--" to work properly.
+  const listId = `list-${id}`;
 
   // Components
   const tooltip = tooltips?.[id];
