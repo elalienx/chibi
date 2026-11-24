@@ -6,7 +6,7 @@ import "styles/base/home.css";
 ---
 
 <BaseLayout title="Home" description="Home of the Chibi library">
-  <main style="align-items: center; text-align: center;">
+  <main class="home" style="align-items: center; text-align: center;">
     <img style="max-width: 320px;" alt="Chibi version of the virtual idol Hatsune Miku" fetchpriority="high" src="/images/miku.png" />
     <h1>Chibi</h1>
     <div class="home-links">
@@ -22,13 +22,16 @@ import "styles/base/home.css";
         <a href="/example-toggle-group" data-astro-prefetch>Toggle group</a>
         <a href="/example-tooltip" data-astro-prefetch>Tooltip</a>
       </nav>
-      <nav aria-labelledby="forms-title">
-        <h2 id="forms-title">Forms</h2>
+      <nav aria-labelledby="nested-forms-title">
+        <h2 id="nested-forms-title">Nested forms</h2>
+        <a href="/example-sub-form-one-open" data-astro-prefetch>Sub-form one open</a>
+        <a href="/example-sub-form-all-open" data-astro-prefetch>Sub-form all open</a>
+      </nav>
+      <nav aria-labelledby="mvp-title">
+        <h2 id="mvp-title">MVP</h2>
         <a href="/mvp-business" data-astro-prefetch>MVP Business</a>
         <a href="/mvp-consumer" data-astro-prefetch>MVP Consumer</a>
         <a href="/mvp-mortgage" data-astro-prefetch>MVP Mortgage</a>
-        <a href="/example-sub-form-one-open" data-astro-prefetch>Sub-form one open</a>
-        <a href="/example-sub-form-all-open" data-astro-prefetch>Sub-form all open</a>
       </nav>
     </div>
     <hr/>
