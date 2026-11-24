@@ -51,8 +51,7 @@
 @media (min-width: 550px) {
   .edit-card {
     gap: var(--space-medium);
-    width: 448px;
-    max-width: 100%; /* Shrinks with the parent if it is narrower than 448px. */
+    max-width: var(--width-of-form); /* Fills the form, but stops at the form width when shown alone. */
 
     header {
       gap: var(--space-medium);
