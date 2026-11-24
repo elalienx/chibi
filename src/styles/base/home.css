@@ -18,10 +18,15 @@
 
 /* Desktop */
 @media (min-width: 768px) {
+  main.home {
+    max-width: 960px;
+  }
+
   .home-links {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     align-items: start;
+    column-gap: var(--space-6xl);
 
     > nav {
       align-items: start;
